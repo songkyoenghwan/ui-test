@@ -1,0 +1,52 @@
+{
+	"compilerOptions": {
+		"target": "es2023",
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false,
+		"module": "esnext",
+		"lib": ["ES2023", "DOM"],
+		"types": ["svelte", "vite/client"],
+		"skipLibCheck": true,
+
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"moduleDetection": "force",
+		"noEmit": true,
+
+		/* Linting */
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"erasableSyntaxOnly": true,
+		"noFallthroughCasesInSwitch": true,
+
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/src/*": ["./src/*"],
+			"@/lib/*": ["./src/lib/*"],
+			"@/layouts/*": ["./src/layouts/*"],
+			"@/pages/*": ["./src/pages/*"],
+			"@/images/*": ["./src/lib/images/*"],
+			"@/data/*": ["./src/lib/data/*"],
+			"@/styles/*": ["./src/lib/styles/*"],
+			"@/components/*": ["./src/lib/components/*"],
+			"@/components/solid/*": ["./src/lib/components/solid/*"],
+			"@/components/react/*": ["./src/lib/components/react/*"],
+			"@/components/svelte/*": ["./src/lib/components/svelte/*"],
+			"@/components/vue/*": ["./src/lib/components/react/*"],
+			"@/stores/*": ["./src/lib/stores/*"],
+			"@/contexts/*": ["./src/lib/contexts/*"],
+			"@/utils/*": ["./src/lib/utils/*"],
+			"@/i18n/*": ["./src/lib/i18n/*"],
+			"@/html/*": ["./src/lib/html/*"],
+			"@/static/*": ["./static/*"],
+			"@/events/*": ["./events/*"],
+			"@/type/*": ["./src/lib/type/*"],
+			"@/mocks/*": ["./src/mocks/*"],
+			"@/libs/*": ["./public/libs/*"],
+			"@/dummy/*": ["./public/dummy/*"]
+		}
+	},
+	"include": ["src"]
+}
