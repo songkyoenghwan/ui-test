@@ -360,9 +360,9 @@
 	}
 
 	body {
+		overflow: hidden;
 		margin: 0 auto;
 		min-width: 18.75rem;
-		max-width: 115rem;
 		min-height: 100dvh;
 		font-synthesis: none;
 		text-rendering: optimizeLegibility;
