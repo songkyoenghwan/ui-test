@@ -1,0 +1,286 @@
+{
+	"compilerOptions": {
+		"paths": {
+			"$": [
+				"../src"
+			],
+			"$/*": [
+				"../src/*"
+			],
+			"$src": [
+				"../src"
+			],
+			"$src/*": [
+				"../src/*"
+			],
+			"$lib": [
+				"../src/lib"
+			],
+			"$lib/*": [
+				"../src/lib/*"
+			],
+			"$layouts": [
+				"../src/lib/layouts"
+			],
+			"$layouts/*": [
+				"../src/lib/layouts/*"
+			],
+			"$pages": [
+				"../src/lib/pages"
+			],
+			"$pages/*": [
+				"../src/lib/pages/*"
+			],
+			"$assets": [
+				"../src/lib/assets"
+			],
+			"$assets/*": [
+				"../src/lib/assets/*"
+			],
+			"$styles": [
+				"../src/lib/styles"
+			],
+			"$styles/*": [
+				"../src/lib/styles/*"
+			],
+			"$components": [
+				"../src/lib/components"
+			],
+			"$components/*": [
+				"../src/lib/components/*"
+			],
+			"$solid": [
+				"../src/lib/components/solid"
+			],
+			"$solid/*": [
+				"../src/lib/components/solid/*"
+			],
+			"$react": [
+				"../src/lib/components/react"
+			],
+			"$react/*": [
+				"../src/lib/components/react/*"
+			],
+			"$vue": [
+				"../src/lib/components/vue"
+			],
+			"$vue/*": [
+				"../src/lib/components/vue/*"
+			],
+			"$stores": [
+				"../src/lib/stores"
+			],
+			"$stores/*": [
+				"../src/lib/stores/*"
+			],
+			"$contexts": [
+				"../src/lib/contexts"
+			],
+			"$contexts/*": [
+				"../src/lib/contexts/*"
+			],
+			"$utils": [
+				"../src/lib/utils"
+			],
+			"$utils/*": [
+				"../src/lib/utils/*"
+			],
+			"$i18n": [
+				"../src/lib/i18n"
+			],
+			"$i18n/*": [
+				"../src/lib/i18n/*"
+			],
+			"$html": [
+				"../src/lib/html"
+			],
+			"$html/*": [
+				"../src/lib/html/*"
+			],
+			"$static": [
+				"../static"
+			],
+			"$static/*": [
+				"../static/*"
+			],
+			"$images": [
+				"../public/images"
+			],
+			"$images/*": [
+				"../public/images/*"
+			],
+			"$events": [
+				"../events"
+			],
+			"$events/*": [
+				"../events/*"
+			],
+			"@/src": [
+				"../src"
+			],
+			"@/src/*": [
+				"../src/*"
+			],
+			"@/lib": [
+				"../src/lib/lib"
+			],
+			"@/lib/*": [
+				"../src/lib/lib/*"
+			],
+			"@/layouts": [
+				"../src/lib/layouts"
+			],
+			"@/layouts/*": [
+				"../src/lib/layouts/*"
+			],
+			"@/pages": [
+				"../src/lib/pages"
+			],
+			"@/pages/*": [
+				"../src/lib/pages/*"
+			],
+			"@/data": [
+				"../src/lib/data"
+			],
+			"@/data/*": [
+				"../src/lib/data/*"
+			],
+			"@/styles": [
+				"../src/lib/styles"
+			],
+			"@/styles/*": [
+				"../src/lib/styles/*"
+			],
+			"@/components": [
+				"../src/lib/components"
+			],
+			"@/components/*": [
+				"../src/lib/components/*"
+			],
+			"@/components/solid": [
+				"../src/lib/components/solid"
+			],
+			"@/components/solid/*": [
+				"../src/lib/components/solid/*"
+			],
+			"@/components/react": [
+				"../src/lib/components/react"
+			],
+			"@/components/react/*": [
+				"../src/lib/components/react/*"
+			],
+			"@/components/vue": [
+				"../src/lib/components/vue"
+			],
+			"@/components/vue/*": [
+				"../src/lib/components/vue/*"
+			],
+			"@/stores": [
+				"../src/lib/stores"
+			],
+			"@/stores/*": [
+				"../src/lib/stores/*"
+			],
+			"@/contexts": [
+				"../src/lib/contexts"
+			],
+			"@/contexts/*": [
+				"../src/lib/contexts/*"
+			],
+			"@/utils": [
+				"../src/lib/utils"
+			],
+			"@/utils/*": [
+				"../src/lib/utils/*"
+			],
+			"@/i18n": [
+				"../src/lib/i18n"
+			],
+			"@/i18n/*": [
+				"../src/lib/i18n/*"
+			],
+			"@/html": [
+				"../src/lib/html"
+			],
+			"@/html/*": [
+				"../src/lib/html/*"
+			],
+			"@/static": [
+				"../static"
+			],
+			"@/static/*": [
+				"../static/*"
+			],
+			"@/images": [
+				"../public/images"
+			],
+			"@/images/*": [
+				"../public/images/*"
+			],
+			"@/events": [
+				"../events"
+			],
+			"@/events/*": [
+				"../events/*"
+			],
+			"@/mocks": [
+				"../src/lib/mocks"
+			],
+			"@/mocks/*": [
+				"../src/lib/mocks/*"
+			],
+			"@/types": [
+				"../src/lib/types"
+			],
+			"@/types/*": [
+				"../src/lib/types/*"
+			],
+			"$app/types": [
+				"./types/index.d.ts"
+			]
+		},
+		"rootDirs": [
+			"..",
+			"./types"
+		],
+		"verbatimModuleSyntax": true,
+		"isolatedModules": true,
+		"lib": [
+			"esnext",
+			"DOM",
+			"DOM.Iterable"
+		],
+		"moduleResolution": "bundler",
+		"module": "esnext",
+		"noEmit": true,
+		"target": "esnext",
+		"types": [
+			"node"
+		]
+	},
+	"include": [
+		"ambient.d.ts",
+		"non-ambient.d.ts",
+		"./types/**/$types.d.ts",
+		"../vite.config.js",
+		"../vite.config.ts",
+		"../src/**/*.js",
+		"../src/**/*.ts",
+		"../src/**/*.svelte",
+		"../test/**/*.js",
+		"../test/**/*.ts",
+		"../test/**/*.svelte",
+		"../tests/**/*.js",
+		"../tests/**/*.ts",
+		"../tests/**/*.svelte"
+	],
+	"exclude": [
+		"../node_modules/**",
+		"../src/service-worker.js",
+		"../src/service-worker/**/*.js",
+		"../src/service-worker.ts",
+		"../src/service-worker/**/*.ts",
+		"../src/service-worker.d.ts",
+		"../src/service-worker/**/*.d.ts"
+	]
+}
