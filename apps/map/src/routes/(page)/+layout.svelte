@@ -1,9 +1,18 @@
 <script lang="ts">
-	import '@/styles/index.css';
+	import '$lib/styles/index.css';
 
-	let { children, data } = $props();
+	import '$lib/components/index';
+
+	let { children } = $props();
 </script>
 
-<main class="">
-	{@render children()}
-</main>
+<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
+	<aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb>
+	<!-- authority : D - user || administrator -->
+
+	<header-list></header-list>
+
+	<main class="grid size-full overflow-auto">
+		{@render children()}
+	</main>
+</section>

@@ -2,6 +2,15 @@
 	"/(page)": [],
 	"/(menulist)": [],
 	"/": [],
-	"/(menulist)/menulist": [],
-	"/(page)/product": []
+	"/(page)/CMS-CON-001": [],
+	"/(page)/CMS-LOC-001": [],
+	"/(page)/CMS-MAP-001": [],
+	"/(page)/CMS-MAP-002": [],
+	"/(page)/CMS-MAP-003": [],
+	"/(page)/CMS-MAP-004": [],
+	"/(page)/CMS-OBD-001": [],
+	"/(page)/CMS-OBD-002": [],
+	"/(page)/CMS-STA-001": [],
+	"/(page)/CMS-STA-002": [],
+	"/(menulist)/menulist": []
 }

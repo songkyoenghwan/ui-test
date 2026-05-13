@@ -54,12 +54,9 @@ declare module '$env/static/private' {
 	export const EXEPATH: string;
 	export const flutter: string;
 	export const flutterbin: string;
-	export const FORCE_COLOR: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
-	export const GK_GL_ADDR: string;
-	export const GK_GL_PATH: string;
 	export const gs: string;
 	export const gsw: string;
 	export const HOME: string;
@@ -244,12 +241,9 @@ declare module '$env/dynamic/private' {
 		EXEPATH: string;
 		flutter: string;
 		flutterbin: string;
-		FORCE_COLOR: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
-		GK_GL_ADDR: string;
-		GK_GL_PATH: string;
 		gs: string;
 		gsw: string;
 		HOME: string;

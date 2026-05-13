@@ -1,8 +1,7 @@
 import '@/styles/index.css';
 
-import '@/components/layouts/LNb.svelte';
-
-import '@/components/texts/text-label';
-import '@/components/inputs/input-text';
+import '@/components/icons/Icons.svelte';
+import '@/components/layouts/Lnb.svelte';
+import '@/components/layouts/Header.svelte';
 
 import '@/components/badges/BadgeText.svelte';

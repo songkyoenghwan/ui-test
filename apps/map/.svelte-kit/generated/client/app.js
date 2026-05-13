@@ -7,15 +7,33 @@ export const nodes = [
 	() => import('./nodes/3'),
 	() => import('./nodes/4'),
 	() => import('./nodes/5'),
-	() => import('./nodes/6')
+	() => import('./nodes/6'),
+	() => import('./nodes/7'),
+	() => import('./nodes/8'),
+	() => import('./nodes/9'),
+	() => import('./nodes/10'),
+	() => import('./nodes/11'),
+	() => import('./nodes/12'),
+	() => import('./nodes/13'),
+	() => import('./nodes/14'),
+	() => import('./nodes/15')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
 		"/(page)": [5,[3]],
-		"/(menulist)/menulist": [4,[2]],
-		"/(page)/product": [6,[3]]
+		"/(page)/CMS-CON-001": [6,[3]],
+		"/(page)/CMS-LOC-001": [7,[3]],
+		"/(page)/CMS-MAP-001": [8,[3]],
+		"/(page)/CMS-MAP-002": [9,[3]],
+		"/(page)/CMS-MAP-003": [10,[3]],
+		"/(page)/CMS-MAP-004": [11,[3]],
+		"/(page)/CMS-OBD-001": [12,[3]],
+		"/(page)/CMS-OBD-002": [13,[3]],
+		"/(page)/CMS-STA-001": [14,[3]],
+		"/(page)/CMS-STA-002": [15,[3]],
+		"/(menulist)/menulist": [4,[2]]
 	};
 
 export const hooks = {

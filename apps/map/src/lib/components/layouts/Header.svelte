@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'header-wrap',
+		tag: 'header-list',
 		shadow: 'none',
 		props: {
 			current: { type: 'String', reflect: true },
@@ -10,50 +10,48 @@
 />
 
 <script lang="ts">
-	let {
-		current = 'lnb-1',
-		list = [
-			{
-				id: 'lnb-1',
-				text: '지도 관리',
-			},
-			{
-				id: 'lnb-2',
-				text: '혼잡도 현황',
-			},
-			{
-				id: 'lnb-3',
-				text: '통계',
-			},
-			{
-				id: 'lnb-4',
-				text: '대상지 관리',
-			},
-		],
-	} = $props();
+	import type { LnbSubItem } from '$lib/types/Lnb';
+	import { setCurrentId, currentItemFromPath, currentSubItem } from '$/lib/stores/navigation.svelte';
+
+	let displayH3 = $derived($currentItemFromPath?.h3 ?? '');
+	let displayId = $derived($currentItemFromPath?.id ?? '');
+	let displaySub = $derived(($currentItemFromPath?.sub as LnbSubItem[]) ?? []);
+	let currentSub = $derived($currentSubItem?.link || '');
+
+	function handleNavClick(listId: string) {
+		setCurrentId(displayId);
+	}
 </script>
 
 {#snippet name({ link = '', text = '' })}
 	<li class="flex h-full">
 		<a
-			class="aria-[current=page]:text-primary aria-[current=page]:border-b-primary grid place-content-center px-4 aria-[current=page]:border-b aria-[current=page]:font-bold"
+			class="aria-[current=page]:text-primary aria-[current=page]:border-b-primary hover:text-90efd0 grid place-content-center px-4 aria-[current=page]:border-b aria-[current=page]:font-bold"
 			href={link}
-			aria-current={current === link ? 'page' : 'false'}
+			aria-current={currentSub === link ? 'page' : undefined}
+			onclick={(e) => {
+				e.stopPropagation();
+				handleNavClick(list.id);
+			}}
 		>
 			<p>{text}</p>
 		</a>
 	</li>
 {/snippet}
 
-<header class="bg-primary pt-2">
+<header class="bg-primary h-header-height pt-2">
 	<section class="flex h-full items-center rounded-tl-md bg-white px-2 text-slate-300">
 		<div class="min-w-21.5 border-r border-r-slate-100">
-			<h2 class="text-121212 text-center text-xl font-semibold">지도</h2>
+			<h2 class="text-121212 text-center text-xl font-semibold">
+				{displayH3 || ''}
+			</h2>
 		</div>
-		<ul class="text-md flex h-full items-center gap-2 px-2 text-center">
-			{#each list as list (list.id)}
-				{@render name(list)}
-			{/each}
-		</ul>
+		{#if displaySub && displayId !== 'CMS-LOC' && displayId !== 'CMS-CON'}
+			<ul class="text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0">
+				{#each displaySub as list (list.link)}
+					{@render name({ link: list.link, text: list.h4 })}
+				{/each}
+			</ul>
+		{/if}
 	</section>
 </header>
