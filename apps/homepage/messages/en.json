@@ -63,5 +63,16 @@
 	"product_features_list_4_2": "AR Drawing",
 	"product_features_list_4_3": "Real-Time Checklist",
 	"product_features_list_4_4": "Auto Face Masking",
-	"product_features_list_4_5": "Smart Glasses Remote Control"
+	"product_features_list_4_5": "Smart Glasses Remote Control",
+
+	"company_address_tit": "Address",
+	"company_address_txt": "Headquarter | Business Tower 10F #1, 25, Hangang-daero 30-gil, Yongsan-gu, Seoul, Republic of Korea",
+	"company_address_txt_2": "Gyeongbuk Branch | Rm 408, 4F, R&D Center, 350-27, Gumi-daero, Gumi-si, Gyeongsangbuk-do, Republic of Korea (IT Medical Convergence Technology Center, Sinpyeong-dong)",
+	"company_contact_tit": "Main Contact Number",
+	"company_contact_txt": "+82 70-4633-2487~8",
+	"company_contact_ex": "Customer service is available from 10 AM(KST) to 5 PM(KST) on weekdays and closed on public holidays",
+	"company_email_tit": "Email",
+	"company_email_txt": "help@deepfine.com",
+	"company_fax_tit": "Fax",
+	"company_fax_txt": "+82 70-4009-7779"
 }

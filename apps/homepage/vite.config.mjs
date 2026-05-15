@@ -29,7 +29,7 @@ export default defineConfig({
 		tailwindcss(),
 		enhancedImages(),
 		sveltekit(),
-		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide', strategy: ['url', 'cookie', 'baseLocale'] }),
+		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide', strategy: ['cookie', 'globalVariable', 'baseLocale'] }),
 	],
 	resolve: { alias: aliases },
 	// build: {

@@ -54,8 +54,6 @@ declare module '$env/static/private' {
 	export const EXEPATH: string;
 	export const flutter: string;
 	export const flutterbin: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
 	export const gs: string;
 	export const gsw: string;
@@ -241,8 +239,6 @@ declare module '$env/dynamic/private' {
 		EXEPATH: string;
 		flutter: string;
 		flutterbin: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
 		gs: string;
 		gsw: string;

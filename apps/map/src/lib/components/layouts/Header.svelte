@@ -39,7 +39,7 @@
 	</li>
 {/snippet}
 
-<header class="bg-primary h-header-height pt-2">
+<header class="bg-primary h-header-height box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] pt-2">
 	<section class="flex h-full items-center rounded-tl-md bg-white px-2 text-slate-300">
 		<div class="min-w-21.5 border-r border-r-slate-100">
 			<h2 class="text-121212 text-center text-xl font-semibold">

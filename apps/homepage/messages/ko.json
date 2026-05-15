@@ -65,5 +65,16 @@
 	"product_features_logo_4": "경기도 원격 안전점검 — 출장 시간·비용 60% 절감",
 	"product_features_list_4_1": "스마트글라스 원격 제어",
 	"product_features_list_4_2": "체크리스트 동시 작성",
-	"product_features_list_4_3": "얼굴 자동 모자이크"
+	"product_features_list_4_3": "얼굴 자동 모자이크",
+
+	"company_address_tit": "주소",
+	"company_address_txt": "본사 | 서울특별시 용산구 한강대로30길 25, 업무동 10층 1호 (한강로2가, 아스테리움 용산)",
+	"company_address_txt_2": "경북지사 | 경상북도 구미시 구미대로 350-27, 연구실험동 4층 408호 (신평동, IT의료융합기술센터)",
+	"company_contact_tit": "대표번호",
+	"company_contact_txt": "070-4633-2487~8",
+	"company_contact_ex": "평일 10시~17시까지 고객센터 운영 (공휴일 휴무)",
+	"company_email_tit": "이메일",
+	"company_email_txt": "help@deepfine.com",
+	"company_fax_tit": "팩스",
+	"company_fax_txt": "+82 70-4009-7779"
 }

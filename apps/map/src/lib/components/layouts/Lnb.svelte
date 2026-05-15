@@ -115,6 +115,28 @@
 	let auth = $derived(authority || 'user');
 </script>
 
+{#snippet li(id = '', link = '', icon = '', h3 = '')}
+	<li class="grid min-h-15">
+		<a
+			class="group/lnb-link aria-[current=page]:shadow-1xs aria-[current=page]:bg-darken grid size-full place-items-center rounded-lg p-1 transition-colors hover:shadow-2xs aria-[current=page]:text-white"
+			aria-current={displayName === id ? 'page' : undefined}
+			href={link}
+			onmouseenter={() => (hoveredId = id)}
+			onmouseleave={() => (hoveredId = '')}
+			onclick={(e) => {
+				e.stopPropagation();
+				handleNavClick(id, link);
+			}}
+		>
+			<icon-list
+				data-name={hoveredId === id || displayName === id ? `${icon}-on` : icon}
+				class="stroke-90efd0 size-5 fill-white transition-all delay-0 group-hover/lnb-link:fill-white group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
+			></icon-list>
+			<p>{h3}</p>
+		</a>
+	</li>
+{/snippet}
+
 <aside class="bg-primary flex h-full flex-col space-y-3 px-2 py-6">
 	<picture class="flex h-10 justify-center">
 		<img class="h-10 w-auto" src="/images/logo/lnb-logo.svg" alt="logo" />
@@ -131,25 +153,7 @@
 						<ul class="flex flex-col gap-3 text-center leading-tight break-keep">
 							{#each lnb.list as list (list.id)}
 								{#if !(auth === 'user' && list.id === 'CMS-LOC')}
-									<li class="grid min-h-15">
-										<a
-											class="group/lnb-link aria-[current=page]:shadow-1xs aria-[current=page]:bg-darken grid size-full place-items-center rounded-lg p-1 transition-colors hover:shadow-2xs aria-[current=page]:text-white"
-											aria-current={displayName === list?.id ? 'page' : undefined}
-											href={list.link}
-											onmouseenter={() => (hoveredId = list.id)}
-											onmouseleave={() => (hoveredId = '')}
-											onclick={(e) => {
-												e.stopPropagation();
-												handleNavClick(list.id, list.link);
-											}}
-										>
-											<icon-list
-												data-name={hoveredId === list?.id || displayName === list?.id ? `${list.icon}-on` : list.icon}
-												class="stroke-90efd0 size-5 group-hover/lnb-link:fill-white group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
-											></icon-list>
-											<p>{list?.h3}</p>
-										</a>
-									</li>
+									{@render li(list.id, list.link, list.icon, list.h3)}
 								{/if}
 							{/each}
 						</ul>

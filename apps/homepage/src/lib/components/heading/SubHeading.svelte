@@ -5,7 +5,7 @@
 	let { tit = '', txt = '', subtxt = '' } = $props();
 	let played = $state(false);
 
-	const headingMotion: Attachment<HTMLElement> = (el) => {
+	export const headingMotion: Attachment<HTMLElement> = (el) => {
 		const animation = animate(el.children, {
 			y: [20, 0],
 			opacity: [0, 1],

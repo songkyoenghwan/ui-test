@@ -1,4 +1,4 @@
-<!-- <svelte:options
+<svelte:options
 	customElement={{
 		tag: 'icon-list',
 		shadow: 'none',
@@ -6,7 +6,7 @@
 			name: { reflect: true, type: 'String', attribute: 'data-name' },
 		},
 	}}
-/> -->
+/>
 
 <script lang="ts">
 	import { getIconData } from './IconData.svelte.ts';

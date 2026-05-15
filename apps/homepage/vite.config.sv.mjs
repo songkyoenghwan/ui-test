@@ -23,6 +23,7 @@ export default defineConfig({
 		paraglideVitePlugin({
 			project: './project.inlang',
 			outdir: './src/paraglide',
+			strategy: ['cookie', 'globalVariable', 'baseLocale'],
 		}),
 		// {
 		// 	name: 'remove-unwanted-public',
