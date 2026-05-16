@@ -16,7 +16,8 @@ export const nodes = [
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
-	() => import('./nodes/15')
+	() => import('./nodes/15'),
+	() => import('./nodes/16')
 ];
 
 export const server_loads = [];
@@ -33,6 +34,7 @@ export const dictionary = {
 		"/(page)/CMS-OBD-002": [13,[3]],
 		"/(page)/CMS-STA-001": [14,[3]],
 		"/(page)/CMS-STA-002": [15,[3]],
+		"/(page)/CMS-UI": [16,[3]],
 		"/(menulist)/menulist": [4,[2]]
 	};
 

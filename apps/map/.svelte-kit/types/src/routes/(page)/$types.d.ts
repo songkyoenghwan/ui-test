@@ -11,7 +11,7 @@ type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
 type PageParentData = Omit<EnsureDefined<import('../$types.js').LayoutData>, keyof LayoutData> & EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/(page)" | "/(page)/CMS-CON-001" | "/(page)/CMS-LOC-001" | "/(page)/CMS-MAP-001" | "/(page)/CMS-MAP-002" | "/(page)/CMS-MAP-003" | "/(page)/CMS-MAP-004" | "/(page)/CMS-OBD-001" | "/(page)/CMS-OBD-002" | "/(page)/CMS-STA-001" | "/(page)/CMS-STA-002"
+type LayoutRouteId = RouteId | "/(page)" | "/(page)/CMS-CON-001" | "/(page)/CMS-LOC-001" | "/(page)/CMS-MAP-001" | "/(page)/CMS-MAP-002" | "/(page)/CMS-MAP-003" | "/(page)/CMS-MAP-004" | "/(page)/CMS-OBD-001" | "/(page)/CMS-OBD-002" | "/(page)/CMS-STA-001" | "/(page)/CMS-STA-002" | "/(page)/CMS-UI"
 type LayoutParams = RouteParams & {  }
 type LayoutParentData = EnsureDefined<import('../$types.js').LayoutData>;
 

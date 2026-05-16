@@ -5,37 +5,17 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>ui</title>
-		<link rel="stylesheet" href="/build/main-bundle.es.css" />
-		<script type="module" src="/build/wc.es.js"></script>
+		<link rel="stylesheet" href="../build/index.es.css" />
+		<script type="module" src="../build/wc.es.js"></script>
 	</head>
 	<body>
-		<text-label label="내용"></text-label>
-		<input-text value="" placeholder="내용을 입력하세요." disabled></input-text>
+		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
+			<aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb>
+			<!-- authority : D - user || administrator -->
 
-		<badge-text text="test"></badge-text>
+			<header-list></header-list>
 
-		<aside>
-			<nav>
-				<picture>
-					<img src="" alt="" />
-				</picture>
-				<ul>
-					<li>
-						<p>혼잡도</p>
-					</li>
-					<li>
-						<p>통계</p>
-					</li>
-					<li>
-						<p>지도</p>
-					</li>
-					<li>
-						<p>대상지 관리</p>
-					</li>
-				</ul>
-			</nav>
-		</aside>
-
-		<main></main>
+			<main class="grid size-full overflow-auto has-data-[map=init]:overflow-clip"></main>
+		</section>
 	</body>
 </html>

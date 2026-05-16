@@ -39,7 +39,7 @@
 	</li>
 {/snippet}
 
-<header class="bg-primary h-header-height box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] pt-2">
+<header class="border-t-primary h-header-height box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] flex items-center justify-between border-t-8 bg-white">
 	<section class="flex h-full items-center rounded-tl-md bg-white px-2 text-slate-300">
 		<div class="min-w-21.5 border-r border-r-slate-100">
 			<h2 class="text-121212 text-center text-xl font-semibold">
@@ -54,4 +54,14 @@
 			</ul>
 		{/if}
 	</section>
+
+	<div class="grid flex-[0_0_300px] items-center py-1.5">
+		<select name="" id="" class="select h-10">
+			<option value="">최대20자 최대20자 최대20자 최대20자</option>
+			<option value="">2025 용산어린이축제 4회</option>
+			<option value="">2025 용산어린이축제 4회</option>
+			<option value="">2025 용산어린이축제 4회</option>
+			<option value="">2025 용산어린이축제 4회</option>
+		</select>
+	</div>
 </header>

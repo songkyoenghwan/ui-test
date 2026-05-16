@@ -95,9 +95,20 @@
 					},
 				],
 			},
+			{
+				h2: 'UI',
+				list: [
+					{
+						id: 'CMS-UI',
+						link: 'CMS-UI',
+						h3: 'UI',
+					},
+				],
+			},
 		],
 	} = $props();
 
+	import logo from '$lib/images/logo/lnb-logo.svg';
 	let hoveredId = $state('');
 
 	$effect.pre(() => {
@@ -118,7 +129,7 @@
 {#snippet li(id = '', link = '', icon = '', h3 = '')}
 	<li class="grid min-h-15">
 		<a
-			class="group/lnb-link aria-[current=page]:shadow-1xs aria-[current=page]:bg-darken grid size-full place-items-center rounded-lg p-1 transition-colors hover:shadow-2xs aria-[current=page]:text-white"
+			class="group/lnb-link aria-[current=page]:shadow-1xs aria-[current=page]:bg-darken hover:shadow-1xs grid size-full place-items-center rounded-lg p-1 transition-colors aria-[current=page]:text-white"
 			aria-current={displayName === id ? 'page' : undefined}
 			href={link}
 			onmouseenter={() => (hoveredId = id)}
@@ -139,7 +150,7 @@
 
 <aside class="bg-primary flex h-full flex-col space-y-3 px-2 py-6">
 	<picture class="flex h-10 justify-center">
-		<img class="h-10 w-auto" src="/images/logo/lnb-logo.svg" alt="logo" />
+		<enhanced:img class="h-10 w-auto" src={logo} alt="logo" />
 	</picture>
 	<nav class="text-base text-slate-50">
 		<ul class="divide-darken flex flex-col divide-y text-center leading-tight break-keep">

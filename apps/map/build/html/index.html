@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ui</title>
+		<link rel="stylesheet" href="../build/index.es.css" />
+		<script type="module" src="../build/wc.es.js"></script>
+	</head>
+	<body>
+		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
+			<aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb>
+			<!-- authority : D - user || administrator -->
+
+			<header-list></header-list>
+
+			<main class="grid size-full overflow-auto has-data-[map=init]:overflow-clip"></main>
+		</section>
+	</body>
+</html>

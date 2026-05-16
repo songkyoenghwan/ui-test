@@ -191,5 +191,91 @@ export const getIconData = () => {
 				<path d="M14.168 12.4997V18.333H17.5013V12.4997C17.5013 11.583 17.168 10.833 16.168 10.833H15.5013C14.5013 10.833 14.168 11.583 14.168 12.4997Z" stroke="none" />
 			`,
 		},
+		{
+			name: 'translate',
+			size: '16',
+			html: /* HTML */ `
+				<path d="M12.7049 12.4462L11.2782 9.59961L9.85156 12.4462" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M10.1133 11.9404H12.46" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M11.2812 14.6669C9.41453 14.6669 7.89453 13.1535 7.89453 11.2802C7.89453 9.41353 9.40787 7.89355 11.2812 7.89355C13.1479 7.89355 14.6679 9.40686 14.6679 11.2802C14.6679 13.1535 13.1545 14.6669 11.2812 14.6669Z"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M3.34537 1.33301H5.9587C7.3387 1.33301 8.00537 1.99969 7.97204 3.34635V5.95968C8.00537 7.33968 7.3387 8.00636 5.9587 7.97302H3.34537C1.9987 7.99969 1.33203 7.333 1.33203 5.953V3.33968C1.33203 1.99968 1.9987 1.33301 3.34537 1.33301Z"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path d="M6.00745 3.89941H3.30078" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M4.64453 3.44629V3.89962" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M5.3263 3.89258C5.3263 5.05924 4.41297 6.0059 3.29297 6.0059" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M6.00676 6.00635C5.5201 6.00635 5.0801 5.74634 4.77344 5.33301" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path opacity="0.4" d="M1.33203 10C1.33203 12.58 3.4187 14.6667 5.9987 14.6667L5.2987 13.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path opacity="0.4" d="M14.6667 5.99967C14.6667 3.41967 12.58 1.33301 10 1.33301L10.7 2.49967" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		{
+			name: 'calendar',
+			size: '16',
+			html: /* HTML */ `
+				<path d="M5.33203 1.33301V3.33301" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M10.668 1.33301V3.33301" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M2.33203 6.05957H13.6654" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M14 5.66634V11.333C14 13.333 13 14.6663 10.6667 14.6663H5.33333C3 14.6663 2 13.333 2 11.333V5.66634C2 3.66634 3 2.33301 5.33333 2.33301H10.6667C13 2.33301 14 3.66634 14 5.66634Z"
+					fill="none"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path d="M10.4625 9.13314H10.4685" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M10.4625 11.1331H10.4685" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M7.99764 9.13314H8.00363" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M7.99764 11.1331H8.00363" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M5.52889 9.13314H5.53488" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M5.52889 11.1331H5.53488" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		{
+			name: 'clock',
+			size: '16',
+			html: /* HTML */ `
+				<path
+					d="M14.6654 7.99967C14.6654 11.6797 11.6787 14.6663 7.9987 14.6663C4.3187 14.6663 1.33203 11.6797 1.33203 7.99967C1.33203 4.31967 4.3187 1.33301 7.9987 1.33301C11.6787 1.33301 14.6654 4.31967 14.6654 7.99967Z"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path d="M10.4739 10.1202L8.40724 8.88684C8.04724 8.6735 7.75391 8.16017 7.75391 7.74017V5.00684" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		{
+			name: 'search',
+			size: '16',
+			html: /* HTML */ `
+				<path
+					d="M7.94531 1.44434C11.5348 1.44457 14.4451 4.35483 14.4453 7.94434C14.4452 9.47876 13.9108 10.8872 13.0215 11.999L15.6777 14.6553C15.9598 14.9373 15.9597 15.3947 15.6777 15.6768C15.3957 15.9588 14.9383 15.9588 14.6562 15.6768L12 13.0205C10.8882 13.9098 9.47973 14.4442 7.94531 14.4443C4.35581 14.4441 1.44555 11.5338 1.44531 7.94434C1.44555 4.35483 4.35581 1.44457 7.94531 1.44434ZM7.94531 2.88965C5.15355 2.88988 2.89086 5.15257 2.89062 7.94434C2.89086 10.7361 5.15355 12.9998 7.94531 13C9.32231 12.9999 10.5697 12.4478 11.4814 11.5547C11.4929 11.5415 11.5021 11.5262 11.5146 11.5137C11.5277 11.5007 11.5429 11.4903 11.5566 11.4785C12.4489 10.5669 13.0009 9.32059 13.001 7.94434C13.0007 5.15257 10.7371 2.88988 7.94531 2.88965Z"
+					fill="#62748E"
+				/>
+			`,
+		},
+		{
+			name: 'input-del',
+			size: '16',
+			html: /* HTML */ `
+				<path
+					d="M2 0.363281H14C14.9037 0.363281 15.6367 1.09626 15.6367 2V14C15.6367 14.9037 14.9037 15.6367 14 15.6367H2C1.09626 15.6367 0.363281 14.9037 0.363281 14V2C0.363281 1.09626 1.09626 0.363281 2 0.363281Z"
+					fill="none"
+					stroke-width="0.727273"
+				/>
+				<path
+					d="M5.38297 11.2444L4.95097 10.8124L7.57497 8.17236L4.95097 5.53236L5.38297 5.10036L8.00697 7.74036L10.615 5.10036L11.047 5.53236L8.42297 8.17236L11.047 10.8124L10.615 11.2444L8.00697 8.62036L5.38297 11.2444Z"
+					stroke="none"
+				/>
+			`,
+		},
 	];
 };
