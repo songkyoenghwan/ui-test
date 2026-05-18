@@ -5,3 +5,6 @@ import '@/components/layouts/Lnb.svelte';
 import '@/components/layouts/Header.svelte';
 
 import '@/components/badges/BadgeText.svelte';
+
+import '$/lib/components/map/MapReg.svelte';
+import '$/lib/components/map/MapList.svelte';

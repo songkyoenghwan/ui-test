@@ -2441,6 +2441,26 @@ var ui = () => {
 			name: "input-del",
 			size: "16",
 			html: "\n				<path\n					d=\"M2 0.363281H14C14.9037 0.363281 15.6367 1.09626 15.6367 2V14C15.6367 14.9037 14.9037 15.6367 14 15.6367H2C1.09626 15.6367 0.363281 14.9037 0.363281 14V2C0.363281 1.09626 1.09626 0.363281 2 0.363281Z\"\n					fill=\"none\"\n					stroke-width=\"0.727273\"\n				/>\n				<path\n					d=\"M5.38297 11.2444L4.95097 10.8124L7.57497 8.17236L4.95097 5.53236L5.38297 5.10036L8.00697 7.74036L10.615 5.10036L11.047 5.53236L8.42297 8.17236L11.047 10.8124L10.615 11.2444L8.00697 8.62036L5.38297 11.2444Z\"\n					stroke=\"none\"\n				/>\n			"
+		},
+		{
+			name: "arrow-left",
+			size: "20",
+			html: "\n				<path\n					d=\"M12.0398 15.9357L6.82384 10.7197C6.20784 10.1037 6.20784 9.09567 6.82384 8.47967L12.0398 3.26367\"\n					fill=\"none\"\n					stroke-width=\"1.2\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
+		},
+		{
+			name: "arrow-down",
+			size: "20",
+			html: "\n				<path\n					d=\"M19.9181 8.9502L13.3981 15.4702C12.6281 16.2402 11.3681 16.2402 10.5981 15.4702L4.07812 8.9502\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
+		},
+		{
+			name: "arrow-up",
+			size: "20",
+			html: "\n				<path\n					d=\"M4.08 15.05L10.6 8.52999C11.37 7.75999 12.63 7.75999 13.4 8.52999L19.92 15.05\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
+		},
+		{
+			name: "info-circle",
+			size: "20",
+			html: "\n				<path\n					d=\"M10.0013 1.66699C5.40964 1.66699 1.66797 5.40866 1.66797 10.0003C1.66797 14.592 5.40964 18.3337 10.0013 18.3337C14.593 18.3337 18.3346 14.592 18.3346 10.0003C18.3346 5.40866 14.593 1.66699 10.0013 1.66699ZM9.3763 6.66699C9.3763 6.32533 9.65964 6.04199 10.0013 6.04199C10.343 6.04199 10.6263 6.32533 10.6263 6.66699V10.8337C10.6263 11.1753 10.343 11.4587 10.0013 11.4587C9.65964 11.4587 9.3763 11.1753 9.3763 10.8337V6.66699ZM10.768 13.6503C10.7263 13.7587 10.668 13.842 10.593 13.9253C10.5096 14.0003 10.418 14.0587 10.318 14.1003C10.218 14.142 10.1096 14.167 10.0013 14.167C9.89297 14.167 9.78464 14.142 9.68464 14.1003C9.58464 14.0587 9.49297 14.0003 9.40964 13.9253C9.33464 13.842 9.2763 13.7587 9.23464 13.6503C9.19297 13.5503 9.16797 13.442 9.16797 13.3337C9.16797 13.2253 9.19297 13.117 9.23464 13.017C9.2763 12.917 9.33464 12.8253 9.40964 12.742C9.49297 12.667 9.58464 12.6087 9.68464 12.567C9.88463 12.4837 10.118 12.4837 10.318 12.567C10.418 12.6087 10.5096 12.667 10.593 12.742C10.668 12.8253 10.7263 12.917 10.768 13.017C10.8096 13.117 10.8346 13.2253 10.8346 13.3337C10.8346 13.442 10.8096 13.5503 10.768 13.6503Z\"\n					stroke=\"none\"\n				/>\n			"
 		}
 	];
 }, di = /* @__PURE__ */ yr("<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"></svg>");
@@ -2772,7 +2792,7 @@ dr(["click"]), customElements.define("aside-lnb", li(Ti, {
 }, [], []));
 //#endregion
 //#region src/lib/components/layouts/Header.svelte
-var Ei = /* @__PURE__ */ _r("<li class=\"flex h-full\"><a class=\"aria-[current=page]:text-primary aria-[current=page]:border-b-primary hover:text-90efd0 grid place-content-center px-4 aria-[current=page]:border-b aria-[current=page]:font-bold\"><p> </p></a></li>"), Di = /* @__PURE__ */ _r("<ul class=\"text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0\"></ul>"), Oi = /* @__PURE__ */ _r("<header class=\"border-t-primary h-header-height box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] flex items-center justify-between border-t-8 bg-white\"><section class=\"flex h-full items-center rounded-tl-md bg-white px-2 text-slate-300\"><div class=\"min-w-21.5 border-r border-r-slate-100\"><h2 class=\"text-121212 text-center text-xl font-semibold\"> </h2></div> <!></section> <div class=\"grid flex-[0_0_300px] items-center py-1.5\"><select name=\"\" id=\"\" class=\"select h-10\"><option>최대20자 최대20자 최대20자 최대20자</option><option>2025 용산어린이축제 4회</option><option>2025 용산어린이축제 4회</option><option>2025 용산어린이축제 4회</option><option>2025 용산어린이축제 4회</option></select></div></header>");
+var Ei = /* @__PURE__ */ _r("<li class=\"flex h-full\"><a class=\"aria-[current=page]:text-primary aria-[current=page]:border-b-primary hover:text-90efd0 grid place-content-center px-4 aria-[current=page]:border-b-3 aria-[current=page]:font-bold\"><p> </p></a></li>"), Di = /* @__PURE__ */ _r("<ul class=\"text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0\"></ul>"), Oi = /* @__PURE__ */ _r("<header class=\"border-t-primary box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-primary flex h-(--header-height) items-center justify-between border-t-8\"><section class=\"grid h-full flex-1 grid-cols-[90px_1fr] items-center rounded-tl-md bg-white px-2 text-slate-300\"><div class=\"min-w-21.5 flex-1 border-r border-r-slate-100\"><h2 class=\"text-121212 text-center text-xl font-semibold\"> </h2></div> <!></section> <div class=\"grid flex-[0_0_300px] items-center bg-white px-2 py-1.5\"><select name=\"\" id=\"\" class=\"select h-10\"><option class=\"max-w-66 truncate\">최대20자 최대20자 최대20자최대20자최대20자</option><option class=\"max-w-66 truncate\">2025 용산어린이축제 4회</option><option class=\"max-w-66 truncate\">2025 용산어린이축제 4회</option><option class=\"max-w-66 truncate\">2025 용산어린이축제 4회</option><option class=\"max-w-66 truncate\">2025 1용산어린이축제 4회2025 2용산어린이축제 4회2025 3용산어린이축제 4회2025 4용산어린이축제 4회</option></select></div></header>");
 function ki(e, t) {
 	Ve(t, !0);
 	let n = () => lt(gi, "$currentItemFromPath", i), r = () => lt(_i, "$currentSubItem", i), [i, a] = ut(), o = (e, t) => {

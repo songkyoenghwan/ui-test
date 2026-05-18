@@ -67,6 +67,10 @@
 		<button type="button" class="button text">
 			<span>button</span>
 		</button>
+		<button type="button" class="button icon">
+			<span class="sr-only">button</span>
+			<icon-list data-name="translate" class="icon stroke-primary size-4"></icon-list>
+		</button>
 	</div>
 
 	<section class="tab">
@@ -275,6 +279,57 @@
 					<span>요일별</span>
 				</label>
 			</li>
+		</div>
+
+		<div class="grid items-center gap-2">
+			<section class="space-y-7.5 rounded-sm bg-white p-5 shadow-2xs">
+				<h4 class="text-121212 text-xl font-semibold">
+					작성 중인 내용이 저장되지 않았습니다.
+					<br />
+					이 페이지를 벗어나시겠습니까?
+				</h4>
+
+				<div class="flex items-center justify-end gap-2">
+					<button type="button" class="button ghost basis-20">
+						<span>취소</span>
+					</button>
+					<button type="button" class="button primary basis-20">
+						<span>확인</span>
+					</button>
+				</div>
+			</section>
+
+			<div>
+				<section class="group/top-tip inline-flex min-h-12 items-center gap-1 rounded-sm bg-white shadow-2xs">
+					<div class="flex items-center gap-2 py-1 pl-4">
+						<icon-list data-name="info-circle" class="icon fill-primary size-5"></icon-list>
+						<h4 class="text-121212 hidden text-base font-semibold opacity-100 transition-opacity transition-discrete group-has-checked/top-tip:flex starting:opacity-0">
+							지도를 우클릭하여 위치 변경
+						</h4>
+					</div>
+					<label
+						for="top-label-1"
+						class="icon hover:bg-primary/20 inline-flex h-full min-h-[stretch] min-w-15 flex-[0_0_50px] items-center justify-center rounded-r-sm px-1 text-base text-slate-400 group-has-checked/top-tip:flex-[0_0_80px]"
+					>
+						<icon-list
+							data-name="arrow-left"
+							class="icon relative size-5 rotate-180 stroke-slate-400 transition-transform group-has-checked/top-tip:rotate-0"
+						></icon-list>
+						<input type="checkbox" id="top-label-1" name="top-label-1" class="peer sr-only" />
+						<span class="relative hidden group-has-checked/top-tip:flex">접기</span>
+					</label>
+				</section>
+
+				<section
+					class="group/toast bg-primary grid translate-y-0 items-center gap-1 rounded-md pl-1 opacity-100 shadow-2xs transition-all transition-discrete starting:translate-y-5 starting:opacity-0"
+				>
+					<div
+						class="rounded-l-4 flex h-full min-h-12 items-center gap-2 rounded-l-sm bg-white px-4 py-1 opacity-100 transition-opacity transition-discrete starting:opacity-0"
+					>
+						<h4 class="text-121212 text-base">저장되었습니다.</h4>
+					</div>
+				</section>
+			</div>
 		</div>
 	</div>
 </div>

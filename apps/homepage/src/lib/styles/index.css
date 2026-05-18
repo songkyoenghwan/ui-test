@@ -84,14 +84,14 @@
 
 	--color-7cf5a0: #7cf5a0;
 
-	--input-height: 3.25rem;
-
 	--text-2sm: 0.8125rem;
 	--text-2md: 0.9375rem;
 
 	--font-sans:
 		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
 		'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+
+	--input-height: 3.25rem;
 }
 
 @theme {
@@ -346,6 +346,8 @@
 		font-style: normal;
 		font-weight: 400;
 		font-family:
+			'Pretendard Variable',
+			Pretendard,
 			'Noto Sans KR',
 			'Inter',
 			system-ui,
