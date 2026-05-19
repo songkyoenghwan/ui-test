@@ -56,7 +56,7 @@
 	</li>
 {/snippet}
 
-<section class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
+<section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
 	<div class="space-y-5 bg-white p-5 xl:space-y-15 xl:p-15">
 		<SubHeading {tit} {txt} {subtxt} />
 		<ul {@attach indMotion} class={['grid gap-5', cls]}>

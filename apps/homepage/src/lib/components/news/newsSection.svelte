@@ -22,8 +22,8 @@
 
 {#snippet imgRender(img = '')}
 	{#if img}
-		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
-			<img src={img} alt="" class="object-cover" />
+		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ' '}`}>
+			<img src={img} alt="" class="w-full max-w-300 object-cover" />
 		</picture>
 	{/if}
 {/snippet}

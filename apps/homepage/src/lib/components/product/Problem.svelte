@@ -92,7 +92,7 @@
 	</li>
 {/snippet}
 
-<section {@attach proMotion} class="space-y-5 py-11.25 xl:space-y-7.5 xl:py-15">
+<section data-scroll="slide-up" {@attach proMotion} class="space-y-5 py-11.25 xl:space-y-7.5 xl:py-15">
 	<SubHeading tit={product_problem_title} txt={product_problem_text} />
 	<ol class="grid grid-rows-2 gap-5 lg:grid-cols-[1fr_6rem_1fr] lg:grid-rows-1 xl:grid-cols-[1fr_12.5rem_1fr] xl:gap-[clamp(5%,2vw,100px)] starting:opacity-0">
 		<li class="divide-d9d9d9 divide-y divide-dashed rounded-xl bg-white">

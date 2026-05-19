@@ -16,7 +16,7 @@
 	<ul {@attach visualMotion} class="grid grid-cols-1 gap-7.5 lg:grid-cols-2">
 		<li class="space-y-2">
 			<p class="text-2md text-white/70 lg:text-lg">{m.company_address_tit?.()}</p>
-			<p class="text-2md font-bold lg:text-lg">{m.company_address_txt?.()}</p>
+			<address class="text-2md font-bold lg:text-lg">{m.company_address_txt?.()}</address>
 		</li>
 		<li class="space-y-2">
 			<p class="text-2md text-white/70 lg:text-lg">{m.company_contact_tit?.()}</p>

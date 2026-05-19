@@ -17,7 +17,7 @@
 	});
 </script>
 
-<section class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
+<section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
 	<SubHeading {tit} {txt} {subtxt} />
 	<ul class="flex flex-col gap-5 xl:gap-7.5">
 		{#each lists as item}

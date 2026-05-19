@@ -2,7 +2,7 @@
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
-	let { tit = '', txt = '', subtxt = '' } = $props();
+	let { page = '', tit = '', txt = '', subtxt = '' } = $props();
 	let played = $state(false);
 
 	export const headingMotion: Attachment<HTMLElement> = (el) => {

@@ -5,13 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 
-		<link rel="stylesheet" href="../../../build/main-bundle.es.css" />
+		<link rel="stylesheet" href="../../build/main-bundle.es.css" />
 	</head>
 	<body>
 		<main class="sub">
 			<sub-heading-line title="NEWS" text="Discover the latest developments, perspectives, and innovations from DEEP.FINE."></sub-heading-line>
 
 			<news-section
+				data-scroll="first"
 				img="https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png"
 				badges="Company"
 				title="DeepFine to Participate in CES 2026, Showcasing XR-Based Spatial Intelligence Solutions"
@@ -24,12 +25,13 @@
 			></news-section>
 
 			<div class="flex justify-center lg:inline-flex">
-				<a class="grid min-h-12 flex-1 place-items-center rounded-md border border-black px-5 hover:bg-white lg:flex-none" href="/news">
+				<a class="flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 hover:bg-white lg:flex-none" href="/news">
 					<span>Back to List</span>
+					<icon-list class="size-6 stroke-black" name="undo"></icon-list>
 				</a>
 			</div>
 		</main>
 
-		<script type="module" src="../../../build/wc.es.js"></script>
+		<script type="module" src="../../build/wc.es.js"></script>
 	</body>
 </html>

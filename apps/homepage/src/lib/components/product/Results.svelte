@@ -4,7 +4,7 @@
 	let { tit = '', txt = '', subtxt = '', lists = [], logo = '' } = $props();
 </script>
 
-<section class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
+<section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
 	<SubHeading {tit} {txt} {subtxt} />
 	<ul
 		class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-5 md:grid-cols-[repeat(auto-fit,minmax(calc(50%-20px),1fr))] xl:grid-cols-[repeat(auto-fit,minmax(calc(25%-20px),1fr))]"

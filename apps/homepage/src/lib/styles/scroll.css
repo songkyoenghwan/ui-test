@@ -51,9 +51,9 @@ news-section {
 
 @keyframes slide-up {
 	0% {
-		transform: translateY(5%) scale(0.9);
-		opacity: 0;
-		filter: blur(0);
+		transform: translateY(6%) scale(0.8);
+		opacity: 0.3;
+		filter: blur(0.3);
 	}
 
 	100% {

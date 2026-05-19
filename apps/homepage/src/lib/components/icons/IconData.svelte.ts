@@ -62,5 +62,38 @@ export const getIconData = () => {
 				/>
 			`,
 		},
+		{
+			name: 'menu',
+			size: '24',
+			html: /* HTML */ `
+				<path d="M3 7H21" fill="none" stroke-width="1.5" stroke-linecap="round" />
+				<path d="M3 12H21" fill="none" stroke-width="1.5" stroke-linecap="round" />
+				<path d="M3 17H21" fill="none" stroke-width="1.5" stroke-linecap="round" />
+			`,
+		},
+		{
+			name: 'import',
+			size: '24',
+			html: /* HTML */ `
+				<path d="M9.32007 11.6799L11.8801 14.2399L14.4401 11.6799" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M11.8799 4V14.17" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M20 12.1799C20 16.5999 17 20.1799 12 20.1799C7 20.1799 4 16.5999 4 12.1799"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
+			name: 'close',
+			size: '24',
+			html: /* HTML */ `
+				<path d="M4 20L20 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M20 20L4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
 	];
 };
