@@ -94,16 +94,16 @@
 						<h2 class="text-666 text-lg">Products</h2>
 						<ul>
 							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-								<a href="" class="py-2.5 underline-offset-4 hover:underline">Logi Grid</a>
+								<a href="/logi" class="py-2.5 underline-offset-4 hover:underline">Logi Grid</a>
 							</li>
 							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-								<a href="" class="py-2.5 underline-offset-4 hover:underline">
+								<a href="/dao" class="py-2.5 underline-offset-4 hover:underline">
 									DAO
 									<span class="text-lg font-normal">(DEEP.FINE AR.ON)</span>
 								</a>
 							</li>
 							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-								<a href="" class="py-2.5 underline-offset-4 hover:underline">
+								<a href="/dsc" class="py-2.5 underline-offset-4 hover:underline">
 									DSC
 									<span class="text-lg font-normal">(DEEP.FINE Spatial Crafter)</span>
 								</a>
@@ -114,10 +114,10 @@
 						<h2><a href="/company" class="underline-offset-4 hover:underline">Company</a></h2>
 					</li>
 					<li class="grid">
-						<h2><a href="/news/news" class="underline-offset-4 hover:underline">News</a></h2>
+						<h2><a href="/news" class="underline-offset-4 hover:underline">News</a></h2>
 					</li>
 					<li class="grid">
-						<h2><a href="conatact" class="underline-offset-4 hover:underline">Conatact Sales</a></h2>
+						<h2><a href="/contact" class="underline-offset-4 hover:underline">Contact Sales</a></h2>
 					</li>
 				</ul>
 			</section>

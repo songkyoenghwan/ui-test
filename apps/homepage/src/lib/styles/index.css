@@ -416,7 +416,7 @@
 	}
 
 	.sub {
-		@apply 3xl:p-0 flex flex-col gap-7.5 px-5 py-17.5 has-[form]:overflow-clip lg:gap-15 lg:py-30;
+		@apply 3xl:p-0 flex flex-col gap-7.5 px-5 pt-25 pb-20 has-[form]:overflow-clip lg:gap-15 lg:py-30;
 	}
 
 	.tab-link {
