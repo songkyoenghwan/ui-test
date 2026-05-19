@@ -1,17 +1,43 @@
 {
-	"/(page)": [],
+	"/(page)": [
+		"src/routes/(page)/+layout.ts",
+		"src/routes/(page)/+layout.ts"
+	],
 	"/(menulist)": [],
 	"/": [],
-	"/(page)/CMS-CON-001": [],
-	"/(page)/CMS-LOC-001": [],
-	"/(page)/CMS-MAP-001": [],
-	"/(page)/CMS-MAP-002": [],
-	"/(page)/CMS-MAP-003": [],
-	"/(page)/CMS-MAP-004": [],
-	"/(page)/CMS-OBD-001": [],
-	"/(page)/CMS-OBD-002": [],
-	"/(page)/CMS-STA-001": [],
-	"/(page)/CMS-STA-002": [],
-	"/(page)/CMS-UI": [],
+	"/(page)/CMS-CON-001": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-LOC-001": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-MAP-001": [
+		"src/routes/(page)/CMS-MAP-001/+page.ts",
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-MAP-002": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-MAP-003": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-MAP-004": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-OBD-001": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-OBD-002": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-STA-001": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-STA-002": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-UI": [
+		"src/routes/(page)/+layout.ts"
+	],
 	"/(menulist)/menulist": []
 }

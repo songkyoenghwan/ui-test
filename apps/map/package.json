@@ -9,6 +9,7 @@
 		"svelte-draggable-plus": "^0.1.1"
 	},
 	"devDependencies": {
+		"@floating-ui/utils": "^0.2.11",
 		"@inlang/paraglide-js": "^2.18.0",
 		"@lucide/svelte": "^1.14.0",
 		"@sveltejs/adapter-auto": "^7.0.1",

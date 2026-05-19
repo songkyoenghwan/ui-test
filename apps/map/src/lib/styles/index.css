@@ -4,9 +4,8 @@
 
 /* @plugin 'flowbite/plugin'; */
 
-/* 
 @source '../../../node_modules/flowbite-svelte/dist';
-@source '../../../node_modules/flowbite-svelte-icons/dist'; */
+@source '../../../node_modules/flowbite-svelte-icons/dist';
 
 :root {
 	color-scheme: light;
@@ -89,6 +88,7 @@
 	--color-65ff9d: #65ff9d;
 	--color-af54ff: ##af54ff;
 	--color-90efd0: #90efd0;
+	--color-f0fdfa: #f0fdfa;
 
 	--color-slate-50: #f8fafc;
 	--color-slate-100: #f1f5f9;
@@ -179,6 +179,7 @@
 	--color-darken: #05ba75;
 	--color-error: #ff4c4c;
 	--color-90efd0: #90efd0;
+	--color-f0fdfa: #f0fdfa;
 
 	--color-black: #121212;
 	--color-yellow: #fffa65;
@@ -638,7 +639,7 @@
 	}
 
 	.map-reg {
-		@apply fixed inset-e-5 top-(--header-top) z-20 mt-5 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip rounded-xl bg-white opacity-100 shadow-2xs transition-all transition-discrete starting:translate-x-20 starting:opacity-0;
+		@apply fixed inset-e-5 top-(--header-top) z-20 mt-5 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip rounded-xl bg-white opacity-100 shadow-2xs transition-all transition-discrete aria-hidden:hidden aria-hidden:opacity-0 starting:translate-x-20 starting:opacity-0;
 
 		.map-reg__header {
 			@apply flex flex-none flex-col gap-3 rounded-t-xl px-5 pt-5 pb-3;
@@ -649,7 +650,7 @@
 		}
 
 		.map-reg__top {
-			@apply flex flex-none flex-col gap-3 bg-white px-5 py-3;
+			@apply flex flex-none flex-col gap-1 bg-white px-5 py-3;
 		}
 
 		.map-reg-body {

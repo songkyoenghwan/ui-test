@@ -293,7 +293,7 @@
 					<button type="button" class="button ghost basis-20">
 						<span>취소</span>
 					</button>
-					<button type="button" class="button primary basis-20">
+					<button type="button" class="button primary flex-1">
 						<span>확인</span>
 					</button>
 				</div>
@@ -333,3 +333,4 @@
 		</div>
 	</div>
 </div>
+>

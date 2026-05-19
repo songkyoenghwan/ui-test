@@ -19,7 +19,7 @@
 		id: string;
 		tit: string;
 		poi: string;
-		place: Place[] | number;
+		places: Place[] | number;
 		exposure: boolean;
 	};
 
@@ -42,14 +42,14 @@
 		e.preventDefault();
 
 		const detail = {
-			type: 'btn-click',
+			type: 'poi-click',
 			timestamp: Date.now(),
 			targetId: item.id,
 			item: item,
 		};
 
 		$host().dispatchEvent(
-			new CustomEvent('btn-click', {
+			new CustomEvent('poi-click', {
 				detail,
 				bubbles: true,
 				composed: true,
@@ -82,13 +82,13 @@
 						<span class="pr-2 text-slate-600">{item.poi}</span>
 						<strong class="flex items-center font-normal">
 							<span class="flex gap-1 pr-2 text-slate-400">등록시설</span>
-							{#if typeof item.place === 'number'}
-								<span class={item.place === 0 ? 'text-error' : 'text-primary'}>
-									{item.place}
+							{#if typeof item.places === 'number'}
+								<span class={item.places === 0 ? 'text-error' : 'text-primary'}>
+									{item.places}
 								</span>
 							{:else}
-								<span class={item.place.length === 0 ? 'text-error' : 'text-primary'}>
-									{item.place.length}
+								<span class={item.places.length === 0 ? 'text-error' : 'text-primary'}>
+									{item.places.length}
 								</span>
 							{/if}
 							<span>개</span>
