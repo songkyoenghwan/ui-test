@@ -20,13 +20,26 @@
 />
 
 <script lang="ts">
+	import { onlyNumber } from '@/utils/inputEv';
+	import { removePlaceById, type Place } from '@/components/map/MapRegEv.svelte';
 	import type { Attachment } from 'svelte/attachments';
 	import Sortable from 'sortablejs';
 
-	import { removePlaceById, type Place } from '@/components/map/MapRegEv.svelte';
-	import { onlyNumber } from '@/utils/inputEv';
-
-	let { id = '', open = 'close', poi = '', ko = '', en = '', zh = '', ja = '', th = '', vi = '', lat = '', lon = '', addr = '', places = [] } = $props();
+	let {
+		id = '',
+		open = 'close',
+		poi = '',
+		ko = $bindable(''),
+		en = $bindable(''),
+		zh = $bindable(''),
+		ja = $bindable(''),
+		th = $bindable(''),
+		vi = $bindable(''),
+		lat = $bindable(''),
+		lon = $bindable(''),
+		addr = '',
+		places = $bindable([]),
+	} = $props();
 
 	const handleSortable: Attachment<HTMLElement> = (el) => {
 		const animation = new Sortable(el, {
@@ -65,6 +78,17 @@
 			$host().removeAttribute('inert');
 			$host().removeAttribute('aria-hidden');
 		}
+
+		return () => {
+			if ($host() && !$host().isConnected) {
+				return;
+			}
+
+			if ($host()) {
+				$host().removeAttribute('inert');
+				$host().removeAttribute('aria-hidden');
+			}
+		};
 	});
 
 	function autoTranlate(e: Event) {
@@ -157,7 +181,7 @@
 				<hover-tooltip
 					class="inline-flex gap-2"
 					btn="15자 이내 권장"
-					txt="언어에 따라 표현 길이가 달라질 수 있으므로 <br />번역 내용을 확인해주세요. (최대 25자)"
+					txt="언어에 따라 표현 길이가 달라질 수 있으므로 \n번역 내용을 확인해주세요. (최대 25자)"
 				></hover-tooltip>
 			</div>
 			<div class="flex-none">
@@ -222,7 +246,7 @@
 			</div>
 			<ul class="flex flex-col gap-2 pt-2">
 				<li class="grid grid-cols-[22px_1fr_22px_1fr] items-center gap-2">
-					<label for="map-reg-lat" class="label">위도</label>
+					<label for="map-reg-lat" class="label flex-none">위도</label>
 					<input
 						type="text"
 						name="map-reg-lat"
@@ -235,7 +259,7 @@
 							onlyNumber(e);
 						}}
 					/>
-					<label for="map-reg-lon" class="label">경도</label>
+					<label for="map-reg-lon" class="label flex-none">경도</label>
 					<input
 						type="text"
 						name="map-reg-lon"
@@ -250,7 +274,7 @@
 					/>
 				</li>
 				<li class="grid grid-cols-[22px_1fr] items-center gap-2">
-					<label for="map-reg-addr" class="label">주소</label>
+					<label for="map-reg-addr" class="label flex-none">주소</label>
 					<input type="text" name="map-reg-addr" id="map-reg-addr" class="input-text s" placeholder="주소" readonly bind:value={addr} />
 				</li>
 			</ul>

@@ -9,7 +9,7 @@
 	"useTabs": true,
 	"trailingComma": "all",
 	"sortTailwindcss": {
-		"preserveDuplicates": false,
+		"preserveDuplicates": false
 	},
 	"cssDeclarationSorterOrder": "smacss",
 	"sortPackageJson": false,
@@ -37,6 +37,6 @@
 		".tsconfig.json",
 		"src/styles/front-output.css",
 		".oxlintrc.json",
-		"pb/pb_data",
-	],
+		"pb/pb_data"
+	]
 }

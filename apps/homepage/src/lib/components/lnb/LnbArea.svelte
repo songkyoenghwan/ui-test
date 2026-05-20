@@ -51,7 +51,7 @@
 						<span class="max-[1280px]:hidden min-[1280px]:block">{item.text}</span>
 					</a>
 
-					<Tooltip placement="right" class="bg-primary text-white border-primary border min-[1280px]:hidden">{item.text}</Tooltip>
+					<Tooltip placement="right" class="bg-primary border-primary border text-white min-[1280px]:hidden">{item.text}</Tooltip>
 				</li>
 			{/each}
 		</ul>

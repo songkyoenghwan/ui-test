@@ -43,7 +43,7 @@
 		"assets/js/lightpick.js",
 		"assets/js/popper.min.js",
 		"assets/js/slick.min.js",
-		"assets/js/swiper*.js",
+		"assets/js/swiper*.js"
 	],
 	"importOrderParserPlugins": ["typescript", "decorators-legacy"],
 	"insertPragma": false,
@@ -58,5 +58,5 @@
 	"tabWidth": 4,
 	"trailingComma": "all",
 	"useTabs": true,
-	"vueIndentScriptAndStyle": true,
+	"vueIndentScriptAndStyle": true
 }

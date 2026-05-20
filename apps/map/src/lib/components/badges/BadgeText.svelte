@@ -38,6 +38,6 @@
 	);
 </script>
 
-<p class={['inline-grid transition-opacity duration-300 [word-break:auto-phrase]', variantBgClasses, sizeClasses]}>
+<p class={['inline-grid [word-break:auto-phrase] transition-opacity duration-300', variantBgClasses, sizeClasses]}>
 	{text}
 </p>

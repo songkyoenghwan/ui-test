@@ -13,12 +13,27 @@
 />
 
 <script lang="ts">
+	import type { Placement } from '@floating-ui/utils';
 	import { Tooltip, Button } from 'flowbite-svelte';
 	import { slide, scale, blur } from 'svelte/transition';
-	let { btn = 'tooltip', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-primary' } = $props();
+	interface MyTooltipProps {
+		btn?: string;
+		txt?: string;
+		animation?: 'blur' | 'slide' | 'scale' | 'none';
+		placement?: Placement;
+		bg?: string;
+	}
 
-	import type { Placement } from '@floating-ui/utils';
-	let place: Placement = $derived(placement);
+	let { btn = 'tooltip', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-primary' }: MyTooltipProps = $props();
+
+	let place = $derived(placement as Placement);
+	let activeTransition = $derived(() => {
+		if (animation === 'slide') return slide;
+		if (animation === 'scale') return scale;
+		if (animation === 'blur') return blur;
+		return undefined;
+	});
+	let formattedTxt = $derived(txt.replace(/\\n/g, '\n'));
 </script>
 
 <Button class="gap-2 p-0 font-normal text-slate-500">
@@ -26,10 +41,6 @@
 	<icon-list data-name="info-circle" class="icon flex size-3 fill-slate-400"></icon-list>
 </Button>
 
-{#if animation === 'blur'}
-	<Tooltip class={bg} transition={blur} transitionParams={{ duration: 100 }} placement={place}>{@html txt}</Tooltip>
-{:else if animation === 'slide'}
-	<Tooltip class={bg} transition={slide} transitionParams={{ duration: 100 }} placement={place}>{@html txt}</Tooltip>
-{:else}
-	<Tooltip class={bg} transition={scale} transitionParams={{ duration: 100 }} placement={place}>{@html txt}</Tooltip>
-{/if}
+<Tooltip class="{bg} whitespace-pre-line" transition={activeTransition()} placement={place} transitionParams={{ duration: 100 }}>
+	{formattedTxt}
+</Tooltip>

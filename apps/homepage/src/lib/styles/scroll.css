@@ -13,8 +13,8 @@ news-section {
 	animation-range: entry 0% cover 25%;
 
 	@starting-style {
-		opacity: 0;
 		filter: blur(0);
+		opacity: 0;
 	}
 }
 
@@ -52,14 +52,14 @@ news-section {
 @keyframes slide-up {
 	0% {
 		transform: translateY(6%) scale(0.8);
+		filter: blur(0.1);
 		opacity: 0.3;
-		filter: blur(0.3);
 	}
 
 	100% {
 		transform: translateY(0) scale(1);
+		filter: blur(0);
 		opacity: 1;
-		filter: blur(1);
 	}
 }
 

@@ -1,10 +1,12 @@
-import '$lib/styles/index.css';
-
-import '$lib/components/icons/Icons.svelte';
-import '$lib/components/footer/Footer.svelte';
-import '$lib/components/pages/Dao.svelte';
-
-import '$lib/components/heading/SubHeadingLine.svelte';
-
-import '$lib/components/news/newsSection.svelte';
 import '$lib/components/contact/Adress.svelte';
+import '$lib/components/heading/HeaderImgs.svelte';
+import '$lib/components/footer/FooterAdress.svelte';
+import '$lib/components/footer/FooterSns.svelte';
+import '$lib/components/footer/FooterCopy.svelte';
+import '$lib/components/footer/FooterLang.svelte';
+import '$lib/components/heading/SubHeadingLine.svelte';
+import '$lib/components/icons/Icons.svelte';
+import '$lib/components/news/newsSection.svelte';
+import '$lib/components/pages/Dao.svelte';
+import '$lib/components/pages/Company.svelte';
+import '$lib/styles/index.css';

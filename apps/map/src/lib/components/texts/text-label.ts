@@ -7,8 +7,7 @@ export class TextLabel extends LitElement {
 		return this;
 	}
 
-	@property({ reflect: true })
-	label?: string = '';
+	@property({ reflect: true }) label?: string = '';
 
 	protected render(): TemplateResult {
 		return html`

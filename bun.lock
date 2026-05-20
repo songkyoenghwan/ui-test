@@ -5,6 +5,7 @@
     "": {
       "name": "my-monorepo",
       "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^6.0.2",
         "@types/bun": "^1.3.13",
         "@types/node": "^25.7.0",
         "bun": "^1.3.13",

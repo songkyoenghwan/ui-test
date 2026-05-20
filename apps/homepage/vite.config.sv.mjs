@@ -22,8 +22,8 @@ export default defineConfig({
 		svelte(),
 		paraglideVitePlugin({
 			project: './project.inlang',
-			outdir: './src/paraglide',
-			strategy: ['cookie', 'globalVariable', 'baseLocale'],
+			outdir: './src/lib/paraglide',
+			strategy: ['localStorage', 'cookie', 'preferredLanguage', 'baseLocale'],
 		}),
 		// {
 		// 	name: 'remove-unwanted-public',
@@ -57,7 +57,7 @@ export default defineConfig({
 	build: {
 		outDir: './build',
 		lib: {
-			entry: path.resolve(__dirname, 'src/lib/wc.ts'),
+			entry: path.resolve(__dirname, 'src/lib/index.ts'),
 			name: 'WebComponents',
 			// fileName: 'main-bundle',
 			fileName: (format) => `wc.${format}.js`,

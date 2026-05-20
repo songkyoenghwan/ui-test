@@ -9,21 +9,40 @@
 	import { Modal } from 'flowbite-svelte';
 	type ModalPlacementType = 'top-left' | 'top-center' | 'top-right' | 'center-left' | 'center' | 'center-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 
-	let placement: ModalPlacementType = $state('center');
+	interface AlertPopupProps {
+		open?: 'open' | 'close'; // 명확한 유니온 타입 지정
+		txt?: string;
+		confirm?: string;
+		cancel?: string;
+		placement?: ModalPlacementType;
+	}
+	let {
+		open = $bindable('close'),
+		txt = '',
+		confirm = '확인', // 기본값 지정
+		cancel = '',
+		placement = 'center',
+	}: AlertPopupProps = $props();
 
-	let { open = 'close', txt = '', confirm = '', cancel = '' } = $props();
 	let popupModal = $state(true);
 
 	$effect.pre(() => {
 		if (open === 'close') {
-			$host().setAttribute('inert', '');
-			$host().setAttribute('aria-hidden', 'true');
+			$host()?.setAttribute('inert', '');
+			$host()?.setAttribute('aria-hidden', 'true');
 			popupModal = false;
 		} else {
-			$host().removeAttribute('inert');
-			$host().removeAttribute('aria-hidden');
+			$host()?.removeAttribute('inert');
+			$host()?.removeAttribute('aria-hidden');
 			popupModal = true;
 		}
+
+		return () => {
+			if ($host() && !$host().isConnected) return;
+			$host()?.removeAttribute('inert');
+			$host()?.removeAttribute('aria-hidden');
+			popupModal = true;
+		};
 	});
 
 	function dispatch(type: string) {
