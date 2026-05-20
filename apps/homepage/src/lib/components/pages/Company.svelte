@@ -5,6 +5,15 @@
 	}}
 />
 
+<script lang="ts">
+	import division1 from '$lib/imgs/company/img-division-1.png';
+	import division2 from '$lib/imgs/company/img-division-2.png';
+	import division3 from '$lib/imgs/company/img-division-3.png';
+	import bannerBgMo from '$lib/imgs/company/bg-join-us-mo.jpg';
+	import bannerBgPc from '$lib/imgs/company/bg-join-us-pc.jpg';
+	import bgPerson from '$lib/imgs/company/bg-join-us-person.png';
+</script>
+
 <section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all [animation-timeline:view()] lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
@@ -46,7 +55,7 @@
 	<ul class="text-2md grid grid-cols-1 gap-2 lg:grid-cols-3 lg:text-lg">
 		<li class="bg-light-blue slide-up flex flex-col overflow-clip rounded-xl">
 			<picture class="flex">
-				<img src="/src/lib/imgs/company/img-division-1.png" alt="logo" class="w-full" />
+				<img src={division1} alt="logo" class="w-full" />
 			</picture>
 
 			<div class="flex flex-col gap-5 p-5 lg:gap-7.5 2xl:p-7.5">
@@ -67,7 +76,7 @@
 		</li>
 		<li class="bg-light-blue slide-up flex flex-col overflow-clip rounded-xl">
 			<picture class="flex">
-				<img src="/src/lib/imgs/company/img-division-2.png" alt="logo" class="w-full" />
+				<img src={division2} alt="logo" class="w-full" />
 			</picture>
 
 			<div class="flex flex-col gap-5 p-5 lg:gap-7.5 2xl:p-7.5">
@@ -88,7 +97,7 @@
 		</li>
 		<li class="bg-light-blue slide-up flex flex-col overflow-clip rounded-xl">
 			<picture class="flex">
-				<img src="/src/lib/imgs/company/img-division-3.png" alt="logo" class="w-full" />
+				<img src={division3} alt="logo" class="w-full" />
 			</picture>
 
 			<div class="flex flex-col gap-5 p-5 lg:gap-7.5 2xl:p-7.5">
@@ -111,7 +120,7 @@
 
 	<section
 		data-scroll="slide-up"
-		class="bg-primary h-80.5 rounded-xl bg-[url(/src/lib/imgs/company/bg-join-us-mo.jpg)] bg-cover bg-bottom bg-no-repeat text-white transition-all lg:h-63.75 lg:bg-[url(/src/lib/imgs/company/bg-join-us-pc.jpg)]"
+		class="2xs:bg-[url(/src/lib/imgs/company/bg-join-us-mo.jpg)] h-80.5 rounded-xl bg-cover bg-bottom bg-no-repeat text-white transition-all lg:h-63.75 lg:bg-[url(/src/lib/imgs/company/bg-join-us-pc.jpg)]"
 	>
 		<div
 			class="flex h-full flex-col gap-5 bg-[url(/src/lib/imgs/company/bg-join-us-person.png)] bg-size-[203px_auto] bg-position-[center_calc(100%+64px)] bg-no-repeat p-5 lg:bg-size-[345px_353px] lg:bg-position-[calc(100%-10%)_top] lg:p-15"

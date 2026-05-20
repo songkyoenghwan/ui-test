@@ -22,7 +22,7 @@
 				</div>
 
 				<picture class="bg-light-blue col-span-2 grid h-53.5 place-content-center overflow-clip rounded-xl transition-all lg:col-span-1 lg:h-60">
-					<img src="/src/lib/imgs/company/bg-join-us-mo.jpg" alt="" class="object-cover" />
+					<img src="" alt="" class="object-cover" />
 				</picture>
 			</li>
 			<li data-scroll="slide-up" class="grid items-center gap-5 rounded-xl bg-white lg:grid-cols-[minmax(0,1fr)_322px] xl:flex-row xl:gap-50">
@@ -32,7 +32,7 @@
 				</div>
 
 				<picture class="bg-light-blue col-span-2 grid h-53.5 place-content-center overflow-clip rounded-xl transition-all lg:col-span-1 lg:h-60">
-					<img src="/src/lib/imgs/company/bg-join-us-mo.jpg" alt="" class="object-cover" />
+					<img src="" alt="" class="object-cover" />
 				</picture>
 			</li>
 		</ol>
