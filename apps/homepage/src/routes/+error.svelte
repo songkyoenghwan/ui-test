@@ -18,6 +18,6 @@
 			{page.error?.message ? '페이지를 찾을 수 없습니다.' : ''}
 		</h1>
 
-		<button aria-label={data?.user?.name || ''} onclick={() => handleBack()} class="text-primary text-4xl font-bold hover:underline">이전 페이지로</button>
+		<button aria-label={data?.user?.name || ''} onclick={handleBack} class="text-primary text-4xl font-bold hover:underline">이전 페이지로</button>
 	</section>
 </main>

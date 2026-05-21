@@ -20,10 +20,18 @@
 		return parts.length > 1 ? `0 0 ${selectedIcon.size}` : `0 0 ${selectedIcon.size} ${selectedIcon.size}`;
 	});
 	const content = $derived(selectedIcon ? selectedIcon.html : '');
+
+	$effect.pre(() => {
+		if (svgRef) {
+			svgRef.innerHTML = '';
+
+			if (selectedIcon && selectedIcon.html) {
+				svgRef.innerHTML = content;
+			}
+		}
+	});
 </script>
 
 {#if selectedIcon}
-	<svg bind:this={svgRef} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class={cls} width={w} height={h} {viewBox}>
-		{@html content}
-	</svg>
+	<svg bind:this={svgRef} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class={cls} width={w} height={h} {viewBox}></svg>
 {/if}

@@ -109,7 +109,7 @@
 		<li class="divide-d9d9d9 bg- bg-3743ff group divide-y divide-dashed rounded-xl text-white">
 			<header class="grid min-h-15 place-content-center text-xl font-bold xl:min-h-22.5 xl:text-4xl">TO-BE</header>
 			<ul class="divide-d9d9d9 divide-y divide-dashed px-7.5">
-				{#each toList as to}
+				{#each toList as to, t (t)}
 					{@render content(to.tit, to.txt)}
 				{/each}
 			</ul>

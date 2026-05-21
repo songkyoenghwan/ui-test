@@ -31,16 +31,15 @@
 		IN_PROGRESS: 'bg-pending text-pending-frg',
 		COMPLETED: 'bg-succes text-succes-frg',
 	};
+	const SIZE_MAP = {
+		xs: 'px-1 py-1 text-xs min-h-5 rounded-xs',
+		sm: 'px-2 py-1 text-sm min-h-7 rounded-sm',
+		md: 'px-3 py-1 text-base min-h-9 rounded-md',
+		lg: 'px-4 py-2 text-lg min-h-11 rounded-lg',
+		xl: 'px-5 py-2 text-xl min-h-13 rounded-xl',
+	} as const;
 	let variantBgClasses = $derived(VARIANT_BG[variant]);
-	let sizeClasses = $derived(
-		{
-			xs: 'px-1 py-1 text-xs min-h-5 rounded-xs',
-			sm: 'px-2 py-1 text-sm min-h-7 rounded-sm',
-			md: 'px-3 py-1 text-base min-h-9 rounded-md',
-			lg: 'px-4 py-2 text-lg min-h-11 rounded-lg',
-			xl: 'px-5 py-2 text-xl min-h-13 rounded-xl',
-		}[size ?? 'md'],
-	);
+	let sizeClasses = $derived(SIZE_MAP[size ?? 'md']);
 </script>
 
 <p class={['inline-grid place-content-center text-center text-pretty break-all  transition-opacity duration-300', variantBgClasses, sizeClasses]}>

@@ -7,8 +7,13 @@
 	let { id = '', arr = ['전체'], text = $bindable('전체'), cls = '' } = $props();
 
 	let items = $derived.by(() => {
-		if (!arr) return ['전체'];
-		return typeof arr === 'string' ? arr.split(',').map((v) => v.trim()) : arr;
+		if (!arr) return;
+
+		if (typeof arr === 'string') {
+			return (arr as string).split(/\s*,\s*/);
+		}
+
+		return arr;
 	});
 
 	let open = $state(false);
@@ -28,6 +33,17 @@
 	};
 
 	const toggleOpen = () => (open = !open);
+
+	function handleOptionClick(e: MouseEvent) {
+		e.preventDefault();
+
+		const currentTarget = e.currentTarget as HTMLButtonElement;
+		const clickedVal = currentTarget.dataset.val;
+
+		if (clickedVal) {
+			handleSelect(clickedVal);
+		}
+	}
 
 	$effect(() => {
 		if (!open) return;
@@ -64,7 +80,7 @@
 						role="option"
 						aria-selected={internalSelected === item}
 						class="hover:bg-option/50 h-input aria-selected:bg-option flex w-full items-center gap-2 px-4 text-sm transition-colors"
-						onclick={() => handleSelect(item)}
+						onclick={handleOptionClick}
 					>
 						{#if internalSelected === item}
 							<Icons name="arrow-check" cls="stroke-default flex size-5" />

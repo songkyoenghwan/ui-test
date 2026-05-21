@@ -82,26 +82,26 @@
 		tooltip: '',
 		'icon-only': '',
 	};
+	const SIZE_MATRIX = {
+		'icon-only': {
+			xs: 'size-6 rounded-sm',
+			sm: 'size-8 rounded-md',
+			md: 'size-10 rounded-lg',
+			lg: 'size-12 rounded-lg',
+			xl: 'size-14 rounded-lg',
+		},
+		default: {
+			// 기본(일반 버튼/배지) 스타일
+			xs: 'px-1 py-1 text-xs min-h-6 rounded-full',
+			sm: 'px-2 py-1 text-sm min-h-8 rounded-full',
+			md: 'px-3 py-1 text-base min-h-10 rounded-full',
+			lg: 'px-4 py-1 text-lg min-h-12.5 rounded-full',
+			xl: 'px-5 py-1 text-xl min-h-14.5 rounded-full',
+		},
+	} as const;
 	let variantBgClasses = $derived(VARIANT_BG[variant]);
 	let variantTextClasses = $derived(VARIANT_TEXT[variant]);
-
-	let sizeClasses = $derived(
-		variant === 'icon-only'
-			? {
-					xs: 'size-6 rounded-sm',
-					sm: 'size-8 rounded-md',
-					md: 'size-10 rounded-lg',
-					lg: 'size-12 rounded-lg',
-					xl: 'size-14 rounded-lg',
-				}[size ?? 'md']
-			: {
-					xs: 'px-1 py-1 text-xs min-h-6 rounded-full',
-					sm: 'px-2 py-1 text-sm min-h-8 rounded-full',
-					md: 'px-3 py-1 text-base min-h-10 rounded-full',
-					lg: 'px-4 py-1 text-lg min-h-12.5 rounded-full',
-					xl: 'px-5 py-1 text-xl min-h-14.5 rounded-full',
-				}[size ?? 'md'],
-	);
+	let sizeClasses = $derived(SIZE_MATRIX[variant === 'icon-only' ? 'icon-only' : 'default'][size ?? 'md']);
 
 	let baseClasses = $derived(
 		`focus:outline-primary/10 relative flex items-center justify-center gap-1.25 focus:outline hover:outline-primary min-w-10 disabled:bg-muted disabled:border-muted disabled:text-muted-frg disabled:hover:bg-muted disabled:cursor-not-allowed group/btn ${fullWidth ? 'w-full' : 'inline-flex'} ${sizeClasses}`,
