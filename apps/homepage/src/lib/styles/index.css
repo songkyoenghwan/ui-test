@@ -95,6 +95,10 @@
 		'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 
 	--input-height: 3.25rem;
+
+	--duration: 100s;
+	--animate-marquee-left: marquee-left var(--duration, 100s) linear infinite;
+	--animate-marquee-up: marquee-up var(--duration, 100s) linear infinite;
 }
 
 @theme {
@@ -187,6 +191,9 @@
 	--text-2md: 0.9375rem;
 
 	--breakpoint-3xl: 1840px;
+
+	--animate-marquee-left: marquee-left var(--duration, 100s) linear infinite;
+	--animate-marquee-up: marquee-up var(--duration, 100s) linear infinite;
 }
 
 @layer base {

@@ -47,14 +47,20 @@
 
 <section
 	{@attach visualMotion}
-	class="relative flex max-h-dvh min-h-[70dvh] flex-col justify-between overflow-clip bg-cover bg-center p-5 text-white opacity-100 max-xl:rounded-lg md:min-h-160 xl:min-h-200 xl:p-15 starting:translate-y-0 starting:opacity-0"
+	class="relative flex max-h-dvh min-h-[70dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:min-h-200 lg:p-15 starting:translate-y-0 starting:opacity-0"
 	style={`background-image: url('${bg}')`}
 >
 	{#if videoUrl}
-		{videoUrl}
+		<div
+			class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+		>
+			<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop>
+				<source src={videoUrl} type="video/webm" />
+			</video>
+		</div>
 	{/if}
 
-	<div class="starting:opacity-0">
+	<div class="relative z-5 starting:opacity-0">
 		<div>
 			{#if badge}
 				<p
@@ -65,22 +71,22 @@
 			{/if}
 
 			{#if logo}
-				<picture class="flex h-10 xl:h-15">
+				<picture class="flex h-10 lg:h-15">
 					<enhanced:img src={logo} alt={logoAlt} class="h-full" sizes="(min-width: 1280px) 60px, 40px" />
 				</picture>
 			{/if}
 		</div>
 
-		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 xl:mt-7.5 xl:text-[3.75rem]">{parseBreakline(tit)}</h2>
+		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem]">{parseBreakline(tit)}</h2>
 	</div>
 
-	<div class="relative starting:opacity-0">
-		<p class="mt-5 text-[.9375rem] leading-normal text-white xl:text-lg">{parseBreakline(subtit)}</p>
+	<div class="relative z-5 starting:opacity-0">
+		<p class="text-2md mt-5 leading-normal text-white lg:text-lg">{parseBreakline(subtit)}</p>
 
-		<div class="mt-7.5 flex xl:mt-9 xl:inline-flex">
+		<div class="mt-7.5 flex lg:mt-9 lg:inline-flex">
 			<button
 				type="button"
-				class="hover:text-3743ff min-h-12 w-full rounded-md border border-white px-7.5 text-left text-[.9375rem] font-bold transition-colors hover:bg-white xl:min-h-13.5"
+				class="hover:text-3743ff text-2md min-h-12 w-full rounded-md border border-white px-7.5 text-left font-bold transition-colors hover:bg-white lg:min-h-13.5"
 			>
 				<span>{btnTxt}</span>
 			</button>

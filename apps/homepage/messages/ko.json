@@ -1,6 +1,11 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from ko!",
+
+	"main_visual_badge": "공간지능 기반 산업 AI 플랫폼 기업",
+	"main_visual_title": "산업 현장의 일하는 방식을 \n공간지능으로 바꿉니다",
+	"main_visual_subtitle": "설딥파인은 스마트글라스, Vision AI, AR, 공간컴퓨팅 기술을 기반으로 물류·제조·MRO·공공 현장의 작업과 공간 데이터를 연결합니다. \n\n수작업과 숙련자 의존으로 운영되던 현장을표준화된 디지털 워크플로우와 산업 AI 운영 플랫폼으로 전환합니다.",
+
 	"product_visual_badge": "DEEP.FINE AR.ON — DAO",
 	"product_visual_title": "산업 현장 어디서든 \n<strong>완벽한 업무 비서</strong>가 됩니다",
 	"product_visual_subtitle": "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고,\n 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다.\n 장갑을 낀 채로, 두 손은 자유롭게.",

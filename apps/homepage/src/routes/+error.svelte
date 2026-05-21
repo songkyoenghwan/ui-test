@@ -10,7 +10,7 @@
 	};
 </script>
 
-<main class="gap-container transition-color bg-primary h-dvh place-content-center">
+<main class="gap-container transition-color h-dvh place-content-center">
 	<section class="bg-bkg p-section space-y-heading mx-auto w-150 rounded-xl text-center shadow-[0_0_10px_0_rbga(0,0,0,0.1)]">
 		<h1 class="text-3xl font-bold">
 			{page.status}
