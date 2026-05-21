@@ -2,8 +2,8 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from ko!",
 	"product_visual_badge": "DEEP.FINE AR.ON — DAO",
-	"product_visual_title": "산업 현장 어디서든 <br/><strong>완벽한 업무 비서</strong>가 됩니다",
-	"product_visual_subtitle": "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고,<br/> 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다.<br/> 장갑을 낀 채로, 두 손은 자유롭게.",
+	"product_visual_title": "산업 현장 어디서든 \n<strong>완벽한 업무 비서</strong>가 됩니다",
+	"product_visual_subtitle": "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고,\n 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다.\n 장갑을 낀 채로, 두 손은 자유롭게.",
 	"product_visual_btn": "도입 문의하기",
 
 	"product_problem_title": "Problem &amp; Solution",

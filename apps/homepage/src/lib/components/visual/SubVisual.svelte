@@ -6,6 +6,7 @@
 />
 
 <script lang="ts">
+	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
@@ -70,11 +71,11 @@
 			{/if}
 		</div>
 
-		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 xl:mt-7.5 xl:text-[3.75rem]">{@html tit}</h2>
+		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 xl:mt-7.5 xl:text-[3.75rem]">{parseBreakline(tit)}</h2>
 	</div>
 
 	<div class="relative starting:opacity-0">
-		<p class="mt-5 text-[.9375rem] leading-normal text-white xl:text-lg">{@html subtit}</p>
+		<p class="mt-5 text-[.9375rem] leading-normal text-white xl:text-lg">{parseBreakline(subtit)}</p>
 
 		<div class="mt-7.5 flex xl:mt-9 xl:inline-flex">
 			<button

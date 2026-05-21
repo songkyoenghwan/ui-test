@@ -54,6 +54,7 @@
 		"build": "tsc && vite build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"doctor": "svelte-doctor check",
 		"dev": "vite dev --host --port 7713",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",

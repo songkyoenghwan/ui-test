@@ -13,15 +13,10 @@
 
 	let open = $state(false);
 	let container: HTMLElement | null = $state(null);
-	let internalSelected = $state('');
-
-	$effect(() => {
-		internalSelected = text;
-	});
+	const internalSelected = $derived(text);
 
 	let displayValue = $derived(internalSelected || text);
 	const handleSelect = (val: string) => {
-		internalSelected = val;
 		text = val;
 		open = false;
 

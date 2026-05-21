@@ -27,7 +27,8 @@
 		"install:all": "bun install",
 		"sp:fix": "syncpack fix",
 		"sp:format": "syncpack format",
-		"sp:lint": "syncpack lint --dependency-types prod,dev"
+		"sp:lint": "syncpack lint --dependency-types prod,dev",
+		"doctor": "svelte-doctor check"
 	},
 	"workspaces": [
 		"apps/homepage",

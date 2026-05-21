@@ -12,6 +12,7 @@
 	import { getIconData } from './IconData.svelte.ts';
 
 	let { name = '', w = '100%', h = '100%', cls = '' } = $props();
+	let svgRef = $state<SVGSVGElement | null>(null);
 	const selectedIcon = $derived(getIconData().find((icon) => icon.name === name));
 	const viewBox = $derived.by(() => {
 		if (!selectedIcon) return '0 0 24 24';
@@ -22,7 +23,7 @@
 </script>
 
 {#if selectedIcon}
-	<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class={cls} width={w} height={h} {viewBox}>
+	<svg bind:this={svgRef} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class={cls} width={w} height={h} {viewBox}>
 		{@html content}
 	</svg>
 {/if}

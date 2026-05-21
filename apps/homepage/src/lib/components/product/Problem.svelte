@@ -98,7 +98,7 @@
 		<li class="divide-d9d9d9 divide-y divide-dashed rounded-xl bg-white">
 			<header class="grid min-h-15 place-content-center text-xl font-bold xl:min-h-22.5 xl:text-4xl">AS-IS</header>
 			<ul class="divide-d9d9d9 divide-y divide-dashed px-7.5">
-				{#each asList as as}
+				{#each asList as as, i (i)}
 					{@render content(as.tit, as.txt)}
 				{/each}
 			</ul>

@@ -6,14 +6,23 @@
 />
 
 <script lang="ts">
+	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
 	let { layout = '', img = '', badges = '', title = '', text = '', date = '', source = '', url = '' } = $props();
 
+	let lastBadges = $state('');
+	let cachedList: string[] = $state([]);
+
 	const hasComma = $derived(String(badges).includes(','));
-	let badgeList = $derived(
-		String(badges)
-			.split(',')
-			.map((s) => s.trim()),
-	);
+	let badgeList = $derived(() => {
+		const currentBadges = String(badges);
+
+		if (currentBadges !== lastBadges) {
+			lastBadges = currentBadges;
+			cachedList = currentBadges.split(/\s*,\s*/);
+		}
+
+		return cachedList;
+	});
 </script>
 
 {#snippet badgeRender(badge = '')}
@@ -22,8 +31,8 @@
 
 {#snippet imgRender(img = '')}
 	{#if img}
-		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ' '}`}>
-			<img src={img} alt="" class="w-full max-w-300 object-cover" />
+		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
+			<img src={img} alt={`${title} image`} class="w-full max-w-300 object-cover" />
 		</picture>
 	{/if}
 {/snippet}
@@ -32,7 +41,7 @@
 	<div class="flex flex-col gap-5">
 		<div class="inline-flex flex-wrap gap-3">
 			{#if hasComma}
-				{#each badgeList as badge}
+				{#each badgeList as badge, i (i)}
 					{@render badgeRender(badge)}
 				{/each}
 			{:else}
@@ -48,7 +57,7 @@
 			</div>
 		{/if}
 
-		<p>{@html text}</p>
+		<p>{parseBreakline(text)}</p>
 
 		<div class="text-666 text-2md mt-auto flex justify-between gap-2 lg:pt-2.5 lg:text-lg">
 			{#if source}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
+	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
 
 	let { page = '', tit = '', txt = '', subtxt = '' } = $props();
 	let played = $state(false);
@@ -35,13 +36,16 @@
 
 		return () => observer.revert?.();
 	};
+	const titParse = $derived(parseBreakline(tit));
+	const txtParse = $derived(parseBreakline(tit));
+	const subtxttParse = $derived(parseBreakline(tit));
 </script>
 
 <header {@attach headingMotion} class="space-y-5">
-	<p class="text-666 text-2md font-bold xl:text-2xl">{@html tit}</p>
-	<h3 class="text-1a1a2e text-2xl leading-tight font-bold xl:text-5xl">{@html txt}</h3>
+	<p class="text-666 text-2md font-bold xl:text-2xl">{titParse}</p>
+	<h3 class="text-1a1a2e text-2xl leading-tight font-bold xl:text-5xl">{txtParse}</h3>
 
 	{#if subtxt}
-		<p class="text-666 text-2md mt-2.5 font-bold xl:text-2xl">{@html subtxt}</p>
+		<p class="text-666 text-2md mt-2.5 font-bold xl:text-2xl">{subtxttParse}</p>
 	{/if}
 </header>
