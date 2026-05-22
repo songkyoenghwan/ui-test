@@ -61,36 +61,28 @@
 	] as const;
 </script>
 
-<section class="flex flex-col rounded-xl bg-white p-15 lg:flex-row lg:gap-15 lg:p-15">
+<section class="grid grid-cols-1 rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15">
 	<sub-heading-line
 		line="none"
 		title="다양한 산업 현장에서 검증된 성과를 만들고 있습니다"
 		text="딥파인은 물류·제조·MRO·공공 분야의 실제 현장에서 작업 효율화, 오류 감소, 업무 표준화, 데이터 기반 운영 관리를 검증하고 있습니다."
 	></sub-heading-line>
 
-	<div class="relative mx-auto flex w-full max-w-145 items-center justify-between gap-5 px-10">
-		<button
-			type="button"
-			class="flex size-11 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 shadow-md transition-all hover:bg-zinc-50 hover:text-zinc-900 active:scale-95 disabled:opacity-40"
-			aria-label="이전 카드"
-		>
-			<span class="text-lg font-bold">←</span>
-		</button>
-
+	<div class="relative mx-auto flex w-full max-w-145 items-center justify-between gap-5 lg:px-10">
 		<swiper-container
 			effect="cards"
 			cards-effect-rotate="false"
 			cards-effect-slide-shadows="false"
 			grab-cursor="true"
 			loop="true"
-			speed="2000"
-			autoplay-delay="200"
+			speed="3000"
+			autoplay-delay="300"
 			autoplay-disable-on-interaction="true"
 			navigation="true"
 			class="mx-auto w-full max-w-95"
 		>
 			{#each lists as list (list.id)}
-				<swiper-slide class="h-full w-full bg-transparent opacity-90 shadow-transparent lg:w-125 [&.swiper-slide-active]:opacity-100">
+				<swiper-slide class="h-full w-full bg-transparent opacity-95 shadow-transparent lg:w-125 [&.swiper-slide-active]:opacity-100">
 					<div class="bg-7785ff w-full space-y-5 overflow-clip rounded-xl p-5">
 						<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
 							<img src="https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png" alt="" class="w-full object-cover" />
@@ -113,12 +105,5 @@
 				</swiper-slide>
 			{/each}
 		</swiper-container>
-		<button
-			type="button"
-			class="flex size-11 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 shadow-md transition-all hover:bg-zinc-50 hover:text-zinc-900 active:scale-95 disabled:opacity-40"
-			aria-label="다음 카드"
-		>
-			<span class="text-lg font-bold">→</span>
-		</button>
 	</div>
 </section>
