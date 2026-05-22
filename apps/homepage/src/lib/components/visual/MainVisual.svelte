@@ -7,46 +7,12 @@
 
 <script lang="ts">
 	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
-	import { animate, stagger, onScroll } from 'animejs';
-	import type { Attachment } from 'svelte/attachments';
 
 	let { videoUrl = '', bg = '', badge = '', logo = '', logoAlt = '', tit = '', subtit = '', btnTxt = '' } = $props();
-	let played = $state(false);
-
-	const visualMotion: Attachment<HTMLElement> = (el) => {
-		const animation = animate(el.children, {
-			x: [70, 0],
-			opacity: [0, 1],
-			duration: 600,
-			delay: stagger(200),
-			easing: 'easeOutQuad',
-			autoplay: false,
-		});
-
-		const observer = onScroll({
-			container: document.body,
-			target: el,
-			enter: 'bottom center',
-			leave: 'top bottom',
-			axis: 'y',
-			onEnter: () => {
-				if (played) return;
-				played = true;
-				animation.seek(0);
-				animation.play();
-			},
-			onLeaveBackward: () => {
-				played = false;
-			},
-			debug: false,
-		});
-
-		return () => observer.revert?.();
-	};
 </script>
 
 <section
-	{@attach visualMotion}
+	data-scroll="first"
 	class="relative flex max-h-dvh min-h-[70dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:min-h-200 lg:p-15 starting:translate-y-0 starting:opacity-0"
 	style={`background-image: url('${bg}')`}
 >

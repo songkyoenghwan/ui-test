@@ -40,12 +40,12 @@
 
 <svelte:window bind:innerWidth={w} />
 
-<section>
+<section class="relative">
 	<sub-heading-line line="none" title="Our Products" text="딥파인은 물류, 제조·MRO, 공간 데이터 분야의 현장 문제를 해결하는 산업 AI 솔루션을 제공합니다."></sub-heading-line>
 
 	<ul class="flex gap-7.5 max-lg:flex-col lg:flex-row">
 		{#each lists as list, i (list.id)}
-			<li class="group/prod relative flex-[0_0_300px] overflow-clip rounded-xl has-aria-current:flex-1">
+			<li data-scroll="slide-up" class="group/prod relative flex-[0_0_300px] overflow-clip rounded-xl has-aria-current:flex-1">
 				{#if current === i && isDesktop}
 					<div
 						class="before:[''] absolute top-0 left-0 z-1 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
@@ -68,7 +68,7 @@
 
 				<a
 					href="/"
-					class="group relative flex h-full min-h-[60dvh] w-full flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
+					class="group relative flex h-full min-h-[45dvh] w-full cursor-pointer flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
 							{i === 0 ? 'bg-[url(/src/lib/imgs/logo/bg-main-logi.png)]' : ''}
 							{i === 1 ? 'bg-[url(/src/lib/imgs/logo/bg-main-dao.png)]' : ''}
 							{i === 2 ? 'bg-[url(/src/lib/imgs/logo/bg-main-dsc.png)]' : ''}"
@@ -78,7 +78,8 @@
 				>
 					<div class="lg:7.5 relative z-2 flex flex-col gap-5">
 						<picture
-							class="relative flex min-h-10 transition-all transition-discrete starting:rotate-0 {current === i
+							class="relative flex min-h-10 opacity-100 transition-all transition-discrete @min-xl:group-has-aria-current/prod:opacity-100 starting:rotate-0 starting:opacity-0 {current ===
+							i
 								? 'relative'
 								: 'lg:absolute lg:bottom-[calc(100%-20px)] lg:left-[calc(100%-20px)] lg:h-25 lg:max-h-105 lg:w-105 lg:origin-left lg:rotate-90'}"
 						>
@@ -87,19 +88,18 @@
 							<img src={list.logo} alt="" class="h-full" loading="lazy" />
 						</picture>
 						<dl
-							class="text-2md relative space-y-5 opacity-0 transition-all lg:text-lg lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0"
+							class="text-2md relative space-y-5 opacity-100 transition-all lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0"
 						>
 							<dt class="font-bold">{list.tit}</dt>
 							<dd>{list.txt}</dd>
 						</dl>
 					</div>
 					<div class="z-2 opacity-100 group-hover:flex lg:hidden starting:opacity-0">
-						<button
-							type="button"
+						<p
 							class="hover:text-3743ff text-2md min-h-12 w-full rounded-md border border-white px-7.5 text-left font-bold transition-colors hover:bg-white lg:min-h-13.5"
 						>
 							<span>자세히 보기</span>
-						</button>
+						</p>
 					</div>
 				</a>
 			</li>

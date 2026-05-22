@@ -45,7 +45,7 @@
 	] as const;
 </script>
 
-<section class="w-full space-y-7.5 lg:space-y-15">
+<section data-scroll="slide-up" class="w-full space-y-7.5 lg:space-y-15">
 	<h3 class="text-center text-lg lg:text-4xl">다양한 산업 현장에서 검증된 딥파인의 기술력</h3>
 
 	{#if lists}
