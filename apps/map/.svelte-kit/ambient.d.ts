@@ -56,8 +56,6 @@ declare module '$env/static/private' {
 	export const flutter: string;
 	export const flutterbin: string;
 	export const GIT_ASKPASS: string;
-	export const GK_GL_ADDR: string;
-	export const GK_GL_PATH: string;
 	export const gs: string;
 	export const gsw: string;
 	export const HOME: string;
@@ -88,6 +86,7 @@ declare module '$env/static/private' {
 	export const NUMBER_OF_PROCESSORS: string;
 	export const NVM_HOME: string;
 	export const NVM_SYMLINK: string;
+	export const OLDPWD: string;
 	export const OLLAMA_MODELS: string;
 	export const OneDrive: string;
 	export const OPENSSL_CONF: string;
@@ -241,8 +240,6 @@ declare module '$env/dynamic/private' {
 		flutter: string;
 		flutterbin: string;
 		GIT_ASKPASS: string;
-		GK_GL_ADDR: string;
-		GK_GL_PATH: string;
 		gs: string;
 		gsw: string;
 		HOME: string;
@@ -273,6 +270,7 @@ declare module '$env/dynamic/private' {
 		NUMBER_OF_PROCESSORS: string;
 		NVM_HOME: string;
 		NVM_SYMLINK: string;
+		OLDPWD: string;
 		OLLAMA_MODELS: string;
 		OneDrive: string;
 		OPENSSL_CONF: string;

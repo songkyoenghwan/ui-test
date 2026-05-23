@@ -9,22 +9,22 @@
 	let lists = [
 		{
 			id: 'why-1',
-			video: '/src/lib/imgs/main/why/img-why-1.mp4',
+			video: '/src/lib/assets/imgs/main/why/img-why-1.mp4',
 			tit: '36',
 			txt: '수상 및 인증',
 			font: '90',
-			cls: 'flex-col bg-[url(/src/lib/imgs/main/bg-why-1.png)] bg-no-repeat bg-center bg-cover text-white lg:row-span-2',
+			cls: 'flex-col bg-[url(/src/lib/assets/imgs/main/bg-why-1.png)] bg-no-repeat bg-center bg-cover text-white lg:row-span-2',
 		},
 		{
 			id: 'why-2',
-			video: '/src/lib/imgs/main/why/img-why-2.mp4',
+			video: '/src/lib/assets/imgs/main/why/img-why-2.mp4',
 			tit: '22,000',
 			txt: '산업 데이터 리포트',
 			cls: 'flex-col bg-white',
 		},
 		{
 			id: 'why-3',
-			img: '/src/lib/imgs/main/why/img-why-3.png',
+			img: '/src/lib/assets/imgs/main/why/img-why-3.png',
 			tit: '70',
 			txt: '글로벌 대기업·공공기관 고객 및 파트너',
 			font: '90',
@@ -32,7 +32,7 @@
 		},
 		{
 			id: 'why-4',
-			img: '/src/lib/imgs/main/why/img-why-4.png',
+			img: '/src/lib/assets/imgs/main/why/img-why-4.png',
 			tit: 'No.1',
 			txt: '국내 스마트글라스 산업 도입',
 			font: '90',
@@ -40,7 +40,7 @@
 		},
 		{
 			id: 'why-5',
-			img: '/src/lib/imgs/main/why/img-why-5.png',
+			img: '/src/lib/assets/imgs/main/why/img-why-5.png',
 			tit: '92%',
 			txt: '고객 유지율',
 			font: '90',

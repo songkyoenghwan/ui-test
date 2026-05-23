@@ -9,30 +9,30 @@
 	let lists = [
 		{
 			id: 'our-products1',
-			logo: '/src/lib/imgs/logo/logo-main-logi.svg',
-			logoPc: '/src/lib/imgs/logo/logo-main-logi-pc.svg',
+			logo: '/src/lib/assets/imgs/logo/logo-main-logi.svg',
+			logoPc: '/src/lib/assets/imgs/logo/logo-main-logi-pc.svg',
 			tit: '스마트 물류 운영 솔루션',
 			txt: 'LOGI.FINE은 물류센터의 피킹, 검수, 분류, 패킹 업무를스마트글라스와 Vision AI 기반으로 지원하는 솔루션입니다',
 			link: '',
 		},
 		{
 			id: 'our-products2',
-			logo: '/src/lib/imgs/logo/logo-main-dao.svg',
-			logoPc: '/src/lib/imgs/logo/logo-main-dao-pc.svg',
+			logo: '/src/lib/assets/imgs/logo/logo-main-dao.svg',
+			logoPc: '/src/lib/assets/imgs/logo/logo-main-dao-pc.svg',
 			tit: 'AI 글래스 기반 현장 업무 지원 솔루션',
 			txt: 'DAO는 제조, MRO, 방산 현장의 점검·정비 업무에 필요한 정보를스마트글라스로 제공하고, 작업자의 현장 업무 수행을 지원하는 솔루션입니다.',
 			link: '',
 		},
 		{
 			id: 'our-products3',
-			logo: '/src/lib/imgs/logo/logo-main-dsc.svg',
-			logoPc: '/src/lib/imgs/logo/logo-main-dsc-pc.svg',
+			logo: '/src/lib/assets/imgs/logo/logo-main-dsc.svg',
+			logoPc: '/src/lib/assets/imgs/logo/logo-main-dsc-pc.svg',
 			tit: '공간컴퓨팅 기반 디지털 공간 구축 솔루션',
 			txt: 'DSC는 현실 공간을 3D 공간 데이터로 구축하고,위치 인식과 AR 콘텐츠를 결합해 공간 기반 서비스를 구현하는 솔루션입니다.',
 			link: '',
 		},
 	];
-	import visualVideo from '$lib/assets/main-video.webm';
+	// import visualVideo from '/video/main-video.webm';
 	let current = $state(0);
 	let w = $state(typeof window !== 'undefined' ? window.innerWidth : 0);
 	const isDesktop = $derived(w >= 1024);
@@ -51,7 +51,7 @@
 						class="before:[''] absolute top-0 left-0 z-1 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
 						<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop>
-							<source src={visualVideo} type="video/webm" />
+							<source src="/assest/video/main-video.webm" type="video/webm" />
 						</video>
 					</div>
 				{/if}
@@ -61,7 +61,7 @@
 						class="before:[''] absolute top-0 left-0 z-1 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
 						<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop>
-							<source src={visualVideo} type="video/webm" />
+							<source src="/assest/video/main-video.webm" type="video/webm" />
 						</video>
 					</div>
 				{/if}
@@ -69,9 +69,9 @@
 				<a
 					href="/"
 					class="group relative flex h-full min-h-[45dvh] w-full cursor-pointer flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
-							{i === 0 ? 'bg-[url(/src/lib/imgs/logo/bg-main-logi.png)]' : ''}
-							{i === 1 ? 'bg-[url(/src/lib/imgs/logo/bg-main-dao.png)]' : ''}
-							{i === 2 ? 'bg-[url(/src/lib/imgs/logo/bg-main-dsc.png)]' : ''}"
+							{i === 0 ? 'bg-[url(/src/lib/assets/imgs/logo/bg-main-logi.png)]' : ''}
+							{i === 1 ? 'bg-[url(/src/lib/assets/imgs/logo/bg-main-dao.png)]' : ''}
+							{i === 2 ? 'bg-[url(/src/lib/assets/imgs/logo/bg-main-dsc.png)]' : ''}"
 					onmouseenter={() => (current = i)}
 					onfocus={() => (current = i)}
 					aria-current={current === i ? 'true' : !isDesktop ? 'true' : undefined}

@@ -64,6 +64,15 @@ export const getIconData = () => {
 			`,
 		},
 		{
+			name: 'arrow-new-link',
+			size: '20',
+			html: /* HTML */ `
+				<path d="M20.5 22H3.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M19 3.5L5 17.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M19 13.77V3.5H8.73" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		{
 			name: 'menu',
 			size: '24',
 			html: /* HTML */ `
@@ -92,8 +101,8 @@ export const getIconData = () => {
 			name: 'close',
 			size: '24',
 			html: /* HTML */ `
-				<path d="M4 20L20 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M20 20L4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M4 20L20 4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M20 20L4 4" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 			`,
 		},
 	];

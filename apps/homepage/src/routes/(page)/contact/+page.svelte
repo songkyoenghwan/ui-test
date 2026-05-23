@@ -1,10 +1,10 @@
 <main class="sub">
-	<sub-heading-line title="Contact" text="TDeepFine welcomes collaboration to explore new possibilities for the future."></sub-heading-line>
+	<sub-heading-line title="Contact"></sub-heading-line>
 
 	<address-section></address-section>
 
 	<section class="first opacity-100">
-		<form data-scroll="first" id="form" class="form-list w-full space-y-7.5 lg:space-y-15" data-scoll-x="form">
+		<form id="form" class="form-list w-full space-y-7.5 lg:space-y-15" data-scoll-x="form">
 			<div class="w-full overflow-hidden rounded-xl bg-white p-5 lg:p-15">
 				<div class="flex w-full items-center overflow-x-auto sm:overflow-auto">
 					<div class="itmes-cehter inline-flex w-full flex-none gap-5 sm:flex-wrap">

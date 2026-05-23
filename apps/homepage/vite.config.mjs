@@ -25,6 +25,7 @@ export default defineConfig({
 			host: 'localhost',
 		},
 	},
+	publicDir: './static',
 	plugins: [
 		tailwindcss(),
 		enhancedImages(),

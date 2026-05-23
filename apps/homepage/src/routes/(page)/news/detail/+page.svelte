@@ -1,5 +1,5 @@
 <main class="sub">
-	<sub-heading-line title="NEWS" text="Discover the latest developments, perspectives, and innovations from DEEP.FINE."></sub-heading-line>
+	<sub-heading-line title="NEWS"></sub-heading-line>
 
 	<news-section
 		data-scroll="first"

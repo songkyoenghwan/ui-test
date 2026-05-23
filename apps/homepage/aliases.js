@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 export const aliases = {
 	$: path.resolve(__dirname, './src'),
 	$src: path.resolve(__dirname, './src'),
-	$lib: path.resolve(__dirname, './src/lib'),
 	$layouts: path.resolve(__dirname, './src/layouts'),
 	$pages: path.resolve(__dirname, './src/pages'),
 	$assets: path.resolve(__dirname, './src/lib/assets'),

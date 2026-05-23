@@ -4,11 +4,11 @@
 	import OurProducts from '$lib/components/main/OurProducts.svelte';
 	import SlideCard from '$lib/components/main/SlideCard.svelte';
 	import Why from '$lib/components/main/Why.svelte';
-	import logo from '$lib/imgs/logo/logo-dao.svg';
-	import bg from '$lib/imgs/visual/dao-visual.jpg';
+	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
+	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
 	import { m } from '$lib/paraglide/messages.js';
 
-	import visualVideo from '$lib/assets/main-video.webm';
+	// import visualVideo from '/video/main-video.webm';
 
 	const visuel = {
 		logoText: m.main_visual_badge(),
@@ -19,7 +19,7 @@
 </script>
 
 <main class="main">
-	<MainVisual videoUrl={visualVideo} {bg} {logo} logoAlt={visuel.logoText} tit={visuel.title} subtit={visuel.subtitle} btnTxt={visuel.btnText}></MainVisual>
+	<MainVisual {bg} {logo} logoAlt={visuel.logoText} tit={visuel.title} subtit={visuel.subtitle} btnTxt={visuel.btnText}></MainVisual>
 
 	<Industry />
 

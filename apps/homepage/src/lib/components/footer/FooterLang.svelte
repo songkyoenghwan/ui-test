@@ -9,7 +9,7 @@
 />
 
 <script lang="ts">
-	import { getLocale, setLocale } from '@/paraglide/runtime.js';
+	import { getLocale, setLocale } from '$lib/paraglide/runtime.js';
 
 	let { lang = $bindable('ko') } = $props<{ lang?: 'ko' | 'en' }>();
 

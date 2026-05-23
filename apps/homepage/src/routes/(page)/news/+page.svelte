@@ -1,5 +1,5 @@
 <main class="sub">
-	<sub-heading-line title="NEWS" text="DeepFine to Participate in CES 2026, Showcasing XR-Based Spatial Intelligence Solutions"></sub-heading-line>
+	<sub-heading-line title="NEWS"></sub-heading-line>
 
 	<nav class="slide-left max-w-full overflow-x-auto">
 		<ul class=" flex snap-center items-center gap-5 scroll-smooth">
@@ -27,7 +27,7 @@
 		</ul>
 	</nav>
 
-	<ul data-scroll="first" class="space-y-5 lg:space-y-7.5">
+	<ul class="space-y-5 lg:space-y-7.5">
 		<li>
 			<a href="/news/detail" title="상세피이지 이동" class="flex">
 				<news-section

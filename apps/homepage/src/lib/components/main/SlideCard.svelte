@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'main-industry',
+		tag: 'main-card',
 		shadow: 'none',
 	}}
 />
@@ -14,49 +14,49 @@
 			id: 'card-slide-1',
 			badge: ['공공시설 점검', 'DAO'],
 			txt: '스마트글라스 기반 원격 점검으로 출장 비용 60% 절감, 생산성 34% 향상',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-2',
 			badge: ['중공업 MRO', 'DAO'],
 			txt: 'Vision Assist로 도면·작업 지침을 즉시 표시해 정비 시간 30% 단축, 교육 기간 40% 단축',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-3',
 			badge: ['건설', '디지털트윈'],
 			txt: '3D 디지털 트윈으로 제조 공정 가시화 및 이상 감지 모니터링 체계 구축',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-4',
 			badge: ['관광·축제', '혼잡도 분석'],
 			txt: 'AI 혼잡도 분석과 맞춤 경로 추천으로 누적 이용 416만 건, 방문객 만족도 4.3점 달성',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-5',
 			badge: ['공공시설 점검', 'DAO'],
 			txt: '스마트글라스 기반 원격 점검으로 출장 비용 60% 절감, 생산성 34% 향상',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-6',
 			badge: ['중공업 MRO', 'DAO'],
 			txt: 'Vision Assist로 도면·작업 지침을 즉시 표시해 정비 시간 30% 단축, 교육 기간 40% 단축',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-7',
 			badge: ['건설', '디지털트윈'],
 			txt: '3D 디지털 트윈으로 제조 공정 가시화 및 이상 감지 모니터링 체계 구축',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-8',
 			badge: ['관광·축제', '혼잡도 분석'],
 			txt: 'AI 혼잡도 분석과 맞춤 경로 추천으로 누적 이용 416만 건, 방문객 만족도 4.3점 달성',
-			logo: '/src/lib/imgs/main/slide/img-logo-1.png',
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 	] as const;
 </script>

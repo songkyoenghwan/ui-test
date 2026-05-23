@@ -14,8 +14,8 @@
 	import Probelem from '$/lib/components/product/Problem.svelte';
 	import Results from '$/lib/components/product/Results.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
-	import logo from '$lib/imgs/logo/logo-dao.svg';
-	import bg from '$lib/imgs/visual/dao-visual.jpg';
+	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
+	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
 	import { m } from '$lib/paraglide/messages.js';
 
 	let { videoUrl = '' } = $props();

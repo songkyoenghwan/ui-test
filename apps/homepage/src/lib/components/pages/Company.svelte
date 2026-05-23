@@ -6,135 +6,118 @@
 />
 
 <script lang="ts">
-	import division1 from '$lib/imgs/company/img-division-1.png';
-	import division2 from '$lib/imgs/company/img-division-2.png';
-	import division3 from '$lib/imgs/company/img-division-3.png';
-	import bannerBgMo from '$lib/imgs/company/bg-join-us-mo.jpg';
-	import bannerBgPc from '$lib/imgs/company/bg-join-us-pc.jpg';
-	import bgPerson from '$lib/imgs/company/bg-join-us-person.png';
+	import { m } from '$lib/paraglide/messages.js';
+	import division1 from '$static/imgs/company/img-division-1.png?url';
+	import division2 from '$static/imgs/company/img-division-2.png?url';
+	import division3 from '$static/imgs/company/img-division-3.png?url';
+	import division4 from '$static/imgs/company/img-division-4.png?url';
+	import bannerBgMo from '$static/imgs/company/bg-join-us-mo.png?url';
+	import bannerBgPc from '$static/imgs/company/bg-join-us-pc.png?url';
+	import bgPerson from '$static/imgs/company/bg-join-us-person.png?url';
+
+	import sign from '$static/imgs/ceo/img-sign.png?url';
+
+	let teams = [
+		{
+			img: division1,
+			team: m.our_teams_team_1(),
+			subtitle: m.our_teams_subtitle_1(),
+			list: [m.our_teams_list_1_1(), m.our_teams_list_1_2(), m.our_teams_list_1_3(), m.our_teams_list_1_4()],
+		},
+		{
+			img: division2,
+			team: m.our_teams_team_2(),
+			subtitle: m.our_teams_subtitle_2(),
+			list: [m.our_teams_list_2_1(), m.our_teams_list_2_2(), m.our_teams_list_2_3(), m.our_teams_list_2_4()],
+		},
+		{
+			img: division3,
+			team: m.our_teams_team_3(),
+			subtitle: m.our_teams_subtitle_3(),
+			list: [m.our_teams_list_3_1(), m.our_teams_list_3_2(), m.our_teams_list_3_3(), m.our_teams_list_3_4()],
+		},
+		{
+			img: division4,
+			team: m.our_teams_team_4(),
+			subtitle: m.our_teams_subtitle_4(),
+			list: [m.our_teams_list_4_1(), m.our_teams_list_4_2(), m.our_teams_list_4_3(), m.our_teams_list_4_4()],
+		},
+	];
 </script>
 
-<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all [animation-timeline:view()] lg:gap-15 lg:p-15">
+<section class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
-	<div>
-		<p data-scroll="slide-up" class="text-2md lg:text-2xl">
-			At DEEP.FINE, we believe the future of industry lies in connecting the physical world with digital intelligence.
-			<br />
-			<br />
-			Our mission is simple: to make field operations smarter, safer, and more efficient through spatial computing, AI, and XR technologies. By bringing real-time data and intuitive
-			tools directly to the frontline, we help organizations reduce complexity, improve productivity, and unlock new ways of working.
-			<br />
-			<br />
-			We are continuously evolving our solutions—from AR-based work guidance to AI-powered field intelligence—to address real challenges across industries such as manufacturing,
-			logistics, construction, and the public sector.
-			<br />
-			<br />
-			DEEP.FINE is committed to delivering practical innovation that creates measurable impact. We will continue to push the boundaries of what’s possible and build technologies
-			that truly transform how work gets done in the field.
-			<br />
-			<br />
-			Thank you.
+	<div class="space-y-5 lg:space-y-10">
+		<p class="text-lg font-bold lg:text-4xl">
+			{m.ceo_txt_0()}
 		</p>
 
-		<dl data-scroll="slide-up" class="text-2md mt-7.5 border-t border-dashed border-t-black pt-7.5 lg:text-lg">
-			<dt class="pb-5 lg:text-2xl">Key Highlights</dt>
-			<dd class="text-dot">CEO & Founder, DEEP.FINE</dd>
-			<dd class="text-dot">15+ years of experience in digital, XR, and AI technologies</dd>
-			<dd class="text-dot">Led the development of spatial computing and AR-based industrial solutions</dd>
-			<dd class="text-dot">Delivered multiple large-scale projects across manufacturing, logistics, and public sectors</dd>
-			<dd class="text-dot">Speaker at global technology events including CES</dd>
-			<dd class="text-dot">Driving innovation in XR, Vision AI, and smart glasses-based platforms</dd>
-		</dl>
+		<p class="text-2md lg:text-2xl">
+			{m.ceo_text_1()}
+		</p>
+		<p class="text-2md lg:text-2xl">
+			{m.ceo_text_2()}
+		</p>
+		<p class="text-2md lg:text-2xl">
+			{m.ceo_text_3()}
+		</p>
+	</div>
+
+	<div class="space-y-2.5">
+		<p class="text-sm font-bold lg:text-lg">CEO</p>
+		<p class="text-2md lg:text-2xl">
+			{m.ceo_name()}
+		</p>
+
+		<picture>
+			<img src={sign} alt={m.ceo_name()} />
+		</picture>
 	</div>
 </section>
 
 <section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">Our Teams</h3>
 
-	<ul class="text-2md grid grid-cols-1 gap-2 lg:grid-cols-3 lg:text-lg">
-		<li class="bg-light-blue slide-up flex flex-col overflow-clip rounded-xl">
-			<picture class="flex">
-				<img src={division1} alt="logo" class="w-full" />
-			</picture>
+	<ul class="text-2md grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-15 lg:text-lg">
+		{#each teams as team}
+			<li class="bg-light-blue flex flex-col overflow-clip rounded-xl">
+				<picture class="flex">
+					<img src={team.img} alt={team.team} class="w-full" />
+				</picture>
 
-			<div class="flex flex-col gap-5 p-5 lg:gap-7.5 2xl:p-7.5">
-				<h4 class="text-primary text-2xl font-bold lg:text-5xl">Develop Division</h4>
-				<p class="text-666">
-					Builds the core technology that powers our products — from AI intelligence to immersive XR experiences and scalable applications across web and mobile. AI
-					Development: Develops vision AI, data models, and intelligent automation XR Development: Creates spatial computing and immersive interaction systems Web
-					Development: Builds scalable, high-performance web platforms Native App Development: Delivers optimized mobile and smart device applications
-				</p>
+				<div class="flex flex-col gap-5 p-5 lg:gap-7.5 lg:p-7.5">
+					<h4 class="text-primary text-2xl font-bold lg:text-4xl">{team.team}</h4>
+					<p class="text-666">{team.subtitle}</p>
 
-				<ul>
-					<li class="text-dot">AI Development: Develops vision AI, data models, and intelligent automation</li>
-					<li class="text-dot">XR Development: Creates spatial computing and immersive interaction systems</li>
-					<li class="text-dot">Web Development: Builds scalable, high-performance web platforms</li>
-					<li class="text-dot">Native App Development: Delivers optimized mobile and smart device applications</li>
-				</ul>
-			</div>
-		</li>
-		<li class="bg-light-blue slide-up flex flex-col overflow-clip rounded-xl">
-			<picture class="flex">
-				<img src={division2} alt="logo" class="w-full" />
-			</picture>
-
-			<div class="flex flex-col gap-5 p-5 lg:gap-7.5 2xl:p-7.5">
-				<h4 class="text-primary text-2xl font-bold lg:text-5xl">Service Division</h4>
-				<p class="text-666">
-					Builds the core technology that powers our products — from AI intelligence to immersive XR experiences and scalable applications across web and mobile. AI
-					Development: Develops vision AI, data models, and intelligent automation XR Development: Creates spatial computing and immersive interaction systems Web
-					Development: Builds scalable, high-performance web platforms Native App Development: Delivers optimized mobile and smart device applications
-				</p>
-
-				<ul>
-					<li class="text-dot">AI Development: Develops vision AI, data models, and intelligent automation</li>
-					<li class="text-dot">XR Development: Creates spatial computing and immersive interaction systems</li>
-					<li class="text-dot">Web Development: Builds scalable, high-performance web platforms</li>
-					<li class="text-dot">Native App Development: Delivers optimized mobile and smart device applications</li>
-				</ul>
-			</div>
-		</li>
-		<li class="bg-light-blue slide-up flex flex-col overflow-clip rounded-xl">
-			<picture class="flex">
-				<img src={division3} alt="logo" class="w-full" />
-			</picture>
-
-			<div class="flex flex-col gap-5 p-5 lg:gap-7.5 2xl:p-7.5">
-				<h4 class="text-primary text-2xl font-bold lg:text-5xl">Business Operations Division</h4>
-				<p class="text-666">
-					Builds the core technology that powers our products — from AI intelligence to immersive XR experiences and scalable applications across web and mobile. AI
-					Development: Develops vision AI, data models, and intelligent automation XR Development: Creates spatial computing and immersive interaction systems Web
-					Development: Builds scalable, high-performance web platforms Native App Development: Delivers optimized mobile and smart device applications
-				</p>
-
-				<ul>
-					<li class="text-dot">AI Development: Develops vision AI, data models, and intelligent automation</li>
-					<li class="text-dot">XR Development: Creates spatial computing and immersive interaction systems</li>
-					<li class="text-dot">Web Development: Builds scalable, high-performance web platforms</li>
-					<li class="text-dot">Native App Development: Delivers optimized mobile and smart device applications</li>
-				</ul>
-			</div>
-		</li>
+					<ul>
+						{#each team.list as list, i (`team-text-${i}`)}
+							<li class="text-dot">{list}</li>
+						{/each}
+					</ul>
+				</div>
+			</li>
+		{/each}
 	</ul>
 
 	<section
 		data-scroll="slide-up"
-		class="2xs:bg-[url(/src/lib/imgs/company/bg-join-us-mo.jpg)] h-80.5 rounded-xl bg-cover bg-bottom bg-no-repeat text-white transition-all lg:h-63.75 lg:bg-[url(/src/lib/imgs/company/bg-join-us-pc.jpg)]"
+		class="min-h-80.5 rounded-xl bg-(image:--bg-mo) bg-cover bg-bottom bg-no-repeat text-white transition-all lg:min-h-63.75 lg:bg-(image:--bg-pc)"
+		style="--bg-mo: url('{bannerBgMo}'); --bg-pc: url('{bannerBgPc}'); --bg-person: url('{bgPerson}');"
 	>
 		<div
-			class="flex h-full flex-col gap-5 bg-[url(/src/lib/imgs/company/bg-join-us-person.png)] bg-size-[203px_auto] bg-position-[center_calc(100%+64px)] bg-no-repeat p-5 lg:bg-size-[345px_353px] lg:bg-position-[calc(100%-10%)_top] lg:p-15"
+			class="flex h-full flex-col gap-5 bg-(image:--bg-person) bg-size-[203px_auto] bg-position-[calc(100%-20px)_calc(100%+60px)] bg-no-repeat p-5 lg:bg-size-[345px_353px] lg:bg-position-[calc(100%-5%)_top] lg:p-15"
 		>
-			<h4 class="text-2xl font-bold text-white text-shadow-md lg:text-5xl">Build what matters. Grow with us</h4>
+			<h4 class="text-2xl leading-tight font-bold text-white text-shadow-md lg:max-w-4/6 lg:text-5xl">{m.join_text()}</h4>
 
 			<div class="flex w-full items-center lg:inline-flex">
-				<button
-					type="submit"
-					class="hover:text-primary group flex min-h-12 flex-1 items-center gap-2 rounded-md border border-white px-5 text-white hover:bg-white lg:flex-none"
+				<a
+					href="/"
+					class="hover:text-primary group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-white px-5 text-white hover:bg-white lg:flex-none lg:justify-baseline"
 				>
-					<span>Join Us</span>
-					<icon-list name="tick-circle" class="group-hover:fill-primary size-6 fill-white"></icon-list>
-				</button>
+					<span>{m.join_btn()}</span>
+					<icon-list name="arrow-new-link" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+				</a>
 			</div>
 		</div>
 	</section>
