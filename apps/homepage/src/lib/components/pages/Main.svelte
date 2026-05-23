@@ -17,7 +17,7 @@
 
 	// import visualVideo from '/video/main-video.webm';
 
-	const visuel = {
+	const visual = {
 		logoText: m.main_visual_badge(),
 		title: m.main_visual_title(),
 		subtitle: m.main_visual_subtitle(),
@@ -26,7 +26,7 @@
 </script>
 
 <main class="main">
-	<MainVisual {bg} {logo} logoAlt={visuel.logoText} tit={visuel.title} subtit={visuel.subtitle} btnTxt={visuel.btnText}></MainVisual>
+	<MainVisual {bg} {logo} logoAlt={visual.logoText} tit={visual.title} subtit={visual.subtitle} btnTxt={visual.btnText}></MainVisual>
 
 	<Industry />
 

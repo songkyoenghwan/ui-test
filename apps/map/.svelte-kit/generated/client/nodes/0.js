@@ -1,1 +1,1 @@
-export { default as component } from "../../../../../../node_modules/.bun/@sveltejs+kit@2.59.1+4b90fe08aa57edb2/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte";
+export { default as component } from "../../../../../../node_modules/.bun/@sveltejs+kit@2.61.0+977cc1c57e148e43/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/layout.svelte";

@@ -11,7 +11,7 @@
 />
 
 <script lang="ts">
-	import { navigationStore, initNavigation, setCurrentId, currentItemFromPath } from '$/lib/stores/navigation.svelte';
+	import { navigationStore, initNavigation, setCurrentId, currentItemFromPath } from '$lib/stores/navigation.svelte';
 
 	let {
 		authority = 'user',

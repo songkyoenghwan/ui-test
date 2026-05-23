@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
+	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import daoLogo from '$lib/assets/imgs/logo/logo-dao-only.svg';
 	import dscLogo from '$lib/assets/imgs/logo/logo-dsc-only.svg';
 
-	let { tit = '', txt = '', subtxt = '', lists = [], logo = '' } = $props();
+	let { tit = '', txt = '', subTxt = '', lists = [], logo = '' } = $props();
 
 	let logoType = $derived(logo === 'dao' ? daoLogo : dscLogo);
 	let videoEl: HTMLVideoElement = $state(null);
@@ -18,7 +18,7 @@
 </script>
 
 <section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
-	<SubHeading {tit} {txt} {subtxt} />
+	<SubHeading {tit} {txt} {subTxt} />
 	<ul class="flex flex-col gap-5 xl:gap-7.5">
 		{#each lists as item, i (i)}
 			<li class="grid gap-5 rounded-xl bg-white p-5 lg:grid-cols-[minmax(0,1fr)_640px] xl:flex-row xl:gap-50 xl:p-15">
@@ -27,8 +27,8 @@
 						<dt class="text-2xl font-bold xl:text-5xl">{parseBreakline(item.tit)}</dt>
 						<dd class="text-lg xl:text-2xl">{parseBreakline(item.txt)}</dd>
 
-						{#if item.subtxt}
-							<dd class="text-2sm text-666 xl:text-lg">{parseBreakline(item.subtxt)}</dd>
+						{#if item.subTxt}
+							<dd class="text-2sm text-666 xl:text-lg">{parseBreakline(item.subTxt)}</dd>
 						{/if}
 					</dl>
 

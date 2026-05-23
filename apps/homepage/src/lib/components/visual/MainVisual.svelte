@@ -6,7 +6,7 @@
 />
 
 <script lang="ts">
-	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
+	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
 	let { videoUrl = '', bg = '', badge = '', logo = '', logoAlt = '', tit = '', subtit = '', btnTxt = '' } = $props();
 </script>

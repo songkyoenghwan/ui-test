@@ -6,7 +6,7 @@
 />
 
 <script lang="ts">
-	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
+	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 

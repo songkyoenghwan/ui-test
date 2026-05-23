@@ -7,7 +7,7 @@
 
 <script lang="ts">
 	import { visualMotion } from '$lib/components/heading/HeadingMotion.svelte';
-	import { parseBreakline } from '$/lib/utils/textUtils.svelte';
+	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 	import { m } from '$lib/paraglide/messages.js';
 
 	let { line = 'bottom', title = '' } = $props();

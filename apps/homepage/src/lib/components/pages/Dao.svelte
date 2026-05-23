@@ -9,10 +9,10 @@
 />
 
 <script lang="ts">
-	import Features from '$/lib/components/product/Features.svelte';
-	import Industries from '$/lib/components/product/Industries.svelte';
-	import Probelem from '$/lib/components/product/Problem.svelte';
-	import Results from '$/lib/components/product/Results.svelte';
+	import Features from '$lib/components/product/Features.svelte';
+	import Industries from '$lib/components/product/Industries.svelte';
+	import Problem from '$lib/components/product/Problem.svelte';
+	import Results from '$lib/components/product/Results.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
 	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
 	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
@@ -20,13 +20,13 @@
 
 	let { videoUrl = '' } = $props();
 
-	const visuel = {
+	const visual = {
 		logoText: m.product_visual_badge(),
 		title: m.product_visual_title(),
 		subtitle: m.product_visual_subtitle(),
 		btnText: m.product_visual_btn(),
 	};
-	const indkeys = [
+	const industries = [
 		'product_industries_list_1',
 		'product_industries_list_2',
 		'product_industries_list_3',
@@ -34,14 +34,14 @@
 		'product_industries_list_5',
 		'product_industries_list_6',
 	] as const;
-	const industries = indkeys.map((ind) => ({
+	const industriesArr = industries.map((ind) => ({
 		txt: m[ind](),
 	}));
 
 	type FeatureItem = {
 		tit: string;
 		txt: string;
-		subtxt?: string;
+		subTxt?: string;
 		logo: string;
 		labels: number;
 	};
@@ -51,7 +51,7 @@
 		tit: m.product_features_title(),
 		txt: m.product_features_text(),
 	};
-	const feakeys: FeatureItem[] = [
+	const feaKeys: FeatureItem[] = [
 		{
 			tit: 'product_features_tit_1',
 			txt: 'product_features_txt_1',
@@ -77,10 +77,10 @@
 			labels: 3,
 		},
 	] as const;
-	const feakeysList = feakeys.map((item, i) => ({
+	const feaKeysList = feaKeys.map((item, i) => ({
 		tit: m[item.tit as MsgKey]({ name: '' }),
 		txt: m[item.txt as MsgKey]({ name: '' }),
-		subtxt: 'subtxt' in item ? m[item.subtxt as MsgKey]({ name: '' }) : undefined,
+		subTxt: 'subTxt' in item ? m[item.subTxt as MsgKey]({ name: '' }) : undefined,
 		logo: m[item.logo as MsgKey]({ name: '' }),
 		labels: Array.from({ length: item.labels }, (_, y) => {
 			const key = `product_features_list_${i + 1}_${y + 1}` as MsgKey;
@@ -90,18 +90,18 @@
 	}));
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} logoAlt={visuel.logoText} tit={visuel.title} subtit={visuel.subtitle} btnTxt={visuel.btnText}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} logoAlt={visual.logoText} tit={visual.title} subtit={visual.subtitle} btnTxt={visual.btnText}></SubVisual>
 
-<Probelem />
+<Problem />
 
 <Industries
 	cls="lg:grid-cols-[repeat(auto-fit,minmax(calc(33%-10px),1fr))] grid-cols-[repeat(auto-fit,1fr)]"
 	tit={m.product_industries_title()}
 	txt={m.product_industries_text()}
-	subtxt={m.product_industries_subtext()}
-	lists={industries}
+	subTxt={m.product_industries_subtext()}
+	lists={industriesArr}
 />
 
-<Features tit={feature.tit} txt={feature.txt} lists={feakeysList} />
+<Features tit={feature.tit} txt={feature.txt} lists={feaKeysList} />
 
 <Results tit={feature.tit} txt={feature.txt} />

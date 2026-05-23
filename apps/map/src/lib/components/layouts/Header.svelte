@@ -11,7 +11,7 @@
 
 <script lang="ts">
 	import type { LnbSubItem } from '$lib/types/Lnb';
-	import { setCurrentId, currentItemFromPath, currentSubItem } from '$/lib/stores/navigation.svelte';
+	import { setCurrentId, currentItemFromPath, currentSubItem } from '$lib/stores/navigation.svelte';
 
 	let displayH3 = $derived($currentItemFromPath?.h3 ?? '');
 	let displayId = $derived($currentItemFromPath?.id ?? '');

@@ -1,4 +1,4 @@
-import '$/lib/components/tooltip/HoverTooltip.svelte';
+import '$lib/components/tooltip/HoverTooltip.svelte';
 import '@/components/alert/AlertPopup.svelte';
 import '@/components/badges/BadgeText.svelte';
 import '@/components/icons/Icons.svelte';

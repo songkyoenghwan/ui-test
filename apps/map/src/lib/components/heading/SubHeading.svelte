@@ -2,7 +2,7 @@
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
-	let { tit = '', txt = '', subtxt = '' } = $props();
+	let { tit = '', txt = '', subTxt = '' } = $props();
 	let played = $state(false);
 
 	const headingMotion: Attachment<HTMLElement> = (el) => {
@@ -41,7 +41,7 @@
 	<p class="text-666 text-2md font-bold xl:text-2xl">{@html tit}</p>
 	<h3 class="text-1a1a2e text-2xl leading-tight font-bold xl:text-5xl">{@html txt}</h3>
 
-	{#if subtxt}
-		<p class="text-666 text-2md mt-2.5 font-bold xl:text-2xl">{@html subtxt}</p>
+	{#if subTxt}
+		<p class="text-666 text-2md mt-2.5 font-bold xl:text-2xl">{@html subTxt}</p>
 	{/if}
 </header>

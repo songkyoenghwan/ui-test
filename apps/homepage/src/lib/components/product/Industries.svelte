@@ -10,7 +10,7 @@
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
-	let { tit = '', txt = '', subtxt = '', lists = [], cls = '' } = $props();
+	let { tit = '', txt = '', subTxt = '', lists = [], cls = '' } = $props();
 	let played = $state(false);
 
 	const indMotion: Attachment<HTMLElement> = (el) => {
@@ -58,7 +58,7 @@
 
 <section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
 	<div class="space-y-5 bg-white p-5 xl:space-y-15 xl:p-15">
-		<SubHeading {tit} {txt} {subtxt} />
+		<SubHeading {tit} {txt} {subTxt} />
 		<ul {@attach indMotion} class={['grid gap-5', cls]}>
 			{#each lists as item, i (i)}
 				{@render contentIndustries(item.tit, item.txt)}
