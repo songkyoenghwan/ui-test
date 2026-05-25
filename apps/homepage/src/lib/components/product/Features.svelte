@@ -21,10 +21,7 @@
 	<SubHeading {tit} {txt} {subTxt} />
 	<ul class="flex flex-col gap-5 xl:gap-7.5">
 		{#each lists as item, i (i)}
-			<li
-				class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md lg:grid-cols-[minmax(0,1fr)_640px] xl:flex-row xl:gap-50 xl:p-15"
-				style:top={200 * i + 1 + 'px'}
-			>
+			<li class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md lg:grid-cols-[minmax(0,1fr)_640px] xl:flex-row xl:gap-50 xl:p-15">
 				<div class="flex flex-col justify-between gap-2.5">
 					<dl class="space-y-2.5 xl:space-y-5">
 						<dt class="text-2xl font-bold xl:text-5xl">{parseBreakline(item.tit)}</dt>

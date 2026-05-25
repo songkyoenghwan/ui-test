@@ -39,15 +39,18 @@ news-section {
 }
 
 .stack-card {
-	position: sticky;
+	@media (min-width: 1024px) {
+		position: sticky;
+		top: 150px;
 
-	/* 브라우저 스크롤 타임라인과 애니메이션을 다이렉트 체결 */
-	view-timeline-name: --card-scroll;
-	view-timeline-axis: block;
+		/* 브라우저 스크롤 타임라인과 애니메이션을 다이렉트 체결 */
+		view-timeline-name: --card-scroll;
+		view-timeline-axis: block;
 
-	animation-name: stackAnimation;
-	animation-timeline: --card-scroll;
-	animation-range: exit 0% exit 100%;
+		animation-name: stackAnimation;
+		animation-timeline: --card-scroll;
+		animation-range: exit 0% exit 100%;
+	}
 }
 
 @keyframes header-view {

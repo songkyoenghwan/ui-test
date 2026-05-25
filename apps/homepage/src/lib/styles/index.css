@@ -337,6 +337,7 @@
 
 	html {
 		overflow-x: hidden;
+		scroll-behavior: smooth;
 
 		&:lang(ko) {
 			word-break: keep-all;
