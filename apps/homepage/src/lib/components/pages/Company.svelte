@@ -45,7 +45,7 @@
 	];
 </script>
 
-<section class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
+<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
 	<div class="space-y-5 lg:space-y-10">
@@ -76,12 +76,12 @@
 	</div>
 </section>
 
-<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
+<section class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">Our Teams</h3>
 
 	<ul class="text-2md grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-15 lg:text-lg">
 		{#each teams as team}
-			<li class="bg-light-blue flex flex-col overflow-clip rounded-xl">
+			<li data-scroll="slide-up" class="bg-light-blue flex flex-col overflow-clip rounded-xl">
 				<picture class="flex">
 					<img src={team.img} alt={team.team} class="w-full" />
 				</picture>

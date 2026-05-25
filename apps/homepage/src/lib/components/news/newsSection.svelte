@@ -76,13 +76,13 @@
 {/snippet}
 
 {#if layout === 'list'}
-	<section class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15">
+	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15">
 		{@render imgRender(img)}
 
 		{@render newsRender(img, badges, title, text, date, source)}
 	</section>
 {:else}
-	<section class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
+	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
 		{@render newsRender(img, badges, title, text, date, source, url)}
 	</section>
 {/if}

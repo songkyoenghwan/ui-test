@@ -2,6 +2,10 @@
 	customElement={{
 		tag: 'sub-heading-line',
 		shadow: 'none',
+		props: {
+			title: { type: 'String' },
+			subTit: { type: 'String' },
+		},
 	}}
 />
 
@@ -10,7 +14,7 @@
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 	import { m } from '$lib/paraglide/messages.js';
 
-	let { line = 'bottom', title = '' } = $props();
+	let { line = 'bottom', title = '', subTit = '' } = $props();
 
 	const titParse = $derived(parseBreakline(title));
 
@@ -33,7 +37,7 @@
 	});
 </script>
 
-<header {@attach visualMotion} class="space-y-2.5 {line === 'bottom' ? 'border-b border-b-black' : ''} pb-5 opacity-100 lg:pb-15">
+<header {@attach visualMotion} class="space-y-2.5 {line === 'bottom' ? 'border-b border-b-black' : ''} pb-5 opacity-100 lg:pb-15 lg:whitespace-pre-line">
 	<h2 class="text-3xl font-bold transition-all lg:text-6xl">{titParse}</h2>
-	<p class="text-2md transition-all lg:text-lg">{txt}</p>
+	<p class="text-2md transition-all lg:text-lg">{subTit ? subTit : txt}</p>
 </header>

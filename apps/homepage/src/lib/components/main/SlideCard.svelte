@@ -8,84 +8,95 @@
 <script lang="ts">
 	import { register } from 'swiper/element/bundle';
 	register();
+	import { m } from '$lib/paraglide/messages.js';
+	// oxlint-disable-next-line typescript/no-explicit-any
+	let swiperEl: HTMLElement | any | null = $state(null);
+	const cardImg1 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-1.png' : '/imgs/main/slide/img-card-1.png');
+	const cardImg2 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-2.png' : '/imgs/main/slide/img-card-2.png');
+	const cardImg3 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-3.png' : '/imgs/main/slide/img-card-3.png');
+	const cardImg4 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-4.png' : '/imgs/main/slide/img-card-4.png');
 
 	const lists = [
 		{
 			id: 'card-slide-1',
-			badge: ['공공시설 점검', 'DAO'],
-			txt: '스마트글라스 기반 원격 점검으로 출장 비용 60% 절감, 생산성 34% 향상',
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
+			badge: [m.main_mro_badge_1?.(), m.main_mro_badge_2?.()],
+			txt: m.main_mro_txt_1?.(),
+			img: cardImg1,
+			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png?url',
 		},
 		{
 			id: 'card-slide-2',
-			badge: ['중공업 MRO', 'DAO'],
-			txt: 'Vision Assist로 도면·작업 지침을 즉시 표시해 정비 시간 30% 단축, 교육 기간 40% 단축',
+			badge: [m.main_mro_badge_3?.(), m.main_mro_badge_2?.()],
+			txt: m.main_mro_txt_2?.(),
+			img: cardImg2,
 			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-3',
-			badge: ['건설', '디지털트윈'],
-			txt: '3D 디지털 트윈으로 제조 공정 가시화 및 이상 감지 모니터링 체계 구축',
+			badge: [m.main_mro_badge_4?.(), m.main_mro_badge_5?.()],
+			txt: m.main_mro_txt_3?.(),
+			img: cardImg3,
 			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 		{
 			id: 'card-slide-4',
-			badge: ['관광·축제', '혼잡도 분석'],
-			txt: 'AI 혼잡도 분석과 맞춤 경로 추천으로 누적 이용 416만 건, 방문객 만족도 4.3점 달성',
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
-		},
-		{
-			id: 'card-slide-5',
-			badge: ['공공시설 점검', 'DAO'],
-			txt: '스마트글라스 기반 원격 점검으로 출장 비용 60% 절감, 생산성 34% 향상',
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
-		},
-		{
-			id: 'card-slide-6',
-			badge: ['중공업 MRO', 'DAO'],
-			txt: 'Vision Assist로 도면·작업 지침을 즉시 표시해 정비 시간 30% 단축, 교육 기간 40% 단축',
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
-		},
-		{
-			id: 'card-slide-7',
-			badge: ['건설', '디지털트윈'],
-			txt: '3D 디지털 트윈으로 제조 공정 가시화 및 이상 감지 모니터링 체계 구축',
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
-		},
-		{
-			id: 'card-slide-8',
-			badge: ['관광·축제', '혼잡도 분석'],
-			txt: 'AI 혼잡도 분석과 맞춤 경로 추천으로 누적 이용 416만 건, 방문객 만족도 4.3점 달성',
+			badge: [m.main_mro_badge_6?.(), m.main_mro_badge_7?.()],
+			txt: m.main_mro_txt_4?.(),
+			img: cardImg4,
 			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
 	] as const;
+
+	const creativeConfig = {
+		effect: 'cards',
+		cardsEffect: {
+			rotate: false,
+			perSlideRotate: 0,
+			perSlideOffset: 9,
+		},
+		grabCursor: true,
+		loop: true,
+		centeredSlides: true,
+		centeredSlidesBounds: false,
+		centerInsufficientSlides: true,
+		slidesPerView: 1,
+		speed: 400,
+		navigation: false,
+		// autoplay: {
+		// 	delay: 5000,
+		// 	disableOnInteraction: false,
+		// },
+	};
+
+	// DOM에 안착하는 순간 Swiper 주입
+	$effect(() => {
+		if (swiperEl) {
+			Object.assign(swiperEl, creativeConfig);
+			swiperEl.initialize();
+		}
+	});
 </script>
 
-<section class="grid grid-cols-1 rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15">
-	<sub-heading-line
-		line="none"
-		title="다양한 산업 현장에서 검증된 성과를 만들고 있습니다"
-		text="딥파인은 물류·제조·MRO·공공 분야의 실제 현장에서 작업 효율화, 오류 감소, 업무 표준화, 데이터 기반 운영 관리를 검증하고 있습니다."
-	></sub-heading-line>
+<section data-scroll="slide-up" class="relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15">
+	<sub-heading-line line="none" title={m.main_title_mro?.()} subTit={m.main_subtitle_mro?.()}></sub-heading-line>
 
-	<div class="relative mx-auto flex w-full max-w-145 items-center justify-between gap-5 lg:px-10">
-		<swiper-container
-			effect="cards"
-			cards-effect-rotate="false"
-			cards-effect-slide-shadows="false"
-			grab-cursor="true"
-			loop="true"
-			speed="3000"
-			autoplay-delay="300"
-			autoplay-disable-on-interaction="true"
-			navigation="true"
-			class="mx-auto w-full max-w-95"
-		>
-			{#each lists as list (list.id)}
-				<swiper-slide class="h-full w-full bg-transparent opacity-95 shadow-transparent lg:w-125 [&.swiper-slide-active]:opacity-100">
-					<div class="bg-7785ff w-full space-y-5 overflow-clip rounded-xl p-5">
+	<div
+		data-scroll="slide-up"
+		class="relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145"
+	>
+		{#if lists && lists.length > 0}
+			<swiper-container
+				bind:this={swiperEl}
+				init="false"
+				navigation="false"
+				class="*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"
+			>
+				{#each lists as list (list.id)}
+					<swiper-slide
+						class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5"
+					>
 						<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
-							<img src="https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png" alt="" class="w-full object-cover" />
+							<img src={list.img} alt="" class="w-full object-cover" />
 						</picture>
 
 						<ul class="flex items-center justify-center gap-3">
@@ -95,15 +106,26 @@
 								</li>
 							{/each}
 						</ul>
-						<dl class="text-2md lg:43.5 flex h-35 flex-col justify-between overflow-clip rounded-b-xl px-5 text-lg text-white">
+						<dl class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35">
 							<dt class="text-center text-lg lg:text-2xl">
 								{list.txt}
 							</dt>
 							<dd class=" text-right">2025. 12. 8</dd>
 						</dl>
-					</div>
-				</swiper-slide>
-			{/each}
-		</swiper-container>
+					</swiper-slide>
+				{/each}
+			</swiper-container>
+		{/if}
+
+		<div class="absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5">
+			<button class="grid size-9 place-content-center rounded-full bg-black lg:size-12" onclick={() => swiperEl?.swiper?.slidePrev()}>
+				<span class="sr-only">Slide Prev</span>
+				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 rotate-180 stroke-white"></icon-list>
+			</button>
+			<button class="grid size-9 place-content-center rounded-full bg-black lg:size-12" onclick={() => swiperEl?.swiper?.slideNext()}>
+				<span class="sr-only">Slide Next</span>
+				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+			</button>
+		</div>
 	</div>
 </section>

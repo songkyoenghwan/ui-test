@@ -7,7 +7,9 @@
 </script>
 
 <!-- 현재 창 활성 시 -  aria-current="page" 를 생성, 언어 선택시 aria-current="true" 생성 -->
-<header class="header bg-f5f5f5 group/header fixed top-0 left-0 z-5 grid w-full place-items-center has-checked:bg-white! 2xl:has-checked:grid-cols-2 2xl:has-checked:items-start">
+<header
+	class="header bg-f5f5f5 group/header fixed top-0 left-0 z-5 grid w-full max-w-dvw place-items-center has-checked:bg-white! 2xl:has-checked:grid-cols-2 2xl:has-checked:items-start"
+>
 	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex"></header-imgs>
 
 	<div

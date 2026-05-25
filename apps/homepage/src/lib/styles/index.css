@@ -336,6 +336,8 @@
 	}
 
 	html {
+		overflow-x: hidden;
+
 		&:lang(ko) {
 			word-break: keep-all;
 		}
@@ -497,4 +499,9 @@
 	.text-dot {
 		@apply flex items-start gap-2.5 before:mt-3 before:size-1 before:rounded-full before:bg-black;
 	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	background-color: var(--color-black);
 }

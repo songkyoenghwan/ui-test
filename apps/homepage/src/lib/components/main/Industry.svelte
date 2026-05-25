@@ -6,6 +6,7 @@
 />
 
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages.js';
 	import { Marquee } from '@selemondev/svelte-marquee';
 	import '@selemondev/svelte-marquee/dist/style.css';
 	const lists = [
@@ -45,8 +46,8 @@
 	] as const;
 </script>
 
-<section data-scroll="slide-up" class="w-full space-y-7.5 lg:space-y-15">
-	<h3 class="text-center text-lg lg:text-4xl">다양한 산업 현장에서 검증된 딥파인의 기술력</h3>
+<section data-scroll="first" class="w-full max-w-dvw space-y-7.5 lg:space-y-15">
+	<h3 class="text-center text-lg lg:text-4xl">{m.main_industry()}</h3>
 
 	{#if lists}
 		<Marquee pauseOnHover={true} class="gap-3.75 lg:gap-7.5" innerClassName="gap-3.75 lg:gap-7.5" fade={true}>

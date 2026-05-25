@@ -1,32 +1,36 @@
 <svelte:options
 	customElement={{
-		tag: 'main-whay',
+		tag: 'main-why',
 		shadow: 'none',
 	}}
 />
 
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages.js';
+
+	const videoUrl1 = $derived(import.meta.env.PROD ? '/build/video/img-why-1.mp4' : '/video/img-why-1.mp4');
+	const videoUrl2 = $derived(import.meta.env.PROD ? '/build/video/img-why-2.mp4' : '/video/img-why-2.mp4');
 	let lists = [
 		{
 			id: 'why-1',
-			video: '/src/lib/assets/imgs/main/why/img-why-1.mp4',
+			video: videoUrl1,
 			tit: '36',
-			txt: '수상 및 인증',
+			txt: m.main_why_txt_1?.(),
 			font: '90',
 			cls: 'flex-col bg-[url(/src/lib/assets/imgs/main/bg-why-1.png)] bg-no-repeat bg-center bg-cover text-white lg:row-span-2',
 		},
 		{
 			id: 'why-2',
-			video: '/src/lib/assets/imgs/main/why/img-why-2.mp4',
+			video: videoUrl2,
 			tit: '22,000',
-			txt: '산업 데이터 리포트',
+			txt: m.main_why_txt_2?.(),
 			cls: 'flex-col bg-white',
 		},
 		{
 			id: 'why-3',
 			img: '/src/lib/assets/imgs/main/why/img-why-3.png',
 			tit: '70',
-			txt: '글로벌 대기업·공공기관 고객 및 파트너',
+			txt: m.main_why_txt_3?.(),
 			font: '90',
 			cls: 'flex-col bg-linear-to-r from-[#e8eeff] to-[#c5d3f7] lg:col-span-2',
 		},
@@ -34,7 +38,7 @@
 			id: 'why-4',
 			img: '/src/lib/assets/imgs/main/why/img-why-4.png',
 			tit: 'No.1',
-			txt: '국내 스마트글라스 산업 도입',
+			txt: m.main_why_txt_4?.(),
 			font: '90',
 			cls: 'text-white bg-linear-to-r from-[#3743ff] to-[#90f0ff] lg:flex lg:justify-between lg:col-span-2',
 		},
@@ -42,25 +46,28 @@
 			id: 'why-5',
 			img: '/src/lib/assets/imgs/main/why/img-why-5.png',
 			tit: '92%',
-			txt: '고객 유지율',
+			txt: m.main_why_txt_5?.(),
 			font: '90',
 			cls: 'flex-col bg-white',
 		},
 	];
 </script>
 
-<section data-scroll="slide-up" class="relative">
-	<sub-heading-line
-		line="none"
-		title="We Transform \n How Industrial Sites Work"
-		text="공간을 인식하고, 작업을 데이터화하며, 산업 운영의 AX 전환을 가속합니다."
-	></sub-heading-line>
+<section data-scroll="slide-up" class="relative max-w-dvw">
+	<sub-heading-line line="none" title={m.main_title_why?.()} subTit={m.main_subtitle_why?.()}></sub-heading-line>
 
 	<ul class="grid grid-cols-1 grid-rows-1 gap-7.5 lg:grid-cols-4 lg:grid-rows-[repeat(2,385px)]">
 		{#each lists as list, i (list.id)}
-			<li data-scroll="slide-up" data-index={i} class={['relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl lg:h-full', list.cls]}>
+			<li
+				data-scroll="slide-up"
+				data-index={i}
+				class={[
+					'relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all max-lg:flex-col lg:h-full lg:hover:scale-105',
+					list.cls,
+				]}
+			>
 				<dl class="space-y-2.5 p-5">
-					<dt class={['text-5xl leading-snug font-bold lg:text-6xl lg:data-[font=90]:text-[90px]', list.id === 'why-3' ? 'text-primary' : '']} data-font={list.font}>
+					<dt class={['text-5xl leading-none  font-bold lg:text-6xl lg:data-[font=90]:text-[90px]', list.id === 'why-3' ? 'text-primary' : '']} data-font={list.font}>
 						{list.tit}
 					</dt>
 					<dd class="text-2md lg:text-lg">{list.txt}</dd>
@@ -89,7 +96,7 @@
 								class={[
 									'relative ',
 									list.id === 'why-3'
-										? 'h-full translate-x-[40%] -translate-y-1/11'
+										? 'h-full translate-x-4/10 translate-y-3/10 scale-180 lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-100'
 										: list.id === 'why-4'
 											? 'h-61.5 w-auto'
 											: list.id === 'why-5'

@@ -8,8 +8,10 @@
 		"es-toolkit": "^1.46.1",
 		"flowbite": "^4.0.2",
 		"gsap": "^3.15.0",
+		"keen-slider": "^6.8.6",
 		"motion": "^12.38.0",
-		"svelte-marquee-text-widget": "^1.1.0"
+		"svelte-marquee-text-widget": "^1.1.0",
+		"swiper": "^12.1.4"
 	},
 	"devDependencies": {
 		"@inlang/paraglide-js": "^2.18.0",

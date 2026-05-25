@@ -1,10 +1,59 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"hello_world": "Hello, {name} from ko!",
+	"main_visual_badge": "Smart Glasses × AI",
+	"main_visual_title": "산업 현장의 일하는 방식을 \n 공간지능으로 바꿉니다",
+	"main_industry": "다양한 산업 현장에서 검증된 딥파인의 기술력",
 
-	"main_visual_badge": "공간지능 기반 산업 AI 플랫폼 기업",
-	"main_visual_title": "산업 현장의 일하는 방식을 \n공간지능으로 바꿉니다",
-	"main_visual_subtitle": "설딥파인은 스마트글라스, Vision AI, AR, 공간컴퓨팅 기술을 기반으로 물류·제조·MRO·공공 현장의 작업과 공간 데이터를 연결합니다. \n\n수작업과 숙련자 의존으로 운영되던 현장을표준화된 디지털 워크플로우와 산업 AI 운영 플랫폼으로 전환합니다.",
+	"main_title_our": "Our Products",
+	"main_subtitle_our": "딥파인은 물류, 제조·MRO, 공간 데이터 분야의 현장 문제를 해결하는 산업 AI 솔루션을 제공합니다.",
+	"main_our_item_tit_1": "스마트 물류 운영 솔루션",
+	"main_our_item_txt_1": "LOGI.FINE은 물류센터의 피킹, 검수, 분류, 패킹 업무를 스마트글라스와 Vision AI 기반으로 지원하는 솔루션입니다.",
+	"main_our_item_tit_2": "AI 글래스 기반 현장 업무 지원 솔루션",
+	"main_our_item_txt_2": "DAO는 제조, MRO, 방산 현장의 점검·정비 업무에 필요한 정보를 \n 스마트글라스로 제공하고, 작업자의 현장 업무 수행을 지원하는 솔루션입니다.",
+	"main_our_item_tit_3": "공간컴퓨팅 기반 디지털 공간 구축 솔루션",
+	"main_our_item_txt_3": "DSC는 현실 공간을 3D 공간 데이터로 구축하고,\n위치 인식과 AR 콘텐츠를 결합해 공간 기반 서비스를 구현하는 솔루션입니다.",
+
+	"main_title_work": "We Transform \n How Industrial Sites Work",
+	"main_subtitle_work": "공간을 인식하고, 작업을 데이터화하며, 산업 운영의 AX 전환을 가속합니다.",
+
+	"main_work_item_tit_1": "공간지능 AI",
+	"main_work_item_subTit_1": "V-SLAM · VPS · 3D 공간 매핑",
+	"main_work_item_txt_1": "현실 공간을 인식하고 3D 공간 데이터로 구조화해 산업 현장의 공간 정보를 운영 자산으로 전환합니다.",
+	"main_work_item_tit_2": "비전 어시스트 AI",
+	"main_work_item_subTit_2": "객체 인식 · 문자 인식 · 바코드 인식",
+	"main_work_item_txt_2": "작업자 시점의 이미지, 바코드, 설비, 작업 상태를 인식해 검수·점검 업무와 사진·영상 기반 작업 기록을 지원합니다.",
+	"main_work_item_tit_3": "운영 데이터 AI",
+	"main_work_item_subTit_3": "작업 로그 분석 · API 연동 · 대시보드",
+	"main_work_item_txt_3": "작업 로그, 사진·영상 기록, 오류, 처리 시간 데이터를 분석해 현장 운영의 병목을 파악하고 업무 최적화를 지원합니다.",
+
+	"main_why_txt_1": "수상 및 인증",
+	"main_why_txt_2": "산업 데이터 리포트",
+	"main_why_txt_3": "글로벌 대기업·공공기관 고객 및 파트너",
+	"main_why_txt_4": "국내 스마트글라스 산업 도입",
+	"main_why_txt_5": "고객 유지율",
+
+	"main_title_why": "Why DEEP.FINE",
+	"main_subtitle_why": "작업 로그 분석 · API 연동 · 대시보드",
+
+	"main_title_mro": "다양한 산업 현장에서 \n 검증된 성과를 만들고 있습니다.",
+	"main_subtitle_mro": "딥파인은 물류·제조·MRO·공공 분야의 실제 현장에서 \n작업 효율화, 오류 감소, 업무 표준화, \n데이터 기반 운영 관리를 검증하고 있습니다.",
+	"main_mro_badge_1": "공공시설 점검",
+	"main_mro_badge_2": "DAO",
+	"main_mro_badge_3": "중공업 MRO",
+	"main_mro_badge_4": "건설",
+	"main_mro_badge_5": "디지털트윈",
+	"main_mro_badge_6": "관광·축제",
+	"main_mro_badge_7": "혼잡도 분석",
+	"main_mro_txt_1": "스마트글라스 기반 원격 점검으로 \n 출장 비용 60% 절감, 생산성 34% 향상",
+	"main_mro_txt_2": "스마트글라스 기반 원격 점검으로 \n 출장 비용 60% 절감, 생산성 34% 향상",
+	"main_mro_txt_3": "Vision Assist로 \n 도면·작업 지침을 즉시 표시해 \n 정비 시간 30% 단축, 교육 기간 40% 단축",
+	"main_mro_txt_4": "3D 디지털 트윈으로 제조 공정 가시화 및  \n 이상 감지 모니터링 체계 구축",
+
+	"main_title_news": "DEEP.FINE NEWS",
+	"main_subtitle_news": "딥파인의 산업 AI, 공간지능, 스마트글라스 솔루션 적용 사례와 최신 소식을 확인하세요.",
+	"main_title_ai": "검증된 산업 AI를 \n 귀사의 현장에 적용해보세요.",
+	"main_subtitle_ai": "고객사의 실제 운영 환경에 맞는 PoC와 도입 전략을 제안드립니다.",
 
 	"page_subtitle_logi": "",
 	"page_subtitle_dao": "",
@@ -12,12 +61,10 @@
 	"page_subtitle_news": "DEEP.FINE의 최신 개발, 전망 및 혁신을 알아보세요.",
 	"page_subtitle_company": "DEEP.FINE의 혁신을 이끄는 사람들과 조직 구조",
 	"page_subtitle_contact": "XR 공간 구축부터 현장 협업, 물류 운영까지 업무 환경에 맞는 솔루션을 함께 설계해 드립니다.",
-
 	"product_visual_badge": "DEEP.FINE AR.ON — DAO",
 	"product_visual_title": "산업 현장 어디서든 \n<strong>완벽한 업무 비서</strong>가 됩니다",
 	"product_visual_subtitle": "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고,\n 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다.\n 장갑을 낀 채로, 두 손은 자유롭게.",
-	"product_visual_btn": "도입 문의하기",
-
+	"product_visual_btn": "도입 문의",
 	"product_problem_title": "Problem & Solution",
 	"product_problem_text": "DAO 도입 전과 후, 현장이 달라집니다",
 	"product_as_list_tit_1": "숙련자 감소, 경험 의존 판단",
@@ -36,7 +83,6 @@
 	"product_to_list_txt_3": "체크리스트, 사진, 음성 메모가 모두 자동으로 저장되고 실시간 동기화되어 언제든 검색·조회 가능합니다. ",
 	"product_to_list_tit_4": "원격 협업으로 출장 없이 해결",
 	"product_to_list_txt_4": "전문가가 원격으로 AR 지시를 내려 출장을 대체합니다.",
-
 	"product_industries_title": "Industries",
 	"product_industries_text": "정비·점검이 필요한 모든 산업 현장에 적용됩니다",
 	"product_industries_subtext": "조선·중공업부터 식품·제약까지, 다양한 산업 환경에 유연하게 대응합니다.",
@@ -46,10 +92,8 @@
 	"product_industries_list_4": "에너지·플랜트 설비 유지보수",
 	"product_industries_list_5": "식품·제약 GMP 점검",
 	"product_industries_list_6": "전력·에너지 설비 점검",
-
 	"product_features_title": "Features",
 	"product_features_text": "산업 현장을 바꾸는 DAO 핵심 기능",
-
 	"product_features_tit_1": "Vision Assist",
 	"product_features_txt_1": "스마트글라스로 설비 번호를 스캔하면 도면·매뉴얼이 시야에 즉시 표시됩니다. <br /> AI 챗봇으로 유지보수·설치방법·주의 사항 등 매뉴얼을 즉시 탐색해 보세요.",
 	"product_features_logo_1": "조선 MRO 현장 — 정비 시간 30% 단축",
@@ -57,13 +101,11 @@
 	"product_features_list_1_2": "QR 스캔 ",
 	"product_features_list_1_3": "도면 뷰어",
 	"product_features_list_1_4": "메뉴얼 검색(LLM)",
-
 	"product_features_tit_2": "Photo Ledger",
 	"product_features_txt_2": "스마트글라스로 현장을 바로 촬영하고, 사진에 음성 메모를 결합하여 작업 현황을 기록합니다.",
 	"product_features_logo_2": "조선·건설 현장 — 현장 증빙 작성 효율화",
 	"product_features_list_2_1": "사진+메모 자동 결합",
 	"product_features_list_2_2": "대시보드 연동",
-
 	"product_features_tit_3": "Workflow",
 	"product_features_txt_3": "업무 표준 체크리스트 생성부터 레포트 작성, 완료 시 결과 보고서(PDF, Excel)가 자동 생성되며, 모든 데이터는 PC·모바일·스마트글라스에서 실시간 동기화를 지원합니다.<br /> 실제 객체 위에 증강된 AR 매뉴얼, 3D 객체를 증강시켜 직관적인 정보 인식이 가능합니다. ",
 	"product_features_logo_3": "식품기업 협력사 품질점검 — 업무 생산성 34% 향상",
@@ -71,57 +113,48 @@
 	"product_features_list_3_2": "오프라인 모드 지원",
 	"product_features_list_3_3": "IoT 데이터 증강",
 	"product_features_list_3_4": "AR 매뉴얼",
-
 	"product_features_tit_4": "Remote",
 	"product_features_txt_4": "전문가가 AR로 직접 지시, 출장 없이 현장 해결",
 	"product_features_logo_4": "경기도 원격 안전점검 — 출장 시간·비용 60% 절감",
 	"product_features_list_4_1": "스마트글라스 원격 제어",
 	"product_features_list_4_2": "체크리스트 동시 작성",
 	"product_features_list_4_3": "얼굴 자동 모자이크",
-
 	"ceo_subtitle": "딥파인은 AI와 Spatial Computing 기술을 기반으로 산업 현장의 운영 방식을 바꾸고 있습니다.",
 	"ceo_txt_0": "딥파인은 AI와 Spatial Computing 기술을 기반으로 산업 현장의 운영 방식을 바꾸고 있습니다.",
 	"ceo_text_1": "우리는 현장의 작업과 공간 데이터를 연결해 수작업과 경험에 의존하던 업무를 표준화하고, 더 안전하고 효율적인 운영 구조로 전환하고자 합니다. 스마트글래스, Vision AI, VPS, 3D 공간 데이터 기술은 이를 실현하기 위한 딥파인의 핵심 기반입니다.",
 	"ceo_text_2": "딥파인은 물류, 제조, 조선·중공업, MRO, 관광·공공 분야에서 고객과 함께 기술을 검증하고 상용화해 왔습니다.",
 	"ceo_text_3": "이제는 검증된 기술을 더 많은 현장과 산업으로 확장하며, 고객의 성과로 증명되는 산업 AX 솔루션을 만들어가겠습니다.",
 	"ceo_name": "김현배",
-
 	"our_teams_team_1": "기술개발본부",
 	"our_teams_subtitle_1": "딥파인의 Spatial AI와 산업 운영 솔루션을 구현하는 핵심 기술을 개발합니다. 비전 AI, 3D 공간 매핑, VPS, 클라우드, 스마트글래스 애플리케이션까지 현장에서 작동하는 기술 기반을 만듭니다.",
 	"our_teams_list_1_1": "AI·Vision 개발: 산업 현장 인식, 객체 인식, Vision AI, AI Agent 기술 개발",
 	"our_teams_list_1_2": "플랫폼 개발: 클라우드, 백엔드, API, 데이터 처리 인프라 구축",
 	"our_teams_list_1_3": "애플리케이션 개발: 모바일, 웹, 스마트글래스, XR 기반 현장 앱",
 	"our_teams_list_1_4": "Spatial Computing 개발: VPS, 3D 매핑, 실내 측위, 공간 데이터 처리 기술 개발",
-
 	"our_teams_team_2": "제품·서비스본부",
 	"our_teams_subtitle_2": "산업 현장의 요구사항을 실제 제품과 서비스 경험으로 설계합니다. 고객의 업무 프로세스를 분석하고, 사용자가 현장에서 쉽게 쓸 수 있는 화면, 기능, 콘텐츠, 도입 구조를 만듭니다.",
 	"our_teams_list_2_1": "제품기획: 솔루션 방향성, 기능 우선순위, 제품 로드맵 수립",
 	"our_teams_list_2_2": "UX/UI 디자인: 웹, 모바일, 스마트글래스, XR 환경에 맞는 사용자 경험 설계",
 	"our_teams_list_2_3": "프로젝트 관리: PoC, 구축, 고객 요구사항, 일정 및 산출물 관리",
 	"our_teams_list_2_4": "콘텐츠·서비스 설계: 3D 에셋, 매뉴얼, 업무 시나리오, 현장형 서비스 콘텐츠 제작",
-
 	"our_teams_team_3": "경영지원본부",
 	"our_teams_subtitle_3": "딥파인이 안정적으로 성장할 수 있도록 인사, 재무, 총무, 법무, 내부 운영 체계를 관리합니다. 구성원이 제품 개발과 고객 대응에 집중할 수 있는 환경을 조성하고, 조직 운영의 안정성과 효율성을 높이는 기반을 만듭니다.",
 	"our_teams_list_3_1": "재무·회계: 회계, 자금, 예산, 정산, 경영 리포트 관리",
 	"our_teams_list_3_2": "인사·조직문화: 채용, 온보딩, 평가, 조직문화 및 구성원 경험 관리",
 	"our_teams_list_3_3": "총무·자산관리: 사무환경, 자산, 계약, 구매 및 행정 업무 지원",
 	"our_teams_list_3_4": "운영지원: 내부 프로세스, 문서, 컴플라이언스, 업무 효율화 지원",
-
 	"our_teams_team_4": "세일즈·마케팅본부",
 	"our_teams_subtitle_4": "딥파인의 기술과 솔루션을 시장 기회와 고객 수요로 연결합니다. 대기업 고객, 전략 파트너, 전시, PR, 디지털 마케팅을 통해 사업 성장과 브랜드 인지도를 확대합니다.",
 	"our_teams_list_4_1": "엔터프라이즈 세일즈: 대기업 고객 발굴, 영업 기회 관리, 전략 계정 대응",
 	"our_teams_list_4_2": "전략 파트너십: 그룹사, 공공기관, 산업별 파트너와의 협력 구조 구축",
 	"our_teams_list_4_3": "마케팅 전략: 캠페인, 전시, PR, 콘텐츠, 리드 제너레이션 기획",
 	"our_teams_list_4_4": "브랜드 커뮤니케이션: 온·오프라인 채널을 통한 브랜드 인지도 및 신뢰도 강화",
-
 	"join_text": "기술로 더 나은 미래를 만들어갈 새로운 동료를 기다립니다.",
 	"join_btn": "채용 공고",
-
 	"history_2019": "설립과 시장 진입",
 	"history_2021": "상용화와 기업 고객 확대",
 	"history_2023": "사업 확장과 레퍼런스 구축",
 	"history_2025": "도약과 스케일업",
-
 	"company_address_tit": "주소",
 	"company_address_txt": "서울특별시 용산구 한강대로30길 25, 업무동 10층 1호 (한강로2가, 아스테리움 용산)",
 	"company_address_txt_2": "경북지사 | 경상북도 구미시 구미대로 350-27, 연구실험동 4층 408호 (신평동, IT의료융합기술센터)",
@@ -131,5 +164,10 @@
 	"company_email_tit": "이메일",
 	"company_email_txt": "help@deepfine.com",
 	"company_fax_tit": "팩스",
-	"company_fax_txt": "+82 70-4009-7779"
+	"company_fax_txt": "+82 70-4009-7779",
+	"main_visual_subtitle_1": "딥파인은 스마트글라스, Vision AI, AR, 공간컴퓨팅 기술을 기반으로 \n물류·제조·MRO·공공 현장의 작업과 공간 데이터를 연결합니다.",
+	"main_visual_subtitle_2": "수작업과 숙련자 의존으로 운영되던 현장을 \n표준화된 디지털 워크플로우와 산업 AI 운영 플랫폼으로 전환합니다.",
+
+	"btn_detail": "자세히 보기",
+	"btn_introduction": "회사 소개서 다운로드"
 }

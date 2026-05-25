@@ -3,7 +3,7 @@
 
 	<address-section></address-section>
 
-	<section class="first opacity-100">
+	<section data-scroll="first" class="first opacity-100">
 		<form id="form" class="form-list w-full space-y-7.5 lg:space-y-15" data-scoll-x="form">
 			<div class="w-full overflow-hidden rounded-xl bg-white p-5 lg:p-15">
 				<div class="flex w-full items-center overflow-x-auto sm:overflow-auto">

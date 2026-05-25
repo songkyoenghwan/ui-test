@@ -14,6 +14,7 @@
 	import Problem from '$lib/components/product/Problem.svelte';
 	import Results from '$lib/components/product/Results.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
+	import Stack from '$lib/components/pages/Stack.svelte';
 	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
 	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
 	import { m } from '$lib/paraglide/messages.js';

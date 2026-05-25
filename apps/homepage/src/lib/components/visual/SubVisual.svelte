@@ -86,7 +86,7 @@
 		<div class="mt-7.5 flex lg:mt-9 lg:inline-flex">
 			<button
 				type="button"
-				class="hover:text-3743ff text-2md min-h-12 w-full rounded-md border border-white px-7.5 text-left font-bold transition-colors hover:bg-white lg:min-h-13.5"
+				class="hover:text-3743ff text-2md min-h-12 w-full rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white lg:min-h-13.5"
 			>
 				<span>{btnTxt}</span>
 			</button>

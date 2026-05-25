@@ -8,27 +8,18 @@
 <script lang="ts">
 	import MainVisual from '$lib/components/visual/MainVisual.svelte';
 	import Industry from '$lib/components/main/Industry.svelte';
+	import Work from '$lib/components/main/Work.svelte';
 	import OurProducts from '$lib/components/main/OurProducts.svelte';
 	import SlideCard from '$lib/components/main/SlideCard.svelte';
 	import Why from '$lib/components/main/Why.svelte';
-	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
-	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
-	import { m } from '$lib/paraglide/messages.js';
-
-	// import visualVideo from '/video/main-video.webm';
-
-	const visual = {
-		logoText: m.main_visual_badge(),
-		title: m.main_visual_title(),
-		subtitle: m.main_visual_subtitle(),
-		btnText: m.product_visual_btn(),
-	};
 </script>
 
 <main class="main">
-	<MainVisual {bg} {logo} logoAlt={visual.logoText} tit={visual.title} subtit={visual.subtitle} btnTxt={visual.btnText}></MainVisual>
+	<MainVisual></MainVisual>
 
 	<Industry />
+
+	<Work />
 
 	<OurProducts />
 
@@ -36,7 +27,7 @@
 
 	<SlideCard />
 
-	<section>
+	<section class="max-w-dvw overflow-hidden">
 		<sub-heading-line line="none" title="DEEP.FINE NEWS" text="딥파인의 산업 AI, 공간지능, 스마트글라스 솔루션 적용 사례와 최신 소식을 확인하세요."></sub-heading-line>
 
 		<swiper-container
@@ -45,11 +36,11 @@
 			speed="6000"
 			loop="true"
 			free-mode="true"
-			allow-touch-move="false"
+			allow-touch-move="true"
 			space-between="30"
 			autoplay-delay="0"
 			autoplay-disable-on-interaction="false"
-			class="-mx-5 w-[calc(100%+40px)]"
+			class="-mx-5 w-[calc(100%+40px)] max-w-dvw"
 		>
 			{#each Array(10) as _, i (`new-slide-${i}`)}
 				<swiper-slide class="h-full w-75 select-none lg:w-100">
@@ -68,4 +59,6 @@
 			{/each}
 		</swiper-container>
 	</section>
+
+	<main-operations></main-operations>
 </main>

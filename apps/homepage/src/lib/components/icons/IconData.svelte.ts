@@ -64,6 +64,14 @@ export const getIconData = () => {
 			`,
 		},
 		{
+			name: 'arrow-right',
+			size: '24',
+			html: /* HTML */ `
+				<path d="M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M3.5 12H20.33" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		{
 			name: 'arrow-new-link',
 			size: '20',
 			html: /* HTML */ `
