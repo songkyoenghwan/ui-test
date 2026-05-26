@@ -46,7 +46,7 @@
 </script>
 
 {#snippet contentIndustries(tit = '', txt = '', icon = '')}
-	<li class="bg-ebedff relative grid place-items-center rounded-xl p-5 text-center opacity-0 xl:p-7.5">
+	<li class="bg-ebedff relative grid place-items-center rounded-xl p-5 text-center opacity-0 lg:p-7.5">
 		<div class="grid size-15 place-content-center"></div>
 		{#if tit}
 			<p class="text-2md lg:text-lg">{tit}</p>
@@ -57,7 +57,7 @@
 {/snippet}
 
 <section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
-	<div class="space-y-5 bg-white p-5 xl:space-y-15 xl:p-15">
+	<div class="space-y-5 bg-white p-5 lg:space-y-15 lg:p-15">
 		<SubHeading {tit} {txt} {subTxt} />
 		<ul {@attach indMotion} class={['grid gap-5', cls]}>
 			{#each lists as item, i (i)}

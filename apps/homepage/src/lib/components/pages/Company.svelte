@@ -17,7 +17,7 @@
 
 	import sign from '$static/imgs/ceo/img-sign.png?url';
 
-	let teams = [
+	const teams = [
 		{
 			img: division1,
 			team: m.our_teams_team_1(),
@@ -42,7 +42,7 @@
 			subtitle: m.our_teams_subtitle_4(),
 			list: [m.our_teams_list_4_1(), m.our_teams_list_4_2(), m.our_teams_list_4_3(), m.our_teams_list_4_4()],
 		},
-	];
+	] as const;
 </script>
 
 <section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">

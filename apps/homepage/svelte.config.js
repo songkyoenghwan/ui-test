@@ -5,15 +5,16 @@ import adapter from '@sveltejs/adapter-static';
 const config = {
 	kit: {
 		// adapter-auto 대신 adapter-static 사용
-		adapter: adapter({
-			// default options are shown. On some platforms
-			// these options are set automatically — see below
-			pages: 'build',
-			assets: 'build',
-			fallback: undefined,
-			precompress: false,
-			strict: true,
-		}),
+		adapter: adapter(),
+		// 	{
+		// 	// default options are shown. On some platforms
+		// 	// these options are set automatically — see below
+		// 	pages: 'dist',
+		// 	assets: 'dist',
+		// 	fallback: 'index.html',
+		// 	precompress: false,
+		// 	strict: true,
+		// }
 		alias: aliases,
 	},
 	vitePlugin: {

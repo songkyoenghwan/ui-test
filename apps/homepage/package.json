@@ -53,7 +53,7 @@
 	},
 	"private": true,
 	"scripts": {
-		"build": "vite build",
+		"build": "vite build -c vite.config.mjs",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"doctor": "svelte-doctor check",
@@ -66,7 +66,8 @@
 		"lint": "oxlint .",
 		"pb": "./pocketbase serve",
 		"prepare": "svelte-kit sync || echo ''",
-		"preview": "concurrently \"vite preview --host\"",
+		"preview": "vite preview --host",
+		"kit:preview": "vite preview --host",
 		"sp:fix": "syncpack fix",
 		"sp:format": "syncpack format",
 		"sp:lint": "syncpack lint --dependency-types prod,dev",

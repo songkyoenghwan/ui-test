@@ -85,8 +85,13 @@
 	--color-black: #201f25;
 	--color-light-blue: #ebedff;
 
+	--color-1bc900: #1bc900;
 	--color-7cf5a0: #7cf5a0;
+	--color-149e00: #149e00;
 	--color-7785ff: #7785ff;
+	--color-7785ff: #7785ff;
+	--color-red: #ff0000;
+	--color-ff4000: #ff4000;
 
 	--text-2sm: 0.8125rem;
 	--text-2md: 0.9375rem;
@@ -181,8 +186,11 @@
 	--color-black: #201f25;
 	--color-light-blue: #ebedff;
 	--color-red: #ff0000;
+	--color-ff4000: #ff4000;
 
+	--color-1bc900: #1bc900;
 	--color-7cf5a0: #7cf5a0;
+	--color-149e00: #149e00;
 	--color-7785ff: #7785ff;
 
 	--spacing-input: var(--input-height);
@@ -499,6 +507,10 @@
 
 	.text-dot {
 		@apply flex items-start gap-2.5 before:mt-3 before:size-1 before:rounded-full before:bg-black;
+	}
+
+	icon-list {
+		@apply inline-flex;
 	}
 }
 

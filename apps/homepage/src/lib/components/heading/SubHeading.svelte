@@ -42,10 +42,10 @@
 </script>
 
 <header {@attach headingMotion} class="space-y-5">
-	<p class="text-666 text-2md font-bold xl:text-2xl">{titParse}</p>
-	<h3 class="text-1a1a2e text-2xl leading-tight font-bold xl:text-5xl">{txtParse}</h3>
+	<p class="text-666 text-2md font-bold lg:text-2xl">{titParse}</p>
+	<h3 class="text-1a1a2e text-2xl leading-tight font-bold lg:text-5xl">{txtParse}</h3>
 
 	{#if subTxt}
-		<p class="text-666 text-2md mt-2.5 font-bold xl:text-2xl">{subTxttParse}</p>
+		<p class="text-666 text-2md mt-2.5 font-bold lg:text-2xl">{subTxttParse}</p>
 	{/if}
 </header>

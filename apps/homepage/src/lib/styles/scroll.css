@@ -50,6 +50,19 @@ news-section {
 		animation-name: stackAnimation;
 		animation-timeline: --card-scroll;
 		animation-range: exit 0% exit 100%;
+		animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+}
+
+[data-scroll='scale-up'] {
+	view-timeline: --reveal y;
+	animation: scale-up ease-in-out both;
+	animation-timeline: --reveal;
+	animation-range: entry 0% cover 25%;
+
+	@starting-style {
+		filter: blur(0);
+		opacity: 0;
 	}
 }
 
@@ -103,5 +116,19 @@ news-section {
 	to {
 		transform: scale(0.9) translateY(-20px);
 		filter: brightness(0.6);
+	}
+}
+
+@keyframes scale-up {
+	0% {
+		transform: scale(0);
+		filter: blur(0.05);
+		opacity: 0.05;
+	}
+
+	100% {
+		transform: scale(1);
+		filter: blur(0);
+		opacity: 1;
 	}
 }

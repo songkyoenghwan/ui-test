@@ -25,7 +25,12 @@ export default defineConfig({
 			host: 'localhost',
 		},
 	},
-	publicDir: './static',
+	// publicDir: './static',
+	preview: {
+		outDir: 'dist',
+		port: 6714,
+		host: true,
+	},
 	plugins: [
 		tailwindcss(),
 		enhancedImages(),
