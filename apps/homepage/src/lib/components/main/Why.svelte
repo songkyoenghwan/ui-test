@@ -10,11 +10,14 @@
 
 	const videoUrl1 = $derived(import.meta.env.PROD ? '/build/video/img-why-1.mp4' : '/video/img-why-1.mp4');
 	const videoUrl2 = $derived(import.meta.env.PROD ? '/build/video/img-why-2.mp4' : '/video/img-why-2.mp4');
-	let lists = [
+	import img3 from '$static/imgs/main/why/img-why-3.png?url';
+	import img4 from '$static/imgs/main/why/img-why-4.png?url';
+	import img5 from '$static/imgs/main/why/img-why-5.png?url';
+	let lists = $derived([
 		{
 			id: 'why-1',
 			video: videoUrl1,
-			tit: '36',
+			num: 36,
 			txt: m.main_why_txt_1?.(),
 			font: '90',
 			cls: 'flex-col bg-[url(/src/lib/assets/imgs/main/bg-why-1.png)] bg-no-repeat bg-center bg-cover text-white lg:row-span-2',
@@ -22,21 +25,21 @@
 		{
 			id: 'why-2',
 			video: videoUrl2,
-			tit: '22,000',
+			num: 22000,
 			txt: m.main_why_txt_2?.(),
 			cls: 'flex-col bg-white',
 		},
 		{
 			id: 'why-3',
-			img: '/src/lib/assets/imgs/main/why/img-why-3.png',
-			tit: '70',
+			img: img3,
+			num: 70,
 			txt: m.main_why_txt_3?.(),
 			font: '90',
 			cls: 'flex-col bg-linear-to-r from-[#e8eeff] to-[#c5d3f7] lg:col-span-2',
 		},
 		{
 			id: 'why-4',
-			img: '/src/lib/assets/imgs/main/why/img-why-4.png',
+			img: img4,
 			tit: 'No.1',
 			txt: m.main_why_txt_4?.(),
 			font: '90',
@@ -44,13 +47,13 @@
 		},
 		{
 			id: 'why-5',
-			img: '/src/lib/assets/imgs/main/why/img-why-5.png',
-			tit: '92%',
+			img: img5,
+			num: 92,
 			txt: m.main_why_txt_5?.(),
 			font: '90',
 			cls: 'flex-col bg-white',
 		},
-	];
+	]);
 </script>
 
 <section data-scroll="slide-up" class="relative max-w-dvw">
@@ -67,8 +70,12 @@
 				]}
 			>
 				<dl class="space-y-2.5 p-5">
-					<dt class={['text-5xl leading-none  font-bold lg:text-6xl lg:data-[font=90]:text-[90px]', list.id === 'why-3' ? 'text-primary' : '']} data-font={list.font}>
-						{list.tit}
+					<dt
+						class={['flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]', list.id === 'why-3' ? 'text-primary' : '']}
+						data-font={list.font}
+					>
+						{list.id !== 'why-4' ? list.num : list.tit}
+						<strong class="text-primary">{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}</strong>
 					</dt>
 					<dd class="text-2md lg:text-lg">{list.txt}</dd>
 				</dl>

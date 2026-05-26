@@ -10,6 +10,7 @@
 
 	const videoUrl = $derived(import.meta.env.PROD ? '/build/video/main-video.webm' : '/video/main-video.webm');
 	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
+	import badgeBg from '$static/imgs/badge/main-badge.png?url';
 </script>
 
 <section
@@ -28,7 +29,8 @@
 	<div class="relative z-5 starting:opacity-0">
 		<div>
 			<p
-				class="inline-flex min-h-12 items-center gap-2 bg-[url(/static/imgs/badge/main-badge.svg)] bg-contain bg-center bg-no-repeat px-5 py-1 text-lg leading-none font-bold lg:text-2xl"
+				class="inline-flex min-h-12 items-center gap-2 bg-(image:--badge-bg) bg-contain bg-center bg-no-repeat px-5 py-1 text-lg leading-none font-bold lg:text-2xl"
+				style="--badge-bg: url('{badgeBg}'); "
 			>
 				{m.main_visual_badge()}
 			</p>
@@ -47,7 +49,7 @@
 				href="/"
 				class="hover:text-3743ff text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 			>
-				<span>{m.product_visual_btn()}</span>
+				<span>{m.btn_inquiry()}</span>
 				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
 			</a>
 		</div>

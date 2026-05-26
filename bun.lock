@@ -31,11 +31,12 @@
         "@selemondev/svelte-marquee": "^0.1.1",
         "alpinejs": "^3.15.12",
         "animejs": "^4.4.1",
+        "countup.js": "^2.10.0",
         "es-toolkit": "^1.46.1",
         "flowbite": "^4.0.2",
         "gsap": "^3.15.0",
         "keen-slider": "^6.8.6",
-        "motion": "^12.38.0",
+        "motion": "^12.40.0",
         "svelte-marquee-text-widget": "^1.1.0",
         "swiper": "^12.1.4",
       },
@@ -581,6 +582,8 @@
     "consola": ["consola@3.4.0", "", {}, "sha512-EiPU8G6dQG0GFHNR8ljnZFki/8a+cQwEQ+7wpxdChl02Q8HXlwEZWD5lqAF8vC2sEC3Tehr8hy7vErz88LHyUA=="],
 
     "cookie": ["cookie@0.6.0", "", {}, "sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw=="],
+
+    "countup.js": ["countup.js@2.10.0", "", {}, "sha512-QQpZx7oYxsR+OeITlZe46fY/OQjV11oBqjY8wgIXzLU2jIz8GzOrbMhqKLysGY8bWI3T1ZNrYkwGzKb4JNgyzg=="],
 
     "css-declaration-sorter": ["css-declaration-sorter@7.4.0", "", { "peerDependencies": { "postcss": "^8.0.9" } }, "sha512-LTuzjPoyA2vMGKKcaOqKSp7Ub2eGrNfKiZH4LpezxpNrsICGCSFvsQOI29psISxNZtaXibkC2CXzrQ5enMeGGw=="],
 

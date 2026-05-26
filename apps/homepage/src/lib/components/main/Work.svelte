@@ -11,7 +11,7 @@
 	const imgWork1 = $derived(import.meta.env.PROD ? '/build/imgs/main/work/img-work-1.png' : '/imgs/main/work/img-work-1.png');
 	const imgWork2 = $derived(import.meta.env.PROD ? '/build/imgs/main/work/img-work-2.png' : '/imgs/main/work/img-work-2.png');
 	const imgWork3 = $derived(import.meta.env.PROD ? '/build/imgs/main/work/img-work-3.png' : '/imgs/main/work/img-work-3.png');
-	let lists = [
+	let lists = $derived([
 		{
 			id: 'work-1',
 			img: imgWork1,
@@ -33,7 +33,7 @@
 			subTit: m.main_work_item_subTit_3?.(),
 			txt: m.main_work_item_txt_3?.(),
 		},
-	];
+	]);
 </script>
 
 <section data-scroll="slide-up" class="relative max-w-dvw">

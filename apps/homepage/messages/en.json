@@ -69,7 +69,6 @@
 	"product_visual_badge": "DEEP.FINE AR.ON — DAO",
 	"product_visual_title": "Turn real-world spaces into data with AI and control them intelligently",
 	"product_visual_subtitle": "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고, 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다. 장갑을 낀 채로, 두 손은 자유롭게.",
-	"product_visual_btn": "도입 문의하기",
 	"product_problem_title": "Problem &amp; Solution",
 	"product_problem_text": "Before DAO. After DAO. A Different Operation",
 	"product_as_list_tit_1": "Fewer Skilled Workers, Decisions Still Driven by Experience",
@@ -124,6 +123,7 @@
 	"product_features_list_4_3": "Real-Time Checklist",
 	"product_features_list_4_4": "Auto Face Masking",
 	"product_features_list_4_5": "Smart Glasses Remote Control",
+
 	"ceo_subtitle": "DEEP.FINE is transforming industrial operations through AI and Spatial Computing technology.",
 	"ceo_txt_0": "DEEP.FINE is transforming industrial operations through AI and Spatial Computing technology.",
 	"ceo_text_1": "We connect on-site operational data with spatial data to standardize tasks that previously relied on manual labor and individual experience, shifting toward a safer, more efficient operational framework. Smart glasses, Vision AI, VPS, and 3D spatial data technology serve as the core foundations of DEEP.FINE to realize this vision.",
@@ -173,6 +173,7 @@
 	"main_visual_subtitle_1": "DEEP.FINE connects operational and spatial data across logistics, manufacturing, MRO, and public sectors \n based on smart glasses, Vision AI, AR, and Spatial Computing technologies.",
 	"main_visual_subtitle_2": "We transition job sites from manual labor and expert dependency \n into standardized digital workflows and industrial AI operational platforms.",
 
+	"btn_inquiry": "Introduction Inquiry",
 	"btn_detail": "Learn More",
 	"btn_introduction": "Company Introduction DEEPFINE"
 }

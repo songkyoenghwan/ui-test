@@ -7,16 +7,13 @@
 
 <script lang="ts">
 	import { register } from 'swiper/element/bundle';
-	register();
 	import { m } from '$lib/paraglide/messages.js';
-	// oxlint-disable-next-line typescript/no-explicit-any
-	let swiperEl: HTMLElement | any | null = $state(null);
 	const cardImg1 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-1.png' : '/imgs/main/slide/img-card-1.png');
 	const cardImg2 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-2.png' : '/imgs/main/slide/img-card-2.png');
 	const cardImg3 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-3.png' : '/imgs/main/slide/img-card-3.png');
 	const cardImg4 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-4.png' : '/imgs/main/slide/img-card-4.png');
 
-	const lists = [
+	const lists = $derived([
 		{
 			id: 'card-slide-1',
 			badge: [m.main_mro_badge_1?.(), m.main_mro_badge_2?.()],
@@ -45,35 +42,32 @@
 			img: cardImg4,
 			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
 		},
-	] as const;
+	]);
 
-	const creativeConfig = {
-		effect: 'cards',
-		cardsEffect: {
-			rotate: false,
-			perSlideRotate: 0,
-			perSlideOffset: 9,
-		},
-		grabCursor: true,
-		loop: true,
-		centeredSlides: true,
-		centeredSlidesBounds: false,
-		centerInsufficientSlides: true,
-		slidesPerView: 1,
-		speed: 400,
-		navigation: false,
-		// autoplay: {
-		// 	delay: 5000,
-		// 	disableOnInteraction: false,
-		// },
-	};
+	// const creativeConfig = {
+	// 	effect: 'cards',
+	// 	cardsEffect: {
+	// 		rotate: false,
+	// 		perSlideRotate: 0,
+	// 		perSlideOffset: 9,
+	// 	},
+	// 	grabCursor: true,
+	// 	loop: true,
+	// 	slidesPerView: 1,
+	// 	speed: 400,
+	// 	navigation: false,
+	// 	autoplay: {
+	// 		delay: 5000,
+	// 		disableOnInteraction: false,
+	// 	},
+	// };
 
-	// DOM에 안착하는 순간 Swiper 주입
-	$effect(() => {
-		if (swiperEl) {
-			Object.assign(swiperEl, creativeConfig);
-			swiperEl.initialize();
-		}
+	// oxlint-disable-next-line typescript/no-explicit-any
+	let swiperEl: HTMLElement | any | null = $state(null);
+	let isOn = $state(false);
+	$effect.pre(() => {
+		register();
+		isOn = true;
 	});
 </script>
 
@@ -84,48 +78,57 @@
 		data-scroll="slide-up"
 		class="relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145"
 	>
-		{#if lists && lists.length > 0}
-			<swiper-container
-				bind:this={swiperEl}
-				init="false"
-				navigation="false"
-				class="*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"
-			>
-				{#each lists as list (list.id)}
-					<swiper-slide
-						class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5"
-					>
-						<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
-							<img src={list.img} alt="" class="w-full object-cover" />
-						</picture>
+		<swiper-container
+			bind:this={swiperEl}
+			init="true"
+			effect="cards"
+			pagination="true"
+			speed="450"
+			autoplay-delay="3000"
+			class="*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"
+		>
+			{#each lists as list (list.id)}
+				<swiper-slide
+					class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5"
+				>
+					<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
+						<img src={list.img} alt="" class="w-full object-cover" />
+					</picture>
 
-						<ul class="flex items-center justify-center gap-3">
-							{#each list.badge as bed, i (i)}
-								<li class="rounded-full bg-white px-3 py-1">
-									{bed}
-								</li>
-							{/each}
-						</ul>
-						<dl class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35">
-							<dt class="text-center text-lg lg:text-2xl">
-								{list.txt}
-							</dt>
-							<dd class=" text-right">2025. 12. 8</dd>
-						</dl>
-					</swiper-slide>
-				{/each}
-			</swiper-container>
+					<ul class="flex items-center justify-center gap-3">
+						{#each list.badge as bed, i (i)}
+							<li class="rounded-full bg-white px-3 py-1">
+								{bed}
+							</li>
+						{/each}
+					</ul>
+					<dl class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35">
+						<dt class="text-center text-lg lg:text-2xl">
+							{list.txt}
+						</dt>
+						<dd class=" text-right">2025. 12. 8</dd>
+					</dl>
+				</swiper-slide>
+			{/each}
+		</swiper-container>
+
+		{#if isOn}
+			<div class="absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5">
+				<button
+					class="grid size-9 place-content-center rounded-full bg-black lg:size-12"
+					onclick={() => {
+						console.log(swiperEl);
+						swiperEl?.swiper?.slidePrev();
+					}}
+				>
+					<span class="sr-only">Slide Prev</span>
+					<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 rotate-180 stroke-white"></icon-list>
+				</button>
+				<button class="grid size-9 place-content-center rounded-full bg-black lg:size-12" onclick={() => swiperEl?.swiper?.slideNext()}>
+					<span class="sr-only">Slide Next</span>
+					<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+				</button>
+			</div>
 		{/if}
-
-		<div class="absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5">
-			<button class="grid size-9 place-content-center rounded-full bg-black lg:size-12" onclick={() => swiperEl?.swiper?.slidePrev()}>
-				<span class="sr-only">Slide Prev</span>
-				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 rotate-180 stroke-white"></icon-list>
-			</button>
-			<button class="grid size-9 place-content-center rounded-full bg-black lg:size-12" onclick={() => swiperEl?.swiper?.slideNext()}>
-				<span class="sr-only">Slide Next</span>
-				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
-			</button>
-		</div>
 	</div>
 </section>

@@ -25,7 +25,7 @@
 		logoText: m.product_visual_badge(),
 		title: m.product_visual_title(),
 		subtitle: m.product_visual_subtitle(),
-		btnText: m.product_visual_btn(),
+		btnText: m.btn_inquiry(),
 	};
 	const industries = [
 		'product_industries_list_1',

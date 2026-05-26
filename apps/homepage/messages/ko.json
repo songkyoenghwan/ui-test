@@ -64,7 +64,6 @@
 	"product_visual_badge": "DEEP.FINE AR.ON — DAO",
 	"product_visual_title": "산업 현장 어디서든 \n<strong>완벽한 업무 비서</strong>가 됩니다",
 	"product_visual_subtitle": "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고,\n 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다.\n 장갑을 낀 채로, 두 손은 자유롭게.",
-	"product_visual_btn": "도입 문의",
 	"product_problem_title": "Problem & Solution",
 	"product_problem_text": "DAO 도입 전과 후, 현장이 달라집니다",
 	"product_as_list_tit_1": "숙련자 감소, 경험 의존 판단",
@@ -119,6 +118,7 @@
 	"product_features_list_4_1": "스마트글라스 원격 제어",
 	"product_features_list_4_2": "체크리스트 동시 작성",
 	"product_features_list_4_3": "얼굴 자동 모자이크",
+
 	"ceo_subtitle": "딥파인은 AI와 Spatial Computing 기술을 기반으로 산업 현장의 운영 방식을 바꾸고 있습니다.",
 	"ceo_txt_0": "딥파인은 AI와 Spatial Computing 기술을 기반으로 산업 현장의 운영 방식을 바꾸고 있습니다.",
 	"ceo_text_1": "우리는 현장의 작업과 공간 데이터를 연결해 수작업과 경험에 의존하던 업무를 표준화하고, 더 안전하고 효율적인 운영 구조로 전환하고자 합니다. 스마트글래스, Vision AI, VPS, 3D 공간 데이터 기술은 이를 실현하기 위한 딥파인의 핵심 기반입니다.",
@@ -168,6 +168,7 @@
 	"main_visual_subtitle_1": "딥파인은 스마트글라스, Vision AI, AR, 공간컴퓨팅 기술을 기반으로 \n물류·제조·MRO·공공 현장의 작업과 공간 데이터를 연결합니다.",
 	"main_visual_subtitle_2": "수작업과 숙련자 의존으로 운영되던 현장을 \n표준화된 디지털 워크플로우와 산업 AI 운영 플랫폼으로 전환합니다.",
 
+	"btn_inquiry": "도입 문의",
 	"btn_detail": "자세히 보기",
 	"btn_introduction": "회사 소개서 다운로드"
 }
