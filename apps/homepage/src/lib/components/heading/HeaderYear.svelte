@@ -12,10 +12,10 @@
 	import { m } from '$lib/paraglide/messages.js';
 
 	let { year = '2019' } = $props<{ year?: string }>();
-	import bg2019 from '$static/imgs/company/bg-history-2019.jpg?url';
-	import bg2021 from '$static/imgs/company/bg-history-2021.jpg?url';
-	import bg2023 from '$static/imgs/company/bg-history-2023.jpg?url';
-	import bg2025 from '$static/imgs/company/bg-history-2025.jpg?url';
+	const bg2019 = `${__STATIC_URL__}/imgs/company/bg-history-2019.jpg`;
+	const bg2021 = `${__STATIC_URL__}/imgs/company/bg-history-2021.jpg`;
+	const bg2023 = `${__STATIC_URL__}/imgs/company/bg-history-2023.jpg`;
+	const bg2025 = `${__STATIC_URL__}/imgs/company/bg-history-2025.jpg`;
 	const bgMap = {
 		'2019': bg2019,
 		'2021': bg2021,
@@ -28,7 +28,7 @@
 
 <header
 	class="bg-primary items mb-0 flex h-30 flex-col justify-center gap-1.5 overflow-clip rounded-xl bg-(image:--bg-history-url) bg-cover bg-center bg-no-repeat p-5 text-white lg:mb-10 lg:h-45 lg:gap-2.5 lg:px-15 lg:py-5"
-	style="--bg-history-url: url('{activeBg}');"
+	style:--bg-history-url={`url('${activeBg}')`}
 >
 	<p class="text-2md lg:text-2xl">{year}~{Number(year) + 1}</p>
 	<p class="text-lg font-bold lg:text-2xl">

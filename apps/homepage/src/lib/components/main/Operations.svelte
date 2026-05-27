@@ -7,10 +7,12 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
-	import bgOp from '$static/imgs/main/work/bg-operations.png?url';
 </script>
 
-<section class="relative max-w-dvw rounded-xl bg-(image:--bg-op) bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15" style="--bg-op: url('{bgOp}');">
+<section
+	class="relative max-w-dvw rounded-xl bg-(image:--bg-op) bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15"
+	style:--bg-op={`url(${__STATIC_URL__}/imgs/main/work/bg-operations.png)`}
+>
 	<sub-heading-line line="none" title={m.main_title_ai()} subTit={m.main_subtitle_ai()}></sub-heading-line>
 	<div class="mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-9">
 		<a

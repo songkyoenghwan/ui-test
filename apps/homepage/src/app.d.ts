@@ -8,7 +8,8 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
-	}
+	}	
+    const __STATIC_URL__: string;
 }
 
 // ✅ global 블록 외부에서 선언
@@ -29,5 +30,6 @@ declare '*.svg' {
 
 	export default content;
 }
+
 
 export {};

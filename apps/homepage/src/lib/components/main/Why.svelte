@@ -7,16 +7,10 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
-
-	const videoUrl1 = $derived(import.meta.env.PROD ? '/build/video/img-why-1.mp4' : '/video/img-why-1.mp4');
-	const videoUrl2 = $derived(import.meta.env.PROD ? '/build/video/img-why-2.mp4' : '/video/img-why-2.mp4');
-	import img3 from '$static/imgs/main/why/img-why-3.png?url';
-	import img4 from '$static/imgs/main/why/img-why-4.png?url';
-	import img5 from '$static/imgs/main/why/img-why-5.png?url';
 	let lists = $derived([
 		{
 			id: 'why-1',
-			video: videoUrl1,
+			video: `${__STATIC_URL__}/video/img-why-1.mp4`,
 			num: 36,
 			txt: m.main_why_txt_1?.(),
 			font: '90',
@@ -24,14 +18,14 @@
 		},
 		{
 			id: 'why-2',
-			video: videoUrl2,
+			video: `${__STATIC_URL__}/video/img-why-2.mp4`,
 			num: 22000,
 			txt: m.main_why_txt_2?.(),
 			cls: 'flex-col bg-white',
 		},
 		{
 			id: 'why-3',
-			img: img3,
+			img: `${__STATIC_URL__}/imgs/main/why/img-why-3.png`,
 			num: 70,
 			txt: m.main_why_txt_3?.(),
 			font: '90',
@@ -39,7 +33,7 @@
 		},
 		{
 			id: 'why-4',
-			img: img4,
+			img: `${__STATIC_URL__}/imgs/main/why/img-why-4.png`,
 			tit: 'No.1',
 			txt: m.main_why_txt_4?.(),
 			font: '90',
@@ -47,7 +41,7 @@
 		},
 		{
 			id: 'why-5',
-			img: img5,
+			img: `${__STATIC_URL__}/imgs/main/why/img-why-5.png`,
 			num: 92,
 			txt: m.main_why_txt_5?.(),
 			font: '90',

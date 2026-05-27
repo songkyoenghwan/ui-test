@@ -19,28 +19,28 @@
 			badge: [m.main_mro_badge_1?.(), m.main_mro_badge_2?.()],
 			txt: m.main_mro_txt_1?.(),
 			img: cardImg1,
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png?url',
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 		{
 			id: 'card-slide-2',
 			badge: [m.main_mro_badge_3?.(), m.main_mro_badge_2?.()],
 			txt: m.main_mro_txt_2?.(),
 			img: cardImg2,
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 		{
 			id: 'card-slide-3',
 			badge: [m.main_mro_badge_4?.(), m.main_mro_badge_5?.()],
 			txt: m.main_mro_txt_3?.(),
 			img: cardImg3,
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 		{
 			id: 'card-slide-4',
 			badge: [m.main_mro_badge_6?.(), m.main_mro_badge_7?.()],
 			txt: m.main_mro_txt_4?.(),
 			img: cardImg4,
-			logo: '/src/lib/assets/imgs/main/slide/img-logo-1.png',
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 	]);
 

@@ -13,11 +13,9 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
 	root: '.',
 	publicDir: './static',
-	base: '/build/',
+	base: '/output/',
 	resolve: { alias: aliases },
-	define: {
-		'process.env.NODE_ENV': JSON.stringify('production'),
-	},
+	define: { __STATIC_URL__: JSON.stringify('/output'), 'process.env.NODE_ENV': JSON.stringify('production') },
 	plugins: [
 		enhancedImages(),
 		tailwindcss(),
@@ -57,7 +55,7 @@ export default defineConfig({
 		// },
 	],
 	build: {
-		outDir: './build',
+		outDir: './output',
 		lib: {
 			entry: path.resolve(__dirname, 'src/lib/index.ts'),
 			name: 'WebComponents',
@@ -86,7 +84,7 @@ export default defineConfig({
 
 						// 2. 모노레포 상위 탈출용 좀비 경로(../../) 및 무의미한 폴더 진입점 제거
 						cleanPath = cleanPath.replace(/^(\.\.\/)+/, ''); // ../ 전부 삭제
-						cleanPath = cleanPath.replace(/^(apps\/[^\/]+\/)?(static\/|src\/lib\/assets\/|public\/)/, '');
+						cleanPath = cleanPath.replace(/^(apps\/[^/]+\/)?(static\/|src\/lib\/assets\/|public\/)/, '');
 
 						const pathSegments = cleanPath.split('/');
 						pathSegments.pop(); // 파일명 제거 (폴더 트리만 남김)

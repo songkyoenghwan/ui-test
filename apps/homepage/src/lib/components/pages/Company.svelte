@@ -7,15 +7,14 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
-	import division1 from '$static/imgs/company/img-division-1.png?url';
-	import division2 from '$static/imgs/company/img-division-2.png?url';
-	import division3 from '$static/imgs/company/img-division-3.png?url';
-	import division4 from '$static/imgs/company/img-division-4.png?url';
-	import bannerBgMo from '$static/imgs/company/bg-join-us-mo.png?url';
-	import bannerBgPc from '$static/imgs/company/bg-join-us-pc.png?url';
-	import bgPerson from '$static/imgs/company/bg-join-us-person.png?url';
-
-	import sign from '$static/imgs/ceo/img-sign.png?url';
+	const division1 = `${__STATIC_URL__}/imgs/company/img-division-1.png`;
+	const division2 = `${__STATIC_URL__}/imgs/company/img-division-2.png`;
+	const division3 = `${__STATIC_URL__}/imgs/company/img-division-3.png`;
+	const division4 = `${__STATIC_URL__}/imgs/company/img-division-4.png`;
+	const bannerBgMo = `${__STATIC_URL__}/imgs/company/bg-join-us-mo.png`;
+	const bannerBgPc = `${__STATIC_URL__}/imgs/company/bg-join-us-pc.png`;
+	const bgPerson = `${__STATIC_URL__}/imgs/company/bg-join-us-person.png`;
+	const sign = `${__STATIC_URL__}/imgs/ceo/img-sign.png`;
 
 	const teams = [
 		{

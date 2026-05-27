@@ -66,7 +66,7 @@
 		"lint": "oxlint .",
 		"pb": "./pocketbase serve",
 		"prepare": "svelte-kit sync || echo ''",
-		"preview": "vite preview --host",
+		"preview": "vite preview  -c vite.config.mjs",
 		"kit:preview": "vite preview --host",
 		"sp:fix": "syncpack fix",
 		"sp:format": "syncpack format",

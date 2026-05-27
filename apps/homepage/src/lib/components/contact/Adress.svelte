@@ -8,13 +8,12 @@
 <script lang="ts">
 	import { visualMotion } from '$lib/components/heading/HeadingMotion.svelte';
 	import { m } from '$lib/paraglide/messages.js';
-	import bgAddrMo from '$static/imgs/visual/bg-addr-mo.png?url';
-	import bgAddrPc from '$static/imgs/visual/bg-addr-pc.png?url';
 </script>
 
 <section
 	class="rounded-xl bg-black bg-(image:--bg-mo) bg-cover bg-center p-5 text-white transition-all lg:bg-(image:--bg-pc) lg:p-15"
-	style="--bg-mo: url('{bgAddrMo}'); --bg-pc: url('{bgAddrPc}');"
+	style:--bg-mo={`url(${__STATIC_URL__}/imgs/visual/bg-addr-mo.png)`}
+	style:--bg-pc={`url(${__STATIC_URL__}/imgs/visual/bg-addr-pc.png)`}
 >
 	<ul {@attach visualMotion} class="grid grid-cols-1 gap-7.5 lg:grid-cols-2">
 		<li class="space-y-2">
