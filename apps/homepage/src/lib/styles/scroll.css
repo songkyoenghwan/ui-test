@@ -46,11 +46,11 @@ news-section {
 		/* 브라우저 스크롤 타임라인과 애니메이션을 다이렉트 체결 */
 		view-timeline-name: --card-scroll;
 		view-timeline-axis: block;
+		animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 		animation-name: stackAnimation;
 		animation-timeline: --card-scroll;
 		animation-range: exit 0% exit 20%;
-		animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	}
 }
 
@@ -153,8 +153,8 @@ news-section {
 @media screen and (min-width: 1024px) {
 	@keyframes as-is {
 		0% {
-			transform: scale(0.6);
 			left: calc(100% - 1.375rem);
+			transform: scale(0.6);
 		}
 
 		10% {
@@ -171,8 +171,8 @@ news-section {
 		}
 
 		100% {
-			transform: scale(0.6);
 			left: calc(100% - 1.375rem);
+			transform: scale(0.6);
 		}
 	}
 }
@@ -180,8 +180,8 @@ news-section {
 @media screen and (min-width: 1536px) {
 	@keyframes as-is {
 		0% {
-			transform: scale(0.6);
 			left: calc(100% - 1.375rem);
+			transform: scale(0.6);
 		}
 
 		10% {
@@ -198,8 +198,8 @@ news-section {
 		}
 
 		100% {
-			transform: scale(0.6);
 			left: calc(100% - 1.375rem);
+			transform: scale(0.6);
 		}
 	}
 }
@@ -207,8 +207,8 @@ news-section {
 @media screen and (min-width: 1024px) and (max-width: 1535px) {
 	@keyframes as-is {
 		0% {
-			transform: scale(0.6);
 			left: calc(100% - 1.375rem);
+			transform: scale(0.6);
 		}
 
 		10% {
@@ -225,8 +225,8 @@ news-section {
 		}
 
 		100% {
-			transform: scale(0.6);
 			left: calc(100% - 22px);
+			transform: scale(0.6);
 		}
 	}
 }

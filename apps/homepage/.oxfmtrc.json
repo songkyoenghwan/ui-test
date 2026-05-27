@@ -12,7 +12,7 @@
 		"preserveDuplicates": false
 	},
 	"cssDeclarationSorterOrder": "smacss",
-	"sortPackageJson": false,
+	"sortPackageJson": true,
 	"ignorePatterns": [
 		"package-lock.json",
 		"pnpm-lock.yaml",

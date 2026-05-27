@@ -16,5 +16,13 @@
 		"prettier-plugin-tailwindcss"
 	],
 	"cssDeclarationSorterOrder": "smacss",
-	"tailwindPreserveDuplicates": false
+	"tailwindPreserveDuplicates": false,
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		}
+	]
 }

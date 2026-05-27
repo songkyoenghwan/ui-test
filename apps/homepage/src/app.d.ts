@@ -2,34 +2,33 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		interface Locals { }
+		interface Locals {}
 
 		// interface Error {}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
-	}	
-    const __STATIC_URL__: string;
+	}
+	const __STATIC_URL__: string;
 }
 
 // ✅ global 블록 외부에서 선언
-declare '$lib/assets/*.png' {
+declare module '$lib/assets/*.png' {
 	const content: string;
 
 	export default content;
 }
 
-declare '$lib/assets/*.svg' {
+declare module '$lib/assets/*.svg' {
 	const content: string;
 
 	export default content;
 }
 
-declare '*.svg' {
+declare module '*.svg' {
 	const content: string;
 
 	export default content;
 }
-
 
 export {};

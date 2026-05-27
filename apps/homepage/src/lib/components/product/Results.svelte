@@ -1,6 +1,7 @@
 <script lang="ts">
-	import ResultItem from '$lib/components/list/ResultItem.svelte';
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
+	import ResultItem from '$lib/components/list/ResultItem.svelte';
+
 	let { tit = '', txt = '', subTxt = '', lists = [] } = $props();
 </script>
 

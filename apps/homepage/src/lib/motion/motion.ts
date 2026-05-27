@@ -1,3 +1,6 @@
+import { inView } from 'motion';
+import type { Attachment } from 'svelte/attachments';
+
 const visualTextMotion: Attachment<HTMLElement> = (elm) => {
 	const stop = inView(elm, (element) => {
 		[...element.children].forEach((child, i) => {
