@@ -9,6 +9,7 @@
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 	import { animate, stagger, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
+	import { m } from '$lib/paraglide/messages.js';
 
 	let { videoUrl = '', bg = '', badge = '', logo = '', logoAlt = '', tit = '', subtit = '', btnTxt = '' } = $props();
 	let played = $state(false);
@@ -77,19 +78,20 @@
 			{/if}
 		</div>
 
-		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem]">{parseBreakline(tit)}</h2>
+		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{tit}</h2>
 	</div>
 
 	<div class="relative z-5 starting:opacity-0">
-		<p class="text-2md mt-5 leading-normal text-white lg:text-lg">{parseBreakline(subtit)}</p>
+		<p class="text-2md mt-5 leading-normal text-white lg:text-lg lg:whitespace-pre-line">{subtit}</p>
 
-		<div class="mt-7.5 flex lg:mt-9 lg:inline-flex">
-			<button
-				type="button"
-				class="hover:text-3743ff text-2md min-h-12 w-full rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white lg:min-h-13.5"
+		<div class="mt-7.5 flex lg:mt-9">
+			<a
+				href="/"
+				class="hover:text-3743ff text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 			>
-				<span>{btnTxt}</span>
-			</button>
+				<span>{m.btn_inquiry()}</span>
+				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+			</a>
 		</div>
 	</div>
 </section>

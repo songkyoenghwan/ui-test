@@ -18,7 +18,7 @@
 <li
 	data-scroll="slide-up"
 	class={[
-		'h-111.25 overflow-clip rounded-xl p-5 lg:p-7.5',
+		'h-90.5 overflow-clip rounded-xl p-5 lg:h-111.25 lg:p-7.5',
 		result === 'up' ? 'bg-ff4000/10' : result === 'chk' ? 'bg-1bc900/10' : result === 'down' ? 'bg-primary/10' : 'bg-ddd',
 	]}
 >
@@ -45,7 +45,7 @@
 			<div
 				data-scroll="scale-up"
 				class={[
-					'@starting:rotate-180 absolute top-0 right-0 z-1 grid size-12.5 scale-100 rotate-0 place-content-center rounded-2xl transition-all delay-1000',
+					'@starting:rotate-180 absolute top-0 right-0 z-1 grid size-10 scale-100 rotate-0 place-content-center rounded-2xl transition-all delay-1000 lg:size-12.5',
 					result === 'up' ? 'fill-red' : result === 'chk' ? 'fill-149e00' : result === 'down' ? 'fill-primary' : 'fill-black',
 				]}
 			>

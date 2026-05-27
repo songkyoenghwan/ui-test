@@ -9,7 +9,6 @@
 
 	let swiperEl: Element | null = $state(null);
 	let curretIndex = $state(0);
-
 	const spaceBetween = 10;
 </script>
 
@@ -54,8 +53,8 @@
 	</swiper-slide>
 {/snippet}
 
-<section class="divide-d9d9d9 relative divide-y rounded-xl bg-white">
-	<ul data-scroll="slide-up" class="flex max-w-dvw snap-x snap-start gap-2.5 overflow-auto p-5 lg:gap-5 lg:p-7.5">
+<section data-scroll="slide-up" class="divide-d9d9d9 relative divide-y rounded-xl bg-white">
+	<ul class="flex max-w-dvw snap-x snap-start gap-2.5 overflow-auto p-5 lg:gap-5 lg:p-7.5">
 		{#each lists as { btn }, i (`case-btn-${i}`)}
 			<li class="flex-none">
 				<button

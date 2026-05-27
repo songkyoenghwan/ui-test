@@ -89,7 +89,8 @@
 	--color-7cf5a0: #7cf5a0;
 	--color-149e00: #149e00;
 	--color-7785ff: #7785ff;
-	--color-7785ff: #7785ff;
+	--color-828aff: #828aff;
+	--color-9097ff: #9097ff;
 	--color-red: #ff0000;
 	--color-ff4000: #ff4000;
 
@@ -192,6 +193,8 @@
 	--color-7cf5a0: #7cf5a0;
 	--color-149e00: #149e00;
 	--color-7785ff: #7785ff;
+	--color-828aff: #828aff;
+	--color-9097ff: #9097ff;
 
 	--spacing-input: var(--input-height);
 

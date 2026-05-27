@@ -14,19 +14,16 @@
 	import Problem from '$lib/components/product/Problem.svelte';
 	import Results from '$lib/components/product/Results.svelte';
 	import FieldCase from '$/lib/components/slide/FieldCase.svelte';
+	import Faq from '$/lib/components/faq/Faq.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
+	import BannerInquiry from '$lib/components/banner/BannerInquiry.svelte';
+
 	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
 	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
 	import { m } from '$lib/paraglide/messages.js';
 
 	let { videoUrl = '' } = $props();
 
-	const visual = {
-		logoText: m.product_visual_badge(),
-		title: m.product_visual_title(),
-		subtitle: m.product_visual_subtitle(),
-		btnText: m.btn_inquiry(),
-	};
 	const industries = [
 		{ txt: m.product_industries_list_1?.() },
 		{ txt: m.product_industries_list_2?.() },
@@ -123,7 +120,7 @@
 	] as const;
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} logoAlt={visual.logoText} tit={visual.title} subtit={visual.subtitle} btnTxt={visual.btnText}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} logoAlt={m.product_visual_badge()} tit={m.product_visual_title()} subtit={m.product_visual_subtitle()}></SubVisual>
 
 <Problem />
 
@@ -135,10 +132,12 @@
 	lists={[...industries]}
 />
 
-<Features tit={feature.tit} txt={feature.txt} lists={[...feaKeys]} />
+<Features tit={m.product_features_title()} txt={m.product_features_text()} lists={[...feaKeys]} />
 
 <Results tit={feature.tit} txt={feature.txt} lists={[...resultKeys]} />
 
 <FieldCase lists={[...caseKeys]} />
 
-<section></section>
+<Faq tit="Proven Results" txt={m.dao_subtitle_faq?.()} lists={[...resultKeys]} />
+
+<BannerInquiry page="dao" />

@@ -39,7 +39,7 @@ news-section {
 }
 
 .stack-card {
-	@media (min-width: 1024px) {
+	@media screen and (min-width: 1024px) {
 		position: sticky;
 		top: 150px;
 
@@ -49,7 +49,7 @@ news-section {
 
 		animation-name: stackAnimation;
 		animation-timeline: --card-scroll;
-		animation-range: exit 0% exit 100%;
+		animation-range: exit 0% exit 20%;
 		animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 	}
 }
@@ -99,7 +99,7 @@ news-section {
 
 @keyframes slide-left {
 	0% {
-		transform: translateX(40px);
+		transform: translateX(2.5rem);
 		opacity: 0;
 	}
 
@@ -130,5 +130,86 @@ news-section {
 		transform: scale(1);
 		filter: blur(0);
 		opacity: 1;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	@keyframes as-is {
+		0% {
+			transform: scale(0.6);
+			left: calc(100% - 1.375rem);
+		}
+
+		10% {
+			transform: scale(1);
+		}
+
+		50% {
+			left: calc(100% + 25rem);
+			transform: scale(1);
+		}
+
+		90% {
+			transform: scale(1);
+		}
+
+		100% {
+			transform: scale(0.6);
+			left: calc(100% - 1.375rem);
+		}
+	}
+}
+
+@media screen and (min-width: 1536px) {
+	@keyframes as-is {
+		0% {
+			transform: scale(0.6);
+			left: calc(100% - 1.375rem);
+		}
+
+		10% {
+			transform: scale(1);
+		}
+
+		50% {
+			left: calc(100% + 25rem);
+			transform: scale(1);
+		}
+
+		90% {
+			transform: scale(1);
+		}
+
+		100% {
+			transform: scale(0.6);
+			left: calc(100% - 1.375rem);
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1535px) {
+	@keyframes as-is {
+		0% {
+			transform: scale(0.6);
+			left: calc(100% - 1.375rem);
+		}
+
+		10% {
+			transform: scale(1);
+		}
+
+		50% {
+			left: calc(100% + 6.25rem);
+			transform: scale(1);
+		}
+
+		90% {
+			transform: scale(1);
+		}
+
+		100% {
+			transform: scale(0.6);
+			left: calc(100% - 22px);
+		}
 	}
 }
