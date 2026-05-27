@@ -91,7 +91,7 @@
 		class={[
 			'before:bg-primary relative flex py-2 before:top-[calc(50%-2.5px)] before:z-5 before:rounded-full before:opacity-0 before:transition-all has-aria-current:before:absolute has-aria-current:before:size-1.25 has-aria-current:before:opacity-100 max-lg:before:hidden! max-lg:after:hidden',
 			type === 'as'
-				? 'after:border-primary after:top-[calc(50%-0.5px)] after:z-1 after:border-dotted has-aria-current:before:right-0 has-aria-current:after:absolute has-aria-current:after:left-full has-aria-current:after:w-full has-aria-current:after:border'
+				? 'after:border-primary z-6 after:top-[calc(50%-0.5px)] after:z-1 after:border-dotted has-aria-current:before:right-0 has-aria-current:after:absolute has-aria-current:after:left-full has-aria-current:after:w-full has-aria-current:after:border'
 				: 'delay-500 has-aria-current:before:left-0',
 		]}
 	>
