@@ -9,11 +9,11 @@
 />
 
 <script lang="ts">
-	import logo from '$lib/assets/imgs/logo/logo-deepfine.svg';
 	import left from '$lib/assets/imgs/logo/img-header.png';
-	import logi from '$lib/assets/imgs/logo/logo-header-logi.png';
 	import dao from '$lib/assets/imgs/logo/log-header-dao.png';
+	import logo from '$lib/assets/imgs/logo/logo-deepfine.svg';
 	import dsc from '$lib/assets/imgs/logo/logo-header-dsc.png';
+	import logi from '$lib/assets/imgs/logo/logo-header-logi.png';
 
 	let { name = '' } = $props<{ name?: string }>();
 

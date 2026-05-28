@@ -7,6 +7,7 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+
 	const division1 = `${__STATIC_URL__}/imgs/company/img-division-1.png`;
 	const division2 = `${__STATIC_URL__}/imgs/company/img-division-2.png`;
 	const division3 = `${__STATIC_URL__}/imgs/company/img-division-3.png`;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { animate, stagger, onScroll } from 'animejs';
+	import { animate, onScroll, stagger } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
 	let { tit = '', txt = '', subTxt = '' } = $props();

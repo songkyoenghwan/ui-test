@@ -8,23 +8,14 @@
 	"tabWidth": 4,
 	"useTabs": true,
 	"trailingComma": "all",
+	"cssDeclarationSorterOrder": "smacss",
+	"tailwindPreserveDuplicates": false,
 	"plugins": [
+		"@prettier/plugin-oxc",
 		"prettier-plugin-svelte",
-		"@trivago/prettier-plugin-sort-imports",
+		"@ianvs/prettier-plugin-sort-imports",
 		"prettier-plugin-organize-attributes",
 		"prettier-plugin-css-order",
 		"prettier-plugin-tailwindcss"
-	],
-	"cssDeclarationSorterOrder": "smacss",
-	"tailwindPreserveDuplicates": false,
-	"importOrderSeparation": true,
-	"importOrderSortSpecifiers": true,
-	"overrides": [
-		{
-			"files": "*.svelte",
-			"options": {
-				"parser": "svelte"
-			}
-		}
 	]
 }

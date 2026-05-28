@@ -6,8 +6,9 @@
 />
 
 <script lang="ts">
-	import { register } from 'swiper/element/bundle';
 	import { m } from '$lib/paraglide/messages.js';
+	import { register } from 'swiper/element/bundle';
+
 	const cardImg1 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-1.png' : '/imgs/main/slide/img-card-1.png');
 	const cardImg2 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-2.png' : '/imgs/main/slide/img-card-2.png');
 	const cardImg3 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-3.png' : '/imgs/main/slide/img-card-3.png');

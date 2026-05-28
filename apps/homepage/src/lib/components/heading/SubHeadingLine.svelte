@@ -11,8 +11,8 @@
 
 <script lang="ts">
 	import { visualMotion } from '$lib/components/heading/HeadingMotion.svelte';
-	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 	import { m } from '$lib/paraglide/messages.js';
+	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
 	let { line = 'bottom', title = '', subTit = '' } = $props();
 

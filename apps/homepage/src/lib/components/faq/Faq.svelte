@@ -1,5 +1,6 @@
 <script lang="ts">
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
+
 	const { tit = '', txt = '', list = [] } = $props();
 </script>
 

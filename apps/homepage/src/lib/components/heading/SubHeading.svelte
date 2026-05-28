@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { animate, stagger, onScroll } from 'animejs';
-	import type { Attachment } from 'svelte/attachments';
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
+	import { animate, onScroll, stagger } from 'animejs';
+	import type { Attachment } from 'svelte/attachments';
 
 	let { page = '', tit = '', txt = '', subTxt = '' } = $props();
 	let played = $state(false);

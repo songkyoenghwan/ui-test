@@ -1,5 +1,6 @@
-import { aliases } from './aliases.js';
 import adapter from '@sveltejs/adapter-static';
+
+import { aliases } from './aliases.js';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

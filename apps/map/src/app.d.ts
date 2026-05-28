@@ -2,7 +2,7 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		interface Locals { }
+		interface Locals {}
 
 		// interface Error {}
 		// interface PageData {}
@@ -12,19 +12,19 @@ declare global {
 }
 
 // ✅ global 블록 외부에서 선언
-declare '$lib/assets/*.png' {
+declare module '$lib/assets/*.png' {
 	const content: string;
 
 	export default content;
 }
 
-declare '$lib/assets/*.svg' {
+declare module '$lib/assets/*.svg' {
 	const content: string;
 
 	export default content;
 }
 
-declare '*.svg' {
+declare module '*.svg' {
 	const content: string;
 
 	export default content;

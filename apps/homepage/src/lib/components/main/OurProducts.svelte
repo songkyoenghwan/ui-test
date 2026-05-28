@@ -7,6 +7,7 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+
 	let lists = [
 		{
 			id: 'our-products1',

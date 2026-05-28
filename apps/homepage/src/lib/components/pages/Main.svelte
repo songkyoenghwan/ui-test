@@ -6,12 +6,12 @@
 />
 
 <script lang="ts">
-	import MainVisual from '$lib/components/visual/MainVisual.svelte';
 	import Industry from '$lib/components/main/Industry.svelte';
-	import Work from '$lib/components/main/Work.svelte';
 	import OurProducts from '$lib/components/main/OurProducts.svelte';
 	import SlideCard from '$lib/components/main/SlideCard.svelte';
 	import Why from '$lib/components/main/Why.svelte';
+	import Work from '$lib/components/main/Work.svelte';
+	import MainVisual from '$lib/components/visual/MainVisual.svelte';
 </script>
 
 <main class="main">

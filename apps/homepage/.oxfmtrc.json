@@ -13,12 +13,24 @@
 	},
 	"cssDeclarationSorterOrder": "smacss",
 	"sortPackageJson": true,
+	"sortImports": {
+		"groups": [
+			"builtin", // 1. 노드 순정 내장 모듈 (fs, path 등)
+			"external", // 2. npm 외부 라이브러리 본진 (svelte, swiper, animejs 등 통치)
+			"internal", // 3. 내부 프로젝트 모듈 ($lib 가상 경로 자동 매싱)
+			["parent", "sibling", "index"] // 4. 상대 경로 (../, ./) 모음
+		]
+	},
 	"ignorePatterns": [
+		"**/messages/*.json",
+		"**/message/*.json",
+		"**/.svelte-doctor/**",
 		"package-lock.json",
 		"pnpm-lock.yaml",
 		"yarn.lock",
 		"dist/",
 		"build/",
+		"output/",
 		"out/",
 		".next/",
 		".nuxt/",
@@ -28,10 +40,8 @@
 		"public/",
 		"static/",
 		"src/paraglide/",
-		"message/",
 		".vscode/",
 		"**/*.ejs",
-		"src/paraglide/",
 		"project.inlang/settings.json",
 		"wc/",
 		".tsconfig.json",

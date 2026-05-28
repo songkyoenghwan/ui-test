@@ -14,8 +14,9 @@
 
 <script lang="ts">
 	import type { Placement } from '@floating-ui/utils';
-	import { Tooltip, Button } from 'flowbite-svelte';
-	import { slide, scale, blur } from 'svelte/transition';
+	import { Button, Tooltip } from 'flowbite-svelte';
+	import { blur, scale, slide } from 'svelte/transition';
+
 	interface MyTooltipProps {
 		btn?: string;
 		txt?: string;

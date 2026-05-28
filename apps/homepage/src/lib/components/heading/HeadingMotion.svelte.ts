@@ -1,4 +1,4 @@
-import { animate, stagger, onScroll } from 'animejs';
+import { animate, onScroll, stagger } from 'animejs';
 import type { Attachment } from 'svelte/attachments';
 
 export const visualMotion: Attachment<HTMLElement> = (el) => {

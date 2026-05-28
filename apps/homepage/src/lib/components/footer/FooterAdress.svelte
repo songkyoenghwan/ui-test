@@ -6,9 +6,8 @@
 />
 
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages.js';
-
 	import logo from '$lib/assets/imgs/logo/logo-deepfine.svg';
+	import { m } from '$lib/paraglide/messages.js';
 </script>
 
 <section class="flex flex-col gap-5">

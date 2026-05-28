@@ -6,7 +6,7 @@ yarn.lock
 # 빌드/생성된 디렉터리
 dist/
 build/
-out/
+output/
 .next/
 .nuxt/
 .cache/
@@ -17,9 +17,19 @@ out/
 static/
 
 # 국제화/번역 관련 생성 디렉터리
-src/paraglide/
-project.inlang/settings.json
-message/
+**/paraglide/
+**/project.inlang/settings.json
+**/message/
+
+# 모든 하위 폴더의 인랑 다국어 메시지 장부 무조건 제외
+**/messages/*.json
+**/message/*.json
+project.inlang/
+
+# 스벨트 닥터 및 임시 툴체인 캐시 전선 완전 격리
+**/.svelte-doctor/
+**/.cache/
+**/.svelte-kit/
 
 # 개발 환경 설정
 .vscode/

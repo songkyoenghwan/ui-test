@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CountNumber from '$lib/components/text/CountNumber.svelte';
+
 	let {
 		num = 0,
 		subTit = '',

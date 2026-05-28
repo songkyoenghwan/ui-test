@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import Icons from '@/lib/components/icons/Icons.svelte';
+	import { page } from '$app/state';
 	import { Tooltip } from 'flowbite-svelte';
 
 	const list = [

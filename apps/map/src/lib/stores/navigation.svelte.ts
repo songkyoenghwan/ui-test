@@ -1,6 +1,6 @@
 // src/lib/stores/navigation.ts
 import type { Lnblist } from '$lib/types/Lnb';
-import { writable, get, derived } from 'svelte/store';
+import { derived, get, writable } from 'svelte/store';
 
 // 스토어 타입 (필수 필드만)
 interface NavigationState {

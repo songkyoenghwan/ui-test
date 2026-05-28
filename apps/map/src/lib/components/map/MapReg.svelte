@@ -20,10 +20,10 @@
 />
 
 <script lang="ts">
-	import { onlyNumber } from '@/utils/inputEv';
 	import { removePlaceById, type Place } from '@/components/map/MapRegEv.svelte';
-	import type { Attachment } from 'svelte/attachments';
+	import { onlyNumber } from '@/utils/inputEv';
 	import Sortable from 'sortablejs';
+	import type { Attachment } from 'svelte/attachments';
 
 	let {
 		id = '',

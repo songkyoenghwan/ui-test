@@ -11,7 +11,8 @@
 />
 
 <script lang="ts">
-	import { navigationStore, initNavigation, setCurrentId, currentItemFromPath } from '$lib/stores/navigation.svelte';
+	import logo from '$lib/images/logo/lnb-logo.svg';
+	import { currentItemFromPath, initNavigation, navigationStore, setCurrentId } from '$lib/stores/navigation.svelte';
 
 	let {
 		authority = 'user',
@@ -108,7 +109,6 @@
 		],
 	} = $props();
 
-	import logo from '$lib/images/logo/lnb-logo.svg';
 	let hoveredId = $state('');
 
 	$effect.pre(() => {

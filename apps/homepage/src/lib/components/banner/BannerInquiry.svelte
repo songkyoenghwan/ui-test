@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { register } from 'swiper/element/bundle';
 	import { m } from '$lib/paraglide/messages.js';
+	import { register } from 'swiper/element/bundle';
+
 	let { page = '' } = $props();
 
 	$effect(() => {

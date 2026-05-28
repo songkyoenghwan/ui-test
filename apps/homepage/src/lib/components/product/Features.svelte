@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { parseBreakline } from '$lib/utils/textUtils.svelte';
-	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import daoLogo from '$lib/assets/imgs/logo/logo-dao-only.svg';
 	import dscLogo from '$lib/assets/imgs/logo/logo-dsc-only.svg';
+	import SubHeading from '$lib/components/heading/SubHeading.svelte';
+	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
 	let { tit = '', txt = '', subTxt = '', lists = [], logo = '' } = $props();
 

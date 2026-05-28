@@ -23,8 +23,8 @@ export class InputText extends LitElement {
 
 		return html`
 			<input
-				type="text"
 				class="${heightClass} focus-within:outline-primary rounded-sm border border-slate-200 bg-white px-3 placeholder:text-slate-300 read-only:bg-slate-200 disabled:bg-slate-200"
+				type="text"
 				.value=${this.value ?? ''}
 				.placeholder=${this.placeholder ?? ''}
 				.readonly=${this.readonly ?? ''}

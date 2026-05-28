@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
 	import Lenis from 'lenis';
+	import { onMount, type Snippet } from 'svelte';
 
 	type Props = {
 		cards: Snippet[];

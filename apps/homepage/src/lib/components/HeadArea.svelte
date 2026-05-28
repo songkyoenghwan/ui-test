@@ -1,6 +1,6 @@
 <script lang="ts">
-	import logo from '$lib/assets/new_pantos_ci.png';
 	import Btns from '@/lib/components/button/Btns.svelte';
+	import logo from '$lib/assets/new_pantos_ci.png';
 
 	let { name = '' } = $props();
 </script>

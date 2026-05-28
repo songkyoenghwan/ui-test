@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Attachment } from 'svelte/attachments';
 	import { CountUp } from 'countUp.js';
+	import type { Attachment } from 'svelte/attachments';
 
 	let { text = 0 } = $props();
 

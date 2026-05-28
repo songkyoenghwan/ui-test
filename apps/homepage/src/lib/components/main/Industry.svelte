@@ -6,9 +6,10 @@
 />
 
 <script lang="ts">
-	import { m } from '$lib/paraglide/messages.js';
 	import { Marquee } from '@selemondev/svelte-marquee';
+	import { m } from '$lib/paraglide/messages.js';
 	import '@selemondev/svelte-marquee/dist/style.css';
+
 	const lists = [
 		{ id: 'ind1', alt: 'SAMSUNG 삼성전자' },
 		{ id: 'ind2', alt: 'SAMSUNG 상성중공업' },
