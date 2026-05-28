@@ -3,7 +3,7 @@
 	"bracketSpacing": true,
 	"endOfLine": "auto",
 	"htmlWhitespaceSensitivity": "ignore",
-	"printWidth": 180,
+	"printWidth": 140,
 	"singleQuote": true,
 	"tabWidth": 4,
 	"useTabs": true,

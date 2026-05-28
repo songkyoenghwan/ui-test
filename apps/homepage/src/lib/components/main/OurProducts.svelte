@@ -6,6 +6,9 @@
 />
 
 <script lang="ts">
+	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
+	import { flip } from 'svelte/animate';
+	import { fade, fly } from 'svelte/transition';
 	import { m } from '$lib/paraglide/messages.js';
 
 	let lists = [
@@ -34,7 +37,7 @@
 			link: '',
 		},
 	];
-	const videoUrl = $derived(import.meta.env.PROD ? '/build/video/main-video.webm' : '/video/main-video.webm');
+	const videoUrl = `${__STATIC_URL__}/video/main-video.webm`;
 	let current = $state(0);
 	let w = $state(typeof window !== 'undefined' ? window.innerWidth : 0);
 	const isDesktop = $derived(w >= 1024);
@@ -42,17 +45,36 @@
 
 <svelte:window bind:innerWidth={w} />
 
-<section class="relative max-w-dvw">
+<section class="relative max-w-dvw py-5 lg:py-15">
 	<sub-heading-line line="none" title="Our Products" subTit={m.main_subtitle_our()}></sub-heading-line>
 
 	<ul class="flex gap-7.5 max-lg:flex-col lg:flex-row">
 		{#each lists as list, i (list.id)}
-			<li data-scroll="slide-up" class="group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl has-aria-current:flex-1 lg:h-145">
+			<li
+				data-scroll="slide-up"
+				class="group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl transition-all duration-400 has-aria-current:flex-1 lg:h-145"
+				animate:flip
+				in:fly={{ y: 200 }}
+				out:fade
+			>
 				{#if current === i && isDesktop}
 					<div
 						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
-						<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop>
+						<video
+							class="relative z-1 aspect-video h-full w-full object-cover"
+							autoplay
+							muted
+							playsinline
+							loop
+							poster={i === 0
+								? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+								: i === 1
+									? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+									: i === 2
+										? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+										: ''}
+						>
 							<source src={videoUrl} type="video/webm" />
 						</video>
 					</div>
@@ -62,7 +84,20 @@
 					<div
 						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
-						<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop>
+						<video
+							class="relative z-1 aspect-video h-full w-full object-cover"
+							autoplay
+							muted
+							playsinline
+							loop
+							poster={i === 0
+								? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+								: i === 1
+									? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+									: i === 2
+										? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+										: ''}
+						>
 							<source src={videoUrl} type="video/webm" />
 						</video>
 					</div>
@@ -90,7 +125,7 @@
 						>
 							<source media="(min-width: 1024px)" srcset={list.logoPc} />
 							<source media="(max-width: 1024px)" srcset={list.logo} />
-							<img src={list.logo} alt="" class="h-full" loading="lazy" />
+							<img loading="lazy" src={list.logo} alt="" class="h-full" />
 						</picture>
 						<dl
 							class="text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0"
@@ -99,7 +134,9 @@
 							<dd>{list.txt}</dd>
 						</dl>
 					</div>
-					<div class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100">
+					<div
+						class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100"
+					>
 						<p
 							class="text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 						>
@@ -111,4 +148,6 @@
 			</li>
 		{/each}
 	</ul>
+
+	<BannerTrial />
 </section>

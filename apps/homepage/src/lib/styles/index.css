@@ -207,6 +207,19 @@
 
 	--animate-marquee-left: marquee-left var(--duration, 100s) linear infinite;
 	--animate-marquee-up: marquee-up var(--duration, 100s) linear infinite;
+
+	@keyframes ping-motion {
+		0% {
+			transform: scale(0);
+		}
+		5% {
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 0;
+		}
+	}
 }
 
 @layer base {

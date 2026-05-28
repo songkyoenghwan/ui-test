@@ -1,3 +1,5 @@
+import { m } from 'motion/react';
+
 const industriesArr = industries.map((ind) => ({
 	txt: m[ind](),
 }));
@@ -8,7 +10,7 @@ export const feaKeysList = feaKeys.map((item, i) => ({
 	subTxt: 'subTxt' in item ? m[item.subTxt as MsgKey]({ name: '' }) : undefined,
 	logo: m[item.logo as MsgKey]({ name: '' }),
 	labels: Array.from({ length: item.labels }, (_, y) => {
-		const key = `product_features_list_${i + 1}_${y + 1}` as MsgKey;
+		const key = `dao_features_list_${i + 1}_${y + 1}` as MsgKey;
 		const value = m[key]?.({ name: '' });
 		return value ?? '';
 	}),

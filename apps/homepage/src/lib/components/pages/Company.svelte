@@ -71,7 +71,7 @@
 		</p>
 
 		<picture>
-			<img src={sign} alt={m.ceo_name()} />
+			<img loading="lazy" src={sign} alt={m.ceo_name()} />
 		</picture>
 	</div>
 </section>
@@ -83,7 +83,7 @@
 		{#each teams as team, i (`team-${i}`)}
 			<li data-scroll="slide-up" class="bg-light-blue flex flex-col overflow-clip rounded-xl">
 				<picture class="flex">
-					<img src={team.img} alt={team.team} class="w-full" />
+					<img loading="lazy" src={team.img} alt={team.team} class="w-full" />
 				</picture>
 
 				<div class="flex flex-col gap-5 p-5 lg:gap-7.5 lg:p-7.5">

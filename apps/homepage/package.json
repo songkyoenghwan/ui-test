@@ -26,6 +26,7 @@
 		"wc": "bun -b run vite build -c vite.config.sv.mjs"
 	},
 	"dependencies": {
+		"@inlang/paraglide-js-svelte": "^1.0.3",
 		"@selemondev/svelte-marquee": "^0.1.1",
 		"alpinejs": "^3.15.12",
 		"animejs": "^4.4.1",
@@ -34,6 +35,7 @@
 		"flowbite": "^4.0.2",
 		"gsap": "^3.15.0",
 		"keen-slider": "^6.8.6",
+		"liquid-glass-svelte": "^1.2.0",
 		"motion": "^12.40.0",
 		"swiper": "^12.2.0"
 	},

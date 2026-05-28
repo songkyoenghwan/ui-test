@@ -54,7 +54,7 @@
 		<Marquee pauseOnHover={true} class="gap-3.75 lg:gap-7.5" innerClassName="gap-3.75 lg:gap-7.5" fade={true}>
 			{#each lists as { alt, id }, i (id)}
 				<picture>
-					<img src="{__STATIC_URL__}/imgs/industry/img-industry-{i + 1}.png" {alt} loading="lazy" class="w-37.5 lg:w-75" />
+					<img loading="lazy" src="{__STATIC_URL__}/imgs/industry/img-industry-{i + 1}.png" {alt} class="w-37.5 lg:w-75" />
 				</picture>
 			{/each}
 		</Marquee>

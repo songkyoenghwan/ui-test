@@ -8,7 +8,7 @@
 <header class="flex items-center justify-between gap-1 bg-white px-5 py-2.5">
 	<h1>
 		<a href="/">
-			<picture><img src={logo} alt="" class="h-12.5" /></picture>
+			<picture><img loading="lazy" src={logo} alt="" class="h-12.5" /></picture>
 			<span class="sr-only">LX판토스</span>
 		</a>
 	</h1>

@@ -21,7 +21,7 @@ export default defineConfig({
 	},
 	server: {
 		port: 6713, // homepage는 3000, map은 3001 등으로 분리
-		strictPort: true, // 포트가 이미 사용 중일 때 자동으로 번호를 바꾸지 않게 함
+		//strictPort: true, // 포트가 이미 사용 중일 때 자동으로 번호를 바꾸지 않게 함
 		// hmr: {
 		// 	protocol: 'ws',
 		// 	host: 'localhost',
@@ -34,7 +34,7 @@ export default defineConfig({
 	preview: {
 		// outDir: 'dist',
 		port: 6714,
-		host: true,
+		// host: true,
 	},
 	plugins: [
 		tailwindcss(),

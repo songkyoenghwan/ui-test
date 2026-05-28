@@ -46,8 +46,10 @@
 </script>
 
 {#snippet contentIndustries(tit = '', txt = '', icon = '')}
-	<li class="bg-ebedff relative grid place-items-center rounded-xl p-5 text-center opacity-0 lg:p-7.5">
-		<div class="grid size-15 place-content-center"></div>
+	<li class="bg-ebedff relative grid place-items-center gap-5 rounded-xl p-5 text-center opacity-0 lg:p-7.5">
+		<picture class="grid size-22.5 place-content-center">
+			<img loading="lazy" src={icon} alt={tit} />
+		</picture>
 		{#if tit}
 			<p class="text-2md lg:text-lg">{tit}</p>
 		{/if}
@@ -56,12 +58,12 @@
 	</li>
 {/snippet}
 
-<section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
-	<div class="space-y-5 bg-white p-5 lg:space-y-15 lg:p-15">
+<section data-scroll="slide-up" class="space-y-5 overflow-clip py-11.25 lg:space-y-7.5 lg:py-15">
+	<div class="space-y-5 rounded-xl bg-white p-5 lg:space-y-15 lg:p-15">
 		<SubHeading {tit} {txt} {subTxt} />
 		<ul {@attach indMotion} class={['grid gap-5', cls]}>
 			{#each lists as item, i (i)}
-				{@render contentIndustries(item.tit, item.txt)}
+				{@render contentIndustries(item.tit, item.txt, item.img)}
 			{/each}
 		</ul>
 	</div>

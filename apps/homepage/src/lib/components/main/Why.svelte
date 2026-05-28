@@ -7,6 +7,8 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+	import { videoObserve } from '$lib/utils/videoObserve.svelte';
+	import CountNumber from '$lib/components/text/CountNumber.svelte';
 
 	let lists = $derived([
 		{
@@ -60,7 +62,7 @@
 				data-scroll="slide-up"
 				data-index={i}
 				class={[
-					'relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all max-lg:flex-col lg:h-full lg:hover:scale-105',
+					'relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105',
 					list.cls,
 				]}
 				style:--why-1-bg={`url(${__STATIC_URL__}/imgs/main/why/bg-why-1.png)`}
@@ -70,7 +72,11 @@
 						class={['flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]', list.id === 'why-3' ? 'text-primary' : '']}
 						data-font={list.font}
 					>
-						{list.id !== 'why-4' ? list.num : list.tit}
+						{#if list.id !== 'why-4'}
+							<CountNumber text={Number(list.num)} />
+						{:else}
+							{list.tit}
+						{/if}
 						<strong class="text-primary">{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}</strong>
 					</dt>
 					<dd class="text-2md lg:text-lg">{list.txt}</dd>
@@ -79,9 +85,10 @@
 				{#if list.video}
 					<div data-scroll="slide-up" class="flex justify-end">
 						<video
+							{@attach videoObserve}
 							data-scroll="slide-up"
 							class={['relative z-1 max-w-fit', list.id === 'why-1' ? 'h-56.5 lg:left-32 lg:min-h-131.75' : list.id === 'why-2' ? 'h-53.5 max-w-full lg:h-61.5' : '']}
-							autoplay
+							autoplay={false}
 							muted
 							playsinline
 						>

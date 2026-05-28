@@ -3,7 +3,7 @@
 	"arrowParens": "always",
 	"bracketSpacing": true,
 	"htmlWhitespaceSensitivity": "ignore",
-	"printWidth": 180,
+	"printWidth": 140,
 	"singleQuote": true,
 	"tabWidth": 4,
 	"useTabs": true,

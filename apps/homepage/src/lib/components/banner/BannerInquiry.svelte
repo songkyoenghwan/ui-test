@@ -22,7 +22,9 @@
 		m.dao_banner_item_10,
 	] as const;
 	let pageKeys = $derived(page === 'dao' ? [...bannerTitleFunctions] : []);
-	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`);
+	let bg = $derived(
+		page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`,
+	);
 	let tit = $derived(page === 'dao' ? m.dao_banner_title?.() : '');
 	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2?.() : '');
 	let txt = $derived(page === 'dao' ? m.dao_banner_text?.() : '');
@@ -40,7 +42,7 @@
 
 {#snippet inquiryLi(img: string, txt: string)}
 	<swiper-slide class="flex min-h-12 items-center justify-center gap-2.5 px-5 lg:min-h-17.75 lg:gap-5 lg:px-15">
-		<picture class="inline-flex max-lg:size-7.5"><img src={img} alt="" class="h-full object-cover" /></picture>
+		<picture class="inline-flex size-7.5 lg:size-12.5"><img loading="lazy" src={img} alt="" class="h-full object-cover" /></picture>
 
 		<h4 class="text-primary text-lg font-bold lg:text-4xl">{txt}</h4>
 	</swiper-slide>
@@ -65,7 +67,7 @@
 				autoplay-delay="1500"
 				class="flex flex-none rounded-full bg-white shadow-md lg:w-107.5"
 			>
-				{#each bannerKeys as list, i}
+				{#each bannerKeys as list}
 					{@render inquiryLi(list.img, list.txt)}
 				{/each}
 			</swiper-container>

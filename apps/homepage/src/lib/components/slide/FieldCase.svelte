@@ -1,11 +1,15 @@
 <script lang="ts">
+	import { getContext } from 'svelte';
 	import { register } from 'swiper/element/bundle';
+	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
+	import * as m from '$lib/paraglide/messages.js';
 
 	$effect(() => {
 		register();
 	});
 
-	let { lists = [] } = $props();
+	// oxlint-disable-next-line typescript/no-explicit-any
+	const caseContext = getContext<{ list: any[] }>('case-list');
 
 	let swiperEl: Element | null = $state(null);
 	let curretIndex = $state(0);
@@ -13,16 +17,25 @@
 </script>
 
 {#snippet resultLi(img: string, logo: string, tit: string, badge: string[], txt: string[], etc: string[])}
-	<swiper-slide class="grid grid-cols-1 items-center gap-5 p-5 lg:grid-cols-[minmax(480px,4fr)_minmax(420px,6fr)] lg:gap-15 lg:p-7.5">
+	<swiper-slide class="grid grid-cols-1 items-center gap-5 p-5 lg:grid-cols-[minmax(480px,4fr)_minmax(460px,6fr)] lg:p-7.5 xl:gap-15">
 		<div class="relative transition-all">
 			<picture class="bg-primary/10 inline-flex h-53.75 w-auto overflow-clip rounded-xl lg:h-120">
-				<img src={img} alt="" class="flex-none object-cover lg:w-full" />
+				<img loading="lazy" src={img} alt="" class="flex-none object-cover lg:w-full" />
 			</picture>
 		</div>
 
 		<div class="inline-grid place-content-baseline gap-5">
-			{#if logo}
-				<picture class="inline-flex h-5 overflow-clip"><img src={logo} alt="" class="h-full object-cover" /></picture>
+			{#if logo === 'client'}
+				<p>
+					<span class="text-2md bg-999 inline-flex min-h-7.5 items-center gap-3 rounded-full px-2.5 text-white">
+						<icon-list name="lock" class="size-5 fill-white"></icon-list>
+						Client Confidential
+					</span>
+				</p>
+			{:else}
+				<picture class="inline-flex h-5 overflow-clip">
+					<img loading="lazy" src={logo} alt="" class="h-full object-cover" />
+				</picture>
 			{/if}
 
 			<h4 class="text-lg font-bold lg:text-4xl">{tit}</h4>
@@ -42,10 +55,14 @@
 			</div>
 
 			<ul class="text-2md border-t-d9d9d9 space-y-2.5 border-t border-dashed pt-5 text-lg font-bold">
-				{#each etc as e, i (`case-e-${i}`)}
+				{#each etc as msg, m (`case-e-${m}`)}
 					<li class="flex items-center gap-1.5">
 						<icon-list name="tick-circle-list" class="fill-primary size-5"></icon-list>
-						{e}
+						<div>
+							<ParaglideMessage message={msg} class="bg-black">
+								{#snippet b({ children })}<strong class="text-primary font-bold">{@render children()}</strong>{/snippet}
+							</ParaglideMessage>
+						</div>
 					</li>
 				{/each}
 			</ul>
@@ -55,7 +72,7 @@
 
 <section data-scroll="slide-up" class="divide-d9d9d9 relative divide-y rounded-xl bg-white">
 	<ul class="flex max-w-dvw snap-x snap-start gap-2.5 overflow-auto p-5 lg:gap-5 lg:p-7.5">
-		{#each lists as { btn }, i (`case-btn-${i}`)}
+		{#each caseContext.list as { btn }, i (`case-btn-${i}`)}
 			<li class="flex-none">
 				<button
 					type="button"
@@ -84,8 +101,10 @@
 		}}
 		data-scroll="slide-up"
 	>
-		{#each lists as list, i}
-			{@render resultLi(list.img, list.logo, list.tit, list.badge, list.txt, list.etc)}
-		{/each}
+		{#if caseContext?.list}
+			{#each caseContext.list as list (list.id)}
+				{@render resultLi(list.img, list.logo, list.tit, list.badge || [], list.txt, list.etc)}
+			{/each}
+		{/if}
 	</swiper-container>
 </section>

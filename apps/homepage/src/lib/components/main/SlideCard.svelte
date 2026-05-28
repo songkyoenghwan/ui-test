@@ -67,7 +67,10 @@
 	});
 </script>
 
-<section data-scroll="slide-up" class="relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15">
+<section
+	data-scroll="slide-up"
+	class="relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15"
+>
 	<sub-heading-line line="none" title={m.main_title_mro?.()} subTit={m.main_subtitle_mro?.()}></sub-heading-line>
 
 	<div
@@ -88,7 +91,7 @@
 					class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5"
 				>
 					<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
-						<img src={list.img} alt="" class="w-full object-cover" />
+						<img loading="lazy" src={list.img} alt="" class="w-full object-cover" />
 					</picture>
 
 					<ul class="flex items-center justify-center gap-3">
@@ -111,18 +114,21 @@
 		{#if isOn}
 			<div class="absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5">
 				<button
-					class="grid size-9 place-content-center rounded-full bg-black lg:size-12"
+					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
 					onclick={() => {
 						console.log(swiperEl);
 						swiperEl?.swiper?.slidePrev();
 					}}
 				>
 					<span class="sr-only">Slide Prev</span>
-					<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 rotate-180 stroke-white"></icon-list>
+					<icon-list name="arrow-right" class="size-6 rotate-180 stroke-white"></icon-list>
 				</button>
-				<button class="grid size-9 place-content-center rounded-full bg-black lg:size-12" onclick={() => swiperEl?.swiper?.slideNext()}>
+				<button
+					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
+					onclick={() => swiperEl?.swiper?.slideNext()}
+				>
 					<span class="sr-only">Slide Next</span>
-					<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+					<icon-list name="arrow-right" class="size-6 stroke-white"></icon-list>
 				</button>
 			</div>
 		{/if}

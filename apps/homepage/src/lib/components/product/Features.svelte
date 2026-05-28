@@ -21,11 +21,20 @@
 	<SubHeading {tit} {txt} {subTxt} />
 	<ul data-scroll="slide-up" class="flex flex-col gap-5 lg:gap-7.5">
 		{#each lists as item, i (i)}
-			<li class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md lg:grid-cols-[1fr_fit-content(640px)] lg:flex-row lg:gap-15 lg:p-15 xl:gap-50">
+			<li
+				class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
+			>
 				<div class="flex flex-col justify-between gap-2.5">
 					<dl class="space-y-2.5 lg:space-y-5">
 						<dt class="text-2xl font-bold lg:text-5xl">{parseBreakline(item.tit)}</dt>
-						<dd class="text-lg lg:text-2xl">{parseBreakline(item.txt)}</dd>
+
+						{#if item.txt}
+							<dd class="text-2sm text-666 lg:text-lg lg:whitespace-pre-line">
+								{#each item.txt as st}
+									<p>{st}</p>
+								{/each}
+							</dd>
+						{/if}
 
 						{#if item.subTxt}
 							<dd class="text-2sm text-666 lg:text-lg">{parseBreakline(item.subTxt)}</dd>
@@ -36,7 +45,11 @@
 						{#if item.labels}
 							<ul class="inline-flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5">
 								{#each item.labels as laebl, i (i)}
-									<li class="bg-ebedff lg:text-2md text-2sm text-3f53ff flex flex-none items-center rounded-full px-5 py-1">{laebl}</li>
+									<li
+										class="bg-ebedff lg:text-2md text-2sm text-3f53ff flex flex-none items-center rounded-full px-5 py-1"
+									>
+										{laebl}
+									</li>
 								{/each}
 							</ul>
 						{/if}
