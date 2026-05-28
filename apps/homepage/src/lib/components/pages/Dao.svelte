@@ -11,8 +11,6 @@
 <script lang="ts">
 	import Faq from '$/lib/components/faq/Faq.svelte';
 	import FieldCase from '$/lib/components/slide/FieldCase.svelte';
-	import logo from '$lib/assets/imgs/logo/logo-dao.svg';
-	import bg from '$lib/assets/imgs/visual/dao-visual.jpg';
 	import BannerInquiry from '$lib/components/banner/BannerInquiry.svelte';
 	import Features from '$lib/components/product/Features.svelte';
 	import Industries from '$lib/components/product/Industries.svelte';
@@ -20,6 +18,9 @@
 	import Results from '$lib/components/product/Results.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
 	import { m } from '$lib/paraglide/messages.js';
+
+	const logo = `${__STATIC_URL__}/imgs/logo/logo-dao.svg`;
+	const bg = `${__STATIC_URL__}/imgs/visual/dao-visual.jpg`;
 
 	let { videoUrl = '' } = $props();
 

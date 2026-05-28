@@ -11,24 +11,24 @@
 	let lists = [
 		{
 			id: 'our-products1',
-			logo: '/src/lib/assets/imgs/logo/logo-main-logi.svg',
-			logoPc: '/src/lib/assets/imgs/logo/logo-main-logi-pc.svg',
+			logo: `${__STATIC_URL__}/imgs/logo/logo-main-logi.svg`,
+			logoPc: `${__STATIC_URL__}/imgs/logo/logo-main-logi-pc.svg`,
 			tit: m.main_our_item_tit_1?.(),
 			txt: m.main_our_item_txt_1?.(),
 			link: '',
 		},
 		{
 			id: 'our-products2',
-			logo: '/src/lib/assets/imgs/logo/logo-main-dao.svg',
-			logoPc: '/src/lib/assets/imgs/logo/logo-main-dao-pc.svg',
+			logo: `${__STATIC_URL__}/imgs/logo/logo-main-dao.svg`,
+			logoPc: `${__STATIC_URL__}/imgs/logo/logo-main-dao-pc.svg`,
 			tit: m.main_our_item_tit_2?.(),
 			txt: m.main_our_item_txt_2?.(),
 			link: '',
 		},
 		{
 			id: 'our-products3',
-			logo: '/src/lib/assets/imgs/logo/logo-main-dsc.svg',
-			logoPc: '/src/lib/assets/imgs/logo/logo-main-dsc-pc.svg',
+			logo: `${__STATIC_URL__}/imgs/logo/logo-main-dsc.svg`,
+			logoPc: `${__STATIC_URL__}/imgs/logo/logo-main-dsc-pc.svg`,
 			tit: m.main_our_item_tit_3?.(),
 			txt: m.main_our_item_txt_3?.(),
 			link: '',
@@ -71,9 +71,12 @@
 				<a
 					href="/"
 					class="relative flex size-full flex-1 cursor-pointer flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
-							{i === 0 ? 'bg-[url(/src/lib/assets/imgs/logo/bg-main-logi.png)]' : ''}
-							{i === 1 ? 'bg-[url(/src/lib/assets/imgs/logo/bg-main-dao.png)]' : ''}
-							{i === 2 ? 'bg-[url(/src/lib/assets/imgs/logo/bg-main-dsc.png)]' : ''}"
+							{i === 0 ? 'bg-(image:--bg-main-logi)' : ''}
+							{i === 1 ? 'bg-(image:--bg-main-dao)' : ''}
+							{i === 2 ? 'bg-(image:--bg-main-dsc)' : ''}"
+					style:--bg-main-logi={`url(${__STATIC_URL__}/imgs/logo/bg-main-logi.png)`}
+					style:--bg-main-dao={`url(${__STATIC_URL__}/imgs/logo/bg-main-dao.png)`}
+					style:--bg-main-dsc={`url(${__STATIC_URL__}/imgs/logo/bg-main-dsc.png)`}
 					onmouseenter={() => (current = i)}
 					onfocus={() => (current = i)}
 					aria-current={current === i ? 'true' : !isDesktop ? 'true' : undefined}

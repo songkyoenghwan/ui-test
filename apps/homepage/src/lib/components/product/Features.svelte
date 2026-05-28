@@ -1,11 +1,11 @@
 <script lang="ts">
-	import daoLogo from '$lib/assets/imgs/logo/logo-dao-only.svg';
-	import dscLogo from '$lib/assets/imgs/logo/logo-dsc-only.svg';
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
 	let { tit = '', txt = '', subTxt = '', lists = [], logo = '' } = $props();
 
+	const daoLogo = `${__STATIC_URL__}/imgs/logo/logo-dao-only.svg`;
+	const dscLogo = `${__STATIC_URL__}/imgs/logo/logo-dsc-only.svg`;
 	let logoType = $derived(logo === 'dao' ? daoLogo : dscLogo);
 	let videoEl: HTMLVideoElement | null = $state(null);
 

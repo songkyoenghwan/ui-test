@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/(page)/CMS-OBD-002/+page.svelte";

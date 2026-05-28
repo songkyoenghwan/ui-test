@@ -17,5 +17,21 @@
 		"prettier-plugin-organize-attributes",
 		"prettier-plugin-css-order",
 		"prettier-plugin-tailwindcss"
+	],
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		},
+		{
+			"files": "*.ts",
+			"options": {
+				"parser": "typescript",
+				"plugins": ["@ianvs/prettier-plugin-sort-imports"],
+				"importOrderParserPlugins": ["typescript", "decorators-legacy"]
+			}
+		}
 	]
 }

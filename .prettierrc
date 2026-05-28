@@ -17,5 +17,21 @@
 		"prettier-plugin-tailwindcss"
 	],
 	"cssDeclarationSorterOrder": "smacss",
-	"tailwindPreserveDuplicates": false
+	"tailwindPreserveDuplicates": false,
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		},
+		{
+			"files": "*.ts",
+			"options": {
+				"parser": "typescript",
+				"plugins": ["@ianvs/prettier-plugin-sort-imports"],
+				"importOrderParserPlugins": ["typescript", "decorators-legacy"]
+			}
+		}
+	]
 }

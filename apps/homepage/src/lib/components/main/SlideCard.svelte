@@ -9,38 +9,33 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { register } from 'swiper/element/bundle';
 
-	const cardImg1 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-1.png' : '/imgs/main/slide/img-card-1.png');
-	const cardImg2 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-2.png' : '/imgs/main/slide/img-card-2.png');
-	const cardImg3 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-3.png' : '/imgs/main/slide/img-card-3.png');
-	const cardImg4 = $derived(import.meta.env.PROD ? '/build/imgs/main/slide/img-card-4.png' : '/imgs/main/slide/img-card-4.png');
-
 	const lists = $derived([
 		{
 			id: 'card-slide-1',
 			badge: [m.main_mro_badge_1?.(), m.main_mro_badge_2?.()],
 			txt: m.main_mro_txt_1?.(),
-			img: cardImg1,
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-1.png`,
 			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 		{
 			id: 'card-slide-2',
 			badge: [m.main_mro_badge_3?.(), m.main_mro_badge_2?.()],
 			txt: m.main_mro_txt_2?.(),
-			img: cardImg2,
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-2.png`,
 			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 		{
 			id: 'card-slide-3',
 			badge: [m.main_mro_badge_4?.(), m.main_mro_badge_5?.()],
 			txt: m.main_mro_txt_3?.(),
-			img: cardImg3,
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-3.png`,
 			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 		{
 			id: 'card-slide-4',
 			badge: [m.main_mro_badge_6?.(), m.main_mro_badge_7?.()],
 			txt: m.main_mro_txt_4?.(),
-			img: cardImg4,
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-4.png`,
 			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
 		},
 	]);

@@ -9,11 +9,11 @@
 />
 
 <script lang="ts">
-	import left from '$lib/assets/imgs/logo/img-header.png';
-	import dao from '$lib/assets/imgs/logo/log-header-dao.png';
-	import logo from '$lib/assets/imgs/logo/logo-deepfine.svg';
-	import dsc from '$lib/assets/imgs/logo/logo-header-dsc.png';
-	import logi from '$lib/assets/imgs/logo/logo-header-logi.png';
+	const left = `${__STATIC_URL__}/imgs/logo/img-header.png`;
+	const dao = `${__STATIC_URL__}/imgs/logo/log-header-dao.png`;
+	const logo = `${__STATIC_URL__}/imgs/logo/logo-deepfine.svg`;
+	const dsc = `${__STATIC_URL__}/imgs/logo/logo-header-dsc.png`;
+	const logi = `${__STATIC_URL__}/imgs/logo/logo-header-logi.png`;
 
 	let { name = '' } = $props<{ name?: string }>();
 

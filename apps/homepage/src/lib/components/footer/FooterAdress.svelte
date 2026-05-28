@@ -6,12 +6,11 @@
 />
 
 <script lang="ts">
-	import logo from '$lib/assets/imgs/logo/logo-deepfine.svg';
 	import { m } from '$lib/paraglide/messages.js';
 </script>
 
 <section class="flex flex-col gap-5">
-	<p><enhanced:img src={logo} alt="DEEP.FINE" class="w-35 lg:w-69.25" /></p>
+	<p><enhanced:img src={`${__STATIC_URL__}/imgs/logo/logo-deepfine.svg`} alt="DEEP.FINE" class="w-35 lg:w-69.25" /></p>
 	<div class="grid grid-cols-1">
 		<p class="text-2md text-black lg:text-2xl">{m.company_address_tit?.()}</p>
 		<address>{m.company_address_txt?.()}</address>

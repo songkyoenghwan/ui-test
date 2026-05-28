@@ -15,7 +15,7 @@
 			num: 36,
 			txt: m.main_why_txt_1?.(),
 			font: '90',
-			cls: 'flex-col bg-[url(/src/lib/assets/imgs/main/bg-why-1.png)] bg-no-repeat bg-center bg-cover text-white lg:row-span-2',
+			cls: 'flex-col bg-(image:--why-1-bg) bg-no-repeat bg-center bg-cover text-white lg:row-span-2',
 		},
 		{
 			id: 'why-2',
@@ -63,6 +63,7 @@
 					'relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all max-lg:flex-col lg:h-full lg:hover:scale-105',
 					list.cls,
 				]}
+				style:--why-1-bg={`url(${__STATIC_URL__}/imgs/main/why/bg-why-1.png)`}
 			>
 				<dl class="space-y-2.5 p-5">
 					<dt

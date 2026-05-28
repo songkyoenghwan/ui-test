@@ -91,13 +91,13 @@
 		class={[
 			'before:bg-primary relative flex py-2 before:top-[calc(50%-2.5px)] before:z-5 before:rounded-full before:opacity-0 before:transition-all has-aria-current:before:absolute has-aria-current:before:size-1.25 has-aria-current:before:opacity-100 max-lg:before:hidden! max-lg:after:hidden',
 			type === 'as'
-				? 'after:border-primary z-6 after:top-[calc(50%-0.5px)] after:z-1 after:border-dotted has-aria-current:before:right-0 has-aria-current:after:absolute has-aria-current:after:left-full has-aria-current:after:w-full has-aria-current:after:border'
-				: 'delay-500 has-aria-current:before:left-0',
+				? 'after:border-primary z-6 after:top-[calc(50%-0.25px)] after:z-1 after:border-dashed has-aria-current:before:right-0 has-aria-current:after:absolute has-aria-current:after:left-full has-aria-current:after:border lg:has-aria-current:after:w-30 2xl:has-aria-current:after:w-105'
+				: 'z-7 delay-500 before:z-6 has-aria-current:before:left-0',
 		]}
 	>
 		<button
 			class={[
-				'@starting:bg-transparnet group z-3 flex flex-1 grid-rows-2 items-center  gap-5 space-y-2.5 rounded-xl p-5 text-left transition-all lg:gap-7.5 lg:py-7.5',
+				'@starting:bg-transparnet group z-3 flex flex-1 grid-rows-2 items-center gap-5 space-y-2.5 rounded-xl p-5 text-left transition-all lg:gap-7.5 lg:py-7.5',
 				type === 'as' ? 'aria-current:bg-light-blue text-666' : 'aria-current:bg-9097ff',
 			]}
 			aria-current={current === i ? 'true' : undefined}
@@ -131,7 +131,7 @@
 <section data-scroll="slide-up" {@attach proMotion} class="space-y-5 py-11.25 lg:space-y-7.5 lg:py-15">
 	<SubHeading tit={product_problem_title} txt={product_problem_text} />
 	<ol class="grid grid-rows-2 gap-5 lg:grid-cols-[1fr_60px_1fr] lg:grid-rows-1 lg:gap-5 2xl:grid-cols-[1fr_12.5rem_1fr] 2xl:gap-25 starting:opacity-0">
-		<li class="divide-d9d9d9 grid h-full divide-y divide-dashed rounded-xl bg-white lg:grid-rows-[90px_1fr]">
+		<li class="divide-d9d9d9 relative grid h-full divide-y divide-dashed rounded-xl bg-white lg:grid-rows-[90px_1fr]">
 			<header class="grid min-h-15 place-content-center text-xl font-bold lg:min-h-22.5 lg:text-4xl">AS-IS</header>
 			<ul class="divide-d9d9d9 grid grid-rows-4 divide-y divide-dashed px-2">
 				{#each asList as as, i (i)}
@@ -144,7 +144,9 @@
 				<icon-list name="arrow-as-is" class="stroke-primary relative size-22.5 flex-none transition-all group-aria-current:fill-white"></icon-list>
 			</p>
 		</li>
-		<li class="divide-d9d9d9 bg-3743ff from-primary to-828aff group grid h-full divide-y divide-dashed rounded-xl bg-linear-to-t text-white lg:grid-rows-[90px_1fr]">
+		<li
+			class="divide-d9d9d9 bg-3743ff from-primary to-828aff group relative z-3 z-5 grid h-full divide-y divide-dashed rounded-xl bg-linear-to-t text-white lg:grid-rows-[90px_1fr]"
+		>
 			<header class="grid min-h-15 place-content-center text-xl font-bold lg:min-h-22.5 lg:text-4xl">TO-BE</header>
 			<ul class="divide-d9d9d9 grid grid-rows-4 divide-y divide-dashed px-2 text-left">
 				{#each toList as to, t (t)}

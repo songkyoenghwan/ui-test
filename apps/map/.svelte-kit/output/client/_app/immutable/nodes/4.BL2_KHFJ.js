@@ -1,0 +1,1 @@
+import{Y as e,i as t,q as n}from"../chunks/BI13FDpI.js";import"../chunks/xihTtKlq.js";import"../chunks/BB3JeiZr.js";var r=e(`<p>d</p>`);function i(e){n(e,r())}t(i,{},[],[],{mode:`open`});export{i as component};
