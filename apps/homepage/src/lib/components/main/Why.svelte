@@ -8,11 +8,13 @@
 <script lang="ts">
 	import CountNumber from '$lib/components/text/CountNumber.svelte';
 	import { m } from '$lib/paraglide/messages.js';
-	import { videoObserve } from '$lib/utils/videoObserve.svelte';
+	import { videoObserver } from '$lib/utils/videoObserve.svelte';
 
 	let lists = $state([
 		{
 			id: 'why-1',
+			poster: `${__STATIC_URL__}/video/img-why-1.png`,
+			webm: `${__STATIC_URL__}/video/img-why-1.webm`,
 			video: `${__STATIC_URL__}/video/img-why-1.mp4`,
 			num: 36,
 			txt: m.main_why_txt_1?.(),
@@ -21,6 +23,8 @@
 		},
 		{
 			id: 'why-2',
+			poster: `${__STATIC_URL__}/video/img-why-2.png`,
+			webm: `${__STATIC_URL__}/video/img-why-2.webm`,
 			video: `${__STATIC_URL__}/video/img-why-2.mp4`,
 			num: 22000,
 			txt: m.main_why_txt_2?.(),
@@ -85,14 +89,19 @@
 				{#if list.video}
 					<div data-scroll="slide-up" class="flex justify-end">
 						<video
-							{@attach videoObserve}
+							{@attach videoObserver}
 							data-scroll="slide-up"
-							class={['relative z-1 max-w-fit', list.id === 'why-1' ? 'h-56.5 lg:left-32 lg:min-h-131.75' : list.id === 'why-2' ? 'h-53.5 max-w-full lg:h-61.5' : '']}
-							autoplay={false}
+							class={[
+								'relative z-1',
+								list.id === 'why-1' ? 'h-56.5 lg:left-32 lg:min-h-131.75 lg:min-w-130' : list.id === 'why-2' ? 'h-53.5 max-w-full lg:h-61.5' : '',
+							]}
+							preload="auto"
 							muted
 							playsinline
+							poster={list.poster}
 						>
 							<source src={list.video} type="video/mp4" />
+							<source src={list.webm} type="video/webm" />
 						</video>
 					</div>
 				{/if}

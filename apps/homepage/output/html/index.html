@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<link rel="stylesheet" href="/output/main-bundle.es.css" />
+	</head>
+	<body>
+		<!-- 현재 창 활성 시 -  aria-current="page" 를 생성, 언어 선택시 aria-current="true" 생성 -->
+		<header-tag></header-tag>
+		<main-home></main-home>
+		<footer-tag></footer-tag>
+		
+
+		<script type="module" src="/output/wc.es.js"></script>
+
+		<!-- 해더, 푼터 공통 js // 개발 반영은 js 내용 만 -->
+		<script type="module" src="./tmeplate/header-tag.js"></script>
+		<script type="module" src="./tmeplate/footer-tag.js"></script>
+		<!-- // 해더, 푼터 공통 js // 개발 반영은 js 내용 만 -->
+
+		<script defer>
+			document.addEventListener('DOMContentLoaded', () => {
+				const mainNews = document?.querySelector('main-home');
+				if (!mainNews) return;
+				mainNews.news = [
+					...Array.from({ length: 10 }).map((_) => {
+						return {
+							link: 'https://www.deepfine.com/news/news-detail',
+							img: 'https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png',
+							tit: 'https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.pnghttps://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.pnghttps://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png',
+							date: '2025.12.08',
+						};
+					}),
+				];
+			})
+		</script>
+	</body>
+</html>

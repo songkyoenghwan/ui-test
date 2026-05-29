@@ -42,6 +42,7 @@ declare module '$env/static/private' {
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const BUN_INSPECT_CONNECT_TO: string;
+	export const BUN_WHICH_IGNORE_CWD: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
 	export const COLORTERM: string;
 	export const COMMONPROGRAMFILES: string;
@@ -62,6 +63,8 @@ declare module '$env/static/private' {
 	export const HOMEPATH: string;
 	export const HOSTNAME: string;
 	export const INFOPATH: string;
+	export const INIT_CWD: string;
+	export const JOBS: string;
 	export const LANG: string;
 	export const LOCALAPPDATA: string;
 	export const LOGONSERVER: string;
@@ -74,13 +77,9 @@ declare module '$env/static/private' {
 	export const MSYSTEM_CHOST: string;
 	export const MSYSTEM_PREFIX: string;
 	export const NODE: string;
-	export const NODE_ENV: string;
-	export const npm_command: string;
 	export const npm_config_local_prefix: string;
 	export const npm_config_user_agent: string;
 	export const npm_execpath: string;
-	export const npm_lifecycle_event: string;
-	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
@@ -128,7 +127,6 @@ declare module '$env/static/private' {
 	export const USERDOMAIN_ROAMINGPROFILE: string;
 	export const USERNAME: string;
 	export const USERPROFILE: string;
-	export const VIPSHOME: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
@@ -227,6 +225,7 @@ declare module '$env/dynamic/private' {
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		BUN_INSPECT_CONNECT_TO: string;
+		BUN_WHICH_IGNORE_CWD: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
 		COLORTERM: string;
 		COMMONPROGRAMFILES: string;
@@ -247,6 +246,8 @@ declare module '$env/dynamic/private' {
 		HOMEPATH: string;
 		HOSTNAME: string;
 		INFOPATH: string;
+		INIT_CWD: string;
+		JOBS: string;
 		LANG: string;
 		LOCALAPPDATA: string;
 		LOGONSERVER: string;
@@ -259,13 +260,9 @@ declare module '$env/dynamic/private' {
 		MSYSTEM_CHOST: string;
 		MSYSTEM_PREFIX: string;
 		NODE: string;
-		NODE_ENV: string;
-		npm_command: string;
 		npm_config_local_prefix: string;
 		npm_config_user_agent: string;
 		npm_execpath: string;
-		npm_lifecycle_event: string;
-		npm_lifecycle_script: string;
 		npm_node_execpath: string;
 		npm_package_json: string;
 		npm_package_name: string;
@@ -313,7 +310,6 @@ declare module '$env/dynamic/private' {
 		USERDOMAIN_ROAMINGPROFILE: string;
 		USERNAME: string;
 		USERPROFILE: string;
-		VIPSHOME: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		VSCODE_GIT_ASKPASS_NODE: string;

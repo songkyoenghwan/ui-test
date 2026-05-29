@@ -20,7 +20,7 @@ class HeaderTag extends HTMLElement {
 				class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-12"
 			>
 				<h1>
-					<a href="./index.html" title="deepfine homepage">
+					<a href="/output/index.html" title="deepfine homepage">
 						<span class="sr-only">deepfine</span>
 						<header-imgs name="logo"></header-imgs>
 					</a>
@@ -41,22 +41,22 @@ class HeaderTag extends HTMLElement {
 									class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 								>
 									<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
-										<a href="./logi.html">
+										<a href="/output/logi.html">
 											<header-imgs name="logi"></header-imgs>
 										</a>
 									</li>
 									<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
-										<a href="./dao.html"><header-imgs name="dao"></header-imgs></a>
+										<a href="/output/dao.html"><header-imgs name="dao"></header-imgs></a>
 									</li>
 									<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
-										<a href="./dsc.html"><header-imgs name="dsc"></header-imgs></a>
+										<a href="/output/dsc.html"><header-imgs name="dsc"></header-imgs></a>
 									</li>
 								</ul>
 							</li>
 							<li>
 								<a
 									class="hover:text-primary aria-[current=page]:text-primary flex min-h-12 items-center justify-center hover:underline"
-									href="./company.html"
+									href="/output/company.html"
 									aria-current="false"
 								>
 									Company
@@ -65,7 +65,7 @@ class HeaderTag extends HTMLElement {
 							<li>
 								<a
 									class="hover:text-primary aria-[current=page]:text-primary flex min-h-12 items-center justify-center hover:underline"
-									href="./news.html"
+									href="/output/news.html"
 									aria-current="false"
 								>
 									News
@@ -74,7 +74,7 @@ class HeaderTag extends HTMLElement {
 							<li>
 								<a
 									class="bg-primary hover:text-primary hover:border-primary group border-primary flex min-h-12 items-center gap-2 rounded-md border px-5 text-white hover:border hover:bg-white"
-									href="./contact.html"
+									href="/output/contact.html"
 									aria-current="false"
 								>
 									<span class="flex-none">Contact Sales</span>

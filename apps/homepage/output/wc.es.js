@@ -14705,9 +14705,23 @@ function Qk(e, t) {
 }
 Ha(Qk, {}, [], [], { mode: "open" });
 //#endregion
-//#region src/lib/components/main/OurProducts.svelte
-var $k = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" autoplay=\"\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), eA = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" autoplay=\"\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), tA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\" class=\"group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl transition-all duration-400 has-aria-current:flex-1 lg:h-145\"><!> <!> <a href=\"/\"><div class=\"lg:7.5 relative z-2 flex flex-col gap-5\"><picture><source media=\"(min-width: 1024px)\"/> <source media=\"(max-width: 1024px)\"/> <img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture> <dl class=\"text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0\"><dt class=\"font-bold\"> </dt> <dd> </dd></dl></div> <div class=\"z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100\"><p class=\"text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></p></div></a></li>", 2), nA = /* @__PURE__ */ B("<section class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <ul class=\"flex gap-7.5 max-lg:flex-col lg:flex-row\"></ul> <!></section>", 2);
-function rA(e, t) {
+//#region src/lib/utils/videoObserve.svelte.ts
+var $k = (e) => {
+	if (!(e instanceof HTMLVideoElement)) return;
+	let t = e, n = new IntersectionObserver((e) => {
+		e.forEach((e) => {
+			e.isIntersecting ? t.readyState >= 3 ? t.play().catch((e) => {
+				console.warn("비디오 자동 재생 차단됨:", e);
+			}) : t.addEventListener("canplay", () => {
+				t.play().catch(() => {});
+			}, { once: !0 }) : t.pause();
+		});
+	}, { threshold: .1 });
+	return n.observe(t), () => {
+		n.disconnect();
+	};
+}, eA = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), tA = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), nA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\" class=\"group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl transition-all duration-400 has-aria-current:flex-1 lg:h-145\"><!> <!> <a href=\"/\"><div class=\"lg:7.5 relative z-2 flex flex-col gap-5\"><picture><source media=\"(min-width: 1024px)\"/> <source media=\"(max-width: 1024px)\"/> <img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture> <dl class=\"text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0\"><dt class=\"font-bold\"> </dt> <dd> </dd></dl></div> <div class=\"z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100\"><p class=\"text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></p></div></a></li>", 2), rA = /* @__PURE__ */ B("<section class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <ul class=\"flex gap-7.5 max-lg:flex-col lg:flex-row\"></ul> <!></section>", 2);
+function iA(e, t) {
 	st(t, !0);
 	let n = /* @__PURE__ */ hn(Cn([
 		{
@@ -14735,15 +14749,15 @@ function rA(e, t) {
 			link: ""
 		}
 	])), r = "/output/video/main-video.webm", i = /* @__PURE__ */ hn(0), a = /* @__PURE__ */ hn(Cn(typeof window < "u" ? window.innerWidth : 0)), o = /* @__PURE__ */ P(() => z(a) >= 1024);
-	var s = nA(), c = F(s);
+	var s = rA(), c = F(s);
 	K(c, "line", "none"), K(c, "title", "Our Products"), L(() => K(c, "subTit", Ol()));
 	var l = I(c, 2);
 	Mi(l, 31, () => z(n), (e) => e.id, (e, t, n) => {
-		var a = tA(), s = F(a), c = (e) => {
-			var t = $k(), i = F(t);
+		var a = nA(), s = F(a), c = (e) => {
+			var t = eA(), i = F(t);
 			i.muted = !0;
 			var a = F(i);
-			M(i), M(t), L(() => {
+			M(i), Qi(i, () => $k), M(t), L(() => {
 				G(i, "poster", z(n) === 0 || z(n) === 1 || z(n) === 2 ? "/output/imgs/logo/bg-main-logi.png" : ""), G(a, "src", r);
 			}), V(e, t);
 		};
@@ -14751,10 +14765,10 @@ function rA(e, t) {
 			z(i) === z(n) && z(o) && e(c);
 		});
 		var l = I(s, 2), u = (e) => {
-			var t = eA(), i = F(t);
+			var t = tA(), i = F(t);
 			i.muted = !0;
 			var a = F(i);
-			M(i), M(t), L(() => {
+			M(i), Qi(i, () => $k), M(t), L(() => {
 				G(i, "poster", z(n) === 0 || z(n) === 1 || z(n) === 2 ? "/output/imgs/logo/bg-main-logi.png" : ""), G(a, "src", r);
 			}), V(e, t);
 		};
@@ -14784,11 +14798,11 @@ function rA(e, t) {
 		}, [() => Wx?.()]), Qr("mouseenter", d, () => _n(i, z(n), !0)), Qr("focus", d, () => _n(i, z(n), !0)), Ji(a, () => BC, null), Yi(1, a, () => KC, () => ({ y: 200 })), Yi(2, a, () => GC), V(e, a);
 	}), M(l), Qk(I(l, 2), {}), M(s), Aa("innerWidth", (e) => _n(a, e, !0)), V(e, s), ct();
 }
-customElements.define("main-our-products", Ha(rA, {}, [], []));
+customElements.define("main-our-products", Ha(iA, {}, [], []));
 //#endregion
 //#region src/lib/components/main/SlideCard.svelte
-var iA = /* @__PURE__ */ B("<li class=\"rounded-full bg-white px-3 py-1\"> </li>"), aA = /* @__PURE__ */ B("<swiper-slide><picture class=\"flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25\"><img loading=\"lazy\" alt=\"\" class=\"w-full object-cover\"/></picture> <ul class=\"flex items-center justify-center gap-3\"></ul> <dl class=\"text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35\"><dt class=\"text-center text-lg lg:text-2xl\"> </dt> <dd class=\" text-right\">2025. 12. 8</dd></dl></swiper-slide>", 2), oA = /* @__PURE__ */ B("<div class=\"absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5\"><button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Prev</span> <icon-list></icon-list></button> <button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Next</span> <icon-list></icon-list></button></div>", 2), sA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15\"><sub-heading-line></sub-heading-line> <div data-scroll=\"slide-up\" class=\"relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145\"><swiper-container></swiper-container> <!></div></section>", 2);
-function cA(e, t) {
+var aA = /* @__PURE__ */ B("<li class=\"rounded-full bg-white px-3 py-1\"> </li>"), oA = /* @__PURE__ */ B("<swiper-slide><picture class=\"flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25\"><img loading=\"lazy\" alt=\"\" class=\"w-full object-cover\"/></picture> <ul class=\"flex items-center justify-center gap-3\"></ul> <dl class=\"text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35\"><dt class=\"text-center text-lg lg:text-2xl\"> </dt> <dd class=\" text-right\">2025. 12. 8</dd></dl></swiper-slide>", 2), sA = /* @__PURE__ */ B("<div class=\"absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5\"><button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Prev</span> <icon-list></icon-list></button> <button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Next</span> <icon-list></icon-list></button></div>", 2), cA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15\"><sub-heading-line></sub-heading-line> <div data-scroll=\"slide-up\" class=\"relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145\"><swiper-container></swiper-container> <!></div></section>", 2);
+function lA(e, t) {
 	st(t, !0);
 	let n = /* @__PURE__ */ P(() => [
 		{
@@ -14823,17 +14837,17 @@ function cA(e, t) {
 	Qn(() => {
 		sD(), _n(i, !0);
 	});
-	var a = sA(), o = F(a);
+	var a = cA(), o = F(a);
 	K(o, "line", "none"), L(() => K(o, "title", Yu?.())), L(() => K(o, "subTit", Qu?.()));
 	var s = I(o, 2), c = F(s);
 	K(c, "init", "true"), K(c, "effect", "cards"), K(c, "pagination", "true"), K(c, "speed", "450"), K(c, "autoplay-delay", "3000"), W(c, 1, "*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"), Mi(c, 21, () => z(n), (e) => e.id, (e, t) => {
-		var n = aA();
+		var n = oA();
 		W(n, 1, "gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5");
 		var r = F(n), i = F(r);
 		M(r);
 		var a = I(r, 2);
 		Mi(a, 21, () => z(t).badge, Oi, (e, t) => {
-			var n = iA(), r = F(n, !0);
+			var n = aA(), r = F(n, !0);
 			M(n), L(() => H(r, z(t))), V(e, n);
 		}), M(a);
 		var o = I(a, 2), s = F(o), c = F(s, !0);
@@ -14842,7 +14856,7 @@ function cA(e, t) {
 		}), V(e, n);
 	}), M(c), ka(c, (e) => _n(r, e), () => z(r));
 	var l = I(c, 2), u = (e) => {
-		var t = oA(), n = F(t), i = I(F(n), 2);
+		var t = sA(), n = F(t), i = I(F(n), 2);
 		K(i, "name", "arrow-right"), W(i, 1, "size-6 rotate-180 stroke-white"), M(n);
 		var a = I(n, 2), o = I(F(a), 2);
 		K(o, "name", "arrow-right"), W(o, 1, "size-6 stroke-white"), M(a), M(t), $r("click", n, () => {
@@ -14853,27 +14867,17 @@ function cA(e, t) {
 		z(i) && e(u);
 	}), M(s), M(a), V(e, a), ct();
 }
-ei(["click"]), customElements.define("main-card", Ha(cA, {}, [], []));
+ei(["click"]), customElements.define("main-card", Ha(lA, {}, [], []));
 //#endregion
-//#region src/lib/utils/videoObserve.svelte.ts
-var lA = (e) => {
-	if (!(e instanceof HTMLVideoElement)) return;
-	let t = e, n = new IntersectionObserver((e) => {
-		e.forEach((e) => {
-			e.isIntersecting ? t.play().catch((e) => {
-				console.warn("비디오 자동 재생이 브라우저에 의해 차단됨 (muted 속성을 확인하세요):", e);
-			}) : t.pause();
-		});
-	}, { threshold: .1 });
-	return n.observe(t), () => {
-		n.disconnect();
-	};
-}, uA = /* @__PURE__ */ B("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><video data-scroll=\"slide-up\" playsinline=\"\"><source type=\"video/mp4\"/></video></div>", 2), dA = /* @__PURE__ */ B("<img alt=\"img\"/>"), fA = /* @__PURE__ */ B("<source/>"), pA = /* @__PURE__ */ B("<picture><!> <img alt=\"img\"/></picture>"), mA = /* @__PURE__ */ B("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><picture data-scroll=\"slide-up\"><!></picture></div>"), hA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\"><dl class=\"space-y-2.5 p-5\"><dt><!> <strong class=\"text-primary\"> </strong></dt> <dd class=\"text-2md lg:text-lg\"> </dd></dl> <!> <!></li>"), gA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw\"><sub-heading-line></sub-heading-line> <ul class=\"grid grid-cols-1 grid-rows-1 gap-7.5 lg:grid-cols-4 lg:grid-rows-[repeat(2,385px)]\"></ul></section>", 2);
+//#region src/lib/components/main/Why.svelte
+var uA = /* @__PURE__ */ B("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><video data-scroll=\"slide-up\" preload=\"auto\" playsinline=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div>", 2), dA = /* @__PURE__ */ B("<img alt=\"img\"/>"), fA = /* @__PURE__ */ B("<source/>"), pA = /* @__PURE__ */ B("<picture><!> <img alt=\"img\"/></picture>"), mA = /* @__PURE__ */ B("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><picture data-scroll=\"slide-up\"><!></picture></div>"), hA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\"><dl class=\"space-y-2.5 p-5\"><dt><!> <strong class=\"text-primary\"> </strong></dt> <dd class=\"text-2md lg:text-lg\"> </dd></dl> <!> <!></li>"), gA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw\"><sub-heading-line></sub-heading-line> <ul class=\"grid grid-cols-1 grid-rows-1 gap-7.5 lg:grid-cols-4 lg:grid-rows-[repeat(2,385px)]\"></ul></section>", 2);
 function _A(e, t) {
 	st(t, !0);
 	let n = /* @__PURE__ */ hn(Cn([
 		{
 			id: "why-1",
+			poster: "/output/video/img-why-1.png",
+			webm: "/output/video/img-why-1.webm",
 			video: "/output/video/img-why-1.mp4",
 			num: 36,
 			txt: Ou?.(),
@@ -14882,6 +14886,8 @@ function _A(e, t) {
 		},
 		{
 			id: "why-2",
+			poster: "/output/video/img-why-2.png",
+			webm: "/output/video/img-why-2.webm",
 			video: "/output/video/img-why-2.mp4",
 			num: 22e3,
 			txt: ju?.(),
@@ -14938,10 +14944,10 @@ function _A(e, t) {
 		M(d), M(i);
 		var p = I(i, 2), m = (e) => {
 			var n = uA(), r = F(n);
-			r.autoplay = !1, r.muted = !0;
-			var i = F(r);
-			M(r), Qi(r, () => lA), M(n), L(() => {
-				W(r, 1, ta(["relative z-1 max-w-fit", z(t).id === "why-1" ? "h-56.5 lg:left-32 lg:min-h-131.75" : z(t).id === "why-2" ? "h-53.5 max-w-full lg:h-61.5" : ""])), G(i, "src", z(t).video);
+			r.muted = !0;
+			var i = F(r), a = I(i, 2);
+			M(r), Qi(r, () => $k), M(n), L(() => {
+				W(r, 1, ta(["relative z-1 max-w-fit", z(t).id === "why-1" ? "h-56.5 lg:left-32 lg:min-h-131.75" : z(t).id === "why-2" ? "h-53.5 max-w-full lg:h-61.5" : ""])), G(r, "poster", z(t).poster), G(i, "src", z(t).video), G(a, "src", z(t).webm);
 			}), V(e, n);
 		};
 		U(p, (e) => {
@@ -15160,21 +15166,10 @@ var EA = /* @__PURE__ */ B("<p> </p>"), DA = /* @__PURE__ */ B("<section data-sc
 function OA(e, t) {
 	st(t, !0);
 	var n = DA(), r = F(n), i = F(r);
-	i.muted = !0, G(i, "poster", "/output/video/main-video.png"), G(F(i), "src", "/output/video/main-video.webm"), M(i), M(r);
+	i.muted = !0, G(i, "poster", "/output/video/main-video.jpg"), G(F(i), "src", "/output/video/main-video.webm"), M(i), M(r);
 	var a = I(r, 2), o = F(a);
 	TA(F(o), {
 		class: "inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl",
-		options: {
-			mainBackgroundColor: "hsla(0, 0%, 75%, 0.1)",
-			mainBlur: "1vw",
-			edgeBlur: "0.5vw",
-			edgeBackgroundColor: "hsla(0, 0%, 100%, 0.1)",
-			edgeWidth: "1vw",
-			edgeGradientWidth: "1vw",
-			sheenBlur: "1vw",
-			sheenBackgroundColor: "hsla(0, 0%, 100%, 0.2)",
-			sheenWidth: "0.2vw"
-		},
 		style: "border-radius: 24px;",
 		children: (e, t) => {
 			var n = EA(), r = F(n, !0);
@@ -15224,13 +15219,13 @@ function AA(e, t) {
 	var o = I(a, 2);
 	Gk(o, {});
 	var s = I(o, 2);
-	rA(s, {});
+	iA(s, {});
 	var c = I(s, 2);
 	bA(c, {});
 	var l = I(c, 2);
 	_A(l, {});
 	var u = I(l, 2);
-	cA(u, {});
+	lA(u, {});
 	var d = I(u, 2);
 	return Jk(d, { get list() {
 		return n();

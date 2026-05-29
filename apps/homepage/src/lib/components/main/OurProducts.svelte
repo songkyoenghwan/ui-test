@@ -10,6 +10,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { flip } from 'svelte/animate';
 	import { fade, fly } from 'svelte/transition';
+	import { videoObserver, initLoopMo } from '$lib/utils/videoObserve.svelte';
 
 	let lists = $state([
 		{
@@ -62,17 +63,18 @@
 						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
 						<video
+							{@attach videoObserver}
 							class="relative z-1 aspect-video h-full w-full object-cover"
-							autoplay
+							preload="auto"
 							muted
 							playsinline
 							loop
 							poster={i === 0
 								? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
 								: i === 1
-									? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+									? `${__STATIC_URL__}/imgs/logo/bg-main-dao.png`
 									: i === 2
-										? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+										? `${__STATIC_URL__}/imgs/logo/bg-main-dsc.png`
 										: ''}
 						>
 							<source src={videoUrl} type="video/webm" />
@@ -85,17 +87,18 @@
 						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
 						<video
+							use:initLoopMo
 							class="relative z-1 aspect-video h-full w-full object-cover"
-							autoplay
+							preload="auto"
 							muted
 							playsinline
 							loop
 							poster={i === 0
 								? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
 								: i === 1
-									? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+									? `${__STATIC_URL__}/imgs/logo/bg-main-dao.png`
 									: i === 2
-										? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+										? `${__STATIC_URL__}/imgs/logo/bg-main-dsc.png`
 										: ''}
 						>
 							<source src={videoUrl} type="video/webm" />

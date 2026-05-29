@@ -17,7 +17,7 @@
 	<div
 		class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 	>
-		<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop poster={`${__STATIC_URL__}/video/main-video.png`}>
+		<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop poster={`${__STATIC_URL__}/video/main-video.jpg`}>
 			<source src={`${__STATIC_URL__}/video/main-video.webm`} type="video/webm" />
 		</video>
 	</div>
@@ -26,17 +26,6 @@
 		<div class="p-1">
 			<LiquidGlass
 				class="inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl"
-				options={{
-					mainBackgroundColor: 'hsla(0, 0%, 75%, 0.1)',
-					mainBlur: '1vw',
-					edgeBlur: '0.5vw',
-					edgeBackgroundColor: 'hsla(0, 0%, 100%, 0.1)',
-					edgeWidth: '1vw',
-					edgeGradientWidth: '1vw',
-					sheenBlur: '1vw',
-					sheenBackgroundColor: 'hsla(0, 0%, 100%, 0.2)',
-					sheenWidth: '0.2vw',
-				}}
 				style="border-radius: 24px;"
 			>
 				<p>{m.main_visual_badge()}</p>

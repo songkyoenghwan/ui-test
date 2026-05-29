@@ -85,7 +85,9 @@
 		>
 			{#each lists as list (list.id)}
 				<swiper-slide
-					class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5"
+					class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-(image:--bg-card-mo) bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-(image:--bg-card-pc) lg:bg-size-[auto_100%] lg:p-5"
+					style:--bg-card-mo={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-mo.png)`}
+					style:--bg-card-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card.svg)`}
 				>
 					<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
 						<img loading="lazy" src={list.img} alt="" class="w-full object-cover" />
