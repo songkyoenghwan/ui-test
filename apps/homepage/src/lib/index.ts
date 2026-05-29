@@ -7,7 +7,6 @@ import '$lib/components/heading/HeaderImgs.svelte';
 import '$lib/components/heading/HeaderYear.svelte';
 import '$lib/components/heading/SubHeadingLine.svelte';
 import '$lib/components/icons/Icons.svelte';
-import '$lib/components/main/Operations.svelte';
 import '$lib/components/news/newsSection.svelte';
 import '$lib/components/pages/Company.svelte';
 import '$lib/components/pages/Dao.svelte';

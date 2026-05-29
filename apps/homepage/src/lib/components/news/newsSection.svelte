@@ -32,9 +32,7 @@
 
 {#snippet imgRender(img = '')}
 	{#if img}
-		<picture
-			class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}
-		>
+		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
 			<img loading="lazy" src={img} alt={`${title} image`} class="w-full max-w-300 object-cover" />
 		</picture>
 	{/if}
@@ -70,9 +68,7 @@
 		</div>
 
 		{#if url}
-			<div
-				class="border-t-d9d9d9 text-666 text-2md flex flex-col gap-2 border-t border-dashed pt-5 lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg"
-			>
+			<div class="border-t-d9d9d9 text-666 text-2md flex flex-col gap-2 border-t border-dashed pt-5 lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg">
 				<p class="font-bold">URL</p>
 				<p class="flex-1">{url}</p>
 			</div>
@@ -81,10 +77,7 @@
 {/snippet}
 
 {#if layout === 'list'}
-	<section
-		data-scroll="slide-up"
-		class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15"
-	>
+	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15">
 		{@render imgRender(img)}
 
 		{@render newsRender(img, badges, title, text, date, source)}

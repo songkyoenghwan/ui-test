@@ -1,0 +1,15209 @@
+//#region \0rolldown/runtime.js
+var e = Object.create, t = Object.defineProperty, n = Object.getOwnPropertyDescriptor, r = Object.getOwnPropertyNames, i = Object.getPrototypeOf, a = Object.prototype.hasOwnProperty, o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = (e, i, o, s) => {
+	if (i && typeof i == "object" || typeof i == "function") for (var c = r(i), l = 0, u = c.length, d; l < u; l++) d = c[l], !a.call(e, d) && d !== o && t(e, d, {
+		get: ((e) => i[e]).bind(null, d),
+		enumerable: !(s = n(i, d)) || s.enumerable
+	});
+	return e;
+}, c = (n, r, a) => (a = n == null ? {} : e(i(n)), s(r || !n || !n.__esModule ? t(a, "default", {
+	value: n,
+	enumerable: !0
+}) : a, n));
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/disclose-version.js
+typeof window < "u" && ((window.__svelte ??= {}).v ??= /* @__PURE__ */ new Set()).add("5");
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/constants.js
+var l = {}, u = Symbol("uninitialized"), d = "http://www.w3.org/1999/xhtml", f = Array.isArray, p = Array.prototype.indexOf, m = Array.prototype.includes, h = Array.from, g = Object.keys, _ = Object.defineProperty, v = Object.getOwnPropertyDescriptor, y = Object.getOwnPropertyDescriptors, b = Object.prototype, x = Array.prototype, S = Object.getPrototypeOf, C = Object.isExtensible;
+function w(e) {
+	return typeof e == "function";
+}
+var T = () => {};
+function E(e) {
+	return e();
+}
+function D(e) {
+	for (var t = 0; t < e.length; t++) e[t]();
+}
+function O() {
+	var e, t;
+	return {
+		promise: new Promise((n, r) => {
+			e = n, t = r;
+		}),
+		resolve: e,
+		reject: t
+	};
+}
+function k(e, t, n = !1) {
+	return e === void 0 ? n ? t() : t : e;
+}
+function ee(e, t) {
+	if (Array.isArray(e)) return e;
+	if (t === void 0 || !(Symbol.iterator in e)) return Array.from(e);
+	let n = [];
+	for (let r of e) if (n.push(r), n.length === t) break;
+	return n;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/constants.js
+var te = 1 << 24, A = 1024, ne = 2048, re = 4096, ie = 8192, j = 16384, ae = 32768, oe = 1 << 25, se = 65536, ce = 1 << 19, le = 1 << 20, ue = 1 << 25, de = 65536, fe = 1 << 21, pe = 1 << 22, me = 1 << 23, he = Symbol("$state"), ge = Symbol("legacy props"), _e = Symbol(""), ve = Symbol("attributes"), ye = Symbol("class"), be = Symbol("style"), xe = Symbol("text"), Se = Symbol("form reset"), Ce = new class extends Error {
+	name = "StaleReactionError";
+	message = "The reaction that called `getAbortSignal()` was re-run or destroyed";
+}(), we = !!globalThis.document?.contentType && /* @__PURE__ */ globalThis.document.contentType.includes("xml");
+function Te(e) {
+	throw Error("https://svelte.dev/e/lifecycle_outside_component");
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/errors.js
+function Ee() {
+	throw Error("https://svelte.dev/e/async_derived_orphan");
+}
+function De(e, t, n) {
+	throw Error("https://svelte.dev/e/each_key_duplicate");
+}
+function Oe(e) {
+	throw Error("https://svelte.dev/e/effect_in_teardown");
+}
+function ke() {
+	throw Error("https://svelte.dev/e/effect_in_unowned_derived");
+}
+function Ae(e) {
+	throw Error("https://svelte.dev/e/effect_orphan");
+}
+function je() {
+	throw Error("https://svelte.dev/e/effect_update_depth_exceeded");
+}
+function Me() {
+	throw Error("https://svelte.dev/e/hydration_failed");
+}
+function Ne(e) {
+	throw Error("https://svelte.dev/e/props_invalid_value");
+}
+function Pe() {
+	throw Error("https://svelte.dev/e/set_context_after_init");
+}
+function Fe() {
+	throw Error("https://svelte.dev/e/state_descriptors_fixed");
+}
+function Ie() {
+	throw Error("https://svelte.dev/e/state_prototype_fixed");
+}
+function Le() {
+	throw Error("https://svelte.dev/e/state_unsafe_mutation");
+}
+function Re() {
+	throw Error("https://svelte.dev/e/svelte_boundary_reset_onerror");
+}
+function ze() {
+	console.warn("https://svelte.dev/e/derived_inert");
+}
+function Be(e) {
+	console.warn("https://svelte.dev/e/hydration_mismatch");
+}
+function Ve() {
+	console.warn("https://svelte.dev/e/select_multiple_invalid_value");
+}
+function He() {
+	console.warn("https://svelte.dev/e/svelte_boundary_reset_noop");
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/hydration.js
+var Ue = !1;
+function We(e) {
+	Ue = e;
+}
+var Ge;
+function Ke(e) {
+	if (e === null) throw Be(), l;
+	return Ge = e;
+}
+function qe() {
+	return Ke(/* @__PURE__ */ Nn(Ge));
+}
+function M(e) {
+	if (Ue) {
+		if (/* @__PURE__ */ Nn(Ge) !== null) throw Be(), l;
+		Ge = e;
+	}
+}
+function Je(e = 1) {
+	if (Ue) {
+		for (var t = e, n = Ge; t--;) n = /* @__PURE__ */ Nn(n);
+		Ge = n;
+	}
+}
+function Ye(e = !0) {
+	for (var t = 0, n = Ge;;) {
+		if (n.nodeType === 8) {
+			var r = n.data;
+			if (r === "]") {
+				if (t === 0) return n;
+				--t;
+			} else (r === "[" || r === "[!" || r[0] === "[" && !isNaN(Number(r.slice(1)))) && (t += 1);
+		}
+		var i = /* @__PURE__ */ Nn(n);
+		e && n.remove(), n = i;
+	}
+}
+function Xe(e) {
+	if (!e || e.nodeType !== 8) throw Be(), l;
+	return e.data;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/equality.js
+function Ze(e) {
+	return e === this.v;
+}
+function Qe(e, t) {
+	return e == e ? e !== t || typeof e == "object" && !!e || typeof e == "function" : t == t;
+}
+function $e(e) {
+	return !Qe(e, this.v);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/flags/index.js
+var et = !1, tt = !1;
+function nt() {
+	tt = !0;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/context.js
+var rt = null;
+function it(e) {
+	rt = e;
+}
+function at(e) {
+	return ut("getContext").get(e);
+}
+function ot(e, t) {
+	let n = ut("setContext");
+	if (et) {
+		var r = R.f;
+		!Sr && r & 32 && !rt.i || Pe();
+	}
+	return n.set(e, t), t;
+}
+function st(e, t = !1, n) {
+	rt = {
+		p: rt,
+		i: !1,
+		c: null,
+		e: null,
+		s: e,
+		x: null,
+		r: R,
+		l: tt && !t ? {
+			s: null,
+			u: null,
+			$: []
+		} : null
+	};
+}
+function ct(e) {
+	var t = rt, n = t.e;
+	if (n !== null) {
+		t.e = null;
+		for (var r of n) Zn(r);
+	}
+	return e !== void 0 && (t.x = e), t.i = !0, rt = t.p, e ?? {};
+}
+function lt() {
+	return !tt || rt !== null && rt.l === null;
+}
+function ut(e) {
+	return rt === null && Te(e), rt.c ??= new Map(dt(rt) || void 0);
+}
+function dt(e) {
+	let t = e.p;
+	for (; t !== null;) {
+		let e = t.c;
+		if (e !== null) return e;
+		t = t.p;
+	}
+	return null;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/task.js
+var ft = [];
+function pt() {
+	var e = ft;
+	ft = [], D(e);
+}
+function mt(e) {
+	if (ft.length === 0 && !Mt) {
+		var t = ft;
+		queueMicrotask(() => {
+			t === ft && pt();
+		});
+	}
+	ft.push(e);
+}
+function ht() {
+	for (; ft.length > 0;) pt();
+}
+function gt(e) {
+	var t = R;
+	if (t === null) return Sr.f |= me, e;
+	if (!(t.f & 32768) && !(t.f & 4)) throw e;
+	_t(e, t);
+}
+function _t(e, t) {
+	for (; t !== null;) {
+		if (t.f & 128) {
+			if (!(t.f & 32768)) throw e;
+			try {
+				t.b.error(e);
+				return;
+			} catch (t) {
+				e = t;
+			}
+		}
+		t = t.parent;
+	}
+	throw e;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/status.js
+var vt = ~(ne | re | A);
+function yt(e, t) {
+	e.f = e.f & vt | t;
+}
+function bt(e) {
+	e.f & 512 || e.deps === null ? yt(e, A) : yt(e, re);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/utils.js
+function xt(e) {
+	if (e !== null) for (let t of e) !(t.f & 2) || !(t.f & 65536) || (t.f ^= de, xt(t.deps));
+}
+function St(e, t, n) {
+	e.f & 2048 ? t.add(e) : e.f & 4096 && n.add(e), xt(e.deps), yt(e, A);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/store.js
+var Ct = !1, wt = !1;
+function Tt(e) {
+	var t = wt;
+	try {
+		return wt = !1, [e(), wt];
+	} finally {
+		wt = t;
+	}
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/batch.js
+var Et = null, Dt = null, Ot = null, kt = null, At = null, jt = null, Mt = !1, Nt = !1, Pt = null, Ft = null, It = 0, Lt = 1, Rt = class e {
+	id = Lt++;
+	#e = !1;
+	linked = !0;
+	#t = null;
+	#n = null;
+	async_deriveds = /* @__PURE__ */ new Map();
+	current = /* @__PURE__ */ new Map();
+	previous = /* @__PURE__ */ new Map();
+	#r = /* @__PURE__ */ new Set();
+	#i = /* @__PURE__ */ new Set();
+	#a = /* @__PURE__ */ new Set();
+	#o = 0;
+	#s = /* @__PURE__ */ new Map();
+	#c = null;
+	#l = [];
+	#u = [];
+	#d = /* @__PURE__ */ new Set();
+	#f = /* @__PURE__ */ new Set();
+	#p = /* @__PURE__ */ new Map();
+	#m = /* @__PURE__ */ new Set();
+	is_fork = !1;
+	#h = !1;
+	constructor() {
+		Dt === null ? Et = Dt = this : (Dt.#n = this, this.#t = Dt), Dt = this;
+	}
+	#g() {
+		if (this.is_fork) return !0;
+		for (let n of this.#s.keys()) {
+			for (var e = n, t = !1; e.parent !== null;) {
+				if (this.#p.has(e)) {
+					t = !0;
+					break;
+				}
+				e = e.parent;
+			}
+			if (!t) return !0;
+		}
+		return !1;
+	}
+	skip_effect(e) {
+		this.#p.has(e) || this.#p.set(e, {
+			d: [],
+			m: []
+		}), this.#m.delete(e);
+	}
+	unskip_effect(e, t = (e) => this.schedule(e)) {
+		var n = this.#p.get(e);
+		if (n) {
+			this.#p.delete(e);
+			for (var r of n.d) yt(r, ne), t(r);
+			for (r of n.m) yt(r, re), t(r);
+		}
+		this.#m.add(e);
+	}
+	#_() {
+		this.#e = !0, It++ > 1e3 && (this.#C(), zt());
+		for (let e of this.#d) this.#f.delete(e), yt(e, ne), this.schedule(e);
+		for (let e of this.#f) yt(e, re), this.schedule(e);
+		let t = this.#l;
+		this.#l = [], this.apply();
+		var n = Pt = [], r = [], i = Ft = [];
+		for (let e of t) try {
+			this.#v(e, n, r);
+		} catch (t) {
+			throw Kt(e), this.#g() || this.discard(), t;
+		}
+		if (Ot = null, i.length > 0) {
+			var a = e.ensure();
+			for (let e of i) a.schedule(e);
+		}
+		if (Pt = null, Ft = null, this.#g()) {
+			this.#x(r), this.#x(n);
+			for (let [e, t] of this.#p) Gt(e, t);
+			i.length > 0 && Ot.#_();
+			return;
+		}
+		let o = this.#y();
+		if (o) {
+			this.#x(r), this.#x(n), o.#b(this);
+			return;
+		}
+		this.#d.clear(), this.#f.clear();
+		for (let e of this.#r) e(this);
+		this.#r.clear(), kt = this, Vt(r), Vt(n), kt = null, this.#c?.resolve();
+		var s = Ot;
+		if (this.#o === 0 && (this.#l.length === 0 || s !== null) && (this.#C(), et && (this.#S(), Ot = s)), this.#l.length > 0) if (s !== null) {
+			let e = s;
+			e.#l.push(...this.#l.filter((t) => !e.#l.includes(t)));
+		} else s = this;
+		s !== null && s.#_();
+	}
+	#v(e, t, n) {
+		e.f ^= A;
+		for (var r = e.first; r !== null;) {
+			var i = r.f, a = (i & 96) != 0;
+			if (!(a && i & 1024 || i & 8192 || this.#p.has(r)) && r.fn !== null) {
+				a ? r.f ^= A : i & 4 ? t.push(r) : et && i & 16777224 ? n.push(r) : Lr(r) && (i & 16 && this.#f.add(r), Hr(r));
+				var o = r.first;
+				if (o !== null) {
+					r = o;
+					continue;
+				}
+			}
+			for (; r !== null;) {
+				var s = r.next;
+				if (s !== null) {
+					r = s;
+					break;
+				}
+				r = r.parent;
+			}
+		}
+	}
+	#y() {
+		for (var e = this.#t; e !== null;) {
+			if (!e.is_fork) {
+				for (let [t, [, n]] of this.current) if (e.current.has(t) && !n) return e;
+			}
+			e = e.#t;
+		}
+		return null;
+	}
+	#b(e) {
+		for (let [t, n] of e.current) !this.previous.has(t) && e.previous.has(t) && this.previous.set(t, e.previous.get(t)), this.current.set(t, n);
+		for (let [t, n] of e.async_deriveds) {
+			let e = this.async_deriveds.get(t);
+			e && n.promise.then(e.resolve).catch(e.reject);
+		}
+		this.transfer_effects(e.#d, e.#f);
+		let t = (e) => {
+			var n = e.reactions;
+			if (n !== null) for (let e of n) {
+				var r = e.f;
+				if (r & 2) t(e);
+				else {
+					var i = e;
+					r & 4194320 && !this.async_deriveds.has(i) && (this.#f.delete(i), yt(i, ne), this.schedule(i));
+				}
+			}
+		};
+		for (let e of this.current.keys()) t(e);
+		this.oncommit(() => e.discard()), e.#C(), Ot = this, this.#_();
+	}
+	#x(e) {
+		for (var t = 0; t < e.length; t += 1) St(e[t], this.#d, this.#f);
+	}
+	capture(e, t, n = !1) {
+		e.v !== u && !this.previous.has(e) && this.previous.set(e, e.v), e.f & 8388608 || (this.current.set(e, [t, n]), At?.set(e, t)), this.is_fork || (e.v = t);
+	}
+	activate() {
+		Ot = this;
+	}
+	deactivate() {
+		Ot = null, At = null;
+	}
+	flush() {
+		try {
+			Nt = !0, Ot = this, this.#_();
+		} finally {
+			It = 0, jt = null, Pt = null, Ft = null, Nt = !1, Ot = null, At = null, fn.clear();
+		}
+	}
+	discard() {
+		for (let e of this.#i) e(this);
+		this.#i.clear(), this.#a.clear(), this.#C(), this.#c?.resolve();
+	}
+	register_created_effect(e) {
+		this.#u.push(e);
+	}
+	#S() {
+		for (let l = Et; l !== null; l = l.#n) {
+			var e = l.id < this.id, t = [];
+			for (let [r, [i, a]] of this.current) {
+				if (l.current.has(r)) {
+					var n = l.current.get(r)[0];
+					if (e && i !== n) l.current.set(r, [i, a]);
+					else continue;
+				}
+				t.push(r);
+			}
+			if (e) for (let [e, t] of this.async_deriveds) {
+				let n = l.async_deriveds.get(e);
+				n && t.promise.then(n.resolve).catch(n.reject);
+			}
+			if (l.#e) {
+				var r = [...l.current.keys()].filter((e) => !l.current.get(e)[1] && !this.current.has(e));
+				if (r.length === 0) e && l.discard();
+				else if (t.length > 0) {
+					if (e) for (let e of this.#m) l.unskip_effect(e, (e) => {
+						e.f & 4194320 ? l.schedule(e) : l.#x([e]);
+					});
+					l.activate();
+					var i = /* @__PURE__ */ new Set(), a = /* @__PURE__ */ new Map();
+					for (var o of t) Ht(o, r, i, a);
+					a = /* @__PURE__ */ new Map();
+					var s = [...l.current].filter(([e, t]) => {
+						let n = this.current.get(e);
+						return n ? n[0] !== t[0] || n[1] !== t[1] : !0;
+					}).map(([e]) => e);
+					if (s.length > 0) for (let e of this.#u) !(e.f & 155648) && Ut(e, s, a) && (e.f & 4194320 ? (yt(e, ne), l.schedule(e)) : l.#d.add(e));
+					if (l.#l.length > 0 && !l.#h) {
+						l.apply();
+						for (var c of l.#l) l.#v(c, [], []);
+						l.#l = [];
+					}
+					l.deactivate();
+				}
+			}
+		}
+	}
+	increment(e, t) {
+		if (this.#o += 1, e) {
+			let e = this.#s.get(t) ?? 0;
+			this.#s.set(t, e + 1);
+		}
+	}
+	decrement(e, t) {
+		if (--this.#o, e) {
+			let e = this.#s.get(t) ?? 0;
+			e === 1 ? this.#s.delete(t) : this.#s.set(t, e - 1);
+		}
+		this.#h || (this.#h = !0, mt(() => {
+			this.#h = !1, this.linked && this.flush();
+		}));
+	}
+	transfer_effects(e, t) {
+		for (let t of e) this.#d.add(t);
+		for (let e of t) this.#f.add(e);
+		e.clear(), t.clear();
+	}
+	oncommit(e) {
+		this.#r.add(e);
+	}
+	ondiscard(e) {
+		this.#i.add(e);
+	}
+	on_fork_commit(e) {
+		this.#a.add(e);
+	}
+	run_fork_commit_callbacks() {
+		for (let e of this.#a) e(this);
+		this.#a.clear();
+	}
+	settled() {
+		return (this.#c ??= O()).promise;
+	}
+	static ensure() {
+		if (Ot === null) {
+			let t = Ot = new e();
+			!Nt && !Mt && mt(() => {
+				t.#e || t.flush();
+			});
+		}
+		return Ot;
+	}
+	apply() {
+		if (!et || !this.is_fork && this.#t === null && this.#n === null) {
+			At = null;
+			return;
+		}
+		At = /* @__PURE__ */ new Map();
+		for (let [e, [t]] of this.current) At.set(e, t);
+		for (let t = Et; t !== null; t = t.#n) if (!(t === this || t.is_fork)) {
+			var e = !1;
+			if (t.id < this.id) {
+				for (let [n, [, r]] of t.current) if (!r && this.current.has(n)) {
+					e = !0;
+					break;
+				}
+			}
+			if (!e) for (let [e, n] of t.previous) At.has(e) || At.set(e, n);
+		}
+	}
+	schedule(e) {
+		if (jt = e, e.b?.is_pending && e.f & 16777228 && !(e.f & 32768)) {
+			e.b.defer_effect(e);
+			return;
+		}
+		for (var t = e; t.parent !== null;) {
+			t = t.parent;
+			var n = t.f;
+			if (Pt !== null && t === R && (et || (Sr === null || !(Sr.f & 2)) && !Ct)) return;
+			if (n & 96) {
+				if (!(n & 1024)) return;
+				t.f ^= A;
+			}
+		}
+		this.#l.push(t);
+	}
+	#C() {
+		if (this.linked) {
+			var e = this.#t, t = this.#n;
+			e === null ? Et = t : e.#n = t, t === null ? Dt = e : t.#t = e, this.linked = !1;
+		}
+	}
+};
+function N(e) {
+	var t = Mt;
+	Mt = !0;
+	try {
+		var n;
+		for (e && (Ot !== null && !Ot.is_fork && Ot.flush(), n = e());;) {
+			if (ht(), Ot === null) return n;
+			Ot.flush();
+		}
+	} finally {
+		Mt = t;
+	}
+}
+function zt() {
+	try {
+		je();
+	} catch (e) {
+		_t(e, jt);
+	}
+}
+var Bt = null;
+function Vt(e) {
+	var t = e.length;
+	if (t !== 0) {
+		for (var n = 0; n < t;) {
+			var r = e[n++];
+			if (!(r.f & 24576) && Lr(r) && (Bt = /* @__PURE__ */ new Set(), Hr(r), r.deps === null && r.first === null && r.nodes === null && r.teardown === null && r.ac === null && fr(r), Bt?.size > 0)) {
+				fn.clear();
+				for (let e of Bt) {
+					if (e.f & 24576) continue;
+					let t = [e], n = e.parent;
+					for (; n !== null;) Bt.has(n) && (Bt.delete(n), t.push(n)), n = n.parent;
+					for (let e = t.length - 1; e >= 0; e--) {
+						let n = t[e];
+						n.f & 24576 || Hr(n);
+					}
+				}
+				Bt.clear();
+			}
+		}
+		Bt = null;
+	}
+}
+function Ht(e, t, n, r) {
+	if (!n.has(e) && (n.add(e), e.reactions !== null)) for (let i of e.reactions) {
+		let e = i.f;
+		e & 2 ? Ht(i, t, n, r) : e & 4194320 && !(e & 2048) && Ut(i, t, r) && (yt(i, ne), Wt(i));
+	}
+}
+function Ut(e, t, n) {
+	let r = n.get(e);
+	if (r !== void 0) return r;
+	if (e.deps !== null) for (let r of e.deps) {
+		if (m.call(t, r)) return !0;
+		if (r.f & 2 && Ut(r, t, n)) return n.set(r, !0), !0;
+	}
+	return n.set(e, !1), !1;
+}
+function Wt(e) {
+	Ot.schedule(e);
+}
+function Gt(e, t) {
+	if (!(e.f & 32 && e.f & 1024)) {
+		e.f & 2048 ? t.d.push(e) : e.f & 4096 && t.m.push(e), yt(e, A);
+		for (var n = e.first; n !== null;) Gt(n, t), n = n.next;
+	}
+}
+function Kt(e) {
+	yt(e, A);
+	for (var t = e.first; t !== null;) Kt(t), t = t.next;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/reactivity/create-subscriber.js
+function qt(e) {
+	let t = 0, n = mn(0), r;
+	return () => {
+		Jn() && (z(n), rr(() => (t === 0 && (r = Gr(() => e(() => xn(n)))), t += 1, () => {
+			mt(() => {
+				--t, t === 0 && (r?.(), r = void 0, xn(n));
+			});
+		})));
+	};
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/boundary.js
+var Jt = se | ce;
+function Yt(e, t, n, r) {
+	new Xt(e, t, n, r);
+}
+var Xt = class {
+	parent;
+	is_pending = !1;
+	transform_error;
+	#e;
+	#t = Ue ? Ge : null;
+	#n;
+	#r;
+	#i;
+	#a = null;
+	#o = null;
+	#s = null;
+	#c = null;
+	#l = 0;
+	#u = 0;
+	#d = !1;
+	#f = /* @__PURE__ */ new Set();
+	#p = /* @__PURE__ */ new Set();
+	#m = null;
+	#h = qt(() => (this.#m = mn(this.#l), () => {
+		this.#m = null;
+	}));
+	constructor(e, t, n, r) {
+		this.#e = e, this.#n = t, this.#r = (e) => {
+			var t = R;
+			t.b = this, t.f |= 128, n(e);
+		}, this.parent = R.b, this.transform_error = r ?? this.parent?.transform_error ?? ((e) => e), this.#i = ir(() => {
+			if (Ue) {
+				let e = this.#t;
+				qe();
+				let t = e.data === "[!";
+				if (e.data.startsWith("[?")) {
+					let t = JSON.parse(e.data.slice(2));
+					this.#_(t);
+				} else t ? this.#v() : this.#g();
+			} else this.#y();
+		}, Jt), Ue && (this.#e = Ge);
+	}
+	#g() {
+		try {
+			this.#a = or(() => this.#r(this.#e));
+		} catch (e) {
+			this.error(e);
+		}
+	}
+	#_(e) {
+		let t = this.#n.failed;
+		t && (this.#s = or(() => {
+			t(this.#e, () => e, () => () => {});
+		}));
+	}
+	#v() {
+		let e = this.#n.pending;
+		e && (this.is_pending = !0, this.#o = or(() => e(this.#e)), mt(() => {
+			var e = this.#c = document.createDocumentFragment(), t = jn();
+			e.append(t), this.#a = this.#x(() => or(() => this.#r(t))), this.#u === 0 && (this.#e.before(e), this.#c = null, pr(this.#o, () => {
+				this.#o = null;
+			}), this.#b(Ot));
+		}));
+	}
+	#y() {
+		try {
+			if (this.is_pending = this.has_pending_snippet(), this.#u = 0, this.#l = 0, this.#a = or(() => {
+				this.#r(this.#e);
+			}), this.#u > 0) {
+				var e = this.#c = document.createDocumentFragment();
+				_r(this.#a, e);
+				let t = this.#n.pending;
+				this.#o = or(() => t(this.#e));
+			} else this.#b(Ot);
+		} catch (e) {
+			this.error(e);
+		}
+	}
+	#b(e) {
+		this.is_pending = !1, e.transfer_effects(this.#f, this.#p);
+	}
+	defer_effect(e) {
+		St(e, this.#f, this.#p);
+	}
+	is_rendered() {
+		return !this.is_pending && (!this.parent || this.parent.is_rendered());
+	}
+	has_pending_snippet() {
+		return !!this.#n.pending;
+	}
+	#x(e) {
+		var t = R, n = Sr, r = rt;
+		Tr(this.#i), wr(this.#i), it(this.#i.ctx);
+		try {
+			return Rt.ensure(), e();
+		} catch (e) {
+			return gt(e), null;
+		} finally {
+			Tr(t), wr(n), it(r);
+		}
+	}
+	#S(e, t) {
+		if (!this.has_pending_snippet()) {
+			this.parent && this.parent.#S(e, t);
+			return;
+		}
+		this.#u += e, this.#u === 0 && (this.#b(t), this.#o && pr(this.#o, () => {
+			this.#o = null;
+		}), this.#c &&= (this.#e.before(this.#c), null));
+	}
+	update_pending_count(e, t) {
+		this.#S(e, t), this.#l += e, !(!this.#m || this.#d) && (this.#d = !0, mt(() => {
+			this.#d = !1, this.#m && vn(this.#m, this.#l);
+		}));
+	}
+	get_effect_pending() {
+		return this.#h(), z(this.#m);
+	}
+	error(e) {
+		if (!this.#n.onerror && !this.#n.failed) throw e;
+		Ot?.is_fork ? (this.#a && Ot.skip_effect(this.#a), this.#o && Ot.skip_effect(this.#o), this.#s && Ot.skip_effect(this.#s), Ot.on_fork_commit(() => {
+			this.#C(e);
+		})) : this.#C(e);
+	}
+	#C(e) {
+		this.#a &&= (ur(this.#a), null), this.#o &&= (ur(this.#o), null), this.#s &&= (ur(this.#s), null), Ue && (Ke(this.#t), Je(), Ke(Ye()));
+		var t = this.#n.onerror;
+		let n = this.#n.failed;
+		var r = !1, i = !1;
+		let a = () => {
+			if (r) {
+				He();
+				return;
+			}
+			r = !0, i && Re(), this.#s !== null && pr(this.#s, () => {
+				this.#s = null;
+			}), this.#x(() => {
+				this.#y();
+			});
+		}, o = (e) => {
+			try {
+				i = !0, t?.(e, a), i = !1;
+			} catch (e) {
+				_t(e, this.#i && this.#i.parent);
+			}
+			n && (this.#s = this.#x(() => {
+				try {
+					return or(() => {
+						var t = R;
+						t.b = this, t.f |= 128, n(this.#e, () => e, () => a);
+					});
+				} catch (e) {
+					return _t(e, this.#i.parent), null;
+				}
+			}));
+		};
+		mt(() => {
+			var t;
+			try {
+				t = this.transform_error(e);
+			} catch (e) {
+				_t(e, this.#i && this.#i.parent);
+				return;
+			}
+			typeof t == "object" && t && typeof t.then == "function" ? t.then(o, (e) => _t(e, this.#i && this.#i.parent)) : o(t);
+		});
+	}
+};
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/async.js
+function Zt(e, t, n, r) {
+	let i = lt() ? tn : an;
+	var a = e.filter((e) => !e.settled);
+	if (n.length === 0 && a.length === 0) {
+		r(t.map(i));
+		return;
+	}
+	var o = R, s = Qt(), c = a.length === 1 ? a[0].promise : a.length > 1 ? Promise.all(a.map((e) => e.promise)) : null;
+	function l(e) {
+		if (!(o.f & 16384)) {
+			s();
+			try {
+				r(e);
+			} catch (e) {
+				_t(e, o);
+			}
+			$t();
+		}
+	}
+	var u = en();
+	if (n.length === 0) {
+		c.then(() => l(t.map(i))).finally(u);
+		return;
+	}
+	function d() {
+		Promise.all(n.map((e) => /* @__PURE__ */ rn(e))).then((e) => l([...t.map(i), ...e])).catch((e) => _t(e, o)).finally(u);
+	}
+	c ? c.then(() => {
+		s(), d(), $t();
+	}) : d();
+}
+function Qt() {
+	var e = R, t = Sr, n = rt, r = Ot;
+	return function(i = !0) {
+		Tr(e), wr(t), it(n), i && !(e.f & 16384) && (r?.activate(), r?.apply());
+	};
+}
+function $t(e = !0) {
+	Tr(null), wr(null), it(null), e && Ot?.deactivate();
+}
+function en() {
+	var e = R, t = e.b, n = Ot, r = !!t?.is_rendered();
+	return t?.update_pending_count(1, n), n.increment(r, e), () => {
+		t?.update_pending_count(-1, n), n.decrement(r, e);
+	};
+}
+/* @__NO_SIDE_EFFECTS__ */
+function tn(e) {
+	var t = 2 | ne;
+	return R !== null && (R.f |= ce), {
+		ctx: rt,
+		deps: null,
+		effects: null,
+		equals: Ze,
+		f: t,
+		fn: e,
+		reactions: null,
+		rv: 0,
+		v: u,
+		wv: 0,
+		parent: R,
+		ac: null
+	};
+}
+var nn = Symbol("obsolete");
+/* @__NO_SIDE_EFFECTS__ */
+function rn(e, t, n) {
+	let r = R;
+	r === null && Ee();
+	var i = void 0, a = mn(u), o = !Sr, s = /* @__PURE__ */ new Set();
+	return nr(() => {
+		var t = R, n = O();
+		i = n.promise;
+		try {
+			Promise.resolve(e()).then(n.resolve, (e) => {
+				e !== Ce && n.reject(e);
+			}).finally($t);
+		} catch (e) {
+			n.reject(e), $t();
+		}
+		var c = Ot;
+		if (o) {
+			if (t.f & 32768) var l = en();
+			if (r.b?.is_rendered()) c.async_deriveds.get(t)?.reject(nn);
+			else for (let e of s.values()) e.reject(nn);
+			s.add(n), c.async_deriveds.set(t, n);
+		}
+		let u = (e, t = void 0) => {
+			l?.(), s.delete(n), t !== nn && (c.activate(), t ? (a.f |= me, vn(a, t)) : (a.f & 8388608 && (a.f ^= me), vn(a, e)), c.deactivate());
+		};
+		n.promise.then(u, (e) => u(null, e || "unknown"));
+	}), Yn(() => {
+		for (let e of s) e.reject(nn);
+	}), new Promise((e) => {
+		function t(n) {
+			function r() {
+				n === i ? e(a) : t(i);
+			}
+			n.then(r, r);
+		}
+		t(i);
+	});
+}
+/* @__NO_SIDE_EFFECTS__ */
+function P(e) {
+	let t = /* @__PURE__ */ tn(e);
+	return et || Dr(t), t;
+}
+/* @__NO_SIDE_EFFECTS__ */
+function an(e) {
+	let t = /* @__PURE__ */ tn(e);
+	return t.equals = $e, t;
+}
+function on(e) {
+	var t = e.effects;
+	if (t !== null) {
+		e.effects = null;
+		for (var n = 0; n < t.length; n += 1) ur(t[n]);
+	}
+}
+function sn(e) {
+	var t, n = R, r = e.parent;
+	if (!br && r !== null && e.v !== u && r.f & 24576) return ze(), e.v;
+	Tr(r);
+	try {
+		e.f &= ~de, on(e), t = zr(e);
+	} finally {
+		Tr(n);
+	}
+	return t;
+}
+function cn(e) {
+	var t = sn(e);
+	if (!e.equals(t) && (e.wv = Ir(), (!Ot?.is_fork || e.deps === null) && (Ot === null ? e.v = t : (Ot.capture(e, t, !0), kt?.capture(e, t, !0)), e.deps === null))) {
+		yt(e, A);
+		return;
+	}
+	br || (At === null ? bt(e) : (Jn() || Ot?.is_fork) && At.set(e, t));
+}
+function ln(e) {
+	if (e.effects !== null) for (let t of e.effects) (t.teardown || t.ac) && (t.teardown?.(), t.ac?.abort(Ce), t.fn !== null && (t.teardown = T), t.ac = null, Vr(t, 0), cr(t));
+}
+function un(e) {
+	if (e.effects !== null) for (let t of e.effects) t.teardown && t.fn !== null && Hr(t);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/sources.js
+var dn = /* @__PURE__ */ new Set(), fn = /* @__PURE__ */ new Map(), pn = !1;
+function mn(e, t) {
+	return {
+		f: 0,
+		v: e,
+		reactions: null,
+		equals: Ze,
+		rv: 0,
+		wv: 0
+	};
+}
+/* @__NO_SIDE_EFFECTS__ */
+function hn(e, t) {
+	let n = mn(e, t);
+	return Dr(n), n;
+}
+/* @__NO_SIDE_EFFECTS__ */
+function gn(e, t = !1, n = !0) {
+	let r = mn(e);
+	return t || (r.equals = $e), tt && n && rt !== null && rt.l !== null && (rt.l.s ??= []).push(r), r;
+}
+function _n(e, t, n = !1) {
+	return Sr !== null && (!Cr || Sr.f & 131072) && lt() && Sr.f & 4325394 && (Er === null || !m.call(Er, e)) && Le(), vn(e, n ? Cn(t) : t, Ft);
+}
+function vn(e, t, n = null) {
+	if (!e.equals(t)) {
+		fn.set(e, br ? t : e.v);
+		var r = Rt.ensure();
+		if (r.capture(e, t), e.f & 2) {
+			let t = e;
+			e.f & 2048 && sn(t), At === null && bt(t);
+		}
+		e.wv = Ir(), Sn(e, ne, n), lt() && R !== null && R.f & 1024 && !(R.f & 96) && (Ar === null ? jr([e]) : Ar.push(e)), !r.is_fork && dn.size > 0 && !pn && yn();
+	}
+	return t;
+}
+function yn() {
+	pn = !1;
+	for (let e of dn) {
+		e.f & 1024 && yt(e, re);
+		let t;
+		try {
+			t = Lr(e);
+		} catch {
+			t = !0;
+		}
+		t && Hr(e);
+	}
+	dn.clear();
+}
+function bn(e, t = 1) {
+	var n = z(e), r = t === 1 ? n++ : n--;
+	return _n(e, n), r;
+}
+function xn(e) {
+	_n(e, e.v + 1);
+}
+function Sn(e, t, n) {
+	var r = e.reactions;
+	if (r !== null) for (var i = lt(), a = r.length, o = 0; o < a; o++) {
+		var s = r[o], c = s.f;
+		if (!(!i && s === R)) {
+			var l = (c & ne) === 0;
+			if (l && yt(s, t), c & 131072) dn.add(s);
+			else if (c & 2) {
+				var u = s;
+				At?.delete(u), c & 65536 || (c & 512 && (R === null || !(R.f & 2097152)) && (s.f |= de), Sn(u, re, n));
+			} else if (l) {
+				var d = s;
+				c & 16 && Bt !== null && Bt.add(d), n === null ? Wt(d) : n.push(d);
+			}
+		}
+	}
+}
+function Cn(e) {
+	if (typeof e != "object" || !e || he in e) return e;
+	let t = S(e);
+	if (t !== b && t !== x) return e;
+	var n = /* @__PURE__ */ new Map(), r = f(e), i = /* @__PURE__ */ hn(0), a = null, o = Pr, s = (e) => {
+		if (Pr === o) return e();
+		var t = Sr, n = Pr;
+		wr(null), Fr(o);
+		var r = e();
+		return wr(t), Fr(n), r;
+	};
+	return r && n.set("length", /* @__PURE__ */ hn(e.length, a)), new Proxy(e, {
+		defineProperty(e, t, r) {
+			(!("value" in r) || r.configurable === !1 || r.enumerable === !1 || r.writable === !1) && Fe();
+			var i = n.get(t);
+			return i === void 0 ? s(() => {
+				var e = /* @__PURE__ */ hn(r.value, a);
+				return n.set(t, e), e;
+			}) : _n(i, r.value, !0), !0;
+		},
+		deleteProperty(e, t) {
+			var r = n.get(t);
+			if (r === void 0) {
+				if (t in e) {
+					let e = s(() => /* @__PURE__ */ hn(u, a));
+					n.set(t, e), xn(i);
+				}
+			} else _n(r, u), xn(i);
+			return !0;
+		},
+		get(t, r, i) {
+			if (r === he) return e;
+			var o = n.get(r), c = r in t;
+			if (o === void 0 && (!c || v(t, r)?.writable) && (o = s(() => /* @__PURE__ */ hn(Cn(c ? t[r] : u), a)), n.set(r, o)), o !== void 0) {
+				var l = z(o);
+				return l === u ? void 0 : l;
+			}
+			return Reflect.get(t, r, i);
+		},
+		getOwnPropertyDescriptor(e, t) {
+			var r = Reflect.getOwnPropertyDescriptor(e, t);
+			if (r && "value" in r) {
+				var i = n.get(t);
+				i && (r.value = z(i));
+			} else if (r === void 0) {
+				var a = n.get(t), o = a?.v;
+				if (a !== void 0 && o !== u) return {
+					enumerable: !0,
+					configurable: !0,
+					value: o,
+					writable: !0
+				};
+			}
+			return r;
+		},
+		has(e, t) {
+			if (t === he) return !0;
+			var r = n.get(t), i = r !== void 0 && r.v !== u || Reflect.has(e, t);
+			return (r !== void 0 || R !== null && (!i || v(e, t)?.writable)) && (r === void 0 && (r = s(() => /* @__PURE__ */ hn(i ? Cn(e[t]) : u, a)), n.set(t, r)), z(r) === u) ? !1 : i;
+		},
+		set(e, t, o, c) {
+			var l = n.get(t), d = t in e;
+			if (r && t === "length") for (var f = o; f < l.v; f += 1) {
+				var p = n.get(f + "");
+				p === void 0 ? f in e && (p = s(() => /* @__PURE__ */ hn(u, a)), n.set(f + "", p)) : _n(p, u);
+			}
+			if (l === void 0) (!d || v(e, t)?.writable) && (l = s(() => /* @__PURE__ */ hn(void 0, a)), _n(l, Cn(o)), n.set(t, l));
+			else {
+				d = l.v !== u;
+				var m = s(() => Cn(o));
+				_n(l, m);
+			}
+			var h = Reflect.getOwnPropertyDescriptor(e, t);
+			if (h?.set && h.set.call(c, o), !d) {
+				if (r && typeof t == "string") {
+					var g = n.get("length"), _ = Number(t);
+					Number.isInteger(_) && _ >= g.v && _n(g, _ + 1);
+				}
+				xn(i);
+			}
+			return !0;
+		},
+		ownKeys(e) {
+			z(i);
+			var t = Reflect.ownKeys(e).filter((e) => {
+				var t = n.get(e);
+				return t === void 0 || t.v !== u;
+			});
+			for (var [r, a] of n) a.v !== u && !(r in e) && t.push(r);
+			return t;
+		},
+		setPrototypeOf() {
+			Ie();
+		}
+	});
+}
+function wn(e) {
+	try {
+		if (typeof e == "object" && e && he in e) return e[he];
+	} catch {}
+	return e;
+}
+function Tn(e, t) {
+	return Object.is(wn(e), wn(t));
+}
+new Set([
+	"copyWithin",
+	"fill",
+	"pop",
+	"push",
+	"reverse",
+	"shift",
+	"sort",
+	"splice",
+	"unshift"
+]);
+var En, Dn, On, kn;
+function An() {
+	if (En === void 0) {
+		En = window, Dn = /Firefox/.test(navigator.userAgent);
+		var e = Element.prototype, t = Node.prototype, n = Text.prototype;
+		On = v(t, "firstChild").get, kn = v(t, "nextSibling").get, C(e) && (e[ye] = void 0, e[ve] = null, e[be] = void 0, e.__e = void 0), C(n) && (n[xe] = void 0);
+	}
+}
+function jn(e = "") {
+	return document.createTextNode(e);
+}
+/* @__NO_SIDE_EFFECTS__ */
+function Mn(e) {
+	return On.call(e);
+}
+/* @__NO_SIDE_EFFECTS__ */
+function Nn(e) {
+	return kn.call(e);
+}
+function F(e, t) {
+	if (!Ue) return /* @__PURE__ */ Mn(e);
+	var n = /* @__PURE__ */ Mn(Ge);
+	if (n === null) n = Ge.appendChild(jn());
+	else if (t && n.nodeType !== 3) {
+		var r = jn();
+		return n?.before(r), Ke(r), r;
+	}
+	return t && Rn(n), Ke(n), n;
+}
+function Pn(e, t = !1) {
+	if (!Ue) {
+		var n = /* @__PURE__ */ Mn(e);
+		return n instanceof Comment && n.data === "" ? /* @__PURE__ */ Nn(n) : n;
+	}
+	if (t) {
+		if (Ge?.nodeType !== 3) {
+			var r = jn();
+			return Ge?.before(r), Ke(r), r;
+		}
+		Rn(Ge);
+	}
+	return Ge;
+}
+function I(e, t = 1, n = !1) {
+	let r = Ue ? Ge : e;
+	for (var i; t--;) i = r, r = /* @__PURE__ */ Nn(r);
+	if (!Ue) return r;
+	if (n) {
+		if (r?.nodeType !== 3) {
+			var a = jn();
+			return r === null ? i?.after(a) : r.before(a), Ke(a), a;
+		}
+		Rn(r);
+	}
+	return Ke(r), r;
+}
+function Fn(e) {
+	e.textContent = "";
+}
+function In() {
+	return !et || Bt !== null ? !1 : (R.f & ae) !== 0;
+}
+function Ln(e, t, n) {
+	let r = n ? { is: n } : void 0;
+	return document.createElementNS(t ?? "http://www.w3.org/1999/xhtml", e, r);
+}
+function Rn(e) {
+	if (e.nodeValue.length < 65536) return;
+	let t = e.nextSibling;
+	for (; t !== null && t.nodeType === 3;) t.remove(), e.nodeValue += t.nodeValue, t = e.nextSibling;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/misc.js
+function zn(e, t) {
+	if (t) {
+		let t = document.body;
+		e.autofocus = !0, mt(() => {
+			document.activeElement === t && e.focus();
+		});
+	}
+}
+var Bn = !1;
+function Vn() {
+	Bn || (Bn = !0, document.addEventListener("reset", (e) => {
+		Promise.resolve().then(() => {
+			if (!e.defaultPrevented) for (let t of e.target.elements) t[Se]?.();
+		});
+	}, { capture: !0 }));
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/bindings/shared.js
+function Hn(e, t, n, r = !0) {
+	r && n();
+	for (var i of t) e.addEventListener(i, n);
+	Yn(() => {
+		for (var r of t) e.removeEventListener(r, n);
+	});
+}
+function Un(e) {
+	var t = Sr, n = R;
+	wr(null), Tr(null);
+	try {
+		return e();
+	} finally {
+		wr(t), Tr(n);
+	}
+}
+function Wn(e, t, n, r = n) {
+	e.addEventListener(t, () => Un(n));
+	let i = e[Se];
+	i ? e[Se] = () => {
+		i(), r(!0);
+	} : e[Se] = () => r(!0), Vn();
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/effects.js
+function Gn(e) {
+	R === null && (Sr === null && Ae(e), ke()), br && Oe(e);
+}
+function Kn(e, t) {
+	var n = t.last;
+	n === null ? t.last = t.first = e : (n.next = e, e.prev = n, t.last = e);
+}
+function qn(e, t) {
+	var n = R;
+	n !== null && n.f & 8192 && (e |= ie);
+	var r = {
+		ctx: rt,
+		deps: null,
+		nodes: null,
+		f: e | ne | 512,
+		first: null,
+		fn: t,
+		last: null,
+		next: null,
+		parent: n,
+		b: n && n.b,
+		prev: null,
+		teardown: null,
+		wv: 0,
+		ac: null
+	};
+	Ot?.register_created_effect(r);
+	var i = r;
+	if (e & 4) Pt === null ? Rt.ensure().schedule(r) : Pt.push(r);
+	else if (t !== null) {
+		try {
+			Hr(r);
+		} catch (e) {
+			throw ur(r), e;
+		}
+		i.deps === null && i.teardown === null && i.nodes === null && i.first === i.last && !(i.f & 524288) && (i = i.first, e & 16 && e & 65536 && i !== null && (i.f |= se));
+	}
+	if (i !== null && (i.parent = n, n !== null && Kn(i, n), Sr !== null && Sr.f & 2 && !(e & 64))) {
+		var a = Sr;
+		(a.effects ??= []).push(i);
+	}
+	return r;
+}
+function Jn() {
+	return Sr !== null && !Cr;
+}
+function Yn(e) {
+	let t = qn(8, null);
+	return yt(t, A), t.teardown = e, t;
+}
+function Xn(e) {
+	Gn("$effect");
+	var t = R.f;
+	if (!Sr && t & 32 && rt !== null && !rt.i) {
+		var n = rt;
+		(n.e ??= []).push(e);
+	} else return Zn(e);
+}
+function Zn(e) {
+	return qn(4 | le, e);
+}
+function Qn(e) {
+	return Gn("$effect.pre"), qn(8 | le, e);
+}
+function $n(e) {
+	Rt.ensure();
+	let t = qn(64 | ce, e);
+	return () => {
+		ur(t);
+	};
+}
+function er(e) {
+	Rt.ensure();
+	let t = qn(64 | ce, e);
+	return (e = {}) => new Promise((n) => {
+		e.outro ? pr(t, () => {
+			ur(t), n(void 0);
+		}) : (ur(t), n(void 0));
+	});
+}
+function tr(e) {
+	return qn(4, e);
+}
+function nr(e) {
+	return qn(pe | ce, e);
+}
+function rr(e, t = 0) {
+	return qn(8 | t, e);
+}
+function L(e, t = [], n = [], r = []) {
+	Zt(r, t, n, (t) => {
+		qn(8, () => e(...t.map(z)));
+	});
+}
+function ir(e, t = 0) {
+	return qn(16 | t, e);
+}
+function ar(e, t = 0) {
+	return qn(te | t, e);
+}
+function or(e) {
+	return qn(32 | ce, e);
+}
+function sr(e) {
+	var t = e.teardown;
+	if (t !== null) {
+		let e = br, n = Sr;
+		xr(!0), wr(null);
+		try {
+			t.call(null);
+		} finally {
+			xr(e), wr(n);
+		}
+	}
+}
+function cr(e, t = !1) {
+	var n = e.first;
+	for (e.first = e.last = null; n !== null;) {
+		let e = n.ac;
+		e !== null && Un(() => {
+			e.abort(Ce);
+		});
+		var r = n.next;
+		n.f & 64 ? n.parent = null : ur(n, t), n = r;
+	}
+}
+function lr(e) {
+	for (var t = e.first; t !== null;) {
+		var n = t.next;
+		t.f & 32 || ur(t), t = n;
+	}
+}
+function ur(e, t = !0) {
+	var n = !1;
+	(t || e.f & 262144) && e.nodes !== null && e.nodes.end !== null && (dr(e.nodes.start, e.nodes.end), n = !0), yt(e, oe), cr(e, t && !n), Vr(e, 0);
+	var r = e.nodes && e.nodes.t;
+	if (r !== null) for (let e of r) e.stop();
+	sr(e), e.f ^= oe, e.f |= j;
+	var i = e.parent;
+	i !== null && i.first !== null && fr(e), e.next = e.prev = e.teardown = e.ctx = e.deps = e.fn = e.nodes = e.ac = e.b = null;
+}
+function dr(e, t) {
+	for (; e !== null;) {
+		var n = e === t ? null : /* @__PURE__ */ Nn(e);
+		e.remove(), e = n;
+	}
+}
+function fr(e) {
+	var t = e.parent, n = e.prev, r = e.next;
+	n !== null && (n.next = r), r !== null && (r.prev = n), t !== null && (t.first === e && (t.first = r), t.last === e && (t.last = n));
+}
+function pr(e, t, n = !0) {
+	var r = [];
+	mr(e, r, !0);
+	var i = () => {
+		n && ur(e), t && t();
+	}, a = r.length;
+	if (a > 0) {
+		var o = () => --a || i();
+		for (var s of r) s.out(o);
+	} else i();
+}
+function mr(e, t, n) {
+	if (!(e.f & 8192)) {
+		e.f ^= ie;
+		var r = e.nodes && e.nodes.t;
+		if (r !== null) for (let e of r) (e.is_global || n) && t.push(e);
+		for (var i = e.first; i !== null;) {
+			var a = i.next;
+			if (!(i.f & 64)) {
+				var o = (i.f & 65536) != 0 || (i.f & 32) != 0 && (e.f & 16) != 0;
+				mr(i, t, o ? n : !1);
+			}
+			i = a;
+		}
+	}
+}
+function hr(e) {
+	gr(e, !0);
+}
+function gr(e, t) {
+	if (e.f & 8192) {
+		e.f ^= ie, e.f & 1024 || (yt(e, ne), Rt.ensure().schedule(e));
+		for (var n = e.first; n !== null;) {
+			var r = n.next, i = (n.f & 65536) != 0 || (n.f & 32) != 0;
+			gr(n, i ? t : !1), n = r;
+		}
+		var a = e.nodes && e.nodes.t;
+		if (a !== null) for (let e of a) (e.is_global || t) && e.in();
+	}
+}
+function _r(e, t) {
+	if (e.nodes) for (var n = e.nodes.start, r = e.nodes.end; n !== null;) {
+		var i = n === r ? null : /* @__PURE__ */ Nn(n);
+		t.append(n), n = i;
+	}
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/legacy.js
+var vr = null, yr = !1, br = !1;
+function xr(e) {
+	br = e;
+}
+var Sr = null, Cr = !1;
+function wr(e) {
+	Sr = e;
+}
+var R = null;
+function Tr(e) {
+	R = e;
+}
+var Er = null;
+function Dr(e) {
+	Sr !== null && (!et || Sr.f & 2) && (Er === null ? Er = [e] : Er.push(e));
+}
+var Or = null, kr = 0, Ar = null;
+function jr(e) {
+	Ar = e;
+}
+var Mr = 1, Nr = 0, Pr = Nr;
+function Fr(e) {
+	Pr = e;
+}
+function Ir() {
+	return ++Mr;
+}
+function Lr(e) {
+	var t = e.f;
+	if (t & 2048) return !0;
+	if (t & 2 && (e.f &= ~de), t & 4096) {
+		for (var n = e.deps, r = n.length, i = 0; i < r; i++) {
+			var a = n[i];
+			if (Lr(a) && cn(a), a.wv > e.wv) return !0;
+		}
+		t & 512 && At === null && yt(e, A);
+	}
+	return !1;
+}
+function Rr(e, t, n = !0) {
+	var r = e.reactions;
+	if (r !== null && !(!et && Er !== null && m.call(Er, e))) for (var i = 0; i < r.length; i++) {
+		var a = r[i];
+		a.f & 2 ? Rr(a, t, !1) : t === a && (n ? yt(a, ne) : a.f & 1024 && yt(a, re), Wt(a));
+	}
+}
+function zr(e) {
+	var t = Or, n = kr, r = Ar, i = Sr, a = Er, o = rt, s = Cr, c = Pr, l = e.f;
+	Or = null, kr = 0, Ar = null, Sr = l & 96 ? null : e, Er = null, it(e.ctx), Cr = !1, Pr = ++Nr, e.ac !== null && (Un(() => {
+		e.ac.abort(Ce);
+	}), e.ac = null);
+	try {
+		e.f |= fe;
+		var u = e.fn, d = u();
+		e.f |= ae;
+		var f = e.deps, p = Ot?.is_fork;
+		if (Or !== null) {
+			var m;
+			if (p || Vr(e, kr), f !== null && kr > 0) for (f.length = kr + Or.length, m = 0; m < Or.length; m++) f[kr + m] = Or[m];
+			else e.deps = f = Or;
+			if (Jn() && e.f & 512) for (m = kr; m < f.length; m++) (f[m].reactions ??= []).push(e);
+		} else !p && f !== null && kr < f.length && (Vr(e, kr), f.length = kr);
+		if (lt() && Ar !== null && !Cr && f !== null && !(e.f & 6146)) for (m = 0; m < Ar.length; m++) Rr(Ar[m], e);
+		if (i !== null && i !== e) {
+			if (Nr++, i.deps !== null) for (let e = 0; e < n; e += 1) i.deps[e].rv = Nr;
+			if (t !== null) for (let e of t) e.rv = Nr;
+			Ar !== null && (r === null ? r = Ar : r.push(...Ar));
+		}
+		return e.f & 8388608 && (e.f ^= me), d;
+	} catch (e) {
+		return gt(e);
+	} finally {
+		e.f ^= fe, Or = t, kr = n, Ar = r, Sr = i, Er = a, it(o), Cr = s, Pr = c;
+	}
+}
+function Br(e, t) {
+	let n = t.reactions;
+	if (n !== null) {
+		var r = p.call(n, e);
+		if (r !== -1) {
+			var i = n.length - 1;
+			i === 0 ? n = t.reactions = null : (n[r] = n[i], n.pop());
+		}
+	}
+	if (n === null && t.f & 2 && (Or === null || !m.call(Or, t))) {
+		var a = t;
+		a.f & 512 && (a.f ^= 512, a.f &= ~de), a.v !== u && bt(a), ln(a), Vr(a, 0);
+	}
+}
+function Vr(e, t) {
+	var n = e.deps;
+	if (n !== null) for (var r = t; r < n.length; r++) Br(e, n[r]);
+}
+function Hr(e) {
+	var t = e.f;
+	if (!(t & 16384)) {
+		yt(e, A);
+		var n = R, r = yr;
+		R = e, yr = !0;
+		try {
+			t & 16777232 ? lr(e) : cr(e), sr(e);
+			var i = zr(e);
+			e.teardown = typeof i == "function" ? i : null, e.wv = Mr;
+		} finally {
+			yr = r, R = n;
+		}
+	}
+}
+function z(e) {
+	var t = (e.f & 2) != 0;
+	if (vr?.add(e), Sr !== null && !Cr && !(R !== null && R.f & 16384) && (Er === null || !m.call(Er, e))) {
+		var n = Sr.deps;
+		if (Sr.f & 2097152) e.rv < Nr && (e.rv = Nr, Or === null && n !== null && n[kr] === e ? kr++ : Or === null ? Or = [e] : Or.push(e));
+		else {
+			Sr.deps ??= [], m.call(Sr.deps, e) || Sr.deps.push(e);
+			var r = e.reactions;
+			r === null ? e.reactions = [Sr] : m.call(r, Sr) || r.push(Sr);
+		}
+	}
+	if (br && fn.has(e)) return fn.get(e);
+	if (t) {
+		var i = e;
+		if (br) {
+			var a = i.v;
+			return (!(i.f & 1024) && i.reactions !== null || Wr(i)) && (a = sn(i)), fn.set(i, a), a;
+		}
+		var o = (i.f & 512) == 0 && !Cr && Sr !== null && (yr || (Sr.f & 512) != 0), s = (i.f & ae) === 0;
+		Lr(i) && (o && (i.f |= 512), cn(i)), o && !s && (un(i), Ur(i));
+	}
+	if (At?.has(e)) return At.get(e);
+	if (e.f & 8388608) throw e.v;
+	return e.v;
+}
+function Ur(e) {
+	if (e.f |= 512, e.deps !== null) for (let t of e.deps) (t.reactions ??= []).push(e), t.f & 2 && !(t.f & 512) && (un(t), Ur(t));
+}
+function Wr(e) {
+	if (e.v === u) return !0;
+	if (e.deps === null) return !1;
+	for (let t of e.deps) if (fn.has(t) || t.f & 2 && Wr(t)) return !0;
+	return !1;
+}
+function Gr(e) {
+	var t = Cr;
+	try {
+		return Cr = !0, e();
+	} finally {
+		Cr = t;
+	}
+}
+function Kr(e) {
+	if (!(typeof e != "object" || !e || e instanceof EventTarget)) {
+		if (he in e) qr(e);
+		else if (!Array.isArray(e)) for (let t in e) {
+			let n = e[t];
+			typeof n == "object" && n && he in n && qr(n);
+		}
+	}
+}
+function qr(e, t = /* @__PURE__ */ new Set()) {
+	if (typeof e == "object" && e && !(e instanceof EventTarget) && !t.has(e)) {
+		t.add(e), e instanceof Date && e.getTime();
+		for (let n in e) try {
+			qr(e[n], t);
+		} catch {}
+		let n = S(e);
+		if (n !== Object.prototype && n !== Array.prototype && n !== Map.prototype && n !== Set.prototype && n !== Date.prototype) {
+			let t = y(n);
+			for (let n in t) {
+				let r = t[n].get;
+				if (r) try {
+					r.call(e);
+				} catch {}
+			}
+		}
+	}
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/events.js
+var Jr = Symbol("events"), Yr = /* @__PURE__ */ new Set(), Xr = /* @__PURE__ */ new Set();
+function Zr(e, t, n, r = {}) {
+	function i(e) {
+		if (r.capture || ni.call(t, e), !e.cancelBubble) return Un(() => n?.call(this, e));
+	}
+	return e.startsWith("pointer") || e.startsWith("touch") || e === "wheel" ? mt(() => {
+		t.addEventListener(e, i, r);
+	}) : t.addEventListener(e, i, r), i;
+}
+function Qr(e, t, n, r, i) {
+	var a = {
+		capture: r,
+		passive: i
+	}, o = Zr(e, t, n, a);
+	(t === document.body || t === window || t === document || t instanceof HTMLMediaElement) && Yn(() => {
+		t.removeEventListener(e, o, a);
+	});
+}
+function $r(e, t, n) {
+	(t[Jr] ??= {})[e] = n;
+}
+function ei(e) {
+	for (var t = 0; t < e.length; t++) Yr.add(e[t]);
+	for (var n of Xr) n(e);
+}
+var ti = null;
+function ni(e) {
+	var t = this, n = t.ownerDocument, r = e.type, i = e.composedPath?.() || [], a = i[0] || e.target;
+	ti = e;
+	var o = 0, s = ti === e && e[Jr];
+	if (s) {
+		var c = i.indexOf(s);
+		if (c !== -1 && (t === document || t === window)) {
+			e[Jr] = t;
+			return;
+		}
+		var l = i.indexOf(t);
+		if (l === -1) return;
+		c <= l && (o = c);
+	}
+	if (a = i[o] || e.target, a !== t) {
+		_(e, "currentTarget", {
+			configurable: !0,
+			get() {
+				return a || n;
+			}
+		});
+		var u = Sr, d = R;
+		wr(null), Tr(null);
+		try {
+			for (var f, p = []; a !== null && a !== t;) {
+				try {
+					var m = a[Jr]?.[r];
+					m != null && (!a.disabled || e.target === a) && m.call(a, e);
+				} catch (e) {
+					f ? p.push(e) : f = e;
+				}
+				if (e.cancelBubble) break;
+				o++, a = o < i.length ? i[o] : null;
+			}
+			if (f) {
+				for (let e of p) queueMicrotask(() => {
+					throw e;
+				});
+				throw f;
+			}
+		} finally {
+			e[Jr] = t, delete e.currentTarget, wr(u), Tr(d);
+		}
+	}
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/reconciler.js
+var ri = globalThis?.window?.trustedTypes && /* @__PURE__ */ globalThis.window.trustedTypes.createPolicy("svelte-trusted-html", { createHTML: (e) => e });
+function ii(e) {
+	return ri?.createHTML(e) ?? e;
+}
+function ai(e) {
+	var t = Ln("template");
+	return t.innerHTML = ii(e.replaceAll("<!>", "<!---->")), t.content;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/template.js
+function oi(e, t) {
+	var n = R;
+	n.nodes === null && (n.nodes = {
+		start: e,
+		end: t,
+		a: null,
+		t: null
+	});
+}
+/* @__NO_SIDE_EFFECTS__ */
+function B(e, t) {
+	var n = (t & 1) != 0, r = (t & 2) != 0, i, a = !e.startsWith("<!>");
+	return () => {
+		if (Ue) return oi(Ge, null), Ge;
+		i === void 0 && (i = ai(a ? e : "<!>" + e), n || (i = /* @__PURE__ */ Mn(i)));
+		var t = r || Dn ? document.importNode(i, !0) : i.cloneNode(!0);
+		if (n) {
+			var o = /* @__PURE__ */ Mn(t), s = t.lastChild;
+			oi(o, s);
+		} else oi(t, t);
+		return t;
+	};
+}
+/* @__NO_SIDE_EFFECTS__ */
+function si(e, t, n = "svg") {
+	var r = !e.startsWith("<!>"), i = (t & 1) != 0, a = `<${n}>${r ? e : "<!>" + e}</${n}>`, o;
+	return () => {
+		if (Ue) return oi(Ge, null), Ge;
+		if (!o) {
+			var e = /* @__PURE__ */ Mn(ai(a));
+			if (i) for (o = document.createDocumentFragment(); /* @__PURE__ */ Mn(e);) o.appendChild(/* @__PURE__ */ Mn(e));
+			else o = /* @__PURE__ */ Mn(e);
+		}
+		var t = o.cloneNode(!0);
+		if (i) {
+			var n = /* @__PURE__ */ Mn(t), r = t.lastChild;
+			oi(n, r);
+		} else oi(t, t);
+		return t;
+	};
+}
+/* @__NO_SIDE_EFFECTS__ */
+function ci(e, t) {
+	return /* @__PURE__ */ si(e, t, "svg");
+}
+function li(e = "") {
+	if (!Ue) {
+		var t = jn(e + "");
+		return oi(t, t), t;
+	}
+	var n = Ge;
+	return n.nodeType === 3 ? Rn(n) : (n.before(n = jn()), Ke(n)), oi(n, n), n;
+}
+function ui() {
+	if (Ue) return oi(Ge, null), Ge;
+	var e = document.createDocumentFragment(), t = document.createComment(""), n = jn();
+	return e.append(t, n), oi(t, n), e;
+}
+function V(e, t) {
+	if (Ue) {
+		var n = R;
+		(!(n.f & 32768) || n.nodes.end === null) && (n.nodes.end = Ge), qe();
+		return;
+	}
+	e !== null && e.before(t);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/utils.js
+function di(e) {
+	return e.endsWith("capture") && e !== "gotpointercapture" && e !== "lostpointercapture";
+}
+var fi = [
+	"beforeinput",
+	"click",
+	"change",
+	"dblclick",
+	"contextmenu",
+	"focusin",
+	"focusout",
+	"input",
+	"keydown",
+	"keyup",
+	"mousedown",
+	"mousemove",
+	"mouseout",
+	"mouseover",
+	"mouseup",
+	"pointerdown",
+	"pointermove",
+	"pointerout",
+	"pointerover",
+	"pointerup",
+	"touchend",
+	"touchmove",
+	"touchstart"
+];
+function pi(e) {
+	return fi.includes(e);
+}
+var mi = /* @__PURE__ */ "allowfullscreen.async.autofocus.autoplay.checked.controls.default.disabled.formnovalidate.indeterminate.inert.ismap.loop.multiple.muted.nomodule.novalidate.open.playsinline.readonly.required.reversed.seamless.selected.webkitdirectory.defer.disablepictureinpicture.disableremoteplayback".split("."), hi = {
+	formnovalidate: "formNoValidate",
+	ismap: "isMap",
+	nomodule: "noModule",
+	playsinline: "playsInline",
+	readonly: "readOnly",
+	defaultvalue: "defaultValue",
+	defaultchecked: "defaultChecked",
+	srcobject: "srcObject",
+	novalidate: "noValidate",
+	allowfullscreen: "allowFullscreen",
+	disablepictureinpicture: "disablePictureInPicture",
+	disableremoteplayback: "disableRemotePlayback"
+};
+function gi(e) {
+	return e = e.toLowerCase(), hi[e] ?? e;
+}
+[...mi];
+var _i = ["touchstart", "touchmove"];
+function vi(e) {
+	return _i.includes(e);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/render.js
+var yi = !0;
+function H(e, t) {
+	var n = t == null ? "" : typeof t == "object" ? `${t}` : t;
+	n !== (e[xe] ??= e.nodeValue) && (e[xe] = n, e.nodeValue = `${n}`);
+}
+function bi(e, t) {
+	return Ci(e, t);
+}
+function xi(e, t) {
+	An(), t.intro = t.intro ?? !1;
+	let n = t.target, r = Ue, i = Ge;
+	try {
+		for (var a = /* @__PURE__ */ Mn(n); a && (a.nodeType !== 8 || a.data !== "[");) a = /* @__PURE__ */ Nn(a);
+		if (!a) throw l;
+		We(!0), Ke(a);
+		let r = Ci(e, {
+			...t,
+			anchor: a
+		});
+		return We(!1), r;
+	} catch (r) {
+		if (r instanceof Error && r.message.split("\n").some((e) => e.startsWith("https://svelte.dev/e/"))) throw r;
+		return r !== l && console.warn("Failed to hydrate: ", r), t.recover === !1 && Me(), An(), Fn(n), We(!1), bi(e, t);
+	} finally {
+		We(r), Ke(i);
+	}
+}
+var Si = /* @__PURE__ */ new Map();
+function Ci(e, { target: t, anchor: n, props: r = {}, events: i, context: a, intro: o = !0, transformError: s }) {
+	An();
+	var c = void 0, u = er(() => {
+		var u = n ?? t.appendChild(jn());
+		Yt(u, { pending: () => {} }, (t) => {
+			st({});
+			var n = rt;
+			if (a && (n.c = a), i && (r.$$events = i), Ue && oi(t, null), yi = o, c = e(t, r) || {}, yi = !0, Ue && (R.nodes.end = Ge, Ge === null || Ge.nodeType !== 8 || Ge.data !== "]")) throw Be(), l;
+			ct();
+		}, s);
+		var d = /* @__PURE__ */ new Set(), f = (e) => {
+			for (var n = 0; n < e.length; n++) {
+				var r = e[n];
+				if (!d.has(r)) {
+					d.add(r);
+					var i = vi(r);
+					for (let e of [t, document]) {
+						var a = Si.get(e);
+						a === void 0 && (a = /* @__PURE__ */ new Map(), Si.set(e, a));
+						var o = a.get(r);
+						o === void 0 ? (e.addEventListener(r, ni, { passive: i }), a.set(r, 1)) : a.set(r, o + 1);
+					}
+				}
+			}
+		};
+		return f(h(Yr)), Xr.add(f), () => {
+			for (var e of d) for (let n of [t, document]) {
+				var r = Si.get(n), i = r.get(e);
+				--i == 0 ? (n.removeEventListener(e, ni), r.delete(e), r.size === 0 && Si.delete(n)) : r.set(e, i);
+			}
+			Xr.delete(f), u !== n && u.parentNode?.removeChild(u);
+		};
+	});
+	return wi.set(c, u), c;
+}
+var wi = /* @__PURE__ */ new WeakMap();
+function Ti(e, t) {
+	let n = wi.get(e);
+	return n ? (wi.delete(e), n(t)) : Promise.resolve();
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/branches.js
+var Ei = class {
+	anchor;
+	#e = /* @__PURE__ */ new Map();
+	#t = /* @__PURE__ */ new Map();
+	#n = /* @__PURE__ */ new Map();
+	#r = /* @__PURE__ */ new Set();
+	#i = !0;
+	constructor(e, t = !0) {
+		this.anchor = e, this.#i = t;
+	}
+	#a = (e) => {
+		if (this.#e.has(e)) {
+			var t = this.#e.get(e), n = this.#t.get(t);
+			if (n) hr(n), this.#r.delete(t);
+			else {
+				var r = this.#n.get(t);
+				r && (hr(r.effect), this.#t.set(t, r.effect), this.#n.delete(t), r.fragment.lastChild.remove(), this.anchor.before(r.fragment), n = r.effect);
+			}
+			for (let [t, n] of this.#e) {
+				if (this.#e.delete(t), t === e) break;
+				let r = this.#n.get(n);
+				r && (ur(r.effect), this.#n.delete(n));
+			}
+			for (let [e, r] of this.#t) {
+				if (e === t || this.#r.has(e)) continue;
+				let i = () => {
+					if (Array.from(this.#e.values()).includes(e)) {
+						var t = document.createDocumentFragment();
+						_r(r, t), t.append(jn()), this.#n.set(e, {
+							effect: r,
+							fragment: t
+						});
+					} else ur(r);
+					this.#r.delete(e), this.#t.delete(e);
+				};
+				this.#i || !n ? (this.#r.add(e), pr(r, i, !1)) : i();
+			}
+		}
+	};
+	#o = (e) => {
+		this.#e.delete(e);
+		let t = Array.from(this.#e.values());
+		for (let [e, n] of this.#n) t.includes(e) || (ur(n.effect), this.#n.delete(e));
+	};
+	ensure(e, t) {
+		var n = Ot, r = In();
+		if (t && !this.#t.has(e) && !this.#n.has(e)) if (r) {
+			var i = document.createDocumentFragment(), a = jn();
+			i.append(a), this.#n.set(e, {
+				effect: or(() => t(a)),
+				fragment: i
+			});
+		} else this.#t.set(e, or(() => t(this.anchor)));
+		if (this.#e.set(n, e), r) {
+			for (let [t, r] of this.#t) t === e ? n.unskip_effect(r) : n.skip_effect(r);
+			for (let [t, r] of this.#n) t === e ? n.unskip_effect(r.effect) : n.skip_effect(r.effect);
+			n.oncommit(this.#a), n.ondiscard(this.#o);
+		} else Ue && (this.anchor = Ge), this.#a(n);
+	}
+};
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/snippet.js
+function Di(e, t, ...n) {
+	var r = new Ei(e);
+	ir(() => {
+		let e = t() ?? null;
+		r.ensure(e, e && ((t) => e(t, ...n)));
+	}, se);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/if.js
+function U(e, t, n = !1) {
+	var r;
+	Ue && (r = Ge, qe());
+	var i = new Ei(e), a = n ? se : 0;
+	function o(e, t) {
+		if (Ue) {
+			var n = Xe(r);
+			if (e !== parseInt(n.substring(1))) {
+				var a = Ye();
+				Ke(a), i.anchor = a, We(!1), i.ensure(e, t), We(!0);
+				return;
+			}
+		}
+		i.ensure(e, t);
+	}
+	ir(() => {
+		var e = !1;
+		t((t, n = 0) => {
+			e = !0, o(n, t);
+		}), e || o(-1, null);
+	}, a);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/each.js
+function Oi(e, t) {
+	return t;
+}
+function ki(e, t, n) {
+	for (var r = [], i = t.length, a, o = t.length, s = 0; s < i; s++) {
+		let n = t[s];
+		pr(n, () => {
+			if (a) {
+				if (a.pending.delete(n), a.done.add(n), a.pending.size === 0) {
+					var t = e.outrogroups;
+					Ai(e, h(a.done)), t.delete(a), t.size === 0 && (e.outrogroups = null);
+				}
+			} else --o;
+		}, !1);
+	}
+	if (o === 0) {
+		var c = r.length === 0 && n !== null;
+		if (c) {
+			var l = n, u = l.parentNode;
+			Fn(u), u.append(l), e.items.clear();
+		}
+		Ai(e, t, !c);
+	} else a = {
+		pending: new Set(t),
+		done: /* @__PURE__ */ new Set()
+	}, (e.outrogroups ??= /* @__PURE__ */ new Set()).add(a);
+}
+function Ai(e, t, n = !0) {
+	var r;
+	if (e.pending.size > 0) {
+		r = /* @__PURE__ */ new Set();
+		for (let t of e.pending.values()) for (let n of t) r.add(e.items.get(n).e);
+	}
+	for (var i = 0; i < t.length; i++) {
+		var a = t[i];
+		r?.has(a) ? (a.f |= ue, _r(a, document.createDocumentFragment())) : ur(t[i], n);
+	}
+}
+var ji;
+function Mi(e, t, n, r, i, a = null) {
+	var o = e, s = /* @__PURE__ */ new Map();
+	if (t & 4) {
+		var c = e;
+		o = Ue ? Ke(/* @__PURE__ */ Mn(c)) : c.appendChild(jn());
+	}
+	Ue && qe();
+	var l = null, u = /* @__PURE__ */ an(() => {
+		var e = n();
+		return f(e) ? e : e == null ? [] : h(e);
+	}), d, p = /* @__PURE__ */ new Map(), m = !0;
+	function g(e) {
+		v.effect.f & 16384 || (v.pending.delete(e), v.fallback = l, Pi(v, d, o, t, r), l !== null && (d.length === 0 ? l.f & 33554432 ? (l.f ^= ue, Ii(l, null, o)) : hr(l) : pr(l, () => {
+			l = null;
+		})));
+	}
+	function _(e) {
+		v.pending.delete(e);
+	}
+	var v = {
+		effect: ir(() => {
+			d = z(u);
+			var e = d.length;
+			let c = !1;
+			Ue && Xe(o) === "[!" != (e === 0) && (o = Ye(), Ke(o), We(!1), c = !0);
+			for (var f = /* @__PURE__ */ new Set(), h = Ot, v = In(), y = 0; y < e; y += 1) {
+				Ue && Ge.nodeType === 8 && Ge.data === "]" && (o = Ge, c = !0, We(!1));
+				var b = d[y], x = r(b, y), S = m ? null : s.get(x);
+				S ? (S.v && vn(S.v, b), S.i && vn(S.i, y), v && h.unskip_effect(S.e)) : (S = Fi(s, m ? o : ji ??= jn(), b, x, y, i, t, n), m || (S.e.f |= ue), s.set(x, S)), f.add(x);
+			}
+			if (e === 0 && a && !l && (m ? l = or(() => a(o)) : (l = or(() => a(ji ??= jn())), l.f |= ue)), e > f.size && De("", "", ""), Ue && e > 0 && Ke(Ye()), !m) if (p.set(h, f), v) {
+				for (let [e, t] of s) f.has(e) || h.skip_effect(t.e);
+				h.oncommit(g), h.ondiscard(_);
+			} else g(h);
+			c && We(!0), z(u);
+		}),
+		flags: t,
+		items: s,
+		pending: p,
+		outrogroups: null,
+		fallback: l
+	};
+	m = !1, Ue && (o = Ge);
+}
+function Ni(e) {
+	for (; e !== null && !(e.f & 32);) e = e.next;
+	return e;
+}
+function Pi(e, t, n, r, i) {
+	var a = (r & 8) != 0, o = t.length, s = e.items, c = Ni(e.effect.first), l, u = null, d, f = [], p = [], m, g, _, v;
+	if (a) for (v = 0; v < o; v += 1) m = t[v], g = i(m, v), _ = s.get(g).e, _.f & 33554432 || (_.nodes?.a?.measure(), (d ??= /* @__PURE__ */ new Set()).add(_));
+	for (v = 0; v < o; v += 1) {
+		if (m = t[v], g = i(m, v), _ = s.get(g).e, e.outrogroups !== null) for (let t of e.outrogroups) t.pending.delete(_), t.done.delete(_);
+		if (_.f & 8192 && (hr(_), a && (_.nodes?.a?.unfix(), (d ??= /* @__PURE__ */ new Set()).delete(_))), _.f & 33554432) if (_.f ^= ue, _ === c) Ii(_, null, n);
+		else {
+			var y = u ? u.next : c;
+			_ === e.effect.last && (e.effect.last = _.prev), _.prev && (_.prev.next = _.next), _.next && (_.next.prev = _.prev), Li(e, u, _), Li(e, _, y), Ii(_, y, n), u = _, f = [], p = [], c = Ni(u.next);
+			continue;
+		}
+		if (_ !== c) {
+			if (l !== void 0 && l.has(_)) {
+				if (f.length < p.length) {
+					var b = p[0], x;
+					u = b.prev;
+					var S = f[0], C = f[f.length - 1];
+					for (x = 0; x < f.length; x += 1) Ii(f[x], b, n);
+					for (x = 0; x < p.length; x += 1) l.delete(p[x]);
+					Li(e, S.prev, C.next), Li(e, u, S), Li(e, C, b), c = b, u = C, --v, f = [], p = [];
+				} else l.delete(_), Ii(_, c, n), Li(e, _.prev, _.next), Li(e, _, u === null ? e.effect.first : u.next), Li(e, u, _), u = _;
+				continue;
+			}
+			for (f = [], p = []; c !== null && c !== _;) (l ??= /* @__PURE__ */ new Set()).add(c), p.push(c), c = Ni(c.next);
+			if (c === null) continue;
+		}
+		_.f & 33554432 || f.push(_), u = _, c = Ni(_.next);
+	}
+	if (e.outrogroups !== null) {
+		for (let t of e.outrogroups) t.pending.size === 0 && (Ai(e, h(t.done)), e.outrogroups?.delete(t));
+		e.outrogroups.size === 0 && (e.outrogroups = null);
+	}
+	if (c !== null || l !== void 0) {
+		var w = [];
+		if (l !== void 0) for (_ of l) _.f & 8192 || w.push(_);
+		for (; c !== null;) !(c.f & 8192) && c !== e.fallback && w.push(c), c = Ni(c.next);
+		var T = w.length;
+		if (T > 0) {
+			var E = r & 4 && o === 0 ? n : null;
+			if (a) {
+				for (v = 0; v < T; v += 1) w[v].nodes?.a?.measure();
+				for (v = 0; v < T; v += 1) w[v].nodes?.a?.fix();
+			}
+			ki(e, w, E);
+		}
+	}
+	a && mt(() => {
+		if (d !== void 0) for (_ of d) _.nodes?.a?.apply();
+	});
+}
+function Fi(e, t, n, r, i, a, o, s) {
+	var c = o & 1 ? o & 16 ? mn(n) : /* @__PURE__ */ gn(n, !1, !1) : null, l = o & 2 ? mn(i) : null;
+	return {
+		v: c,
+		i: l,
+		e: or(() => (a(t, c ?? n, l ?? i, s), () => {
+			e.delete(r);
+		}))
+	};
+}
+function Ii(e, t, n) {
+	if (e.nodes) for (var r = e.nodes.start, i = e.nodes.end, a = t && !(t.f & 33554432) ? t.nodes.start : n; r !== null;) {
+		var o = /* @__PURE__ */ Nn(r);
+		if (a.before(r), r === i) return;
+		r = o;
+	}
+}
+function Li(e, t, n) {
+	t === null ? e.effect.first = n : t.next = n, n === null ? e.effect.last = t : n.prev = t;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/slot.js
+function Ri(e, t, n, r, i) {
+	Ue && qe();
+	var a = t.$$slots?.[n], o = !1;
+	a === !0 && (a = t[n === "default" ? "children" : n], o = !0), a === void 0 ? i !== null && i(e) : a(e, o ? () => r : r);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/timing.js
+var zi = () => performance.now(), Bi = {
+	tick: (e) => requestAnimationFrame(e),
+	now: () => zi(),
+	tasks: /* @__PURE__ */ new Set()
+};
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/loop.js
+function Vi() {
+	let e = Bi.now();
+	Bi.tasks.forEach((t) => {
+		t.c(e) || (Bi.tasks.delete(t), t.f());
+	}), Bi.tasks.size !== 0 && Bi.tick(Vi);
+}
+function Hi(e) {
+	let t;
+	return Bi.tasks.size === 0 && Bi.tick(Vi), {
+		promise: new Promise((n) => {
+			Bi.tasks.add(t = {
+				c: e,
+				f: n
+			});
+		}),
+		abort() {
+			Bi.tasks.delete(t);
+		}
+	};
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/transitions.js
+function Ui(e, t) {
+	Un(() => {
+		e.dispatchEvent(new CustomEvent(t));
+	});
+}
+function Wi(e) {
+	if (e === "float") return "cssFloat";
+	if (e === "offset") return "cssOffset";
+	if (e.startsWith("--")) return e;
+	let t = e.split("-");
+	return t.length === 1 ? t[0] : t[0] + t.slice(1).map((e) => e[0].toUpperCase() + e.slice(1)).join("");
+}
+function Gi(e) {
+	let t = {}, n = e.split(";");
+	for (let e of n) {
+		let [n, r] = e.split(":");
+		if (!n || r === void 0) break;
+		let i = Wi(n.trim());
+		t[i] = r.trim();
+	}
+	return t;
+}
+var Ki = (e) => e, qi = null;
+function Ji(e, t, n) {
+	var r = (qi ?? R).nodes, i, a, o, s = null;
+	r.a ??= {
+		element: e,
+		measure() {
+			i = this.element.getBoundingClientRect();
+		},
+		apply() {
+			if (o?.abort(), a = this.element.getBoundingClientRect(), i.left !== a.left || i.right !== a.right || i.top !== a.top || i.bottom !== a.bottom) {
+				let e = t()(this.element, {
+					from: i,
+					to: a
+				}, n?.());
+				o = Xi(this.element, e, void 0, 1, () => {}, () => {
+					o?.abort(), o = void 0;
+				});
+			}
+		},
+		fix() {
+			if (!e.getAnimations().length) {
+				var { position: t, width: n, height: r } = getComputedStyle(e);
+				if (t !== "absolute" && t !== "fixed") {
+					var a = e.style;
+					s = {
+						position: a.position,
+						width: a.width,
+						height: a.height,
+						transform: a.transform
+					}, a.position = "absolute", a.width = n, a.height = r;
+					var o = e.getBoundingClientRect();
+					if (i.left !== o.left || i.top !== o.top) {
+						var c = `translate(${i.left - o.left}px, ${i.top - o.top}px)`;
+						a.transform = a.transform ? `${a.transform} ${c}` : c;
+					}
+				}
+			}
+		},
+		unfix() {
+			if (s) {
+				var t = e.style;
+				t.position = s.position, t.width = s.width, t.height = s.height, t.transform = s.transform;
+			}
+		}
+	}, r.a.element = e;
+}
+function Yi(e, t, n, r) {
+	var i = (e & 1) != 0, a = (e & 2) != 0, o = i && a, s = (e & 4) != 0, c = o ? "both" : i ? "in" : "out", l, u = t.inert, d = t.style.overflow, f, p;
+	function m() {
+		return Un(() => l ??= n()(t, r?.() ?? {}, { direction: c }));
+	}
+	var h = {
+		is_global: s,
+		in() {
+			if (t.inert = u, !i) {
+				p?.abort(), p?.reset?.();
+				return;
+			}
+			a || f?.abort(), f = Xi(t, m(), p, 1, () => {
+				Ui(t, "introstart");
+			}, () => {
+				Ui(t, "introend"), f?.abort(), f = l = void 0, t.style.overflow = d;
+			});
+		},
+		out(e) {
+			if (!a) {
+				e?.(), l = void 0;
+				return;
+			}
+			t.inert = !0, p = Xi(t, m(), f, 0, () => {
+				Ui(t, "outrostart");
+			}, () => {
+				Ui(t, "outroend"), e?.();
+			});
+		},
+		stop: () => {
+			f?.abort(), p?.abort();
+		}
+	}, g = R;
+	if ((g.nodes.t ??= []).push(h), i && yi) {
+		var _ = s;
+		if (!_) {
+			for (var v = g.parent; v && v.f & 65536;) for (; (v = v.parent) && !(v.f & 16););
+			_ = !v || (v.f & 32768) != 0;
+		}
+		_ && tr(() => {
+			Gr(() => h.in());
+		});
+	}
+}
+function Xi(e, t, n, r, i, a) {
+	var o = r === 1;
+	if (w(t)) {
+		var s, c = !1;
+		return mt(() => {
+			c || (s = Xi(e, t({ direction: o ? "in" : "out" }), n, r, i, a));
+		}), {
+			abort: () => {
+				c = !0, s?.abort();
+			},
+			deactivate: () => s.deactivate(),
+			reset: () => s.reset(),
+			t: () => s.t()
+		};
+	}
+	if (n?.deactivate(), !t?.duration && !t?.delay) return i(), a(), {
+		abort: T,
+		deactivate: T,
+		reset: T,
+		t: () => r
+	};
+	let { delay: l = 0, css: u, tick: d, easing: f = Ki } = t;
+	var p = [];
+	if (o && n === void 0 && (d && d(0, 1), u)) {
+		var m = Gi(u(0, 1));
+		p.push(m, m);
+	}
+	var h = () => 1 - r, g = e.animate(p, {
+		duration: l,
+		fill: "forwards"
+	});
+	return g.onfinish = () => {
+		g.cancel(), i();
+		var o = n?.t() ?? 1 - r;
+		n?.abort();
+		var s = r - o, c = t.duration * Math.abs(s), l = [];
+		if (c > 0) {
+			var p = !1;
+			if (u) for (var m = Math.ceil(c / (1e3 / 60)), _ = 0; _ <= m; _ += 1) {
+				var v = o + s * f(_ / m), y = Gi(u(v, 1 - v));
+				l.push(y), p ||= y.overflow === "hidden";
+			}
+			p && (e.style.overflow = "hidden"), h = () => {
+				var e = g.currentTime;
+				return o + s * f(e / c);
+			}, d && Hi(() => {
+				if (g.playState !== "running") return !1;
+				var e = h();
+				return d(e, 1 - e), !0;
+			});
+		}
+		g = e.animate(l, {
+			duration: c,
+			fill: "forwards"
+		}), g.onfinish = () => {
+			h = () => r, d?.(r, 1 - r), a();
+		};
+	}, {
+		abort: () => {
+			g && (g.cancel(), g.effect = null, g.onfinish = T);
+		},
+		deactivate: () => {
+			a = T;
+		},
+		reset: () => {
+			r === 0 && d?.(1, 0);
+		},
+		t: () => h()
+	};
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/css.js
+function Zi(e, t) {
+	tr(() => {
+		var n = e.getRootNode(), r = n.host ? n : n.head ?? n.ownerDocument.head;
+		if (!r.querySelector("#" + t.hash)) {
+			let e = Ln("style");
+			e.id = t.hash, e.textContent = t.code, r.appendChild(e);
+		}
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/attachments.js
+function Qi(e, t) {
+	var n = void 0, r;
+	ar(() => {
+		n !== (n = t()) && (r &&= (ur(r), null), n && (r = or(() => {
+			tr(() => n(e));
+		})));
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/clsx@2.1.1/node_modules/clsx/dist/clsx.mjs
+function $i(e) {
+	var t, n, r = "";
+	if (typeof e == "string" || typeof e == "number") r += e;
+	else if (typeof e == "object") if (Array.isArray(e)) {
+		var i = e.length;
+		for (t = 0; t < i; t++) e[t] && (n = $i(e[t])) && (r && (r += " "), r += n);
+	} else for (n in e) e[n] && (r && (r += " "), r += n);
+	return r;
+}
+function ea() {
+	for (var e, t, n = 0, r = "", i = arguments.length; n < i; n++) (e = arguments[n]) && (t = $i(e)) && (r && (r += " "), r += t);
+	return r;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/shared/attributes.js
+function ta(e) {
+	return typeof e == "object" ? ea(e) : e ?? "";
+}
+var na = [..." 	\n\r\f\xA0\v﻿"];
+function ra(e, t, n) {
+	var r = e == null ? "" : "" + e;
+	if (t && (r = r ? r + " " + t : t), n) {
+		for (var i of Object.keys(n)) if (n[i]) r = r ? r + " " + i : i;
+		else if (r.length) for (var a = i.length, o = 0; (o = r.indexOf(i, o)) >= 0;) {
+			var s = o + a;
+			(o === 0 || na.includes(r[o - 1])) && (s === r.length || na.includes(r[s])) ? r = (o === 0 ? "" : r.substring(0, o)) + r.substring(s + 1) : o = s;
+		}
+	}
+	return r === "" ? null : r;
+}
+function ia(e, t = !1) {
+	var n = t ? " !important;" : ";", r = "";
+	for (var i of Object.keys(e)) {
+		var a = e[i];
+		a != null && a !== "" && (r += " " + i + ": " + a + n);
+	}
+	return r;
+}
+function aa(e) {
+	return e[0] !== "-" || e[1] !== "-" ? e.toLowerCase() : e;
+}
+function oa(e, t) {
+	if (t) {
+		var n = "", r, i;
+		if (Array.isArray(t) ? (r = t[0], i = t[1]) : r = t, e) {
+			e = String(e).replaceAll(/\s*\/\*.*?\*\/\s*/g, "").trim();
+			var a = !1, o = 0, s = !1, c = [];
+			r && c.push(...Object.keys(r).map(aa)), i && c.push(...Object.keys(i).map(aa));
+			var l = 0, u = -1;
+			let t = e.length;
+			for (var d = 0; d < t; d++) {
+				var f = e[d];
+				if (s ? f === "/" && e[d - 1] === "*" && (s = !1) : a ? a === f && (a = !1) : f === "/" && e[d + 1] === "*" ? s = !0 : f === "\"" || f === "'" ? a = f : f === "(" ? o++ : f === ")" && o--, !s && a === !1 && o === 0) {
+					if (f === ":" && u === -1) u = d;
+					else if (f === ";" || d === t - 1) {
+						if (u !== -1) {
+							var p = aa(e.substring(l, u).trim());
+							if (!c.includes(p)) {
+								f !== ";" && d++;
+								var m = e.substring(l, d).trim();
+								n += " " + m + ";";
+							}
+						}
+						l = d + 1, u = -1;
+					}
+				}
+			}
+		}
+		return r && (n += ia(r)), i && (n += ia(i, !0)), n = n.trim(), n === "" ? null : n;
+	}
+	return e == null ? null : String(e);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/class.js
+function W(e, t, n, r, i, a) {
+	var o = e[ye];
+	if (Ue || o !== n || o === void 0) {
+		var s = ra(n, r, a);
+		(!Ue || s !== e.getAttribute("class")) && (s == null ? e.removeAttribute("class") : t ? e.className = s : e.setAttribute("class", s)), e[ye] = n;
+	} else if (a && i !== a) for (var c in a) {
+		var l = !!a[c];
+		(i == null || l !== !!i[c]) && e.classList.toggle(c, l);
+	}
+	return a;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/style.js
+function sa(e, t = {}, n, r) {
+	for (var i in n) {
+		var a = n[i];
+		t[i] !== a && (n[i] == null ? e.style.removeProperty(i) : e.style.setProperty(i, a, r));
+	}
+}
+function ca(e, t, n, r) {
+	var i = e[be];
+	if (Ue || i !== t) {
+		var a = oa(t, r);
+		(!Ue || a !== e.getAttribute("style")) && (a == null ? e.removeAttribute("style") : e.style.cssText = a), e[be] = t;
+	} else r && (Array.isArray(r) ? (sa(e, n?.[0], r[0]), sa(e, n?.[1], r[1], "important")) : sa(e, n, r));
+	return r;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/bindings/select.js
+function la(e, t, n = !1) {
+	if (e.multiple) {
+		if (t == null) return;
+		if (!f(t)) return Ve();
+		for (var r of e.options) r.selected = t.includes(da(r));
+		return;
+	}
+	for (r of e.options) if (Tn(da(r), t)) {
+		r.selected = !0;
+		return;
+	}
+	(!n || t !== void 0) && (e.selectedIndex = -1);
+}
+function ua(e) {
+	var t = new MutationObserver(() => {
+		la(e, e.__value);
+	});
+	t.observe(e, {
+		childList: !0,
+		subtree: !0,
+		attributes: !0,
+		attributeFilter: ["value"]
+	}), Yn(() => {
+		t.disconnect();
+	});
+}
+function da(e) {
+	return "__value" in e ? e.__value : e.value;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/attributes.js
+var fa = Symbol("class"), pa = Symbol("style"), ma = Symbol("is custom element"), ha = Symbol("is html"), ga = we ? "link" : "LINK", _a = we ? "input" : "INPUT", va = we ? "option" : "OPTION", ya = we ? "select" : "SELECT";
+function ba(e) {
+	if (Ue) {
+		var t = !1, n = () => {
+			if (!t) {
+				if (t = !0, e.hasAttribute("value")) {
+					var n = e.value;
+					G(e, "value", null), e.value = n;
+				}
+				if (e.hasAttribute("checked")) {
+					var r = e.checked;
+					G(e, "checked", null), e.checked = r;
+				}
+			}
+		};
+		e[Se] = n, mt(n), Vn();
+	}
+}
+function xa(e, t) {
+	t ? e.hasAttribute("selected") || e.setAttribute("selected", "") : e.removeAttribute("selected");
+}
+function G(e, t, n, r) {
+	var i = wa(e);
+	Ue && (i[t] = e.getAttribute(t), t === "src" || t === "srcset" || t === "href" && e.nodeName === ga) || i[t] !== (i[t] = n) && (t === "loading" && (e[_e] = n), n == null ? e.removeAttribute(t) : typeof n != "string" && Ea(e).includes(t) ? e[t] = n : e.setAttribute(t, n));
+}
+function K(e, t, n) {
+	var r = Sr, i = R;
+	let a = Ue;
+	Ue && We(!1), wr(null), Tr(null);
+	try {
+		t !== "style" && (Ta.has(e.getAttribute("is") || e.nodeName) || !customElements || customElements.get(e.getAttribute("is") || e.nodeName.toLowerCase()) ? Ea(e).includes(t) : n && typeof n == "object") ? e[t] = n : G(e, t, n == null ? n : String(n));
+	} finally {
+		wr(r), Tr(i), a && We(!0);
+	}
+}
+function Sa(e, t, n, r, i = !1, a = !1) {
+	if (Ue && i && e.nodeName === _a) {
+		var o = e;
+		(o.type === "checkbox" ? "defaultChecked" : "defaultValue") in n || ba(o);
+	}
+	var s = wa(e), c = s[ma], l = !s[ha];
+	let d = Ue && c;
+	d && We(!1);
+	var f = t || {}, p = e.nodeName === va;
+	for (var m in t) m in n || (n[m] = null);
+	n.class ? n.class = ta(n.class) : (r || n[fa]) && (n.class = null), n[pa] && (n.style ??= null);
+	var h = Ea(e);
+	for (let i in n) {
+		let o = n[i];
+		if (p && i === "value" && o == null) {
+			e.value = e.__value = "", f[i] = o;
+			continue;
+		}
+		if (i === "class") {
+			W(e, e.namespaceURI === "http://www.w3.org/1999/xhtml", o, r, t?.[fa], n[fa]), f[i] = o, f[fa] = n[fa];
+			continue;
+		}
+		if (i === "style") {
+			ca(e, o, t?.[pa], n[pa]), f[i] = o, f[pa] = n[pa];
+			continue;
+		}
+		var g = f[i];
+		if (!(o === g && !(o === void 0 && e.hasAttribute(i)))) {
+			f[i] = o;
+			var _ = i[0] + i[1];
+			if (_ !== "$$") if (_ === "on") {
+				let t = {}, n = "$$" + i, r = i.slice(2);
+				var v = pi(r);
+				if (di(r) && (r = r.slice(0, -7), t.capture = !0), !v && g) {
+					if (o != null) continue;
+					e.removeEventListener(r, f[n], t), f[n] = null;
+				}
+				if (v) $r(r, e, o), ei([r]);
+				else if (o != null) {
+					function a(e) {
+						f[i].call(this, e);
+					}
+					f[n] = Zr(r, e, a, t);
+				}
+			} else if (i === "style") G(e, i, o);
+			else if (i === "autofocus") zn(e, !!o);
+			else if (!c && (i === "__value" || i === "value" && o != null)) e.value = e.__value = o;
+			else if (i === "selected" && p) xa(e, o);
+			else {
+				var y = i;
+				l || (y = gi(y));
+				var b = y === "defaultValue" || y === "defaultChecked";
+				if (o == null && !c && !b) if (s[i] = null, y === "value" || y === "checked") {
+					let n = e, r = t === void 0;
+					if (y === "value") {
+						let e = n.defaultValue;
+						n.removeAttribute(y), n.defaultValue = e, n.value = n.__value = r ? e : null;
+					} else {
+						let e = n.defaultChecked;
+						n.removeAttribute(y), n.defaultChecked = e, n.checked = r ? e : !1;
+					}
+				} else e.removeAttribute(i);
+				else b || h.includes(y) && (c || typeof o != "string") ? (e[y] = o, y in s && (s[y] = u)) : typeof o != "function" && G(e, y, o, a);
+			}
+		}
+	}
+	return d && We(!0), f;
+}
+function Ca(e, t, n = [], r = [], i = [], a, o = !1, s = !1) {
+	Zt(i, n, r, (n) => {
+		var r = void 0, i = {}, c = e.nodeName === ya, l = !1;
+		if (ar(() => {
+			var u = t(...n.map(z)), d = Sa(e, r, u, a, o, s);
+			l && c && "value" in u && la(e, u.value);
+			for (let e of Object.getOwnPropertySymbols(i)) u[e] || ur(i[e]);
+			for (let t of Object.getOwnPropertySymbols(u)) {
+				var f = u[t];
+				t.description === "@attach" && (!r || f !== r[t]) && (i[t] && ur(i[t]), i[t] = or(() => Qi(e, () => f))), d[t] = f;
+			}
+			r = d;
+		}), c) {
+			var u = e;
+			tr(() => {
+				la(u, r.value, !0), ua(u);
+			});
+		}
+		l = !0;
+	});
+}
+function wa(e) {
+	return e[ve] ??= {
+		[ma]: e.nodeName.includes("-"),
+		[ha]: e.namespaceURI === d
+	};
+}
+var Ta = /* @__PURE__ */ new Map();
+function Ea(e) {
+	var t = e.getAttribute("is") || e.nodeName, n = Ta.get(t);
+	if (n) return n;
+	Ta.set(t, n = []);
+	for (var r, i = e, a = Element.prototype; a !== i;) {
+		for (var o in r = y(i), r) r[o].set && o !== "innerHTML" && o !== "textContent" && o !== "innerText" && n.push(o);
+		i = S(i);
+	}
+	return n;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/bindings/input.js
+function Da(e, t, n = t) {
+	Wn(e, "change", (t) => {
+		n(t ? e.defaultChecked : e.checked);
+	}), (Ue && e.defaultChecked !== e.checked || Gr(t) == null) && n(e.checked), rr(() => {
+		e.checked = !!t();
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/bindings/this.js
+function Oa(e, t) {
+	return e === t || e?.[he] === t;
+}
+function ka(e = {}, t, n, r) {
+	var i = rt.r, a = R;
+	return tr(() => {
+		var o, s;
+		return rr(() => {
+			o = s, s = r?.() || [], Gr(() => {
+				Oa(n(...s), e) || (t(e, ...s), o && Oa(n(...o), e) && t(null, ...o));
+			});
+		}), () => {
+			let r = a;
+			for (; r !== i && r.parent !== null && r.parent.f & 33554432;) r = r.parent;
+			let o = () => {
+				s && Oa(n(...s), e) && t(null, ...s);
+			}, c = r.teardown;
+			r.teardown = () => {
+				o(), c?.();
+			};
+		};
+	}), e;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/bindings/window.js
+function Aa(e, t) {
+	Hn(window, ["resize"], () => Un(() => t(window[e])));
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/legacy/lifecycle.js
+function ja(e = !1) {
+	let t = rt, n = t.l.u;
+	if (!n) return;
+	let r = () => Kr(t.s);
+	if (e) {
+		let e = 0, n = {}, i = /* @__PURE__ */ tn(() => {
+			let r = !1, i = t.s;
+			for (let e in i) i[e] !== n[e] && (n[e] = i[e], r = !0);
+			return r && e++, e;
+		});
+		r = () => z(i);
+	}
+	n.b.length && Qn(() => {
+		Ma(t, r), D(n.b);
+	}), Xn(() => {
+		let e = Gr(() => n.m.map(E));
+		return () => {
+			for (let t of e) typeof t == "function" && t();
+		};
+	}), n.a.length && Xn(() => {
+		Ma(t, r), D(n.a);
+	});
+}
+function Ma(e, t) {
+	if (e.l.s) for (let t of e.l.s) z(t);
+	t();
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/props.js
+var Na = {
+	get(e, t) {
+		if (!e.exclude.includes(t)) return e.props[t];
+	},
+	set(e, t) {
+		return !1;
+	},
+	getOwnPropertyDescriptor(e, t) {
+		if (!e.exclude.includes(t) && t in e.props) return {
+			enumerable: !0,
+			configurable: !0,
+			value: e.props[t]
+		};
+	},
+	has(e, t) {
+		return e.exclude.includes(t) ? !1 : t in e.props;
+	},
+	ownKeys(e) {
+		return Reflect.ownKeys(e.props).filter((t) => !e.exclude.includes(t));
+	}
+};
+/* @__NO_SIDE_EFFECTS__ */
+function Pa(e, t, n) {
+	return new Proxy({
+		props: e,
+		exclude: t
+	}, Na);
+}
+var Fa = {
+	get(e, t) {
+		if (!e.exclude.includes(t)) return z(e.version), t in e.special ? e.special[t]() : e.props[t];
+	},
+	set(e, t, n) {
+		if (!(t in e.special)) {
+			var r = R;
+			try {
+				Tr(e.parent_effect), e.special[t] = q({ get [t]() {
+					return e.props[t];
+				} }, t, 4);
+			} finally {
+				Tr(r);
+			}
+		}
+		return e.special[t](n), bn(e.version), !0;
+	},
+	getOwnPropertyDescriptor(e, t) {
+		if (!e.exclude.includes(t) && t in e.props) return {
+			enumerable: !0,
+			configurable: !0,
+			value: e.props[t]
+		};
+	},
+	deleteProperty(e, t) {
+		return e.exclude.includes(t) ? !0 : (e.exclude.push(t), bn(e.version), !0);
+	},
+	has(e, t) {
+		return e.exclude.includes(t) ? !1 : t in e.props;
+	},
+	ownKeys(e) {
+		return Reflect.ownKeys(e.props).filter((t) => !e.exclude.includes(t));
+	}
+};
+function Ia(e, t) {
+	return new Proxy({
+		props: e,
+		exclude: t,
+		special: {},
+		version: mn(0),
+		parent_effect: R
+	}, Fa);
+}
+function q(e, t, n, r) {
+	var i = !tt || (n & 2) != 0, a = (n & 8) != 0, o = (n & 16) != 0, s = r, c = !0, l = void 0, u = () => o && i ? (l ??= /* @__PURE__ */ tn(r), z(l)) : (c && (c = !1, s = o ? Gr(r) : r), s);
+	let d;
+	if (a) {
+		var f = he in e || ge in e;
+		d = v(e, t)?.set ?? (f && t in e ? (n) => e[t] = n : void 0);
+	}
+	var p, m = !1;
+	a ? [p, m] = Tt(() => e[t]) : p = e[t], p === void 0 && r !== void 0 && (p = u(), d && (i && Ne(t), d(p)));
+	var h = i ? () => {
+		var n = e[t];
+		return n === void 0 ? u() : (c = !0, n);
+	} : () => {
+		var n = e[t];
+		return n !== void 0 && (s = void 0), n === void 0 ? s : n;
+	};
+	if (i && !(n & 4)) return h;
+	if (d) {
+		var g = e.$$legacy;
+		return (function(e, t) {
+			return arguments.length > 0 ? ((!i || !t || g || m) && d(t ? h() : e), e) : h();
+		});
+	}
+	var _ = !1, y = (n & 1 ? tn : an)(() => (_ = !1, h()));
+	a && z(y);
+	var b = R;
+	return (function(e, t) {
+		if (arguments.length > 0) {
+			let n = t ? z(y) : i && a ? Cn(e) : e;
+			return _n(y, n), _ = !0, s !== void 0 && (s = n), e;
+		}
+		return br && _ || b.f & 16384 ? y.v : z(y);
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/legacy/legacy-client.js
+function La(e) {
+	return new Ra(e);
+}
+var Ra = class {
+	#e;
+	#t;
+	constructor(e) {
+		var t = /* @__PURE__ */ new Map(), n = (e, n) => {
+			var r = /* @__PURE__ */ gn(n, !1, !1);
+			return t.set(e, r), r;
+		};
+		let r = new Proxy({
+			...e.props || {},
+			$$events: {}
+		}, {
+			get(e, r) {
+				return z(t.get(r) ?? n(r, Reflect.get(e, r)));
+			},
+			has(e, r) {
+				return r === ge ? !0 : (z(t.get(r) ?? n(r, Reflect.get(e, r))), Reflect.has(e, r));
+			},
+			set(e, r, i) {
+				return _n(t.get(r) ?? n(r, i), i), Reflect.set(e, r, i);
+			}
+		});
+		this.#t = (e.hydrate ? xi : bi)(e.component, {
+			target: e.target,
+			anchor: e.anchor,
+			props: r,
+			context: e.context,
+			intro: e.intro ?? !1,
+			recover: e.recover,
+			transformError: e.transformError
+		}), !et && (!e?.props?.$$host || e.sync === !1) && N(), this.#e = r.$$events;
+		for (let e of Object.keys(this.#t)) e === "$set" || e === "$destroy" || e === "$on" || _(this, e, {
+			get() {
+				return this.#t[e];
+			},
+			set(t) {
+				this.#t[e] = t;
+			},
+			enumerable: !0
+		});
+		this.#t.$set = (e) => {
+			Object.assign(r, e);
+		}, this.#t.$destroy = () => {
+			Ti(this.#t);
+		};
+	}
+	$set(e) {
+		this.#t.$set(e);
+	}
+	$on(e, t) {
+		this.#e[e] = this.#e[e] || [];
+		let n = (...e) => t.call(this, ...e);
+		return this.#e[e].push(n), () => {
+			this.#e[e] = this.#e[e].filter((e) => e !== n);
+		};
+	}
+	$destroy() {
+		this.#t.$destroy();
+	}
+}, za;
+typeof HTMLElement == "function" && (za = class extends HTMLElement {
+	$$ctor;
+	$$s;
+	$$c;
+	$$cn = !1;
+	$$d = {};
+	$$r = !1;
+	$$p_d = {};
+	$$l = {};
+	$$l_u = /* @__PURE__ */ new Map();
+	$$me;
+	$$shadowRoot = null;
+	constructor(e, t, n) {
+		super(), this.$$ctor = e, this.$$s = t, n && (this.$$shadowRoot = this.attachShadow(n));
+	}
+	addEventListener(e, t, n) {
+		if (this.$$l[e] = this.$$l[e] || [], this.$$l[e].push(t), this.$$c) {
+			let n = this.$$c.$on(e, t);
+			this.$$l_u.set(t, n);
+		}
+		super.addEventListener(e, t, n);
+	}
+	removeEventListener(e, t, n) {
+		if (super.removeEventListener(e, t, n), this.$$c) {
+			let e = this.$$l_u.get(t);
+			e && (e(), this.$$l_u.delete(t));
+		}
+	}
+	async connectedCallback() {
+		if (this.$$cn = !0, !this.$$c) {
+			if (await Promise.resolve(), !this.$$cn || this.$$c) return;
+			function e(e) {
+				return (t) => {
+					let n = Ln("slot");
+					e !== "default" && (n.name = e), V(t, n);
+				};
+			}
+			let t = {}, n = Va(this);
+			for (let r of this.$$s) r in n && (r === "default" && !this.$$d.children ? (this.$$d.children = e(r), t.default = !0) : t[r] = e(r));
+			for (let e of this.attributes) {
+				let t = this.$$g_p(e.name);
+				t in this.$$d || (this.$$d[t] = Ba(t, e.value, this.$$p_d, "toProp"));
+			}
+			for (let e in this.$$p_d) !(e in this.$$d) && this[e] !== void 0 && (this.$$d[e] = this[e], delete this[e]);
+			this.$$c = La({
+				component: this.$$ctor,
+				target: this.$$shadowRoot || this,
+				props: {
+					...this.$$d,
+					$$slots: t,
+					$$host: this
+				}
+			}), this.$$me = $n(() => {
+				rr(() => {
+					this.$$r = !0;
+					for (let e of g(this.$$c)) {
+						if (!this.$$p_d[e]?.reflect) continue;
+						this.$$d[e] = this.$$c[e];
+						let t = Ba(e, this.$$d[e], this.$$p_d, "toAttribute");
+						t == null ? this.removeAttribute(this.$$p_d[e].attribute || e) : this.setAttribute(this.$$p_d[e].attribute || e, t);
+					}
+					this.$$r = !1;
+				});
+			});
+			for (let e in this.$$l) for (let t of this.$$l[e]) {
+				let n = this.$$c.$on(e, t);
+				this.$$l_u.set(t, n);
+			}
+			this.$$l = {};
+		}
+	}
+	attributeChangedCallback(e, t, n) {
+		this.$$r || (e = this.$$g_p(e), this.$$d[e] = Ba(e, n, this.$$p_d, "toProp"), this.$$c?.$set({ [e]: this.$$d[e] }));
+	}
+	disconnectedCallback() {
+		this.$$cn = !1, Promise.resolve().then(() => {
+			!this.$$cn && this.$$c && (this.$$c.$destroy(), this.$$me(), this.$$c = void 0);
+		});
+	}
+	$$g_p(e) {
+		return g(this.$$p_d).find((t) => this.$$p_d[t].attribute === e || !this.$$p_d[t].attribute && t.toLowerCase() === e) || e;
+	}
+});
+function Ba(e, t, n, r) {
+	let i = n[e]?.type;
+	if (t = i === "Boolean" && typeof t != "boolean" ? t != null : t, !r || !n[e]) return t;
+	if (r === "toAttribute") switch (i) {
+		case "Object":
+		case "Array": return t == null ? null : JSON.stringify(t);
+		case "Boolean": return t ? "" : null;
+		case "Number": return t ?? null;
+		default: return t;
+	}
+	else switch (i) {
+		case "Object":
+		case "Array": return t && JSON.parse(t);
+		case "Boolean": return t;
+		case "Number": return t == null ? t : +t;
+		default: return t;
+	}
+}
+function Va(e) {
+	let t = {};
+	return e.childNodes.forEach((e) => {
+		t[e.slot || "default"] = !0;
+	}), t;
+}
+function Ha(e, t, n, r, i, a) {
+	let o = class extends za {
+		constructor() {
+			super(e, n, i), this.$$p_d = t;
+		}
+		static get observedAttributes() {
+			return g(t).map((e) => (t[e].attribute || e).toLowerCase());
+		}
+	};
+	return g(t).forEach((e) => {
+		_(o.prototype, e, {
+			get() {
+				return this.$$c && e in this.$$c ? this.$$c[e] : this.$$d[e];
+			},
+			set(n) {
+				n = Ba(e, n, t), this.$$d[e] = n;
+				var r = this.$$c;
+				r && (v(r, e)?.get ? r[e] = n : r.$set({ [e]: n }));
+			}
+		});
+	}), r.forEach((e) => {
+		_(o.prototype, e, { get() {
+			return this.$$c?.[e];
+		} });
+	}), a && (o = a(o)), e.element = o, o;
+}
+//#endregion
+//#region ../../node_modules/.bun/animejs@4.4.1/node_modules/animejs/dist/modules/core/consts.js
+var Ua = typeof window < "u", Wa = Ua ? window : null, Ga = Ua ? document : null, Ka = {
+	OBJECT: 0,
+	ATTRIBUTE: 1,
+	CSS: 2,
+	TRANSFORM: 3,
+	CSS_VAR: 4
+}, qa = {
+	NUMBER: 0,
+	UNIT: 1,
+	COLOR: 2,
+	COMPLEX: 3
+}, Ja = {
+	NONE: 0,
+	AUTO: 1,
+	FORCE: 2
+}, Ya = {
+	replace: 0,
+	none: 1,
+	blend: 2
+}, Xa = Symbol(), Za = Symbol(), Qa = Symbol(), $a = Symbol(), eo = Symbol(), to = 1e-11, no = 0xe8d4a51000, ro = 1e3, io = /* @__PURE__ */ (() => {
+	let e = /* @__PURE__ */ new Map();
+	return e.set("x", "translateX"), e.set("y", "translateY"), e.set("z", "translateZ"), e;
+})(), ao = [
+	"perspective",
+	"translateX",
+	"translateY",
+	"translateZ",
+	"rotate",
+	"rotateX",
+	"rotateY",
+	"rotateZ",
+	"scale",
+	"scaleX",
+	"scaleY",
+	"scaleZ",
+	"skew",
+	"skewX",
+	"skewY"
+], oo = /* @__PURE__ */ ao.reduce((e, t) => ({
+	...e,
+	[t]: t + "("
+}), {}), so = () => {}, co = /\)\s*[-.\d]/, lo = /(^#([\da-f]{3}){1,2}$)|(^#([\da-f]{4}){1,2}$)/i, uo = /rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i, fo = /rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(-?\d+|-?\d*.\d+)\s*\)/i, po = /hsl\(\s*(-?\d+|-?\d*.\d+)\s*,\s*(-?\d+|-?\d*.\d+)%\s*,\s*(-?\d+|-?\d*.\d+)%\s*\)/i, mo = /hsla\(\s*(-?\d+|-?\d*.\d+)\s*,\s*(-?\d+|-?\d*.\d+)%\s*,\s*(-?\d+|-?\d*.\d+)%\s*,\s*(-?\d+|-?\d*.\d+)\s*\)/i, ho = /[-+]?\d*\.?\d+(?:e[-+]?\d)?/gi, go = /^([-+]?\d*\.?\d+(?:e[-+]?\d+)?)([a-z]+|%)$/i, _o = /([a-z])([A-Z])/g, vo = /(\*=|\+=|-=)/, yo = /var\(\s*(--[\w-]+)(?:\s*,\s*([^)]+))?\s*\)/, bo = {
+	id: null,
+	keyframes: null,
+	playbackEase: null,
+	playbackRate: 1,
+	frameRate: 240,
+	loop: 0,
+	reversed: !1,
+	alternate: !1,
+	autoplay: !0,
+	persist: !1,
+	duration: ro,
+	delay: 0,
+	loopDelay: 0,
+	ease: "out(2)",
+	composition: Ya.replace,
+	modifier: (e) => e,
+	onBegin: so,
+	onBeforeUpdate: so,
+	onUpdate: so,
+	onLoop: so,
+	onPause: so,
+	onComplete: so,
+	onRender: so
+}, xo = {
+	current: null,
+	root: Ga
+}, So = {
+	defaults: bo,
+	precision: 4,
+	timeScale: 1,
+	tickThreshold: 200,
+	editor: null
+}, Co = {
+	version: "4.4.1",
+	engine: null
+};
+Ua && (Wa.AnimeJS ||= [], Wa.AnimeJS.push(Co));
+//#endregion
+//#region ../../node_modules/.bun/animejs@4.4.1/node_modules/animejs/dist/modules/core/helpers.js
+var wo = (e) => e.replace(_o, "$1-$2").toLowerCase(), To = (e, t) => e.indexOf(t) === 0, Eo = Date.now, Do = Array.isArray, Oo = (e) => e && e.constructor === Object, ko = (e) => typeof e == "number" && !isNaN(e), Ao = (e) => typeof e == "string", jo = (e) => typeof e == "function", J = (e) => e === void 0, Mo = (e) => J(e) || e === null, No = (e) => Ua && e instanceof SVGElement, Po = (e) => lo.test(e), Fo = (e) => To(e, "rgb"), Io = (e) => To(e, "hsl"), Lo = (e) => Po(e) || (Fo(e) || Io(e)) && (e[e.length - 1] === ")" || !co.test(e)), Ro = (e) => !So.defaults.hasOwnProperty(e), zo = [
+	"opacity",
+	"rotate",
+	"overflow",
+	"color"
+], Bo = (e, t) => {
+	if (zo.includes(t)) return !1;
+	if (e.getAttribute(t) || t in e) {
+		if (t === "scale") {
+			let t = e.parentNode;
+			return t && t.tagName === "filter";
+		}
+		return !0;
+	}
+}, Vo = (e) => Ao(e) ? parseFloat(e) : e, Ho = Math.pow, Uo = Math.sqrt, Wo = Math.sin, Go = Math.cos, Ko = Math.abs, qo = Math.floor, Jo = Math.asin, Yo = Math.max, Xo = Math.PI, Zo = Math.round, Qo = (e, t, n) => e < t ? t : e > n ? n : e, $o = (e, t) => {
+	if (t < 0) return e;
+	if (!t) return Zo(e);
+	let n = 10 ** t;
+	return Zo(e * n) / n;
+}, es = (e, t, n) => e + (t - e) * n, ts = (e) => e === Infinity ? no : e === -Infinity ? -no : e, ns = (e) => e <= 1e-11 ? to : ts($o(e, 11)), rs = (e) => Do(e) ? [...e] : e, is = (e, t) => {
+	let n = { ...e };
+	for (let r in t) {
+		let i = e[r];
+		n[r] = J(i) ? t[r] : i;
+	}
+	return n;
+}, as = (e, t, n, r = "_prev", i = "_next") => {
+	let a = e._head, o = i;
+	for (n && (a = e._tail, o = r); a;) {
+		let e = a[o];
+		t(a), a = e;
+	}
+}, os = (e, t, n = "_prev", r = "_next") => {
+	let i = t[n], a = t[r];
+	i ? i[r] = a : e._head = a, a ? a[n] = i : e._tail = i, t[n] = null, t[r] = null;
+}, ss = (e, t, n, r = "_prev", i = "_next") => {
+	let a = e._tail;
+	for (; a && n && n(a, t);) a = a[r];
+	let o = a ? a[i] : e._head;
+	a ? a[i] = t : e._head = t, o ? o[r] = t : e._tail = t, t[r] = a, t[i] = o;
+}, cs = (e, t, n) => {
+	let r = e.style.transform;
+	if (r) {
+		let i = e[$a], a = 0, o = r.length, s;
+		for (; a < o;) {
+			for (; a < o && r.charCodeAt(a) === 32;) a++;
+			if (a >= o) break;
+			let e = a;
+			for (; a < o && r.charCodeAt(a) !== 40;) a++;
+			if (a >= o) break;
+			let t = r.substring(e, a), n = 1, c = a + 1, l = -1, u = -1;
+			for (a++; a < o && n > 0;) {
+				let e = r.charCodeAt(a);
+				e === 40 ? n++ : e === 41 ? n-- : e === 44 && n === 1 && (l === -1 ? l = a : u === -1 && (u = a)), a++;
+			}
+			let d = a - 1;
+			t === "translate" || t === "translate3d" ? (l === -1 ? i.translateX = r.substring(c, d).trim() : (i.translateX = r.substring(c, l).trim(), u === -1 ? i.translateY = r.substring(l + 1, d).trim() : (i.translateY = r.substring(l + 1, u).trim(), i.translateZ = r.substring(u + 1, d).trim())), s = r.substring(c, d)) : t === "scale" || t === "scale3d" ? l === -1 ? i.scale = r.substring(c, d).trim() : (i.scaleX = r.substring(c, l).trim(), u === -1 ? i.scaleY = r.substring(l + 1, d).trim() : (i.scaleY = r.substring(l + 1, u).trim(), i.scaleZ = r.substring(u + 1, d).trim())) : i[t] = r.substring(c, d);
+		}
+		if (t === "translate3d" && s) return n && (n[t] = s), s;
+		let c = i[t];
+		if (!J(c)) return n && (n[t] = c), c;
+	}
+	return t === "translate3d" ? "0px, 0px, 0px" : t === "rotate3d" ? "0, 0, 0, 0deg" : To(t, "scale") ? "1" : To(t, "rotate") || To(t, "skew") ? "0deg" : "0px";
+}, ls = (e) => {
+	let t = "";
+	for (let n = 0, r = ao.length; n < r; n++) {
+		let r = ao[n], i = e[r];
+		if (i !== void 0) {
+			if (r === "translateX") {
+				let r = e.translateY;
+				if (r !== void 0) {
+					let a = e.translateZ;
+					a === void 0 ? (t += `translate(${i},${r}) `, n += 1) : (t += `translate3d(${i},${r},${a}) `, n += 2);
+					continue;
+				}
+			}
+			if (r === "scaleX" && e.scale === void 0) {
+				let r = e.scaleY;
+				if (r !== void 0) {
+					let a = e.scaleZ;
+					a === void 0 ? (t += `scale(${i},${r}) `, n += 1) : (t += `scale3d(${i},${r},${a}) `, n += 2);
+					continue;
+				}
+			}
+			t += `${oo[r]}${i}) `;
+		}
+		r === "rotateZ" && e.rotate3d !== void 0 && (t += `rotate3d(${e.rotate3d}) `);
+	}
+	return e.matrix !== void 0 && (t += `matrix(${e.matrix}) `), e.matrix3d !== void 0 && (t += `matrix3d(${e.matrix3d}) `), t;
+}, us = (e) => {
+	let t = uo.exec(e) || fo.exec(e), n = J(t[4]) ? 1 : +t[4];
+	return [
+		+t[1],
+		+t[2],
+		+t[3],
+		n
+	];
+}, ds = (e) => {
+	let t = e.length, n = t === 4 || t === 5;
+	return [
+		+("0x" + e[1] + e[n ? 1 : 2]),
+		+("0x" + e[n ? 2 : 3] + e[n ? 2 : 4]),
+		+("0x" + e[n ? 3 : 5] + e[n ? 3 : 6]),
+		t === 5 || t === 9 ? +(("0x" + e[n ? 4 : 7] + e[n ? 4 : 8]) / 255).toFixed(3) : 1
+	];
+}, fs = (e, t, n) => (n < 0 && (n += 1), n > 1 && --n, n < 1 / 6 ? e + (t - e) * 6 * n : n < 1 / 2 ? t : n < 2 / 3 ? e + (t - e) * (2 / 3 - n) * 6 : e), ps = (e) => {
+	let t = po.exec(e) || mo.exec(e), n = t[1] / 360, r = t[2] / 100, i = t[3] / 100, a = J(t[4]) ? 1 : +t[4], o, s, c;
+	if (r === 0) o = s = c = i;
+	else {
+		let e = i < .5 ? i * (1 + r) : i + r - i * r, t = 2 * i - e;
+		o = $o(fs(t, e, n + 1 / 3) * 255, 0), s = $o(fs(t, e, n) * 255, 0), c = $o(fs(t, e, n - 1 / 3) * 255, 0);
+	}
+	return [
+		o,
+		s,
+		c,
+		a
+	];
+}, ms = (e) => Fo(e) ? us(e) : Po(e) ? ds(e) : Io(e) ? ps(e) : [
+	0,
+	0,
+	0,
+	1
+], hs = (e, t) => J(e) ? t : e, gs = (e, t, n, r, i, a) => {
+	let o;
+	if (jo(e)) o = () => {
+		let i = e(t, n, r, a);
+		return isNaN(+i) ? i || 0 : +i;
+	};
+	else if (Ao(e) && To(e, "var(")) o = () => {
+		let n = e.match(yo), r = n[1], i = n[2], a = getComputedStyle(t)?.getPropertyValue(r);
+		return (!a || a.trim() === "") && i && (a = i.trim()), a || 0;
+	};
+	else return e;
+	return i && (i.func = o), o();
+}, _s = (e, t) => e[Za] ? e[Qa] && Bo(e, t) ? Ka.ATTRIBUTE : ao.includes(t) || io.get(t) ? Ka.TRANSFORM : To(t, "--") ? Ka.CSS_VAR : t in e.style ? Ka.CSS : t in e ? Ka.OBJECT : Ka.ATTRIBUTE : Ka.OBJECT, vs = (e, t, n) => {
+	let r = e.style[t];
+	r && n && (n[t] = r);
+	let i = r || getComputedStyle(e[eo] || e).getPropertyValue(t);
+	return i === "auto" ? "0" : i;
+}, ys = (e, t, n, r) => {
+	let i = J(n) ? _s(e, t) : n;
+	if (i === Ka.OBJECT) {
+		let n = e[t];
+		return n && r && (r[t] = n), n || 0;
+	}
+	if (i === Ka.ATTRIBUTE) {
+		let n = e.getAttribute(t);
+		return n && r && (r[t] = n), n;
+	}
+	return i === Ka.TRANSFORM ? cs(e, t, r) : i === Ka.CSS_VAR ? vs(e, t, r).trimStart() : vs(e, t, r);
+}, bs = (e, t, n) => n === "-" ? e - t : n === "+" ? e + t : e * t, xs = () => ({
+	t: qa.NUMBER,
+	n: 0,
+	u: null,
+	o: null,
+	d: null,
+	s: null
+}), Ss = (e, t) => {
+	if (t.t = qa.NUMBER, t.n = 0, t.u = null, t.o = null, t.d = null, t.s = null, !e) return t;
+	let n = +e;
+	if (isNaN(n)) {
+		let n = e;
+		n[1] === "=" && (t.o = n[0], n = n.slice(2));
+		let r = n.includes(" ") ? !1 : go.exec(n);
+		if (r) return t.t = qa.UNIT, t.n = +r[1], t.u = r[2], t;
+		if (t.o) return t.n = +n, t;
+		if (Lo(n)) return t.t = qa.COLOR, t.d = ms(n), t;
+		{
+			let e = n.match(ho);
+			return t.t = qa.COMPLEX, t.d = e ? e.map(Number) : [], t.s = n.split(ho) || [], t;
+		}
+	} else return t.n = n, t;
+}, Cs = (e, t) => (t.t = e._valueType, t.n = e._toNumber, t.u = e._unit, t.o = null, t.d = rs(e._toNumbers), t.s = rs(e._strings), t), ws = xs(), Ts = (e, t, n) => {
+	let r = e._modifier, i = e._fromNumbers, a = e._toNumbers, o = $o(Qo(r(es(i[0], a[0], t)), 0, 255), 0), s = $o(Qo(r(es(i[1], a[1], t)), 0, 255), 0), c = $o(Qo(r(es(i[2], a[2], t)), 0, 255), 0), l = Qo(r($o(es(i[3], a[3], t), n)), 0, 1);
+	if (e._composition !== Ya.none) {
+		let t = e._numbers;
+		t[0] = o, t[1] = s, t[2] = c, t[3] = l;
+	}
+	return `rgba(${o},${s},${c},${l})`;
+}, Es = (e, t, n) => {
+	let r = e._modifier, i = e._fromNumbers, a = e._toNumbers, o = e._strings, s = e._composition !== Ya.none, c = o[0];
+	for (let l = 0, u = a.length; l < u; l++) {
+		let u = r($o(es(i[l], a[l], t), n)), d = o[l + 1];
+		c += `${d ? u + d : u}`, s && (e._numbers[l] = u);
+	}
+	return c;
+}, Ds = (e, t, n, r, i) => {
+	let a = e.parent, o = e.duration, s = e.completed, c = e.iterationDuration, l = e.iterationCount, u = e._currentIteration, d = e._loopDelay, f = e._reversed, p = e._alternate, m = e._hasChildren, h = e._delay, g = e._currentTime, _ = h + c, v = t - h, y = Qo(g, -h, o), b = Qo(v, -h, o), x = v - g, S = b > 0, C = b >= o, w = o <= to, T = i === Ja.FORCE, E = 0, D = v, O = 0;
+	l > 1 && (e._currentIteration = Qo(~~(b / (c + (C ? 0 : d))), 0, l), C && e._currentIteration--, E = e._currentIteration % 2, D = b % (c + d) || 0);
+	let k = f ^ (p && E), ee = e._ease, te = C ? k ? 0 : o : k ? c - D : D;
+	ee && (te = c * ee(te / c) || 0);
+	let A = (a ? a.backwards : v < g) ? !k : !!k;
+	if (e._currentTime = v, e._iterationTime = te, e.backwards = A, S && !e.began ? (e.began = !0, !n && !(a && (A || !a.began)) && e.onBegin(e)) : v <= 0 && (e.began = !1), !n && !m && S && e._currentIteration !== u && e.onLoop(e), T || i === Ja.AUTO && (t >= h && t <= _ || t <= h && y > h || t >= _ && y !== o) || te >= _ && y !== o || te <= h && y > 0 || t <= y && y === o && s || C && !s && w) {
+		if (S && (e.computeDeltaTime(y), n || e.onBeforeUpdate(e)), !m) {
+			let t = T || (A ? x * -1 : x) >= So.tickThreshold, i = e._offset + (a ? a._offset : 0) + h + te, o = e._head, s, c, l, u, d = 0;
+			for (; o;) {
+				let e = o._composition, n = o._currentTime, a = o._changeDuration, f = o._absoluteStartTime + o._changeDuration, p = o._nextRep, m = o._prevRep, h = e !== Ya.none;
+				if ((t || (n !== a || i <= f + (p ? p._delay : 0)) && (n !== 0 || i >= o._absoluteStartTime)) && (!h || !o._isOverridden && (!o._isOverlapped || i <= f) && (!p || p._isOverridden || i <= p._absoluteStartTime) && (!m || m._isOverridden || i >= m._absoluteStartTime + m._changeDuration + o._delay))) {
+					let t = o._currentTime = Qo(te - o._startTime, 0, a), n = o._ease(t / o._updateDuration), i = o._modifier, f = o._valueType, p = o._tweenType, m = p === Ka.OBJECT, g = f === qa.NUMBER, _ = g && m || n === 0 || n === 1 ? -1 : So.precision, v, y;
+					if (g ? v = y = i($o(es(o._fromNumber, o._toNumber, n), _)) : f === qa.UNIT ? (y = i($o(es(o._fromNumber, o._toNumber, n), _)), v = `${y}${o._unit}`) : f === qa.COLOR ? v = Ts(o, n, _) : f === qa.COMPLEX && (v = Es(o, n, _)), h && (o._number = y), !r && e !== Ya.blend) {
+						let e = o.property;
+						s = o.target, m ? s[e] = v : p === Ka.ATTRIBUTE ? s.setAttribute(e, v) : (c = s.style, p === Ka.TRANSFORM ? (s !== l && (l = s, u = s[$a]), u[e] = v, d = 1) : p === Ka.CSS ? c[e] = v : p === Ka.CSS_VAR && c.setProperty(e, v)), S && (O = 1);
+					} else o._value = v;
+				}
+				d && o._renderTransforms && (c.transform = ls(u), d = 0), o = o._next;
+			}
+			!n && O && e.onRender(e);
+		}
+		!n && S && e.onUpdate(e);
+	}
+	return a && w ? !n && (a.began && !A && v > 0 && !s || A && v <= 1e-11 && s) && (e.onComplete(e), e.completed = !A) : S && C ? l === Infinity ? e._startTime += e.duration : e._currentIteration >= l - 1 && (e.paused = !0, !s && !m && (e.completed = !0, !n && !(a && (A || !a.began)) && (e.onComplete(e), e._resolve(e)))) : e.completed = !1, O;
+}, Os = (e, t, n, r, i) => {
+	let a = e._currentIteration;
+	if (Ds(e, t, n, r, i), e._hasChildren) {
+		let o = e, s = o.backwards, c = r ? t : o._iterationTime, l = Eo(), u = 0, d = !0;
+		if (!r && o._currentIteration !== a) {
+			let e = o.iterationDuration;
+			as(o, (t) => {
+				if (!s) !t.completed && !t.backwards && t._currentTime < t.iterationDuration && Ds(t, e, n, 1, Ja.FORCE), t.began = !1, t.completed = !1;
+				else {
+					let r = t.duration, i = t._offset + t._delay, a = i + r;
+					!n && r <= 1e-11 && (!i || a === e) && t.onComplete(t);
+				}
+			}), n || o.onLoop(o);
+		}
+		as(o, (e) => {
+			let t = $o((c - e._offset) * e._speed, 12), a = e._fps < o._fps ? e.requestTick(l) : i;
+			u += Ds(e, t, n, r, a), !e.completed && d && (d = !1);
+		}, s), !n && u && o.onRender(o), (d || s) && o._currentTime >= o.duration && (o.paused = !0, o.completed || (o.completed = !0, n || (o.onComplete(o), o._resolve(o))));
+	}
+}, ks = {}, As = (e, t, n) => {
+	if (n === Ka.TRANSFORM) return io.get(e) || e;
+	if (n === Ka.CSS || n === Ka.ATTRIBUTE && No(t) && e in t.style) {
+		let t = ks[e];
+		if (t) return t;
+		{
+			let t = e && wo(e);
+			return ks[e] = t, t;
+		}
+	} else return e;
+}, js = (e, t = !1) => {
+	if (e._hasChildren) as(e, (e) => js(e, t), !0);
+	else {
+		let n = e;
+		n.pause(), as(n, (e) => {
+			let r = e.property, i = e.target, a = e._tweenType, o = e._inlineValue, s = Mo(o) || o === "";
+			if (a === Ka.OBJECT) !t && !s && (i[r] = o);
+			else if (i[Za]) if (a === Ka.ATTRIBUTE) t || (s ? i.removeAttribute(r) : i.setAttribute(r, o));
+			else {
+				let t = i.style;
+				if (a === Ka.TRANSFORM) {
+					let n = i[$a];
+					s ? delete n[r] : n[r] = o, e._renderTransforms && (Object.keys(n).length ? t.transform = ls(n) : t.removeProperty("transform"));
+				} else s ? t.removeProperty(wo(r)) : t[r] = o;
+			}
+			i[Za] && n._tail === e && n.targets.forEach((e) => {
+				e.getAttribute && e.getAttribute("style") === "" && e.removeAttribute("style");
+			});
+		});
+	}
+	return e;
+}, Ms = class {
+	constructor(e = 0) {
+		this.deltaTime = 0, this._currentTime = e, this._lastTickTime = e, this._startTime = e, this._lastTime = e, this._scheduledTime = 0, this._frameDuration = ro / 240, this._fps = 240, this._speed = 1, this._hasChildren = !1, this._head = null, this._tail = null;
+	}
+	get fps() {
+		return this._fps;
+	}
+	set fps(e) {
+		let t = this._frameDuration, n = +e, r = n < 1e-11 ? to : n, i = ro / r;
+		r > bo.frameRate && (bo.frameRate = r), this._fps = r, this._frameDuration = i, this._scheduledTime += i - t;
+	}
+	get speed() {
+		return this._speed;
+	}
+	set speed(e) {
+		let t = +e;
+		this._speed = t < 1e-11 ? to : t;
+	}
+	requestTick(e) {
+		let t = this._scheduledTime;
+		if (this._lastTickTime = e, e < t) return Ja.NONE;
+		let n = this._frameDuration, r = e - t;
+		return this._scheduledTime += r < n ? n : r, Ja.AUTO;
+	}
+	computeDeltaTime(e) {
+		let t = e - this._lastTime;
+		return this.deltaTime = t, this._lastTime = e, t;
+	}
+}, Ns = {
+	animation: null,
+	update: so
+}, Ps = (e) => {
+	let t = Ns.animation;
+	return t || (t = {
+		duration: to,
+		computeDeltaTime: so,
+		_offset: 0,
+		_delay: 0,
+		_head: null,
+		_tail: null
+	}, Ns.animation = t, Ns.update = () => {
+		e.forEach((e) => {
+			for (let t in e) {
+				let n = e[t], r = n._head;
+				if (r) {
+					let e = r._valueType, t = e === qa.COMPLEX || e === qa.COLOR ? rs(r._fromNumbers) : null, i = r._fromNumber, a = n._tail;
+					for (; a && a !== r;) {
+						if (t) for (let e = 0, n = a._numbers.length; e < n; e++) t[e] += a._numbers[e];
+						else i += a._number;
+						a = a._prevAdd;
+					}
+					r._toNumber = i, r._toNumbers = t;
+				}
+			}
+		}), Ds(t, 1, 1, 0, Ja.FORCE);
+	}), t;
+}, Fs = Ua ? requestAnimationFrame : setImmediate, Is = Ua ? cancelAnimationFrame : clearImmediate, Ls = class extends Ms {
+	constructor(e) {
+		super(e), this.useDefaultMainLoop = !0, this.pauseOnDocumentHidden = !0, this.defaults = bo, this.paused = !0, this.reqId = 0;
+	}
+	update() {
+		let e = this._currentTime = Eo();
+		if (this.requestTick(e)) {
+			this.computeDeltaTime(e);
+			let t = this._speed, n = this._fps, r = this._head;
+			for (; r;) {
+				let i = r._next;
+				r.paused ? (os(this, r), this._hasChildren = !!this._tail, r._running = !1, r.completed && !r._cancelled && r.cancel()) : Os(r, (e - r._startTime) * r._speed * t, 0, 0, r._fps < n ? r.requestTick(e) : Ja.AUTO), r = i;
+			}
+			Ns.update();
+		}
+	}
+	wake() {
+		return this.useDefaultMainLoop && !this.reqId && (this.requestTick(Eo()), this.reqId = Fs(zs)), this;
+	}
+	pause() {
+		if (this.reqId) return this.paused = !0, Bs();
+	}
+	resume() {
+		if (this.paused) return this.paused = !1, as(this, (e) => e.resetTime()), this.wake();
+	}
+	get speed() {
+		return this._speed * (So.timeScale === 1 ? 1 : ro);
+	}
+	set speed(e) {
+		this._speed = e * So.timeScale, as(this, (e) => e.speed = e._speed);
+	}
+	get timeUnit() {
+		return So.timeScale === 1 ? "ms" : "s";
+	}
+	set timeUnit(e) {
+		let t = .001, n = e === "s", r = n ? t : 1;
+		if (So.timeScale !== r) {
+			So.timeScale = r, So.tickThreshold = 200 * r;
+			let e = n ? t : ro;
+			this.defaults.duration *= e, this._speed *= e;
+		}
+	}
+	get precision() {
+		return So.precision;
+	}
+	set precision(e) {
+		So.precision = e;
+	}
+}, Rs = /* @__PURE__ */ (() => {
+	let e = new Ls(Eo());
+	return Ua && (Co.engine = e, Ga.addEventListener("visibilitychange", () => {
+		e.pauseOnDocumentHidden && (Ga.hidden ? e.pause() : e.resume());
+	})), e;
+})(), zs = () => {
+	Rs._head ? (Rs.reqId = Fs(zs), Rs.update()) : Rs.reqId = 0;
+}, Bs = () => (Is(Rs.reqId), Rs.reqId = 0, Rs), Vs = {
+	_rep: /* @__PURE__ */ new WeakMap(),
+	_add: /* @__PURE__ */ new Map()
+}, Hs = (e, t, n = "_rep") => {
+	let r = Vs[n], i = r.get(e);
+	return i || (i = {}, r.set(e, i)), i[t] ? i[t] : i[t] = {
+		_head: null,
+		_tail: null
+	};
+}, Us = (e, t) => e._isOverridden || e._absoluteStartTime > t._absoluteStartTime, Ws = (e) => {
+	e._isOverlapped = 1, e._isOverridden = 1, e._changeDuration = to, e._currentTime = to;
+}, Gs = (e, t) => {
+	let n = e._composition;
+	if (n === Ya.replace) {
+		let n = e._absoluteStartTime;
+		ss(t, e, Us, "_prevRep", "_nextRep");
+		let r = e._prevRep;
+		if (r) {
+			let t = r.parent, i = r._absoluteStartTime + r._changeDuration;
+			if (e.parent.id !== t.id && t.iterationCount > 1 && i + (t.duration - t.iterationDuration) > n) {
+				Ws(r);
+				let e = r._prevRep;
+				for (; e && e.parent.id === t.id;) Ws(e), e = e._prevRep;
+			}
+			let a = n - e._delay;
+			if (i > a) {
+				let e = r._startTime, t = $o(a - (i - (e + r._updateDuration)) - e, 12);
+				r._changeDuration = t, r._currentTime = t, r._isOverlapped = 1, t < 1e-11 && Ws(r);
+			}
+			let o = !0;
+			if (as(t, (e) => {
+				e._isOverlapped || (o = !1);
+			}), o) {
+				let e = t.parent;
+				if (e) {
+					let n = !0;
+					as(e, (e) => {
+						e !== t && as(e, (e) => {
+							e._isOverlapped || (n = !1);
+						});
+					}), n && e.cancel();
+				} else t.cancel();
+			}
+		}
+	} else if (n === Ya.blend) {
+		let t = Hs(e.target, e.property, "_add"), n = Ps(Vs._add), r = t._head;
+		r || (r = { ...e }, r._composition = Ya.replace, r._updateDuration = to, r._startTime = 0, r._numbers = rs(e._fromNumbers), r._number = 0, r._next = null, r._prev = null, ss(t, r), ss(n, r));
+		let i = e._toNumber;
+		if (e._fromNumber = r._fromNumber - i, e._toNumber = 0, e._numbers = rs(e._fromNumbers), e._number = 0, r._fromNumber = i, e._toNumbers) {
+			let t = rs(e._toNumbers);
+			t && t.forEach((t, n) => {
+				e._fromNumbers[n] = r._fromNumbers[n] - t, e._toNumbers[n] = 0;
+			}), r._fromNumbers = t;
+		}
+		ss(t, e, null, "_prevAdd", "_nextAdd");
+	}
+	return e;
+}, Ks = (e) => {
+	let t = e._composition;
+	if (t !== Ya.none) {
+		let n = e.target, r = e.property, i = Vs._rep.get(n)[r];
+		if (os(i, e, "_prevRep", "_nextRep"), t === Ya.blend) {
+			let t = Vs._add, i = t.get(n);
+			if (!i) return;
+			let a = i[r], o = Ns.animation;
+			os(a, e, "_prevAdd", "_nextAdd");
+			let s = a._head;
+			if (s && s === a._tail) {
+				os(a, s, "_prevAdd", "_nextAdd"), os(o, s);
+				let e = !0;
+				for (let t in i) if (i[t]._head) {
+					e = !1;
+					break;
+				}
+				e && t.delete(n);
+			}
+		}
+	}
+	return e;
+}, qs = (e) => (e.paused = !0, e.began = !1, e.completed = !1, e), Js = (e) => e._cancelled ? (e._hasChildren ? as(e, Js) : as(e, (e) => {
+	e._composition !== Ya.none && Gs(e, Hs(e.target, e.property));
+}), e._cancelled = 0, e) : e, Ys = 0, Xs = (e, t) => e._priority > t._priority, Zs = class extends Ms {
+	constructor(e = {}, t = null, n = 0) {
+		super(0), ++Ys;
+		let { id: r, delay: i, duration: a, reversed: o, alternate: s, loop: c, loopDelay: l, autoplay: u, frameRate: d, playbackRate: f, priority: p, onComplete: m, onLoop: h, onPause: g, onBegin: _, onBeforeUpdate: v, onUpdate: y } = e;
+		xo.current && xo.current.register(this);
+		let b = t ? 0 : Rs._lastTickTime, x = t ? t.defaults : So.defaults, S = jo(i) || J(i) ? x.delay : +i, C = jo(a) || J(a) ? Infinity : +a, w = hs(c, x.loop), T = hs(l, x.loopDelay), E = w === !0 || w === Infinity || w < 0 ? Infinity : w + 1, D = 0;
+		t ? D = n : (Rs.reqId || Rs.requestTick(Eo()), D = (Rs._lastTickTime - Rs._startTime) * So.timeScale), this.id = J(r) ? Ys : r, this.parent = t, this.duration = ts((C + T) * E - T) || 1e-11, this.backwards = !1, this.paused = !0, this.began = !1, this.completed = !1, this.onBegin = _ || x.onBegin, this.onBeforeUpdate = v || x.onBeforeUpdate, this.onUpdate = y || x.onUpdate, this.onLoop = h || x.onLoop, this.onPause = g || x.onPause, this.onComplete = m || x.onComplete, this.iterationDuration = C, this.iterationCount = E, this._autoplay = t ? !1 : hs(u, x.autoplay), this._offset = D, this._delay = S, this._loopDelay = T, this._iterationTime = 0, this._currentIteration = 0, this._resolve = so, this._running = !1, this._reversed = +hs(o, x.reversed), this._reverse = this._reversed, this._cancelled = 0, this._alternate = hs(s, x.alternate), this._prev = null, this._next = null, this._lastTickTime = b, this._startTime = b, this._lastTime = b, this._fps = hs(d, x.frameRate), this._speed = hs(f, x.playbackRate), this._priority = +hs(p, 1);
+	}
+	get cancelled() {
+		return !!this._cancelled;
+	}
+	set cancelled(e) {
+		e ? this.cancel() : this.reset(!0).play();
+	}
+	get currentTime() {
+		return Qo($o(this._currentTime, So.precision), -this._delay, this.duration);
+	}
+	set currentTime(e) {
+		let t = this.paused;
+		this.pause().seek(+e), t || this.resume();
+	}
+	get iterationCurrentTime() {
+		return Qo($o(this._iterationTime, So.precision), 0, this.iterationDuration);
+	}
+	set iterationCurrentTime(e) {
+		this.currentTime = this.iterationDuration * this._currentIteration + e;
+	}
+	get progress() {
+		return Qo($o(this._currentTime / this.duration, 10), 0, 1);
+	}
+	set progress(e) {
+		this.currentTime = this.duration * e;
+	}
+	get iterationProgress() {
+		return Qo($o(this._iterationTime / this.iterationDuration, 10), 0, 1);
+	}
+	set iterationProgress(e) {
+		let t = this.iterationDuration;
+		this.currentTime = t * this._currentIteration + t * e;
+	}
+	get currentIteration() {
+		return this._currentIteration;
+	}
+	set currentIteration(e) {
+		this.currentTime = this.iterationDuration * Qo(+e, 0, this.iterationCount - 1);
+	}
+	get reversed() {
+		return !!this._reversed;
+	}
+	set reversed(e) {
+		e ? this.reverse() : this.play();
+	}
+	get speed() {
+		return super.speed;
+	}
+	set speed(e) {
+		super.speed = e, this.resetTime();
+	}
+	reset(e = !1) {
+		return Js(this), this._reversed && !this._reverse && (this.reversed = !1), this._iterationTime = this.iterationDuration, Os(this, 0, 1, ~~e, Ja.FORCE), qs(this), this._hasChildren && as(this, qs), this;
+	}
+	init(e = !1) {
+		this.fps = this._fps, this.speed = this._speed, !e && this._hasChildren && Os(this, this.duration, 1, ~~e, Ja.FORCE), this.reset(e);
+		let t = this._autoplay;
+		return t === !0 ? this.resume() : t && !J(t.linked) && t.link(this), this;
+	}
+	resetTime() {
+		let e = 1 / (this._speed * Rs._speed);
+		return this._startTime = Eo() - (this._currentTime + this._delay) * e, this;
+	}
+	pause() {
+		return this.paused ? this : (this.paused = !0, this.onPause(this), this);
+	}
+	resume() {
+		return this.paused ? (this.paused = !1, this.duration <= 1e-11 && !this._hasChildren ? Os(this, to, 0, 0, Ja.FORCE) : (this._running ||= (ss(Rs, this, Xs), Rs._hasChildren = !0, !0), this.resetTime(), this._startTime -= 12, Rs.wake()), this) : this;
+	}
+	restart() {
+		return this.reset().resume();
+	}
+	seek(e, t = 0, n = 0) {
+		Js(this), this.completed = !1;
+		let r = this.paused;
+		return this.paused = !0, Os(this, e + this._delay, ~~t, ~~n, Ja.AUTO), r ? this : this.resume();
+	}
+	alternate() {
+		let e = this._reversed, t = this.iterationCount, n = this.iterationDuration, r = t === Infinity ? qo(no / n) : t;
+		return this._reversed = +(this._alternate && !(r % 2) ? e : !e), t === Infinity ? this.iterationProgress = this._reversed ? 1 - this.iterationProgress : this.iterationProgress : this.seek(n * r - this._currentTime), this.resetTime(), this;
+	}
+	play() {
+		return this._reversed && this.alternate(), this.resume();
+	}
+	reverse() {
+		return this._reversed || this.alternate(), this.resume();
+	}
+	cancel() {
+		return this._hasChildren ? as(this, (e) => e.cancel(), !0) : as(this, Ks), this._cancelled = 1, this.pause();
+	}
+	stretch(e) {
+		let t = this.duration, n = ns(e);
+		if (t === n) return this;
+		let r = e / t, i = e <= to;
+		return this.duration = i ? to : n, this.iterationDuration = i ? to : ns(this.iterationDuration * r), this._offset *= r, this._delay *= r, this._loopDelay *= r, this;
+	}
+	revert() {
+		Os(this, 0, 1, 0, Ja.AUTO);
+		let e = this._autoplay;
+		return e && e.linked && e.linked === this && e.revert(), this.cancel();
+	}
+	complete(e = 0) {
+		return this.seek(this.duration, e).cancel();
+	}
+	then(e = so) {
+		let t = this.then, n = () => {
+			this.then = null, e(this), this.then = t, this._resolve = so;
+		};
+		return new Promise((e) => (this._resolve = () => e(n()), this.completed && this._resolve(), this));
+	}
+};
+//#endregion
+//#region ../../node_modules/.bun/animejs@4.4.1/node_modules/animejs/dist/modules/core/targets.js
+function Qs(e) {
+	let t = Ao(e) ? xo.root.querySelectorAll(e) : e;
+	if (t instanceof NodeList || t instanceof HTMLCollection) return t;
+}
+function $s(e) {
+	if (Mo(e)) return [];
+	if (!Ua) return Do(e) && e.flat(Infinity) || [e];
+	if (Do(e)) {
+		let t = e.flat(Infinity), n = [];
+		for (let e = 0, r = t.length; e < r; e++) {
+			let r = t[e];
+			if (!Mo(r)) {
+				let e = Qs(r);
+				if (e) for (let t = 0, r = e.length; t < r; t++) {
+					let r = e[t];
+					if (!Mo(r)) {
+						let e = !1;
+						for (let t = 0, i = n.length; t < i; t++) if (n[t] === r) {
+							e = !0;
+							break;
+						}
+						e || n.push(r);
+					}
+				}
+				else {
+					let e = !1;
+					for (let t = 0, i = n.length; t < i; t++) if (n[t] === r) {
+						e = !0;
+						break;
+					}
+					e || n.push(r);
+				}
+			}
+		}
+		return n;
+	}
+	let t = Qs(e);
+	return t ? Array.from(t) : [e];
+}
+function ec(e) {
+	let t = $s(e), n = t.length;
+	if (n) for (let e = 0; e < n; e++) {
+		let n = t[e];
+		if (!n[Xa]) {
+			n[Xa] = !0;
+			let e = No(n);
+			(n.nodeType || e) && (n[Za] = !0, n[Qa] = e, n[$a] = {});
+		}
+	}
+	return t;
+}
+//#endregion
+//#region ../../node_modules/.bun/animejs@4.4.1/node_modules/animejs/dist/modules/core/units.js
+var tc = {
+	deg: 1,
+	rad: 180 / Xo,
+	turn: 360
+}, nc = {}, rc = (e, t, n, r = !1) => {
+	let i = t.u, a = t.n;
+	if (t.t === qa.UNIT && i === n) return t;
+	let o = a + i + n, s = nc[o];
+	if (!J(s) && !r) t.n = s;
+	else {
+		let r;
+		if (i in tc) r = a * tc[i] / tc[n];
+		else {
+			let t = e.cloneNode(), o = e.parentNode, s = o && o !== Ga ? o : Ga.body;
+			s.appendChild(t);
+			let c = t.style;
+			c.width = 100 + i;
+			let l = t.offsetWidth || 100;
+			c.width = 100 + n;
+			let u = l / (t.offsetWidth || 100);
+			s.removeChild(t), r = u * a;
+		}
+		t.n = r, nc[o] = r;
+	}
+	return t.t, qa.UNIT, t.u = n, t;
+}, ic = (e) => e, ac = (e = 1.68) => (t) => Ho(t, +e), oc = {
+	in: (e) => (t) => e(t),
+	out: (e) => (t) => 1 - e(1 - t),
+	inOut: (e) => (t) => t < .5 ? e(t * 2) / 2 : 1 - e(t * -2 + 2) / 2,
+	outIn: (e) => (t) => t < .5 ? (1 - e(1 - t * 2)) / 2 : (e(t * 2 - 1) + 1) / 2
+}, sc = Xo / 2, cc = Xo * 2, lc = {
+	"": ac,
+	Quad: ac(2),
+	Cubic: ac(3),
+	Quart: ac(4),
+	Quint: ac(5),
+	Sine: (e) => 1 - Go(e * sc),
+	Circ: (e) => 1 - Uo(1 - e * e),
+	Expo: (e) => e ? Ho(2, 10 * e - 10) : 0,
+	Bounce: (e) => {
+		let t, n = 4;
+		for (; e < ((t = Ho(2, --n)) - 1) / 11;);
+		return 1 / Ho(4, 3 - n) - 7.5625 * Ho((t * 3 - 2) / 22 - e, 2);
+	},
+	Back: (e = 1.7) => (t) => (+e + 1) * t * t * t - +e * t * t,
+	Elastic: (e = 1, t = .3) => {
+		let n = Qo(+e, 1, 10), r = Qo(+t, to, 2), i = r / cc * Jo(1 / n), a = cc / r;
+		return (e) => e === 0 || e === 1 ? e : -n * Ho(2, -10 * (1 - e)) * Wo((1 - e - i) * a);
+	}
+}, uc = /* @__PURE__ */ (() => {
+	let e = {
+		linear: ic,
+		none: ic
+	};
+	for (let t in oc) for (let n in lc) {
+		let r = lc[n], i = oc[t];
+		e[t + n] = n === "" || n === "Back" || n === "Elastic" ? (e, t) => i(r(e, t)) : i(r);
+	}
+	return e;
+})(), dc = {
+	linear: ic,
+	none: ic
+}, fc = (e) => {
+	if (dc[e]) return dc[e];
+	if (e.indexOf("(") <= -1) {
+		let t = oc[e] || e.includes("Back") || e.includes("Elastic") ? uc[e]() : uc[e];
+		return t ? dc[e] = t : ic;
+	} else {
+		let t = e.slice(0, -1).split("("), n = uc[t[0]];
+		return n ? dc[e] = n(...t[1].split(",")) : ic;
+	}
+}, pc = [
+	"steps(",
+	"irregular(",
+	"linear(",
+	"cubicBezier("
+], mc = (e) => {
+	if (Ao(e)) {
+		for (let t = 0, n = pc.length; t < n; t++) if (To(e, pc[t])) return console.warn(`String syntax for \`ease: "${e}"\` has been removed from the core and replaced by importing and passing the easing function directly: \`ease: ${e}\``), ic;
+	}
+	return jo(e) ? e : Ao(e) ? fc(e) : ic;
+}, Y = xs(), X = xs(), hc = {}, gc = { func: null }, _c = { func: null }, vc = [null], yc = [null, null], bc = { to: null }, xc = 0, Sc = 0, Cc, wc, Tc = (e, t) => {
+	let n = {};
+	if (Do(e)) {
+		let t = [].concat(...e.map((e) => Object.keys(e))).filter(Ro);
+		for (let r = 0, i = t.length; r < i; r++) {
+			let i = t[r];
+			n[i] = e.map((e) => {
+				let t = {};
+				for (let n in e) {
+					let r = e[n];
+					Ro(n) ? n === i && (t.to = r) : t[n] = r;
+				}
+				return t;
+			});
+		}
+	} else {
+		let r = hs(t.duration, So.defaults.duration);
+		Object.keys(e).map((t) => ({
+			o: parseFloat(t) / 100,
+			p: e[t]
+		})).sort((e, t) => e.o - t.o).forEach((e) => {
+			let t = e.o, i = e.p;
+			for (let e in i) if (Ro(e)) {
+				let a = n[e];
+				a ||= n[e] = [];
+				let o = t * r, s = a.length, c = a[s - 1], l = { to: i[e] }, u = 0;
+				for (let e = 0; e < s; e++) u += a[e].duration;
+				s === 1 && (l.from = c.to), i.ease && (l.ease = i.ease), l.duration = o - (s ? u : 0), a.push(l);
+			}
+			return e;
+		});
+		for (let e in n) {
+			let t = n[e], r;
+			for (let e = 0, n = t.length; e < n; e++) {
+				let n = t[e], i = n.ease;
+				n.ease = r || void 0, r = i;
+			}
+			t[0].duration || t.shift();
+		}
+	}
+	return n;
+}, Ec = class extends Zs {
+	constructor(e, t, n, r, i = !1, a = 0, o) {
+		super(t, n, r), ++Sc;
+		let s = ec(e), c = s.length, l = t.keyframes, u = l ? is(Tc(l, t), t) : t, { id: d, delay: f, duration: p, ease: m, playbackEase: h, modifier: g, composition: _, onRender: v } = u, y = n ? n.defaults : So.defaults, b = hs(m, y.ease), x = hs(h, y.playbackEase), S = x ? mc(x) : null, C = !J(b.ease), w = C ? b.ease : hs(m, S ? "linear" : y.ease), T = C ? b.settlingDuration : hs(p, y.duration), E = hs(f, y.delay), D = g || y.modifier, O = J(_) && c >= 1e3 ? Ya.none : J(_) ? y.composition : _, k = this._offset + (n ? n._offset : 0);
+		C && (b.parent = this);
+		let ee = NaN, te = NaN, A = 0, ne = 0;
+		for (let e = 0; e < c; e++) {
+			let t = s[e], r = a || e, c = o || s, l = NaN, d = NaN;
+			for (let e in u) if (Ro(e)) {
+				let a = _s(t, e), o = As(e, t, a), s = u[e], f = Do(s);
+				if (i && !f && (yc[0] = s, yc[1] = s, s = yc), f) {
+					let e = s.length, t = !Oo(s[0]);
+					e === 2 && t ? (bc.to = s, vc[0] = bc, Cc = vc) : e > 2 && t ? (Cc = [], s.forEach((e, t) => {
+						t ? t === 1 ? (yc[1] = e, Cc.push(yc)) : Cc.push(e) : yc[0] = e;
+					})) : Cc = s;
+				} else vc[0] = s, Cc = vc;
+				let p = null, m = null, h = NaN, g = 0, _ = 0;
+				for (let e = Cc.length; _ < e; _++) {
+					let i = Cc[_];
+					Oo(i) ? wc = i : (bc.to = i, wc = bc), gc.func = null, _c.func = null;
+					let s = gs(hs(wc.composition, O), t, r, c, null, null), l = ko(s) ? s : Ya[s];
+					!p && l !== Ya.none && (p = Hs(t, o));
+					let u = p ? p._tail : null, d = n && u && u.parent.parent === n ? u : m, f = gs(wc.to, t, r, c, gc, d), v;
+					Oo(f) && !J(f.to) ? (wc = f, v = f.to) : v = f;
+					let y = gs(wc.from, t, r, c, null, d), b = wc.ease || w, x = gs(b, t, r, c, null, d), S = jo(x) || Ao(x) ? x : b, C = !J(S) && !J(S.ease), ee = C ? S.ease : S, te = C ? S.settlingDuration : gs(hs(wc.duration, e > 1 ? gs(T, t, r, c, null, d) / e : T), t, r, c, null, d), re = gs(hs(wc.delay, _ ? 0 : E), t, r, c, null, d), ie = wc.modifier || D, j = !J(y), ae = !J(v), oe = Do(v), se = oe || j && ae, ce = m ? g + re : re, le = $o(k + ce, 12);
+					!ne && (j || oe) && (ne = 1);
+					let ue = m;
+					if (l !== Ya.none) {
+						let e = p._head;
+						for (; e && !e._isOverridden && e._absoluteStartTime <= le;) if (ue = e, e = e._nextRep, e && e._absoluteStartTime >= le) for (; e;) Ws(e), e = e._nextRep;
+					}
+					if (se) {
+						Ss(oe ? gs(v[0], t, r, c, _c, d) : y, Y), Ss(oe ? gs(v[1], t, r, c, gc, d) : v, X);
+						let e = ys(t, o, a, hc);
+						Y.t === qa.NUMBER && (ue ? ue._valueType === qa.UNIT && (Y.t = qa.UNIT, Y.u = ue._unit) : (Ss(e, ws), ws.t === qa.UNIT && (Y.t = qa.UNIT, Y.u = ws.u)));
+					} else ae ? Ss(v, X) : m ? Cs(m, X) : Ss(n && ue && ue.parent.parent === n ? ue._value : ys(t, o, a, hc), X), j ? Ss(y, Y) : m ? Cs(m, Y) : Ss(n && ue && ue.parent.parent === n ? ue._value : ys(t, o, a, hc), Y);
+					if (Y.o && (Y.n = bs(ue ? ue._toNumber : Ss(ys(t, o, a, hc), ws).n, Y.n, Y.o)), X.o && (X.n = bs(Y.n, X.n, X.o)), Y.t !== X.t) {
+						if (Y.t === qa.COMPLEX || X.t === qa.COMPLEX) {
+							let e = Y.t === qa.COMPLEX ? Y : X, t = Y.t === qa.COMPLEX ? X : Y;
+							t.t = qa.COMPLEX, t.s = rs(e.s), t.d = e.d.map(() => t.n);
+						} else if (Y.t === qa.UNIT || X.t === qa.UNIT) {
+							let e = Y.t === qa.UNIT ? Y : X, t = Y.t === qa.UNIT ? X : Y;
+							t.t = qa.UNIT, t.u = e.u;
+						} else if (Y.t === qa.COLOR || X.t === qa.COLOR) {
+							let e = Y.t === qa.COLOR ? Y : X, t = Y.t === qa.COLOR ? X : Y;
+							t.t = qa.COLOR, t.s = e.s, t.d = [
+								0,
+								0,
+								0,
+								1
+							];
+						}
+					}
+					if (Y.u !== X.u) {
+						let e = X.u ? Y : X;
+						e = rc(t, e, X.u ? X.u : Y.u, !1);
+					}
+					if (X.d && Y.d && X.d.length !== Y.d.length) {
+						let e = Y.d.length > X.d.length ? Y : X, t = e === Y ? X : Y;
+						t.d = e.d.map((e, n) => J(t.d[n]) ? 0 : t.d[n]), t.s = rs(e.s);
+					}
+					let de = $o(+te || 1e-11, 12), fe = hc[o];
+					Mo(fe) || (hc[o] = null);
+					let pe = {
+						parent: this,
+						id: xc++,
+						property: o,
+						target: t,
+						_value: null,
+						_toFunc: gc.func,
+						_fromFunc: _c.func,
+						_ease: mc(ee),
+						_fromNumbers: rs(Y.d),
+						_toNumbers: rs(X.d),
+						_strings: rs(X.s),
+						_fromNumber: Y.n,
+						_toNumber: X.n,
+						_numbers: rs(Y.d),
+						_number: Y.n,
+						_unit: X.u,
+						_modifier: ie,
+						_currentTime: 0,
+						_startTime: ce,
+						_delay: +re,
+						_updateDuration: de,
+						_changeDuration: de,
+						_absoluteStartTime: le,
+						_tweenType: a,
+						_valueType: X.t,
+						_composition: l,
+						_isOverlapped: 0,
+						_isOverridden: 0,
+						_renderTransforms: 0,
+						_inlineValue: fe,
+						_prevRep: null,
+						_nextRep: null,
+						_prevAdd: null,
+						_nextAdd: null,
+						_prev: null,
+						_next: null
+					};
+					l !== Ya.none && Gs(pe, p);
+					let me = pe._valueType;
+					me === qa.COMPLEX ? pe._value = Es(pe, 1, -1) : me === qa.COLOR ? pe._value = Ts(pe, 1, -1) : me === qa.UNIT ? pe._value = `${ie(pe._toNumber)}${pe._unit}` : pe._value = ie(pe._toNumber), isNaN(h) && (h = pe._startTime), g = $o(ce + de, 12), m = pe, A++, ss(this, pe);
+				}
+				(isNaN(te) || h < te) && (te = h), (isNaN(ee) || g > ee) && (ee = g), a === Ka.TRANSFORM && (l = A - _, d = A);
+			}
+			if (!isNaN(l)) {
+				let e = 0;
+				as(this, (t) => {
+					e >= l && e < d && (t._renderTransforms = 1, t._composition === Ya.blend && as(Ns.animation, (e) => {
+						e.id === t.id && (e._renderTransforms = 1);
+					})), e++;
+				});
+			}
+		}
+		c || console.warn("No target found. Make sure the element you're trying to animate is accessible before creating your animation."), te ? (as(this, (e) => {
+			e._startTime - e._delay || (e._delay -= te), e._startTime -= te;
+		}), ee -= te) : te = 0, ee || (ee = to, this.iterationCount = 0), this.targets = s, this.id = J(d) ? Sc : d, this.duration = ee === 1e-11 ? to : ts((ee + this._loopDelay) * this.iterationCount - this._loopDelay) || 1e-11, this.onRender = v || y.onRender, this._ease = S, this._delay = te, this.iterationDuration = ee, !this._autoplay && ne && this.onRender(this);
+	}
+	stretch(e) {
+		let t = this.duration;
+		if (t === ns(e)) return this;
+		let n = e / t;
+		return as(this, (e) => {
+			e._updateDuration = ns(e._updateDuration * n), e._changeDuration = ns(e._changeDuration * n), e._currentTime *= n, e._startTime *= n, e._absoluteStartTime *= n;
+		}), super.stretch(e);
+	}
+	refresh() {
+		return as(this, (e) => {
+			let t = e._toFunc, n = e._fromFunc;
+			(t || n) && (n ? (Ss(n(), Y), Y.u !== e._unit && e.target[Za] && rc(e.target, Y, e._unit, !0), e._fromNumbers = rs(Y.d), e._fromNumber = Y.n) : t && (Ss(ys(e.target, e.property, e._tweenType), ws), e._fromNumbers = rs(ws.d), e._fromNumber = ws.n), t && (Ss(t(), X), e._toNumbers = rs(X.d), e._strings = rs(X.s), e._toNumber = X.o ? bs(e._fromNumber, X.n, X.o) : X.n));
+		}), this.duration === 1e-11 && this.restart(), this;
+	}
+	revert() {
+		return super.revert(), js(this);
+	}
+	then(e) {
+		return super.then(e);
+	}
+}, Dc = (e, t) => So.editor ? So.editor.addAnimation(e, t) : new Ec(e, t, null, 0, !1).init(), Oc = (e, t) => {
+	if (To(t, "<")) {
+		let n = t[1] === "<", r = e._tail, i = r ? r._offset + r._delay : 0;
+		return n ? i : i + r.duration;
+	}
+}, kc = (e, t) => {
+	let n = e.iterationDuration;
+	if (n === 1e-11 && (n = 0), J(t)) return n;
+	if (ko(+t)) return +t;
+	let r = t, i = e ? e.labels : null, a = !Mo(i), o = Oc(e, r), s = !J(o), c = vo.exec(r);
+	if (c) {
+		let e = c[0], t = r.split(e), l = a && t[0] ? i[t[0]] : n;
+		return bs(s ? o : a ? l : n, +t[1], e[0]);
+	} else return s ? o : a ? J(i[r]) ? n : i[r] : n;
+};
+//#endregion
+//#region ../../node_modules/.bun/animejs@4.4.1/node_modules/animejs/dist/modules/utils/target.js
+function Ac(e, t, n) {
+	let r = ec(e);
+	if (!r.length) return;
+	let [i] = r, a = ys(i, As(t, i, _s(i, t)));
+	if (J(n)) return a;
+	if (Ss(a, ws), ws.t === qa.NUMBER || ws.t === qa.UNIT) {
+		if (n === !1) return ws.n;
+		{
+			let e = rc(i, ws, n, !1);
+			return `${$o(e.n, So.precision)}${e.u}`;
+		}
+	}
+}
+var jc = (e, t) => {
+	if (!J(t)) return t.duration = to, t.composition = hs(t.composition, Ya.none), new Ec(e, t, null, 0, !0).resume();
+}, Mc = (e = so) => new Zs({
+	duration: 1 * So.timeScale,
+	onComplete: e
+}, null, 0).resume(), Nc = () => {
+	let e = Ga.createElement("div");
+	Ga.body.appendChild(e), e.style.height = "100lvh";
+	let t = e.offsetHeight;
+	return Ga.body.removeChild(e), t;
+}, Pc = (e, t) => e && jo(e) ? e(t) : e, Fc = /* @__PURE__ */ new Map(), Ic = class {
+	constructor(e) {
+		this.element = e, this.useWin = this.element === Ga.body, this.winWidth = 0, this.winHeight = 0, this.width = 0, this.height = 0, this.left = 0, this.top = 0, this.scale = 1, this.zIndex = 0, this.scrollX = 0, this.scrollY = 0, this.prevScrollX = 0, this.prevScrollY = 0, this.scrollWidth = 0, this.scrollHeight = 0, this.velocity = 0, this.backwardX = !1, this.backwardY = !1, this.scrollTicker = new Zs({
+			autoplay: !1,
+			onBegin: () => this.dataTimer.resume(),
+			onUpdate: () => {
+				let e = this.backwardX || this.backwardY;
+				as(this, (e) => e.handleScroll(), e);
+			},
+			onComplete: () => this.dataTimer.pause()
+		}).init(), this.dataTimer = new Zs({
+			autoplay: !1,
+			frameRate: 30,
+			onUpdate: (e) => {
+				let t = e.deltaTime, n = this.prevScrollX, r = this.prevScrollY, i = this.scrollX, a = this.scrollY, o = n - i, s = r - a;
+				this.prevScrollX = i, this.prevScrollY = a, o && (this.backwardX = n > i), s && (this.backwardY = r > a), this.velocity = $o(t > 0 ? Math.sqrt(o * o + s * s) / t : 0, 5);
+			}
+		}).init(), this.resizeTicker = new Zs({
+			autoplay: !1,
+			duration: 250 * So.timeScale,
+			onComplete: () => {
+				this.updateWindowBounds(), this.refreshScrollObservers(), this.handleScroll();
+			}
+		}).init(), this.wakeTicker = new Zs({
+			autoplay: !1,
+			duration: 500 * So.timeScale,
+			onBegin: () => {
+				this.scrollTicker.resume();
+			},
+			onComplete: () => {
+				this.scrollTicker.pause();
+			}
+		}).init(), this._head = null, this._tail = null, this.updateScrollCoords(), this.updateWindowBounds(), this.updateBounds(), this.refreshScrollObservers(), this.handleScroll(), this.resizeObserver = new ResizeObserver(() => this.resizeTicker.restart()), this.resizeObserver.observe(this.element), (this.useWin ? Wa : this.element).addEventListener("scroll", this, !1);
+	}
+	updateScrollCoords() {
+		let e = this.useWin, t = this.element;
+		this.scrollX = $o(e ? Wa.scrollX : t.scrollLeft, 0), this.scrollY = $o(e ? Wa.scrollY : t.scrollTop, 0);
+	}
+	updateWindowBounds() {
+		this.winWidth = Wa.innerWidth, this.winHeight = Nc();
+	}
+	updateBounds() {
+		let e = getComputedStyle(this.element), t = this.element;
+		this.scrollWidth = t.scrollWidth + parseFloat(e.marginLeft) + parseFloat(e.marginRight), this.scrollHeight = t.scrollHeight + parseFloat(e.marginTop) + parseFloat(e.marginBottom), this.updateWindowBounds();
+		let n, r;
+		if (this.useWin) n = this.winWidth, r = this.winHeight;
+		else {
+			let e = t.getBoundingClientRect();
+			n = t.clientWidth, r = t.clientHeight, this.top = e.top, this.left = e.left, this.scale = e.width ? n / e.width : e.height ? r / e.height : 1;
+		}
+		this.width = n, this.height = r;
+	}
+	refreshScrollObservers() {
+		as(this, (e) => {
+			e._debug && e.removeDebug();
+		}), this.updateBounds(), as(this, (e) => {
+			e.refresh(), e.onResize(e), e._debug && e.debug();
+		});
+	}
+	refresh() {
+		this.updateWindowBounds(), this.updateBounds(), this.refreshScrollObservers(), this.handleScroll();
+	}
+	handleScroll() {
+		this.updateScrollCoords(), this.wakeTicker.restart();
+	}
+	handleEvent(e) {
+		switch (e.type) {
+			case "scroll":
+				this.handleScroll();
+				break;
+		}
+	}
+	revert() {
+		this.scrollTicker.cancel(), this.dataTimer.cancel(), this.resizeTicker.cancel(), this.wakeTicker.cancel(), this.resizeObserver.disconnect(), (this.useWin ? Wa : this.element).removeEventListener("scroll", this), Fc.delete(this.element);
+	}
+}, Lc = (e) => {
+	let t = e && $s(e)[0] || Ga.body, n = Fc.get(t);
+	return n || (n = new Ic(t), Fc.set(t, n)), n;
+}, Rc = (e, t, n, r, i) => {
+	let a = t === "min", o = t === "max", { n: s, u: c } = Ss(t === "top" || t === "left" || t === "start" || a ? 0 : t === "bottom" || t === "right" || t === "end" || o ? "100%" : t === "center" ? "50%" : t, ws), l = s;
+	return c === "%" ? l = s / 100 * n : c && (l = rc(e, ws, "px", !0).n), o && r < 0 && (l += r), a && i > 0 && (l += i), l;
+}, zc = (e, t, n, r, i) => {
+	let a;
+	if (Ao(t)) {
+		let o = vo.exec(t);
+		if (o) {
+			let s = o[0], c = s[0], l = t.split(s), u = l[0] === "min", d = l[0] === "max", f = Rc(e, l[0], n, r, i), p = Rc(e, l[1], n, r, i);
+			if (u) {
+				let t = bs(Rc(e, "min", n), p, c);
+				a = t < f ? f : t;
+			} else if (d) {
+				let t = bs(Rc(e, "max", n), p, c);
+				a = t > f ? f : t;
+			} else a = bs(f, p, c);
+		} else a = Rc(e, t, n, r, i);
+	} else a = t;
+	return $o(a, 0);
+}, Bc = (e) => {
+	let t, n = e.targets;
+	for (let e = 0, r = n.length; e < r; e++) {
+		let r = n[e];
+		if (r[Za]) {
+			t = r;
+			break;
+		}
+	}
+	return t;
+}, Vc = 0, Hc = [
+	"#FF4B4B",
+	"#FF971B",
+	"#FFC730",
+	"#F9F640",
+	"#7AFF5A",
+	"#18FF74",
+	"#17E09B",
+	"#3CFFEC",
+	"#05DBE9",
+	"#33B3F1",
+	"#638CF9",
+	"#C563FE",
+	"#FF4FCF",
+	"#F93F8A"
+], Uc = class {
+	constructor(e = {}) {
+		xo.current && xo.current.register(this);
+		let t = hs(e.sync, "play pause"), n = t ? mc(t) : null, r = t && (t === "linear" || t === ic), i = t && !(n === ic && !r), a = t && (ko(t) || t === !0 || r), o = t && Ao(t) && !i && !a, s = o ? t.split(" ").map((e) => () => {
+			let t = this.linked;
+			return t && t[e] ? t[e]() : null;
+		}) : null, c = o && s.length > 2;
+		this.index = Vc++, this.id = J(e.id) ? this.index : e.id, this.container = Lc(e.container), this.target = null, this.linked = null, this.repeat = null, this.horizontal = null, this.enter = null, this.leave = null, this.sync = i || a || !!s, this.syncEase = i ? n : null, this.syncSmooth = a ? t === !0 || r ? 1 : t : null, this.onSyncEnter = s && !c && s[0] ? s[0] : so, this.onSyncLeave = s && !c && s[1] ? s[1] : so, this.onSyncEnterForward = s && c && s[0] ? s[0] : so, this.onSyncLeaveForward = s && c && s[1] ? s[1] : so, this.onSyncEnterBackward = s && c && s[2] ? s[2] : so, this.onSyncLeaveBackward = s && c && s[3] ? s[3] : so, this.onEnter = e.onEnter || so, this.onLeave = e.onLeave || so, this.onEnterForward = e.onEnterForward || so, this.onLeaveForward = e.onLeaveForward || so, this.onEnterBackward = e.onEnterBackward || so, this.onLeaveBackward = e.onLeaveBackward || so, this.onUpdate = e.onUpdate || so, this.onResize = e.onResize || so, this.onSyncComplete = e.onSyncComplete || so, this.reverted = !1, this.ready = !1, this.completed = !1, this.began = !1, this.isInView = !1, this.forceEnter = !1, this.hasEntered = !1, this.offset = 0, this.offsetStart = 0, this.offsetEnd = 0, this.distance = 0, this.prevProgress = 0, this.thresholds = [
+			"start",
+			"end",
+			"end",
+			"start"
+		], this.coords = [
+			0,
+			0,
+			0,
+			0
+		], this.debugStyles = null, this.$debug = null, this._params = e, this._debug = hs(e.debug, !1), this._next = null, this._prev = null, ss(this.container, this), Mc(() => {
+			if (!this.reverted) {
+				if (!this.target) {
+					let t = $s(e.target)[0];
+					this.target = t || Ga.body, this.refresh();
+				}
+				this._debug && this.debug();
+			}
+		});
+	}
+	link(e) {
+		if (e && (e.pause(), this.linked = e, !J(e) && !J(e.persist) && (e.persist = !0), !this._params.target)) {
+			let t;
+			J(e.targets) ? as(e, (e) => {
+				e.targets && !t && (t = Bc(e));
+			}) : t = Bc(e), this.target = t || Ga.body, this.refresh();
+		}
+		return this;
+	}
+	get velocity() {
+		return this.container.velocity;
+	}
+	get backward() {
+		return this.horizontal ? this.container.backwardX : this.container.backwardY;
+	}
+	get scroll() {
+		return this.horizontal ? this.container.scrollX : this.container.scrollY;
+	}
+	get progress() {
+		let e = (this.scroll - this.offsetStart) / this.distance;
+		return e === Infinity || isNaN(e) ? 0 : $o(Qo(e, 0, 1), 6);
+	}
+	refresh() {
+		this.ready = !0, this.reverted = !1;
+		let e = this._params;
+		return this.repeat = hs(Pc(e.repeat, this), !0), this.horizontal = hs(Pc(e.axis, this), "y") === "x", this.enter = hs(Pc(e.enter, this), "end start"), this.leave = hs(Pc(e.leave, this), "start end"), this.updateBounds(), this.handleScroll(), this;
+	}
+	removeDebug() {
+		return this.$debug &&= (this.$debug.parentNode.removeChild(this.$debug), null), this.debugStyles && (this.debugStyles.revert(), this.$debug = null), this;
+	}
+	debug() {
+		this.removeDebug();
+		let e = this.container, t = this.horizontal, n = e.element.querySelector(":scope > .animejs-onscroll-debug"), r = Ga.createElement("div"), i = Ga.createElement("div"), a = Ga.createElement("div"), o = Hc[this.index % Hc.length], s = e.useWin, c = s ? e.winWidth : e.width, l = s ? e.winHeight : e.height, u = e.scrollWidth, d = e.scrollHeight, f = this.container.width > 360 ? 320 : 260, p = t ? 0 : 10, m = t ? 10 : 0, h = t ? 24 : f / 2, g = t ? h : 15, _ = t ? 60 : h, v = t ? _ : g, y = t ? "repeat-x" : "repeat-y", b = (e) => t ? "0px " + e + "px" : e + "px 2px", x = (e) => `linear-gradient(${t ? 90 : 0}deg, ${e} 2px, transparent 1px)`, S = (e, t, n, r, i) => `position:${e};left:${t}px;top:${n}px;width:${r}px;height:${i}px;`;
+		r.style.cssText = `${S("absolute", p, m, t ? u : f, t ? f : d)}
+      pointer-events: none;
+      z-index: ${this.container.zIndex++};
+      display: flex;
+      flex-direction: ${t ? "column" : "row"};
+      filter: drop-shadow(0px 1px 0px rgba(0,0,0,.75));
+    `, i.style.cssText = `${S("sticky", 0, 0, t ? c : h, t ? h : l)}`, n || (i.style.cssText += `background:
+        ${x("#FFFF")}${b(h - 10)} / 100px 100px ${y},
+        ${x("#FFF8")}${b(h - 10)} / 10px 10px ${y};
+      `), a.style.cssText = `${S("relative", 0, 0, t ? u : h, t ? h : d)}`, n || (a.style.cssText += `background:
+        ${x("#FFFF")}${b(0)} / ${t ? "100px 10px" : "10px 100px"} ${y},
+        ${x("#FFF8")}${b(0)} / ${t ? "10px 0px" : "0px 10px"} ${y};
+      `);
+		let C = [" enter: ", " leave: "];
+		this.coords.forEach((e, n) => {
+			let r = n > 1, s = (r ? 0 : this.offset) + e, p = n % 2, m = s < v, h = s > (r ? t ? c : l : t ? u : d) - v, y = (r ? p && !m : !p && !m) || h, b = Ga.createElement("div"), x = Ga.createElement("div"), w = t ? y ? "right" : "left" : y ? "bottom" : "top", T = y ? (t ? _ : g) + (r ? t ? -1 : h ? 0 : -2 : t ? -1 : -2) : +!!t;
+			x.innerHTML = `${this.id}${C[p]}${this.thresholds[n]}`, b.style.cssText = `${S("absolute", 0, 0, _, g)}
+        display: flex;
+        flex-direction: ${t ? "column" : "row"};
+        justify-content: flex-${r ? "start" : "end"};
+        align-items: flex-${y ? "end" : "start"};
+        border-${w}: 2px solid ${o};
+      `, x.style.cssText = `
+        overflow: hidden;
+        max-width: ${f / 2 - 10}px;
+        height: ${g};
+        margin-${t ? y ? "right" : "left" : y ? "bottom" : "top"}: -2px;
+        padding: 1px;
+        font-family: ui-monospace, monospace;
+        font-size: 10px;
+        letter-spacing: -.025em;
+        line-height: 9px;
+        font-weight: 600;
+        text-align: ${t && y || !t && !r ? "right" : "left"};
+        white-space: pre;
+        text-overflow: ellipsis;
+        color: ${p ? o : "rgba(0,0,0,.75)"};
+        background-color: ${p ? "rgba(0,0,0,.65)" : o};
+        border: 2px solid ${p ? o : "transparent"};
+        border-${t ? y ? "top-left" : "top-right" : y ? "top-left" : "bottom-left"}-radius: 5px;
+        border-${t ? y ? "bottom-left" : "bottom-right" : y ? "top-right" : "bottom-right"}-radius: 5px;
+      `, b.appendChild(x);
+			let E = s - T + +!!t;
+			b.style[t ? "left" : "top"] = `${E}px`, (r ? i : a).appendChild(b);
+		}), r.appendChild(i), r.appendChild(a), e.element.appendChild(r), n || r.classList.add("animejs-onscroll-debug"), this.$debug = r, Ac(e.element, "position") === "static" && (this.debugStyles = jc(e.element, { position: "relative " }));
+	}
+	updateBounds() {
+		this._debug && this.removeDebug();
+		let e, t = this.target, n = this.container, r = this.horizontal, i = this.linked, a, o = t;
+		for (i && (a = i.currentTime, i.seek(0, !0)); o && o !== n.element && o !== Ga.body;) {
+			let t = Ac(o, "position") === "sticky" ? jc(o, { position: "static" }) : !1;
+			o = o.parentElement, t && (e ||= [], e.push(t));
+		}
+		let s = t.getBoundingClientRect(), c = n.scale, l = (r ? s.left + n.scrollX - n.left : s.top + n.scrollY - n.top) * c, u = (r ? s.width : s.height) * c, d = r ? n.width : n.height, f = (r ? n.scrollWidth : n.scrollHeight) - d, p = this.enter, m = this.leave, h = "start", g = "end", _ = "end", v = "start";
+		if (Ao(p)) {
+			let e = p.split(" ");
+			_ = e[0], h = e.length > 1 ? e[1] : h;
+		} else if (Oo(p)) {
+			let e = p;
+			J(e.container) || (_ = e.container), J(e.target) || (h = e.target);
+		} else ko(p) && (_ = p);
+		if (Ao(m)) {
+			let e = m.split(" ");
+			v = e[0], g = e.length > 1 ? e[1] : g;
+		} else if (Oo(m)) {
+			let e = m;
+			J(e.container) || (v = e.container), J(e.target) || (g = e.target);
+		} else ko(m) && (v = m);
+		let y = zc(t, h, u), b = zc(t, g, u), x = y + l - d, S = b + l - f, C = zc(t, _, d, x, S), w = zc(t, v, d, x, S), T = y + l - C, E = b + l - w, D = E - T;
+		this.offset = l, this.offsetStart = T, this.offsetEnd = E, this.distance = D <= 0 ? 0 : D, this.thresholds = [
+			h,
+			g,
+			_,
+			v
+		], this.coords = [
+			y,
+			b,
+			C,
+			w
+		], e && e.forEach((e) => e.revert()), i && i.seek(a, !0), this._debug && this.debug();
+	}
+	handleScroll() {
+		if (!this.ready) return;
+		let e = this.linked, t = this.sync, n = this.syncEase, r = this.syncSmooth, i = e && (n || r), a = this.horizontal, o = this.container, s = this.scroll, c = s <= this.offsetStart, l = s >= this.offsetEnd, u = !c && !l, d = s === this.offsetStart || s === this.offsetEnd, f = !this.hasEntered && d, p = this._debug && this.$debug, m = !1, h = !1, g = this.progress;
+		if (c && this.began && (this.began = !1), g > 0 && !this.began && (this.began = !0), i) {
+			let t = e.progress;
+			if (r && ko(r)) {
+				if (r < 1) {
+					let e = t < g && g === 1 ? 1e-4 : t > g && !g ? -1e-4 : 0;
+					g = $o(es(t, g, es(.01, .2, r)) + e, 6);
+				}
+			} else n && (g = n(g));
+			m = g !== this.prevProgress, h = t === 1, m && !h && r && t && o.wakeTicker.restart();
+		}
+		if (p) {
+			let e = a ? o.scrollY : o.scrollX;
+			p.style[a ? "top" : "left"] = e + 10 + "px";
+		}
+		(u && !this.isInView || f && !this.forceEnter && !this.hasEntered) && (u && (this.isInView = !0), !this.forceEnter || !this.hasEntered ? (p && u && (p.style.zIndex = `${this.container.zIndex++}`), this.onSyncEnter(this), this.onEnter(this), this.backward ? (this.onSyncEnterBackward(this), this.onEnterBackward(this)) : (this.onSyncEnterForward(this), this.onEnterForward(this)), this.hasEntered = !0, f && (this.forceEnter = !0)) : u && (this.forceEnter = !1)), (u || !u && this.isInView) && (m = !0), m && (i && e.seek(e.duration * g), this.onUpdate(this)), !u && this.isInView && (this.isInView = !1, this.onSyncLeave(this), this.onLeave(this), this.backward ? (this.onSyncLeaveBackward(this), this.onLeaveBackward(this)) : (this.onSyncLeaveForward(this), this.onLeaveForward(this)), t && !r && (h = !0)), g >= 1 && this.began && !this.completed && (t && h || !t) && (t && this.onSyncComplete(this), this.completed = !0, (!this.repeat && !e || !this.repeat && e && e.completed) && this.revert()), g < 1 && this.completed && (this.completed = !1), this.prevProgress = g;
+	}
+	revert() {
+		if (this.reverted) return;
+		let e = this.container;
+		return os(e, this), e._head || e.revert(), this._debug && this.removeDebug(), this.reverted = !0, this.ready = !1, this;
+	}
+}, Wc = (e = {}) => new Uc(e), Gc = (e = 0, t = 1, n = 0) => {
+	let r = 10 ** n;
+	return Math.floor((Math.random() * (t - e + 1 / r) + e) * r) / r;
+}, Kc = (e) => {
+	let t = e.length, n, r;
+	for (; t;) r = Gc(0, --t), n = e[t], e[t] = e[r], e[r] = n;
+	return e;
+}, qc = (e, t = {}) => {
+	let n = [], r = 0, i, a = t.from, o = t.reversed, s = t.ease, c = !J(s), l = c && !J(s.ease) ? s.ease : c ? mc(s) : null, u = t.grid, d = u === !0, f = t.axis, p = t.total, m = J(a) || a === 0 || a === "first", h = a === "center", g = a === "last", _ = a === "random", v = Do(a), y = Do(e), b = t.use, x = Vo(y ? e[0] : e), S = y ? Vo(e[1]) : 0, C = go.exec((y ? e[1] : e) + ""), w = t.start || 0 + (y ? x : 0), T = m ? 0 : ko(a) ? a : 0;
+	return (e, s, c, m, E) => {
+		let [D] = ec(e), O = J(p) ? c.length : p, k = J(b) ? !1 : jo(b) ? b(D, s, O) : ys(D, b), ee = ko(k) || Ao(k) && ko(+k) ? +k : s;
+		if (h && (T = (O - 1) / 2), g && (T = O - 1), !n.length) {
+			if (d) {
+				let e = !0, t = Infinity, r = Infinity, i = -Infinity, o = -Infinity, s = [], l = [];
+				for (let n = 0; n < O; n++) {
+					let a = c[n], u = 0, d = 0, f = !1;
+					if (a && jo(a.getBoundingClientRect)) {
+						let e = a.getBoundingClientRect();
+						u = e.left + e.width / 2, d = e.top + e.height / 2, f = !0;
+					} else {
+						let e = a;
+						e && ko(e.x) && ko(e.y) && (u = e.x, d = e.y, f = !0);
+					}
+					if (!f) {
+						e = !1;
+						break;
+					}
+					s.push(u), l.push(d), u < t && (t = u), d < r && (r = d), u > i && (i = u), d > o && (o = d);
+				}
+				if (e) {
+					let e = s[0], c = l[0];
+					v ? (e = t + a[0] * (i - t), c = r + a[1] * (o - r)) : h ? (e = (t + i) / 2, c = (r + o) / 2) : g ? (e = s[O - 1], c = l[O - 1]) : ko(a) && (e = s[a], c = l[a]);
+					for (let t = 0; t < O; t++) {
+						let r = e - s[t], i = c - l[t], a = Uo(r * r + i * i);
+						f === "x" && (a = -r), f === "y" && (a = -i), n.push(a);
+					}
+					let u = Infinity;
+					for (let e = 0, t = n.length; e < t; e++) {
+						let t = Ko(n[e]);
+						t > 0 && t < u && (u = t);
+					}
+					if (u > 0 && u < Infinity) for (let e = 0, t = n.length; e < t; e++) n[e] = n[e] / u;
+				} else for (let e = 0; e < O; e++) n.push(Ko(T - e));
+			} else for (let e = 0; e < O; e++) if (!u) n.push(Ko(T - e));
+			else {
+				let t, r;
+				v ? (t = a[0] * (u[0] - 1), r = a[1] * (u[1] - 1)) : h ? (t = (u[0] - 1) / 2, r = (u[1] - 1) / 2) : (t = T % u[0], r = qo(T / u[0]));
+				let i = e % u[0], o = qo(e / u[0]), s = t - i, c = r - o, l = Uo(s * s + c * c);
+				f === "x" && (l = -s), f === "y" && (l = -c), n.push(l);
+			}
+			r = Yo(...n), l && (n = n.map((e) => l(e / r) * r)), o && (n = n.map((e) => f ? e < 0 ? e * -1 : -e : Ko(r - e))), _ && (n = Kc(n));
+		}
+		let te = y ? (S - x) / r : x;
+		J(i) && (i = E ? kc(E, J(t.start) ? E.iterationDuration : w) : w);
+		let A = i + (te * $o(n[ee], 2) || 0);
+		return t.modifier && (A = t.modifier(A)), C && (A = `${A}${C[2]}`), A;
+	};
+}, Jc = (e) => {
+	let t = Dc(e.children, {
+		y: [20, 0],
+		opacity: [0, 1],
+		duration: 600,
+		delay: qc(70),
+		easing: "easeOutQuad",
+		autoplay: !1
+	}), n = Wc({
+		container: document.body,
+		target: e,
+		enter: "bottom",
+		leave: "top",
+		onEnter: () => {
+			t.seek(0), t.play();
+		},
+		debug: !1
+	});
+	return () => n.revert?.();
+}, Yc = {}, Xc = ["ko", "en"], Zc = "PARAGLIDE_LOCALE", Qc = 3456e4, $c = "PARAGLIDE_LOCALE", el = [
+	"localStorage",
+	"cookie",
+	"preferredLanguage",
+	"baseLocale"
+], tl = [], nl, rl;
+function il(e) {
+	if (tl.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (nl === t) return rl;
+	let n = new URL(t, "http://dummy.com"), r;
+	for (let e of tl) if (new Yc(e.match, n.href).exec(n.href)) {
+		r = e;
+		break;
+	}
+	return nl = t, rl = r, r;
+}
+function al(e) {
+	let t = il(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : el;
+}
+var ol = void 0;
+globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
+var sl = !1, Z = () => {
+	if (ol) {
+		let e = ol?.getStore()?.locale;
+		if (e) return e;
+	}
+	let e = el;
+	typeof window < "u" && window.location?.href && (e = al(window.location.href));
+	let t = cl(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return sl || (sl = !0, ul(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+};
+function cl(e, t) {
+	let n;
+	for (let t of e) {
+		if (t === "cookie") n = pl();
+		else if (t === "baseLocale") n = "ko";
+		else if (t === "preferredLanguage") n = ml();
+		else if (t === "localStorage") n = localStorage.getItem("PARAGLIDE_LOCALE") ?? void 0;
+		else if (gl(t) && hl.has(t)) {
+			let e = hl.get(t);
+			if (e) {
+				let t = e.getLocale();
+				if (t instanceof Promise) continue;
+				if (t !== void 0) return fl(t);
+			}
+		}
+		let e = dl(n);
+		if (e) return e;
+	}
+}
+var ll = (e) => {
+	e ? window.location.href = e : window.location.reload();
+}, ul = (e, t) => {
+	let n = {
+		reload: !0,
+		...t
+	}, r;
+	try {
+		r = Z();
+	} catch {}
+	let i = [], a = el;
+	typeof window < "u" && window.location?.href && (a = al(window.location.href));
+	for (let t of a) if (t === "cookie") {
+		if (typeof document > "u" || typeof window > "u") continue;
+		let t = `${Zc}=${e}; path=/; max-age=${Qc}`;
+		document.cookie = t;
+	} else if (t === "baseLocale") continue;
+	else if (t === "localStorage" && typeof window < "u") localStorage.setItem($c, e);
+	else if (gl(t) && hl.has(t)) {
+		let n = hl.get(t);
+		if (n) {
+			let r = n.setLocale(e);
+			r instanceof Promise && (r = r.catch((e) => {
+				throw Error(`Custom strategy "${t}" setLocale failed.`, { cause: e });
+			}), i.push(r));
+		}
+	}
+	let o = () => {
+		n.reload && window.location && e !== r && ll(void 0);
+	};
+	if (i.length) return Promise.all(i).then(() => {
+		o();
+	});
+	o();
+};
+function dl(e) {
+	if (typeof e != "string") return;
+	let t = e.toLowerCase();
+	for (let e of Xc) if (e.toLowerCase() === t) return e;
+}
+function fl(e) {
+	let t = dl(e);
+	if (t) return t;
+	throw Error(`Invalid locale: ${e}. Expected one of: ${Xc.join(", ")}`);
+}
+function pl() {
+	if (typeof document > "u" || !document.cookie) return;
+	let e = document.cookie.match(RegExp(`(^| )${Zc}=([^;]+)`))?.[2];
+	return dl(e);
+}
+function ml() {
+	if (!navigator?.languages?.length) return;
+	let e = navigator.languages.map((e) => ({
+		fullTag: e,
+		baseTag: e.split("-")[0]
+	}));
+	for (let t of e) {
+		let e = dl(t.fullTag);
+		if (e) return e;
+		let n = dl(t.baseTag);
+		if (n) return n;
+	}
+}
+var hl = /* @__PURE__ */ new Map();
+function gl(e) {
+	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
+}
+//#endregion
+//#region src/lib/paraglide/messages/main_visual_badge.js
+var _l = () => "Smart Glasses × AI", vl = () => "Smart Glasses × AI", yl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? _l(e) : vl(e)), bl = () => "산업 현장의 일하는 방식을 \n 공간지능으로 바꿉니다", xl = () => "Transforming industrial operations \n through Spatial Intelligence", Sl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? bl(e) : xl(e)), Cl = () => "다양한 산업 현장에서 검증된 딥파인의 기술력", wl = () => "DEEP.FINE's proven technology validated across diverse industries", Tl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Cl(e) : wl(e)), El = () => "딥파인은 물류, 제조·MRO, 공간 데이터 분야의 현장 문제를 해결하는 산업 AI 솔루션을 제공합니다.", Dl = () => "DEEP.FINE provides industrial AI solutions that solve real-world challenges in logistics, manufacturing/MRO, and spatial data fields.", Ol = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? El(e) : Dl(e)), kl = () => "스마트 물류 운영 솔루션", Al = () => "Smart Logistics Operation Solution", jl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? kl(e) : Al(e)), Ml = () => "LOGI.FINE은 물류센터의 피킹, 검수, 분류, 패킹 업무를 스마트글라스와 Vision AI 기반으로 지원하는 솔루션입니다.", Nl = () => "LOGI.FINE is a solution that supports warehouse picking, inspection, sorting, and packing operations based on smart glasses and Vision AI.", Pl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ml(e) : Nl(e)), Fl = () => "AI 글래스 기반 현장 업무 지원 솔루션", Il = () => "AI Glass-Based On-Site Workflow Support Solution", Ll = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Fl(e) : Il(e)), Rl = () => "DAO는 제조, MRO, 방산 현장의 점검·정비 업무에 필요한 정보를 \n 스마트글라스로 제공하고, 작업자의 현장 업무 수행을 지원하는 솔루션입니다.", zl = () => "DAO is a solution that provides the necessary information for inspection and maintenance tasks on manufacturing, MRO, and defense sites \n via smart glasses, supporting workers in their on-site operations.", Bl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Rl(e) : zl(e)), Vl = () => "공간컴퓨팅 기반 디지털 공간 구축 솔루션", Hl = () => "Spatial Computing-Based Digital Space Construction Solution", Ul = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Vl(e) : Hl(e)), Wl = () => "DSC는 현실 공간을 3D 공간 데이터로 구축하고,\n위치 인식과 AR 콘텐츠를 결합해 공간 기반 서비스를 구현하는 솔루션입니다.", Gl = () => "DSC is a solution that builds real-world spaces into 3D spatial data \n and combines positioning awareness with AR content to realize space-based services.", Kl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Wl(e) : Gl(e)), ql = () => "We Transform \n How Industrial Sites Work", Jl = () => "We Transform \n How Industrial Sites Work", Yl = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ql(e) : Jl(e)), Xl = () => "공간을 인식하고, 작업을 데이터화하며, 산업 운영의 AX 전환을 가속합니다.", Zl = () => "We perceive spaces, digitize operations, and accelerate the AX transformation of industrial management.", Ql = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Xl(e) : Zl(e)), $l = () => "공간지능 AI", eu = () => "Spatial Intelligence AI", tu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? $l(e) : eu(e)), nu = () => "V-SLAM · VPS · 3D 공간 매핑", ru = () => "V-SLAM · VPS · 3D Spatial Mapping", iu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? nu(e) : ru(e)), au = () => "현실 공간을 인식하고 3D 공간 데이터로 구조화해 산업 현장의 공간 정보를 운영 자산으로 전환합니다.", ou = () => "Recognizes real-world environments and structures them into 3D spatial data, transforming industrial site spatial information into operational assets.", su = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? au(e) : ou(e)), cu = () => "비전 어시스트 AI", lu = () => "Vision Assist AI", uu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? cu(e) : lu(e)), du = () => "객체 인식 · 문자 인식 · 바코드 인식", fu = () => "Object Recognition · OCR · Barcode Scanning", pu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? du(e) : fu(e)), mu = () => "작업자 시점의 이미지, 바코드, 설비, 작업 상태를 인식해 검수·점검 업무와 사진·영상 기반 작업 기록을 지원합니다.", hu = () => "Recognizes images, barcodes, equipment, and tasks from the worker’s perspective to support inspection, auditing, and photo/video-based task logging.", gu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? mu(e) : hu(e)), _u = () => "운영 데이터 AI", vu = () => "Operational Data AI", yu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? _u(e) : vu(e)), bu = () => "작업 로그 분석 · API 연동 · 대시보드", xu = () => "Task Log Analysis · API Integration · Dashboard", Su = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? bu(e) : xu(e)), Cu = () => "작업 로그, 사진·영상 기록, 오류, 처리 시간 데이터를 분석해 현장 운영의 병목을 파악하고 업무 최적화를 지원합니다.", wu = () => "Analyzes task logs, photo/video records, errors, and processing time data to identify operational bottlenecks and support workflow optimization.", Tu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Cu(e) : wu(e)), Eu = () => "수상 및 인증", Du = () => "Awards & Certifications", Ou = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Eu(e) : Du(e)), ku = () => "산업 데이터 리포트", Au = () => "Industrial Data Reports", ju = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ku(e) : Au(e)), Mu = () => "글로벌 대기업·공공기관 고객 및 파트너", Nu = () => "Global Enterprises & Public Sector Clients and Partners", Pu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Mu(e) : Nu(e)), Fu = () => "국내 스마트글라스 산업 도입", Iu = () => "No.1 Smart Glass Adoption in Korea", Lu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Fu(e) : Iu(e)), Ru = () => "고객 유지율", zu = () => "Customer Retention Rate", Bu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ru(e) : zu(e)), Vu = () => "Why DEEP.FINE", Hu = () => "Why DEEP.FINE", Uu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Vu(e) : Hu(e)), Wu = () => "작업 로그 분석 · API 연동 · 대시보드", Gu = () => "Operation Log Analysis · API Integration · Dashboard", Ku = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Wu(e) : Gu(e)), qu = () => "다양한 산업 현장에서 \n 검증된 성과를 만들고 있습니다.", Ju = () => "Delivering proven results \n across diverse industrial job sites.", Yu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? qu(e) : Ju(e)), Xu = () => "딥파인은 물류·제조·MRO·공공 분야의 실제 현장에서 \n작업 효율화, 오류 감소, 업무 표준화, \n데이터 기반 운영 관리를 검증하고 있습니다.", Zu = () => "DEEP.FINE is validating operational efficiency, error reduction, task standardization, \n and data-driven management across real-world fields \n in logistics, manufacturing, MRO, and public sectors.", Qu = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Xu(e) : Zu(e)), $u = () => "공공시설 점검", ed = () => "Public Facilities Inspection", td = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? $u(e) : ed(e)), nd = () => "DAO", rd = () => "DAO", id = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? nd(e) : rd(e)), ad = () => "중공업 MRO", od = () => "Heavy Industry MRO", sd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ad(e) : od(e)), cd = () => "건설", ld = () => "Construction", ud = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? cd(e) : ld(e)), dd = () => "디지털트윈", fd = () => "Digital Twin", pd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? dd(e) : fd(e)), md = () => "관광·축제", hd = () => "Tourism & Festivals", gd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? md(e) : hd(e)), _d = () => "혼잡도 분석", vd = () => "Congestion Analysis", yd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? _d(e) : vd(e)), bd = () => "스마트글라스 기반 원격 점검으로 \n 출장 비용 60% 절감, 생산성 34% 향상", xd = () => "Smart glass-based remote inspection \n reduced travel costs by 60% and increased productivity by 34%", Sd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? bd(e) : xd(e)), Cd = () => "스마트글라스 기반 원격 점검으로 \n 출장 비용 60% 절감, 생산성 34% 향상", wd = () => "Smart glass-based remote inspection \n reduced travel costs by 60% and increased productivity by 34%", Td = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Cd(e) : wd(e)), Ed = () => "Vision Assist로 \n 도면·작업 지침을 즉시 표시해 \n 정비 시간 30% 단축, 교육 기간 40% 단축", Dd = () => "Vision Assist instantly displays blueprints and task instructions, \n cutting maintenance time by 30% and training periods by 40%", Od = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ed(e) : Dd(e)), kd = () => "3D 디지털 트윈으로 제조 공정 가시화 및  \n 이상 감지 모니터링 체계 구축", Ad = () => "Visualizing manufacturing processes and establishing \n anomaly detection monitoring systems through 3D Digital Twins", jd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? kd(e) : Ad(e)), Md = () => "DEEP.FINE NEWS", Nd = () => "DEEP.FINE NEWS", Pd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Md(e) : Nd(e)), Fd = () => "딥파인의 산업 AI, 공간지능, 스마트글라스 솔루션 적용 사례와 최신 소식을 확인하세요.", Id = () => "Explore the latest updates and real-world use cases of DEEP.FINE's industrial AI, Spatial Intelligence, and smart glasses solutions.", Ld = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Fd(e) : Id(e)), Rd = () => "검증된 산업 AI를 \n 귀사의 현장에 적용해보세요.", zd = () => "Deploy proven industrial AI \n to your job sites today.", Bd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Rd(e) : zd(e)), Vd = () => "고객사의 실제 운영 환경에 맞는 PoC와 도입 전략을 제안드립니다.", Hd = () => "We propose tailored PoC and deployment strategies optimized for your company's actual operational environment.", Ud = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Vd(e) : Hd(e)), Wd = () => "DEEP.FINE의 최신 개발, 전망 및 혁신을 알아보세요.", Gd = () => "Discover the latest developments, perspectives, and innovations from DEEP.FINE.", Kd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Wd(e) : Gd(e)), qd = () => "DEEP.FINE의 혁신을 이끄는 사람들과 조직 구조", Jd = () => "The people and structure driving DEEP.FINE’s innovation", Yd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? qd(e) : Jd(e)), Xd = () => "XR 공간 구축부터 현장 협업, 물류 운영까지 업무 환경에 맞는 솔루션을 함께 설계해 드립니다.", Zd = () => "From XR space development to on-site collaboration and logistics operations, we work together to design solutions tailored to your work environment.", Qd = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Xd(e) : Zd(e)), $d = () => "DEEP.FINE AR.ON — DAO", ef = () => "DEEP.FINE AR.ON — DAO", tf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? $d(e) : ef(e)), nf = () => "산업 현장 어디서든 \n완벽한 업무 비서가 됩니다", rf = () => "Turn real-world spaces into data with AI and control them intelligently", af = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? nf(e) : rf(e)), of = () => "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고,\n 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다.\n 장갑을 낀 채로, 두 손은 자유롭게.", sf = () => "설비 번호를 스캔하면 도면·매뉴얼이 눈앞에 뜨고, 음성 명령으로 체크리스트를 완료하고, 작업 결과가 자동으로 기록됩니다. 장갑을 낀 채로, 두 손은 자유롭게.", cf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? of(e) : sf(e)), lf = () => "Problem & Solution", uf = () => "Problem &amp; Solution", df = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lf(e) : uf(e)), ff = () => "DAO 도입 전과 후, 현장이 달라집니다", pf = () => "Before DAO. After DAO. A Different Operation", mf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ff(e) : pf(e)), hf = () => "숙련자 감소, 경험 의존 판단", gf = () => "Fewer Skilled Workers, Decisions Still Driven by Experience", _f = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hf(e) : gf(e)), vf = () => "산업 현장에서 숙련자가 빠르게 줄고 있지만, 현장 작업은 여전히 사람의 경험과 판단에 의존합니다.", yf = () => "As skilled workers decline, field operations still depend on human experience and judgment.", bf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vf(e) : yf(e)), xf = () => "이중 작업으로 인한 시간 낭비", Sf = () => "Time Loss Due to Redundant Work", Cf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xf(e) : Sf(e)), wf = () => "현장에서 수기로 기록한 후 사무실에서 다시 입력하는 이중 작업이 반복됩니다. ", Tf = () => "Manual records from the field are entered again in the office, resulting in repetitive and inefficient workflows.", Ef = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wf(e) : Tf(e)), Df = () => "종이 기반 데이터, 검색·분석 불가", Of = () => "Paper-Based Data, Hard to Search and Analyze", kf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Df(e) : Of(e)), Af = () => "작업 이력이 종이나 개인 파일로만 남아 필요할 때 찾을 수 없습니다. ", jf = () => "Work records are stored on paper or in personal files,  making them difficult to retrieve when needed.", Mf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Af(e) : jf(e)), Nf = () => "원거리 점검의 높은 비용", Pf = () => "High Costs Associated with Long-Distance Inspections", Ff = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Nf(e) : Pf(e)), If = () => "전문가의 현장 방문으로 출장 비용이 과도하게 발생합니다.", Lf = () => "On-site visits by experts lead to excessive travel costs.", Rf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? If(e) : Lf(e)), zf = () => "설비 번호 인식으로 즉시 확인", Bf = () => "Instant Access via Equipment ID Recognition", Vf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zf(e) : Bf(e)), Hf = () => "설비 번호를 스캔하면 해당 설비의 도면·매뉴얼·체크리스트를 시야에 즉시 띄웁니다", Uf = () => "Hands-Free Operation with Voice Commands", Wf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hf(e) : Uf(e)), Gf = () => "음성 명령으로 양손이 자유롭게", Kf = () => "Scan an equipment ID to instantly access drawings, manuals, and checklists in view.", qf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gf(e) : Kf(e)), Jf = () => "체크리스트 수행, 작업 증빙 기록 등 음성 명령 만으로 모든 작업을 완료합니다. ", Yf = () => "Complete checklists and record work evidence—all with voice commands.", Xf = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jf(e) : Yf(e)), Zf = () => "모든 작업 데이터 자동 디지털화", Qf = () => "Automatic Digitization of All Work Data", $f = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zf(e) : Qf(e)), ep = () => "체크리스트, 사진, 음성 메모가 모두 자동으로 저장되고 실시간 동기화되어 언제든 검색·조회 가능합니다. ", tp = () => "Automatically save and sync checklists, photos, and voice notes—available anytime.", np = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ep(e) : tp(e)), rp = () => "원격 협업으로 출장 없이 해결", ip = () => "Solve Problems Through Remote Collaboration, Without Travel", ap = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rp(e) : ip(e)), op = () => "전문가가 원격으로 AR 지시를 내려 출장을 대체합니다.", sp = () => "Experts provide remote AR guidance—eliminating the need for on-site visits.", cp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? op(e) : sp(e)), lp = () => "Industries", up = () => "Industries", dp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lp(e) : up(e)), fp = () => "정비·점검이 필요한 \n모든 산업 현장에 적용됩니다", pp = () => "Built for Every Field \nThat Requires Maintenance and Inspection", mp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fp(e) : pp(e)), hp = () => "조선·중공업부터 식품·제약까지, \n다양한 산업 환경에 유연하게 대응합니다.", gp = () => "From shipbuilding and heavy industry to food and pharmaceuticals,\n customized and deployed to fit each field environment.", _p = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hp(e) : gp(e)), vp = () => "조선·중공업 설비 정비", yp = () => "Shipbuilding &amp; Heavy Industry Maintenance", bp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vp(e) : yp(e)), xp = () => "제조 공장 품질·위생 점검", Sp = () => "Manufacturing Quality &amp; Hygiene Inspections", Cp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xp(e) : Sp(e)), wp = () => "건설 현장 안전관리", Tp = () => "Construction Safety Management", Ep = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wp(e) : Tp(e)), Dp = () => "에너지·플랜트 설비 유지보수", Op = () => "Energy &amp; Plant Maintenance", kp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dp(e) : Op(e)), Ap = () => "식품·제약 GMP 점검", jp = () => "GMP Inspections for Food &amp; Pharma", Mp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ap(e) : jp(e)), Np = () => "전력·에너지 설비 점검", Pp = () => "Power &amp; Energy Inspections", Fp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Np(e) : Pp(e)), Ip = () => "Features", Lp = () => "Features", Rp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ip(e) : Lp(e)), zp = () => "DAO 핵심 기능으로 산업 현장을 바꿉니다", Bp = () => "We transform industrial workplaces with core DAO features.", Vp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zp(e) : Bp(e)), Hp = () => "비전 어시스트", Up = () => "Vision Assist", Wp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hp(e) : Up(e)), Gp = () => "스마트글라스로 설비 번호를 스캔하면 도면·매뉴얼이 시야에 즉시 표시됩니다.", Kp = () => "Scan equipment IDs with smart glasses, and drawings/manuals appear instantly in your field of view.", qp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gp(e) : Kp(e)), Jp = () => "AI 챗봇으로 유지보수·설치방법·주의 사항 등 매뉴얼을 즉시 탐색해 보세요.", Yp = () => "Use the AI chatbot to instantly search manuals for maintenance, installation instructions, precautions, and more.", Xp = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jp(e) : Yp(e)), Zp = () => "조선 MRO 현장 — 정비 시간 30% 단축", Qp = () => "Shipyard MRO site — 30% reduction in maintenance time", $p = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zp(e) : Qp(e)), em = () => "설비 번호 자동 인식", tm = () => "Automatic equipment ID recognition", nm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? em(e) : tm(e)), rm = () => "QR 스캔 ", im = () => "QR scanning", am = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rm(e) : im(e)), om = () => "도면 뷰어", sm = () => "Drawing viewer", cm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? om(e) : sm(e)), lm = () => "메뉴얼 검색(LLM)", um = () => "Manual search (LLM)", dm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lm(e) : um(e)), fm = () => "사진대지", pm = () => "Photo & Notes", mm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fm(e) : pm(e)), hm = () => "스마트글라스로 현장을 바로 촬영하고, 사진에 음성 메모를 결합하여 작업 현황을 기록합니다.", gm = () => "Capture the site directly with smart glasses and record work status by combining photos with voice memos.", _m = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hm(e) : gm(e)), vm = () => "조선·건설 현장 — 현장 증빙 작성 효율화", ym = () => "Shipyard & construction sites — Streamlined on-site documentation", bm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vm(e) : ym(e)), xm = () => "사진+메모 자동 결합", Sm = () => "Automatic photo + memo combination", Cm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xm(e) : Sm(e)), wm = () => "대시보드 연동", Tm = () => "Dashboard integration", Em = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wm(e) : Tm(e)), Dm = () => "워크플로우", Om = () => "Workflow", km = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dm(e) : Om(e)), Am = () => "업무 표준 체크리스트 생성부터 레포트 작성, 완료 시 결과 보고서(PDF, Excel)가 자동 생성되며,\n모든 데이터는 PC·모바일·스마트글라스에서 실시간 동기화를 지원합니다 ", jm = () => "From creating standard work checklists to report writing, result reports (PDF, Excel) are automatically generated upon completion, and all data supports real-time synchronization across PC, mobile, and smart glasses.", Mm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Am(e) : jm(e)), Nm = () => "실제 객체 위에 증강된 AR 매뉴얼, 3D 객체를 증강시켜 직관적인 정보 인식이 가능합니다. ", Pm = () => "Augmented AR manuals and 3D objects overlaid on real-world objects enable intuitive information recognition.", Fm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Nm(e) : Pm(e)), Im = () => "식품기업 협력사 품질점검 — 업무 생산성 34% 향상", Lm = () => "Food company vendor quality inspection — 34% improvement in work productivity", Rm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Im(e) : Lm(e)), zm = () => "자동 보고서", Bm = () => "Automatic reports", Vm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zm(e) : Bm(e)), Hm = () => "오프라인 모드 지원", Um = () => "Offline mode support", Wm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hm(e) : Um(e)), Gm = () => "IoT 데이터 증강", Km = () => "IoT data augmentation", qm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gm(e) : Km(e)), Jm = () => "AR 매뉴얼", Ym = () => "AR manuals", Xm = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jm(e) : Ym(e)), Zm = () => "영상회의", Qm = () => "Video Conference", $m = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zm(e) : Qm(e)), eh = () => "다자간 영상회의로 AR 드로잉·포인팅으로 직관적인 작업 지시를 내려 출장 없이 현장을 해결합니다.", th = () => "Resolve on-site issues without travel using multi-party video conferencing with AR drawing and pointing for intuitive work instructions.", nh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? eh(e) : th(e)), rh = () => "증간된 AR 객체에 여러 사용자들이 동시 접근하여 멀티 인터렉션도 가능합니다.", ih = () => "Multiple users can simultaneously access augmented AR objects for multi-interaction.", ah = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rh(e) : ih(e)), oh = () => "경기도 원격 안전점검 — 출장 시간·비용 60% 절감", sh = () => "Gyeonggi-do remote safety inspection — 60% reduction in travel time and costs", ch = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? oh(e) : sh(e)), lh = () => "스마트글라스 원격 제어", uh = () => "Smart glasses remote control", dh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lh(e) : uh(e)), fh = () => "체크리스트 동시 작성", ph = () => "Collaborative checklist creation", mh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fh(e) : ph(e)), hh = () => "얼굴 자동 모자이크", gh = () => "Automatic face mosaic", _h = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hh(e) : gh(e)), vh = () => "Proven Results", yh = () => "Proven Results", bh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vh(e) : yh(e)), xh = () => "실제 현장에서 결과로 증명됩니다.", Sh = () => "It is proven by results in the actual field.", Ch = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xh(e) : Sh(e)), wh = () => "업무 효율성 향상", Th = () => "Improved Work Efficiency", Eh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wh(e) : Th(e)), Dh = () => "경기도 전역 시설물 원격 안전점검, \n 조선 산업 AR 작업 가이드 도입 효과", Oh = () => "Remote safety inspections of facilities across Gyeonggi Province, implementation effects of AR work guides in the shipbuilding industry", kh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dh(e) : Oh(e)), Ah = () => "설비 다운타임 감소", jh = () => "Reduced Equipment Downtime", Mh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ah(e) : jh(e)), Nh = () => "제조 설비 MRO 예측 정비 시스템 구축", Ph = () => "Establishment of a predictive maintenance (MRO) system for manufacturing equipment", Fh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Nh(e) : Ph(e)), Ih = () => "교육 시간 단축", Lh = () => "Reduced Training Time", Rh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ih(e) : Lh(e)), zh = () => "조선 산업 신규 작업자 OJT 적용", Bh = () => "Application of OJT for new workers in the shipbuilding industry", Vh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zh(e) : Bh(e)), Hh = () => "작업 표준화", Uh = () => "Standardization of Work Processes", Wh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hh(e) : Uh(e)), Gh = () => "제조 설비 워크플로우 구축 완료", Kh = () => "Completion of workflow setup for manufacturing equipment", qh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gh(e) : Kh(e)), Jh = () => "공공기관 · 시설관리", Yh = () => "Public Institutions · Facility Management", Xh = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jh(e) : Yh(e)), Zh = () => "경기도 전역 시설물 안전점검을 위한\n 스마트글라스 활용 원격안전점검 수행", Qh = () => "Remote Safety Inspection Using Smart Glasses\nfor Facility Safety Inspection Across Gyeonggi-do", $h = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zh(e) : Qh(e)), eg = () => "스마트글라스로 현장의 영상을 공유하면서 실시간으로 보수·보강 대책 등을 컨설팅합니다.", tg = () => "Share real-time on-site footage through smart glasses to provide live consulting on maintenance and reinforcement measures.", ng = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? eg(e) : tg(e)), rg = () => "기존에는 약 40%에 달하는 시설물 안전점검이 원격으로 수행되어,\n 원거리 출장에 필요한 시간과 비용이 60% 절감되고 민원 처리율이 3배 증가하였습니다.", ig = () => "Previously, about 40% of facility safety inspections were conducted remotely,\nreducing travel time and costs by 60% and increasing civil complaint processing rates by 3 times.", ag = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rg(e) : ig(e)), og = /* @__PURE__ */ Object.assign((() => "출장 시간·비용\xA060% 절감"), { parts: (() => [
+	{
+		type: "text",
+		value: "출장 시간·비용\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "60% 절감"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), sg = /* @__PURE__ */ Object.assign((() => "60% Reduction in Travel Time & Cost"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "60% Reduction"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " in Travel Time & Cost"
+	}
+]) }), cg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? og(e) : sg(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof og.parts == "function" ? og.parts(e) : [{
+	type: "text",
+	value: og(e)
+}] : typeof sg.parts == "function" ? sg.parts(e) : [{
+	type: "text",
+	value: sg(e)
+}]) }), lg = /* @__PURE__ */ Object.assign((() => "민원 처리율\xA03배 증가"), { parts: (() => [
+	{
+		type: "text",
+		value: "민원 처리율\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "3배 증가"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), ug = /* @__PURE__ */ Object.assign((() => "3x Increase in Complaint Processing Rate"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "3x Increase"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " in Complaint Processing Rate"
+	}
+]) }), dg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lg(e) : ug(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof lg.parts == "function" ? lg.parts(e) : [{
+	type: "text",
+	value: lg(e)
+}] : typeof ug.parts == "function" ? ug.parts(e) : [{
+	type: "text",
+	value: ug(e)
+}]) }), fg = /* @__PURE__ */ Object.assign((() => "전문가 1인이\xA0다수 현장 원격 점검"), { parts: (() => [
+	{
+		type: "text",
+		value: "전문가 1인이\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "다수 현장 원격 점검"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), pg = /* @__PURE__ */ Object.assign((() => "Remote Multi-Site Inspection by a Single Expert"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Remote Multi-Site Inspection"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " by a Single Expert"
+	}
+]) }), mg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fg(e) : pg(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof fg.parts == "function" ? fg.parts(e) : [{
+	type: "text",
+	value: fg(e)
+}] : typeof pg.parts == "function" ? pg.parts(e) : [{
+	type: "text",
+	value: pg(e)
+}]) }), hg = () => "건설 · 안전관리", gg = () => "Construction · Safety Management", _g = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hg(e) : gg(e)), vg = () => "건설사의 효율적인 안전관리를 위한 상시 모니터링 체계", yg = () => "Continuous Monitoring System for Efficient Safety Management in Construction", bg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vg(e) : yg(e)), xg = () => "REMOTE를 통해 스마트글래스, 무인 드론 등 폭넓은 스마트 디바이스 연계를 지원하여 \n건설현장을 실시간으로 관리하는 원격현장관리플랫폼을 구축하였습니다.", Sg = () => "Built a remote site management platform to manage construction sites in real time\nby supporting a wide range of smart device integrations, including smart glasses and unmanned drones through REMOTE.", Cg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xg(e) : Sg(e)), wg = () => "안전관리에 필요한 점검항목을 스마트글래스로 수행하며 표준화된 업무 프로세스를 제공합니다.", Tg = () => "Perform safety inspection items using smart glasses, providing a standardized business workflow.", Eg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wg(e) : Tg(e)), Dg = /* @__PURE__ */ Object.assign((() => "안전 사고\xA0감소"), { parts: (() => [
+	{
+		type: "text",
+		value: "안전 "
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "사고\xA0감소"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), Og = /* @__PURE__ */ Object.assign((() => "Reduction in Safety Accidents"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Reduction"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " in Safety Accidents"
+	}
+]) }), kg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dg(e) : Og(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof Dg.parts == "function" ? Dg.parts(e) : [{
+	type: "text",
+	value: Dg(e)
+}] : typeof Og.parts == "function" ? Og.parts(e) : [{
+	type: "text",
+	value: Og(e)
+}]) }), Ag = /* @__PURE__ */ Object.assign((() => "실시간 현장\xA0모니터링 체계 구축"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "실시간 현장\xA0모니터링"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " 체계 구축"
+	}
+]) }), jg = /* @__PURE__ */ Object.assign((() => "Real-Time On-Site Monitoring System Established"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Real-Time On-Site Monitoring System"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " Established"
+	}
+]) }), Mg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ag(e) : jg(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof Ag.parts == "function" ? Ag.parts(e) : [{
+	type: "text",
+	value: Ag(e)
+}] : typeof jg.parts == "function" ? jg.parts(e) : [{
+	type: "text",
+	value: jg(e)
+}]) }), Ng = /* @__PURE__ */ Object.assign((() => "표준화된\xA0업무 프로세스 제공"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "표준화된\xA0업무 프로세스"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " 제공"
+	}
+]) }), Pg = /* @__PURE__ */ Object.assign((() => "Standardized Work Processes Provided"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Standardized Work Processes"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " Provided"
+	}
+]) }), Fg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ng(e) : Pg(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof Ng.parts == "function" ? Ng.parts(e) : [{
+	type: "text",
+	value: Ng(e)
+}] : typeof Pg.parts == "function" ? Pg.parts(e) : [{
+	type: "text",
+	value: Pg(e)
+}]) }), Ig = () => "제조 · 품질관리", Lg = () => "Manufacturing · Quality Control", Rg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ig(e) : Lg(e)), zg = () => "식품 기업의 국내외 협력사 \n품질관리 및 위생상태 점검 방법", Bg = () => "Quality Control & Hygiene Status Inspection Methods\nfor Domestic and Global Suppliers of Food Enterprises", Vg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zg(e) : Bg(e)), Hg = () => "REMOTE를 통해 국내외 협력사 품질 관리 및 비대면 A/S 처리가 가능해졌습니다. ", Ug = () => "Enabled domestic/global supplier quality control and non-face-to-face A/S processing through REMOTE.", Wg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hg(e) : Ug(e)), Gg = () => "DAO Workflow을 통해 스마트글래스를 착용하고 제조공장의 위생점검, 안전관리를 단독으로 수행하여 생산성을 34% 향상되었습니다.", Kg = () => "Conducted factory hygiene inspection and safety management independently using smart glasses via DAO Workflow, improving productivity by 34%.", qg = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gg(e) : Kg(e)), Jg = /* @__PURE__ */ Object.assign((() => "업무 생산성\xA034% 향상"), { parts: (() => [
+	{
+		type: "text",
+		value: "업무 생산성\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "34% 향상"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), Yg = /* @__PURE__ */ Object.assign((() => "34% Increase in Work Productivity"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "34% Increase"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " in Work Productivity"
+	}
+]) }), Xg = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jg(e) : Yg(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof Jg.parts == "function" ? Jg.parts(e) : [{
+	type: "text",
+	value: Jg(e)
+}] : typeof Yg.parts == "function" ? Yg.parts(e) : [{
+	type: "text",
+	value: Yg(e)
+}]) }), Zg = /* @__PURE__ */ Object.assign((() => "단독 점검으로\xA0인력 효율화"), { parts: (() => [
+	{
+		type: "text",
+		value: "단독 점검으로\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "인력 효율화"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), Qg = /* @__PURE__ */ Object.assign((() => "Labor Optimization via Independent Inspections"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Labor Optimization"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " via Independent Inspections"
+	}
+]) }), $g = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zg(e) : Qg(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof Zg.parts == "function" ? Zg.parts(e) : [{
+	type: "text",
+	value: Zg(e)
+}] : typeof Qg.parts == "function" ? Qg.parts(e) : [{
+	type: "text",
+	value: Qg(e)
+}]) }), e_ = /* @__PURE__ */ Object.assign((() => "결과 보고서\xA0자동 생성"), { parts: (() => [
+	{
+		type: "text",
+		value: "결과 보고서\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "자동 생성"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), t_ = /* @__PURE__ */ Object.assign((() => "Automated Generation of Result Reports"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Automated Generation"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " of Result Reports"
+	}
+]) }), n_ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? e_(e) : t_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof e_.parts == "function" ? e_.parts(e) : [{
+	type: "text",
+	value: e_(e)
+}] : typeof t_.parts == "function" ? t_.parts(e) : [{
+	type: "text",
+	value: t_(e)
+}]) }), r_ = () => "자동차 · XR 쇼룸", i_ = () => "Automotive · XR Showroom", a_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? r_(e) : i_(e)), o_ = () => "Mercedes Benz XR Showroom", s_ = () => "Mercedes-Benz XR Showroom", c_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? o_(e) : s_(e)), l_ = () => "스마트글래스를 통하여 DEEP.FINE의 초실감형 XR 매뉴얼 및 체험형 가상 메르세데스 비대면 차량 안내 서비스로 \n매장에 직접 방문하지 않더라도 원거리에 있는 고객과 딜러가 함께 벤츠의 기술력과 우수한 실내외 디자인에 대해서 \n편리하게 커뮤니케이션 가능하여 미래 메타버스 디지털 소비의 패러다임을 주도할 수 있습니다.", u_ = () => "Through smart glasses, DEEP.FINE's hyper-realistic XR manual and immersive, virtual, remote Mercedes-Benz vehicle guidance service allow customers and dealers to communicate conveniently regarding Mercedes' technology and exceptional interior/exterior designs without visiting the store in person, thereby leading the paradigm of future metaverse digital consumption.", d_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? l_(e) : u_(e)), f_ = /* @__PURE__ */ Object.assign((() => "XR 쇼룸\xA0글로벌 확대"), { parts: (() => [
+	{
+		type: "text",
+		value: "XR 쇼룸\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "글로벌 확대"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), p_ = /* @__PURE__ */ Object.assign((() => "Global Expansion of XR Showroom"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Global Expansion"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " of XR Showroom"
+	}
+]) }), m_ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? f_(e) : p_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof f_.parts == "function" ? f_.parts(e) : [{
+	type: "text",
+	value: f_(e)
+}] : typeof p_.parts == "function" ? p_.parts(e) : [{
+	type: "text",
+	value: p_(e)
+}]) }), h_ = /* @__PURE__ */ Object.assign((() => "고객 체험 만족도\xA0향상"), { parts: (() => [
+	{
+		type: "text",
+		value: "고객 체험 "
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "만족도\xA0향상"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), g_ = /* @__PURE__ */ Object.assign((() => "Enhanced Customer Experience Satisfaction"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Enhanced"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " Customer Experience Satisfaction"
+	}
+]) }), __ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? h_(e) : g_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof h_.parts == "function" ? h_.parts(e) : [{
+	type: "text",
+	value: h_(e)
+}] : typeof g_.parts == "function" ? g_.parts(e) : [{
+	type: "text",
+	value: g_(e)
+}]) }), v_ = /* @__PURE__ */ Object.assign((() => "가상 전시\xA0비용 절감"), { parts: (() => [
+	{
+		type: "text",
+		value: "가상 전시\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "비용 절감"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), y_ = /* @__PURE__ */ Object.assign((() => "Virtual Exhibition Cost Reduction"), { parts: (() => [
+	{
+		type: "text",
+		value: "Virtual Exhibition "
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "Cost Reduction"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), b_ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? v_(e) : y_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof v_.parts == "function" ? v_.parts(e) : [{
+	type: "text",
+	value: v_(e)
+}] : typeof y_.parts == "function" ? y_.parts(e) : [{
+	type: "text",
+	value: y_(e)
+}]) }), x_ = () => "조선 · 중공업", S_ = () => "Shipbuilding · Heavy Industry", C_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? x_(e) : S_(e)), w_ = () => "대형 선박 정비를 위한 AI 도면 시각화 솔루션", T_ = () => "AI Blueprint Visualization Solution for Large Vessel Maintenance", E_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? w_(e) : T_(e)), D_ = () => "대형 조선 / 해양", O_ = () => "Large Shipbuilding / Marine", k_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? D_(e) : O_(e)), A_ = () => "대형 선박 정비 시 복잡한 도면 해독과 숙련공 부족 문제를 AR 글래스 기반 실시간 작업 가이드 및 원격 전문가 지원으로 해결했습니다. ", j_ = () => "Resolved complex blueprint interpretation issues and skilled labor shortages during large vessel maintenance through AR glasses-based real-time task guides and remote expert support.", M_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? A_(e) : j_(e)), N_ = () => "Vision Assist로 설비 번호 스캔 시 즉시 도면과 작업 지침이 표시되어 정비 시간이 30% 단축되었으며, \n신규 작업자의 OJT 기간도 40% 단축되었습니다.", P_ = () => "Scanning equipment numbers with Vision Assist instantly displays blueprints and task instructions,\ncutting maintenance time by 30% and shortening new worker OJT periods by 40%.", F_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? N_(e) : P_(e)), I_ = /* @__PURE__ */ Object.assign((() => "정비 시간 30% 단축"), { parts: (() => [
+	{
+		type: "text",
+		value: "정비 시간 "
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "30% 단축"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), L_ = /* @__PURE__ */ Object.assign((() => "30% Reduction in Maintenance Time"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "30% Reduction"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " in Maintenance Time"
+	}
+]) }), R_ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? I_(e) : L_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof I_.parts == "function" ? I_.parts(e) : [{
+	type: "text",
+	value: I_(e)
+}] : typeof L_.parts == "function" ? L_.parts(e) : [{
+	type: "text",
+	value: L_(e)
+}]) }), z_ = /* @__PURE__ */ Object.assign((() => "오류율\xA050% 감소"), { parts: (() => [
+	{
+		type: "text",
+		value: "오류율\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "50% 감소"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), B_ = /* @__PURE__ */ Object.assign((() => "50% Decrease in Error Rate"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "50% Decrease"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " in Error Rate"
+	}
+]) }), V_ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? z_(e) : B_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof z_.parts == "function" ? z_.parts(e) : [{
+	type: "text",
+	value: z_(e)
+}] : typeof B_.parts == "function" ? B_.parts(e) : [{
+	type: "text",
+	value: B_(e)
+}]) }), H_ = /* @__PURE__ */ Object.assign((() => "신규 작업자 OJT 기간\xA040% 단축"), { parts: (() => [
+	{
+		type: "text",
+		value: "신규 작업자 OJT 기간\xA0"
+	},
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "40% 단축"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	}
+]) }), U_ = /* @__PURE__ */ Object.assign((() => "40% Shortening of New Worker OJT Period"), { parts: (() => [
+	{
+		type: "markup-start",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: "40% Shortening"
+	},
+	{
+		type: "markup-end",
+		name: "b",
+		options: {},
+		attributes: {}
+	},
+	{
+		type: "text",
+		value: " of New Worker OJT Period"
+	}
+]) }), W_ = /* @__PURE__ */ Object.assign(((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? H_(e) : U_(e)), { parts: ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? typeof H_.parts == "function" ? H_.parts(e) : [{
+	type: "text",
+	value: H_(e)
+}] : typeof U_.parts == "function" ? U_.parts(e) : [{
+	type: "text",
+	value: U_(e)
+}]) }), G_ = () => "DEEP.FINE의 혁신을 이끄는 사람들과 조직 구조", K_ = () => "People and Organizational Structure Leading DEEP.FINE's Innovation", q_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? G_(e) : K_(e)), J_ = () => "지금 DAO를 도입하고", Y_ = () => "Adopt a DAO Today and", X_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? J_(e) : Y_(e)), Z_ = () => "운영하세요.", Q_ = () => "Streamline Your Operations.", $_ = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Z_(e) : Q_(e)), ev = () => "담당자가 현장 상황에 맞는 맞춤 도입 방안을 제안드립니다. \n 부담 없이 문의해 주세요.", tv = () => "Our experts will propose a tailored implementation plan optimized for your site operations.\nFeel free to reach out to us.", nv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ev(e) : tv(e)), rv = () => "DAO는 어떤 디바이스를 지원하나요?", iv = () => "What devices does DAO support?", av = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rv(e) : iv(e)), ov = () => "DAO는 다양한 디바이스 환경을 지원합니다. \n\n현장 작업용\n스마트글래스: RealWear, Vuzix, Google Glass Enterprise, Magic Leap 등 * 주요 산업용 \n스마트글래스를 모두 지원하며, 특정 모델에 대한 문의는 별도 상담을 통해 확인 가능합니다.\n모바일: Android, iOS\n\n 관리/모니터링용\n• PC 웹 기반 CMS (관리자 시스템)", sv = () => "DAO supports a wide range of device environments.\n\nFor on-site work:\n• Smart glasses: RealWear, Vuzix, Google Glass Enterprise, Magic Leap, etc. * All major industrial smart glasses are supported, and inquiries about specific models can be confirmed through separate consultation.\n• Mobile: Android, iOS\n\nFor management/monitoring:\n• PC web-based CMS (administrator system)", cv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ov(e) : sv(e)), lv = () => "오프라인(인터넷 없는) 환경에서도 사용할 수 있나요?", uv = () => "Can it be used offline (without internet)?", dv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lv(e) : uv(e)), fv = () => "네, 가능합니다.\n\nDAO는 오프라인 모드를 지원하여 인터넷 연결 없이도 체크리스트 작성, 사진 촬영, 데이터 기록이 가능합니다.\n\n인터넷 연결 시 자동으로 서버에 동기화됩니다.", pv = () => "Yes, it's possible.\n\nDAO supports offline mode, allowing checklist creation, photo capture, and data recording without an internet connection.\n\nWhen internet connectivity is available, data automatically syncs to the server.", mv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fv(e) : pv(e)), hv = () => "우리 회사 환경에 맞게 커스터마이징할 수 있나요?", gv = () => "Can it be customized to fit our company environment?", _v = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hv(e) : gv(e)), vv = () => "네, 가능합니다.\n\nDAO는 제조, 건설, 물류, 설비 유지보수 등 다양한 산업 현장에서 바로 활용 가능한 범용 기능을 제공합니다.\n\n기존 시스템 연동(ERP, MES, CMMS), 업무 워크플로우 설계, \n보고서 양식 변경 등 기업별 특화 요구사항은 별도 상담을 통해 지원 가능합니다.", yv = () => "Yes, it's possible.\n\nDAO provides universal features ready to use across various industrial sites including manufacturing, construction, logistics, and equipment maintenance.\n\nCompany-specific requirements such as existing system integration (ERP, MES, CMMS), workflow design, and report template changes can be supported through separate consultation.", bv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vv(e) : yv(e)), xv = () => "솔루션 도입 전 체험해볼 수 있나요?", Sv = () => "Can I try the solution before adoption?", Cv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xv(e) : Sv(e)), wv = () => "네, 가능합니다.\n\n제품 데모를 신청하시면 체험용 계정 발급을 위한 안내 메일을 보내드립니다.\n발급된 계정으로 2~4주간 실제 업무 환경에서 DAO를 자유롭게 사용해보실 수 있으며,\n\n체험 후 만족하시면 본 도입을 진행하실 수 있습니다.", Tv = () => "Yes, it's possible.\n\nIf you request a product demo, we'll send a guidance email for trial account issuance.\nWith the issued account, you can freely use DAO in your actual work environment for 2–4 weeks,\n\nand if you're satisfied after the trial, you can proceed with full adoption.", Ev = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wv(e) : Tv(e)), Dv = () => "도입 비용과 기술 지원은 어떻게 제공되나요?", Ov = () => "How are implementation costs and technical support provided?", kv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dv(e) : Ov(e)), Av = () => "DAO는 계정당 과금 방식으로 월간 또는 연간 구독으로 이용하실 수 있습니다.\n도입 시 온라인 또는 오프라인으로 초기 교육 지원이 가능하며, 전담 기술 지원팀이 운영되어 안정적인 사용을 지원합니다.\n자세한 요금제 및 지원 내용은 문의를 통해 상담해드립니다.", jv = () => "DAO is billed per account and available as a monthly or annual subscription.\n\nInitial training support is available online or offline during implementation, and a dedicated technical support team operates to ensure stable usage.\n\nDetailed pricing plans and support content can be discussed through consultation upon inquiry.", Mv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Av(e) : jv(e)), Nv = () => "조선", Pv = () => "Shipbuilding", Fv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Nv(e) : Pv(e)), Iv = () => "제조", Lv = () => "Manufacturing", Rv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Iv(e) : Lv(e)), zv = () => "건설", Bv = () => "Construction", Vv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zv(e) : Bv(e)), Hv = () => "에너지", Uv = () => "Energy", Wv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hv(e) : Uv(e)), Gv = () => "제약", Kv = () => "Pharmaceuticals", qv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gv(e) : Kv(e)), Jv = () => "바이오", Yv = () => "Bio", Xv = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jv(e) : Yv(e)), Zv = () => "유통", Qv = () => "Distribution & Logistics", $v = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zv(e) : Qv(e)), ey = () => "리테일", ty = () => "Retail", ny = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ey(e) : ty(e)), ry = () => "공공기관", iy = () => "Public Sector", ay = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ry(e) : iy(e)), oy = () => "부동산", sy = () => "Real Estate", cy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? oy(e) : sy(e)), ly = () => "딥파인은 AI와 Spatial Computing 기술을 기반으로 산업 현장의 운영 방식을 바꾸고 있습니다.", uy = () => "DEEP.FINE is transforming industrial operations through AI and Spatial Computing technology.", dy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ly(e) : uy(e)), fy = () => "우리는 현장의 작업과 공간 데이터를 연결해 수작업과 경험에 의존하던 업무를 표준화하고, 더 안전하고 효율적인 운영 구조로 전환하고자 합니다. 스마트글래스, Vision AI, VPS, 3D 공간 데이터 기술은 이를 실현하기 위한 딥파인의 핵심 기반입니다.", py = () => "We connect on-site operational data with spatial data to standardize tasks that previously relied on manual labor and individual experience, shifting toward a safer, more efficient operational framework. Smart glasses, Vision AI, VPS, and 3D spatial data technology serve as the core foundations of DEEP.FINE to realize this vision.", my = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fy(e) : py(e)), hy = () => "딥파인은 물류, 제조, 조선·중공업, MRO, 관광·공공 분야에서 고객과 함께 기술을 검증하고 상용화해 왔습니다.", gy = () => "DEEP.FINE has consistently validated and commercialized its technology alongside customers in logistics, manufacturing, shipbuilding & heavy industry, MRO, tourism, and public sectors.", _y = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hy(e) : gy(e)), vy = () => "이제는 검증된 기술을 더 많은 현장과 산업으로 확장하며, 고객의 성과로 증명되는 산업 AX 솔루션을 만들어가겠습니다.", yy = () => "Building upon these proven technologies, we are now expanding into a wider range of job sites and industries to deliver industrial AX solutions proven by our customers' success.", by = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vy(e) : yy(e)), xy = () => "김현배", Sy = () => "Hyunbae Kim", Cy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xy(e) : Sy(e)), wy = () => "기술개발본부", Ty = () => "Technology Development Division", Ey = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wy(e) : Ty(e)), Dy = () => "딥파인의 Spatial AI와 산업 운영 솔루션을 구현하는 핵심 기술을 개발합니다. 비전 AI, 3D 공간 매핑, VPS, 클라우드, 스마트글래스 애플리케이션까지 현장에서 작동하는 기술 기반을 만듭니다.", Oy = () => "We develop the core technologies that realize DEEP.FINE's Spatial AI and industrial operational solutions. From Vision AI, 3D spatial mapping, and VPS to cloud systems and smart glass applications, we build the technological foundation that works directly on the job site.", ky = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dy(e) : Oy(e)), Ay = () => "AI·Vision 개발: 산업 현장 인식, 객체 인식, Vision AI, AI Agent 기술 개발", jy = () => "AI & Vision Development: Developing industrial scene recognition, object recognition, Vision AI, and AI Agent technologies.", My = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ay(e) : jy(e)), Ny = () => "플랫폼 개발: 클라우드, 백엔드, API, 데이터 처리 인프라 구축", Py = () => "Platform Development: Building cloud architectures, backends, APIs, and data processing infrastructures.", Fy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ny(e) : Py(e)), Iy = () => "애플리케이션 개발: 모바일, 웹, 스마트글래스, XR 기반 현장 앱", Ly = () => "Application Development: Creating mobile, web, smart glass, and XR-based on-site applications.", Ry = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Iy(e) : Ly(e)), zy = () => "Spatial Computing 개발: VPS, 3D 매핑, 실내 측위, 공간 데이터 처리 기술 개발", By = () => "Spatial Computing Development: Advancing VPS, 3D mapping, indoor positioning, and spatial data processing technologies.", Vy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zy(e) : By(e)), Hy = () => "제품·서비스본부", Uy = () => "Product & Service Division", Wy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hy(e) : Uy(e)), Gy = () => "산업 현장의 요구사항을 실제 제품과 서비스 경험으로 설계합니다. 고객의 업무 프로세스를 분석하고, 사용자가 현장에서 쉽게 쓸 수 있는 화면, 기능, 콘텐츠, 도입 구조를 만듭니다.", Ky = () => "We translate industrial site requirements into actual product and service experiences. We analyze client workflows to design interfaces, features, contents, and deployment structures that users can easily navigate on-site.", qy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gy(e) : Ky(e)), Jy = () => "제품기획: 솔루션 방향성, 기능 우선순위, 제품 로드맵 수립", Yy = () => "Product Planning: Establishing solution direction, feature prioritization, and product roadmaps.", Xy = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jy(e) : Yy(e)), Zy = () => "UX/UI 디자인: 웹, 모바일, 스마트글래스, XR 환경에 맞는 사용자 경험 설계", Qy = () => "UX/UI Design: Designing user experiences tailored for web, mobile, smart glass, and XR environments.", $y = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zy(e) : Qy(e)), eb = () => "프로젝트 관리: PoC, 구축, 고객 요구사항, 일정 및 산출물 관리", tb = () => "Project Management: Managing PoCs, system deployment, client requirements, schedules, and deliverables.", nb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? eb(e) : tb(e)), rb = () => "콘텐츠·서비스 설계: 3D 에셋, 매뉴얼, 업무 시나리오, 현장형 서비스 콘텐츠 제작", ib = () => "Content & Service Design: Creating 3D assets, manuals, operational scenarios, and field-optimized service content.", ab = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rb(e) : ib(e)), ob = () => "경영지원본부", sb = () => "Business Support Division", cb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ob(e) : sb(e)), lb = () => "딥파인이 안정적으로 성장할 수 있도록 인사, 재무, 총무, 법무, 내부 운영 체계를 관리합니다. 구성원이 제품 개발과 고객 대응에 집중할 수 있는 환경을 조성하고, 조직 운영의 안정성과 효율성을 높이는 기반을 만듭니다.", ub = () => "We manage HR, finance, general affairs, legal affairs, and internal operational frameworks to ensure DEEP.FINE's sustainable growth. We create an environment where team members can fully focus on product development and client relations, enhancing the stability and efficiency of organizational operations.", db = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lb(e) : ub(e)), fb = () => "재무·회계: 회계, 자금, 예산, 정산, 경영 리포트 관리", pb = () => "Finance & Accounting: Managing accounting, funding, budgeting, settlements, and financial reporting.", mb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fb(e) : pb(e)), hb = () => "인사·조직문화: 채용, 온보딩, 평가, 조직문화 및 구성원 경험 관리", gb = () => "HR & Culture: Overseeing recruitment, onboarding, performance evaluations, organizational culture, and employee experiences.", _b = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hb(e) : gb(e)), vb = () => "총무·자산관리: 사무환경, 자산, 계약, 구매 및 행정 업무 지원", yb = () => "General Affairs & Asset Management: Supporting workplace environments, assets, contracts, procurement, and administrative tasks.", bb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vb(e) : yb(e)), xb = () => "운영지원: 내부 프로세스, 문서, 컴플라이언스, 업무 효율화 지원", Sb = () => "Operations Support: Facilitating internal processes, documentation, compliance, and workflow optimization.", Cb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xb(e) : Sb(e)), wb = () => "세일즈·마케팅본부", Tb = () => "Sales & Marketing Division", Eb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wb(e) : Tb(e)), Db = () => "딥파인의 기술과 솔루션을 시장 기회와 고객 수요로 연결합니다. 대기업 고객, 전략 파트너, 전시, PR, 디지털 마케팅을 통해 사업 성장과 브랜드 인지도를 확대합니다.", Ob = () => "We bridge DEEP.FINE's technology and solutions with market opportunities and customer demands. We accelerate business growth and expand brand awareness through enterprise clients, strategic partnerships, exhibitions, PR, and digital marketing.", kb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Db(e) : Ob(e)), Ab = () => "엔터프라이즈 세일즈: 대기업 고객 발굴, 영업 기회 관리, 전략 계정 대응", jb = () => "Enterprise Sales: Identifying enterprise clients, managing sales pipelines, and handling strategic accounts.", Mb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ab(e) : jb(e)), Nb = () => "전략 파트너십: 그룹사, 공공기관, 산업별 파트너와의 협력 구조 구축", Pb = () => "Strategic Partnerships: Establishing collaborative frameworks with corporate groups, public institutions, and industry-specific partners.", Fb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Nb(e) : Pb(e)), Ib = () => "마케팅 전략: 캠페인, 전시, PR, 콘텐츠, 리드 제너레이션 기획", Lb = () => "Marketing Strategy: Planning campaigns, exhibitions, PR, content creation, and lead generation.", Rb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ib(e) : Lb(e)), zb = () => "브랜드 커뮤니케이션: 온·오프라인 채널을 통한 브랜드 인지도 및 신뢰도 강화", Bb = () => "Brand Communication: Strengthening brand awareness and credibility across online and offline channels.", Vb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zb(e) : Bb(e)), Hb = () => "기술로 더 나은 미래를 만들어갈 새로운 동료를 기다립니다.", Ub = () => "We’re looking forward to welcoming new colleagues who will help create a better future through technology.", Wb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hb(e) : Ub(e)), Gb = () => "채용 공고", Kb = () => "Join Us", qb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gb(e) : Kb(e)), Jb = () => "설립과 시장 진입", Yb = () => "Foundation and market entry", Xb = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jb(e) : Yb(e)), Zb = () => "상용화와 기업 고객 확대", Qb = () => "Commercialization and expansion of enterprise clients", $b = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zb(e) : Qb(e)), ex = () => "사업 확장과 레퍼런스 구축", tx = () => "Business expansion and reference building", nx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ex(e) : tx(e)), rx = () => "도약과 스케일업", ix = () => "Leap forward and scale-up", ax = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rx(e) : ix(e)), ox = () => "주소", sx = () => "Address", cx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? ox(e) : sx(e)), lx = () => "서울특별시 용산구 한강대로30길 25, 업무동 10층 1호 (한강로2가, 아스테리움 용산)", ux = () => "Business Tower 10F #1, 25, Hangang-daero 30-gil, Yongsan-gu, Seoul, Republic of Korea", dx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lx(e) : ux(e)), fx = () => "대표번호", px = () => "Main Contact Number", mx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? fx(e) : px(e)), hx = () => "070-4633-2487~8", gx = () => "+82 70-4633-2487~8", _x = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? hx(e) : gx(e)), vx = () => "평일 10시~17시까지 고객센터 운영 (공휴일 휴무)", yx = () => "Customer service is available from 10 AM(KST) to 5 PM(KST) on weekdays and closed on public holidays", bx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? vx(e) : yx(e)), xx = () => "이메일", Sx = () => "Email", Cx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? xx(e) : Sx(e)), wx = () => "help@deepfine.com", Tx = () => "help@deepfine.com", Ex = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? wx(e) : Tx(e)), Dx = () => "팩스", Ox = () => "Fax", kx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Dx(e) : Ox(e)), Ax = () => "+82 70-4009-7779", jx = () => "+82 70-4009-7779", Mx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ax(e) : jx(e)), Nx = () => "딥파인은 스마트글라스, Vision AI, AR, 공간컴퓨팅 기술을 기반으로 \n물류·제조·MRO·공공 현장의 작업과 공간 데이터를 연결합니다.", Px = () => "DEEP.FINE connects operational and spatial data across logistics, manufacturing, MRO, and public sectors \n based on smart glasses, Vision AI, AR, and Spatial Computing technologies.", Fx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Nx(e) : Px(e)), Ix = () => "수작업과 숙련자 의존으로 운영되던 현장을 \n표준화된 디지털 워크플로우와 산업 AI 운영 플랫폼으로 전환합니다.", Lx = () => "We transition job sites from manual labor and expert dependency \n into standardized digital workflows and industrial AI operational platforms.", Rx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Ix(e) : Lx(e)), zx = () => "도입 문의", Bx = () => "Introduction Inquiry", Vx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? zx(e) : Bx(e)), Hx = () => "자세히 보기", Ux = () => "Learn More", Wx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Hx(e) : Ux(e)), Gx = () => "회사 소개서 다운로드", Kx = () => "Company Introduction DEEPFINE", qx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Gx(e) : Kx(e)), Jx = () => "더보기", Yx = () => "See more", Xx = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Jx(e) : Yx(e)), Zx = () => "바코드 피킹과 가상 DAS를 14일 무료 체험해보세요", Qx = () => "Try barcode picking and virtual DAS free for 14 days", $x = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? Zx(e) : Qx(e)), eS = () => "별도 장비 설치 없이 태블릿 앱에서 바로 테스트할 수 있습니다.", tS = () => "est it instantly on a tablet app without installing any additional equipment.", nS = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? eS(e) : tS(e)), rS = () => "트라이얼 신청하기", iS = () => "Start Free Trial", aS = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? rS(e) : iS(e)), oS = () => "무료 데모 신청하기", sS = () => "Start Free Trial", cS = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? oS(e) : sS(e)), lS = () => "견적 문의하기", uS = () => "Request a quote", dS = ((e = {}, t = {}) => (t.locale ?? Z()) === "ko" ? lS(e) : uS(e)), fS = /* @__PURE__ */ B("<section class=\"rounded-xl bg-black bg-(image:--bg-mo) bg-cover bg-center p-5 text-white transition-all lg:bg-(image:--bg-pc) lg:p-15\"><ul class=\"grid grid-cols-1 gap-7.5 lg:grid-cols-2\"><li class=\"space-y-2\"><p class=\"text-2md text-white/70 lg:text-lg\"> </p> <address class=\"text-2md font-bold lg:text-lg\"> </address></li> <li class=\"space-y-2\"><p class=\"text-2md text-white/70 lg:text-lg\"> </p> <a class=\"text-2md font-bold lg:text-lg\"> </a> <p class=\"text-2md text-white/70 lg:text-lg\"> </p></li> <li class=\"space-y-2\"><p class=\"text-2md text-white/70 lg:text-lg\"> </p> <a class=\"text-2md font-bold lg:text-lg\"> </a></li> <li class=\"space-y-2\"><p class=\"text-2md text-white/70 lg:text-lg\"> </p> <p class=\"text-2md font-bold lg:text-lg\"> </p></li></ul></section>");
+function pS(e, t) {
+	st(t, !0);
+	var n = fS();
+	ca(n, "", {}, {
+		"--bg-mo": "url(/output/imgs/visual/bg-addr-mo.png)",
+		"--bg-pc": "url(/output/imgs/visual/bg-addr-pc.png)"
+	});
+	var r = F(n), i = F(r), a = F(i), o = F(a, !0);
+	M(a);
+	var s = I(a, 2), c = F(s, !0);
+	M(s), M(i);
+	var l = I(i, 2), u = F(l), d = F(u, !0);
+	M(u);
+	var f = I(u, 2), p = F(f, !0);
+	M(f);
+	var m = I(f, 2), h = F(m, !0);
+	M(m), M(l);
+	var g = I(l, 2), _ = F(g), v = F(_, !0);
+	M(_);
+	var y = I(_, 2), b = F(y, !0);
+	M(y), M(g);
+	var x = I(g, 2), S = F(x), C = F(S, !0);
+	M(S);
+	var w = I(S, 2), T = F(w, !0);
+	M(w), M(x), M(r), Qi(r, () => Jc), M(n), L((e, t, n, r, i, a, s, l, u, m, g) => {
+		H(o, e), H(c, t), H(d, n), G(f, "href", `tel:${r ?? ""}`), H(p, i), H(h, a), H(v, s), G(y, "href", `mailto:${l ?? ""}`), H(b, u), H(C, m), H(T, g);
+	}, [
+		() => cx?.(),
+		() => dx?.(),
+		() => mx?.(),
+		() => _x?.(),
+		() => _x?.(),
+		() => bx?.(),
+		() => Cx?.(),
+		() => Ex?.(),
+		() => Ex?.(),
+		() => kx?.(),
+		() => Mx?.()
+	]), V(e, n), ct();
+}
+customElements.define("address-section", Ha(pS, {}, [], []));
+//#endregion
+//#region src/lib/components/footer/FooterAdress.svelte
+var mS = /* @__PURE__ */ B("<img alt=\"DEEP.FINE\" class=\"w-35 lg:w-69.25\"/>"), hS = /* @__PURE__ */ B("<section class=\"flex flex-col gap-5\"><p><!></p> <div class=\"grid grid-cols-1\"><p class=\"text-2md text-black lg:text-2xl\"> </p> <address> </address></div> <ul class=\"grid grid-cols-1 gap-2 lg:pt-7.5\"><li class=\"grid grid-cols-[72px_1fr]\"><p class=\"text-2md text-black lg:text-lg\"> </p> <a> </a></li> <li class=\"grid grid-cols-[72px_1fr]\"><p class=\"text-2md text-black lg:text-lg\"> </p> <a> </a></li> <li class=\"grid grid-cols-[72px_1fr]\"><p class=\"text-2md text-black lg:text-lg\"> </p> <p> </p></li></ul></section>");
+function gS(e, t) {
+	st(t, !0);
+	var n = hS(), r = F(n), i = F(r), a = (e) => {
+		var t = ui(), n = Pn(t), r = (e) => {
+			var t = mS();
+			G(t, "src", "/output/imgs/logo/logo-deepfine.svg"), V(e, t);
+		};
+		U(n, (e) => {
+			e(r, -1);
+		}), V(e, t);
+	};
+	U(i, (e) => {
+		e(a);
+	}), M(r);
+	var o = I(r, 2), s = F(o), c = F(s, !0);
+	M(s);
+	var l = I(s, 2), u = F(l, !0);
+	M(l), M(o);
+	var d = I(o, 2), f = F(d), p = F(f), m = F(p, !0);
+	M(p);
+	var h = I(p, 2), g = F(h, !0);
+	M(h), M(f);
+	var _ = I(f, 2), v = F(_), y = F(v, !0);
+	M(v);
+	var b = I(v, 2), x = F(b, !0);
+	M(b), M(_);
+	var S = I(_, 2), C = F(S), w = F(C, !0);
+	M(C);
+	var T = I(C, 2), E = F(T, !0);
+	M(T), M(S), M(d), M(n), L((e, t, n, r, i, a, o, s, l, d) => {
+		H(c, e), H(u, t), H(m, n), G(h, "href", `tel:${r ?? ""}`), H(g, i), H(y, a), G(b, "href", `mailto:${o ?? ""}`), H(x, s), H(w, l), H(E, d);
+	}, [
+		() => cx?.(),
+		() => dx?.(),
+		() => mx?.(),
+		() => _x?.(),
+		() => _x?.(),
+		() => Cx?.(),
+		() => Ex?.(),
+		() => Ex?.(),
+		() => kx?.(),
+		() => Mx?.()
+	]), V(e, n), ct();
+}
+customElements.define("footer-adress", Ha(gS, {}, [], []));
+//#endregion
+//#region src/lib/components/footer/FooterCopy.svelte
+var _S = /* @__PURE__ */ B("<section class=\"border-t-dashed border-t-d9d9d9 border-t p-5 text-center\"><p> </p></section>");
+function vS(e, t) {
+	st(t, !0);
+	var n = _S(), r = F(n), i = F(r);
+	M(r), M(n), L((e) => H(i, `ⓒ ${e ?? ""}. DEEP.FINE Co., Ltd. All rights reserved.`), [() => (/* @__PURE__ */ new Date()).getUTCFullYear()]), V(e, n), ct();
+}
+customElements.define("footer-copy", Ha(vS, {}, [], []));
+//#endregion
+//#region src/lib/paraglide/runtime.js
+var yS = {}, bS = ["ko", "en"], xS = "PARAGLIDE_LOCALE", SS = 3456e4, CS = "PARAGLIDE_LOCALE", wS = [
+	"localStorage",
+	"cookie",
+	"preferredLanguage",
+	"baseLocale"
+], TS = [], ES, DS;
+function OS(e) {
+	if (TS.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (ES === t) return DS;
+	let n = new URL(t, "http://dummy.com"), r;
+	for (let e of TS) if (new yS(e.match, n.href).exec(n.href)) {
+		r = e;
+		break;
+	}
+	return ES = t, DS = r, r;
+}
+function kS(e) {
+	let t = OS(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : wS;
+}
+var AS = void 0;
+globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
+var jS = !1, MS = () => {
+	if (AS) {
+		let e = AS?.getStore()?.locale;
+		if (e) return e;
+	}
+	let e = wS;
+	typeof window < "u" && window.location?.href && (e = kS(window.location.href));
+	let t = NS(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return jS || (jS = !0, FS(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+};
+function NS(e, t) {
+	let n;
+	for (let t of e) {
+		if (t === "cookie") n = RS();
+		else if (t === "baseLocale") n = "ko";
+		else if (t === "preferredLanguage") n = zS();
+		else if (t === "localStorage") n = localStorage.getItem("PARAGLIDE_LOCALE") ?? void 0;
+		else if (VS(t) && BS.has(t)) {
+			let e = BS.get(t);
+			if (e) {
+				let t = e.getLocale();
+				if (t instanceof Promise) continue;
+				if (t !== void 0) return LS(t);
+			}
+		}
+		let e = IS(n);
+		if (e) return e;
+	}
+}
+var PS = (e) => {
+	e ? window.location.href = e : window.location.reload();
+}, FS = (e, t) => {
+	let n = {
+		reload: !0,
+		...t
+	}, r;
+	try {
+		r = MS();
+	} catch {}
+	let i = [], a = wS;
+	typeof window < "u" && window.location?.href && (a = kS(window.location.href));
+	for (let t of a) if (t === "cookie") {
+		if (typeof document > "u" || typeof window > "u") continue;
+		let t = `${xS}=${e}; path=/; max-age=${SS}`;
+		document.cookie = t;
+	} else if (t === "baseLocale") continue;
+	else if (t === "localStorage" && typeof window < "u") localStorage.setItem(CS, e);
+	else if (VS(t) && BS.has(t)) {
+		let n = BS.get(t);
+		if (n) {
+			let r = n.setLocale(e);
+			r instanceof Promise && (r = r.catch((e) => {
+				throw Error(`Custom strategy "${t}" setLocale failed.`, { cause: e });
+			}), i.push(r));
+		}
+	}
+	let o = () => {
+		n.reload && window.location && e !== r && PS(void 0);
+	};
+	if (i.length) return Promise.all(i).then(() => {
+		o();
+	});
+	o();
+};
+function IS(e) {
+	if (typeof e != "string") return;
+	let t = e.toLowerCase();
+	for (let e of bS) if (e.toLowerCase() === t) return e;
+}
+function LS(e) {
+	let t = IS(e);
+	if (t) return t;
+	throw Error(`Invalid locale: ${e}. Expected one of: ${bS.join(", ")}`);
+}
+function RS() {
+	if (typeof document > "u" || !document.cookie) return;
+	let e = document.cookie.match(RegExp(`(^| )${xS}=([^;]+)`))?.[2];
+	return IS(e);
+}
+function zS() {
+	if (!navigator?.languages?.length) return;
+	let e = navigator.languages.map((e) => ({
+		fullTag: e,
+		baseTag: e.split("-")[0]
+	}));
+	for (let t of e) {
+		let e = IS(t.fullTag);
+		if (e) return e;
+		let n = IS(t.baseTag);
+		if (n) return n;
+	}
+}
+var BS = /* @__PURE__ */ new Map();
+function VS(e) {
+	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
+}
+//#endregion
+//#region src/lib/components/footer/FooterLang.svelte
+var HS = /* @__PURE__ */ B("<div class=\"sr-only\"> </div>");
+function US(e, t) {
+	st(t, !0);
+	let n = q(t, "lang", 15, "ko");
+	if (typeof document < "u") {
+		let e = (document?.documentElement?.lang || "ko").slice(0, 2);
+		MS() !== e && FS(e), n(e);
+	}
+	var r = {
+		get lang() {
+			return n();
+		},
+		set lang(e = "ko") {
+			n(e), N();
+		}
+	}, i = HS(), a = F(i, !0);
+	return M(i), L((e) => H(a, e), [() => MS()]), V(e, i), ct(r);
+}
+customElements.define("footer-lang", Ha(US, { lang: {
+	reflect: !0,
+	type: "String"
+} }, [], []));
+//#endregion
+//#region src/lib/components/footer/FooterSns.svelte
+var WS = /* @__PURE__ */ B("<ul class=\"inline-flex w-full items-center justify-center gap-7.5 lg:justify-end\"><li class=\"size-12\"><a href=\"https://www.instagram.com/deepfinecorp/\" class=\"flex size-full\" title=\"new window page insagram\" target=\"_blank\" rel=\"noopener noreferrer\"><img loading=\"lazy\" alt=\"insagram\" class=\"h-full\"/> <span class=\"sr-only\">insagram</span></a></li> <li class=\"size-12\"><a href=\"https://www.youtube.com/channel/UCRzU2-rKT06nbB8IVxOg0Lg\" class=\"flex size-full\" title=\"new window page youtube\" target=\"_blank\" rel=\"noopener noreferrer\"><img loading=\"lazy\" alt=\"youtube\" class=\"h-full\"/> <span class=\"sr-only\">youtube</span></a></li> <li class=\"size-12\"><a href=\"https://www.linkedin.com/company/deepfine/mycompany/\" class=\"flex size-full\" title=\"new window page linkedin\" target=\"_blank\" rel=\"noopener noreferrer\"><img loading=\"lazy\" alt=\"youtube\" class=\"h-full\"/> <span class=\"sr-only\">linkedin</span></a></li> <li class=\"size-12\"><a href=\"https://blog.naver.com/PostList.naver?blogId=deepfine0722&amp;categoryNo=0&amp;from=postList\" class=\"flex size-full\" title=\"new window page blog naver\" target=\"_blank\" rel=\"noopener noreferrer\"><img loading=\"lazy\" alt=\"youtube\" class=\"h-full\"/> <span class=\"sr-only\">naver blog</span></a></li></ul>");
+function GS(e) {
+	var t = WS(), n = F(t), r = F(n);
+	G(F(r), "src", "/output/imgs/logo/icon-instagram.svg"), Je(2), M(r), M(n);
+	var i = I(n, 2), a = F(i);
+	G(F(a), "src", "/output/imgs/logo/icon-youtube.svg"), Je(2), M(a), M(i);
+	var o = I(i, 2), s = F(o);
+	G(F(s), "src", "/output/imgs/logo/icon-linkedin.svg"), Je(2), M(s), M(o);
+	var c = I(o, 2), l = F(c);
+	G(F(l), "src", "/output/imgs/logo/icon-blog.svg"), Je(2), M(l), M(c), M(t), V(e, t);
+}
+customElements.define("footer-sns", Ha(GS, {}, [], []));
+//#endregion
+//#region src/lib/components/heading/HeaderImgs.svelte
+var KS = /* @__PURE__ */ B("<footer-lang></footer-lang>", 2), qS = /* @__PURE__ */ B("<picture class=\"flex w-full\"><img loading=\"lazy\" alt=\"DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations\" class=\"w-41.75 lg:w-full\"/></picture> <!>", 1);
+function JS(e, t) {
+	st(t, !0);
+	let n = q(t, "name", 7, ""), r = {
+		logo: "/output/imgs/logo/logo-deepfine.svg",
+		left: "/output/imgs/logo/img-header.png",
+		logi: "/output/imgs/logo/logo-header-logi.png",
+		dao: "/output/imgs/logo/log-header-dao.png",
+		dsc: "/output/imgs/logo/logo-header-dsc.png"
+	}, i = /* @__PURE__ */ P(() => n() in r ? r[n()] : null);
+	var a = {
+		get name() {
+			return n();
+		},
+		set name(e = "") {
+			n(e), N();
+		}
+	}, o = qS(), s = Pn(o), c = F(s);
+	M(s);
+	var l = I(s, 2), u = (e) => {
+		var t = KS();
+		W(t, 1, "sr-only"), V(e, t);
+	};
+	return U(l, (e) => {
+		n() === "logo" && e(u);
+	}), L(() => G(c, "src", z(i))), V(e, o), ct(a);
+}
+customElements.define("header-imgs", Ha(JS, { name: { type: "String" } }, [], []));
+//#endregion
+//#region src/lib/components/heading/HeaderYear.svelte
+var YS = /* @__PURE__ */ B("<header class=\"bg-primary items mb-0 flex h-30 flex-col justify-center gap-1.5 overflow-clip rounded-xl bg-(image:--bg-history-url) bg-cover bg-center bg-no-repeat p-5 text-white lg:mb-10 lg:h-45 lg:gap-2.5 lg:px-15 lg:py-5\"><p class=\"text-2md lg:text-2xl\"> </p> <p class=\"text-lg font-bold lg:text-2xl\"><!></p></header>");
+function XS(e, t) {
+	st(t, !0);
+	let n = q(t, "year", 7, "2019"), r = "/output/imgs/company/bg-history-2019.jpg", i = {
+		2019: r,
+		2021: "/output/imgs/company/bg-history-2021.jpg",
+		2023: "/output/imgs/company/bg-history-2023.jpg",
+		2025: "/output/imgs/company/bg-history-2025.jpg"
+	}, a = /* @__PURE__ */ P(() => n() in i ? i[n()] : r);
+	var o = {
+		get year() {
+			return n();
+		},
+		set year(e = "2019") {
+			n(e), N();
+		}
+	}, s = YS();
+	let c;
+	var l = F(s), u = F(l);
+	M(l);
+	var d = I(l, 2), f = F(d), p = (e) => {
+		var t = li();
+		L((e) => H(t, e), [() => Xb()]), V(e, t);
+	}, m = (e) => {
+		var t = li();
+		L((e) => H(t, e), [() => $b()]), V(e, t);
+	}, h = (e) => {
+		var t = li();
+		L((e) => H(t, e), [() => nx()]), V(e, t);
+	}, g = (e) => {
+		var t = li();
+		L((e) => H(t, e), [() => ax()]), V(e, t);
+	};
+	return U(f, (e) => {
+		n() === "2019" ? e(p) : n() === "2021" ? e(m, 1) : n() === "2023" ? e(h, 2) : n() === "2025" && e(g, 3);
+	}), M(d), M(s), L((e) => {
+		c = ca(s, "", c, { "--bg-history-url": `url('${z(a)}')` }), H(u, `${n() ?? ""}~${e ?? ""}`);
+	}, [() => Number(n()) + 1]), V(e, s), ct(o);
+}
+customElements.define("header-year", Ha(XS, { year: { type: "String" } }, [], []));
+//#endregion
+//#region src/lib/utils/textUtils.svelte.ts
+function ZS(e) {
+	return e ? e.replace(/\\n/g, "<br />") : "";
+}
+//#endregion
+//#region src/lib/components/heading/SubHeadingLine.svelte
+var QS = /* @__PURE__ */ B("<div><a class=\"hover:text-3743ff group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div>", 2), $S = /* @__PURE__ */ B("<header><div class=\"space-y-2.5\"><h2 class=\"text-3xl font-bold transition-all lg:text-6xl\"> </h2> <p class=\"text-2md transition-all lg:text-lg\"> </p></div> <!></header>");
+function eC(e, t) {
+	st(t, !0);
+	let n = q(t, "line", 7, "bottom"), r = q(t, "title", 7, ""), i = q(t, "subTit", 7, ""), a = q(t, "btnRender", 7, ""), o = /* @__PURE__ */ P(() => ZS(r())), s = /* @__PURE__ */ P(() => {
+		let e = r().toLocaleLowerCase();
+		return e === "news" ? Kd() : e === "compnay" ? Yd() : e === "contact" ? Qd() : "";
+	});
+	var c = {
+		get line() {
+			return n();
+		},
+		set line(e = "bottom") {
+			n(e), N();
+		},
+		get title() {
+			return r();
+		},
+		set title(e = "") {
+			r(e), N();
+		},
+		get subTit() {
+			return i();
+		},
+		set subTit(e = "") {
+			i(e), N();
+		},
+		get btnRender() {
+			return a();
+		},
+		set btnRender(e = "") {
+			a(e), N();
+		}
+	}, l = $S(), u = F(l), d = F(u), f = F(d, !0);
+	M(d);
+	var p = I(d, 2), m = F(p, !0);
+	M(p), M(u);
+	var h = I(u, 2), g = (e) => {
+		var t = QS(), n = F(t), r = F(n), i = F(r, !0);
+		M(r);
+		var a = I(r, 2);
+		K(a, "name", "arrow-right"), W(a, 1, "group-hover:stroke-primary size-6 stroke-black"), M(n), M(t), L((e) => {
+			G(n, "href", `/${z(s)}`), G(n, "aria-label", z(s)), H(i, e);
+		}, [() => Xx()]), V(e, t);
+	};
+	return U(h, (e) => {
+		a() === "link" && e(g);
+	}), M(l), Qi(l, () => Jc), L(() => {
+		W(l, 1, `${n() === "bottom" ? "border-b border-b-black lg:pb-15" : "lg:pb-7.5"} flex justify-between pb-5 opacity-100 max-lg:flex-col lg:whitespace-pre-line`), H(f, z(o)), H(m, i() ? i() : z(s));
+	}), V(e, l), ct(c);
+}
+customElements.define("sub-heading-line", Ha(eC, {
+	title: { type: "String" },
+	subTit: { type: "String" },
+	btnRender: { type: "String" },
+	line: {}
+}, [], []));
+//#endregion
+//#region src/lib/components/icons/IconData.svelte.ts
+function tC() {
+	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (e) => {
+		let t = Math.random() * 16 | 0;
+		return (e === "x" ? t : t & 3 | 8).toString(16);
+	});
+}
+var nC = tC(), rC = () => [
+	{
+		name: "svg",
+		size: "20",
+		html: `
+				${nC}
+			`
+	},
+	{
+		name: "add",
+		size: "24",
+		html: "\n				<path d=\"M6 12H18\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M12 18V6\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+	},
+	{
+		name: "undo",
+		size: "24",
+		html: "\n				<path\n					d=\"M7.13086 18.3101H15.1309C17.8909 18.3101 20.1309 16.0701 20.1309 13.3101C20.1309 10.5501 17.8909 8.31006 15.1309 8.31006H4.13086\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path d=\"M6.42914 10.8099L3.86914 8.24994L6.42914 5.68994\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+	},
+	{
+		name: "tick-circle",
+		size: "24",
+		html: "\n				<path\n					d=\"M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z\"\n				/>\n			"
+	},
+	{
+		name: "arrow-down",
+		size: "20",
+		html: "\n				<path\n					d=\"M16.6 12.5416L11.1667 7.10829C10.525 6.46663 9.47502 6.46663 8.83336 7.10829L3.40002 12.5416\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
+	},
+	{
+		name: "arrow-right",
+		size: "24",
+		html: "\n				<path d=\"M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M3.5 12H20.33\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+	},
+	{
+		name: "arrow-new-link",
+		size: "20",
+		html: "\n				<path d=\"M20.5 22H3.5\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M19 3.5L5 17.5\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M19 13.77V3.5H8.73\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+	},
+	{
+		name: "arrow-as-is",
+		size: "90",
+		html: "\n				<g opacity=\"0.2\">\n					<path d=\"M54.1123 22.2375L76.8748 45L54.1123 67.7625\" fill=\"none\" stroke-width=\"12\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n					<path d=\"M13.125 45H76.2375\" fill=\"none\" stroke-width=\"12\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				</g>\n			"
+	},
+	{
+		name: "menu",
+		size: "24",
+		html: "\n				<path d=\"M3 7H21\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n				<path d=\"M3 12H21\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n				<path d=\"M3 17H21\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" />\n			"
+	},
+	{
+		name: "import",
+		size: "24",
+		html: "\n				<path d=\"M9.32007 11.6799L11.8801 14.2399L14.4401 11.6799\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M11.8799 4V14.17\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path\n					d=\"M20 12.1799C20 16.5999 17 20.1799 12 20.1799C7 20.1799 4 16.5999 4 12.1799\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
+	},
+	{
+		name: "close",
+		size: "24",
+		html: "\n				<path d=\"M4 20L20 4\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M20 20L4 4\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+	},
+	{
+		name: "result-up",
+		size: "50",
+		html: "\n				<path\n					d=\"M35.475 0H14.525C5.425 0 0 5.425 0 14.525V35.45C0 44.575 5.425 50 14.525 50H35.45C44.55 50 49.975 44.575 49.975 35.475V14.525C50 5.425 44.575 0 35.475 0ZM38.125 25.825C38.125 26.85 37.275 27.7 36.25 27.7C35.225 27.7 34.375 26.85 34.375 25.825V18.275L15.075 37.575C14.7 37.95 14.225 38.125 13.75 38.125C13.275 38.125 12.8 37.95 12.425 37.575C11.7 36.85 11.7 35.65 12.425 34.925L31.725 15.625H24.175C23.15 15.625 22.3 14.775 22.3 13.75C22.3 12.725 23.15 11.875 24.175 11.875H36.25C37.275 11.875 38.125 12.725 38.125 13.75V25.825Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "result-down",
+		size: "50",
+		html: "\n				<path\n					d=\"M35.475 50H14.525C5.425 50 0 44.575 0 35.475V14.55C0 5.425 5.425 0 14.525 0H35.45C44.55 0 49.975 5.425 49.975 14.525V35.475C50 44.575 44.575 50 35.475 50ZM38.125 24.175C38.125 23.15 37.275 22.3 36.25 22.3C35.225 22.3 34.375 23.15 34.375 24.175V31.725L15.075 12.425C14.7 12.05 14.225 11.875 13.75 11.875C13.275 11.875 12.8 12.05 12.425 12.425C11.7 13.15 11.7 14.35 12.425 15.075L31.725 34.375H24.175C23.15 34.375 22.3 35.225 22.3 36.25C22.3 37.275 23.15 38.125 24.175 38.125H36.25C37.275 38.125 38.125 37.275 38.125 36.25V24.175Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "result-chk",
+		size: "50",
+		html: "\n				<path\n					d=\"M35.475 0H14.525C5.425 0 0 5.425 0 14.525V35.45C0 44.575 5.425 50 14.525 50H35.45C44.55 50 49.975 44.575 49.975 35.475V14.525C50 5.425 44.575 0 35.475 0ZM36.95 19.25L22.775 33.425C22.425 33.775 21.95 33.975 21.45 33.975C20.95 33.975 20.475 33.775 20.125 33.425L13.05 26.35C12.325 25.625 12.325 24.425 13.05 23.7C13.775 22.975 14.975 22.975 15.7 23.7L21.45 29.45L34.3 16.6C35.025 15.875 36.225 15.875 36.95 16.6C37.675 17.325 37.675 18.5 36.95 19.25Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "result-close",
+		size: "50",
+		html: "\n				<path\n					d=\"M47.8 12.45L37.55 2.2C36.35 1 33.95 0 32.25 0H17.75C16.05 0 13.65 1 12.45 2.2L2.2 12.45C1 13.65 0 16.05 0 17.75V32.25C0 33.95 1 36.35 2.2 37.55L12.45 47.8C13.65 49 16.05 50 17.75 50H32.25C33.95 50 36.35 49 37.55 47.8L47.8 37.55C49 36.35 50 33.95 50 32.25V17.75C50 16.05 49 13.65 47.8 12.45ZM35.075 32.425C35.8 33.15 35.8 34.35 35.075 35.075C34.7 35.45 34.225 35.625 33.75 35.625C33.275 35.625 32.8 35.45 32.425 35.075L25 27.65L17.575 35.075C17.2 35.45 16.725 35.625 16.25 35.625C15.775 35.625 15.3 35.45 14.925 35.075C14.2 34.35 14.2 33.15 14.925 32.425L22.35 25L14.925 17.575C14.2 16.85 14.2 15.65 14.925 14.925C15.65 14.2 16.85 14.2 17.575 14.925L25 22.35L32.425 14.925C33.15 14.2 34.35 14.2 35.075 14.925C35.8 15.65 35.8 16.85 35.075 17.575L27.65 25L35.075 32.425Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "result-eye",
+		size: "50 42",
+		html: "\n				<path\n					d=\"M48.125 14.3C42.35 5.225 33.9 0 25 0C20.55 0 16.225 1.3 12.275 3.725C8.325 6.175 4.775 9.75 1.875 14.3C-0.625 18.225 -0.625 24.6 1.875 28.525C7.65 37.625 16.1 42.825 25 42.825C29.45 42.825 33.775 41.525 37.725 39.1C41.675 36.65 45.225 33.075 48.125 28.525C50.625 24.625 50.625 18.225 48.125 14.3ZM25 31.525C19.4 31.525 14.9 27 14.9 21.425C14.9 15.85 19.4 11.325 25 11.325C30.6 11.325 35.1 15.85 35.1 21.425C35.1 27 30.6 31.525 25 31.525Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "tick-circle-list",
+		size: "20",
+		html: "\n				<path\n					d=\"M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM14.78 7.7L9.11 13.37C8.97 13.51 8.78 13.59 8.58 13.59C8.38 13.59 8.19 13.51 8.05 13.37L5.22 10.54C4.93 10.25 4.93 9.77 5.22 9.48C5.51 9.19 5.99 9.19 6.28 9.48L8.58 11.78L13.72 6.64C14.01 6.35 14.49 6.35 14.78 6.64C15.07 6.93 15.07 7.4 14.78 7.7Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "faq_arr",
+		size: "34",
+		html: "\n				<path\n					d=\"M16.6667 0C7.48333 0 0 7.48333 0 16.6667C0 25.85 7.48333 33.3333 16.6667 33.3333C25.85 33.3333 33.3333 25.85 33.3333 16.6667C33.3333 7.48333 25.85 0 16.6667 0ZM23.4333 15.45L17.55 21.3333C17.3 21.5833 16.9833 21.7 16.6667 21.7C16.35 21.7 16.0333 21.5833 15.7833 21.3333L9.9 15.45C9.41667 14.9667 9.41667 14.1667 9.9 13.6833C10.3833 13.2 11.1833 13.2 11.6667 13.6833L16.6667 18.6833L21.6667 13.6833C22.15 13.2 22.95 13.2 23.4333 13.6833C23.9167 14.1667 23.9167 14.95 23.4333 15.45Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "tri-alert",
+		size: "42 40",
+		html: "\n				<path\n					d=\"M40.3998 27.84L27.5998 4.8C25.8798 1.7 23.4998 0 20.8798 0C18.2598 0 15.8798 1.7 14.1598 4.8L1.35984 27.84C-0.260162 30.78 -0.440162 33.6 0.859838 35.82C2.15984 38.04 4.71984 39.26 8.07984 39.26H33.6798C37.0398 39.26 39.5998 38.04 40.8998 35.82C42.1998 33.6 42.0198 30.76 40.3998 27.84ZM19.3798 14C19.3798 13.18 20.0598 12.5 20.8798 12.5C21.6998 12.5 22.3798 13.18 22.3798 14V24C22.3798 24.82 21.6998 25.5 20.8798 25.5C20.0598 25.5 19.3798 24.82 19.3798 24V14ZM22.2998 31.42C22.1998 31.5 22.0998 31.58 21.9998 31.66C21.8798 31.74 21.7598 31.8 21.6398 31.84C21.5198 31.9 21.3998 31.94 21.2598 31.96C21.1398 31.98 20.9998 32 20.8798 32C20.7598 32 20.6198 31.98 20.4798 31.96C20.3598 31.94 20.2398 31.9 20.1198 31.84C19.9998 31.8 19.8798 31.74 19.7598 31.66C19.6598 31.58 19.5598 31.5 19.4598 31.42C19.0998 31.04 18.8798 30.52 18.8798 30C18.8798 29.48 19.0998 28.96 19.4598 28.58C19.5598 28.5 19.6598 28.42 19.7598 28.34C19.8798 28.26 19.9998 28.2 20.1198 28.16C20.2398 28.1 20.3598 28.06 20.4798 28.04C20.7398 27.98 21.0198 27.98 21.2598 28.04C21.3998 28.06 21.5198 28.1 21.6398 28.16C21.7598 28.2 21.8798 28.26 21.9998 28.34C22.0998 28.42 22.1998 28.5 22.2998 28.58C22.6598 28.96 22.8798 29.48 22.8798 30C22.8798 30.52 22.6598 31.04 22.2998 31.42Z\"\n					stroke=\"none\"\n				/>\n			"
+	},
+	{
+		name: "lock",
+		size: "20",
+		html: "\n				<path\n					d=\"M16.28 7.53V6.28C16.28 3.58 15.63 0 10 0C4.37 0 3.72 3.58 3.72 6.28V7.53C0.92 7.88 0 9.3 0 12.79V14.65C0 18.75 1.25 20 5.35 20H14.65C18.75 20 20 18.75 20 14.65V12.79C20 9.3 19.08 7.88 16.28 7.53ZM10 16.74C8.33 16.74 6.98 15.38 6.98 13.72C6.98 12.05 8.34 10.7 10 10.7C11.66 10.7 13.02 12.06 13.02 13.72C13.02 15.39 11.67 16.74 10 16.74ZM5.35 7.44C5.27 7.44 5.2 7.44 5.12 7.44V6.28C5.12 3.35 5.95 1.4 10 1.4C14.05 1.4 14.88 3.35 14.88 6.28V7.45C14.8 7.45 14.73 7.45 14.65 7.45H5.35V7.44Z\"\n					stroke=\"none\"\n				/>\n			"
+	}
+], iC = /* @__PURE__ */ ci("<svg xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"></svg>");
+function aC(e, t) {
+	st(t, !0);
+	let n = q(t, "name", 7, ""), r = q(t, "w", 7, "100%"), i = q(t, "h", 7, "100%"), a = q(t, "cls", 7, ""), o = /* @__PURE__ */ hn(null), s = /* @__PURE__ */ P(() => rC().find((e) => e.name === n())), c = /* @__PURE__ */ P(() => z(s) ? z(s).size.trim().split(/\s+/).length > 1 ? `0 0 ${z(s).size}` : `0 0 ${z(s).size} ${z(s).size}` : "0 0 24 24"), l = /* @__PURE__ */ P(() => z(s) ? z(s).html : "");
+	Qn(() => {
+		z(o) && (z(o).innerHTML = "", z(s) && z(s).html && (z(o).innerHTML = z(l)));
+	});
+	var u = {
+		get name() {
+			return n();
+		},
+		set name(e = "") {
+			n(e), N();
+		},
+		get w() {
+			return r();
+		},
+		set w(e = "100%") {
+			r(e), N();
+		},
+		get h() {
+			return i();
+		},
+		set h(e = "100%") {
+			i(e), N();
+		},
+		get cls() {
+			return a();
+		},
+		set cls(e = "") {
+			a(e), N();
+		}
+	}, d = ui(), f = Pn(d), p = (e) => {
+		var t = iC();
+		ka(t, (e) => _n(o, e), () => z(o)), L(() => {
+			W(t, 0, ta(a())), G(t, "width", r()), G(t, "height", i()), G(t, "viewBox", z(c));
+		}), V(e, t);
+	};
+	return U(f, (e) => {
+		z(s) && e(p);
+	}), V(e, d), ct(u);
+}
+customElements.define("icon-list", Ha(aC, {
+	name: {
+		attribute: "data-name",
+		reflect: !0,
+		type: "String"
+	},
+	w: {},
+	h: {},
+	cls: {}
+}, [], []));
+//#endregion
+//#region src/lib/components/news/newsSection.svelte
+var oC = (e, t) => {
+	let n = /* @__PURE__ */ an(() => k(t?.(), ""));
+	var r = sC(), i = F(r, !0);
+	M(r), L(() => H(i, z(n))), V(e, r);
+}, sC = /* @__PURE__ */ B("<p class=\"bg-light-blue text-primary grid flex-none place-content-center rounded-full px-5 py-1 font-bold\"> </p>"), cC = /* @__PURE__ */ B("<picture><img loading=\"lazy\" class=\"w-full max-w-300 object-cover\"/></picture>"), lC = /* @__PURE__ */ B("<div class=\"lg:py-5\"><!></div>"), uC = /* @__PURE__ */ B("<p class=\"font-bold\"> </p>"), dC = /* @__PURE__ */ B("<div class=\"border-t-d9d9d9 text-666 text-2md flex flex-col gap-2 border-t border-dashed pt-5 lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg\"><p class=\"font-bold\">URL</p> <p class=\"flex-1\"> </p></div>"), fC = /* @__PURE__ */ B("<div class=\"flex flex-col gap-5\"><div class=\"inline-flex flex-wrap gap-3\"><!></div> <h4 class=\"text-lg font-bold lg:text-4xl\"> </h4> <!> <p> </p> <div class=\"text-666 text-2md mt-auto flex justify-between gap-2 lg:pt-2.5 lg:text-lg\"><!> <p class=\"flex-1 text-right\"> </p></div> <!></div>"), pC = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15\"><!> <!></section>"), mC = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15\"><!></section>");
+function hC(e, t) {
+	st(t, !0);
+	let n = (e, t) => {
+		let n = /* @__PURE__ */ an(() => k(t?.(), ""));
+		var r = ui(), a = Pn(r), o = (e) => {
+			var t = cC(), r = F(t);
+			M(t), L(() => {
+				W(t, 1, `grid place-content-center overflow-clip rounded-xl transition-all ${i() === "list" ? "h-45 lg:h-75 lg:w-133.5" : ""}`), G(r, "src", z(n)), G(r, "alt", `${s()} image`);
+			}), V(e, t);
+		};
+		U(a, (e) => {
+			z(n) && e(o);
+		}), V(e, r);
+	}, r = (e, t, r, a, o, s, c, l) => {
+		let u = /* @__PURE__ */ an(() => k(t?.(), "")), d = /* @__PURE__ */ an(() => k(r?.(), "")), f = /* @__PURE__ */ an(() => k(a?.(), "")), p = /* @__PURE__ */ an(() => k(o?.(), "")), g = /* @__PURE__ */ an(() => k(s?.(), "")), _ = /* @__PURE__ */ an(() => k(c?.(), "")), v = /* @__PURE__ */ an(() => k(l?.(), ""));
+		var y = fC(), b = F(y), x = F(b), S = (e) => {
+			var t = ui();
+			Mi(Pn(t), 17, () => z(h), Oi, (e, t) => {
+				oC(e, () => z(t));
+			}), V(e, t);
+		}, C = (e) => {
+			oC(e, () => z(d));
+		};
+		U(x, (e) => {
+			z(m) ? e(S) : e(C, -1);
+		}), M(b);
+		var w = I(b, 2), T = F(w, !0);
+		M(w);
+		var E = I(w, 2), D = (e) => {
+			var t = lC();
+			n(F(t), () => z(u)), M(t), V(e, t);
+		};
+		U(E, (e) => {
+			i() !== "list" && e(D);
+		});
+		var O = I(E, 2), ee = F(O, !0);
+		M(O);
+		var te = I(O, 2), A = F(te), ne = (e) => {
+			var t = uC(), n = F(t, !0);
+			M(t), L(() => H(n, z(_))), V(e, t);
+		};
+		U(A, (e) => {
+			z(_) && e(ne);
+		});
+		var re = I(A, 2), ie = F(re, !0);
+		M(re), M(te);
+		var j = I(te, 2), ae = (e) => {
+			var t = dC(), n = I(F(t), 2), r = F(n, !0);
+			M(n), M(t), L(() => H(r, z(v))), V(e, t);
+		};
+		U(j, (e) => {
+			z(v) && e(ae);
+		}), M(y), L((e) => {
+			H(T, z(f)), H(ee, e), H(ie, z(g));
+		}, [() => ZS(z(p))]), V(e, y);
+	}, i = q(t, "layout", 7, ""), a = q(t, "img", 7, ""), o = q(t, "badges", 7, ""), s = q(t, "title", 7, ""), c = q(t, "text", 7, ""), l = q(t, "date", 7, ""), u = q(t, "source", 7, ""), d = q(t, "url", 7, ""), f = /* @__PURE__ */ hn(""), p = /* @__PURE__ */ hn(Cn([])), m = /* @__PURE__ */ P(() => String(o()).includes(",")), h = /* @__PURE__ */ P(() => () => {
+		let e = String(o());
+		return e !== z(f) && (_n(f, e, !0), _n(p, e.split(/\s*,\s*/), !0)), z(p);
+	});
+	var g = {
+		get layout() {
+			return i();
+		},
+		set layout(e = "") {
+			i(e), N();
+		},
+		get img() {
+			return a();
+		},
+		set img(e = "") {
+			a(e), N();
+		},
+		get badges() {
+			return o();
+		},
+		set badges(e = "") {
+			o(e), N();
+		},
+		get title() {
+			return s();
+		},
+		set title(e = "") {
+			s(e), N();
+		},
+		get text() {
+			return c();
+		},
+		set text(e = "") {
+			c(e), N();
+		},
+		get date() {
+			return l();
+		},
+		set date(e = "") {
+			l(e), N();
+		},
+		get source() {
+			return u();
+		},
+		set source(e = "") {
+			u(e), N();
+		},
+		get url() {
+			return d();
+		},
+		set url(e = "") {
+			d(e), N();
+		}
+	}, _ = ui(), v = Pn(_), y = (e) => {
+		var t = pC(), i = F(t);
+		n(i, a), r(I(i, 2), a, o, s, c, l, u), M(t), V(e, t);
+	}, b = (e) => {
+		var t = mC();
+		r(F(t), a, o, s, c, l, u, d), M(t), V(e, t);
+	};
+	return U(v, (e) => {
+		i() === "list" ? e(y) : e(b, -1);
+	}), V(e, _), ct(g);
+}
+customElements.define("news-section", Ha(hC, {
+	layout: {},
+	img: {},
+	badges: {},
+	title: {},
+	text: {},
+	date: {},
+	source: {},
+	url: {}
+}, [], []));
+//#endregion
+//#region src/lib/components/pages/Company.svelte
+var gC = /* @__PURE__ */ B("<li class=\"text-dot\"> </li>"), _C = /* @__PURE__ */ B("<li data-scroll=\"slide-up\" class=\"bg-light-blue flex flex-col overflow-clip rounded-xl\"><picture class=\"flex\"><img loading=\"lazy\" class=\"w-full\"/></picture> <div class=\"flex flex-col gap-5 p-5 lg:gap-7.5 lg:p-7.5\"><h4 class=\"text-primary text-2xl font-bold lg:text-4xl\"> </h4> <p class=\"text-666\"> </p> <ul></ul></div></li>"), vC = /* @__PURE__ */ B("<section data-scroll=\"first\" class=\"text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15\"><h3 class=\"text-2xl font-bold lg:text-5xl\">CEO Message</h3> <div class=\"space-y-5 lg:space-y-10\"><p class=\"text-lg font-bold lg:text-4xl\"> </p> <p class=\"text-2md lg:text-2xl\"> </p> <p class=\"text-2md lg:text-2xl\"> </p> <p class=\"text-2md lg:text-2xl\"> </p></div> <div class=\"space-y-2.5\"><p class=\"text-sm font-bold lg:text-lg\">CEO</p> <p class=\"text-2md lg:text-2xl\"> </p> <picture><img loading=\"lazy\"/></picture></div></section> <section class=\"text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15\"><h3 class=\"text-2xl font-bold lg:text-5xl\">Our Teams</h3> <ul class=\"text-2md grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-15 lg:text-lg\"></ul> <section data-scroll=\"slide-up\" class=\"min-h-80.5 rounded-xl bg-(image:--bg-mo) bg-cover bg-bottom bg-no-repeat text-white transition-all lg:min-h-63.75 lg:bg-(image:--bg-pc)\"><div class=\"flex h-full flex-col gap-5 bg-(image:--bg-person) bg-size-[203px_auto] bg-position-[calc(100%-20px)_calc(100%+60px)] bg-no-repeat p-5 lg:bg-size-[345px_353px] lg:bg-position-[calc(100%-5%)_top] lg:p-15\"><h4 class=\"text-2xl leading-tight font-bold text-white text-shadow-md lg:max-w-4/6 lg:text-5xl\"> </h4> <div class=\"flex w-full items-center lg:inline-flex\"><a href=\"/\" class=\"hover:text-primary group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-white px-5 text-white hover:bg-white lg:flex-none lg:justify-baseline\"><span> </span> <icon-list></icon-list></a></div></div></section></section>", 3);
+function yC(e, t) {
+	st(t, !0);
+	let n = [
+		{
+			img: "/output/imgs/company/img-division-1.png",
+			team: Ey(),
+			subtitle: ky(),
+			list: [
+				My(),
+				Fy(),
+				Ry(),
+				Vy()
+			]
+		},
+		{
+			img: "/output/imgs/company/img-division-2.png",
+			team: Wy(),
+			subtitle: qy(),
+			list: [
+				Xy(),
+				$y(),
+				nb(),
+				ab()
+			]
+		},
+		{
+			img: "/output/imgs/company/img-division-3.png",
+			team: cb(),
+			subtitle: db(),
+			list: [
+				mb(),
+				_b(),
+				bb(),
+				Cb()
+			]
+		},
+		{
+			img: "/output/imgs/company/img-division-4.png",
+			team: Eb(),
+			subtitle: kb(),
+			list: [
+				Mb(),
+				Fb(),
+				Rb(),
+				Vb()
+			]
+		}
+	];
+	var r = vC(), i = Pn(r), a = I(F(i), 2), o = F(a), s = F(o, !0);
+	M(o);
+	var c = I(o, 2), l = F(c, !0);
+	M(c);
+	var u = I(c, 2), d = F(u, !0);
+	M(u);
+	var f = I(u, 2), p = F(f, !0);
+	M(f), M(a);
+	var m = I(a, 2), h = I(F(m), 2), g = F(h, !0);
+	M(h);
+	var _ = I(h, 2), v = F(_);
+	M(_), M(m), M(i);
+	var y = I(i, 2), b = I(F(y), 2);
+	Mi(b, 23, () => n, (e, t) => `team-${t}`, (e, t) => {
+		var n = _C(), r = F(n), i = F(r);
+		M(r);
+		var a = I(r, 2), o = F(a), s = F(o, !0);
+		M(o);
+		var c = I(o, 2), l = F(c, !0);
+		M(c);
+		var u = I(c, 2);
+		Mi(u, 23, () => z(t).list, (e, t) => `team-text-${t}`, (e, t, n, r) => {
+			var i = gC(), a = F(i, !0);
+			M(i), L(() => H(a, z(t))), V(e, i);
+		}), M(u), M(a), M(n), L(() => {
+			G(i, "src", z(t).img), G(i, "alt", z(t).team), H(s, z(t).team), H(l, z(t).subtitle);
+		}), V(e, n);
+	}), M(b);
+	var x = I(b, 2), S = F(x), C = F(S), w = F(C, !0);
+	M(C);
+	var T = I(C, 2), E = F(T), D = F(E), O = F(D, !0);
+	M(D);
+	var k = I(D, 2);
+	K(k, "name", "arrow-new-link"), W(k, 1, "group-hover:stroke-primary size-6 stroke-white"), M(E), M(T), M(S), M(x), M(y), L((e, t, n, r, i, a, o, c) => {
+		H(s, e), H(l, t), H(d, n), H(p, r), H(g, i), G(v, "src", "/output/imgs/ceo/img-sign.png"), G(v, "alt", a), ca(x, "--bg-mo: url('/output/imgs/company/bg-join-us-mo.png'); --bg-pc: url('/output/imgs/company/bg-join-us-pc.png'); --bg-person: url('/output/imgs/company/bg-join-us-person.png');"), H(w, o), H(O, c);
+	}, [
+		() => dy(),
+		() => my(),
+		() => _y(),
+		() => by(),
+		() => Cy(),
+		() => Cy(),
+		() => Wb(),
+		() => qb()
+	]), V(e, r), ct();
+}
+customElements.define("sub-company", Ha(yC, {}, [], []));
+//#endregion
+//#region src/lib/components/heading/SubHeading.svelte
+var bC = /* @__PURE__ */ B("<p class=\"text-666 text-2md mt-2.5 lg:text-2xl lg:whitespace-pre-line\"> </p>"), xC = /* @__PURE__ */ B("<header class=\"space-y-5\"><p class=\"text-666 text-2md font-bold lg:text-2xl\"> </p> <h3 class=\"text-1a1a2e text-2xl leading-tight font-bold lg:text-5xl lg:whitespace-pre-line\"> </h3> <!></header>");
+function SC(e, t) {
+	st(t, !0);
+	let n = q(t, "page", 7, ""), r = q(t, "tit", 7, ""), i = q(t, "txt", 7, ""), a = q(t, "subTxt", 7, ""), o = /* @__PURE__ */ hn(!1), s = (e) => {
+		let t = Dc(e.children, {
+			y: [20, 0],
+			opacity: [0, 1],
+			duration: 400,
+			delay: qc(100),
+			easing: "easeOutQuad",
+			autoplay: !1
+		}), n = Wc({
+			container: document.body,
+			target: e,
+			enter: "bottom center",
+			leave: "top bottom",
+			axis: "y",
+			onEnter: () => {
+				z(o) || (_n(o, !0), t.seek(0), t.play());
+			},
+			onLeaveBackward: () => {
+				_n(o, !1);
+			},
+			debug: !1
+		});
+		return () => n.revert?.();
+	}, c = /* @__PURE__ */ P(() => ZS(r())), l = /* @__PURE__ */ P(() => ZS(i())), u = /* @__PURE__ */ P(() => ZS(a()));
+	var d = {
+		headingMotion: s,
+		get page() {
+			return n();
+		},
+		set page(e = "") {
+			n(e), N();
+		},
+		get tit() {
+			return r();
+		},
+		set tit(e = "") {
+			r(e), N();
+		},
+		get txt() {
+			return i();
+		},
+		set txt(e = "") {
+			i(e), N();
+		},
+		get subTxt() {
+			return a();
+		},
+		set subTxt(e = "") {
+			a(e), N();
+		}
+	}, f = xC(), p = F(f), m = F(p, !0);
+	M(p);
+	var h = I(p, 2), g = F(h, !0);
+	M(h);
+	var _ = I(h, 2), v = (e) => {
+		var t = bC(), n = F(t, !0);
+		M(t), L(() => H(n, z(u))), V(e, t);
+	};
+	return U(_, (e) => {
+		a() && e(v);
+	}), M(f), Qi(f, () => s), L(() => {
+		H(m, z(c)), H(g, z(l));
+	}), V(e, f), ct(d);
+}
+Ha(SC, {
+	page: {},
+	tit: {},
+	txt: {},
+	subTxt: {}
+}, [], ["headingMotion"], { mode: "open" });
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/easing/index.js
+function CC(e) {
+	let t = e - 1;
+	return t * t * t + 1;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/animate/index.js
+function wC(e, { from: t, to: n }, r = {}) {
+	var { delay: i = 0, duration: a = (e) => Math.sqrt(e) * 120, easing: o = CC } = r, s = getComputedStyle(e), c = s.transform === "none" ? "" : s.transform, [l, u] = s.transformOrigin.split(" ").map(parseFloat);
+	l /= e.clientWidth, u /= e.clientHeight;
+	var d = TC(e), f = e.clientWidth / n.width / d, p = e.clientHeight / n.height / d, m = t.left + t.width * l, h = t.top + t.height * u, g = n.left + n.width * l, _ = n.top + n.height * u, v = (m - g) * f, y = (h - _) * p, b = t.width / n.width, x = t.height / n.height;
+	return {
+		delay: i,
+		duration: typeof a == "function" ? a(Math.sqrt(v * v + y * y)) : a,
+		easing: o,
+		css: (e, t) => `transform: ${c} translate(${t * v}px, ${t * y}px) scale(${e + t * b}, ${e + t * x});`
+	};
+}
+function TC(e) {
+	if ("currentCSSZoom" in e) return e.currentCSSZoom;
+	for (var t = e, n = 1; t !== null;) n *= +getComputedStyle(t).zoom, t = t.parentElement;
+	return n;
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/transition/index.js
+var EC = (e) => e;
+function DC(e) {
+	let t = e - 1;
+	return t * t * t + 1;
+}
+function OC(e) {
+	let t = typeof e == "string" && e.match(/^\s*(-?[\d.]+)([^\s]*)\s*$/);
+	return t ? [parseFloat(t[1]), t[2] || "px"] : [e, "px"];
+}
+function kC(e, { delay: t = 0, duration: n = 400, easing: r = EC } = {}) {
+	let i = +getComputedStyle(e).opacity;
+	return {
+		delay: t,
+		duration: n,
+		easing: r,
+		css: (e) => `opacity: ${e * i}`
+	};
+}
+function AC(e, { delay: t = 0, duration: n = 400, easing: r = DC, x: i = 0, y: a = 0, opacity: o = 0 } = {}) {
+	let s = getComputedStyle(e), c = +s.opacity, l = s.transform === "none" ? "" : s.transform, u = c * (1 - o), [d, f] = OC(i), [p, m] = OC(a);
+	return {
+		delay: t,
+		duration: n,
+		easing: r,
+		css: (e, t) => `
+			transform: ${l} translate(${(1 - e) * d}${f}, ${(1 - e) * p}${m});
+			opacity: ${c - u * t}`
+	};
+}
+//#endregion
+//#region src/lib/components/faq/Faq.svelte
+var jC = /* @__PURE__ */ B("<div class=\"flex\"><a class=\"hover:text-3743ff group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div>", 2), MC = /* @__PURE__ */ B("<div class=\"space-y-5 py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22\"><p> </p> <!></div>"), NC = /* @__PURE__ */ B("<p class=\"sr-only\"> </p>"), PC = /* @__PURE__ */ B("<li data-scroll=\"slide-up\" class=\"rounded-xl bg-white\"><dl class=\"text-2md divide-d9d9d9 group/faq flex flex-col divide-y divide-dashed lg:text-2xl\"><dt class=\"flex\"><label class=\"group flex flex-1 items-center justify-between gap-2.5 p-5 font-bold lg:gap-7.5 lg:p-7.5\"><input type=\"checkbox\" class=\"sr-only\"/> <p class=\"flex items-center gap-2.5 lg:gap-7.5\"><span class=\"text-primary text-2md flex-none lg:text-4xl\">Q</span> <strong> </strong></p> <icon-list></icon-list></label></dt> <dd class=\"text-666 @starting:opacity-0 relative hidden whitespace-pre-line opacity-0 transition-all transition-discrete duration-300 group-not-checked/faq:opacity-0 group-has-checked/faq:grid group-has-checked/faq:opacity-100\"><!></dd></dl></li>", 2), FC = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"space-y-5 py-11.25 lg:space-y-7.5 lg:py-15\"><!> <ul class=\"space-y-5 lg:space-y-7.5\"></ul></section>");
+function IC(e, t) {
+	st(t, !0);
+	let n = q(t, "tit", 7, ""), r = q(t, "txt", 7, ""), i = q(t, "lists", 23, () => []);
+	var a = {
+		get tit() {
+			return n();
+		},
+		set tit(e = "") {
+			n(e), N();
+		},
+		get txt() {
+			return r();
+		},
+		set txt(e = "") {
+			r(e), N();
+		},
+		get lists() {
+			return i();
+		},
+		set lists(e = []) {
+			i(e), N();
+		}
+	}, o = FC(), s = F(o);
+	SC(s, {
+		get tit() {
+			return n();
+		},
+		get txt() {
+			return r();
+		}
+	});
+	var c = I(s, 2);
+	return Mi(c, 31, i, (e) => e.id, (e, t, n) => {
+		let r = /* @__PURE__ */ P(() => z(t).checked);
+		var i = PC(), a = F(i), o = F(a), s = F(o), c = F(s);
+		ba(c);
+		var l = I(c, 2), u = I(F(l), 2), d = F(u, !0);
+		M(u), M(l);
+		var f = I(l, 2);
+		K(f, "name", "faq_arr"), W(f, 1, "group-has-checked/faq:fill-primary group-hover:fill-primary/80 relative ml-auto size-6.25 flex-none fill-black transition-all group-has-checked/faq:-rotate-180 lg:size-8.5"), M(s), M(o);
+		var p = I(o, 2), m = F(p), h = (e) => {
+			var n = MC(), r = F(n), i = F(r, !0);
+			M(r);
+			var a = I(r, 2), o = (e) => {
+				var n = jC(), r = F(n), i = F(r), a = F(i, !0);
+				M(i);
+				var o = I(i, 2);
+				K(o, "name", "arrow-right"), W(o, 1, "group-hover:stroke-primary size-6 stroke-black"), M(r), M(n), L(() => {
+					G(r, "href", z(t).link), G(r, "aria-label", z(t).btn), H(a, z(t).btn);
+				}), V(e, n);
+			};
+			U(a, (e) => {
+				z(t).link && e(o);
+			}), M(n), L(() => H(i, z(t).txt)), Yi(1, n, () => AC, () => ({
+				y: 15,
+				duration: 400,
+				delay: 100
+			})), Yi(2, n, () => kC, () => ({ duration: 150 })), V(e, n);
+		}, g = (e) => {
+			var n = NC(), r = F(n, !0);
+			M(n), L(() => H(r, z(t).txt)), V(e, n);
+		};
+		U(m, (e) => {
+			z(r) ? e(h) : e(g, -1);
+		}), M(p), M(a), M(i), L(() => {
+			G(s, "for", z(t).id), G(s, "aria-expanded", z(r) ? "true" : "false"), G(c, "id", z(t).id), G(c, "name", z(t).id), H(d, z(t).tit);
+		}), Da(c, () => z(t).checked, (e) => z(t).checked = e), Yi(3, p, () => slide, () => ({
+			duration: 50,
+			easing: cubicOut
+		})), Ji(i, () => wC, () => ({ delay: 500 })), V(e, i);
+	}), M(c), M(o), V(e, o), ct(a);
+}
+Ha(IC, {
+	tit: {},
+	txt: {},
+	lists: {}
+}, [], [], { mode: "open" });
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/ssr-window.esm.mjs
+function LC(e) {
+	return typeof e == "object" && !!e && "constructor" in e && e.constructor === Object;
+}
+function RC(e = {}, t = {}) {
+	let n = [
+		"__proto__",
+		"constructor",
+		"prototype"
+	];
+	Object.keys(t).filter((e) => n.indexOf(e) < 0).forEach((n) => {
+		e[n] === void 0 ? e[n] = t[n] : LC(t[n]) && LC(e[n]) && Object.keys(t[n]).length > 0 && RC(e[n], t[n]);
+	});
+}
+var zC = {
+	body: {},
+	addEventListener() {},
+	removeEventListener() {},
+	activeElement: {
+		blur() {},
+		nodeName: ""
+	},
+	querySelector() {
+		return null;
+	},
+	querySelectorAll() {
+		return [];
+	},
+	getElementById() {
+		return null;
+	},
+	createEvent() {
+		return { initEvent() {} };
+	},
+	createElement() {
+		return {
+			children: [],
+			childNodes: [],
+			style: {},
+			setAttribute() {},
+			getElementsByTagName() {
+				return [];
+			}
+		};
+	},
+	createElementNS() {
+		return {};
+	},
+	importNode() {
+		return null;
+	},
+	location: {
+		hash: "",
+		host: "",
+		hostname: "",
+		href: "",
+		origin: "",
+		pathname: "",
+		protocol: "",
+		search: ""
+	}
+};
+function BC() {
+	let e = typeof document < "u" ? document : {};
+	return RC(e, zC), e;
+}
+var VC = {
+	document: zC,
+	navigator: { userAgent: "" },
+	location: {
+		hash: "",
+		host: "",
+		hostname: "",
+		href: "",
+		origin: "",
+		pathname: "",
+		protocol: "",
+		search: ""
+	},
+	history: {
+		replaceState() {},
+		pushState() {},
+		go() {},
+		back() {}
+	},
+	CustomEvent: function() {
+		return this;
+	},
+	addEventListener() {},
+	removeEventListener() {},
+	getComputedStyle() {
+		return { getPropertyValue() {
+			return "";
+		} };
+	},
+	Image() {},
+	Date() {},
+	screen: {},
+	setTimeout() {},
+	clearTimeout() {},
+	matchMedia() {
+		return {};
+	},
+	requestAnimationFrame(e) {
+		return typeof setTimeout > "u" ? (e(), null) : setTimeout(e, 0);
+	},
+	cancelAnimationFrame(e) {
+		typeof setTimeout > "u" || clearTimeout(e);
+	}
+};
+function HC() {
+	let e = typeof window < "u" ? window : {};
+	return RC(e, VC), e;
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/utils.mjs
+function UC(e = "") {
+	return e.trim().split(" ").filter((e) => !!e.trim());
+}
+function WC(e) {
+	let t = e;
+	Object.keys(t).forEach((e) => {
+		try {
+			t[e] = null;
+		} catch {}
+		try {
+			delete t[e];
+		} catch {}
+	});
+}
+function GC(e, t = 0) {
+	return setTimeout(e, t);
+}
+function KC() {
+	return Date.now();
+}
+function qC(e) {
+	let t = HC(), n;
+	return t.getComputedStyle && (n = t.getComputedStyle(e, null)), !n && e.currentStyle && (n = e.currentStyle), n ||= e.style, n;
+}
+function JC(e, t = "x") {
+	let n = HC(), r, i, a, o = qC(e);
+	return n.WebKitCSSMatrix ? (i = o.transform || o.webkitTransform, i.split(",").length > 6 && (i = i.split(", ").map((e) => e.replace(",", ".")).join(", ")), a = new n.WebKitCSSMatrix(i === "none" ? "" : i)) : (a = o.MozTransform || o.OTransform || o.MsTransform || o.msTransform || o.transform || o.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,"), r = a.toString().split(",")), t === "x" && (i = n.WebKitCSSMatrix ? a.m41 : r.length === 16 ? parseFloat(r[12]) : parseFloat(r[4])), t === "y" && (i = n.WebKitCSSMatrix ? a.m42 : r.length === 16 ? parseFloat(r[13]) : parseFloat(r[5])), i || 0;
+}
+function YC(e) {
+	return typeof e == "object" && !!e && e.constructor && Object.prototype.toString.call(e).slice(8, -1) === "Object";
+}
+function XC(e) {
+	return typeof window < "u" && window.HTMLElement !== void 0 ? e instanceof HTMLElement : e && (e.nodeType === 1 || e.nodeType === 11);
+}
+function ZC(...e) {
+	let t = Object(e[0]);
+	for (let n = 1; n < e.length; n += 1) {
+		let r = e[n];
+		if (r != null && !XC(r)) {
+			let e = Object.keys(Object(r)).filter((e) => e !== "__proto__" && e !== "constructor" && e !== "prototype");
+			for (let n = 0, i = e.length; n < i; n += 1) {
+				let i = e[n], a = Object.getOwnPropertyDescriptor(r, i);
+				a !== void 0 && a.enumerable && (YC(t[i]) && YC(r[i]) ? r[i].__swiper__ ? t[i] = r[i] : ZC(t[i], r[i]) : !YC(t[i]) && YC(r[i]) ? (t[i] = {}, r[i].__swiper__ ? t[i] = r[i] : ZC(t[i], r[i])) : t[i] = r[i]);
+			}
+		}
+	}
+	return t;
+}
+function QC(e, t, n) {
+	e.style.setProperty(t, n);
+}
+function $C({ swiper: e, targetPosition: t, side: n }) {
+	let r = HC(), i = -e.translate, a = null, o, s = e.params.speed;
+	e.wrapperEl.style.scrollSnapType = "none", r.cancelAnimationFrame(e.cssModeFrameID);
+	let c = t > i ? "next" : "prev", l = (e, t) => c === "next" && e >= t || c === "prev" && e <= t, u = () => {
+		o = (/* @__PURE__ */ new Date()).getTime(), a === null && (a = o);
+		let c = Math.max(Math.min((o - a) / s, 1), 0), d = i + (.5 - Math.cos(c * Math.PI) / 2) * (t - i);
+		if (l(d, t) && (d = t), e.wrapperEl.scrollTo({ [n]: d }), l(d, t)) {
+			e.wrapperEl.style.overflow = "hidden", e.wrapperEl.style.scrollSnapType = "", setTimeout(() => {
+				e.wrapperEl.style.overflow = "", e.wrapperEl.scrollTo({ [n]: d });
+			}), r.cancelAnimationFrame(e.cssModeFrameID);
+			return;
+		}
+		e.cssModeFrameID = r.requestAnimationFrame(u);
+	};
+	u();
+}
+function ew(e) {
+	return e.querySelector(".swiper-slide-transform") || e.shadowRoot && e.shadowRoot.querySelector(".swiper-slide-transform") || e;
+}
+function tw(e, t = "") {
+	let n = HC(), r = [...e.children];
+	return n.HTMLSlotElement && e instanceof HTMLSlotElement && r.push(...e.assignedElements()), t ? r.filter((e) => e.matches(t)) : r;
+}
+function nw(e, t) {
+	let n = [t];
+	for (; n.length > 0;) {
+		let t = n.shift();
+		if (e === t) return !0;
+		n.push(...t.children, ...t.shadowRoot ? t.shadowRoot.children : [], ...t.assignedElements ? t.assignedElements() : []);
+	}
+}
+function rw(e, t) {
+	let n = HC(), r = t.contains(e);
+	return !r && n.HTMLSlotElement && t instanceof HTMLSlotElement && (r = [...t.assignedElements()].includes(e), r ||= nw(e, t)), r;
+}
+function iw(e) {
+	try {
+		console.warn(e);
+		return;
+	} catch {}
+}
+function aw(e, t = []) {
+	let n = document.createElement(e);
+	return n.classList.add(...Array.isArray(t) ? t : UC(t)), n;
+}
+function ow(e) {
+	let t = HC(), n = BC(), r = e.getBoundingClientRect(), i = n.body, a = e.clientTop || i.clientTop || 0, o = e.clientLeft || i.clientLeft || 0, s = e === t ? t.scrollY : e.scrollTop, c = e === t ? t.scrollX : e.scrollLeft;
+	return {
+		top: r.top + s - a,
+		left: r.left + c - o
+	};
+}
+function sw(e, t) {
+	let n = [];
+	for (; e.previousElementSibling;) {
+		let r = e.previousElementSibling;
+		t ? r.matches(t) && n.push(r) : n.push(r), e = r;
+	}
+	return n;
+}
+function cw(e, t) {
+	let n = [];
+	for (; e.nextElementSibling;) {
+		let r = e.nextElementSibling;
+		t ? r.matches(t) && n.push(r) : n.push(r), e = r;
+	}
+	return n;
+}
+function lw(e, t) {
+	return HC().getComputedStyle(e, null).getPropertyValue(t);
+}
+function uw(e) {
+	let t = e, n;
+	if (t) {
+		for (n = 0; (t = t.previousSibling) !== null;) t.nodeType === 1 && (n += 1);
+		return n;
+	}
+}
+function dw(e, t) {
+	let n = [], r = e.parentElement;
+	for (; r;) t ? r.matches(t) && n.push(r) : n.push(r), r = r.parentElement;
+	return n;
+}
+function fw(e, t) {
+	function n(r) {
+		r.target === e && (t.call(e, r), e.removeEventListener("transitionend", n));
+	}
+	t && e.addEventListener("transitionend", n);
+}
+function pw(e, t, n) {
+	let r = HC();
+	return n ? e[t === "width" ? "offsetWidth" : "offsetHeight"] + parseFloat(r.getComputedStyle(e, null).getPropertyValue(t === "width" ? "margin-right" : "margin-top")) + parseFloat(r.getComputedStyle(e, null).getPropertyValue(t === "width" ? "margin-left" : "margin-bottom")) : e.offsetWidth;
+}
+function mw(e) {
+	return (Array.isArray(e) ? e : [e]).filter((e) => !!e);
+}
+function hw(e) {
+	return (t) => Math.abs(t) > 0 && e.browser && e.browser.need3dFix && Math.abs(t) % 90 == 0 ? t + .001 : t;
+}
+function gw(e, t = "") {
+	typeof trustedTypes < "u" ? e.innerHTML = trustedTypes.createPolicy("html", { createHTML: (e) => e }).createHTML(t) : e.innerHTML = t;
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/swiper-core.mjs
+var _w;
+function vw() {
+	let e = HC(), t = BC();
+	return {
+		smoothScroll: t.documentElement && t.documentElement.style && "scrollBehavior" in t.documentElement.style,
+		touch: !!("ontouchstart" in e || e.DocumentTouch && t instanceof e.DocumentTouch)
+	};
+}
+function yw() {
+	return _w ||= vw(), _w;
+}
+var bw;
+function xw({ userAgent: e } = {}) {
+	let t = yw(), n = HC(), r = n.navigator.platform, i = e || n.navigator.userAgent, a = {
+		ios: !1,
+		android: !1
+	}, o = n.screen.width, s = n.screen.height, c = i.match(/(Android);?[\s\/]+([\d.]+)?/), l = i.match(/(iPad)(?!\1).*OS\s([\d_]+)/), u = i.match(/(iPod)(.*OS\s([\d_]+))?/), d = !l && i.match(/(iPhone\sOS|iOS)\s([\d_]+)/), f = r === "Win32", p = r === "MacIntel";
+	return !l && p && t.touch && [
+		"1024x1366",
+		"1366x1024",
+		"834x1194",
+		"1194x834",
+		"834x1112",
+		"1112x834",
+		"768x1024",
+		"1024x768",
+		"820x1180",
+		"1180x820",
+		"810x1080",
+		"1080x810"
+	].indexOf(`${o}x${s}`) >= 0 && (l = i.match(/(Version)\/([\d.]+)/), l ||= [
+		0,
+		1,
+		"13_0_0"
+	], p = !1), c && !f && (a.os = "android", a.android = !0), (l || d || u) && (a.os = "ios", a.ios = !0), a;
+}
+function Sw(e = {}) {
+	return bw ||= xw(e), bw;
+}
+var Cw;
+function ww() {
+	let e = HC(), t = Sw(), n = !1;
+	function r() {
+		let t = e.navigator.userAgent.toLowerCase();
+		return t.indexOf("safari") >= 0 && t.indexOf("chrome") < 0 && t.indexOf("android") < 0;
+	}
+	if (r()) {
+		let t = String(e.navigator.userAgent);
+		if (t.includes("Version/")) {
+			let [e, r] = t.split("Version/")[1].split(" ")[0].split(".").map((e) => Number(e));
+			n = e < 16 || e === 16 && r < 2;
+		}
+	}
+	let i = /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(e.navigator.userAgent), a = r(), o = a || i && t.ios;
+	return {
+		isSafari: n || a,
+		needPerspectiveFix: n,
+		need3dFix: o,
+		isWebView: i
+	};
+}
+function Tw() {
+	return Cw ||= ww(), Cw;
+}
+function Ew({ swiper: e, on: t, emit: n }) {
+	let r = HC(), i = null, a = null, o = () => {
+		!e || e.destroyed || !e.initialized || (n("beforeResize"), n("resize"));
+	}, s = () => {
+		!e || e.destroyed || !e.initialized || (i = new ResizeObserver((t) => {
+			a = r.requestAnimationFrame(() => {
+				let { width: n, height: r } = e, i = n, a = r;
+				t.forEach(({ contentBoxSize: t, contentRect: n, target: r }) => {
+					r && r !== e.el || (i = n ? n.width : (t[0] || t).inlineSize, a = n ? n.height : (t[0] || t).blockSize);
+				}), (i !== n || a !== r) && o();
+			});
+		}), i.observe(e.el));
+	}, c = () => {
+		a && r.cancelAnimationFrame(a), i && i.unobserve && e.el && (i.unobserve(e.el), i = null);
+	}, l = () => {
+		!e || e.destroyed || !e.initialized || n("orientationchange");
+	};
+	t("init", () => {
+		if (e.params.resizeObserver && r.ResizeObserver !== void 0) {
+			s();
+			return;
+		}
+		r.addEventListener("resize", o), r.addEventListener("orientationchange", l);
+	}), t("destroy", () => {
+		c(), r.removeEventListener("resize", o), r.removeEventListener("orientationchange", l);
+	});
+}
+function Dw({ swiper: e, extendParams: t, on: n, emit: r }) {
+	let i = [], a = HC(), o = (t, n = {}) => {
+		let o = new (a.MutationObserver || a.WebkitMutationObserver)((t) => {
+			if (e.__preventObserver__) return;
+			if (t.length === 1) {
+				r("observerUpdate", t[0]);
+				return;
+			}
+			let n = function() {
+				r("observerUpdate", t[0]);
+			};
+			a.requestAnimationFrame ? a.requestAnimationFrame(n) : a.setTimeout(n, 0);
+		});
+		o.observe(t, {
+			attributes: n.attributes === void 0 ? !0 : n.attributes,
+			childList: e.isElement || (n.childList === void 0 ? !0 : n).childList,
+			characterData: n.characterData === void 0 ? !0 : n.characterData
+		}), i.push(o);
+	};
+	t({
+		observer: !1,
+		observeParents: !1,
+		observeSlideChildren: !1
+	}), n("init", () => {
+		if (e.params.observer) {
+			if (e.params.observeParents) {
+				let t = dw(e.hostEl);
+				for (let e = 0; e < t.length; e += 1) o(t[e]);
+			}
+			o(e.hostEl, { childList: e.params.observeSlideChildren }), o(e.wrapperEl, { attributes: !1 });
+		}
+	}), n("destroy", () => {
+		i.forEach((e) => {
+			e.disconnect();
+		}), i.splice(0, i.length);
+	});
+}
+var Ow = {
+	on(e, t, n) {
+		let r = this;
+		if (!r.eventsListeners || r.destroyed || typeof t != "function") return r;
+		let i = n ? "unshift" : "push";
+		return e.split(" ").forEach((e) => {
+			r.eventsListeners[e] || (r.eventsListeners[e] = []), r.eventsListeners[e][i](t);
+		}), r;
+	},
+	once(e, t, n) {
+		let r = this;
+		if (!r.eventsListeners || r.destroyed || typeof t != "function") return r;
+		function i(...n) {
+			r.off(e, i), i.__emitterProxy && delete i.__emitterProxy, t.apply(r, n);
+		}
+		return i.__emitterProxy = t, r.on(e, i, n);
+	},
+	onAny(e, t) {
+		let n = this;
+		if (!n.eventsListeners || n.destroyed || typeof e != "function") return n;
+		let r = t ? "unshift" : "push";
+		return n.eventsAnyListeners.indexOf(e) < 0 && n.eventsAnyListeners[r](e), n;
+	},
+	offAny(e) {
+		let t = this;
+		if (!t.eventsListeners || t.destroyed || !t.eventsAnyListeners) return t;
+		let n = t.eventsAnyListeners.indexOf(e);
+		return n >= 0 && t.eventsAnyListeners.splice(n, 1), t;
+	},
+	off(e, t) {
+		let n = this;
+		return !n.eventsListeners || n.destroyed || !n.eventsListeners || e.split(" ").forEach((e) => {
+			t === void 0 ? n.eventsListeners[e] = [] : n.eventsListeners[e] && n.eventsListeners[e].forEach((r, i) => {
+				(r === t || r.__emitterProxy && r.__emitterProxy === t) && n.eventsListeners[e].splice(i, 1);
+			});
+		}), n;
+	},
+	emit(...e) {
+		let t = this;
+		if (!t.eventsListeners || t.destroyed || !t.eventsListeners) return t;
+		let n, r, i;
+		return typeof e[0] == "string" || Array.isArray(e[0]) ? (n = e[0], r = e.slice(1, e.length), i = t) : (n = e[0].events, r = e[0].data, i = e[0].context || t), r.unshift(i), (Array.isArray(n) ? n : n.split(" ")).forEach((e) => {
+			t.eventsAnyListeners && t.eventsAnyListeners.length && t.eventsAnyListeners.forEach((t) => {
+				t.apply(i, [e, ...r]);
+			}), t.eventsListeners && t.eventsListeners[e] && t.eventsListeners[e].forEach((e) => {
+				e.apply(i, r);
+			});
+		}), t;
+	}
+};
+function kw() {
+	let e = this, t, n, r = e.el;
+	t = e.params.width !== void 0 && e.params.width !== null ? e.params.width : r.clientWidth, n = e.params.height !== void 0 && e.params.height !== null ? e.params.height : r.clientHeight, !(t === 0 && e.isHorizontal() || n === 0 && e.isVertical()) && (t = t - parseInt(lw(r, "padding-left") || 0, 10) - parseInt(lw(r, "padding-right") || 0, 10), n = n - parseInt(lw(r, "padding-top") || 0, 10) - parseInt(lw(r, "padding-bottom") || 0, 10), Number.isNaN(t) && (t = 0), Number.isNaN(n) && (n = 0), Object.assign(e, {
+		width: t,
+		height: n,
+		size: e.isHorizontal() ? t : n
+	}));
+}
+function Aw() {
+	let e = this;
+	function t(t, n) {
+		return parseFloat(t.getPropertyValue(e.getDirectionLabel(n)) || 0);
+	}
+	let n = e.params, { wrapperEl: r, slidesEl: i, rtlTranslate: a, wrongRTL: o } = e, s = e.virtual && n.virtual.enabled, c = s ? e.virtual.slides.length : e.slides.length, l = tw(i, `.${e.params.slideClass}, swiper-slide`), u = s ? e.virtual.slides.length : l.length, d = [], f = [], p = [], m = n.slidesOffsetBefore;
+	typeof m == "function" && (m = n.slidesOffsetBefore.call(e));
+	let h = n.slidesOffsetAfter;
+	typeof h == "function" && (h = n.slidesOffsetAfter.call(e));
+	let g = e.snapGrid.length, _ = e.slidesGrid.length, v = e.size - m - h, y = n.spaceBetween, b = -m, x = 0, S = 0;
+	if (v === void 0) return;
+	typeof y == "string" && y.indexOf("%") >= 0 ? y = parseFloat(y.replace("%", "")) / 100 * v : typeof y == "string" && (y = parseFloat(y)), e.virtualSize = -y - m - h, l.forEach((e) => {
+		a ? e.style.marginLeft = "" : e.style.marginRight = "", e.style.marginBottom = "", e.style.marginTop = "";
+	}), n.centeredSlides && n.cssMode && (QC(r, "--swiper-centered-offset-before", ""), QC(r, "--swiper-centered-offset-after", "")), n.cssMode && (QC(r, "--swiper-slides-offset-before", `${m}px`), QC(r, "--swiper-slides-offset-after", `${h}px`));
+	let C = n.grid && n.grid.rows > 1 && e.grid;
+	C ? e.grid.initSlides(l) : e.grid && e.grid.unsetSlides();
+	let w, T = n.slidesPerView === "auto" && n.breakpoints && Object.keys(n.breakpoints).filter((e) => n.breakpoints[e].slidesPerView !== void 0).length > 0;
+	for (let r = 0; r < u; r += 1) {
+		w = 0;
+		let i = l[r];
+		if (!(i && (C && e.grid.updateSlide(r, i, l), lw(i, "display") === "none"))) {
+			if (s && n.slidesPerView === "auto") n.virtual.slidesPerViewAutoSlideSize && (w = n.virtual.slidesPerViewAutoSlideSize), w && i && (n.roundLengths && (w = Math.floor(w)), i.style[e.getDirectionLabel("width")] = `${w}px`);
+			else if (n.slidesPerView === "auto") {
+				T && (i.style[e.getDirectionLabel("width")] = "");
+				let r = getComputedStyle(i), a = i.style.transform, o = i.style.webkitTransform;
+				if (a && (i.style.transform = "none"), o && (i.style.webkitTransform = "none"), n.roundLengths) w = e.isHorizontal() ? pw(i, "width", !0) : pw(i, "height", !0);
+				else {
+					let e = t(r, "width"), n = t(r, "padding-left"), a = t(r, "padding-right"), o = t(r, "margin-left"), s = t(r, "margin-right"), c = r.getPropertyValue("box-sizing");
+					if (c && c === "border-box") w = e + o + s;
+					else {
+						let { clientWidth: t, offsetWidth: r } = i;
+						w = e + n + a + o + s + (r - t);
+					}
+				}
+				a && (i.style.transform = a), o && (i.style.webkitTransform = o), n.roundLengths && (w = Math.floor(w));
+			} else w = (v - (n.slidesPerView - 1) * y) / n.slidesPerView, n.roundLengths && (w = Math.floor(w)), i && (i.style[e.getDirectionLabel("width")] = `${w}px`);
+			i && (i.swiperSlideSize = w), p.push(w), n.centeredSlides ? (b = b + w / 2 + x / 2 + y, x === 0 && r !== 0 && (b = b - v / 2 - y), r === 0 && (b = b - v / 2 - y), Math.abs(b) < 1 / 1e3 && (b = 0), n.roundLengths && (b = Math.floor(b)), S % n.slidesPerGroup === 0 && d.push(b), f.push(b)) : (n.roundLengths && (b = Math.floor(b)), (S - Math.min(e.params.slidesPerGroupSkip, S)) % e.params.slidesPerGroup === 0 && d.push(b), f.push(b), b = b + w + y), e.virtualSize += w + y, x = w, S += 1;
+		}
+	}
+	if (e.virtualSize = Math.max(e.virtualSize, v) + h, a && o && (n.effect === "slide" || n.effect === "coverflow") && (r.style.width = `${e.virtualSize + y}px`), n.setWrapperSize && (r.style[e.getDirectionLabel("width")] = `${e.virtualSize + y}px`), C && e.grid.updateWrapperSize(w, d), !n.centeredSlides) {
+		let t = n.slidesPerView !== "auto" && n.slidesPerView % 1 != 0, r = n.snapToSlideEdge && !n.loop && (n.slidesPerView === "auto" || t), i = d.length;
+		if (r) {
+			let e;
+			if (n.slidesPerView === "auto") {
+				e = 1;
+				let t = 0;
+				for (let n = p.length - 1; n >= 0 && (t += p[n] + (n < p.length - 1 ? y : 0), t <= v); --n) e = p.length - n;
+			} else e = Math.floor(n.slidesPerView);
+			i = Math.max(u - e, 0);
+		}
+		let a = [];
+		for (let t = 0; t < d.length; t += 1) {
+			let o = d[t];
+			n.roundLengths && (o = Math.floor(o)), r ? t <= i && a.push(o) : d[t] <= e.virtualSize - v && a.push(o);
+		}
+		d = a, Math.floor(e.virtualSize - v) - Math.floor(d[d.length - 1]) > 1 && (r || d.push(e.virtualSize - v));
+	}
+	if (s && n.loop) {
+		let t = p[0] + y;
+		if (n.slidesPerGroup > 1) {
+			let r = Math.ceil((e.virtual.slidesBefore + e.virtual.slidesAfter) / n.slidesPerGroup), i = t * n.slidesPerGroup;
+			for (let e = 0; e < r; e += 1) d.push(d[d.length - 1] + i);
+		}
+		for (let r = 0; r < e.virtual.slidesBefore + e.virtual.slidesAfter; r += 1) n.slidesPerGroup === 1 && d.push(d[d.length - 1] + t), f.push(f[f.length - 1] + t), e.virtualSize += t;
+	}
+	if (d.length === 0 && (d = [0]), y !== 0) {
+		let t = e.isHorizontal() && a ? "marginLeft" : e.getDirectionLabel("marginRight");
+		l.filter((e, t) => !n.cssMode || n.loop ? !0 : t !== l.length - 1).forEach((e) => {
+			e.style[t] = `${y}px`;
+		});
+	}
+	if (n.centeredSlides && n.centeredSlidesBounds) {
+		let e = 0;
+		p.forEach((t) => {
+			e += t + (y || 0);
+		}), e -= y;
+		let t = e > v ? e - v : 0;
+		d = d.map((e) => e <= 0 ? -m : e > t ? t + h : e);
+	}
+	if (n.centerInsufficientSlides) {
+		let e = 0;
+		if (p.forEach((t) => {
+			e += t + (y || 0);
+		}), e -= y, e < v) {
+			let t = (v - e) / 2;
+			d.forEach((e, n) => {
+				d[n] = e - t;
+			}), f.forEach((e, n) => {
+				f[n] = e + t;
+			});
+		}
+	}
+	if (Object.assign(e, {
+		slides: l,
+		snapGrid: d,
+		slidesGrid: f,
+		slidesSizesGrid: p
+	}), n.centeredSlides && n.cssMode && !n.centeredSlidesBounds) {
+		QC(r, "--swiper-centered-offset-before", `${-d[0]}px`), QC(r, "--swiper-centered-offset-after", `${e.size / 2 - p[p.length - 1] / 2}px`);
+		let t = -e.snapGrid[0], n = -e.slidesGrid[0];
+		e.snapGrid = e.snapGrid.map((e) => e + t), e.slidesGrid = e.slidesGrid.map((e) => e + n);
+	}
+	if (u !== c && e.emit("slidesLengthChange"), d.length !== g && (e.params.watchOverflow && e.checkOverflow(), e.emit("snapGridLengthChange")), f.length !== _ && e.emit("slidesGridLengthChange"), n.watchSlidesProgress && e.updateSlidesOffset(), e.emit("slidesUpdated"), !s && !n.cssMode && (n.effect === "slide" || n.effect === "fade")) {
+		let t = `${n.containerModifierClass}backface-hidden`, r = e.el.classList.contains(t);
+		u <= n.maxBackfaceHiddenSlides ? r || e.el.classList.add(t) : r && e.el.classList.remove(t);
+	}
+}
+function jw(e) {
+	let t = this, n = [], r = t.virtual && t.params.virtual.enabled, i = 0, a;
+	typeof e == "number" ? t.setTransition(e) : e === !0 && t.setTransition(t.params.speed);
+	let o = (e) => r ? t.slides[t.getSlideIndexByData(e)] : t.slides[e];
+	if (t.params.slidesPerView !== "auto" && t.params.slidesPerView > 1) if (t.params.centeredSlides) (t.visibleSlides || []).forEach((e) => {
+		n.push(e);
+	});
+	else for (a = 0; a < Math.ceil(t.params.slidesPerView); a += 1) {
+		let e = t.activeIndex + a;
+		if (e > t.slides.length && !r) break;
+		n.push(o(e));
+	}
+	else n.push(o(t.activeIndex));
+	for (a = 0; a < n.length; a += 1) if (n[a] !== void 0) {
+		let e = n[a].offsetHeight;
+		i = e > i ? e : i;
+	}
+	(i || i === 0) && (t.wrapperEl.style.height = `${i}px`);
+}
+function Mw() {
+	let e = this, t = e.slides, n = e.isElement ? e.isHorizontal() ? e.wrapperEl.offsetLeft : e.wrapperEl.offsetTop : 0;
+	for (let r = 0; r < t.length; r += 1) t[r].swiperSlideOffset = (e.isHorizontal() ? t[r].offsetLeft : t[r].offsetTop) - n - e.cssOverflowAdjustment();
+}
+var Nw = (e, t, n) => {
+	t && !e.classList.contains(n) ? e.classList.add(n) : !t && e.classList.contains(n) && e.classList.remove(n);
+};
+function Pw(e = this && this.translate || 0) {
+	let t = this, n = t.params, { slides: r, rtlTranslate: i, snapGrid: a } = t;
+	if (r.length === 0) return;
+	r[0].swiperSlideOffset === void 0 && t.updateSlidesOffset();
+	let o = -e;
+	i && (o = e), t.visibleSlidesIndexes = [], t.visibleSlides = [];
+	let s = n.spaceBetween;
+	typeof s == "string" && s.indexOf("%") >= 0 ? s = parseFloat(s.replace("%", "")) / 100 * t.size : typeof s == "string" && (s = parseFloat(s));
+	for (let e = 0; e < r.length; e += 1) {
+		let c = r[e], l = c.swiperSlideOffset;
+		n.cssMode && n.centeredSlides && (l -= r[0].swiperSlideOffset);
+		let u = (o + (n.centeredSlides ? t.minTranslate() : 0) - l) / (c.swiperSlideSize + s), d = (o - a[0] + (n.centeredSlides ? t.minTranslate() : 0) - l) / (c.swiperSlideSize + s), f = -(o - l), p = f + t.slidesSizesGrid[e], m = f >= 0 && f <= t.size - t.slidesSizesGrid[e], h = f >= 0 && f < t.size - 1 || p > 1 && p <= t.size || f <= 0 && p >= t.size;
+		h && (t.visibleSlides.push(c), t.visibleSlidesIndexes.push(e)), Nw(c, h, n.slideVisibleClass), Nw(c, m, n.slideFullyVisibleClass), c.progress = i ? -u : u, c.originalProgress = i ? -d : d;
+	}
+}
+function Fw(e) {
+	let t = this;
+	if (e === void 0) {
+		let n = t.rtlTranslate ? -1 : 1;
+		e = t && t.translate && t.translate * n || 0;
+	}
+	let n = t.params, r = t.maxTranslate() - t.minTranslate(), { progress: i, isBeginning: a, isEnd: o, progressLoop: s } = t, c = a, l = o;
+	if (r === 0) i = 0, a = !0, o = !0;
+	else {
+		i = (e - t.minTranslate()) / r;
+		let n = Math.abs(e - t.minTranslate()) < 1, s = Math.abs(e - t.maxTranslate()) < 1;
+		a = n || i <= 0, o = s || i >= 1, n && (i = 0), s && (i = 1);
+	}
+	if (n.loop) {
+		let n = t.getSlideIndexByData(0), r = t.getSlideIndexByData(t.slides.length - 1), i = t.slidesGrid[n], a = t.slidesGrid[r], o = t.slidesGrid[t.slidesGrid.length - 1], c = Math.abs(e);
+		s = c >= i ? (c - i) / o : (c + o - a) / o, s > 1 && --s;
+	}
+	Object.assign(t, {
+		progress: i,
+		progressLoop: s,
+		isBeginning: a,
+		isEnd: o
+	}), (n.watchSlidesProgress || n.centeredSlides && n.autoHeight) && t.updateSlidesProgress(e), a && !c && t.emit("reachBeginning toEdge"), o && !l && t.emit("reachEnd toEdge"), (c && !a || l && !o) && t.emit("fromEdge"), t.emit("progress", i);
+}
+var Iw = (e, t, n) => {
+	t && !e.classList.contains(n) ? e.classList.add(n) : !t && e.classList.contains(n) && e.classList.remove(n);
+};
+function Lw() {
+	let e = this, { slides: t, params: n, slidesEl: r, activeIndex: i } = e, a = e.virtual && n.virtual.enabled, o = e.grid && n.grid && n.grid.rows > 1, s = (e) => tw(r, `.${n.slideClass}${e}, swiper-slide${e}`)[0], c, l, u;
+	if (a) if (n.loop) {
+		let t = i - e.virtual.slidesBefore;
+		t < 0 && (t = e.virtual.slides.length + t), t >= e.virtual.slides.length && (t -= e.virtual.slides.length), c = s(`[data-swiper-slide-index="${t}"]`);
+	} else c = s(`[data-swiper-slide-index="${i}"]`);
+	else o ? (c = t.find((e) => e.column === i), u = t.find((e) => e.column === i + 1), l = t.find((e) => e.column === i - 1)) : c = t[i];
+	c && (o || (u = cw(c, `.${n.slideClass}, swiper-slide`)[0], n.loop && !u && (u = t[0]), l = sw(c, `.${n.slideClass}, swiper-slide`)[0], n.loop)), t.forEach((e) => {
+		Iw(e, e === c, n.slideActiveClass), Iw(e, e === u, n.slideNextClass), Iw(e, e === l, n.slidePrevClass);
+	}), e.emitSlidesClasses();
+}
+var Rw = (e, t) => {
+	if (!e || e.destroyed || !e.params) return;
+	let n = t.closest(e.isElement ? "swiper-slide" : `.${e.params.slideClass}`);
+	if (n) {
+		let t = n.querySelector(`.${e.params.lazyPreloaderClass}`);
+		!t && e.isElement && (n.shadowRoot ? t = n.shadowRoot.querySelector(`.${e.params.lazyPreloaderClass}`) : requestAnimationFrame(() => {
+			n.shadowRoot && (t = n.shadowRoot.querySelector(`.${e.params.lazyPreloaderClass}`), t && !t.lazyPreloaderManaged && t.remove());
+		})), t && !t.lazyPreloaderManaged && t.remove();
+	}
+}, zw = (e, t) => {
+	if (!e.slides[t]) return;
+	let n = e.slides[t].querySelector("[loading=\"lazy\"]");
+	n && n.removeAttribute("loading");
+}, Bw = (e) => {
+	if (!e || e.destroyed || !e.params) return;
+	let t = e.params.lazyPreloadPrevNext, n = e.slides.length;
+	if (!n || !t || t < 0) return;
+	t = Math.min(t, n);
+	let r = e.params.slidesPerView === "auto" ? e.slidesPerViewDynamic() : Math.ceil(e.params.slidesPerView), i = e.activeIndex;
+	if (e.params.grid && e.params.grid.rows > 1) {
+		let n = i, a = [n - t];
+		a.push(...Array.from({ length: t }).map((e, t) => n + r + t)), e.slides.forEach((t, n) => {
+			a.includes(t.column) && zw(e, n);
+		});
+		return;
+	}
+	let a = i + r - 1;
+	if (e.params.rewind || e.params.loop) for (let r = i - t; r <= a + t; r += 1) {
+		let t = (r % n + n) % n;
+		(t < i || t > a) && zw(e, t);
+	}
+	else for (let r = Math.max(i - t, 0); r <= Math.min(a + t, n - 1); r += 1) r !== i && (r > a || r < i) && zw(e, r);
+};
+function Vw(e) {
+	let { slidesGrid: t, params: n } = e, r = e.rtlTranslate ? e.translate : -e.translate, i;
+	for (let e = 0; e < t.length; e += 1) t[e + 1] === void 0 ? r >= t[e] && (i = e) : r >= t[e] && r < t[e + 1] - (t[e + 1] - t[e]) / 2 ? i = e : r >= t[e] && r < t[e + 1] && (i = e + 1);
+	return n.normalizeSlideIndex && (i < 0 || i === void 0) && (i = 0), i;
+}
+function Hw(e) {
+	let t = this, n = t.rtlTranslate ? t.translate : -t.translate, { snapGrid: r, params: i, activeIndex: a, realIndex: o, snapIndex: s } = t, c = e, l, u = (e) => {
+		let n = e - t.virtual.slidesBefore;
+		return n < 0 && (n = t.virtual.slides.length + n), n >= t.virtual.slides.length && (n -= t.virtual.slides.length), n;
+	};
+	if (c === void 0 && (c = Vw(t)), r.indexOf(n) >= 0) l = r.indexOf(n);
+	else {
+		let e = Math.min(i.slidesPerGroupSkip, c);
+		l = e + Math.floor((c - e) / i.slidesPerGroup);
+	}
+	if (l >= r.length && (l = r.length - 1), c === a && !t.params.loop) {
+		l !== s && (t.snapIndex = l, t.emit("snapIndexChange"));
+		return;
+	}
+	if (c === a && t.params.loop && t.virtual && t.params.virtual.enabled) {
+		t.realIndex = u(c);
+		return;
+	}
+	let d = t.grid && i.grid && i.grid.rows > 1, f;
+	if (t.virtual && i.virtual.enabled) f = i.loop ? u(c) : c;
+	else if (d) {
+		let e = t.slides.find((e) => e.column === c), n = parseInt(e.getAttribute("data-swiper-slide-index"), 10);
+		Number.isNaN(n) && (n = Math.max(t.slides.indexOf(e), 0)), f = Math.floor(n / i.grid.rows);
+	} else if (t.slides[c]) {
+		let e = t.slides[c].getAttribute("data-swiper-slide-index");
+		f = e ? parseInt(e, 10) : c;
+	} else f = c;
+	Object.assign(t, {
+		previousSnapIndex: s,
+		snapIndex: l,
+		previousRealIndex: o,
+		realIndex: f,
+		previousIndex: a,
+		activeIndex: c
+	}), t.initialized && Bw(t), t.emit("activeIndexChange"), t.emit("snapIndexChange"), (t.initialized || t.params.runCallbacksOnInit) && (o !== f && t.emit("realIndexChange"), t.emit("slideChange"));
+}
+function Uw(e, t) {
+	let n = this, r = n.params, i = e.closest(`.${r.slideClass}, swiper-slide`);
+	!i && n.isElement && t && t.length > 1 && t.includes(e) && [...t.slice(t.indexOf(e) + 1, t.length)].forEach((e) => {
+		!i && e.matches && e.matches(`.${r.slideClass}, swiper-slide`) && (i = e);
+	});
+	let a = !1, o;
+	if (i) {
+		for (let e = 0; e < n.slides.length; e += 1) if (n.slides[e] === i) {
+			a = !0, o = e;
+			break;
+		}
+	}
+	if (i && a) n.clickedSlide = i, n.virtual && n.params.virtual.enabled ? n.clickedIndex = parseInt(i.getAttribute("data-swiper-slide-index"), 10) : n.clickedIndex = o;
+	else {
+		n.clickedSlide = void 0, n.clickedIndex = void 0;
+		return;
+	}
+	r.slideToClickedSlide && n.clickedIndex !== void 0 && n.clickedIndex !== n.activeIndex && n.slideToClickedSlide();
+}
+var Ww = {
+	updateSize: kw,
+	updateSlides: Aw,
+	updateAutoHeight: jw,
+	updateSlidesOffset: Mw,
+	updateSlidesProgress: Pw,
+	updateProgress: Fw,
+	updateSlidesClasses: Lw,
+	updateActiveIndex: Hw,
+	updateClickedSlide: Uw
+};
+function Gw(e = this.isHorizontal() ? "x" : "y") {
+	let t = this, { params: n, rtlTranslate: r, translate: i, wrapperEl: a } = t;
+	if (n.virtualTranslate) return r ? -i : i;
+	if (n.cssMode) return i;
+	let o = JC(a, e);
+	return o += t.cssOverflowAdjustment(), r && (o = -o), o || 0;
+}
+function Kw(e, t) {
+	let n = this, { rtlTranslate: r, params: i, wrapperEl: a, progress: o } = n, s = 0, c = 0;
+	n.isHorizontal() ? s = r ? -e : e : c = e, i.roundLengths && (s = Math.floor(s), c = Math.floor(c)), n.previousTranslate = n.translate, n.translate = n.isHorizontal() ? s : c, i.cssMode ? a[n.isHorizontal() ? "scrollLeft" : "scrollTop"] = n.isHorizontal() ? -s : -c : i.virtualTranslate || (n.isHorizontal() ? s -= n.cssOverflowAdjustment() : c -= n.cssOverflowAdjustment(), a.style.transform = `translate3d(${s}px, ${c}px, 0px)`);
+	let l, u = n.maxTranslate() - n.minTranslate();
+	l = u === 0 ? 0 : (e - n.minTranslate()) / u, l !== o && n.updateProgress(e), n.emit("setTranslate", n.translate, t);
+}
+function qw() {
+	return -this.snapGrid[0];
+}
+function Jw() {
+	return -this.snapGrid[this.snapGrid.length - 1];
+}
+function Yw(e = 0, t = this.params.speed, n = !0, r = !0, i) {
+	let a = this, { params: o, wrapperEl: s } = a;
+	if (a.animating && o.preventInteractionOnTransition) return !1;
+	let c = a.minTranslate(), l = a.maxTranslate(), u;
+	if (u = r && e > c ? c : r && e < l ? l : e, a.updateProgress(u), o.cssMode) {
+		let e = a.isHorizontal();
+		if (t === 0) s[e ? "scrollLeft" : "scrollTop"] = -u;
+		else {
+			if (!a.support.smoothScroll) return $C({
+				swiper: a,
+				targetPosition: -u,
+				side: e ? "left" : "top"
+			}), !0;
+			s.scrollTo({
+				[e ? "left" : "top"]: -u,
+				behavior: "smooth"
+			});
+		}
+		return !0;
+	}
+	return t === 0 ? (a.setTransition(0), a.setTranslate(u), n && (a.emit("beforeTransitionStart", t, i), a.emit("transitionEnd"))) : (a.setTransition(t), a.setTranslate(u), n && (a.emit("beforeTransitionStart", t, i), a.emit("transitionStart")), a.animating || (a.animating = !0, a.onTranslateToWrapperTransitionEnd ||= function(e) {
+		!a || a.destroyed || e.target === this && (a.wrapperEl.removeEventListener("transitionend", a.onTranslateToWrapperTransitionEnd), a.onTranslateToWrapperTransitionEnd = null, delete a.onTranslateToWrapperTransitionEnd, a.animating = !1, n && a.emit("transitionEnd"));
+	}, a.wrapperEl.addEventListener("transitionend", a.onTranslateToWrapperTransitionEnd))), !0;
+}
+var Xw = {
+	getTranslate: Gw,
+	setTranslate: Kw,
+	minTranslate: qw,
+	maxTranslate: Jw,
+	translateTo: Yw
+};
+function Zw(e, t) {
+	let n = this;
+	n.params.cssMode || (n.wrapperEl.style.transitionDuration = `${e}ms`, n.wrapperEl.style.transitionDelay = e === 0 ? "0ms" : ""), n.emit("setTransition", e, t);
+}
+function Qw({ swiper: e, runCallbacks: t, direction: n, step: r }) {
+	let { activeIndex: i, previousIndex: a } = e, o = n;
+	o ||= i > a ? "next" : i < a ? "prev" : "reset", e.emit(`transition${r}`), t && o === "reset" ? e.emit(`slideResetTransition${r}`) : t && i !== a && (e.emit(`slideChangeTransition${r}`), o === "next" ? e.emit(`slideNextTransition${r}`) : e.emit(`slidePrevTransition${r}`));
+}
+function $w(e = !0, t) {
+	let n = this, { params: r } = n;
+	r.cssMode || (r.autoHeight && n.updateAutoHeight(), Qw({
+		swiper: n,
+		runCallbacks: e,
+		direction: t,
+		step: "Start"
+	}));
+}
+function eT(e = !0, t) {
+	let n = this, { params: r } = n;
+	n.animating = !1, !r.cssMode && (n.setTransition(0), Qw({
+		swiper: n,
+		runCallbacks: e,
+		direction: t,
+		step: "End"
+	}));
+}
+var tT = {
+	setTransition: Zw,
+	transitionStart: $w,
+	transitionEnd: eT
+};
+function nT(e = 0, t, n = !0, r, i) {
+	typeof e == "string" && (e = parseInt(e, 10));
+	let a = this, o = e;
+	o < 0 && (o = 0);
+	let { params: s, snapGrid: c, slidesGrid: l, previousIndex: u, activeIndex: d, rtlTranslate: f, wrapperEl: p, enabled: m } = a;
+	if (!m && !r && !i || a.destroyed || a.animating && s.preventInteractionOnTransition) return !1;
+	t === void 0 && (t = a.params.speed);
+	let h = Math.min(a.params.slidesPerGroupSkip, o), g = h + Math.floor((o - h) / a.params.slidesPerGroup);
+	g >= c.length && (g = c.length - 1);
+	let _ = -c[g];
+	if (s.normalizeSlideIndex) for (let e = 0; e < l.length; e += 1) {
+		let t = -Math.floor(_ * 100), n = Math.floor(l[e] * 100), r = Math.floor(l[e + 1] * 100);
+		l[e + 1] === void 0 ? t >= n && (o = e) : t >= n && t < r - (r - n) / 2 ? o = e : t >= n && t < r && (o = e + 1);
+	}
+	if (a.initialized && o !== d && (!a.allowSlideNext && (f ? _ > a.translate && _ > a.minTranslate() : _ < a.translate && _ < a.minTranslate()) || !a.allowSlidePrev && _ > a.translate && _ > a.maxTranslate() && (d || 0) !== o)) return !1;
+	o !== (u || 0) && n && a.emit("beforeSlideChangeStart"), a.updateProgress(_);
+	let v;
+	v = o > d ? "next" : o < d ? "prev" : "reset";
+	let y = a.virtual && a.params.virtual.enabled;
+	if (!(y && i) && (f && -_ === a.translate || !f && _ === a.translate)) return a.updateActiveIndex(o), s.autoHeight && a.updateAutoHeight(), a.updateSlidesClasses(), s.effect !== "slide" && a.setTranslate(_), v !== "reset" && (a.transitionStart(n, v), a.transitionEnd(n, v)), !1;
+	if (s.cssMode) {
+		let e = a.isHorizontal(), n = f ? _ : -_;
+		if (t === 0) y && (a.wrapperEl.style.scrollSnapType = "none", a._immediateVirtual = !0), y && !a._cssModeVirtualInitialSet && a.params.initialSlide > 0 ? (a._cssModeVirtualInitialSet = !0, requestAnimationFrame(() => {
+			p[e ? "scrollLeft" : "scrollTop"] = n;
+		})) : p[e ? "scrollLeft" : "scrollTop"] = n, y && requestAnimationFrame(() => {
+			a.wrapperEl.style.scrollSnapType = "", a._immediateVirtual = !1;
+		});
+		else {
+			if (!a.support.smoothScroll) return $C({
+				swiper: a,
+				targetPosition: n,
+				side: e ? "left" : "top"
+			}), !0;
+			p.scrollTo({
+				[e ? "left" : "top"]: n,
+				behavior: "smooth"
+			});
+		}
+		return !0;
+	}
+	let b = Tw().isSafari;
+	return y && !i && b && a.isElement && a.virtual.update(!1, !1, o), a.setTransition(t), a.setTranslate(_), a.updateActiveIndex(o), a.updateSlidesClasses(), a.emit("beforeTransitionStart", t, r), a.transitionStart(n, v), t === 0 ? a.transitionEnd(n, v) : a.animating || (a.animating = !0, a.onSlideToWrapperTransitionEnd ||= function(e) {
+		!a || a.destroyed || e.target === this && (a.wrapperEl.removeEventListener("transitionend", a.onSlideToWrapperTransitionEnd), a.onSlideToWrapperTransitionEnd = null, delete a.onSlideToWrapperTransitionEnd, a.transitionEnd(n, v));
+	}, a.wrapperEl.addEventListener("transitionend", a.onSlideToWrapperTransitionEnd)), !0;
+}
+function rT(e = 0, t, n = !0, r) {
+	typeof e == "string" && (e = parseInt(e, 10));
+	let i = this;
+	if (i.destroyed) return;
+	t === void 0 && (t = i.params.speed);
+	let a = i.grid && i.params.grid && i.params.grid.rows > 1, o = e;
+	if (i.params.loop) if (i.virtual && i.params.virtual.enabled) o += i.virtual.slidesBefore;
+	else {
+		let e;
+		if (a) {
+			let t = o * i.params.grid.rows;
+			e = i.slides.find((e) => e.getAttribute("data-swiper-slide-index") * 1 === t).column;
+		} else e = i.getSlideIndexByData(o);
+		let t = a ? Math.ceil(i.slides.length / i.params.grid.rows) : i.slides.length, { centeredSlides: n, slidesOffsetBefore: s, slidesOffsetAfter: c } = i.params, l = n || !!s || !!c, u = i.params.slidesPerView;
+		u === "auto" ? u = i.slidesPerViewDynamic() : (u = Math.ceil(parseFloat(i.params.slidesPerView, 10)), l && u % 2 == 0 && (u += 1));
+		let d = t - e < u;
+		if (l && (d ||= e < Math.ceil(u / 2)), r && l && i.params.slidesPerView !== "auto" && !a && (d = !1), d) {
+			let n = l ? e < i.activeIndex ? "prev" : "next" : e - i.activeIndex - 1 < i.params.slidesPerView ? "next" : "prev";
+			i.loopFix({
+				direction: n,
+				slideTo: !0,
+				activeSlideIndex: n === "next" ? e + 1 : e - t + 1,
+				slideRealIndex: n === "next" ? i.realIndex : void 0
+			});
+		}
+		if (a) {
+			let e = o * i.params.grid.rows;
+			o = i.slides.find((t) => t.getAttribute("data-swiper-slide-index") * 1 === e).column;
+		} else o = i.getSlideIndexByData(o);
+	}
+	return requestAnimationFrame(() => {
+		i.slideTo(o, t, n, r);
+	}), i;
+}
+function iT(e, t = !0, n) {
+	let r = this, { enabled: i, params: a, animating: o } = r;
+	if (!i || r.destroyed) return r;
+	e === void 0 && (e = r.params.speed);
+	let s = a.slidesPerGroup;
+	a.slidesPerView === "auto" && a.slidesPerGroup === 1 && a.slidesPerGroupAuto && (s = Math.max(r.slidesPerViewDynamic("current", !0), 1));
+	let c = r.activeIndex < a.slidesPerGroupSkip ? 1 : s, l = r.virtual && a.virtual.enabled;
+	if (a.loop) {
+		if (o && !l && a.loopPreventsSliding) return !1;
+		if (r.loopFix({ direction: "next" }), r._clientLeft = r.wrapperEl.clientLeft, r.activeIndex === r.slides.length - 1 && a.cssMode) return requestAnimationFrame(() => {
+			r.slideTo(r.activeIndex + c, e, t, n);
+		}), !0;
+	}
+	return a.rewind && r.isEnd ? r.slideTo(0, e, t, n) : r.slideTo(r.activeIndex + c, e, t, n);
+}
+function aT(e, t = !0, n) {
+	let r = this, { params: i, snapGrid: a, slidesGrid: o, rtlTranslate: s, enabled: c, animating: l } = r;
+	if (!c || r.destroyed) return r;
+	e === void 0 && (e = r.params.speed);
+	let u = r.virtual && i.virtual.enabled;
+	if (i.loop) {
+		if (l && !u && i.loopPreventsSliding) return !1;
+		r.loopFix({ direction: "prev" }), r._clientLeft = r.wrapperEl.clientLeft;
+	}
+	let d = s ? r.translate : -r.translate;
+	function f(e) {
+		return e < 0 ? -Math.floor(Math.abs(e)) : Math.floor(e);
+	}
+	let p = f(d), m = a.map((e) => f(e)), h = i.freeMode && i.freeMode.enabled, g = a[m.indexOf(p) - 1];
+	if (g === void 0 && (i.cssMode || h)) {
+		let e;
+		a.forEach((t, n) => {
+			p >= t && (e = n);
+		}), e !== void 0 && (g = h ? a[e] : a[e > 0 ? e - 1 : e]);
+	}
+	let _ = 0;
+	if (g !== void 0 && (_ = o.indexOf(g), _ < 0 && (_ = r.activeIndex - 1), i.slidesPerView === "auto" && i.slidesPerGroup === 1 && i.slidesPerGroupAuto && (_ = _ - r.slidesPerViewDynamic("previous", !0) + 1, _ = Math.max(_, 0))), i.rewind && r.isBeginning) {
+		let i = r.params.virtual && r.params.virtual.enabled && r.virtual ? r.virtual.slides.length - 1 : r.slides.length - 1;
+		return r.slideTo(i, e, t, n);
+	} else if (i.loop && r.activeIndex === 0 && i.cssMode) return requestAnimationFrame(() => {
+		r.slideTo(_, e, t, n);
+	}), !0;
+	return r.slideTo(_, e, t, n);
+}
+function oT(e, t = !0, n) {
+	let r = this;
+	if (!r.destroyed) return e === void 0 && (e = r.params.speed), r.slideTo(r.activeIndex, e, t, n);
+}
+function sT(e, t = !0, n, r = .5) {
+	let i = this;
+	if (i.destroyed) return;
+	e === void 0 && (e = i.params.speed);
+	let a = i.activeIndex, o = Math.min(i.params.slidesPerGroupSkip, a), s = o + Math.floor((a - o) / i.params.slidesPerGroup), c = i.rtlTranslate ? i.translate : -i.translate;
+	if (c >= i.snapGrid[s]) {
+		let e = i.snapGrid[s], t = i.snapGrid[s + 1];
+		c - e > (t - e) * r && (a += i.params.slidesPerGroup);
+	} else {
+		let e = i.snapGrid[s - 1], t = i.snapGrid[s];
+		c - e <= (t - e) * r && (a -= i.params.slidesPerGroup);
+	}
+	return a = Math.max(a, 0), a = Math.min(a, i.slidesGrid.length - 1), i.slideTo(a, e, t, n);
+}
+function cT() {
+	let e = this;
+	if (e.destroyed) return;
+	let { params: t, slidesEl: n } = e, r = t.slidesPerView === "auto" ? e.slidesPerViewDynamic() : t.slidesPerView, i = e.getSlideIndexWhenGrid(e.clickedIndex), a, o = e.isElement ? "swiper-slide" : `.${t.slideClass}`, s = e.grid && e.params.grid && e.params.grid.rows > 1;
+	if (t.loop) {
+		if (e.animating) return;
+		a = parseInt(e.clickedSlide.getAttribute("data-swiper-slide-index"), 10), t.centeredSlides ? e.slideToLoop(a) : i > (s ? (e.slides.length - r) / 2 - (e.params.grid.rows - 1) : e.slides.length - r) ? (e.loopFix(), i = e.getSlideIndex(tw(n, `${o}[data-swiper-slide-index="${a}"]`)[0]), GC(() => {
+			e.slideTo(i);
+		})) : e.slideTo(i);
+	} else e.slideTo(i);
+}
+var lT = {
+	slideTo: nT,
+	slideToLoop: rT,
+	slideNext: iT,
+	slidePrev: aT,
+	slideReset: oT,
+	slideToClosest: sT,
+	slideToClickedSlide: cT
+};
+function uT(e, t) {
+	let n = this, { params: r, slidesEl: i } = n;
+	if (!r.loop || n.virtual && n.params.virtual.enabled) return;
+	let a = () => {
+		tw(i, `.${r.slideClass}, swiper-slide`).forEach((e, t) => {
+			e.setAttribute("data-swiper-slide-index", t);
+		});
+	}, o = () => {
+		let e = tw(i, `.${r.slideBlankClass}`);
+		e.forEach((e) => {
+			e.remove();
+		}), e.length > 0 && (n.recalcSlides(), n.updateSlides());
+	}, s = n.grid && r.grid && r.grid.rows > 1;
+	r.loopAddBlankSlides && (r.slidesPerGroup > 1 || s) && o();
+	let c = r.slidesPerGroup * (s ? r.grid.rows : 1), l = n.slides.length % c !== 0, u = s && n.slides.length % r.grid.rows !== 0, d = (e) => {
+		for (let t = 0; t < e; t += 1) {
+			let e = n.isElement ? aw("swiper-slide", [r.slideBlankClass]) : aw("div", [r.slideClass, r.slideBlankClass]);
+			n.slidesEl.append(e);
+		}
+	};
+	l ? (r.loopAddBlankSlides ? (d(c - n.slides.length % c), n.recalcSlides(), n.updateSlides()) : iw("Swiper Loop Warning: The number of slides is not even to slidesPerGroup, loop mode may not function properly. You need to add more slides (or make duplicates, or empty slides)"), a()) : (u && (r.loopAddBlankSlides ? (d(r.grid.rows - n.slides.length % r.grid.rows), n.recalcSlides(), n.updateSlides()) : iw("Swiper Loop Warning: The number of slides is not even to grid.rows, loop mode may not function properly. You need to add more slides (or make duplicates, or empty slides)")), a());
+	let f = r.centeredSlides || !!r.slidesOffsetBefore || !!r.slidesOffsetAfter;
+	n.loopFix({
+		slideRealIndex: e,
+		direction: f ? void 0 : "next",
+		initial: t
+	});
+}
+function dT({ slideRealIndex: e, slideTo: t = !0, direction: n, setTranslate: r, activeSlideIndex: i, initial: a, byController: o, byMousewheel: s } = {}) {
+	let c = this;
+	if (!c.params.loop) return;
+	c.emit("beforeLoopFix");
+	let { slides: l, allowSlidePrev: u, allowSlideNext: d, slidesEl: f, params: p } = c, { centeredSlides: m, slidesOffsetBefore: h, slidesOffsetAfter: g, initialSlide: _ } = p, v = m || !!h || !!g;
+	if (c.allowSlidePrev = !0, c.allowSlideNext = !0, c.virtual && p.virtual.enabled) {
+		t && (!v && c.snapIndex === 0 ? c.slideTo(c.virtual.slides.length, 0, !1, !0) : v && c.snapIndex < p.slidesPerView ? c.slideTo(c.virtual.slides.length + c.snapIndex, 0, !1, !0) : c.snapIndex === c.snapGrid.length - 1 && c.slideTo(c.virtual.slidesBefore, 0, !1, !0)), c.allowSlidePrev = u, c.allowSlideNext = d, c.emit("loopFix");
+		return;
+	}
+	let y = p.slidesPerView;
+	y === "auto" ? y = c.slidesPerViewDynamic() : (y = Math.ceil(parseFloat(p.slidesPerView, 10)), v && y % 2 == 0 && (y += 1));
+	let b = p.slidesPerGroupAuto ? y : p.slidesPerGroup, x = v ? Math.max(b, Math.ceil(y / 2)) : b;
+	x % b !== 0 && (x += b - x % b), x += p.loopAdditionalSlides, c.loopedSlides = x;
+	let S = c.grid && p.grid && p.grid.rows > 1;
+	l.length < y + x || c.params.effect === "cards" && l.length < y + x * 2 ? iw("Swiper Loop Warning: The number of slides is not enough for loop mode, it will be disabled or not function properly. You need to add more slides (or make duplicates) or lower the values of slidesPerView and slidesPerGroup parameters") : S && p.grid.fill === "row" && iw("Swiper Loop Warning: Loop mode is not compatible with grid.fill = `row`");
+	let C = [], w = [], T = S ? Math.ceil(l.length / p.grid.rows) : l.length, E = a && T - _ < y && !v, D = E ? _ : c.activeIndex;
+	i === void 0 ? i = c.getSlideIndex(l.find((e) => e.classList.contains(p.slideActiveClass))) : D = i;
+	let O = n === "next" || !n, k = n === "prev" || !n, ee = 0, te = 0, A = (S ? l[i].column : i) + (v && r === void 0 ? -y / 2 + .5 : 0);
+	if (A < x) {
+		ee = Math.max(x - A, b);
+		for (let e = 0; e < x - A; e += 1) {
+			let t = e - Math.floor(e / T) * T;
+			if (S) {
+				let e = T - t - 1;
+				for (let t = l.length - 1; t >= 0; --t) l[t].column === e && C.push(t);
+			} else C.push(T - t - 1);
+		}
+	} else if (A + y > T - x) {
+		te = Math.max(A - (T - x * 2), b), E && (te = Math.max(te, y - T + _ + 1));
+		for (let e = 0; e < te; e += 1) {
+			let t = e - Math.floor(e / T) * T;
+			S ? l.forEach((e, n) => {
+				e.column === t && w.push(n);
+			}) : w.push(t);
+		}
+	}
+	if (c.__preventObserver__ = !0, requestAnimationFrame(() => {
+		c.__preventObserver__ = !1;
+	}), c.params.effect === "cards" && l.length < y + x * 2 && (w.includes(i) && w.splice(w.indexOf(i), 1), C.includes(i) && C.splice(C.indexOf(i), 1)), k && C.forEach((e) => {
+		l[e].swiperLoopMoveDOM = !0, f.prepend(l[e]), l[e].swiperLoopMoveDOM = !1;
+	}), O && w.forEach((e) => {
+		l[e].swiperLoopMoveDOM = !0, f.append(l[e]), l[e].swiperLoopMoveDOM = !1;
+	}), c.recalcSlides(), p.slidesPerView === "auto" ? c.updateSlides() : S && (C.length > 0 && k || w.length > 0 && O) && c.slides.forEach((e, t) => {
+		c.grid.updateSlide(t, e, c.slides);
+	}), p.watchSlidesProgress && c.updateSlidesOffset(), t) {
+		if (C.length > 0 && k) {
+			if (e === void 0) {
+				let e = c.slidesGrid[D], t = c.slidesGrid[D + ee] - e;
+				s ? c.setTranslate(c.translate - t) : (c.slideTo(D + Math.ceil(ee), 0, !1, !0), r && (c.touchEventsData.startTranslate = c.touchEventsData.startTranslate - t, c.touchEventsData.currentTranslate = c.touchEventsData.currentTranslate - t));
+			} else if (r) {
+				let e = S ? C.length / p.grid.rows : C.length;
+				c.slideTo(c.activeIndex + e, 0, !1, !0), c.touchEventsData.currentTranslate = c.translate;
+			}
+		} else if (w.length > 0 && O) if (e === void 0) {
+			let e = c.slidesGrid[D], t = c.slidesGrid[D - te] - e;
+			s ? c.setTranslate(c.translate - t) : (c.slideTo(D - te, 0, !1, !0), r && (c.touchEventsData.startTranslate = c.touchEventsData.startTranslate - t, c.touchEventsData.currentTranslate = c.touchEventsData.currentTranslate - t));
+		} else {
+			let e = S ? w.length / p.grid.rows : w.length;
+			c.slideTo(c.activeIndex - e, 0, !1, !0);
+		}
+	}
+	if (c.allowSlidePrev = u, c.allowSlideNext = d, c.controller && c.controller.control && !o) {
+		let a = {
+			slideRealIndex: e,
+			direction: n,
+			setTranslate: r,
+			activeSlideIndex: i,
+			byController: !0
+		};
+		Array.isArray(c.controller.control) ? c.controller.control.forEach((e) => {
+			!e.destroyed && e.params.loop && e.loopFix({
+				...a,
+				slideTo: e.params.slidesPerView === p.slidesPerView ? t : !1
+			});
+		}) : c.controller.control instanceof c.constructor && c.controller.control.params.loop && c.controller.control.loopFix({
+			...a,
+			slideTo: c.controller.control.params.slidesPerView === p.slidesPerView ? t : !1
+		});
+	}
+	c.emit("loopFix");
+}
+function fT() {
+	let e = this, { params: t, slidesEl: n } = e;
+	if (!t.loop || !n || e.virtual && e.params.virtual.enabled) return;
+	e.recalcSlides();
+	let r = [];
+	e.slides.forEach((e) => {
+		let t = e.swiperSlideIndex === void 0 ? e.getAttribute("data-swiper-slide-index") * 1 : e.swiperSlideIndex;
+		r[t] = e;
+	}), e.slides.forEach((e) => {
+		e.removeAttribute("data-swiper-slide-index");
+	}), r.forEach((e) => {
+		n.append(e);
+	}), e.recalcSlides(), e.slideTo(e.realIndex, 0);
+}
+var pT = {
+	loopCreate: uT,
+	loopFix: dT,
+	loopDestroy: fT
+};
+function mT(e) {
+	let t = this;
+	if (!t.params.simulateTouch || t.params.watchOverflow && t.isLocked || t.params.cssMode) return;
+	let n = t.params.touchEventsTarget === "container" ? t.el : t.wrapperEl;
+	t.isElement && (t.__preventObserver__ = !0), n.style.cursor = "move", n.style.cursor = e ? "grabbing" : "grab", t.isElement && requestAnimationFrame(() => {
+		t.__preventObserver__ = !1;
+	});
+}
+function hT() {
+	let e = this;
+	e.params.watchOverflow && e.isLocked || e.params.cssMode || (e.isElement && (e.__preventObserver__ = !0), e[e.params.touchEventsTarget === "container" ? "el" : "wrapperEl"].style.cursor = "", e.isElement && requestAnimationFrame(() => {
+		e.__preventObserver__ = !1;
+	}));
+}
+var gT = {
+	setGrabCursor: mT,
+	unsetGrabCursor: hT
+};
+function _T(e, t = this) {
+	function n(t) {
+		if (!t || t === BC() || t === HC()) return null;
+		t.assignedSlot && (t = t.assignedSlot);
+		let r = t.closest(e);
+		return !r && !t.getRootNode ? null : r || n(t.getRootNode().host);
+	}
+	return n(t);
+}
+function vT(e, t, n) {
+	let r = HC(), { params: i } = e, a = i.edgeSwipeDetection, o = i.edgeSwipeThreshold;
+	return a && (n <= o || n >= r.innerWidth - o) ? a === "prevent" ? (t.preventDefault(), !0) : !1 : !0;
+}
+function yT(e) {
+	let t = this;
+	if (t.destroyed) return;
+	let n = BC(), r = e;
+	r.originalEvent && (r = r.originalEvent);
+	let i = t.touchEventsData;
+	if (r.type === "pointerdown") {
+		if (i.pointerId !== null && i.pointerId !== r.pointerId) return;
+		i.pointerId = r.pointerId;
+	} else r.type === "touchstart" && r.targetTouches.length === 1 && (i.touchId = r.targetTouches[0].identifier);
+	if (r.type === "touchstart") {
+		vT(t, r, r.targetTouches[0].pageX);
+		return;
+	}
+	let { params: a, touches: o, enabled: s } = t;
+	if (!s || !a.simulateTouch && r.pointerType === "mouse" || t.animating && a.preventInteractionOnTransition) return;
+	!t.animating && a.cssMode && a.loop && t.loopFix();
+	let c = r.target;
+	if (a.touchEventsTarget === "wrapper" && !rw(c, t.wrapperEl) || "which" in r && r.which === 3 || "button" in r && r.button > 0 || i.isTouched && i.isMoved) return;
+	let l = !!a.noSwipingClass && a.noSwipingClass !== "", u = r.composedPath ? r.composedPath() : r.path;
+	l && r.target && r.target.shadowRoot && u && (c = u[0]);
+	let d = a.noSwipingSelector ? a.noSwipingSelector : `.${a.noSwipingClass}`, f = !!(r.target && r.target.shadowRoot);
+	if (a.noSwiping && (f ? _T(d, c) : c.closest(d))) {
+		t.allowClick = !0;
+		return;
+	}
+	if (a.swipeHandler && !c.closest(a.swipeHandler)) return;
+	o.currentX = r.pageX, o.currentY = r.pageY;
+	let p = o.currentX, m = o.currentY;
+	if (!vT(t, r, p)) return;
+	Object.assign(i, {
+		isTouched: !0,
+		isMoved: !1,
+		allowTouchCallbacks: !0,
+		isScrolling: void 0,
+		startMoving: void 0
+	}), o.startX = p, o.startY = m, i.touchStartTime = KC(), t.allowClick = !0, t.updateSize(), t.swipeDirection = void 0, a.threshold > 0 && (i.allowThresholdMove = !1);
+	let h = !0;
+	c.matches(i.focusableElements) && (h = !1, c.nodeName === "SELECT" && (i.isTouched = !1)), n.activeElement && n.activeElement.matches(i.focusableElements) && n.activeElement !== c && (r.pointerType === "mouse" || r.pointerType !== "mouse" && !c.matches(i.focusableElements)) && n.activeElement.blur();
+	let g = h && t.allowTouchMove && a.touchStartPreventDefault;
+	(a.touchStartForcePreventDefault || g) && !c.isContentEditable && r.preventDefault(), a.freeMode && a.freeMode.enabled && t.freeMode && t.animating && !a.cssMode && t.freeMode.onTouchStart(), t.emit("touchStart", r);
+}
+function bT(e) {
+	let t = BC(), n = this;
+	if (n.destroyed) return;
+	let r = n.touchEventsData, { params: i, touches: a, rtlTranslate: o, enabled: s } = n;
+	if (!s || !i.simulateTouch && e.pointerType === "mouse") return;
+	let c = e;
+	if (c.originalEvent && (c = c.originalEvent), c.type === "pointermove" && (r.touchId !== null || c.pointerId !== r.pointerId)) return;
+	let l;
+	if (c.type === "touchmove") {
+		if (l = [...c.changedTouches].find((e) => e.identifier === r.touchId), !l || l.identifier !== r.touchId) return;
+	} else l = c;
+	if (!r.isTouched) {
+		r.startMoving && r.isScrolling && n.emit("touchMoveOpposite", c);
+		return;
+	}
+	let u = l.pageX, d = l.pageY;
+	if (c.preventedByNestedSwiper) {
+		a.startX = u, a.startY = d;
+		return;
+	}
+	if (!n.allowTouchMove) {
+		c.target.matches(r.focusableElements) || (n.allowClick = !1), r.isTouched && (Object.assign(a, {
+			startX: u,
+			startY: d,
+			currentX: u,
+			currentY: d
+		}), r.touchStartTime = KC());
+		return;
+	}
+	if (i.touchReleaseOnEdges && !i.loop) {
+		if (n.isVertical()) {
+			if (d < a.startY && n.translate <= n.maxTranslate() || d > a.startY && n.translate >= n.minTranslate()) {
+				r.isTouched = !1, r.isMoved = !1;
+				return;
+			}
+		} else if (o && (u > a.startX && -n.translate <= n.maxTranslate() || u < a.startX && -n.translate >= n.minTranslate())) return;
+		else if (!o && (u < a.startX && n.translate <= n.maxTranslate() || u > a.startX && n.translate >= n.minTranslate())) return;
+	}
+	if (t.activeElement && t.activeElement.matches(r.focusableElements) && t.activeElement !== c.target && c.pointerType !== "mouse" && t.activeElement.blur(), t.activeElement && c.target === t.activeElement && c.target.matches(r.focusableElements)) {
+		r.isMoved = !0, n.allowClick = !1;
+		return;
+	}
+	r.allowTouchCallbacks && n.emit("touchMove", c), a.previousX = a.currentX, a.previousY = a.currentY, a.currentX = u, a.currentY = d;
+	let f = a.currentX - a.startX, p = a.currentY - a.startY;
+	if (n.params.threshold && Math.sqrt(f ** 2 + p ** 2) < n.params.threshold) return;
+	if (r.isScrolling === void 0) {
+		let e;
+		n.isHorizontal() && a.currentY === a.startY || n.isVertical() && a.currentX === a.startX ? r.isScrolling = !1 : f * f + p * p >= 25 && (e = Math.atan2(Math.abs(p), Math.abs(f)) * 180 / Math.PI, r.isScrolling = n.isHorizontal() ? e > i.touchAngle : 90 - e > i.touchAngle);
+	}
+	if (r.isScrolling && n.emit("touchMoveOpposite", c), r.startMoving === void 0 && (a.currentX !== a.startX || a.currentY !== a.startY) && (r.startMoving = !0), r.isScrolling || c.type === "touchmove" && r.preventTouchMoveFromPointerMove) {
+		r.isTouched = !1;
+		return;
+	}
+	if (!r.startMoving) return;
+	n.allowClick = !1, !i.cssMode && c.cancelable && c.preventDefault(), i.touchMoveStopPropagation && !i.nested && c.stopPropagation();
+	let m = n.isHorizontal() ? f : p, h = n.isHorizontal() ? a.currentX - a.previousX : a.currentY - a.previousY;
+	i.oneWayMovement && (m = Math.abs(m) * (o ? 1 : -1), h = Math.abs(h) * (o ? 1 : -1)), a.diff = m, m *= i.touchRatio, o && (m = -m, h = -h);
+	let g = n.touchesDirection;
+	n.swipeDirection = m > 0 ? "prev" : "next", n.touchesDirection = h > 0 ? "prev" : "next";
+	let _ = n.params.loop && !i.cssMode, v = n.touchesDirection === "next" && n.allowSlideNext || n.touchesDirection === "prev" && n.allowSlidePrev;
+	if (!r.isMoved) {
+		if (_ && v && n.loopFix({ direction: n.swipeDirection }), r.startTranslate = n.getTranslate(), n.setTransition(0), n.animating) {
+			let e = new window.CustomEvent("transitionend", {
+				bubbles: !0,
+				cancelable: !0,
+				detail: { bySwiperTouchMove: !0 }
+			});
+			n.wrapperEl.dispatchEvent(e);
+		}
+		r.allowMomentumBounce = !1, i.grabCursor && (n.allowSlideNext === !0 || n.allowSlidePrev === !0) && n.setGrabCursor(!0), n.emit("sliderFirstMove", c);
+	}
+	if ((/* @__PURE__ */ new Date()).getTime(), i._loopSwapReset !== !1 && r.isMoved && r.allowThresholdMove && g !== n.touchesDirection && _ && v && Math.abs(m) >= 1) {
+		Object.assign(a, {
+			startX: u,
+			startY: d,
+			currentX: u,
+			currentY: d,
+			startTranslate: r.currentTranslate
+		}), r.loopSwapReset = !0, r.startTranslate = r.currentTranslate;
+		return;
+	}
+	n.emit("sliderMove", c), r.isMoved = !0, r.currentTranslate = m + r.startTranslate;
+	let y = !0, b = i.resistanceRatio;
+	if (i.touchReleaseOnEdges && (b = 0), m > 0 ? (_ && v && r.allowThresholdMove && r.currentTranslate > (i.centeredSlides ? n.minTranslate() - n.slidesSizesGrid[n.activeIndex + 1] - (i.slidesPerView !== "auto" && n.slides.length - i.slidesPerView >= 2 ? n.slidesSizesGrid[n.activeIndex + 1] + n.params.spaceBetween : 0) - n.params.spaceBetween : n.minTranslate()) && n.loopFix({
+		direction: "prev",
+		setTranslate: !0,
+		activeSlideIndex: 0
+	}), r.currentTranslate > n.minTranslate() && (y = !1, i.resistance && (r.currentTranslate = n.minTranslate() - 1 + (-n.minTranslate() + r.startTranslate + m) ** b))) : m < 0 && (_ && v && r.allowThresholdMove && r.currentTranslate < (i.centeredSlides ? n.maxTranslate() + n.slidesSizesGrid[n.slidesSizesGrid.length - 1] + n.params.spaceBetween + (i.slidesPerView !== "auto" && n.slides.length - i.slidesPerView >= 2 ? n.slidesSizesGrid[n.slidesSizesGrid.length - 1] + n.params.spaceBetween : 0) : n.maxTranslate()) && n.loopFix({
+		direction: "next",
+		setTranslate: !0,
+		activeSlideIndex: n.slides.length - (i.slidesPerView === "auto" ? n.slidesPerViewDynamic() : Math.ceil(parseFloat(i.slidesPerView, 10)))
+	}), r.currentTranslate < n.maxTranslate() && (y = !1, i.resistance && (r.currentTranslate = n.maxTranslate() + 1 - (n.maxTranslate() - r.startTranslate - m) ** b))), y && (c.preventedByNestedSwiper = !0), !n.allowSlideNext && n.swipeDirection === "next" && r.currentTranslate < r.startTranslate && (r.currentTranslate = r.startTranslate), !n.allowSlidePrev && n.swipeDirection === "prev" && r.currentTranslate > r.startTranslate && (r.currentTranslate = r.startTranslate), !n.allowSlidePrev && !n.allowSlideNext && (r.currentTranslate = r.startTranslate), i.threshold > 0) if (Math.abs(m) > i.threshold || r.allowThresholdMove) {
+		if (!r.allowThresholdMove) {
+			r.allowThresholdMove = !0, a.startX = a.currentX, a.startY = a.currentY, r.currentTranslate = r.startTranslate, a.diff = n.isHorizontal() ? a.currentX - a.startX : a.currentY - a.startY;
+			return;
+		}
+	} else {
+		r.currentTranslate = r.startTranslate;
+		return;
+	}
+	!i.followFinger || i.cssMode || ((i.freeMode && i.freeMode.enabled && n.freeMode || i.watchSlidesProgress) && (n.updateActiveIndex(), n.updateSlidesClasses()), i.freeMode && i.freeMode.enabled && n.freeMode && n.freeMode.onTouchMove(), n.updateProgress(r.currentTranslate), n.setTranslate(r.currentTranslate));
+}
+function xT(e) {
+	let t = this;
+	if (t.destroyed) return;
+	let n = t.touchEventsData, r = e;
+	r.originalEvent && (r = r.originalEvent);
+	let i;
+	if (!(r.type === "touchend" || r.type === "touchcancel")) {
+		if (n.touchId !== null || r.pointerId !== n.pointerId) return;
+		i = r;
+	} else if (i = [...r.changedTouches].find((e) => e.identifier === n.touchId), !i || i.identifier !== n.touchId) return;
+	if ([
+		"pointercancel",
+		"pointerout",
+		"pointerleave",
+		"contextmenu"
+	].includes(r.type) && !(["pointercancel", "contextmenu"].includes(r.type) && (t.browser.isSafari || t.browser.isWebView))) return;
+	n.pointerId = null, n.touchId = null;
+	let { params: a, touches: o, rtlTranslate: s, slidesGrid: c, enabled: l } = t;
+	if (!l || !a.simulateTouch && r.pointerType === "mouse") return;
+	if (n.allowTouchCallbacks && t.emit("touchEnd", r), n.allowTouchCallbacks = !1, !n.isTouched) {
+		n.isMoved && a.grabCursor && t.setGrabCursor(!1), n.isMoved = !1, n.startMoving = !1;
+		return;
+	}
+	a.grabCursor && n.isMoved && n.isTouched && (t.allowSlideNext === !0 || t.allowSlidePrev === !0) && t.setGrabCursor(!1);
+	let u = KC(), d = u - n.touchStartTime;
+	if (t.allowClick) {
+		let e = r.path || r.composedPath && r.composedPath();
+		t.updateClickedSlide(e && e[0] || r.target, e), t.emit("tap click", r), d < 300 && u - n.lastClickTime < 300 && t.emit("doubleTap doubleClick", r);
+	}
+	if (n.lastClickTime = KC(), GC(() => {
+		t.destroyed || (t.allowClick = !0);
+	}), !n.isTouched || !n.isMoved || !t.swipeDirection || o.diff === 0 && !n.loopSwapReset || n.currentTranslate === n.startTranslate && !n.loopSwapReset) {
+		n.isTouched = !1, n.isMoved = !1, n.startMoving = !1;
+		return;
+	}
+	n.isTouched = !1, n.isMoved = !1, n.startMoving = !1;
+	let f;
+	if (f = a.followFinger ? s ? t.translate : -t.translate : -n.currentTranslate, a.cssMode) return;
+	if (a.freeMode && a.freeMode.enabled) {
+		t.freeMode.onTouchEnd({ currentPos: f });
+		return;
+	}
+	let p = f >= -t.maxTranslate() && !t.params.loop, m = 0, h = t.slidesSizesGrid[0];
+	for (let e = 0; e < c.length; e += e < a.slidesPerGroupSkip ? 1 : a.slidesPerGroup) {
+		let t = e < a.slidesPerGroupSkip - 1 ? 1 : a.slidesPerGroup;
+		c[e + t] === void 0 ? (p || f >= c[e]) && (m = e, h = c[c.length - 1] - c[c.length - 2]) : (p || f >= c[e] && f < c[e + t]) && (m = e, h = c[e + t] - c[e]);
+	}
+	let g = null, _ = null;
+	a.rewind && (t.isBeginning ? _ = a.virtual && a.virtual.enabled && t.virtual ? t.virtual.slides.length - 1 : t.slides.length - 1 : t.isEnd && (g = 0));
+	let v = (f - c[m]) / h, y = m < a.slidesPerGroupSkip - 1 ? 1 : a.slidesPerGroup;
+	if (d > a.longSwipesMs) {
+		if (!a.longSwipes) {
+			t.slideTo(t.activeIndex);
+			return;
+		}
+		t.swipeDirection === "next" && (v >= a.longSwipesRatio ? t.slideTo(a.rewind && t.isEnd ? g : m + y) : t.slideTo(m)), t.swipeDirection === "prev" && (v > 1 - a.longSwipesRatio ? t.slideTo(m + y) : _ !== null && v < 0 && Math.abs(v) > a.longSwipesRatio ? t.slideTo(_) : t.slideTo(m));
+	} else {
+		if (!a.shortSwipes) {
+			t.slideTo(t.activeIndex);
+			return;
+		}
+		t.navigation && (r.target === t.navigation.nextEl || r.target === t.navigation.prevEl) ? r.target === t.navigation.nextEl ? t.slideTo(m + y) : t.slideTo(m) : (t.swipeDirection === "next" && t.slideTo(g === null ? m + y : g), t.swipeDirection === "prev" && t.slideTo(_ === null ? m : _));
+	}
+}
+function ST() {
+	let e = this, { params: t, el: n } = e;
+	if (n && n.offsetWidth === 0) return;
+	t.breakpoints && e.setBreakpoint();
+	let { allowSlideNext: r, allowSlidePrev: i, snapGrid: a } = e, o = e.virtual && e.params.virtual.enabled;
+	e.allowSlideNext = !0, e.allowSlidePrev = !0, e.updateSize(), e.updateSlides(), e.updateSlidesClasses();
+	let s = o && t.loop;
+	if ((t.slidesPerView === "auto" || t.slidesPerView > 1) && e.isEnd && !e.isBeginning && !e.params.centeredSlides && !s) {
+		let t = o ? e.virtual.slides : e.slides;
+		e.slideTo(t.length - 1, 0, !1, !0);
+	} else e.params.loop && !o ? e.slideToLoop(e.realIndex, 0, !1, !0) : e.slideTo(e.activeIndex, 0, !1, !0);
+	e.autoplay && e.autoplay.running && e.autoplay.paused && (clearTimeout(e.autoplay.resizeTimeout), e.autoplay.resizeTimeout = setTimeout(() => {
+		e.autoplay && e.autoplay.running && e.autoplay.paused && e.autoplay.resume();
+	}, 500)), e.allowSlidePrev = i, e.allowSlideNext = r, e.params.watchOverflow && a !== e.snapGrid && e.checkOverflow();
+}
+function CT(e) {
+	let t = this;
+	t.destroyed || t.enabled && (t.allowClick || (t.params.preventClicks && e.preventDefault(), t.params.preventClicksPropagation && t.animating && (e.stopPropagation(), e.stopImmediatePropagation())));
+}
+function wT() {
+	let e = this;
+	if (e.destroyed) return;
+	let { wrapperEl: t, rtlTranslate: n, enabled: r } = e;
+	if (!r) return;
+	e.previousTranslate = e.translate, e.isHorizontal() ? e.translate = -t.scrollLeft : e.translate = -t.scrollTop, e.translate === 0 && (e.translate = 0), e.updateActiveIndex(), e.updateSlidesClasses();
+	let i, a = e.maxTranslate() - e.minTranslate();
+	i = a === 0 ? 0 : (e.translate - e.minTranslate()) / a, i !== e.progress && e.updateProgress(n ? -e.translate : e.translate), e.emit("setTranslate", e.translate, !1);
+}
+function TT(e) {
+	let t = this;
+	t.destroyed || (Rw(t, e.target), !(t.params.cssMode || t.params.slidesPerView !== "auto" && !t.params.autoHeight) && t.update());
+}
+function ET() {
+	let e = this;
+	e.destroyed || e.documentTouchHandlerProceeded || (e.documentTouchHandlerProceeded = !0, e.params.touchReleaseOnEdges && (e.el.style.touchAction = "auto"));
+}
+var DT = (e, t) => {
+	let n = BC(), { params: r, el: i, wrapperEl: a, device: o } = e, s = !!r.nested, c = t === "on" ? "addEventListener" : "removeEventListener", l = t;
+	!i || typeof i == "string" || (n[c]("touchstart", e.onDocumentTouchStart, {
+		passive: !1,
+		capture: s
+	}), i[c]("touchstart", e.onTouchStart, { passive: !1 }), i[c]("pointerdown", e.onTouchStart, { passive: !1 }), n[c]("touchmove", e.onTouchMove, {
+		passive: !1,
+		capture: s
+	}), n[c]("pointermove", e.onTouchMove, {
+		passive: !1,
+		capture: s
+	}), n[c]("touchend", e.onTouchEnd, { passive: !0 }), n[c]("pointerup", e.onTouchEnd, { passive: !0 }), n[c]("pointercancel", e.onTouchEnd, { passive: !0 }), n[c]("touchcancel", e.onTouchEnd, { passive: !0 }), n[c]("pointerout", e.onTouchEnd, { passive: !0 }), n[c]("pointerleave", e.onTouchEnd, { passive: !0 }), n[c]("contextmenu", e.onTouchEnd, { passive: !0 }), (r.preventClicks || r.preventClicksPropagation) && i[c]("click", e.onClick, !0), r.cssMode && a[c]("scroll", e.onScroll), r.updateOnWindowResize ? e[l](o.ios || o.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", ST, !0) : e[l]("observerUpdate", ST, !0), i[c]("load", e.onLoad, { capture: !0 }));
+};
+function OT() {
+	let e = this, { params: t } = e;
+	e.onTouchStart = yT.bind(e), e.onTouchMove = bT.bind(e), e.onTouchEnd = xT.bind(e), e.onDocumentTouchStart = ET.bind(e), t.cssMode && (e.onScroll = wT.bind(e)), e.onClick = CT.bind(e), e.onLoad = TT.bind(e), DT(e, "on");
+}
+function kT() {
+	DT(this, "off");
+}
+var AT = {
+	attachEvents: OT,
+	detachEvents: kT
+}, jT = (e, t) => e.grid && t.grid && t.grid.rows > 1;
+function MT() {
+	let e = this, { realIndex: t, initialized: n, params: r, el: i } = e, a = r.breakpoints;
+	if (!a || a && Object.keys(a).length === 0) return;
+	let o = BC(), s = r.breakpointsBase === "window" || !r.breakpointsBase ? r.breakpointsBase : "container", c = ["window", "container"].includes(r.breakpointsBase) || !r.breakpointsBase ? e.el : o.querySelector(r.breakpointsBase), l = e.getBreakpoint(a, s, c);
+	if (!l || e.currentBreakpoint === l) return;
+	let u = (l in a ? a[l] : void 0) || e.originalParams, d = jT(e, r), f = jT(e, u), p = e.params.grabCursor, m = u.grabCursor, h = r.enabled;
+	d && !f ? (i.classList.remove(`${r.containerModifierClass}grid`, `${r.containerModifierClass}grid-column`), e.emitContainerClasses()) : !d && f && (i.classList.add(`${r.containerModifierClass}grid`), (u.grid.fill && u.grid.fill === "column" || !u.grid.fill && r.grid.fill === "column") && i.classList.add(`${r.containerModifierClass}grid-column`), e.emitContainerClasses()), p && !m ? e.unsetGrabCursor() : !p && m && e.setGrabCursor(), [
+		"navigation",
+		"pagination",
+		"scrollbar"
+	].forEach((t) => {
+		if (u[t] === void 0) return;
+		let n = r[t] && r[t].enabled, i = u[t] && u[t].enabled;
+		n && !i && e[t].disable(), !n && i && e[t].enable();
+	});
+	let g = u.direction && u.direction !== r.direction, _ = r.loop && (u.slidesPerView !== r.slidesPerView || g), v = r.loop;
+	g && n && e.changeDirection(), ZC(e.params, u);
+	let y = e.params.enabled, b = e.params.loop;
+	Object.assign(e, {
+		allowTouchMove: e.params.allowTouchMove,
+		allowSlideNext: e.params.allowSlideNext,
+		allowSlidePrev: e.params.allowSlidePrev
+	}), h && !y ? e.disable() : !h && y && e.enable(), e.currentBreakpoint = l, e.emit("_beforeBreakpoint", u), n && (_ ? (e.loopDestroy(), e.loopCreate(t), e.updateSlides()) : !v && b ? (e.loopCreate(t), e.updateSlides()) : v && !b && e.loopDestroy()), e.emit("breakpoint", u);
+}
+function NT(e, t = "window", n) {
+	if (!e || t === "container" && !n) return;
+	let r = !1, i = HC(), a = t === "window" ? i.innerHeight : n.clientHeight, o = Object.keys(e).map((e) => typeof e == "string" && e.indexOf("@") === 0 ? {
+		value: a * parseFloat(e.substr(1)),
+		point: e
+	} : {
+		value: e,
+		point: e
+	});
+	o.sort((e, t) => parseInt(e.value, 10) - parseInt(t.value, 10));
+	for (let e = 0; e < o.length; e += 1) {
+		let { point: a, value: s } = o[e];
+		t === "window" ? i.matchMedia(`(min-width: ${s}px)`).matches && (r = a) : s <= n.clientWidth && (r = a);
+	}
+	return r || "max";
+}
+var PT = {
+	setBreakpoint: MT,
+	getBreakpoint: NT
+};
+function FT(e, t) {
+	let n = [];
+	return e.forEach((e) => {
+		typeof e == "object" ? Object.keys(e).forEach((r) => {
+			e[r] && n.push(t + r);
+		}) : typeof e == "string" && n.push(t + e);
+	}), n;
+}
+function IT() {
+	let e = this, { classNames: t, params: n, rtl: r, el: i, device: a } = e, o = FT([
+		"initialized",
+		n.direction,
+		{ "free-mode": e.params.freeMode && n.freeMode.enabled },
+		{ autoheight: n.autoHeight },
+		{ rtl: r },
+		{ grid: n.grid && n.grid.rows > 1 },
+		{ "grid-column": n.grid && n.grid.rows > 1 && n.grid.fill === "column" },
+		{ android: a.android },
+		{ ios: a.ios },
+		{ "css-mode": n.cssMode },
+		{ centered: n.cssMode && n.centeredSlides },
+		{ "watch-progress": n.watchSlidesProgress }
+	], n.containerModifierClass);
+	t.push(...o), i.classList.add(...t), e.emitContainerClasses();
+}
+function LT() {
+	let e = this, { el: t, classNames: n } = e;
+	!t || typeof t == "string" || (t.classList.remove(...n), e.emitContainerClasses());
+}
+var RT = {
+	addClasses: IT,
+	removeClasses: LT
+};
+function zT() {
+	let e = this, { isLocked: t, params: n } = e, { slidesOffsetBefore: r } = n;
+	if (r) {
+		let t = e.slides.length - 1, n = e.slidesGrid[t] + e.slidesSizesGrid[t] + r * 2;
+		e.isLocked = e.size > n;
+	} else e.isLocked = e.snapGrid.length === 1;
+	n.allowSlideNext === !0 && (e.allowSlideNext = !e.isLocked), n.allowSlidePrev === !0 && (e.allowSlidePrev = !e.isLocked), t && t !== e.isLocked && (e.isEnd = !1), t !== e.isLocked && e.emit(e.isLocked ? "lock" : "unlock");
+}
+var BT = { checkOverflow: zT }, VT = {
+	init: !0,
+	direction: "horizontal",
+	oneWayMovement: !1,
+	swiperElementNodeName: "SWIPER-CONTAINER",
+	touchEventsTarget: "wrapper",
+	initialSlide: 0,
+	speed: 300,
+	cssMode: !1,
+	updateOnWindowResize: !0,
+	resizeObserver: !0,
+	nested: !1,
+	createElements: !1,
+	eventsPrefix: "swiper",
+	enabled: !0,
+	focusableElements: "input, select, option, textarea, button, video, label",
+	width: null,
+	height: null,
+	preventInteractionOnTransition: !1,
+	userAgent: null,
+	url: null,
+	edgeSwipeDetection: !1,
+	edgeSwipeThreshold: 20,
+	autoHeight: !1,
+	setWrapperSize: !1,
+	virtualTranslate: !1,
+	effect: "slide",
+	breakpoints: void 0,
+	breakpointsBase: "window",
+	spaceBetween: 0,
+	slidesPerView: 1,
+	slidesPerGroup: 1,
+	slidesPerGroupSkip: 0,
+	slidesPerGroupAuto: !1,
+	centeredSlides: !1,
+	centeredSlidesBounds: !1,
+	slidesOffsetBefore: 0,
+	slidesOffsetAfter: 0,
+	normalizeSlideIndex: !0,
+	centerInsufficientSlides: !1,
+	snapToSlideEdge: !1,
+	watchOverflow: !0,
+	roundLengths: !1,
+	touchRatio: 1,
+	touchAngle: 45,
+	simulateTouch: !0,
+	shortSwipes: !0,
+	longSwipes: !0,
+	longSwipesRatio: .5,
+	longSwipesMs: 300,
+	followFinger: !0,
+	allowTouchMove: !0,
+	threshold: 5,
+	touchMoveStopPropagation: !1,
+	touchStartPreventDefault: !0,
+	touchStartForcePreventDefault: !1,
+	touchReleaseOnEdges: !1,
+	uniqueNavElements: !0,
+	resistance: !0,
+	resistanceRatio: .85,
+	watchSlidesProgress: !1,
+	grabCursor: !1,
+	preventClicks: !0,
+	preventClicksPropagation: !0,
+	slideToClickedSlide: !1,
+	loop: !1,
+	loopAddBlankSlides: !0,
+	loopAdditionalSlides: 0,
+	loopPreventsSliding: !0,
+	rewind: !1,
+	allowSlidePrev: !0,
+	allowSlideNext: !0,
+	swipeHandler: null,
+	noSwiping: !0,
+	noSwipingClass: "swiper-no-swiping",
+	noSwipingSelector: null,
+	passiveListeners: !0,
+	maxBackfaceHiddenSlides: 10,
+	containerModifierClass: "swiper-",
+	slideClass: "swiper-slide",
+	slideBlankClass: "swiper-slide-blank",
+	slideActiveClass: "swiper-slide-active",
+	slideVisibleClass: "swiper-slide-visible",
+	slideFullyVisibleClass: "swiper-slide-fully-visible",
+	slideNextClass: "swiper-slide-next",
+	slidePrevClass: "swiper-slide-prev",
+	wrapperClass: "swiper-wrapper",
+	lazyPreloaderClass: "swiper-lazy-preloader",
+	lazyPreloadPrevNext: 0,
+	runCallbacksOnInit: !0,
+	_emitClasses: !1
+};
+function HT(e, t) {
+	return function(n = {}) {
+		let r = Object.keys(n)[0], i = n[r];
+		if (typeof i != "object" || !i) {
+			ZC(t, n);
+			return;
+		}
+		if (e[r] === !0 && (e[r] = { enabled: !0 }), r === "navigation" && e[r] && e[r].enabled && !e[r].prevEl && !e[r].nextEl && (e[r].auto = !0), ["pagination", "scrollbar"].indexOf(r) >= 0 && e[r] && e[r].enabled && !e[r].el && (e[r].auto = !0), !(r in e && "enabled" in i)) {
+			ZC(t, n);
+			return;
+		}
+		typeof e[r] == "object" && !("enabled" in e[r]) && (e[r].enabled = !0), e[r] || (e[r] = { enabled: !1 }), ZC(t, n);
+	};
+}
+var UT = {
+	eventsEmitter: Ow,
+	update: Ww,
+	translate: Xw,
+	transition: tT,
+	slide: lT,
+	loop: pT,
+	grabCursor: gT,
+	events: AT,
+	breakpoints: PT,
+	checkOverflow: BT,
+	classes: RT
+}, WT = {}, GT = class e {
+	constructor(...t) {
+		let n, r;
+		t.length === 1 && t[0].constructor && Object.prototype.toString.call(t[0]).slice(8, -1) === "Object" ? r = t[0] : [n, r] = t, r ||= {}, r = ZC({}, r), n && !r.el && (r.el = n);
+		let i = BC();
+		if (r.el && typeof r.el == "string" && i.querySelectorAll(r.el).length > 1) {
+			let t = [];
+			return i.querySelectorAll(r.el).forEach((n) => {
+				let i = ZC({}, r, { el: n });
+				t.push(new e(i));
+			}), t;
+		}
+		let a = this;
+		a.__swiper__ = !0, a.support = yw(), a.device = Sw({ userAgent: r.userAgent }), a.browser = Tw(), a.eventsListeners = {}, a.eventsAnyListeners = [], a.modules = [...a.__modules__], r.modules && Array.isArray(r.modules) && r.modules.forEach((e) => {
+			typeof e == "function" && a.modules.indexOf(e) < 0 && a.modules.push(e);
+		});
+		let o = {};
+		return a.modules.forEach((e) => {
+			e({
+				params: r,
+				swiper: a,
+				extendParams: HT(r, o),
+				on: a.on.bind(a),
+				once: a.once.bind(a),
+				off: a.off.bind(a),
+				emit: a.emit.bind(a)
+			});
+		}), a.params = ZC({}, ZC({}, VT, o), WT, r), a.originalParams = ZC({}, a.params), a.passedParams = ZC({}, r), a.params && a.params.on && Object.keys(a.params.on).forEach((e) => {
+			a.on(e, a.params.on[e]);
+		}), a.params && a.params.onAny && a.onAny(a.params.onAny), Object.assign(a, {
+			enabled: a.params.enabled,
+			el: n,
+			classNames: [],
+			slides: [],
+			slidesGrid: [],
+			snapGrid: [],
+			slidesSizesGrid: [],
+			isHorizontal() {
+				return a.params.direction === "horizontal";
+			},
+			isVertical() {
+				return a.params.direction === "vertical";
+			},
+			activeIndex: 0,
+			realIndex: 0,
+			isBeginning: !0,
+			isEnd: !1,
+			translate: 0,
+			previousTranslate: 0,
+			progress: 0,
+			velocity: 0,
+			animating: !1,
+			cssOverflowAdjustment() {
+				return Math.trunc(this.translate / 2 ** 23) * 2 ** 23;
+			},
+			allowSlideNext: a.params.allowSlideNext,
+			allowSlidePrev: a.params.allowSlidePrev,
+			touchEventsData: {
+				isTouched: void 0,
+				isMoved: void 0,
+				allowTouchCallbacks: void 0,
+				touchStartTime: void 0,
+				isScrolling: void 0,
+				currentTranslate: void 0,
+				startTranslate: void 0,
+				allowThresholdMove: void 0,
+				focusableElements: a.params.focusableElements,
+				lastClickTime: 0,
+				clickTimeout: void 0,
+				velocities: [],
+				allowMomentumBounce: void 0,
+				startMoving: void 0,
+				pointerId: null,
+				touchId: null
+			},
+			allowClick: !0,
+			allowTouchMove: a.params.allowTouchMove,
+			touches: {
+				startX: 0,
+				startY: 0,
+				currentX: 0,
+				currentY: 0,
+				diff: 0
+			},
+			imagesToLoad: [],
+			imagesLoaded: 0
+		}), a.emit("_swiper"), a.params.init && a.init(), a;
+	}
+	getDirectionLabel(e) {
+		return this.isHorizontal() ? e : {
+			width: "height",
+			"margin-top": "margin-left",
+			"margin-bottom ": "margin-right",
+			"margin-left": "margin-top",
+			"margin-right": "margin-bottom",
+			"padding-left": "padding-top",
+			"padding-right": "padding-bottom",
+			marginRight: "marginBottom"
+		}[e];
+	}
+	getSlideIndex(e) {
+		let { slidesEl: t, params: n } = this, r = uw(tw(t, `.${n.slideClass}, swiper-slide`)[0]);
+		return uw(e) - r;
+	}
+	getSlideIndexByData(e) {
+		return this.getSlideIndex(this.slides.find((t) => t.getAttribute("data-swiper-slide-index") * 1 === e));
+	}
+	getSlideIndexWhenGrid(e) {
+		return this.grid && this.params.grid && this.params.grid.rows > 1 && (this.params.grid.fill === "column" ? e = Math.floor(e / this.params.grid.rows) : this.params.grid.fill === "row" && (e %= Math.ceil(this.slides.length / this.params.grid.rows))), e;
+	}
+	recalcSlides() {
+		let e = this, { slidesEl: t, params: n } = e;
+		e.slides = tw(t, `.${n.slideClass}, swiper-slide`);
+	}
+	enable() {
+		let e = this;
+		e.enabled || (e.enabled = !0, e.params.grabCursor && e.setGrabCursor(), e.emit("enable"));
+	}
+	disable() {
+		let e = this;
+		e.enabled && (e.enabled = !1, e.params.grabCursor && e.unsetGrabCursor(), e.emit("disable"));
+	}
+	setProgress(e, t) {
+		let n = this;
+		e = Math.min(Math.max(e, 0), 1);
+		let r = n.minTranslate(), i = (n.maxTranslate() - r) * e + r;
+		n.translateTo(i, t === void 0 ? 0 : t), n.updateActiveIndex(), n.updateSlidesClasses();
+	}
+	emitContainerClasses() {
+		let e = this;
+		if (!e.params._emitClasses || !e.el) return;
+		let t = e.el.className.split(" ").filter((t) => t.indexOf("swiper") === 0 || t.indexOf(e.params.containerModifierClass) === 0);
+		e.emit("_containerClasses", t.join(" "));
+	}
+	getSlideClasses(e) {
+		let t = this;
+		return t.destroyed ? "" : e.className.split(" ").filter((e) => e.indexOf("swiper-slide") === 0 || e.indexOf(t.params.slideClass) === 0).join(" ");
+	}
+	emitSlidesClasses() {
+		let e = this;
+		if (!e.params._emitClasses || !e.el) return;
+		let t = [];
+		e.slides.forEach((n) => {
+			let r = e.getSlideClasses(n);
+			t.push({
+				slideEl: n,
+				classNames: r
+			}), e.emit("_slideClass", n, r);
+		}), e.emit("_slideClasses", t);
+	}
+	slidesPerViewDynamic(e = "current", t = !1) {
+		let { params: n, slides: r, slidesGrid: i, slidesSizesGrid: a, size: o, activeIndex: s } = this, c = 1;
+		if (typeof n.slidesPerView == "number") return n.slidesPerView;
+		if (n.centeredSlides) {
+			let e = r[s] ? Math.ceil(r[s].swiperSlideSize) : 0, t;
+			for (let n = s + 1; n < r.length; n += 1) r[n] && !t && (e += Math.ceil(r[n].swiperSlideSize), c += 1, e > o && (t = !0));
+			for (let n = s - 1; n >= 0; --n) r[n] && !t && (e += r[n].swiperSlideSize, c += 1, e > o && (t = !0));
+		} else if (e === "current") for (let e = s + 1; e < r.length; e += 1) (t ? i[e] + a[e] - i[s] < o : i[e] - i[s] < o) && (c += 1);
+		else for (let e = s - 1; e >= 0; --e) i[s] - i[e] < o && (c += 1);
+		return c;
+	}
+	update() {
+		let e = this;
+		if (!e || e.destroyed) return;
+		let { snapGrid: t, params: n } = e;
+		n.breakpoints && e.setBreakpoint(), [...e.el.querySelectorAll("[loading=\"lazy\"]")].forEach((t) => {
+			t.complete && Rw(e, t);
+		}), e.updateSize(), e.updateSlides(), e.updateProgress(), e.updateSlidesClasses();
+		function r() {
+			let t = e.rtlTranslate ? e.translate * -1 : e.translate, n = Math.min(Math.max(t, e.maxTranslate()), e.minTranslate());
+			e.setTranslate(n), e.updateActiveIndex(), e.updateSlidesClasses();
+		}
+		let i;
+		if (n.freeMode && n.freeMode.enabled && !n.cssMode) r(), n.autoHeight && e.updateAutoHeight();
+		else {
+			if ((n.slidesPerView === "auto" || n.slidesPerView > 1) && e.isEnd && !n.centeredSlides) {
+				let t = e.virtual && n.virtual.enabled ? e.virtual.slides : e.slides;
+				i = e.slideTo(t.length - 1, 0, !1, !0);
+			} else i = e.slideTo(e.activeIndex, 0, !1, !0);
+			i || r();
+		}
+		n.watchOverflow && t !== e.snapGrid && e.checkOverflow(), e.emit("update");
+	}
+	changeDirection(e, t = !0) {
+		let n = this, r = n.params.direction;
+		return e ||= r === "horizontal" ? "vertical" : "horizontal", e === r || e !== "horizontal" && e !== "vertical" ? n : (n.el.classList.remove(`${n.params.containerModifierClass}${r}`), n.el.classList.add(`${n.params.containerModifierClass}${e}`), n.emitContainerClasses(), n.params.direction = e, n.slides.forEach((t) => {
+			e === "vertical" ? t.style.width = "" : t.style.height = "";
+		}), n.emit("changeDirection"), t && n.update(), n);
+	}
+	changeLanguageDirection(e) {
+		let t = this;
+		t.rtl && e === "rtl" || !t.rtl && e === "ltr" || (t.rtl = e === "rtl", t.rtlTranslate = t.params.direction === "horizontal" && t.rtl, t.rtl ? (t.el.classList.add(`${t.params.containerModifierClass}rtl`), t.el.dir = "rtl") : (t.el.classList.remove(`${t.params.containerModifierClass}rtl`), t.el.dir = "ltr"), t.update());
+	}
+	mount(e) {
+		let t = this;
+		if (t.mounted) return !0;
+		let n = e || t.params.el;
+		if (typeof n == "string" && (n = document.querySelector(n)), !n) return !1;
+		n.swiper = t, n.parentNode && n.parentNode.host && n.parentNode.host.nodeName === t.params.swiperElementNodeName.toUpperCase() && (t.isElement = !0);
+		let r = () => `.${(t.params.wrapperClass || "").trim().split(" ").join(".")}`, i = n && n.shadowRoot && n.shadowRoot.querySelector ? n.shadowRoot.querySelector(r()) : tw(n, r())[0];
+		return !i && t.params.createElements && (i = aw("div", t.params.wrapperClass), n.append(i), tw(n, `.${t.params.slideClass}`).forEach((e) => {
+			i.append(e);
+		})), Object.assign(t, {
+			el: n,
+			wrapperEl: i,
+			slidesEl: t.isElement && !n.parentNode.host.slideSlots ? n.parentNode.host : i,
+			hostEl: t.isElement ? n.parentNode.host : n,
+			mounted: !0,
+			rtl: n.dir.toLowerCase() === "rtl" || lw(n, "direction") === "rtl",
+			rtlTranslate: t.params.direction === "horizontal" && (n.dir.toLowerCase() === "rtl" || lw(n, "direction") === "rtl"),
+			wrongRTL: lw(i, "display") === "-webkit-box"
+		}), !0;
+	}
+	init(e) {
+		let t = this;
+		if (t.initialized || t.mount(e) === !1) return t;
+		t.emit("beforeInit"), t.params.breakpoints && t.setBreakpoint(), t.addClasses(), t.updateSize(), t.updateSlides(), t.params.watchOverflow && t.checkOverflow(), t.params.grabCursor && t.enabled && t.setGrabCursor(), t.params.loop && t.virtual && t.params.virtual.enabled ? t.slideTo(t.params.initialSlide + t.virtual.slidesBefore, 0, t.params.runCallbacksOnInit, !1, !0) : t.slideTo(t.params.initialSlide, 0, t.params.runCallbacksOnInit, !1, !0), t.params.loop && t.loopCreate(void 0, !0), t.attachEvents();
+		let n = [...t.el.querySelectorAll("[loading=\"lazy\"]")];
+		return t.isElement && n.push(...t.hostEl.querySelectorAll("[loading=\"lazy\"]")), n.forEach((e) => {
+			e.complete ? Rw(t, e) : e.addEventListener("load", (e) => {
+				Rw(t, e.target);
+			});
+		}), Bw(t), t.initialized = !0, Bw(t), t.emit("init"), t.emit("afterInit"), t;
+	}
+	destroy(e = !0, t = !0) {
+		let n = this, { params: r, el: i, wrapperEl: a, slides: o } = n;
+		return n.params === void 0 || n.destroyed ? null : (n.emit("beforeDestroy"), n.initialized = !1, n.detachEvents(), r.loop && n.loopDestroy(), t && (n.removeClasses(), i && typeof i != "string" && i.removeAttribute("style"), a && a.removeAttribute("style"), o && o.length && o.forEach((e) => {
+			e.classList.remove(r.slideVisibleClass, r.slideFullyVisibleClass, r.slideActiveClass, r.slideNextClass, r.slidePrevClass), e.removeAttribute("style"), e.removeAttribute("data-swiper-slide-index");
+		})), n.emit("destroy"), Object.keys(n.eventsListeners).forEach((e) => {
+			n.off(e);
+		}), e !== !1 && (n.el && typeof n.el != "string" && (n.el.swiper = null), WC(n)), n.destroyed = !0, null);
+	}
+	static extendDefaults(e) {
+		ZC(WT, e);
+	}
+	static get extendedDefaults() {
+		return WT;
+	}
+	static get defaults() {
+		return VT;
+	}
+	static installModule(t) {
+		e.prototype.__modules__ || (e.prototype.__modules__ = []);
+		let n = e.prototype.__modules__;
+		typeof t == "function" && n.indexOf(t) < 0 && n.push(t);
+	}
+	static use(t) {
+		return Array.isArray(t) ? (t.forEach((t) => e.installModule(t)), e) : (e.installModule(t), e);
+	}
+};
+Object.keys(UT).forEach((e) => {
+	Object.keys(UT[e]).forEach((t) => {
+		GT.prototype[t] = UT[e][t];
+	});
+}), GT.use([Ew, Dw]);
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/virtual.mjs
+function KT({ swiper: e, extendParams: t, on: n, emit: r }) {
+	t({ virtual: {
+		enabled: !1,
+		slides: [],
+		cache: !0,
+		slidesPerViewAutoSlideSize: 320,
+		renderSlide: null,
+		renderExternal: null,
+		renderExternalUpdate: !0,
+		addSlidesBefore: 0,
+		addSlidesAfter: 0
+	} });
+	let i, a = BC();
+	e.virtual = {
+		cache: {},
+		from: void 0,
+		to: void 0,
+		slides: [],
+		offset: 0,
+		slidesGrid: []
+	};
+	let o = a.createElement("div");
+	function s(t, n) {
+		let r = e.params.virtual;
+		if (r.cache && e.virtual.cache[n]) return e.virtual.cache[n];
+		let i;
+		return r.renderSlide ? (i = r.renderSlide.call(e, t, n), typeof i == "string" && (gw(o, i), i = o.children[0])) : i = e.isElement ? aw("swiper-slide") : aw("div", e.params.slideClass), i.setAttribute("data-swiper-slide-index", n), r.renderSlide || gw(i, t), r.cache && (e.virtual.cache[n] = i), i;
+	}
+	function c(t, n, i) {
+		let { slidesPerGroup: a, centeredSlides: o, slidesPerView: c, loop: l, initialSlide: u } = e.params;
+		if (n && !l && u > 0) return;
+		let { addSlidesBefore: d, addSlidesAfter: f, slidesPerViewAutoSlideSize: p } = e.params.virtual, { from: m, to: h, slides: g, slidesGrid: _, offset: v } = e.virtual;
+		e.params.cssMode || e.updateActiveIndex();
+		let y = i === void 0 ? e.activeIndex || 0 : i, b;
+		b = e.rtlTranslate ? "right" : e.isHorizontal() ? "left" : "top";
+		let x;
+		if (c === "auto") if (p) {
+			let t = e.size;
+			t ||= e.isHorizontal() ? e.el.getBoundingClientRect().width : e.el.getBoundingClientRect().height, x = Math.max(1, Math.ceil(t / p));
+		} else x = 1;
+		else x = c;
+		let S, C;
+		o ? (S = Math.floor(x / 2) + a + f, C = Math.floor(x / 2) + a + d) : (S = x + (a - 1) + f, C = (l ? x : a) + d);
+		let w = y - C, T = y + S;
+		l || (w = Math.max(w, 0), T = Math.min(T, g.length - 1));
+		let E = (e.slidesGrid[w] || 0) - (e.slidesGrid[0] || 0);
+		l && y >= C ? (w -= C, o || (E += e.slidesGrid[0])) : l && y < C && (w = -C, o && (E += e.slidesGrid[0])), Object.assign(e.virtual, {
+			from: w,
+			to: T,
+			offset: E,
+			slidesGrid: e.slidesGrid,
+			slidesBefore: C,
+			slidesAfter: S
+		});
+		function D() {
+			e.updateSlides(), e.updateProgress(), e.updateSlidesClasses(), r("virtualUpdate");
+		}
+		if (m === w && h === T && !t) {
+			e.slidesGrid !== _ && E !== v && e.slides.forEach((t) => {
+				t.style[b] = `${E - Math.abs(e.cssOverflowAdjustment())}px`;
+			}), e.updateProgress(), r("virtualUpdate");
+			return;
+		}
+		if (e.params.virtual.renderExternal) {
+			e.params.virtual.renderExternal.call(e, {
+				offset: E,
+				from: w,
+				to: T,
+				slides: function() {
+					let e = [];
+					for (let t = w; t <= T; t += 1) e.push(g[t]);
+					return e;
+				}()
+			}), e.params.virtual.renderExternalUpdate ? D() : r("virtualUpdate");
+			return;
+		}
+		let O = [], k = [], ee = (e) => {
+			let t = e;
+			return e < 0 ? t = g.length + e : t >= g.length && (t -= g.length), t;
+		};
+		if (t) e.slides.filter((t) => t.matches(`.${e.params.slideClass}, swiper-slide`)).forEach((e) => {
+			e.remove();
+		});
+		else for (let t = m; t <= h; t += 1) if (t < w || t > T) {
+			let n = ee(t);
+			e.slides.filter((t) => t.matches(`.${e.params.slideClass}[data-swiper-slide-index="${n}"], swiper-slide[data-swiper-slide-index="${n}"]`)).forEach((e) => {
+				e.remove();
+			});
+		}
+		let te = l ? -g.length : 0, A = l ? g.length * 2 : g.length;
+		for (let e = te; e < A; e += 1) if (e >= w && e <= T) {
+			let n = ee(e);
+			h === void 0 || t ? k.push(n) : (e > h && k.push(n), e < m && O.push(n));
+		}
+		if (k.forEach((t) => {
+			e.slidesEl.append(s(g[t], t));
+		}), l) for (let t = O.length - 1; t >= 0; --t) {
+			let n = O[t];
+			e.slidesEl.prepend(s(g[n], n));
+		}
+		else O.sort((e, t) => t - e), O.forEach((t) => {
+			e.slidesEl.prepend(s(g[t], t));
+		});
+		tw(e.slidesEl, ".swiper-slide, swiper-slide").forEach((t) => {
+			t.style[b] = `${E - Math.abs(e.cssOverflowAdjustment())}px`;
+		}), D();
+	}
+	function l(t) {
+		if (typeof t == "object" && "length" in t) for (let n = 0; n < t.length; n += 1) t[n] && e.virtual.slides.push(t[n]);
+		else e.virtual.slides.push(t);
+		c(!0);
+	}
+	function u(t) {
+		let n = e.activeIndex, r = n + 1, i = 1;
+		if (Array.isArray(t)) {
+			for (let n = 0; n < t.length; n += 1) t[n] && e.virtual.slides.unshift(t[n]);
+			r = n + t.length, i = t.length;
+		} else e.virtual.slides.unshift(t);
+		if (e.params.virtual.cache) {
+			let t = e.virtual.cache, n = {};
+			Object.keys(t).forEach((e) => {
+				let r = t[e], a = r.getAttribute("data-swiper-slide-index");
+				a && r.setAttribute("data-swiper-slide-index", parseInt(a, 10) + i), n[parseInt(e, 10) + i] = r;
+			}), e.virtual.cache = n;
+		}
+		c(!0), e.slideTo(r, 0);
+	}
+	function d(t) {
+		if (t == null) return;
+		let n = e.activeIndex;
+		if (Array.isArray(t)) for (let r = t.length - 1; r >= 0; --r) e.params.virtual.cache && (delete e.virtual.cache[t[r]], Object.keys(e.virtual.cache).forEach((n) => {
+			n > t && (e.virtual.cache[n - 1] = e.virtual.cache[n], e.virtual.cache[n - 1].setAttribute("data-swiper-slide-index", n - 1), delete e.virtual.cache[n]);
+		})), e.virtual.slides.splice(t[r], 1), t[r] < n && --n, n = Math.max(n, 0);
+		else e.params.virtual.cache && (delete e.virtual.cache[t], Object.keys(e.virtual.cache).forEach((n) => {
+			n > t && (e.virtual.cache[n - 1] = e.virtual.cache[n], e.virtual.cache[n - 1].setAttribute("data-swiper-slide-index", n - 1), delete e.virtual.cache[n]);
+		})), e.virtual.slides.splice(t, 1), t < n && --n, n = Math.max(n, 0);
+		c(!0), e.slideTo(n, 0);
+	}
+	function f() {
+		e.virtual.slides = [], e.params.virtual.cache && (e.virtual.cache = {}), c(!0), e.slideTo(0, 0);
+	}
+	n("beforeInit", () => {
+		if (!e.params.virtual.enabled) return;
+		let t;
+		if (e.passedParams.virtual.slides === void 0) {
+			let n = [...e.slidesEl.children].filter((t) => t.matches(`.${e.params.slideClass}, swiper-slide`));
+			n && n.length && (e.virtual.slides = [...n], t = !0, n.forEach((t, n) => {
+				t.setAttribute("data-swiper-slide-index", n), e.virtual.cache[n] = t, t.remove();
+			}));
+		}
+		t || (e.virtual.slides = e.params.virtual.slides), e.classNames.push(`${e.params.containerModifierClass}virtual`), e.params.watchSlidesProgress = !0, e.originalParams.watchSlidesProgress = !0, c(!1, !0);
+	}), n("setTranslate", () => {
+		e.params.virtual.enabled && (e.params.cssMode && !e._immediateVirtual ? (clearTimeout(i), i = setTimeout(() => {
+			c();
+		}, 100)) : c());
+	}), n("init update resize", () => {
+		e.params.virtual.enabled && e.params.cssMode && QC(e.wrapperEl, "--swiper-virtual-size", `${e.virtualSize}px`);
+	}), Object.assign(e.virtual, {
+		appendSlide: l,
+		prependSlide: u,
+		removeSlide: d,
+		removeAllSlides: f,
+		update: c
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/keyboard.mjs
+function qT({ swiper: e, extendParams: t, on: n, emit: r }) {
+	let i = BC(), a = HC();
+	e.keyboard = { enabled: !1 }, t({ keyboard: {
+		enabled: !1,
+		onlyInViewport: !0,
+		pageUpDown: !0,
+		speed: void 0
+	} });
+	function o(t) {
+		if (!e.enabled) return;
+		let { rtlTranslate: n } = e, o = t;
+		o.originalEvent && (o = o.originalEvent);
+		let s = o.keyCode || o.charCode, c = e.params.keyboard.pageUpDown, l = c && s === 33, u = c && s === 34, d = s === 37, f = s === 39, p = s === 38, m = s === 40;
+		if (!e.allowSlideNext && (e.isHorizontal() && f || e.isVertical() && m || u) || !e.allowSlidePrev && (e.isHorizontal() && d || e.isVertical() && p || l)) return !1;
+		if (o.shiftKey || o.altKey || o.ctrlKey || o.metaKey || i.activeElement && (i.activeElement.isContentEditable || i.activeElement.nodeName && (i.activeElement.nodeName.toLowerCase() === "input" || i.activeElement.nodeName.toLowerCase() === "textarea"))) return;
+		if (e.params.keyboard.onlyInViewport && (l || u || d || f || p || m)) {
+			let t = !1;
+			if (dw(e.el, `.${e.params.slideClass}, swiper-slide`).length > 0 && dw(e.el, `.${e.params.slideActiveClass}`).length === 0) return;
+			let r = e.el, i = r.clientWidth, o = r.clientHeight, s = a.innerWidth, c = a.innerHeight, l = ow(r);
+			n && (l.left -= r.scrollLeft);
+			let u = [
+				[l.left, l.top],
+				[l.left + i, l.top],
+				[l.left, l.top + o],
+				[l.left + i, l.top + o]
+			];
+			for (let e = 0; e < u.length; e += 1) {
+				let n = u[e];
+				if (n[0] >= 0 && n[0] <= s && n[1] >= 0 && n[1] <= c) {
+					if (n[0] === 0 && n[1] === 0) continue;
+					t = !0;
+				}
+			}
+			if (!t) return;
+		}
+		let h = e.params.keyboard.speed;
+		e.isHorizontal() ? ((l || u || d || f) && (o.preventDefault ? o.preventDefault() : o.returnValue = !1), ((u || f) && !n || (l || d) && n) && e.slideNext(h), ((l || d) && !n || (u || f) && n) && e.slidePrev(h)) : ((l || u || p || m) && (o.preventDefault ? o.preventDefault() : o.returnValue = !1), (u || m) && e.slideNext(h), (l || p) && e.slidePrev(h)), r("keyPress", s);
+	}
+	function s() {
+		e.keyboard.enabled || (i.addEventListener("keydown", o), e.keyboard.enabled = !0);
+	}
+	function c() {
+		e.keyboard.enabled && (i.removeEventListener("keydown", o), e.keyboard.enabled = !1);
+	}
+	n("init", () => {
+		e.params.keyboard.enabled && s();
+	}), n("destroy", () => {
+		e.keyboard.enabled && c();
+	}), Object.assign(e.keyboard, {
+		enable: s,
+		disable: c
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/mousewheel.mjs
+function JT({ swiper: e, extendParams: t, on: n, emit: r }) {
+	let i = HC();
+	t({ mousewheel: {
+		enabled: !1,
+		releaseOnEdges: !1,
+		invert: !1,
+		forceToAxis: !1,
+		sensitivity: 1,
+		eventsTarget: "container",
+		thresholdDelta: null,
+		thresholdTime: null,
+		noMousewheelClass: "swiper-no-mousewheel"
+	} }), e.mousewheel = { enabled: !1 };
+	let a, o = KC(), s, c = [];
+	function l(e) {
+		let t = 0, n = 0, r = 0, i = 0;
+		return "detail" in e && (n = e.detail), "wheelDelta" in e && (n = -e.wheelDelta / 120), "wheelDeltaY" in e && (n = -e.wheelDeltaY / 120), "wheelDeltaX" in e && (t = -e.wheelDeltaX / 120), "axis" in e && e.axis === e.HORIZONTAL_AXIS && (t = n, n = 0), r = t * 10, i = n * 10, "deltaY" in e && (i = e.deltaY), "deltaX" in e && (r = e.deltaX), e.shiftKey && !r && (r = i, i = 0), (r || i) && e.deltaMode && (e.deltaMode === 1 ? (r *= 40, i *= 40) : (r *= 800, i *= 800)), r && !t && (t = r < 1 ? -1 : 1), i && !n && (n = i < 1 ? -1 : 1), {
+			spinX: t,
+			spinY: n,
+			pixelX: r,
+			pixelY: i
+		};
+	}
+	function u() {
+		e.enabled && (e.mouseEntered = !0);
+	}
+	function d() {
+		e.enabled && (e.mouseEntered = !1);
+	}
+	function f(t) {
+		return e.params.mousewheel.thresholdDelta && t.delta < e.params.mousewheel.thresholdDelta || e.params.mousewheel.thresholdTime && KC() - o < e.params.mousewheel.thresholdTime ? !1 : t.delta >= 6 && KC() - o < 60 ? !0 : (t.direction < 0 ? (!e.isEnd || e.params.loop) && !e.animating && (e.slideNext(), r("scroll", t.raw)) : (!e.isBeginning || e.params.loop) && !e.animating && (e.slidePrev(), r("scroll", t.raw)), o = new i.Date().getTime(), !1);
+	}
+	function p(t) {
+		let n = e.params.mousewheel;
+		if (t.direction < 0) {
+			if (e.isEnd && !e.params.loop && n.releaseOnEdges) return !0;
+		} else if (e.isBeginning && !e.params.loop && n.releaseOnEdges) return !0;
+		return !1;
+	}
+	function m(t) {
+		let n = t, i = !0;
+		if (!e.enabled || t.target.closest(`.${e.params.mousewheel.noMousewheelClass}`)) return;
+		let o = e.params.mousewheel;
+		e.params.cssMode && n.preventDefault();
+		let u = e.el;
+		e.params.mousewheel.eventsTarget !== "container" && (u = document.querySelector(e.params.mousewheel.eventsTarget));
+		let d = u && u.contains(n.target);
+		if (!e.mouseEntered && !d && !o.releaseOnEdges) return !0;
+		n.originalEvent && (n = n.originalEvent);
+		let m = 0, h = e.rtlTranslate ? -1 : 1, g = l(n);
+		if (o.forceToAxis) if (e.isHorizontal()) if (Math.abs(g.pixelX) > Math.abs(g.pixelY)) m = -g.pixelX * h;
+		else return !0;
+		else if (Math.abs(g.pixelY) > Math.abs(g.pixelX)) m = -g.pixelY;
+		else return !0;
+		else m = Math.abs(g.pixelX) > Math.abs(g.pixelY) ? -g.pixelX * h : -g.pixelY;
+		if (m === 0) return !0;
+		o.invert && (m = -m);
+		let _ = e.getTranslate() + m * o.sensitivity;
+		if (_ >= e.minTranslate() && (_ = e.minTranslate()), _ <= e.maxTranslate() && (_ = e.maxTranslate()), i = e.params.loop ? !0 : !(_ === e.minTranslate() || _ === e.maxTranslate()), i && e.params.nested && n.stopPropagation(), !e.params.freeMode || !e.params.freeMode.enabled) {
+			let e = {
+				time: KC(),
+				delta: Math.abs(m),
+				direction: Math.sign(m),
+				raw: t
+			};
+			c.length >= 2 && c.shift();
+			let n = c.length ? c[c.length - 1] : void 0;
+			if (c.push(e), n ? (e.direction !== n.direction || e.delta > n.delta || e.time > n.time + 150) && f(e) : f(e), p(e)) return !0;
+		} else {
+			let t = {
+				time: KC(),
+				delta: Math.abs(m),
+				direction: Math.sign(m)
+			}, i = s && t.time < s.time + 500 && t.delta <= s.delta && t.direction === s.direction;
+			if (!i) {
+				s = void 0;
+				let l = e.getTranslate() + m * o.sensitivity, u = e.isBeginning, d = e.isEnd;
+				if (l >= e.minTranslate() && (l = e.minTranslate()), l <= e.maxTranslate() && (l = e.maxTranslate()), e.setTransition(0), e.setTranslate(l), e.updateProgress(), e.updateActiveIndex(), e.updateSlidesClasses(), (!u && e.isBeginning || !d && e.isEnd) && e.updateSlidesClasses(), e.params.loop && e.loopFix({
+					direction: t.direction < 0 ? "next" : "prev",
+					byMousewheel: !0
+				}), e.params.freeMode.sticky) {
+					clearTimeout(a), a = void 0, c.length >= 15 && c.shift();
+					let n = c.length ? c[c.length - 1] : void 0, r = c[0];
+					if (c.push(t), n && (t.delta > n.delta || t.direction !== n.direction)) c.splice(0);
+					else if (c.length >= 15 && t.time - r.time < 500 && r.delta - t.delta >= 1 && t.delta <= 6) {
+						let n = m > 0 ? .8 : .2;
+						s = t, c.splice(0), a = GC(() => {
+							e.destroyed || !e.params || e.slideToClosest(e.params.speed, !0, void 0, n);
+						}, 0);
+					}
+					a ||= GC(() => {
+						e.destroyed || !e.params || (s = t, c.splice(0), e.slideToClosest(e.params.speed, !0, void 0, .5));
+					}, 500);
+				}
+				if (i || r("scroll", n), e.params.autoplay && e.params.autoplay.disableOnInteraction && e.autoplay.stop(), o.releaseOnEdges && (l === e.minTranslate() || l === e.maxTranslate())) return !0;
+			}
+		}
+		return n.preventDefault ? n.preventDefault() : n.returnValue = !1, !1;
+	}
+	function h(t) {
+		let n = e.el;
+		e.params.mousewheel.eventsTarget !== "container" && (n = document.querySelector(e.params.mousewheel.eventsTarget)), n[t]("mouseenter", u), n[t]("mouseleave", d), n[t]("wheel", m);
+	}
+	function g() {
+		return e.params.cssMode ? (e.wrapperEl.removeEventListener("wheel", m), !0) : e.mousewheel.enabled ? !1 : (h("addEventListener"), e.mousewheel.enabled = !0, !0);
+	}
+	function _() {
+		return e.params.cssMode ? (e.wrapperEl.addEventListener(event, m), !0) : e.mousewheel.enabled ? (h("removeEventListener"), e.mousewheel.enabled = !1, !0) : !1;
+	}
+	n("init", () => {
+		!e.params.mousewheel.enabled && e.params.cssMode && _(), e.params.mousewheel.enabled && g();
+	}), n("destroy", () => {
+		e.params.cssMode && g(), e.mousewheel.enabled && _();
+	}), Object.assign(e.mousewheel, {
+		enable: g,
+		disable: _
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/create-element-if-not-defined.mjs
+function YT(e, t, n, r) {
+	return e.params.createElements && Object.keys(r).forEach((i) => {
+		if (!n[i] && n.auto === !0) {
+			let a = tw(e.el, `.${r[i]}`)[0];
+			a || (a = aw("div", r[i]), a.className = r[i], e.el.append(a)), n[i] = a, t[i] = a;
+		}
+	}), n;
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/navigation.mjs
+var XT = "<svg class=\"swiper-navigation-icon\" width=\"11\" height=\"20\" viewBox=\"0 0 11 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0.38296 20.0762C0.111788 19.805 0.111788 19.3654 0.38296 19.0942L9.19758 10.2796L0.38296 1.46497C0.111788 1.19379 0.111788 0.754138 0.38296 0.482966C0.654131 0.211794 1.09379 0.211794 1.36496 0.482966L10.4341 9.55214C10.8359 9.9539 10.8359 10.6053 10.4341 11.007L1.36496 20.0762C1.09379 20.3474 0.654131 20.3474 0.38296 20.0762Z\" fill=\"currentColor\"/></svg>";
+function ZT({ swiper: e, extendParams: t, on: n, emit: r }) {
+	t({ navigation: {
+		nextEl: null,
+		prevEl: null,
+		addIcons: !0,
+		hideOnClick: !1,
+		disabledClass: "swiper-button-disabled",
+		hiddenClass: "swiper-button-hidden",
+		lockClass: "swiper-button-lock",
+		navigationDisabledClass: "swiper-navigation-disabled"
+	} }), e.navigation = {
+		nextEl: null,
+		prevEl: null,
+		arrowSvg: XT
+	};
+	function i(t) {
+		let n;
+		return t && typeof t == "string" && e.isElement && (n = e.el.querySelector(t) || e.hostEl.querySelector(t), n) ? n : (t && (typeof t == "string" && (n = [...document.querySelectorAll(t)]), e.params.uniqueNavElements && typeof t == "string" && n && n.length > 1 && e.el.querySelectorAll(t).length === 1 ? n = e.el.querySelector(t) : n && n.length === 1 && (n = n[0])), t && !n ? t : n);
+	}
+	function a(t, n) {
+		let r = e.params.navigation;
+		t = mw(t), t.forEach((t) => {
+			t && (t.classList[n ? "add" : "remove"](...r.disabledClass.split(" ")), t.tagName === "BUTTON" && (t.disabled = n), e.params.watchOverflow && e.enabled && t.classList[e.isLocked ? "add" : "remove"](r.lockClass));
+		});
+	}
+	function o() {
+		let { nextEl: t, prevEl: n } = e.navigation;
+		if (e.params.loop) {
+			a(n, !1), a(t, !1);
+			return;
+		}
+		a(n, e.isBeginning && !e.params.rewind), a(t, e.isEnd && !e.params.rewind);
+	}
+	function s(t) {
+		t.preventDefault(), !(e.isBeginning && !e.params.loop && !e.params.rewind) && (e.slidePrev(), r("navigationPrev"));
+	}
+	function c(t) {
+		t.preventDefault(), !(e.isEnd && !e.params.loop && !e.params.rewind) && (e.slideNext(), r("navigationNext"));
+	}
+	function l() {
+		let t = e.params.navigation;
+		if (e.params.navigation = YT(e, e.originalParams.navigation, e.params.navigation, {
+			nextEl: "swiper-button-next",
+			prevEl: "swiper-button-prev"
+		}), !(t.nextEl || t.prevEl)) return;
+		let n = i(t.nextEl), r = i(t.prevEl);
+		Object.assign(e.navigation, {
+			nextEl: n,
+			prevEl: r
+		}), n = mw(n), r = mw(r);
+		let a = (n, r) => {
+			if (n) {
+				if (t.addIcons && n.matches(".swiper-button-next,.swiper-button-prev") && !n.querySelector("svg")) {
+					let e = document.createElement("div");
+					gw(e, XT), n.appendChild(e.querySelector("svg")), e.remove();
+				}
+				n.addEventListener("click", r === "next" ? c : s);
+			}
+			!e.enabled && n && n.classList.add(...t.lockClass.split(" "));
+		};
+		n.forEach((e) => a(e, "next")), r.forEach((e) => a(e, "prev"));
+	}
+	function u() {
+		let { nextEl: t, prevEl: n } = e.navigation;
+		t = mw(t), n = mw(n);
+		let r = (t, n) => {
+			t.removeEventListener("click", n === "next" ? c : s), t.classList.remove(...e.params.navigation.disabledClass.split(" "));
+		};
+		t.forEach((e) => r(e, "next")), n.forEach((e) => r(e, "prev"));
+	}
+	n("init", () => {
+		e.params.navigation.enabled === !1 ? f() : (l(), o());
+	}), n("toEdge fromEdge lock unlock", () => {
+		o();
+	}), n("destroy", () => {
+		u();
+	}), n("enable disable", () => {
+		let { nextEl: t, prevEl: n } = e.navigation;
+		if (t = mw(t), n = mw(n), e.enabled) {
+			o();
+			return;
+		}
+		[...t, ...n].filter((e) => !!e).forEach((t) => t.classList.add(e.params.navigation.lockClass));
+	}), n("click", (t, n) => {
+		let { nextEl: i, prevEl: a } = e.navigation;
+		i = mw(i), a = mw(a);
+		let o = n.target, s = a.includes(o) || i.includes(o);
+		if (e.isElement && !s) {
+			let e = n.path || n.composedPath && n.composedPath();
+			e && (s = e.find((e) => i.includes(e) || a.includes(e)));
+		}
+		if (e.params.navigation.hideOnClick && !s) {
+			if (e.pagination && e.params.pagination && e.params.pagination.clickable && (e.pagination.el === o || e.pagination.el.contains(o))) return;
+			let t;
+			i.length ? t = i[0].classList.contains(e.params.navigation.hiddenClass) : a.length && (t = a[0].classList.contains(e.params.navigation.hiddenClass)), r(t === !0 ? "navigationShow" : "navigationHide"), [...i, ...a].filter((e) => !!e).forEach((t) => t.classList.toggle(e.params.navigation.hiddenClass));
+		}
+	});
+	let d = () => {
+		e.el.classList.remove(...e.params.navigation.navigationDisabledClass.split(" ")), l(), o();
+	}, f = () => {
+		e.el.classList.add(...e.params.navigation.navigationDisabledClass.split(" ")), u();
+	};
+	Object.assign(e.navigation, {
+		enable: d,
+		disable: f,
+		update: o,
+		init: l,
+		destroy: u
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/classes-to-selector.mjs
+function QT(e = "") {
+	return `.${e.trim().replace(/([\.:!+\/()[\]#>~*^$|=,'"@{}\\])/g, "\\$1").replace(/ /g, ".")}`;
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/pagination.mjs
+function $T({ swiper: e, extendParams: t, on: n, emit: r }) {
+	let i = "swiper-pagination";
+	t({ pagination: {
+		el: null,
+		bulletElement: "span",
+		clickable: !1,
+		hideOnClick: !1,
+		renderBullet: null,
+		renderProgressbar: null,
+		renderFraction: null,
+		renderCustom: null,
+		progressbarOpposite: !1,
+		type: "bullets",
+		dynamicBullets: !1,
+		dynamicMainBullets: 1,
+		formatFractionCurrent: (e) => e,
+		formatFractionTotal: (e) => e,
+		bulletClass: `${i}-bullet`,
+		bulletActiveClass: `${i}-bullet-active`,
+		modifierClass: `${i}-`,
+		currentClass: `${i}-current`,
+		totalClass: `${i}-total`,
+		hiddenClass: `${i}-hidden`,
+		progressbarFillClass: `${i}-progressbar-fill`,
+		progressbarOppositeClass: `${i}-progressbar-opposite`,
+		clickableClass: `${i}-clickable`,
+		lockClass: `${i}-lock`,
+		horizontalClass: `${i}-horizontal`,
+		verticalClass: `${i}-vertical`,
+		paginationDisabledClass: `${i}-disabled`
+	} }), e.pagination = {
+		el: null,
+		bullets: []
+	};
+	let a, o = 0;
+	function s() {
+		return !e.params.pagination.el || !e.pagination.el || Array.isArray(e.pagination.el) && e.pagination.el.length === 0;
+	}
+	function c(t, n) {
+		let { bulletActiveClass: r } = e.params.pagination;
+		t && (t = t[`${n === "prev" ? "previous" : "next"}ElementSibling`], t && (t.classList.add(`${r}-${n}`), t = t[`${n === "prev" ? "previous" : "next"}ElementSibling`], t && t.classList.add(`${r}-${n}-${n}`)));
+	}
+	function l(e, t, n) {
+		if (e %= n, t %= n, t === e + 1) return "next";
+		if (t === e - 1) return "previous";
+	}
+	function u(t) {
+		let n = t.target.closest(QT(e.params.pagination.bulletClass));
+		if (!n) return;
+		t.preventDefault();
+		let r = uw(n) * e.params.slidesPerGroup;
+		if (e.params.loop) {
+			if (e.realIndex === r) return;
+			let t = l(e.realIndex, r, e.slides.length);
+			t === "next" ? e.slideNext() : t === "previous" ? e.slidePrev() : e.slideToLoop(r);
+		} else e.slideTo(r);
+	}
+	function d() {
+		let t = e.rtl, n = e.params.pagination;
+		if (s()) return;
+		let i = e.pagination.el;
+		i = mw(i);
+		let l, u, d = e.virtual && e.params.virtual.enabled ? e.virtual.slides.length : e.slides.length, f = e.params.loop ? Math.ceil(d / e.params.slidesPerGroup) : e.snapGrid.length;
+		if (e.params.loop ? (u = e.previousRealIndex || 0, l = e.params.slidesPerGroup > 1 ? Math.floor(e.realIndex / e.params.slidesPerGroup) : e.realIndex) : e.snapIndex === void 0 ? (u = e.previousIndex || 0, l = e.activeIndex || 0) : (l = e.snapIndex, u = e.previousSnapIndex), n.type === "bullets" && e.pagination.bullets && e.pagination.bullets.length > 0) {
+			let r = e.pagination.bullets, s, d, f;
+			if (n.dynamicBullets && (a = pw(r[0], e.isHorizontal() ? "width" : "height", !0), i.forEach((t) => {
+				t.style[e.isHorizontal() ? "width" : "height"] = `${a * (n.dynamicMainBullets + 4)}px`;
+			}), n.dynamicMainBullets > 1 && u !== void 0 && (o += l - (u || 0), o > n.dynamicMainBullets - 1 ? o = n.dynamicMainBullets - 1 : o < 0 && (o = 0)), s = Math.max(l - o, 0), d = s + (Math.min(r.length, n.dynamicMainBullets) - 1), f = (d + s) / 2), r.forEach((e) => {
+				let t = [...[
+					"",
+					"-next",
+					"-next-next",
+					"-prev",
+					"-prev-prev",
+					"-main"
+				].map((e) => `${n.bulletActiveClass}${e}`)].map((e) => typeof e == "string" && e.includes(" ") ? e.split(" ") : e).flat();
+				e.classList.remove(...t);
+			}), i.length > 1) r.forEach((t) => {
+				let r = uw(t);
+				r === l ? t.classList.add(...n.bulletActiveClass.split(" ")) : e.isElement && t.setAttribute("part", "bullet"), n.dynamicBullets && (r >= s && r <= d && t.classList.add(...`${n.bulletActiveClass}-main`.split(" ")), r === s && c(t, "prev"), r === d && c(t, "next"));
+			});
+			else {
+				let t = r[l];
+				if (t && t.classList.add(...n.bulletActiveClass.split(" ")), e.isElement && r.forEach((e, t) => {
+					e.setAttribute("part", t === l ? "bullet-active" : "bullet");
+				}), n.dynamicBullets) {
+					let e = r[s], t = r[d];
+					for (let e = s; e <= d; e += 1) r[e] && r[e].classList.add(...`${n.bulletActiveClass}-main`.split(" "));
+					c(e, "prev"), c(t, "next");
+				}
+			}
+			if (n.dynamicBullets) {
+				let i = Math.min(r.length, n.dynamicMainBullets + 4), o = (a * i - a) / 2 - f * a, s = t ? "right" : "left";
+				r.forEach((t) => {
+					t.style[e.isHorizontal() ? s : "top"] = `${o}px`;
+				});
+			}
+		}
+		i.forEach((t, i) => {
+			if (n.type === "fraction" && (t.querySelectorAll(QT(n.currentClass)).forEach((e) => {
+				e.textContent = n.formatFractionCurrent(l + 1);
+			}), t.querySelectorAll(QT(n.totalClass)).forEach((e) => {
+				e.textContent = n.formatFractionTotal(f);
+			})), n.type === "progressbar") {
+				let r;
+				r = n.progressbarOpposite ? e.isHorizontal() ? "vertical" : "horizontal" : e.isHorizontal() ? "horizontal" : "vertical";
+				let i = (l + 1) / f, a = 1, o = 1;
+				r === "horizontal" ? a = i : o = i, t.querySelectorAll(QT(n.progressbarFillClass)).forEach((t) => {
+					t.style.transform = `translate3d(0,0,0) scaleX(${a}) scaleY(${o})`, t.style.transitionDuration = `${e.params.speed}ms`;
+				});
+			}
+			n.type === "custom" && n.renderCustom ? (gw(t, n.renderCustom(e, l + 1, f)), i === 0 && r("paginationRender", t)) : (i === 0 && r("paginationRender", t), r("paginationUpdate", t)), e.params.watchOverflow && e.enabled && t.classList[e.isLocked ? "add" : "remove"](n.lockClass);
+		});
+	}
+	function f() {
+		let t = e.params.pagination;
+		if (s()) return;
+		let n = e.virtual && e.params.virtual.enabled ? e.virtual.slides.length : e.grid && e.params.grid.rows > 1 ? e.slides.length / Math.ceil(e.params.grid.rows) : e.slides.length, i = e.pagination.el;
+		i = mw(i);
+		let a = "";
+		if (t.type === "bullets") {
+			let r = e.params.loop ? Math.ceil(n / e.params.slidesPerGroup) : e.snapGrid.length;
+			e.params.freeMode && e.params.freeMode.enabled && r > n && (r = n);
+			for (let n = 0; n < r; n += 1) t.renderBullet ? a += t.renderBullet.call(e, n, t.bulletClass) : a += `<${t.bulletElement} ${e.isElement ? "part=\"bullet\"" : ""} class="${t.bulletClass}"></${t.bulletElement}>`;
+		}
+		t.type === "fraction" && (a = t.renderFraction ? t.renderFraction.call(e, t.currentClass, t.totalClass) : `<span class="${t.currentClass}"></span> / <span class="${t.totalClass}"></span>`), t.type === "progressbar" && (a = t.renderProgressbar ? t.renderProgressbar.call(e, t.progressbarFillClass) : `<span class="${t.progressbarFillClass}"></span>`), e.pagination.bullets = [], i.forEach((n) => {
+			t.type !== "custom" && gw(n, a || ""), t.type === "bullets" && e.pagination.bullets.push(...n.querySelectorAll(QT(t.bulletClass)));
+		}), t.type !== "custom" && r("paginationRender", i[0]);
+	}
+	function p() {
+		e.params.pagination = YT(e, e.originalParams.pagination, e.params.pagination, { el: "swiper-pagination" });
+		let t = e.params.pagination;
+		if (!t.el) return;
+		let n;
+		typeof t.el == "string" && e.isElement && (n = e.el.querySelector(t.el)), !n && typeof t.el == "string" && (n = [...document.querySelectorAll(t.el)]), n ||= t.el, !(!n || n.length === 0) && (e.params.uniqueNavElements && typeof t.el == "string" && Array.isArray(n) && n.length > 1 && (n = [...e.el.querySelectorAll(t.el)], n.length > 1 && (n = n.find((t) => dw(t, ".swiper")[0] === e.el))), Array.isArray(n) && n.length === 1 && (n = n[0]), Object.assign(e.pagination, { el: n }), n = mw(n), n.forEach((n) => {
+			t.type === "bullets" && t.clickable && n.classList.add(...(t.clickableClass || "").split(" ")), n.classList.add(t.modifierClass + t.type), n.classList.add(e.isHorizontal() ? t.horizontalClass : t.verticalClass), t.type === "bullets" && t.dynamicBullets && (n.classList.add(`${t.modifierClass}${t.type}-dynamic`), o = 0, t.dynamicMainBullets < 1 && (t.dynamicMainBullets = 1)), t.type === "progressbar" && t.progressbarOpposite && n.classList.add(t.progressbarOppositeClass), t.clickable && n.addEventListener("click", u), e.enabled || n.classList.add(t.lockClass);
+		}));
+	}
+	function m() {
+		let t = e.params.pagination;
+		if (s()) return;
+		let n = e.pagination.el;
+		n && (n = mw(n), n.forEach((n) => {
+			n.classList.remove(t.hiddenClass), n.classList.remove(t.modifierClass + t.type), n.classList.remove(e.isHorizontal() ? t.horizontalClass : t.verticalClass), t.clickable && (n.classList.remove(...(t.clickableClass || "").split(" ")), n.removeEventListener("click", u));
+		})), e.pagination.bullets && e.pagination.bullets.forEach((e) => e.classList.remove(...t.bulletActiveClass.split(" ")));
+	}
+	n("changeDirection", () => {
+		if (!e.pagination || !e.pagination.el) return;
+		let t = e.params.pagination, { el: n } = e.pagination;
+		n = mw(n), n.forEach((n) => {
+			n.classList.remove(t.horizontalClass, t.verticalClass), n.classList.add(e.isHorizontal() ? t.horizontalClass : t.verticalClass);
+		});
+	}), n("init", () => {
+		e.params.pagination.enabled === !1 ? g() : (p(), f(), d());
+	}), n("activeIndexChange", () => {
+		e.snapIndex === void 0 && d();
+	}), n("snapIndexChange", () => {
+		d();
+	}), n("snapGridLengthChange", () => {
+		f(), d();
+	}), n("destroy", () => {
+		m();
+	}), n("enable disable", () => {
+		let { el: t } = e.pagination;
+		t && (t = mw(t), t.forEach((t) => t.classList[e.enabled ? "remove" : "add"](e.params.pagination.lockClass)));
+	}), n("lock unlock", () => {
+		d();
+	}), n("click", (t, n) => {
+		let i = n.target, a = mw(e.pagination.el);
+		if (e.params.pagination.el && e.params.pagination.hideOnClick && a && a.length > 0 && !i.classList.contains(e.params.pagination.bulletClass)) {
+			if (e.navigation && (e.navigation.nextEl && i === e.navigation.nextEl || e.navigation.prevEl && i === e.navigation.prevEl)) return;
+			a[0].classList.contains(e.params.pagination.hiddenClass) === !0 ? r("paginationShow") : r("paginationHide"), a.forEach((t) => t.classList.toggle(e.params.pagination.hiddenClass));
+		}
+	});
+	let h = () => {
+		e.el.classList.remove(e.params.pagination.paginationDisabledClass);
+		let { el: t } = e.pagination;
+		t && (t = mw(t), t.forEach((t) => t.classList.remove(e.params.pagination.paginationDisabledClass))), p(), f(), d();
+	}, g = () => {
+		e.el.classList.add(e.params.pagination.paginationDisabledClass);
+		let { el: t } = e.pagination;
+		t && (t = mw(t), t.forEach((t) => t.classList.add(e.params.pagination.paginationDisabledClass))), m();
+	};
+	Object.assign(e.pagination, {
+		enable: h,
+		disable: g,
+		render: f,
+		update: d,
+		init: p,
+		destroy: m
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/scrollbar.mjs
+function eE({ swiper: e, extendParams: t, on: n, emit: r }) {
+	let i = BC(), a = !1, o = null, s = null, c, l, u, d;
+	t({ scrollbar: {
+		el: null,
+		dragSize: "auto",
+		hide: !1,
+		draggable: !1,
+		snapOnRelease: !0,
+		lockClass: "swiper-scrollbar-lock",
+		dragClass: "swiper-scrollbar-drag",
+		scrollbarDisabledClass: "swiper-scrollbar-disabled",
+		horizontalClass: "swiper-scrollbar-horizontal",
+		verticalClass: "swiper-scrollbar-vertical"
+	} }), e.scrollbar = {
+		el: null,
+		dragEl: null
+	};
+	function f() {
+		if (!e.params.scrollbar.el || !e.scrollbar.el) return;
+		let { scrollbar: t, rtlTranslate: n } = e, { dragEl: r, el: i } = t, a = e.params.scrollbar, s = e.params.loop ? e.progressLoop : e.progress, c = l, d = (u - l) * s;
+		n ? (d = -d, d > 0 ? (c = l - d, d = 0) : -d + l > u && (c = u + d)) : d < 0 ? (c = l + d, d = 0) : d + l > u && (c = u - d), e.isHorizontal() ? (r.style.transform = `translate3d(${d}px, 0, 0)`, r.style.width = `${c}px`) : (r.style.transform = `translate3d(0px, ${d}px, 0)`, r.style.height = `${c}px`), a.hide && (clearTimeout(o), i.style.opacity = 1, o = setTimeout(() => {
+			i.style.opacity = 0, i.style.transitionDuration = "400ms";
+		}, 1e3));
+	}
+	function p(t) {
+		!e.params.scrollbar.el || !e.scrollbar.el || (e.scrollbar.dragEl.style.transitionDuration = `${t}ms`);
+	}
+	function m() {
+		if (!e.params.scrollbar.el || !e.scrollbar.el) return;
+		let { scrollbar: t } = e, { dragEl: n, el: r } = t;
+		n.style.width = "", n.style.height = "", u = e.isHorizontal() ? r.offsetWidth : r.offsetHeight, d = e.size / (e.virtualSize + e.params.slidesOffsetBefore - (e.params.centeredSlides ? e.snapGrid[0] : 0)), l = e.params.scrollbar.dragSize === "auto" ? u * d : parseInt(e.params.scrollbar.dragSize, 10), e.isHorizontal() ? n.style.width = `${l}px` : n.style.height = `${l}px`, d >= 1 ? r.style.display = "none" : r.style.display = "", e.params.scrollbar.hide && (r.style.opacity = 0), e.params.watchOverflow && e.enabled && t.el.classList[e.isLocked ? "add" : "remove"](e.params.scrollbar.lockClass);
+	}
+	function h(t) {
+		return e.isHorizontal() ? t.clientX : t.clientY;
+	}
+	function g(t) {
+		let { scrollbar: n, rtlTranslate: r } = e, { el: i } = n, a;
+		a = (h(t) - ow(i)[e.isHorizontal() ? "left" : "top"] - (c === null ? l / 2 : c)) / (u - l), a = Math.max(Math.min(a, 1), 0), r && (a = 1 - a);
+		let o = e.minTranslate() + (e.maxTranslate() - e.minTranslate()) * a;
+		e.updateProgress(o), e.setTranslate(o), e.updateActiveIndex(), e.updateSlidesClasses();
+	}
+	function _(t) {
+		let n = e.params.scrollbar, { scrollbar: i, wrapperEl: o } = e, { el: l, dragEl: u } = i;
+		a = !0, c = t.target === u ? h(t) - t.target.getBoundingClientRect()[e.isHorizontal() ? "left" : "top"] : null, t.preventDefault(), t.stopPropagation(), o.style.transitionDuration = "100ms", u.style.transitionDuration = "100ms", g(t), clearTimeout(s), l.style.transitionDuration = "0ms", n.hide && (l.style.opacity = 1), e.params.cssMode && (e.wrapperEl.style["scroll-snap-type"] = "none"), r("scrollbarDragStart", t);
+	}
+	function v(t) {
+		let { scrollbar: n, wrapperEl: i } = e, { el: o, dragEl: s } = n;
+		a && (t.preventDefault && t.cancelable ? t.preventDefault() : t.returnValue = !1, g(t), i.style.transitionDuration = "0ms", o.style.transitionDuration = "0ms", s.style.transitionDuration = "0ms", r("scrollbarDragMove", t));
+	}
+	function y(t) {
+		let n = e.params.scrollbar, { scrollbar: i, wrapperEl: o } = e, { el: c } = i;
+		a && (a = !1, e.params.cssMode && (e.wrapperEl.style["scroll-snap-type"] = "", o.style.transitionDuration = ""), n.hide && (clearTimeout(s), s = GC(() => {
+			c.style.opacity = 0, c.style.transitionDuration = "400ms";
+		}, 1e3)), r("scrollbarDragEnd", t), n.snapOnRelease && e.slideToClosest());
+	}
+	function b(t) {
+		let { scrollbar: n, params: r } = e, a = n.el;
+		if (!a) return;
+		let o = a, s = r.passiveListeners ? {
+			passive: !1,
+			capture: !1
+		} : !1, c = r.passiveListeners ? {
+			passive: !0,
+			capture: !1
+		} : !1;
+		if (!o) return;
+		let l = t === "on" ? "addEventListener" : "removeEventListener";
+		o[l]("pointerdown", _, s), i[l]("pointermove", v, s), i[l]("pointerup", y, c);
+	}
+	function x() {
+		!e.params.scrollbar.el || !e.scrollbar.el || b("on");
+	}
+	function S() {
+		!e.params.scrollbar.el || !e.scrollbar.el || b("off");
+	}
+	function C() {
+		let { scrollbar: t, el: n } = e;
+		e.params.scrollbar = YT(e, e.originalParams.scrollbar, e.params.scrollbar, { el: "swiper-scrollbar" });
+		let r = e.params.scrollbar;
+		if (!r.el) return;
+		let a;
+		if (typeof r.el == "string" && e.isElement && (a = e.el.querySelector(r.el)), !a && typeof r.el == "string") {
+			if (a = i.querySelectorAll(r.el), !a.length) return;
+		} else a ||= r.el;
+		e.params.uniqueNavElements && typeof r.el == "string" && a.length > 1 && n.querySelectorAll(r.el).length === 1 && (a = n.querySelector(r.el)), a.length > 0 && (a = a[0]), a.classList.add(e.isHorizontal() ? r.horizontalClass : r.verticalClass);
+		let o;
+		a && (o = a.querySelector(QT(e.params.scrollbar.dragClass)), o || (o = aw("div", e.params.scrollbar.dragClass), a.append(o))), Object.assign(t, {
+			el: a,
+			dragEl: o
+		}), r.draggable && x(), a && a.classList[e.enabled ? "remove" : "add"](...UC(e.params.scrollbar.lockClass));
+	}
+	function w() {
+		let t = e.params.scrollbar, n = e.scrollbar.el;
+		n && n.classList.remove(...UC(e.isHorizontal() ? t.horizontalClass : t.verticalClass)), S();
+	}
+	n("changeDirection", () => {
+		if (!e.scrollbar || !e.scrollbar.el) return;
+		let t = e.params.scrollbar, { el: n } = e.scrollbar;
+		n = mw(n), n.forEach((n) => {
+			n.classList.remove(t.horizontalClass, t.verticalClass), n.classList.add(e.isHorizontal() ? t.horizontalClass : t.verticalClass);
+		});
+	}), n("init", () => {
+		e.params.scrollbar.enabled === !1 ? E() : (C(), m(), f());
+	}), n("update resize observerUpdate lock unlock changeDirection", () => {
+		m();
+	}), n("setTranslate", () => {
+		f();
+	}), n("setTransition", (e, t) => {
+		p(t);
+	}), n("enable disable", () => {
+		let { el: t } = e.scrollbar;
+		t && t.classList[e.enabled ? "remove" : "add"](...UC(e.params.scrollbar.lockClass));
+	}), n("destroy", () => {
+		w();
+	});
+	let T = () => {
+		e.el.classList.remove(...UC(e.params.scrollbar.scrollbarDisabledClass)), e.scrollbar.el && e.scrollbar.el.classList.remove(...UC(e.params.scrollbar.scrollbarDisabledClass)), C(), m(), f();
+	}, E = () => {
+		e.el.classList.add(...UC(e.params.scrollbar.scrollbarDisabledClass)), e.scrollbar.el && e.scrollbar.el.classList.add(...UC(e.params.scrollbar.scrollbarDisabledClass)), w();
+	};
+	Object.assign(e.scrollbar, {
+		enable: T,
+		disable: E,
+		updateSize: m,
+		setTranslate: f,
+		init: C,
+		destroy: w
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/parallax.mjs
+function tE({ swiper: e, extendParams: t, on: n }) {
+	t({ parallax: { enabled: !1 } });
+	let r = "[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y], [data-swiper-parallax-opacity], [data-swiper-parallax-scale]", i = (t, n) => {
+		let { rtl: r } = e, i = r ? -1 : 1, a = t.getAttribute("data-swiper-parallax") || "0", o = t.getAttribute("data-swiper-parallax-x"), s = t.getAttribute("data-swiper-parallax-y"), c = t.getAttribute("data-swiper-parallax-scale"), l = t.getAttribute("data-swiper-parallax-opacity"), u = t.getAttribute("data-swiper-parallax-rotate");
+		if (o || s ? (o ||= "0", s ||= "0") : e.isHorizontal() ? (o = a, s = "0") : (s = a, o = "0"), o = o.indexOf("%") >= 0 ? `${parseInt(o, 10) * n * i}%` : `${o * n * i}px`, s = s.indexOf("%") >= 0 ? `${parseInt(s, 10) * n}%` : `${s * n}px`, l != null) {
+			let e = l - (l - 1) * (1 - Math.abs(n));
+			t.style.opacity = e;
+		}
+		let d = `translate3d(${o}, ${s}, 0px)`;
+		if (c != null) {
+			let e = c - (c - 1) * (1 - Math.abs(n));
+			d += ` scale(${e})`;
+		}
+		if (u && u != null) {
+			let e = u * n * -1;
+			d += ` rotate(${e}deg)`;
+		}
+		t.style.transform = d;
+	}, a = () => {
+		let { el: t, slides: n, progress: a, snapGrid: o, isElement: s } = e, c = tw(t, r);
+		e.isElement && c.push(...tw(e.hostEl, r)), c.forEach((e) => {
+			i(e, a);
+		}), n.forEach((t, n) => {
+			let s = t.progress;
+			e.params.slidesPerGroup > 1 && e.params.slidesPerView !== "auto" && (s += Math.ceil(n / 2) - a * (o.length - 1)), s = Math.min(Math.max(s, -1), 1), t.querySelectorAll(`${r}, [data-swiper-parallax-rotate]`).forEach((e) => {
+				i(e, s);
+			});
+		});
+	}, o = (t = e.params.speed) => {
+		let { el: n, hostEl: i } = e, a = [...n.querySelectorAll(r)];
+		e.isElement && a.push(...i.querySelectorAll(r)), a.forEach((e) => {
+			let n = parseInt(e.getAttribute("data-swiper-parallax-duration"), 10) || t;
+			t === 0 && (n = 0), e.style.transitionDuration = `${n}ms`;
+		});
+	};
+	n("beforeInit", () => {
+		e.params.parallax.enabled && (e.params.watchSlidesProgress = !0, e.originalParams.watchSlidesProgress = !0);
+	}), n("init", () => {
+		e.params.parallax.enabled && a();
+	}), n("setTranslate", () => {
+		e.params.parallax.enabled && a();
+	}), n("setTransition", (t, n) => {
+		e.params.parallax.enabled && o(n);
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/zoom.mjs
+function nE({ swiper: e, extendParams: t, on: n, emit: r }) {
+	let i = HC();
+	t({ zoom: {
+		enabled: !1,
+		limitToOriginalSize: !1,
+		maxRatio: 3,
+		minRatio: 1,
+		panOnMouseMove: !1,
+		toggle: !0,
+		containerClass: "swiper-zoom-container",
+		zoomedSlideClass: "swiper-slide-zoomed"
+	} }), e.zoom = { enabled: !1 };
+	let a = 1, o = !1, s = !1, c = {
+		x: 0,
+		y: 0
+	}, l, u, d = [], f = {
+		originX: 0,
+		originY: 0,
+		slideEl: void 0,
+		slideWidth: void 0,
+		slideHeight: void 0,
+		imageEl: void 0,
+		imageWrapEl: void 0,
+		maxRatio: 3
+	}, p = {
+		isTouched: void 0,
+		isMoved: void 0,
+		currentX: void 0,
+		currentY: void 0,
+		minX: void 0,
+		minY: void 0,
+		maxX: void 0,
+		maxY: void 0,
+		width: void 0,
+		height: void 0,
+		startX: void 0,
+		startY: void 0,
+		touchesStart: {},
+		touchesCurrent: {}
+	}, m = {
+		x: void 0,
+		y: void 0,
+		prevPositionX: void 0,
+		prevPositionY: void 0,
+		prevTime: void 0
+	}, h = 1;
+	Object.defineProperty(e.zoom, "scale", {
+		get() {
+			return h;
+		},
+		set(e) {
+			if (h !== e) {
+				let t = f.imageEl, n = f.slideEl;
+				r("zoomChange", e, t, n);
+			}
+			h = e;
+		}
+	});
+	function g() {
+		if (d.length < 2) return 1;
+		let e = d[0].pageX, t = d[0].pageY, n = d[1].pageX, r = d[1].pageY;
+		return Math.sqrt((n - e) ** 2 + (r - t) ** 2);
+	}
+	function _() {
+		let t = e.params.zoom, n = f.imageWrapEl.getAttribute("data-swiper-zoom") || t.maxRatio;
+		if (t.limitToOriginalSize && f.imageEl && f.imageEl.naturalWidth) {
+			let e = f.imageEl.naturalWidth / f.imageEl.offsetWidth;
+			return Math.min(e, n);
+		}
+		return n;
+	}
+	function v() {
+		if (d.length < 2) return {
+			x: null,
+			y: null
+		};
+		let e = f.imageEl.getBoundingClientRect();
+		return [(d[0].pageX + (d[1].pageX - d[0].pageX) / 2 - e.x - i.scrollX) / a, (d[0].pageY + (d[1].pageY - d[0].pageY) / 2 - e.y - i.scrollY) / a];
+	}
+	function y() {
+		return e.isElement ? "swiper-slide" : `.${e.params.slideClass}`;
+	}
+	function b(t) {
+		let n = y();
+		return !!(t.target.matches(n) || e.slides.filter((e) => e.contains(t.target)).length > 0);
+	}
+	function x(t) {
+		let n = `.${e.params.zoom.containerClass}`;
+		return !!(t.target.matches(n) || [...e.hostEl.querySelectorAll(n)].filter((e) => e.contains(t.target)).length > 0);
+	}
+	function S(t) {
+		if (t.pointerType === "mouse" && d.splice(0, d.length), !b(t)) return;
+		let n = e.params.zoom;
+		if (l = !1, u = !1, d.push(t), !(d.length < 2)) {
+			if (l = !0, f.scaleStart = g(), !f.slideEl) {
+				f.slideEl = t.target.closest(`.${e.params.slideClass}, swiper-slide`), f.slideEl ||= e.slides[e.activeIndex];
+				let r = f.slideEl.querySelector(`.${n.containerClass}`);
+				if (r &&= r.querySelectorAll("picture, img, svg, canvas, .swiper-zoom-target")[0], f.imageEl = r, r ? f.imageWrapEl = dw(f.imageEl, `.${n.containerClass}`)[0] : f.imageWrapEl = void 0, !f.imageWrapEl) {
+					f.imageEl = void 0;
+					return;
+				}
+				f.maxRatio = _();
+			}
+			if (f.imageEl) {
+				let [e, t] = v();
+				f.originX = e, f.originY = t, f.imageEl.style.transitionDuration = "0ms";
+			}
+			o = !0;
+		}
+	}
+	function C(t) {
+		if (!b(t)) return;
+		let n = e.params.zoom, r = e.zoom, i = d.findIndex((e) => e.pointerId === t.pointerId);
+		i >= 0 && (d[i] = t), !(d.length < 2) && (u = !0, f.scaleMove = g(), f.imageEl && (r.scale = f.scaleMove / f.scaleStart * a, r.scale > f.maxRatio && (r.scale = f.maxRatio - 1 + (r.scale - f.maxRatio + 1) ** .5), r.scale < n.minRatio && (r.scale = n.minRatio + 1 - (n.minRatio - r.scale + 1) ** .5), f.imageEl.style.transform = `translate3d(0,0,0) scale(${r.scale})`));
+	}
+	function w(t) {
+		if (!b(t) || t.pointerType === "mouse" && t.type === "pointerout") return;
+		let n = e.params.zoom, r = e.zoom, i = d.findIndex((e) => e.pointerId === t.pointerId);
+		i >= 0 && d.splice(i, 1), !(!l || !u) && (l = !1, u = !1, f.imageEl && (r.scale = Math.max(Math.min(r.scale, f.maxRatio), n.minRatio), f.imageEl.style.transitionDuration = `${e.params.speed}ms`, f.imageEl.style.transform = `translate3d(0,0,0) scale(${r.scale})`, a = r.scale, o = !1, r.scale > 1 && f.slideEl ? f.slideEl.classList.add(`${n.zoomedSlideClass}`) : r.scale <= 1 && f.slideEl && f.slideEl.classList.remove(`${n.zoomedSlideClass}`), r.scale === 1 && (f.originX = 0, f.originY = 0, f.slideEl = void 0)));
+	}
+	let T;
+	function E() {
+		e.touchEventsData.preventTouchMoveFromPointerMove = !1;
+	}
+	function D() {
+		clearTimeout(T), e.touchEventsData.preventTouchMoveFromPointerMove = !0, T = setTimeout(() => {
+			e.destroyed || E();
+		});
+	}
+	function O(t) {
+		let n = e.device;
+		if (!f.imageEl || p.isTouched) return;
+		n.android && t.cancelable && t.preventDefault(), p.isTouched = !0;
+		let r = d.length > 0 ? d[0] : t;
+		p.touchesStart.x = r.pageX, p.touchesStart.y = r.pageY;
+	}
+	function k(t) {
+		let n = t.pointerType === "mouse" && e.params.zoom.panOnMouseMove;
+		if (!b(t) || !x(t)) return;
+		let r = e.zoom;
+		if (!f.imageEl) return;
+		if (!p.isTouched || !f.slideEl) {
+			n && A(t);
+			return;
+		}
+		if (n) {
+			A(t);
+			return;
+		}
+		p.isMoved || (p.width = f.imageEl.offsetWidth || f.imageEl.clientWidth, p.height = f.imageEl.offsetHeight || f.imageEl.clientHeight, p.startX = JC(f.imageWrapEl, "x") || 0, p.startY = JC(f.imageWrapEl, "y") || 0, f.slideWidth = f.slideEl.offsetWidth, f.slideHeight = f.slideEl.offsetHeight, f.imageWrapEl.style.transitionDuration = "0ms");
+		let i = p.width * r.scale, s = p.height * r.scale;
+		if (p.minX = Math.min(f.slideWidth / 2 - i / 2, 0), p.maxX = -p.minX, p.minY = Math.min(f.slideHeight / 2 - s / 2, 0), p.maxY = -p.minY, p.touchesCurrent.x = d.length > 0 ? d[0].pageX : t.pageX, p.touchesCurrent.y = d.length > 0 ? d[0].pageY : t.pageY, Math.max(Math.abs(p.touchesCurrent.x - p.touchesStart.x), Math.abs(p.touchesCurrent.y - p.touchesStart.y)) > 5 && (e.allowClick = !1), !p.isMoved && !o) {
+			if (e.isHorizontal() && (Math.floor(p.minX) === Math.floor(p.startX) && p.touchesCurrent.x < p.touchesStart.x || Math.floor(p.maxX) === Math.floor(p.startX) && p.touchesCurrent.x > p.touchesStart.x)) {
+				p.isTouched = !1, E();
+				return;
+			}
+			if (!e.isHorizontal() && (Math.floor(p.minY) === Math.floor(p.startY) && p.touchesCurrent.y < p.touchesStart.y || Math.floor(p.maxY) === Math.floor(p.startY) && p.touchesCurrent.y > p.touchesStart.y)) {
+				p.isTouched = !1, E();
+				return;
+			}
+		}
+		t.cancelable && t.preventDefault(), t.stopPropagation(), D(), p.isMoved = !0;
+		let c = (r.scale - a) / (f.maxRatio - e.params.zoom.minRatio), { originX: l, originY: u } = f;
+		p.currentX = p.touchesCurrent.x - p.touchesStart.x + p.startX + c * (p.width - l * 2), p.currentY = p.touchesCurrent.y - p.touchesStart.y + p.startY + c * (p.height - u * 2), p.currentX < p.minX && (p.currentX = p.minX + 1 - (p.minX - p.currentX + 1) ** .8), p.currentX > p.maxX && (p.currentX = p.maxX - 1 + (p.currentX - p.maxX + 1) ** .8), p.currentY < p.minY && (p.currentY = p.minY + 1 - (p.minY - p.currentY + 1) ** .8), p.currentY > p.maxY && (p.currentY = p.maxY - 1 + (p.currentY - p.maxY + 1) ** .8), m.prevPositionX ||= p.touchesCurrent.x, m.prevPositionY ||= p.touchesCurrent.y, m.prevTime ||= Date.now(), m.x = (p.touchesCurrent.x - m.prevPositionX) / (Date.now() - m.prevTime) / 2, m.y = (p.touchesCurrent.y - m.prevPositionY) / (Date.now() - m.prevTime) / 2, Math.abs(p.touchesCurrent.x - m.prevPositionX) < 2 && (m.x = 0), Math.abs(p.touchesCurrent.y - m.prevPositionY) < 2 && (m.y = 0), m.prevPositionX = p.touchesCurrent.x, m.prevPositionY = p.touchesCurrent.y, m.prevTime = Date.now(), f.imageWrapEl.style.transform = `translate3d(${p.currentX}px, ${p.currentY}px,0)`;
+	}
+	function ee() {
+		let t = e.zoom;
+		if (d.length = 0, !f.imageEl) return;
+		if (!p.isTouched || !p.isMoved) {
+			p.isTouched = !1, p.isMoved = !1;
+			return;
+		}
+		p.isTouched = !1, p.isMoved = !1;
+		let n = 300, r = 300, i = m.x * n, a = p.currentX + i, o = m.y * r, s = p.currentY + o;
+		m.x !== 0 && (n = Math.abs((a - p.currentX) / m.x)), m.y !== 0 && (r = Math.abs((s - p.currentY) / m.y));
+		let c = Math.max(n, r);
+		p.currentX = a, p.currentY = s;
+		let l = p.width * t.scale, u = p.height * t.scale;
+		p.minX = Math.min(f.slideWidth / 2 - l / 2, 0), p.maxX = -p.minX, p.minY = Math.min(f.slideHeight / 2 - u / 2, 0), p.maxY = -p.minY, p.currentX = Math.max(Math.min(p.currentX, p.maxX), p.minX), p.currentY = Math.max(Math.min(p.currentY, p.maxY), p.minY), f.imageWrapEl.style.transitionDuration = `${c}ms`, f.imageWrapEl.style.transform = `translate3d(${p.currentX}px, ${p.currentY}px,0)`;
+	}
+	function te() {
+		let t = e.zoom;
+		f.slideEl && e.activeIndex !== e.slides.indexOf(f.slideEl) && (f.imageEl && (f.imageEl.style.transform = "translate3d(0,0,0) scale(1)"), f.imageWrapEl && (f.imageWrapEl.style.transform = "translate3d(0,0,0)"), f.slideEl.classList.remove(`${e.params.zoom.zoomedSlideClass}`), t.scale = 1, a = 1, f.slideEl = void 0, f.imageEl = void 0, f.imageWrapEl = void 0, f.originX = 0, f.originY = 0);
+	}
+	function A(e) {
+		if (a <= 1 || !f.imageWrapEl || !b(e) || !x(e)) return;
+		let t = i.getComputedStyle(f.imageWrapEl).transform, n = new i.DOMMatrix(t);
+		if (!s) {
+			s = !0, c.x = e.clientX, c.y = e.clientY, p.startX = n.e, p.startY = n.f, p.width = f.imageEl.offsetWidth || f.imageEl.clientWidth, p.height = f.imageEl.offsetHeight || f.imageEl.clientHeight, f.slideWidth = f.slideEl.offsetWidth, f.slideHeight = f.slideEl.offsetHeight;
+			return;
+		}
+		let r = (e.clientX - c.x) * -3, o = (e.clientY - c.y) * -3, l = p.width * a, u = p.height * a, d = f.slideWidth, m = f.slideHeight, h = Math.min(d / 2 - l / 2, 0), g = -h, _ = Math.min(m / 2 - u / 2, 0), v = -_, y = Math.max(Math.min(p.startX + r, g), h), S = Math.max(Math.min(p.startY + o, v), _);
+		f.imageWrapEl.style.transitionDuration = "0ms", f.imageWrapEl.style.transform = `translate3d(${y}px, ${S}px, 0)`, c.x = e.clientX, c.y = e.clientY, p.startX = y, p.startY = S, p.currentX = y, p.currentY = S;
+	}
+	function ne(t) {
+		let n = e.zoom, r = e.params.zoom;
+		if (!f.slideEl) {
+			t && t.target && (f.slideEl = t.target.closest(`.${e.params.slideClass}, swiper-slide`)), f.slideEl || (e.params.virtual && e.params.virtual.enabled && e.virtual ? f.slideEl = tw(e.slidesEl, `.${e.params.slideActiveClass}`)[0] : f.slideEl = e.slides[e.activeIndex]);
+			let n = f.slideEl.querySelector(`.${r.containerClass}`);
+			n &&= n.querySelectorAll("picture, img, svg, canvas, .swiper-zoom-target")[0], f.imageEl = n, n ? f.imageWrapEl = dw(f.imageEl, `.${r.containerClass}`)[0] : f.imageWrapEl = void 0;
+		}
+		if (!f.imageEl || !f.imageWrapEl) return;
+		f.maxRatio = _(), e.params.cssMode && (e.wrapperEl.style.overflow = "hidden", e.wrapperEl.style.touchAction = "none"), f.slideEl.classList.add(`${r.zoomedSlideClass}`);
+		let o, s, c, l, u, d, m, h, g, v, y, b, x, S, C, w, T, E;
+		p.touchesStart.x === void 0 && t ? (o = t.pageX, s = t.pageY) : (o = p.touchesStart.x, s = p.touchesStart.y);
+		let D = a, O = typeof t == "number" ? t : null;
+		a === 1 && O && (o = void 0, s = void 0, p.touchesStart.x = void 0, p.touchesStart.y = void 0);
+		let k = _();
+		n.scale = O || k, a = O || k, t && !(a === 1 && O) ? (T = f.slideEl.offsetWidth, E = f.slideEl.offsetHeight, c = ow(f.slideEl).left + i.scrollX, l = ow(f.slideEl).top + i.scrollY, u = c + T / 2 - o, d = l + E / 2 - s, g = f.imageEl.offsetWidth || f.imageEl.clientWidth, v = f.imageEl.offsetHeight || f.imageEl.clientHeight, y = g * n.scale, b = v * n.scale, x = Math.min(T / 2 - y / 2, 0), S = Math.min(E / 2 - b / 2, 0), C = -x, w = -S, D > 0 && O && typeof p.currentX == "number" && typeof p.currentY == "number" ? (m = p.currentX * n.scale / D, h = p.currentY * n.scale / D) : (m = u * n.scale, h = d * n.scale), m < x && (m = x), m > C && (m = C), h < S && (h = S), h > w && (h = w)) : (m = 0, h = 0), O && n.scale === 1 && (f.originX = 0, f.originY = 0), p.currentX = m, p.currentY = h, f.imageWrapEl.style.transitionDuration = "300ms", f.imageWrapEl.style.transform = `translate3d(${m}px, ${h}px,0)`, f.imageEl.style.transitionDuration = "300ms", f.imageEl.style.transform = `translate3d(0,0,0) scale(${n.scale})`;
+	}
+	function re() {
+		let t = e.zoom, n = e.params.zoom;
+		if (!f.slideEl) {
+			e.params.virtual && e.params.virtual.enabled && e.virtual ? f.slideEl = tw(e.slidesEl, `.${e.params.slideActiveClass}`)[0] : f.slideEl = e.slides[e.activeIndex];
+			let t = f.slideEl.querySelector(`.${n.containerClass}`);
+			t &&= t.querySelectorAll("picture, img, svg, canvas, .swiper-zoom-target")[0], f.imageEl = t, t ? f.imageWrapEl = dw(f.imageEl, `.${n.containerClass}`)[0] : f.imageWrapEl = void 0;
+		}
+		!f.imageEl || !f.imageWrapEl || (f.maxRatio = _(), e.params.cssMode && (e.wrapperEl.style.overflow = "", e.wrapperEl.style.touchAction = ""), t.scale = 1, a = 1, p.currentX = void 0, p.currentY = void 0, p.touchesStart.x = void 0, p.touchesStart.y = void 0, f.imageWrapEl.style.transitionDuration = "300ms", f.imageWrapEl.style.transform = "translate3d(0,0,0)", f.imageEl.style.transitionDuration = "300ms", f.imageEl.style.transform = "translate3d(0,0,0) scale(1)", f.slideEl.classList.remove(`${n.zoomedSlideClass}`), f.slideEl = void 0, f.originX = 0, f.originY = 0, e.params.zoom.panOnMouseMove && (c = {
+			x: 0,
+			y: 0
+		}, s && (s = !1, p.startX = 0, p.startY = 0)));
+	}
+	function ie(t) {
+		let n = e.zoom;
+		n.scale && n.scale !== 1 ? re() : ne(t);
+	}
+	function j() {
+		return {
+			passiveListener: e.params.passiveListeners ? {
+				passive: !0,
+				capture: !1
+			} : !1,
+			activeListenerWithCapture: e.params.passiveListeners ? {
+				passive: !1,
+				capture: !0
+			} : !0
+		};
+	}
+	function ae() {
+		let t = e.zoom;
+		if (t.enabled) return;
+		t.enabled = !0;
+		let { passiveListener: n, activeListenerWithCapture: r } = j();
+		e.wrapperEl.addEventListener("pointerdown", S, n), e.wrapperEl.addEventListener("pointermove", C, r), [
+			"pointerup",
+			"pointercancel",
+			"pointerout"
+		].forEach((t) => {
+			e.wrapperEl.addEventListener(t, w, n);
+		}), e.wrapperEl.addEventListener("pointermove", k, r);
+	}
+	function oe() {
+		let t = e.zoom;
+		if (!t.enabled) return;
+		t.enabled = !1;
+		let { passiveListener: n, activeListenerWithCapture: r } = j();
+		e.wrapperEl.removeEventListener("pointerdown", S, n), e.wrapperEl.removeEventListener("pointermove", C, r), [
+			"pointerup",
+			"pointercancel",
+			"pointerout"
+		].forEach((t) => {
+			e.wrapperEl.removeEventListener(t, w, n);
+		}), e.wrapperEl.removeEventListener("pointermove", k, r);
+	}
+	n("init", () => {
+		e.params.zoom.enabled && ae();
+	}), n("destroy", () => {
+		oe();
+	}), n("touchStart", (t, n) => {
+		e.zoom.enabled && O(n);
+	}), n("touchEnd", (t, n) => {
+		e.zoom.enabled && ee();
+	}), n("doubleTap", (t, n) => {
+		!e.animating && e.params.zoom.enabled && e.zoom.enabled && e.params.zoom.toggle && ie(n);
+	}), n("transitionEnd", () => {
+		e.zoom.enabled && e.params.zoom.enabled && te();
+	}), n("slideChange", () => {
+		e.zoom.enabled && e.params.zoom.enabled && e.params.cssMode && te();
+	}), Object.assign(e.zoom, {
+		enable: ae,
+		disable: oe,
+		in: ne,
+		out: re,
+		toggle: ie
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/controller.mjs
+function rE({ swiper: e, extendParams: t, on: n }) {
+	t({ controller: {
+		control: void 0,
+		inverse: !1,
+		by: "slide"
+	} }), e.controller = { control: void 0 };
+	function r(e, t) {
+		let n = function() {
+			let e, t, n;
+			return (r, i) => {
+				for (t = -1, e = r.length; e - t > 1;) n = e + t >> 1, r[n] <= i ? t = n : e = n;
+				return e;
+			};
+		}();
+		this.x = e, this.y = t, this.lastIndex = e.length - 1;
+		let r, i;
+		return this.interpolate = function(e) {
+			return e ? (i = n(this.x, e), r = i - 1, (e - this.x[r]) * (this.y[i] - this.y[r]) / (this.x[i] - this.x[r]) + this.y[r]) : 0;
+		}, this;
+	}
+	function i(t) {
+		e.controller.spline = e.params.loop ? new r(e.slidesGrid, t.slidesGrid) : new r(e.snapGrid, t.snapGrid);
+	}
+	function a(t, n) {
+		let r = e.controller.control, a, o, s = e.constructor;
+		function c(t) {
+			if (t.destroyed) return;
+			let n = e.rtlTranslate ? -e.translate : e.translate;
+			e.params.controller.by === "slide" && (i(t), o = -e.controller.spline.interpolate(-n)), (!o || e.params.controller.by === "container") && (a = (t.maxTranslate() - t.minTranslate()) / (e.maxTranslate() - e.minTranslate()), (Number.isNaN(a) || !Number.isFinite(a)) && (a = 1), o = (n - e.minTranslate()) * a + t.minTranslate()), e.params.controller.inverse && (o = t.maxTranslate() - o), t.updateProgress(o), t.setTranslate(o, e), t.updateActiveIndex(), t.updateSlidesClasses();
+		}
+		if (Array.isArray(r)) for (let e = 0; e < r.length; e += 1) r[e] !== n && r[e] instanceof s && c(r[e]);
+		else r instanceof s && n !== r && c(r);
+	}
+	function o(t, n) {
+		let r = e.constructor, i = e.controller.control, a;
+		function o(n) {
+			n.destroyed || (n.setTransition(t, e), t !== 0 && (n.transitionStart(), n.params.autoHeight && GC(() => {
+				n.updateAutoHeight();
+			}), fw(n.wrapperEl, () => {
+				i && n.transitionEnd();
+			})));
+		}
+		if (Array.isArray(i)) for (a = 0; a < i.length; a += 1) i[a] !== n && i[a] instanceof r && o(i[a]);
+		else i instanceof r && n !== i && o(i);
+	}
+	function s() {
+		e.controller.control && e.controller.spline && (e.controller.spline = void 0, delete e.controller.spline);
+	}
+	n("beforeInit", () => {
+		if (typeof window < "u" && (typeof e.params.controller.control == "string" || e.params.controller.control instanceof HTMLElement)) {
+			(typeof e.params.controller.control == "string" ? [...document.querySelectorAll(e.params.controller.control)] : [e.params.controller.control]).forEach((t) => {
+				if (e.controller.control || (e.controller.control = []), t && t.swiper) e.controller.control.push(t.swiper);
+				else if (t) {
+					let n = `${e.params.eventsPrefix}init`, r = (i) => {
+						e.controller.control.push(i.detail[0]), e.update(), t.removeEventListener(n, r);
+					};
+					t.addEventListener(n, r);
+				}
+			});
+			return;
+		}
+		e.controller.control = e.params.controller.control;
+	}), n("update", () => {
+		s();
+	}), n("resize", () => {
+		s();
+	}), n("observerUpdate", () => {
+		s();
+	}), n("setTranslate", (t, n, r) => {
+		!e.controller.control || e.controller.control.destroyed || e.controller.setTranslate(n, r);
+	}), n("setTransition", (t, n, r) => {
+		!e.controller.control || e.controller.control.destroyed || e.controller.setTransition(n, r);
+	}), Object.assign(e.controller, {
+		setTranslate: a,
+		setTransition: o
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/a11y.mjs
+function iE({ swiper: e, extendParams: t, on: n }) {
+	t({ a11y: {
+		enabled: !0,
+		notificationClass: "swiper-notification",
+		prevSlideMessage: "Previous slide",
+		nextSlideMessage: "Next slide",
+		firstSlideMessage: "This is the first slide",
+		lastSlideMessage: "This is the last slide",
+		paginationBulletMessage: "Go to slide {{index}}",
+		slideLabelMessage: "{{index}} / {{slidesLength}}",
+		containerMessage: null,
+		containerRoleDescriptionMessage: null,
+		containerRole: null,
+		itemRoleDescriptionMessage: null,
+		slideRole: "group",
+		id: null,
+		scrollOnFocus: !0,
+		wrapperLiveRegion: !0
+	} }), e.a11y = { clicked: !1 };
+	let r = null, i, a, o = (/* @__PURE__ */ new Date()).getTime();
+	function s(e) {
+		let t = r;
+		t.length !== 0 && gw(t, e);
+	}
+	function c(e = 16) {
+		return "x".repeat(e).replace(/x/g, () => Math.round(16 * Math.random()).toString(16));
+	}
+	function l(e) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("tabIndex", "0");
+		});
+	}
+	function u(e) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("tabIndex", "-1");
+		});
+	}
+	function d(e, t) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("role", t);
+		});
+	}
+	function f(e, t) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("aria-roledescription", t);
+		});
+	}
+	function p(e, t) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("aria-label", t);
+		});
+	}
+	function m(e, t) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("id", t);
+		});
+	}
+	function h(e, t) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("aria-live", t);
+		});
+	}
+	function g(e) {
+		e = mw(e), e.forEach((e) => {
+			e.setAttribute("aria-disabled", !0);
+		});
+	}
+	function _(e) {
+		e = mw(e), e.forEach((e) => {
+			e.removeAttribute("aria-disabled");
+		});
+	}
+	function v(t) {
+		if (t.keyCode !== 13 && t.keyCode !== 32) return;
+		let n = e.params.a11y, r = t.target;
+		if (!(e.pagination && e.pagination.el && (r === e.pagination.el || e.pagination.el.contains(t.target)) && !t.target.matches(QT(e.params.pagination.bulletClass)))) {
+			if (e.navigation && e.navigation.prevEl && e.navigation.nextEl) {
+				let t = mw(e.navigation.prevEl);
+				mw(e.navigation.nextEl).includes(r) && (e.isEnd && !e.params.loop || e.slideNext(), e.isEnd ? s(n.lastSlideMessage) : s(n.nextSlideMessage)), t.includes(r) && (e.isBeginning && !e.params.loop || e.slidePrev(), e.isBeginning ? s(n.firstSlideMessage) : s(n.prevSlideMessage));
+			}
+			e.pagination && r.matches(QT(e.params.pagination.bulletClass)) && r.click();
+		}
+	}
+	function y() {
+		if (e.params.loop || e.params.rewind || !e.navigation) return;
+		let { nextEl: t, prevEl: n } = e.navigation;
+		n && (e.isBeginning ? (g(n), u(n)) : (_(n), l(n))), t && (e.isEnd ? (g(t), u(t)) : (_(t), l(t)));
+	}
+	function b() {
+		return e.pagination && e.pagination.bullets && e.pagination.bullets.length;
+	}
+	function x() {
+		return b() && e.params.pagination.clickable;
+	}
+	function S() {
+		let t = e.params.a11y;
+		b() && e.pagination.bullets.forEach((n) => {
+			e.params.pagination.clickable && (l(n), e.params.pagination.renderBullet || (d(n, "button"), p(n, t.paginationBulletMessage.replace(/\{\{index\}\}/, uw(n) + 1)))), n.matches(QT(e.params.pagination.bulletActiveClass)) ? n.setAttribute("aria-current", "true") : n.removeAttribute("aria-current");
+		});
+	}
+	let C = (e, t, n) => {
+		l(e), e.tagName !== "BUTTON" && (d(e, "button"), e.addEventListener("keydown", v)), p(e, n);
+	}, w = (t) => {
+		a && a !== t.target && !a.contains(t.target) && (i = !0), e.a11y.clicked = !0;
+	}, T = () => {
+		i = !1, requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				e.destroyed || (e.a11y.clicked = !1);
+			});
+		});
+	}, E = (e) => {
+		o = (/* @__PURE__ */ new Date()).getTime();
+	}, D = (t) => {
+		if (e.a11y.clicked || !e.params.a11y.scrollOnFocus || (/* @__PURE__ */ new Date()).getTime() - o < 100) return;
+		let n = t.target.closest(`.${e.params.slideClass}, swiper-slide`);
+		if (!n || !e.slides.includes(n)) return;
+		a = n;
+		let r = e.virtual && e.params.virtual.enabled, s = (r ? parseInt(n.getAttribute("data-swiper-slide-index"), 10) : e.slides.indexOf(n)) === e.activeIndex, c = e.params.watchSlidesProgress && e.visibleSlides && e.visibleSlides.includes(n);
+		s || c || t.sourceCapabilities && t.sourceCapabilities.firesTouchEvents || (e.isHorizontal() ? e.el.scrollLeft = 0 : e.el.scrollTop = 0, requestAnimationFrame(() => {
+			i ||= (e.params.loop ? e.slideToLoop(e.getSlideIndexWhenGrid(parseInt(n.getAttribute("data-swiper-slide-index"))), 0) : r ? e.slideTo(e.getSlideIndexWhenGrid(parseInt(n.getAttribute("data-swiper-slide-index"), 10)), 0) : e.slideTo(e.getSlideIndexWhenGrid(e.slides.indexOf(n)), 0), !1);
+		}));
+	}, O = () => {
+		let t = e.params.a11y;
+		t.itemRoleDescriptionMessage && f(e.slides, t.itemRoleDescriptionMessage), t.slideRole && d(e.slides, t.slideRole);
+		let n = e.slides.length;
+		t.slideLabelMessage && e.slides.forEach((r, i) => {
+			let a = e.params.loop ? parseInt(r.getAttribute("data-swiper-slide-index"), 10) : i;
+			p(r, t.slideLabelMessage.replace(/\{\{index\}\}/, a + 1).replace(/\{\{slidesLength\}\}/, n));
+		});
+	}, k = () => {
+		let t = e.params.a11y;
+		e.el.append(r);
+		let n = e.el;
+		t.containerRoleDescriptionMessage && f(n, t.containerRoleDescriptionMessage), t.containerMessage && p(n, t.containerMessage), t.containerRole && d(n, t.containerRole);
+		let i = e.wrapperEl, a = t.id || i.getAttribute("id") || `swiper-wrapper-${c(16)}`;
+		m(i, a), t.wrapperLiveRegion && h(i, e.params.autoplay && e.params.autoplay.enabled ? "off" : "polite"), O();
+		let { nextEl: o, prevEl: s } = e.navigation ? e.navigation : {};
+		o = mw(o), s = mw(s), o && o.forEach((e) => C(e, a, t.nextSlideMessage)), s && s.forEach((e) => C(e, a, t.prevSlideMessage)), x() && mw(e.pagination.el).forEach((e) => {
+			e.addEventListener("keydown", v);
+		}), BC().addEventListener("visibilitychange", E), e.el.addEventListener("focus", D, !0), e.el.addEventListener("pointerdown", w, !0), e.el.addEventListener("pointerup", T, !0);
+	};
+	function ee() {
+		r && r.remove();
+		let { nextEl: t, prevEl: n } = e.navigation ? e.navigation : {};
+		t = mw(t), n = mw(n), t && t.forEach((e) => e.removeEventListener("keydown", v)), n && n.forEach((e) => e.removeEventListener("keydown", v)), x() && mw(e.pagination.el).forEach((e) => {
+			e.removeEventListener("keydown", v);
+		}), BC().removeEventListener("visibilitychange", E), e.el && typeof e.el != "string" && (e.el.removeEventListener("focus", D, !0), e.el.removeEventListener("pointerdown", w, !0), e.el.removeEventListener("pointerup", T, !0));
+	}
+	n("beforeInit", () => {
+		r = aw("span", e.params.a11y.notificationClass), r.setAttribute("aria-live", "assertive"), r.setAttribute("aria-atomic", "true");
+	}), n("afterInit", () => {
+		e.params.a11y.enabled && k();
+	}), n("slidesLengthChange snapGridLengthChange slidesGridLengthChange", () => {
+		e.params.a11y.enabled && O();
+	}), n("fromEdge toEdge afterInit lock unlock", () => {
+		e.params.a11y.enabled && y();
+	}), n("paginationUpdate", () => {
+		e.params.a11y.enabled && S();
+	}), n("destroy", () => {
+		e.params.a11y.enabled && ee();
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/history.mjs
+function aE({ swiper: e, extendParams: t, on: n }) {
+	t({ history: {
+		enabled: !1,
+		root: "",
+		replaceState: !1,
+		key: "slides",
+		keepQuery: !1
+	} });
+	let r = !1, i = {}, a = (e) => e.toString().replace(/\s+/g, "-").replace(/[^\w-]+/g, "").replace(/--+/g, "-").replace(/^-+/, "").replace(/-+$/, ""), o = (e) => {
+		let t = HC(), n;
+		n = e ? new URL(e) : t.location;
+		let r = n.pathname.slice(1).split("/").filter((e) => e !== ""), i = r.length;
+		return {
+			key: r[i - 2],
+			value: r[i - 1]
+		};
+	}, s = (t, n) => {
+		let i = HC();
+		if (!r || !e.params.history.enabled) return;
+		let o;
+		o = e.params.url ? new URL(e.params.url) : i.location;
+		let s = a((e.virtual && e.params.virtual.enabled ? e.slidesEl.querySelector(`[data-swiper-slide-index="${n}"]`) : e.slides[n]).getAttribute("data-history"));
+		if (e.params.history.root.length > 0) {
+			let n = e.params.history.root;
+			n[n.length - 1] === "/" && (n = n.slice(0, n.length - 1)), s = `${n}/${t ? `${t}/` : ""}${s}`;
+		} else o.pathname.includes(t) || (s = `${t ? `${t}/` : ""}${s}`);
+		e.params.history.keepQuery && (s += o.search);
+		let c = i.history.state;
+		c && c.value === s || (e.params.history.replaceState ? i.history.replaceState({ value: s }, null, s) : i.history.pushState({ value: s }, null, s));
+	}, c = (t, n, r) => {
+		if (n) for (let i = 0, o = e.slides.length; i < o; i += 1) {
+			let o = e.slides[i];
+			if (a(o.getAttribute("data-history")) === n) {
+				let n = e.getSlideIndex(o);
+				e.slideTo(n, t, r);
+			}
+		}
+		else e.slideTo(0, t, r);
+	}, l = () => {
+		i = o(e.params.url), c(e.params.speed, i.value, !1);
+	}, u = () => {
+		let t = HC();
+		if (e.params.history) {
+			if (!t.history || !t.history.pushState) {
+				e.params.history.enabled = !1, e.params.hashNavigation.enabled = !0;
+				return;
+			}
+			if (r = !0, i = o(e.params.url), !i.key && !i.value) {
+				e.params.history.replaceState || t.addEventListener("popstate", l);
+				return;
+			}
+			c(0, i.value, e.params.runCallbacksOnInit), e.params.history.replaceState || t.addEventListener("popstate", l);
+		}
+	}, d = () => {
+		let t = HC();
+		e.params.history.replaceState || t.removeEventListener("popstate", l);
+	};
+	n("init", () => {
+		e.params.history.enabled && u();
+	}), n("destroy", () => {
+		e.params.history.enabled && d();
+	}), n("transitionEnd _freeModeNoMomentumRelease", () => {
+		r && s(e.params.history.key, e.activeIndex);
+	}), n("slideChange", () => {
+		r && e.params.cssMode && s(e.params.history.key, e.activeIndex);
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/hash-navigation.mjs
+function oE({ swiper: e, extendParams: t, emit: n, on: r }) {
+	let i = !1, a = BC(), o = HC();
+	t({ hashNavigation: {
+		enabled: !1,
+		replaceState: !1,
+		watchState: !1,
+		getSlideIndex(t, n) {
+			if (e.virtual && e.params.virtual.enabled) {
+				let t = e.slides.find((e) => e.getAttribute("data-hash") === n);
+				return t ? parseInt(t.getAttribute("data-swiper-slide-index"), 10) : 0;
+			}
+			return e.getSlideIndex(tw(e.slidesEl, `.${e.params.slideClass}[data-hash="${n}"], swiper-slide[data-hash="${n}"]`)[0]);
+		}
+	} });
+	let s = () => {
+		n("hashChange");
+		let t = a.location.hash.replace("#", ""), r = e.virtual && e.params.virtual.enabled ? e.slidesEl.querySelector(`[data-swiper-slide-index="${e.activeIndex}"]`) : e.slides[e.activeIndex];
+		if (t !== (r ? r.getAttribute("data-hash") : "")) {
+			let n = e.params.hashNavigation.getSlideIndex(e, t);
+			if (n === void 0 || Number.isNaN(n)) return;
+			e.slideTo(n);
+		}
+	}, c = () => {
+		if (!i || !e.params.hashNavigation.enabled) return;
+		let t = e.virtual && e.params.virtual.enabled ? e.slidesEl.querySelector(`[data-swiper-slide-index="${e.activeIndex}"]`) : e.slides[e.activeIndex], r = t ? t.getAttribute("data-hash") || t.getAttribute("data-history") : "";
+		e.params.hashNavigation.replaceState && o.history && o.history.replaceState ? (o.history.replaceState(null, null, `#${r}` || ""), n("hashSet")) : (a.location.hash = r || "", n("hashSet"));
+	}, l = () => {
+		if (!e.params.hashNavigation.enabled || e.params.history && e.params.history.enabled) return;
+		i = !0;
+		let t = a.location.hash.replace("#", "");
+		if (t) {
+			let n = e.params.hashNavigation.getSlideIndex(e, t);
+			e.slideTo(n || 0, 0, e.params.runCallbacksOnInit, !0);
+		}
+		e.params.hashNavigation.watchState && o.addEventListener("hashchange", s);
+	}, u = () => {
+		e.params.hashNavigation.watchState && o.removeEventListener("hashchange", s);
+	};
+	r("init", () => {
+		e.params.hashNavigation.enabled && l();
+	}), r("destroy", () => {
+		e.params.hashNavigation.enabled && u();
+	}), r("transitionEnd _freeModeNoMomentumRelease", () => {
+		i && c();
+	}), r("slideChange", () => {
+		i && e.params.cssMode && c();
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/autoplay.mjs
+function sE({ swiper: e, extendParams: t, on: n, emit: r, params: i }) {
+	e.autoplay = {
+		running: !1,
+		paused: !1,
+		timeLeft: 0
+	}, t({ autoplay: {
+		enabled: !1,
+		delay: 3e3,
+		waitForTransition: !0,
+		disableOnInteraction: !1,
+		stopOnLastSlide: !1,
+		reverseDirection: !1,
+		pauseOnMouseEnter: !1
+	} });
+	let a, o, s = i && i.autoplay ? i.autoplay.delay : 3e3, c = i && i.autoplay ? i.autoplay.delay : 3e3, l, u = (/* @__PURE__ */ new Date()).getTime(), d, f, p, m, h, g;
+	function _(t) {
+		!e || e.destroyed || !e.wrapperEl || t.target === e.wrapperEl && (e.wrapperEl.removeEventListener("transitionend", _), !(g || t.detail && t.detail.bySwiperTouchMove) && T());
+	}
+	let v = () => {
+		if (e.destroyed || !e.autoplay.running) return;
+		e.autoplay.paused ? d = !0 : d &&= (c = l, !1);
+		let t = e.autoplay.paused ? l : u + c - (/* @__PURE__ */ new Date()).getTime();
+		e.autoplay.timeLeft = t, r("autoplayTimeLeft", t, t / s), o = requestAnimationFrame(() => {
+			v();
+		});
+	}, y = () => {
+		let t;
+		if (t = e.virtual && e.params.virtual.enabled ? e.slides.find((e) => e.classList.contains("swiper-slide-active")) : e.slides[e.activeIndex], t) return parseInt(t.getAttribute("data-swiper-autoplay"), 10);
+	}, b = () => {
+		let t = e.params.autoplay.delay, n = y();
+		return !Number.isNaN(n) && n > 0 && (t = n), t;
+	}, x = (t) => {
+		if (e.destroyed || !e.autoplay.running) return;
+		cancelAnimationFrame(o), v();
+		let n = t;
+		n === void 0 && (n = b(), s = n, c = n), l = n;
+		let i = e.params.speed, d = () => {
+			!e || e.destroyed || (e.params.autoplay.reverseDirection ? !e.isBeginning || e.params.loop || e.params.rewind ? (e.slidePrev(i, !0, !0), r("autoplay")) : e.params.autoplay.stopOnLastSlide || (e.slideTo(e.slides.length - 1, i, !0, !0), r("autoplay")) : !e.isEnd || e.params.loop || e.params.rewind ? (e.slideNext(i, !0, !0), r("autoplay")) : e.params.autoplay.stopOnLastSlide || (e.slideTo(0, i, !0, !0), r("autoplay")), e.params.cssMode && (u = (/* @__PURE__ */ new Date()).getTime(), requestAnimationFrame(() => {
+				x();
+			})));
+		};
+		return n > 0 ? (clearTimeout(a), a = setTimeout(() => {
+			d();
+		}, n)) : requestAnimationFrame(() => {
+			d();
+		}), n;
+	}, S = () => {
+		u = (/* @__PURE__ */ new Date()).getTime(), e.autoplay.running = !0, x(), r("autoplayStart");
+	}, C = () => {
+		e.autoplay.running = !1, clearTimeout(a), cancelAnimationFrame(o), r("autoplayStop");
+	}, w = (t, n) => {
+		if (e.destroyed || !e.autoplay.running) return;
+		clearTimeout(a), t || (h = !0);
+		let i = () => {
+			r("autoplayPause"), e.params.autoplay.waitForTransition ? e.wrapperEl.addEventListener("transitionend", _) : T();
+		};
+		if (e.autoplay.paused = !0, n) {
+			i();
+			return;
+		}
+		l = (l || e.params.autoplay.delay) - ((/* @__PURE__ */ new Date()).getTime() - u), !(e.isEnd && l < 0 && !e.params.loop) && (l < 0 && (l = 0), i());
+	}, T = () => {
+		e.isEnd && l < 0 && !e.params.loop || e.destroyed || !e.autoplay.running || (u = (/* @__PURE__ */ new Date()).getTime(), h ? (h = !1, x(l)) : x(), e.autoplay.paused = !1, r("autoplayResume"));
+	}, E = () => {
+		if (e.destroyed || !e.autoplay.running) return;
+		let t = BC();
+		t.visibilityState === "hidden" && (h = !0, w(!0)), t.visibilityState === "visible" && T();
+	}, D = (t) => {
+		t.pointerType === "mouse" && (h = !0, g = !0, !(e.animating || e.autoplay.paused) && w(!0));
+	}, O = (t) => {
+		t.pointerType === "mouse" && (g = !1, e.autoplay.paused && T());
+	}, k = () => {
+		e.params.autoplay.pauseOnMouseEnter && (e.el.addEventListener("pointerenter", D), e.el.addEventListener("pointerleave", O));
+	}, ee = () => {
+		e.el && typeof e.el != "string" && (e.el.removeEventListener("pointerenter", D), e.el.removeEventListener("pointerleave", O));
+	}, te = () => {
+		BC().addEventListener("visibilitychange", E);
+	}, A = () => {
+		BC().removeEventListener("visibilitychange", E);
+	};
+	n("init", () => {
+		e.params.autoplay.enabled && (k(), te(), S());
+	}), n("destroy", () => {
+		ee(), A(), e.autoplay.running && C();
+	}), n("_freeModeStaticRelease", () => {
+		(p || h) && T();
+	}), n("_freeModeNoMomentumRelease", () => {
+		e.params.autoplay.disableOnInteraction ? C() : w(!0, !0);
+	}), n("beforeTransitionStart", (t, n, r) => {
+		e.destroyed || !e.autoplay.running || (r || !e.params.autoplay.disableOnInteraction ? w(!0, !0) : C());
+	}), n("sliderFirstMove", () => {
+		if (!(e.destroyed || !e.autoplay.running)) {
+			if (e.params.autoplay.disableOnInteraction) {
+				C();
+				return;
+			}
+			f = !0, p = !1, h = !1, m = setTimeout(() => {
+				h = !0, p = !0, w(!0);
+			}, 200);
+		}
+	}), n("touchEnd", () => {
+		if (!(e.destroyed || !e.autoplay.running || !f)) {
+			if (clearTimeout(m), clearTimeout(a), e.params.autoplay.disableOnInteraction) {
+				p = !1, f = !1;
+				return;
+			}
+			p && e.params.cssMode && T(), p = !1, f = !1;
+		}
+	}), n("slideChange", () => {
+		e.destroyed || !e.autoplay.running || e.autoplay.paused && (l = b(), s = b());
+	}), Object.assign(e.autoplay, {
+		start: S,
+		stop: C,
+		pause: w,
+		resume: T
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/thumbs.mjs
+function cE({ swiper: e, extendParams: t, on: n }) {
+	t({ thumbs: {
+		swiper: null,
+		multipleActiveThumbs: !0,
+		autoScrollOffset: 0,
+		slideThumbActiveClass: "swiper-slide-thumb-active",
+		thumbsContainerClass: "swiper-thumbs"
+	} });
+	let r = !1, i = !1;
+	e.thumbs = { swiper: null };
+	function a() {
+		let t = e.thumbs.swiper;
+		return !t || t.destroyed ? !1 : t.params.virtual && t.params.virtual.enabled;
+	}
+	function o() {
+		let t = e.thumbs.swiper;
+		if (!t || t.destroyed) return;
+		let n = t.clickedIndex, r = t.clickedSlide;
+		if (r && r.classList.contains(e.params.thumbs.slideThumbActiveClass) || n == null) return;
+		let i;
+		i = t.params.loop ? parseInt(t.clickedSlide.getAttribute("data-swiper-slide-index"), 10) : n, e.params.loop ? e.slideToLoop(i) : e.slideTo(i);
+	}
+	function s() {
+		let { thumbs: t } = e.params;
+		if (r) return !1;
+		r = !0;
+		let n = e.constructor;
+		if (t.swiper instanceof n) {
+			if (t.swiper.destroyed) return r = !1, !1;
+			e.thumbs.swiper = t.swiper, Object.assign(e.thumbs.swiper.originalParams, {
+				watchSlidesProgress: !0,
+				slideToClickedSlide: !1
+			}), Object.assign(e.thumbs.swiper.params, {
+				watchSlidesProgress: !0,
+				slideToClickedSlide: !1
+			}), e.thumbs.swiper.update();
+		} else if (YC(t.swiper)) {
+			let r = Object.assign({}, t.swiper);
+			Object.assign(r, {
+				watchSlidesProgress: !0,
+				slideToClickedSlide: !1
+			}), e.thumbs.swiper = new n(r), i = !0;
+		}
+		return e.thumbs.swiper.el.classList.add(e.params.thumbs.thumbsContainerClass), e.thumbs.swiper.on("tap", o), a() && e.thumbs.swiper.on("virtualUpdate", () => {
+			c(!1, { autoScroll: !1 });
+		}), !0;
+	}
+	function c(t, n) {
+		let r = e.thumbs.swiper;
+		if (!r || r.destroyed) return;
+		let i = 1, o = e.params.thumbs.slideThumbActiveClass;
+		if (e.params.slidesPerView > 1 && !e.params.centeredSlides && (i = e.params.slidesPerView), e.params.thumbs.multipleActiveThumbs || (i = 1), i = Math.floor(i), r.slides.forEach((e) => e.classList.remove(o)), r.params.loop || a()) for (let t = 0; t < i; t += 1) tw(r.slidesEl, `[data-swiper-slide-index="${e.realIndex + t}"]`).forEach((e) => {
+			e.classList.add(o);
+		});
+		else for (let t = 0; t < i; t += 1) r.slides[e.realIndex + t] && r.slides[e.realIndex + t].classList.add(o);
+		(n?.autoScroll ?? !0) && l(t ? 0 : void 0);
+	}
+	function l(t) {
+		let n = e.thumbs.swiper;
+		if (!n || n.destroyed) return;
+		let r = n.params.slidesPerView === "auto" ? n.slidesPerViewDynamic() : n.params.slidesPerView, i = e.params.thumbs.autoScrollOffset, a = i && !n.params.loop;
+		if (e.realIndex !== n.realIndex || a) {
+			let o = n.activeIndex, s, c;
+			if (n.params.loop) {
+				let t = n.slides.find((t) => t.getAttribute("data-swiper-slide-index") === `${e.realIndex}`);
+				s = n.slides.indexOf(t), c = e.activeIndex > e.previousIndex ? "next" : "prev";
+			} else s = e.realIndex, c = s > e.previousIndex ? "next" : "prev";
+			a && (s += c === "next" ? i : -1 * i), n.visibleSlidesIndexes && n.visibleSlidesIndexes.indexOf(s) < 0 && (n.params.centeredSlides ? s = s > o ? s - Math.floor(r / 2) + 1 : s + Math.floor(r / 2) - 1 : s > o && n.params.slidesPerGroup, n.slideTo(s, t));
+		}
+	}
+	n("beforeInit", () => {
+		let { thumbs: t } = e.params;
+		if (!(!t || !t.swiper)) if (typeof t.swiper == "string" || t.swiper instanceof HTMLElement) {
+			let n = BC(), r = () => {
+				let r = typeof t.swiper == "string" ? n.querySelector(t.swiper) : t.swiper;
+				if (r && r.swiper) t.swiper = r.swiper, s(), c(!0);
+				else if (r) {
+					let n = `${e.params.eventsPrefix}init`, i = (a) => {
+						t.swiper = a.detail[0], r.removeEventListener(n, i), s(), c(!0), t.swiper.update(), e.update();
+					};
+					r.addEventListener(n, i);
+				}
+				return r;
+			}, i = () => {
+				e.destroyed || r() || requestAnimationFrame(i);
+			};
+			requestAnimationFrame(i);
+		} else s(), c(!0);
+	}), n("slideChange update resize observerUpdate", () => {
+		c();
+	}), n("setTransition", (t, n) => {
+		let r = e.thumbs.swiper;
+		!r || r.destroyed || r.setTransition(n);
+	}), n("beforeDestroy", () => {
+		let t = e.thumbs.swiper;
+		!t || t.destroyed || i && t.destroy();
+	}), Object.assign(e.thumbs, {
+		init: s,
+		update: c
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/free-mode.mjs
+function lE({ swiper: e, extendParams: t, emit: n, once: r }) {
+	t({ freeMode: {
+		enabled: !1,
+		momentum: !0,
+		momentumRatio: 1,
+		momentumBounce: !0,
+		momentumBounceRatio: 1,
+		momentumVelocityRatio: 1,
+		sticky: !1,
+		minimumVelocity: .02
+	} });
+	function i() {
+		if (e.params.cssMode) return;
+		let t = e.getTranslate();
+		e.setTranslate(t), e.setTransition(0), e.touchEventsData.velocities.length = 0, e.freeMode.onTouchEnd({ currentPos: e.rtl ? e.translate : -e.translate });
+	}
+	function a() {
+		if (e.params.cssMode) return;
+		let { touchEventsData: t, touches: n } = e;
+		t.velocities.length === 0 && t.velocities.push({
+			position: n[e.isHorizontal() ? "startX" : "startY"],
+			time: t.touchStartTime
+		}), t.velocities.push({
+			position: n[e.isHorizontal() ? "currentX" : "currentY"],
+			time: KC()
+		});
+	}
+	function o({ currentPos: t }) {
+		if (e.params.cssMode) return;
+		let { params: i, wrapperEl: a, rtlTranslate: o, snapGrid: s, touchEventsData: c } = e, l = KC() - c.touchStartTime;
+		if (t < -e.minTranslate()) {
+			e.slideTo(e.activeIndex);
+			return;
+		}
+		if (t > -e.maxTranslate()) {
+			e.slides.length < s.length ? e.slideTo(s.length - 1) : e.slideTo(e.slides.length - 1);
+			return;
+		}
+		if (i.freeMode.momentum) {
+			if (c.velocities.length > 1) {
+				let t = c.velocities.pop(), n = c.velocities.pop(), r = t.position - n.position, a = t.time - n.time;
+				e.velocity = r / a, e.velocity /= 2, Math.abs(e.velocity) < i.freeMode.minimumVelocity && (e.velocity = 0), (a > 150 || KC() - t.time > 300) && (e.velocity = 0);
+			} else e.velocity = 0;
+			e.velocity *= i.freeMode.momentumVelocityRatio, c.velocities.length = 0;
+			let t = 1e3 * i.freeMode.momentumRatio, l = e.velocity * t, u = e.translate + l;
+			o && (u = -u);
+			let d = !1, f, p = Math.abs(e.velocity) * 20 * i.freeMode.momentumBounceRatio, m;
+			if (u < e.maxTranslate()) i.freeMode.momentumBounce ? (u + e.maxTranslate() < -p && (u = e.maxTranslate() - p), f = e.maxTranslate(), d = !0, c.allowMomentumBounce = !0) : u = e.maxTranslate(), i.loop && i.centeredSlides && (m = !0);
+			else if (u > e.minTranslate()) i.freeMode.momentumBounce ? (u - e.minTranslate() > p && (u = e.minTranslate() + p), f = e.minTranslate(), d = !0, c.allowMomentumBounce = !0) : u = e.minTranslate(), i.loop && i.centeredSlides && (m = !0);
+			else if (i.freeMode.sticky) {
+				let t;
+				for (let e = 0; e < s.length; e += 1) if (s[e] > -u) {
+					t = e;
+					break;
+				}
+				u = Math.abs(s[t] - u) < Math.abs(s[t - 1] - u) || e.swipeDirection === "next" ? s[t] : s[t - 1], u = -u;
+			}
+			if (m && r("transitionEnd", () => {
+				e.loopFix();
+			}), e.velocity !== 0) {
+				if (t = Math.abs(o ? (-u - e.translate) / e.velocity : (u - e.translate) / e.velocity), i.freeMode.sticky) {
+					let n = Math.abs((o ? -u : u) - e.translate), r = e.slidesSizesGrid[e.activeIndex];
+					t = n < r ? i.speed : n < 2 * r ? i.speed * 1.5 : i.speed * 2.5;
+				}
+			} else if (i.freeMode.sticky) {
+				e.slideToClosest();
+				return;
+			}
+			i.freeMode.momentumBounce && d ? (e.updateProgress(f), e.setTransition(t), e.setTranslate(u), e.transitionStart(!0, e.swipeDirection), e.animating = !0, fw(a, () => {
+				!e || e.destroyed || !c.allowMomentumBounce || (n("momentumBounce"), e.setTransition(i.speed), setTimeout(() => {
+					e.setTranslate(f), fw(a, () => {
+						!e || e.destroyed || e.transitionEnd();
+					});
+				}, 0));
+			})) : e.velocity ? (n("_freeModeNoMomentumRelease"), e.updateProgress(u), e.setTransition(t), e.setTranslate(u), e.transitionStart(!0, e.swipeDirection), e.animating || (e.animating = !0, fw(a, () => {
+				!e || e.destroyed || e.transitionEnd();
+			}))) : e.updateProgress(u), e.updateActiveIndex(), e.updateSlidesClasses();
+		} else if (i.freeMode.sticky) {
+			e.slideToClosest();
+			return;
+		} else i.freeMode && n("_freeModeNoMomentumRelease");
+		(!i.freeMode.momentum || l >= i.longSwipesMs) && (n("_freeModeStaticRelease"), e.updateProgress(), e.updateActiveIndex(), e.updateSlidesClasses());
+	}
+	Object.assign(e, { freeMode: {
+		onTouchStart: i,
+		onTouchMove: a,
+		onTouchEnd: o
+	} });
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/grid.mjs
+function uE({ swiper: e, extendParams: t, on: n }) {
+	t({ grid: {
+		rows: 1,
+		fill: "column"
+	} });
+	let r, i, a, o, s = () => {
+		let t = e.params.spaceBetween;
+		return typeof t == "string" && t.indexOf("%") >= 0 ? t = parseFloat(t.replace("%", "")) / 100 * e.size : typeof t == "string" && (t = parseFloat(t)), t;
+	};
+	n("init", () => {
+		o = e.params.grid && e.params.grid.rows > 1;
+	}), n("update", () => {
+		let { params: t, el: n } = e, r = t.grid && t.grid.rows > 1;
+		o && !r ? (n.classList.remove(`${t.containerModifierClass}grid`, `${t.containerModifierClass}grid-column`), a = 1, e.emitContainerClasses()) : !o && r && (n.classList.add(`${t.containerModifierClass}grid`), t.grid.fill === "column" && n.classList.add(`${t.containerModifierClass}grid-column`), e.emitContainerClasses()), o = r;
+	}), e.grid = {
+		initSlides: (t) => {
+			let { slidesPerView: n } = e.params, { rows: o, fill: s } = e.params.grid, c = e.virtual && e.params.virtual.enabled ? e.virtual.slides.length : t.length;
+			a = Math.floor(c / o), r = Math.floor(c / o) === c / o ? c : Math.ceil(c / o) * o, n !== "auto" && s === "row" && (r = Math.max(r, Math.floor(n) * o)), i = r / o;
+		},
+		unsetSlides: () => {
+			e.slides && e.slides.forEach((t) => {
+				t.swiperSlideGridSet && (t.style.height = "", t.style[e.getDirectionLabel("margin-top")] = "");
+			});
+		},
+		updateSlide: (t, n, o) => {
+			let { slidesPerGroup: c } = e.params, l = s(), { rows: u, fill: d } = e.params.grid, f = e.virtual && e.params.virtual.enabled ? e.virtual.slides.length : o.length, p, m, h;
+			if (d === "row" && c > 1) {
+				let e = Math.floor(t / (c * u)), i = t - u * c * e, a = e === 0 ? c : Math.min(Math.ceil((f - e * u * c) / u), c);
+				h = Math.floor(i / a), m = i - h * a + e * c, p = m + h * r / u, n.style.order = p;
+			} else d === "column" ? (m = Math.floor(t / u), h = t - m * u, (m > a || m === a && h === u - 1) && (h += 1, h >= u && (h = 0, m += 1))) : (h = Math.floor(t / i), m = t - h * i);
+			n.row = h, n.column = m, n.style.height = `calc((100% - ${(u - 1) * l}px) / ${u})`, n.style[e.getDirectionLabel("margin-top")] = h === 0 ? "" : l && `${l}px`, n.swiperSlideGridSet = !0;
+		},
+		updateWrapperSize: (t, n) => {
+			let { centeredSlides: i, roundLengths: a } = e.params, o = s(), { rows: c } = e.params.grid;
+			if (e.virtualSize = (t + o) * r, e.virtualSize = Math.ceil(e.virtualSize / c) - o, e.params.cssMode || (e.wrapperEl.style[e.getDirectionLabel("width")] = `${e.virtualSize + o}px`), i) {
+				let t = [];
+				for (let r = 0; r < n.length; r += 1) {
+					let i = n[r];
+					a && (i = Math.floor(i)), n[r] < e.virtualSize + n[0] && t.push(i);
+				}
+				n.splice(0, n.length), n.push(...t);
+			}
+		}
+	};
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/manipulation.mjs
+function dE(e) {
+	let t = this, { params: n, slidesEl: r } = t;
+	n.loop && t.loopDestroy();
+	let i = (e) => {
+		if (typeof e == "string") {
+			let t = document.createElement("div");
+			gw(t, e), r.append(t.children[0]), gw(t, "");
+		} else r.append(e);
+	};
+	if (typeof e == "object" && "length" in e) for (let t = 0; t < e.length; t += 1) e[t] && i(e[t]);
+	else i(e);
+	t.recalcSlides(), n.loop && t.loopCreate(), (!n.observer || t.isElement) && t.update();
+}
+function fE(e) {
+	let t = this, { params: n, activeIndex: r, slidesEl: i } = t;
+	n.loop && t.loopDestroy();
+	let a = r + 1, o = (e) => {
+		if (typeof e == "string") {
+			let t = document.createElement("div");
+			gw(t, e), i.prepend(t.children[0]), gw(t, "");
+		} else i.prepend(e);
+	};
+	if (typeof e == "object" && "length" in e) {
+		for (let t = 0; t < e.length; t += 1) e[t] && o(e[t]);
+		a = r + e.length;
+	} else o(e);
+	t.recalcSlides(), n.loop && t.loopCreate(), (!n.observer || t.isElement) && t.update(), t.slideTo(a, 0, !1);
+}
+function pE(e, t) {
+	let n = this, { params: r, activeIndex: i, slidesEl: a } = n, o = i;
+	r.loop && (o -= n.loopedSlides, n.loopDestroy(), n.recalcSlides());
+	let s = n.slides.length;
+	if (e <= 0) {
+		n.prependSlide(t);
+		return;
+	}
+	if (e >= s) {
+		n.appendSlide(t);
+		return;
+	}
+	let c = o > e ? o + 1 : o, l = [];
+	for (let t = s - 1; t >= e; --t) {
+		let e = n.slides[t];
+		e.remove(), l.unshift(e);
+	}
+	if (typeof t == "object" && "length" in t) {
+		for (let e = 0; e < t.length; e += 1) t[e] && a.append(t[e]);
+		c = o > e ? o + t.length : o;
+	} else a.append(t);
+	for (let e = 0; e < l.length; e += 1) a.append(l[e]);
+	n.recalcSlides(), r.loop && n.loopCreate(), (!r.observer || n.isElement) && n.update(), r.loop ? n.slideTo(c + n.loopedSlides, 0, !1) : n.slideTo(c, 0, !1);
+}
+function mE(e) {
+	let t = this, { params: n, activeIndex: r } = t, i = r;
+	n.loop && (i -= t.loopedSlides, t.loopDestroy());
+	let a = i, o;
+	if (typeof e == "object" && "length" in e) {
+		for (let n = 0; n < e.length; n += 1) o = e[n], t.slides[o] && t.slides[o].remove(), o < a && --a;
+		a = Math.max(a, 0);
+	} else o = e, t.slides[o] && t.slides[o].remove(), o < a && --a, a = Math.max(a, 0);
+	t.recalcSlides(), n.loop && t.loopCreate(), (!n.observer || t.isElement) && t.update(), n.loop ? t.slideTo(a + t.loopedSlides, 0, !1) : t.slideTo(a, 0, !1);
+}
+function hE() {
+	let e = this, t = [];
+	for (let n = 0; n < e.slides.length; n += 1) t.push(n);
+	e.removeSlide(t);
+}
+function gE({ swiper: e }) {
+	Object.assign(e, {
+		appendSlide: dE.bind(e),
+		prependSlide: fE.bind(e),
+		addSlide: pE.bind(e),
+		removeSlide: mE.bind(e),
+		removeAllSlides: hE.bind(e)
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/effect-init.mjs
+function _E(e) {
+	let { effect: t, swiper: n, on: r, setTranslate: i, setTransition: a, overwriteParams: o, perspective: s, recreateShadows: c, getEffectParams: l } = e;
+	r("beforeInit", () => {
+		if (n.params.effect !== t) return;
+		n.classNames.push(`${n.params.containerModifierClass}${t}`), s && s() && n.classNames.push(`${n.params.containerModifierClass}3d`);
+		let e = o ? o() : {};
+		Object.assign(n.params, e), Object.assign(n.originalParams, e);
+	}), r("setTranslate _virtualUpdated", () => {
+		n.params.effect === t && i();
+	}), r("setTransition", (e, r) => {
+		n.params.effect === t && a(r);
+	}), r("transitionEnd", () => {
+		if (n.params.effect === t && c) {
+			if (!l || !l().slideShadows) return;
+			n.slides.forEach((e) => {
+				e.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((e) => e.remove());
+			}), c();
+		}
+	});
+	let u;
+	r("virtualUpdate", () => {
+		n.params.effect === t && (n.slides.length || (u = !0), requestAnimationFrame(() => {
+			u && n.slides && n.slides.length && (i(), u = !1);
+		}));
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/effect-target.mjs
+function vE(e, t) {
+	let n = ew(t);
+	return n !== t && (n.style.backfaceVisibility = "hidden", n.style["-webkit-backface-visibility"] = "hidden"), n;
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/effect-virtual-transition-end.mjs
+function yE({ swiper: e, duration: t, transformElements: n, allSlides: r }) {
+	let { activeIndex: i } = e, a = (t) => t.parentElement ? t.parentElement : e.slides.find((e) => e.shadowRoot && e.shadowRoot === t.parentNode);
+	if (e.params.virtualTranslate && t !== 0) {
+		let t = !1, o;
+		o = r ? n : n.filter((t) => {
+			let n = t.classList.contains("swiper-slide-transform") ? a(t) : t;
+			return e.getSlideIndex(n) === i;
+		}), o.forEach((n) => {
+			fw(n, () => {
+				if (t || !e || e.destroyed) return;
+				t = !0, e.animating = !1;
+				let n = new window.CustomEvent("transitionend", {
+					bubbles: !0,
+					cancelable: !0
+				});
+				e.wrapperEl.dispatchEvent(n);
+			});
+		});
+	}
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/effect-fade.mjs
+function bE({ swiper: e, extendParams: t, on: n }) {
+	t({ fadeEffect: { crossFade: !1 } }), _E({
+		effect: "fade",
+		swiper: e,
+		on: n,
+		setTranslate: () => {
+			let { slides: t } = e, n = e.params.fadeEffect;
+			for (let r = 0; r < t.length; r += 1) {
+				let t = e.slides[r], i = -t.swiperSlideOffset;
+				e.params.virtualTranslate || (i -= e.translate);
+				let a = 0;
+				e.isHorizontal() || (a = i, i = 0);
+				let o = e.params.fadeEffect.crossFade ? Math.max(1 - Math.abs(t.progress), 0) : 1 + Math.min(Math.max(t.progress, -1), 0), s = vE(n, t);
+				s.style.opacity = o, s.style.transform = `translate3d(${i}px, ${a}px, 0px)`;
+			}
+		},
+		setTransition: (t) => {
+			let n = e.slides.map((e) => ew(e));
+			n.forEach((e) => {
+				e.style.transitionDuration = `${t}ms`;
+			}), yE({
+				swiper: e,
+				duration: t,
+				transformElements: n,
+				allSlides: !0
+			});
+		},
+		overwriteParams: () => ({
+			slidesPerView: 1,
+			slidesPerGroup: 1,
+			watchSlidesProgress: !0,
+			spaceBetween: 0,
+			virtualTranslate: !e.params.cssMode
+		})
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/effect-cube.mjs
+function xE({ swiper: e, extendParams: t, on: n }) {
+	t({ cubeEffect: {
+		slideShadows: !0,
+		shadow: !0,
+		shadowOffset: 20,
+		shadowScale: .94
+	} });
+	let r = (e, t, n) => {
+		let r = n ? e.querySelector(".swiper-slide-shadow-left") : e.querySelector(".swiper-slide-shadow-top"), i = n ? e.querySelector(".swiper-slide-shadow-right") : e.querySelector(".swiper-slide-shadow-bottom");
+		r || (r = aw("div", `swiper-slide-shadow-cube swiper-slide-shadow-${n ? "left" : "top"}`.split(" ")), e.append(r)), i || (i = aw("div", `swiper-slide-shadow-cube swiper-slide-shadow-${n ? "right" : "bottom"}`.split(" ")), e.append(i)), r && (r.style.opacity = Math.max(-t, 0)), i && (i.style.opacity = Math.max(t, 0));
+	};
+	_E({
+		effect: "cube",
+		swiper: e,
+		on: n,
+		setTranslate: () => {
+			let { el: t, wrapperEl: n, slides: i, width: a, height: o, rtlTranslate: s, size: c, browser: l } = e, u = hw(e), d = e.params.cubeEffect, f = e.isHorizontal(), p = e.virtual && e.params.virtual.enabled, m = 0, h;
+			d.shadow && (f ? (h = e.wrapperEl.querySelector(".swiper-cube-shadow"), h || (h = aw("div", "swiper-cube-shadow"), e.wrapperEl.append(h)), h.style.height = `${a}px`) : (h = t.querySelector(".swiper-cube-shadow"), h || (h = aw("div", "swiper-cube-shadow"), t.append(h))));
+			for (let e = 0; e < i.length; e += 1) {
+				let t = i[e], n = e;
+				p && (n = parseInt(t.getAttribute("data-swiper-slide-index"), 10));
+				let a = n * 90, o = Math.floor(a / 360);
+				s && (a = -a, o = Math.floor(-a / 360));
+				let l = Math.max(Math.min(t.progress, 1), -1), h = 0, g = 0, _ = 0;
+				n % 4 == 0 ? (h = -o * 4 * c, _ = 0) : (n - 1) % 4 == 0 ? (h = 0, _ = -o * 4 * c) : (n - 2) % 4 == 0 ? (h = c + o * 4 * c, _ = c) : (n - 3) % 4 == 0 && (h = -c, _ = 3 * c + c * 4 * o), s && (h = -h), f || (g = h, h = 0);
+				let v = `rotateX(${u(f ? 0 : -a)}deg) rotateY(${u(f ? a : 0)}deg) translate3d(${h}px, ${g}px, ${_}px)`;
+				l <= 1 && l > -1 && (m = n * 90 + l * 90, s && (m = -n * 90 - l * 90)), t.style.transform = v, d.slideShadows && r(t, l, f);
+			}
+			if (n.style.transformOrigin = `50% 50% -${c / 2}px`, n.style["-webkit-transform-origin"] = `50% 50% -${c / 2}px`, d.shadow) if (f) h.style.transform = `translate3d(0px, ${a / 2 + d.shadowOffset}px, ${-a / 2}px) rotateX(89.99deg) rotateZ(0deg) scale(${d.shadowScale})`;
+			else {
+				let e = Math.abs(m) - Math.floor(Math.abs(m) / 90) * 90, t = 1.5 - (Math.sin(e * 2 * Math.PI / 360) / 2 + Math.cos(e * 2 * Math.PI / 360) / 2), n = d.shadowScale, r = d.shadowScale / t, i = d.shadowOffset;
+				h.style.transform = `scale3d(${n}, 1, ${r}) translate3d(0px, ${o / 2 + i}px, ${-o / 2 / r}px) rotateX(-89.99deg)`;
+			}
+			let g = (l.isSafari || l.isWebView) && l.needPerspectiveFix ? -c / 2 : 0;
+			n.style.transform = `translate3d(0px,0,${g}px) rotateX(${u(e.isHorizontal() ? 0 : m)}deg) rotateY(${u(e.isHorizontal() ? -m : 0)}deg)`, n.style.setProperty("--swiper-cube-translate-z", `${g}px`);
+		},
+		setTransition: (t) => {
+			let { el: n, slides: r } = e;
+			if (r.forEach((e) => {
+				e.style.transitionDuration = `${t}ms`, e.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((e) => {
+					e.style.transitionDuration = `${t}ms`;
+				});
+			}), e.params.cubeEffect.shadow && !e.isHorizontal()) {
+				let e = n.querySelector(".swiper-cube-shadow");
+				e && (e.style.transitionDuration = `${t}ms`);
+			}
+		},
+		recreateShadows: () => {
+			let t = e.isHorizontal();
+			e.slides.forEach((e) => {
+				r(e, Math.max(Math.min(e.progress, 1), -1), t);
+			});
+		},
+		getEffectParams: () => e.params.cubeEffect,
+		perspective: () => !0,
+		overwriteParams: () => ({
+			slidesPerView: 1,
+			slidesPerGroup: 1,
+			watchSlidesProgress: !0,
+			resistanceRatio: 0,
+			spaceBetween: 0,
+			centeredSlides: !1,
+			virtualTranslate: !0
+		})
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/create-shadow.mjs
+function SE(e, t, n) {
+	let r = `swiper-slide-shadow${n ? `-${n}` : ""}${e ? ` swiper-slide-shadow-${e}` : ""}`, i = ew(t), a = i.querySelector(`.${r.split(" ").join(".")}`);
+	return a || (a = aw("div", r.split(" ")), i.append(a)), a;
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/effect-flip.mjs
+function CE({ swiper: e, extendParams: t, on: n }) {
+	t({ flipEffect: {
+		slideShadows: !0,
+		limitRotation: !0
+	} });
+	let r = (t, n) => {
+		let r = e.isHorizontal() ? t.querySelector(".swiper-slide-shadow-left") : t.querySelector(".swiper-slide-shadow-top"), i = e.isHorizontal() ? t.querySelector(".swiper-slide-shadow-right") : t.querySelector(".swiper-slide-shadow-bottom");
+		r ||= SE("flip", t, e.isHorizontal() ? "left" : "top"), i ||= SE("flip", t, e.isHorizontal() ? "right" : "bottom"), r && (r.style.opacity = Math.max(-n, 0)), i && (i.style.opacity = Math.max(n, 0));
+	};
+	_E({
+		effect: "flip",
+		swiper: e,
+		on: n,
+		setTranslate: () => {
+			let { slides: t, rtlTranslate: n } = e, i = e.params.flipEffect, a = hw(e);
+			for (let o = 0; o < t.length; o += 1) {
+				let s = t[o], c = s.progress;
+				e.params.flipEffect.limitRotation && (c = Math.max(Math.min(s.progress, 1), -1));
+				let l = s.swiperSlideOffset, u = -180 * c, d = 0, f = e.params.cssMode ? -l - e.translate : -l, p = 0;
+				e.isHorizontal() ? n && (u = -u) : (p = f, f = 0, d = -u, u = 0), s.style.zIndex = -Math.abs(Math.round(c)) + t.length, i.slideShadows && r(s, c);
+				let m = `translate3d(${f}px, ${p}px, 0px) rotateX(${a(d)}deg) rotateY(${a(u)}deg)`, h = vE(i, s);
+				h.style.transform = m;
+			}
+		},
+		setTransition: (t) => {
+			let n = e.slides.map((e) => ew(e));
+			n.forEach((e) => {
+				e.style.transitionDuration = `${t}ms`, e.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((e) => {
+					e.style.transitionDuration = `${t}ms`;
+				});
+			}), yE({
+				swiper: e,
+				duration: t,
+				transformElements: n
+			});
+		},
+		recreateShadows: () => {
+			e.params.flipEffect, e.slides.forEach((t) => {
+				let n = t.progress;
+				e.params.flipEffect.limitRotation && (n = Math.max(Math.min(t.progress, 1), -1)), r(t, n);
+			});
+		},
+		getEffectParams: () => e.params.flipEffect,
+		perspective: () => !0,
+		overwriteParams: () => ({
+			slidesPerView: 1,
+			slidesPerGroup: 1,
+			watchSlidesProgress: !0,
+			spaceBetween: 0,
+			virtualTranslate: !e.params.cssMode
+		})
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/effect-coverflow.mjs
+function wE({ swiper: e, extendParams: t, on: n }) {
+	t({ coverflowEffect: {
+		rotate: 50,
+		stretch: 0,
+		depth: 100,
+		scale: 1,
+		modifier: 1,
+		slideShadows: !0
+	} }), _E({
+		effect: "coverflow",
+		swiper: e,
+		on: n,
+		setTranslate: () => {
+			let { width: t, height: n, slides: r, slidesSizesGrid: i } = e, a = e.params.coverflowEffect, o = e.isHorizontal(), s = e.translate, c = o ? -s + t / 2 : -s + n / 2, l = o ? a.rotate : -a.rotate, u = a.depth, d = hw(e);
+			for (let e = 0, t = r.length; e < t; e += 1) {
+				let t = r[e], n = i[e], s = (c - t.swiperSlideOffset - n / 2) / n, f = typeof a.modifier == "function" ? a.modifier(s) : s * a.modifier, p = o ? l * f : 0, m = o ? 0 : l * f, h = -u * Math.abs(f), g = a.stretch;
+				typeof g == "string" && g.indexOf("%") !== -1 && (g = parseFloat(a.stretch) / 100 * n);
+				let _ = o ? 0 : g * f, v = o ? g * f : 0, y = 1 - (1 - a.scale) * Math.abs(f);
+				Math.abs(v) < .001 && (v = 0), Math.abs(_) < .001 && (_ = 0), Math.abs(h) < .001 && (h = 0), Math.abs(p) < .001 && (p = 0), Math.abs(m) < .001 && (m = 0), Math.abs(y) < .001 && (y = 0);
+				let b = `translate3d(${v}px,${_}px,${h}px)  rotateX(${d(m)}deg) rotateY(${d(p)}deg) scale(${y})`, x = vE(a, t);
+				if (x.style.transform = b, t.style.zIndex = -Math.abs(Math.round(f)) + 1, a.slideShadows) {
+					let e = o ? t.querySelector(".swiper-slide-shadow-left") : t.querySelector(".swiper-slide-shadow-top"), n = o ? t.querySelector(".swiper-slide-shadow-right") : t.querySelector(".swiper-slide-shadow-bottom");
+					e ||= SE("coverflow", t, o ? "left" : "top"), n ||= SE("coverflow", t, o ? "right" : "bottom"), e && (e.style.opacity = f > 0 ? f : 0), n && (n.style.opacity = -f > 0 ? -f : 0);
+				}
+			}
+		},
+		setTransition: (t) => {
+			e.slides.map((e) => ew(e)).forEach((e) => {
+				e.style.transitionDuration = `${t}ms`, e.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((e) => {
+					e.style.transitionDuration = `${t}ms`;
+				});
+			});
+		},
+		perspective: () => !0,
+		overwriteParams: () => ({ watchSlidesProgress: !0 })
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/effect-creative.mjs
+function TE({ swiper: e, extendParams: t, on: n }) {
+	t({ creativeEffect: {
+		limitProgress: 1,
+		shadowPerProgress: !1,
+		progressMultiplier: 1,
+		perspective: !0,
+		prev: {
+			translate: [
+				0,
+				0,
+				0
+			],
+			rotate: [
+				0,
+				0,
+				0
+			],
+			opacity: 1,
+			scale: 1
+		},
+		next: {
+			translate: [
+				0,
+				0,
+				0
+			],
+			rotate: [
+				0,
+				0,
+				0
+			],
+			opacity: 1,
+			scale: 1
+		}
+	} });
+	let r = (e) => typeof e == "string" ? e : `${e}px`;
+	_E({
+		effect: "creative",
+		swiper: e,
+		on: n,
+		setTranslate: () => {
+			let { slides: t, wrapperEl: n, slidesSizesGrid: i } = e, a = e.params.creativeEffect, { progressMultiplier: o } = a, s = e.params.centeredSlides, c = hw(e);
+			if (s) {
+				let t = i[0] / 2 - e.params.slidesOffsetBefore || 0;
+				n.style.transform = `translateX(calc(50% - ${t}px))`;
+			}
+			for (let n = 0; n < t.length; n += 1) {
+				let i = t[n], l = i.progress, u = Math.min(Math.max(i.progress, -a.limitProgress), a.limitProgress), d = u;
+				s || (d = Math.min(Math.max(i.originalProgress, -a.limitProgress), a.limitProgress));
+				let f = i.swiperSlideOffset, p = [
+					e.params.cssMode ? -f - e.translate : -f,
+					0,
+					0
+				], m = [
+					0,
+					0,
+					0
+				], h = !1;
+				e.isHorizontal() || (p[1] = p[0], p[0] = 0);
+				let g = {
+					translate: [
+						0,
+						0,
+						0
+					],
+					rotate: [
+						0,
+						0,
+						0
+					],
+					scale: 1,
+					opacity: 1
+				};
+				u < 0 ? (g = a.next, h = !0) : u > 0 && (g = a.prev, h = !0), p.forEach((e, t) => {
+					p[t] = `calc(${e}px + (${r(g.translate[t])} * ${Math.abs(u * o)}))`;
+				}), m.forEach((e, t) => {
+					m[t] = g.rotate[t] * Math.abs(u * o);
+				}), i.style.zIndex = -Math.abs(Math.round(l)) + t.length;
+				let _ = p.join(", "), v = `rotateX(${c(m[0])}deg) rotateY(${c(m[1])}deg) rotateZ(${c(m[2])}deg)`, y = d < 0 ? `scale(${1 + (1 - g.scale) * d * o})` : `scale(${1 - (1 - g.scale) * d * o})`, b = d < 0 ? 1 + (1 - g.opacity) * d * o : 1 - (1 - g.opacity) * d * o, x = `translate3d(${_}) ${v} ${y}`;
+				if (h && g.shadow || !h) {
+					let e = i.querySelector(".swiper-slide-shadow");
+					if (!e && g.shadow && (e = SE("creative", i)), e) {
+						let t = a.shadowPerProgress ? u * (1 / a.limitProgress) : u;
+						e.style.opacity = Math.min(Math.max(Math.abs(t), 0), 1);
+					}
+				}
+				let S = vE(a, i);
+				S.style.transform = x, S.style.opacity = b, g.origin && (S.style.transformOrigin = g.origin);
+			}
+		},
+		setTransition: (t) => {
+			let n = e.slides.map((e) => ew(e));
+			n.forEach((e) => {
+				e.style.transitionDuration = `${t}ms`, e.querySelectorAll(".swiper-slide-shadow").forEach((e) => {
+					e.style.transitionDuration = `${t}ms`;
+				});
+			}), yE({
+				swiper: e,
+				duration: t,
+				transformElements: n,
+				allSlides: !0
+			});
+		},
+		perspective: () => e.params.creativeEffect.perspective,
+		overwriteParams: () => ({
+			watchSlidesProgress: !0,
+			virtualTranslate: !e.params.cssMode
+		})
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/modules/effect-cards.mjs
+function EE({ swiper: e, extendParams: t, on: n }) {
+	t({ cardsEffect: {
+		slideShadows: !0,
+		rotate: !0,
+		perSlideRotate: 2,
+		perSlideOffset: 8
+	} }), _E({
+		effect: "cards",
+		swiper: e,
+		on: n,
+		setTranslate: () => {
+			let { slides: t, activeIndex: n, rtlTranslate: r } = e, i = e.params.cardsEffect, { startTranslate: a, isTouched: o } = e.touchEventsData, s = r ? -e.translate : e.translate;
+			for (let c = 0; c < t.length; c += 1) {
+				let l = t[c], u = l.progress, d = Math.min(Math.max(u, -4), 4), f = l.swiperSlideOffset;
+				e.params.centeredSlides && !e.params.cssMode && (e.wrapperEl.style.transform = `translateX(${e.minTranslate()}px)`), e.params.centeredSlides && e.params.cssMode && (f -= t[0].swiperSlideOffset);
+				let p = e.params.cssMode ? -f - e.translate : -f, m = 0, h = -100 * Math.abs(d), g = 1, _ = -i.perSlideRotate * d, v = i.perSlideOffset - Math.abs(d) * .75, y = e.virtual && e.params.virtual.enabled ? e.virtual.from + c : c, b = (y === n || y === n - 1) && d > 0 && d < 1 && (o || e.params.cssMode) && s < a, x = (y === n || y === n + 1) && d < 0 && d > -1 && (o || e.params.cssMode) && s > a;
+				if (b || x) {
+					let t = (1 - Math.abs((Math.abs(d) - .5) / .5)) ** .5;
+					_ += -28 * d * t, g += -.5 * t, v += 96 * t, m = `${(i.rotate || e.isHorizontal() ? -25 : 0) * t * Math.abs(d)}%`;
+				}
+				if (p = d < 0 ? `calc(${p}px ${r ? "-" : "+"} (${v * Math.abs(d)}%))` : d > 0 ? `calc(${p}px ${r ? "-" : "+"} (-${v * Math.abs(d)}%))` : `${p}px`, !e.isHorizontal()) {
+					let e = m;
+					m = p, p = e;
+				}
+				let S = d < 0 ? `${1 + (1 - g) * d}` : `${1 - (1 - g) * d}`, C = `
+        translate3d(${p}, ${m}, ${h}px)
+        rotateZ(${i.rotate ? r ? -_ : _ : 0}deg)
+        scale(${S})
+      `;
+				if (i.slideShadows) {
+					let e = l.querySelector(".swiper-slide-shadow");
+					e ||= SE("cards", l), e && (e.style.opacity = Math.min(Math.max((Math.abs(d) - .5) / .5, 0), 1));
+				}
+				l.style.zIndex = -Math.abs(Math.round(u)) + t.length;
+				let w = vE(i, l);
+				w.style.transform = C;
+			}
+		},
+		setTransition: (t) => {
+			let n = e.slides.map((e) => ew(e));
+			n.forEach((e) => {
+				e.style.transitionDuration = `${t}ms`, e.querySelectorAll(".swiper-slide-shadow").forEach((e) => {
+					e.style.transitionDuration = `${t}ms`;
+				});
+			}), yE({
+				swiper: e,
+				duration: t,
+				transformElements: n
+			});
+		},
+		perspective: () => !0,
+		overwriteParams: () => ({
+			_loopSwapReset: !1,
+			watchSlidesProgress: !0,
+			loopAdditionalSlides: e.params.cardsEffect.rotate ? 3 : 2,
+			centeredSlides: !0,
+			virtualTranslate: !e.params.cssMode
+		})
+	});
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/swiper-bundle.mjs
+var DE = [
+	KT,
+	qT,
+	JT,
+	ZT,
+	$T,
+	eE,
+	tE,
+	nE,
+	rE,
+	iE,
+	aE,
+	oE,
+	sE,
+	cE,
+	lE,
+	uE,
+	gE,
+	bE,
+	xE,
+	CE,
+	wE,
+	TE,
+	EE
+];
+GT.use(DE);
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/update-swiper.mjs
+var OE = /* @__PURE__ */ "eventsPrefix.injectStyles.injectStylesUrls.modules.init._direction.oneWayMovement.swiperElementNodeName.touchEventsTarget.initialSlide._speed.cssMode.updateOnWindowResize.resizeObserver.nested.focusableElements._enabled._width._height.preventInteractionOnTransition.userAgent.url._edgeSwipeDetection._edgeSwipeThreshold._freeMode._autoHeight.setWrapperSize.virtualTranslate._effect.breakpoints.breakpointsBase._spaceBetween._slidesPerView.maxBackfaceHiddenSlides._grid._slidesPerGroup._slidesPerGroupSkip._slidesPerGroupAuto._centeredSlides._centeredSlidesBounds._slidesOffsetBefore._slidesOffsetAfter.normalizeSlideIndex._centerInsufficientSlides._snapToSlideEdge._watchOverflow.roundLengths.touchRatio.touchAngle.simulateTouch._shortSwipes._longSwipes.longSwipesRatio.longSwipesMs._followFinger.allowTouchMove._threshold.touchMoveStopPropagation.touchStartPreventDefault.touchStartForcePreventDefault.touchReleaseOnEdges.uniqueNavElements._resistance._resistanceRatio._watchSlidesProgress._grabCursor.preventClicks.preventClicksPropagation._slideToClickedSlide._loop.loopAdditionalSlides.loopAddBlankSlides.loopPreventsSliding._rewind._allowSlidePrev._allowSlideNext._swipeHandler._noSwiping.noSwipingClass.noSwipingSelector.passiveListeners.containerModifierClass.slideClass.slideActiveClass.slideVisibleClass.slideFullyVisibleClass.slideNextClass.slidePrevClass.slideBlankClass.wrapperClass.lazyPreloaderClass.lazyPreloadPrevNext.runCallbacksOnInit.observer.observeParents.observeSlideChildren.a11y._autoplay._controller.coverflowEffect.cubeEffect.fadeEffect.flipEffect.creativeEffect.cardsEffect.hashNavigation.history.keyboard.mousewheel._navigation._pagination.parallax._scrollbar._thumbs.virtual.zoom.control".split(".");
+function kE(e) {
+	return typeof e == "object" && !!e && e.constructor && Object.prototype.toString.call(e).slice(8, -1) === "Object" && !e.__swiper__;
+}
+function AE(e, t) {
+	let n = [
+		"__proto__",
+		"constructor",
+		"prototype"
+	];
+	Object.keys(t).filter((e) => n.indexOf(e) < 0).forEach((n) => {
+		e[n] === void 0 ? e[n] = t[n] : kE(t[n]) && kE(e[n]) && Object.keys(t[n]).length > 0 ? t[n].__swiper__ ? e[n] = t[n] : AE(e[n], t[n]) : e[n] = t[n];
+	});
+}
+function jE(e = {}) {
+	return e.navigation && e.navigation.nextEl === void 0 && e.navigation.prevEl === void 0;
+}
+function ME(e = {}) {
+	return e.pagination && e.pagination.el === void 0;
+}
+function NE(e = {}) {
+	return e.scrollbar && e.scrollbar.el === void 0;
+}
+function PE(e = "") {
+	return e.replace(/-[a-z]/g, (e) => e.toUpperCase().replace("-", ""));
+}
+function FE({ swiper: e, slides: t, passedParams: n, changedParams: r, nextEl: i, prevEl: a, scrollbarEl: o, paginationEl: s }) {
+	let c = r.filter((e) => e !== "children" && e !== "direction" && e !== "wrapperClass"), { params: l, pagination: u, navigation: d, scrollbar: f, virtual: p, thumbs: m } = e, h, g, _, v, y, b, x, S;
+	r.includes("thumbs") && n.thumbs && n.thumbs.swiper && !n.thumbs.swiper.destroyed && l.thumbs && (!l.thumbs.swiper || l.thumbs.swiper.destroyed) && (h = !0), r.includes("controller") && n.controller && n.controller.control && l.controller && !l.controller.control && (g = !0), r.includes("pagination") && n.pagination && (n.pagination.el || s) && (l.pagination || l.pagination === !1) && u && !u.el && (_ = !0), r.includes("scrollbar") && n.scrollbar && (n.scrollbar.el || o) && (l.scrollbar || l.scrollbar === !1) && f && !f.el && (v = !0), r.includes("navigation") && n.navigation && (n.navigation.prevEl || a) && (n.navigation.nextEl || i) && (l.navigation || l.navigation === !1) && d && !d.prevEl && !d.nextEl && (y = !0);
+	let C = (t) => {
+		e[t] && (e[t].destroy(), t === "navigation" ? (e.isElement && (e[t].prevEl.remove(), e[t].nextEl.remove()), l[t].prevEl = void 0, l[t].nextEl = void 0, e[t].prevEl = void 0, e[t].nextEl = void 0) : (e.isElement && e[t].el.remove(), l[t].el = void 0, e[t].el = void 0));
+	};
+	r.includes("loop") && e.isElement && (l.loop && !n.loop ? b = !0 : !l.loop && n.loop ? x = !0 : S = !0), c.forEach((e) => {
+		if (kE(l[e]) && kE(n[e])) Object.assign(l[e], n[e]), (e === "navigation" || e === "pagination" || e === "scrollbar") && "enabled" in n[e] && !n[e].enabled && C(e);
+		else {
+			let t = n[e];
+			(t === !0 || t === !1) && (e === "navigation" || e === "pagination" || e === "scrollbar") ? t === !1 && C(e) : l[e] = n[e];
+		}
+	}), c.includes("controller") && !g && e.controller && e.controller.control && l.controller && l.controller.control && (e.controller.control = l.controller.control), r.includes("children") && t && p && l.virtual.enabled ? (p.slides = t, p.update(!0)) : r.includes("virtual") && p && l.virtual.enabled && (t && (p.slides = t), p.update(!0)), r.includes("children") && t && l.loop && (S = !0), h && m.init() && m.update(!0), g && (e.controller.control = l.controller.control), _ && (e.isElement && (!s || typeof s == "string") && (s = document.createElement("div"), s.classList.add("swiper-pagination"), s.part.add("pagination"), e.el.appendChild(s)), s && (l.pagination.el = s), u.init(), u.render(), u.update()), v && (e.isElement && (!o || typeof o == "string") && (o = document.createElement("div"), o.classList.add("swiper-scrollbar"), o.part.add("scrollbar"), e.el.appendChild(o)), o && (l.scrollbar.el = o), f.init(), f.updateSize(), f.setTranslate()), y && (e.isElement && ((!i || typeof i == "string") && (i = document.createElement("div"), i.classList.add("swiper-button-next"), gw(i, e.navigation.arrowSvg), i.part.add("button-next"), e.el.appendChild(i)), (!a || typeof a == "string") && (a = document.createElement("div"), a.classList.add("swiper-button-prev"), gw(a, e.navigation.arrowSvg), a.part.add("button-prev"), e.el.appendChild(a))), i && (l.navigation.nextEl = i), a && (l.navigation.prevEl = a), d.init(), d.update()), r.includes("allowSlideNext") && (e.allowSlideNext = n.allowSlideNext), r.includes("allowSlidePrev") && (e.allowSlidePrev = n.allowSlidePrev), r.includes("direction") && e.changeDirection(n.direction, !1), (b || S) && e.loopDestroy(), (x || S) && e.loopCreate(), e.update();
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/shared/get-element-params.mjs
+var IE = (e) => {
+	if (parseFloat(e) === Number(e)) return Number(e);
+	if (e === "true" || e === "") return !0;
+	if (e === "false") return !1;
+	if (e === "null") return null;
+	if (e !== "undefined") {
+		if (typeof e == "string" && e.includes("{") && e.includes("}") && e.includes("\"")) {
+			let t;
+			try {
+				t = JSON.parse(e);
+			} catch {
+				t = e;
+			}
+			return t;
+		}
+		return e;
+	}
+}, LE = [
+	"a11y",
+	"autoplay",
+	"controller",
+	"cards-effect",
+	"coverflow-effect",
+	"creative-effect",
+	"cube-effect",
+	"fade-effect",
+	"flip-effect",
+	"free-mode",
+	"grid",
+	"hash-navigation",
+	"history",
+	"keyboard",
+	"mousewheel",
+	"navigation",
+	"pagination",
+	"parallax",
+	"scrollbar",
+	"thumbs",
+	"virtual",
+	"zoom"
+];
+function RE(e, t, n) {
+	let r = {}, i = {};
+	AE(r, VT);
+	let a = [...OE, "on"], o = a.map((e) => e.replace(/_/, ""));
+	a.forEach((t) => {
+		t = t.replace("_", ""), e[t] !== void 0 && (i[t] = e[t]);
+	});
+	let s = [...e.attributes];
+	return typeof t == "string" && n !== void 0 && s.push({
+		name: t,
+		value: kE(n) ? { ...n } : n
+	}), s.forEach((e) => {
+		let t = LE.find((t) => e.name.startsWith(`${t}-`));
+		if (t) {
+			let n = PE(t), r = PE(e.name.split(`${t}-`)[1]);
+			i[n] === void 0 && (i[n] = {}), i[n] === !0 && (i[n] = { enabled: !0 }), i[n] === !1 && (i[n] = { enabled: !1 }), i[n][r] = IE(e.value);
+		} else {
+			let t = PE(e.name);
+			if (!o.includes(t)) return;
+			let n = IE(e.value);
+			i[t] && LE.includes(e.name) && !kE(n) ? (i[t].constructor !== Object && (i[t] = {}), i[t].enabled = !!n) : i[t] = n;
+		}
+	}), AE(r, i), r.navigation ? r.navigation = {
+		prevEl: ".swiper-button-prev",
+		nextEl: ".swiper-button-next",
+		...r.navigation === !0 ? {} : r.navigation
+	} : r.navigation === !1 && delete r.navigation, r.scrollbar ? r.scrollbar = {
+		el: ".swiper-scrollbar",
+		...r.scrollbar === !0 ? {} : r.scrollbar
+	} : r.scrollbar === !1 && delete r.scrollbar, r.pagination ? r.pagination = {
+		el: ".swiper-pagination",
+		...r.pagination === !0 ? {} : r.pagination
+	} : r.pagination === !1 && delete r.pagination, {
+		params: r,
+		passedParams: i
+	};
+}
+//#endregion
+//#region ../../node_modules/.bun/swiper@12.2.0/node_modules/swiper/swiper-element-bundle.mjs
+var zE = ":host{--swiper-theme-color:#007aff}:host{display:block;margin-left:auto;margin-right:auto;position:relative;z-index:1}.swiper{display:block;height:100%;list-style:none;margin-left:auto;margin-right:auto;overflow:hidden;padding:0;position:relative;width:100%;z-index:1}.swiper-vertical>.swiper-wrapper{flex-direction:column}.swiper-wrapper{box-sizing:initial;display:flex;height:100%;position:relative;transition-property:transform;transition-timing-function:var(--swiper-wrapper-transition-timing-function,initial);width:100%;z-index:1}.swiper-android ::slotted(swiper-slide),.swiper-ios ::slotted(swiper-slide),.swiper-wrapper{transform:translateZ(0)}.swiper-horizontal{touch-action:pan-y}.swiper-vertical{touch-action:pan-x}::slotted(swiper-slide){display:block;flex-shrink:0;height:100%;position:relative;transition-property:transform;width:100%}::slotted(.swiper-slide-invisible-blank){visibility:hidden}.swiper-autoheight,.swiper-autoheight ::slotted(swiper-slide){height:auto}.swiper-autoheight .swiper-wrapper{align-items:flex-start;transition-property:transform,height}.swiper-backface-hidden ::slotted(swiper-slide){backface-visibility:hidden;transform:translateZ(0)}.swiper-3d.swiper-css-mode .swiper-wrapper{perspective:1200px}.swiper-3d .swiper-wrapper{transform-style:preserve-3d}.swiper-3d{perspective:1200px}.swiper-3d .swiper-cube-shadow,.swiper-3d ::slotted(swiper-slide){transform-style:preserve-3d}.swiper-css-mode>.swiper-wrapper{overflow:auto;scrollbar-width:none;-ms-overflow-style:none}.swiper-css-mode>.swiper-wrapper::-webkit-scrollbar{display:none}.swiper-css-mode ::slotted(swiper-slide){scroll-snap-align:start start}.swiper-css-mode.swiper-horizontal>.swiper-wrapper{scroll-snap-type:x mandatory}.swiper-css-mode.swiper-horizontal ::slotted(swiper-slide):first-child{margin-inline-start:var(--swiper-slides-offset-before);scroll-margin-inline-start:var(--swiper-slides-offset-before)}.swiper-css-mode.swiper-horizontal ::slotted(swiper-slide):last-child{margin-inline-end:var(--swiper-slides-offset-after)}.swiper-css-mode.swiper-vertical>.swiper-wrapper{scroll-snap-type:y mandatory}.swiper-css-mode.swiper-vertical ::slotted(swiper-slide):first-child{margin-block-start:var(--swiper-slides-offset-before);scroll-margin-block-start:var(--swiper-slides-offset-before)}.swiper-css-mode.swiper-vertical ::slotted(swiper-slide):last-child{margin-block-end:var(--swiper-slides-offset-after)}.swiper-css-mode.swiper-free-mode>.swiper-wrapper{scroll-snap-type:none}.swiper-css-mode.swiper-free-mode ::slotted(swiper-slide){scroll-snap-align:none}.swiper-css-mode.swiper-centered>.swiper-wrapper:before{content:\"\";flex-shrink:0;order:9999}.swiper-css-mode.swiper-centered ::slotted(swiper-slide){scroll-snap-align:center center;scroll-snap-stop:always}.swiper-css-mode.swiper-centered.swiper-horizontal ::slotted(swiper-slide):first-child{margin-inline-start:var(--swiper-centered-offset-before)}.swiper-css-mode.swiper-centered.swiper-horizontal>.swiper-wrapper:before{height:100%;min-height:1px;width:var(--swiper-centered-offset-after)}.swiper-css-mode.swiper-centered.swiper-vertical ::slotted(swiper-slide):first-child{margin-block-start:var(--swiper-centered-offset-before)}.swiper-css-mode.swiper-centered.swiper-vertical>.swiper-wrapper:before{height:var(--swiper-centered-offset-after);min-width:1px;width:100%}.swiper-virtual ::slotted(swiper-slide){-webkit-backface-visibility:hidden;transform:translateZ(0)}.swiper-virtual.swiper-css-mode .swiper-wrapper:after{content:\"\";left:0;pointer-events:none;position:absolute;top:0}.swiper-virtual.swiper-css-mode.swiper-horizontal .swiper-wrapper:after{height:1px;width:var(--swiper-virtual-size)}.swiper-virtual.swiper-css-mode.swiper-vertical .swiper-wrapper:after{height:var(--swiper-virtual-size);width:1px}:host{--swiper-navigation-size:44px}.swiper-button-next,.swiper-button-prev{align-items:center;color:var(--swiper-navigation-color,var(--swiper-theme-color));cursor:pointer;display:flex;height:var(--swiper-navigation-size);justify-content:center;position:absolute;width:var(--swiper-navigation-size);z-index:10}.swiper-button-next.swiper-button-disabled,.swiper-button-prev.swiper-button-disabled{cursor:auto;opacity:.35;pointer-events:none}.swiper-button-next.swiper-button-hidden,.swiper-button-prev.swiper-button-hidden{cursor:auto;opacity:0;pointer-events:none}.swiper-navigation-disabled .swiper-button-next,.swiper-navigation-disabled .swiper-button-prev{display:none!important}.swiper-button-next ::slotted(svg),.swiper-button-next svg,.swiper-button-prev ::slotted(svg),.swiper-button-prev svg{height:100%;object-fit:contain;transform-origin:center;width:100%;fill:currentColor;pointer-events:none}.swiper-button-lock{display:none}.swiper-button-next,.swiper-button-prev{margin-top:calc(0px - var(--swiper-navigation-size)/2);top:var(--swiper-navigation-top-offset,50%)}.swiper-button-prev{left:var(--swiper-navigation-sides-offset,4px);right:auto}.swiper-button-prev .swiper-navigation-icon,.swiper-button-prev ::slotted(.swiper-navigation-icon){transform:rotate(180deg)}.swiper-button-next{left:auto;right:var(--swiper-navigation-sides-offset,4px)}.swiper-horizontal .swiper-button-next,.swiper-horizontal .swiper-button-prev,.swiper-horizontal~.swiper-button-next,.swiper-horizontal~.swiper-button-prev{margin-left:0;margin-top:calc(0px - var(--swiper-navigation-size)/2);top:var(--swiper-navigation-top-offset,50%)}.swiper-horizontal .swiper-button-prev,.swiper-horizontal.swiper-rtl .swiper-button-next,.swiper-horizontal.swiper-rtl~.swiper-button-next,.swiper-horizontal~.swiper-button-prev{left:var(--swiper-navigation-sides-offset,4px);right:auto}.swiper-horizontal .swiper-button-next,.swiper-horizontal.swiper-rtl .swiper-button-prev,.swiper-horizontal.swiper-rtl~.swiper-button-prev,.swiper-horizontal~.swiper-button-next{left:auto;right:var(--swiper-navigation-sides-offset,4px)}.swiper-horizontal .swiper-button-prev .swiper-navigation-icon,.swiper-horizontal .swiper-button-prev ::slotted(.swiper-navigation-icon),.swiper-horizontal.swiper-rtl .swiper-button-next .swiper-navigation-icon,.swiper-horizontal.swiper-rtl .swiper-button-next ::slotted(.swiper-navigation-icon),.swiper-horizontal.swiper-rtl~.swiper-button-next .swiper-navigation-icon,.swiper-horizontal.swiper-rtl~.swiper-button-next ::slotted(.swiper-navigation-icon),.swiper-horizontal~.swiper-button-prev .swiper-navigation-icon,.swiper-horizontal~.swiper-button-prev ::slotted(.swiper-navigation-icon){transform:rotate(180deg)}.swiper-horizontal.swiper-rtl .swiper-button-prev .swiper-navigation-icon,.swiper-horizontal.swiper-rtl .swiper-button-prev ::slotted(.swiper-navigation-icon),.swiper-horizontal.swiper-rtl~.swiper-button-prev .swiper-navigation-icon,.swiper-horizontal.swiper-rtl~.swiper-button-prev ::slotted(.swiper-navigation-icon){transform:rotate(0deg)}.swiper-vertical .swiper-button-next,.swiper-vertical .swiper-button-prev,.swiper-vertical~.swiper-button-next,.swiper-vertical~.swiper-button-prev{left:var(--swiper-navigation-top-offset,50%);margin-left:calc(0px - var(--swiper-navigation-size)/2);margin-top:0;right:auto}.swiper-vertical .swiper-button-prev,.swiper-vertical~.swiper-button-prev{bottom:auto;top:var(--swiper-navigation-sides-offset,4px)}.swiper-vertical .swiper-button-prev .swiper-navigation-icon,.swiper-vertical .swiper-button-prev ::slotted(.swiper-navigation-icon),.swiper-vertical~.swiper-button-prev .swiper-navigation-icon,.swiper-vertical~.swiper-button-prev ::slotted(.swiper-navigation-icon){transform:rotate(-90deg)}.swiper-vertical .swiper-button-next,.swiper-vertical~.swiper-button-next{bottom:var(--swiper-navigation-sides-offset,4px);top:auto}.swiper-vertical .swiper-button-next .swiper-navigation-icon,.swiper-vertical .swiper-button-next ::slotted(.swiper-navigation-icon),.swiper-vertical~.swiper-button-next .swiper-navigation-icon,.swiper-vertical~.swiper-button-next ::slotted(.swiper-navigation-icon){transform:rotate(90deg)}.swiper-pagination{position:absolute;text-align:center;transform:translateZ(0);transition:opacity .3s;z-index:10}.swiper-pagination.swiper-pagination-hidden{opacity:0}.swiper-pagination-disabled>.swiper-pagination,.swiper-pagination.swiper-pagination-disabled{display:none!important}.swiper-horizontal>.swiper-pagination-bullets,.swiper-pagination-bullets.swiper-pagination-horizontal,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:var(--swiper-pagination-bottom,8px);left:0;top:var(--swiper-pagination-top,auto);width:100%}.swiper-pagination-bullets-dynamic{font-size:0;overflow:hidden}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{position:relative;transform:scale(.33)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active,.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main{transform:scale(1)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev{transform:scale(.66)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev{transform:scale(.33)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next{transform:scale(.66)}.swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next{transform:scale(.33)}.swiper-pagination-bullet{background:var(--swiper-pagination-bullet-inactive-color,#000);border-radius:var(--swiper-pagination-bullet-border-radius,50%);display:inline-block;height:var(--swiper-pagination-bullet-height,var(--swiper-pagination-bullet-size,8px));opacity:var(--swiper-pagination-bullet-inactive-opacity,.2);width:var(--swiper-pagination-bullet-width,var(--swiper-pagination-bullet-size,8px))}button.swiper-pagination-bullet{appearance:none;border:none;box-shadow:none;margin:0;padding:0}.swiper-pagination-clickable .swiper-pagination-bullet{cursor:pointer}.swiper-pagination-bullet:only-child{display:none!important}.swiper-pagination-bullet-active{background:var(--swiper-pagination-color,var(--swiper-theme-color));opacity:var(--swiper-pagination-bullet-opacity,1)}.swiper-pagination-vertical.swiper-pagination-bullets,.swiper-vertical>.swiper-pagination-bullets{left:var(--swiper-pagination-left,auto);right:var(--swiper-pagination-right,8px);top:50%;transform:translate3d(0,-50%,0)}.swiper-pagination-vertical.swiper-pagination-bullets .swiper-pagination-bullet,.swiper-vertical>.swiper-pagination-bullets .swiper-pagination-bullet{display:block;margin:var(--swiper-pagination-bullet-vertical-gap,6px) 0}.swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dynamic,.swiper-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{top:50%;transform:translateY(-50%);width:8px}.swiper-pagination-vertical.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,.swiper-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{display:inline-block;transition:transform .2s,top .2s}.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{margin:0 var(--swiper-pagination-bullet-horizontal-gap,4px)}.swiper-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic,.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic{left:50%;transform:translateX(-50%);white-space:nowrap}.swiper-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet,.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{transition:transform .2s,left .2s}.swiper-horizontal.swiper-rtl>.swiper-pagination-bullets-dynamic .swiper-pagination-bullet{transition:transform .2s,right .2s}.swiper-pagination-fraction{color:var(--swiper-pagination-fraction-color,inherit)}.swiper-pagination-progressbar{background:var(--swiper-pagination-progressbar-bg-color,#00000040);position:absolute}.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{background:var(--swiper-pagination-color,var(--swiper-theme-color));height:100%;left:0;position:absolute;top:0;transform:scale(0);transform-origin:left top;width:100%}.swiper-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill{transform-origin:right top}.swiper-horizontal>.swiper-pagination-progressbar,.swiper-pagination-progressbar.swiper-pagination-horizontal,.swiper-pagination-progressbar.swiper-pagination-vertical.swiper-pagination-progressbar-opposite,.swiper-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite{height:var(--swiper-pagination-progressbar-size,4px);left:0;top:0;width:100%}.swiper-horizontal>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,.swiper-pagination-progressbar.swiper-pagination-horizontal.swiper-pagination-progressbar-opposite,.swiper-pagination-progressbar.swiper-pagination-vertical,.swiper-vertical>.swiper-pagination-progressbar{height:100%;left:0;top:0;width:var(--swiper-pagination-progressbar-size,4px)}.swiper-pagination-lock{display:none}.swiper-scrollbar{background:var(--swiper-scrollbar-bg-color,#0000001a);border-radius:var(--swiper-scrollbar-border-radius,10px);position:relative;touch-action:none}.swiper-scrollbar-disabled>.swiper-scrollbar,.swiper-scrollbar.swiper-scrollbar-disabled{display:none!important}.swiper-horizontal>.swiper-scrollbar,.swiper-scrollbar.swiper-scrollbar-horizontal{bottom:var(--swiper-scrollbar-bottom,4px);height:var(--swiper-scrollbar-size,4px);left:var(--swiper-scrollbar-sides-offset,1%);position:absolute;top:var(--swiper-scrollbar-top,auto);width:calc(100% - var(--swiper-scrollbar-sides-offset, 1%)*2);z-index:50}.swiper-scrollbar.swiper-scrollbar-vertical,.swiper-vertical>.swiper-scrollbar{height:calc(100% - var(--swiper-scrollbar-sides-offset, 1%)*2);left:var(--swiper-scrollbar-left,auto);position:absolute;right:var(--swiper-scrollbar-right,4px);top:var(--swiper-scrollbar-sides-offset,1%);width:var(--swiper-scrollbar-size,4px);z-index:50}.swiper-scrollbar-drag{background:var(--swiper-scrollbar-drag-bg-color,#00000080);border-radius:var(--swiper-scrollbar-border-radius,10px);height:100%;left:0;position:relative;top:0;width:100%}.swiper-scrollbar-cursor-drag{cursor:move}.swiper-scrollbar-lock{display:none}::slotted(.swiper-slide-zoomed){cursor:move;touch-action:none}.swiper .swiper-notification{left:0;opacity:0;pointer-events:none;position:absolute;top:0;z-index:-1000}.swiper-free-mode>.swiper-wrapper{margin:0 auto;transition-timing-function:ease-out}.swiper-grid>.swiper-wrapper{flex-wrap:wrap}.swiper-grid-column>.swiper-wrapper{flex-direction:column;flex-wrap:wrap}.swiper-fade.swiper-free-mode ::slotted(swiper-slide){transition-timing-function:ease-out}.swiper-fade ::slotted(swiper-slide){pointer-events:none;transition-property:opacity}.swiper-fade ::slotted(swiper-slide) ::slotted(swiper-slide){pointer-events:none}.swiper-fade ::slotted(.swiper-slide-active){pointer-events:auto}.swiper-fade ::slotted(.swiper-slide-active) ::slotted(.swiper-slide-active){pointer-events:auto}.swiper.swiper-cube{overflow:visible}.swiper-cube ::slotted(swiper-slide){backface-visibility:hidden;height:100%;pointer-events:none;transform-origin:0 0;visibility:hidden;width:100%;z-index:1}.swiper-cube ::slotted(swiper-slide) ::slotted(swiper-slide){pointer-events:none}.swiper-cube.swiper-rtl ::slotted(swiper-slide){transform-origin:100% 0}.swiper-cube ::slotted(.swiper-slide-active),.swiper-cube ::slotted(.swiper-slide-active) ::slotted(.swiper-slide-active){pointer-events:auto}.swiper-cube ::slotted(.swiper-slide-active),.swiper-cube ::slotted(.swiper-slide-next),.swiper-cube ::slotted(.swiper-slide-prev){pointer-events:auto;visibility:visible}.swiper-cube .swiper-cube-shadow{bottom:0;height:100%;left:0;opacity:.6;position:absolute;width:100%;z-index:0}.swiper-cube .swiper-cube-shadow:before{background:#000;bottom:0;content:\"\";filter:blur(50px);left:0;position:absolute;right:0;top:0}.swiper-cube ::slotted(.swiper-slide-next)+::slotted(swiper-slide){pointer-events:auto;visibility:visible}.swiper.swiper-flip{overflow:visible}.swiper-flip ::slotted(swiper-slide){backface-visibility:hidden;pointer-events:none;z-index:1}.swiper-flip ::slotted(swiper-slide) ::slotted(swiper-slide){pointer-events:none}.swiper-flip ::slotted(.swiper-slide-active),.swiper-flip ::slotted(.swiper-slide-active) ::slotted(.swiper-slide-active){pointer-events:auto}.swiper-creative ::slotted(swiper-slide){backface-visibility:hidden;overflow:hidden;transition-property:transform,opacity,height}.swiper.swiper-cards{overflow:visible}.swiper-cards ::slotted(swiper-slide){backface-visibility:hidden;overflow:hidden;transform-origin:center bottom}", BE = "::slotted(.swiper-slide-shadow),::slotted(.swiper-slide-shadow-bottom),::slotted(.swiper-slide-shadow-left),::slotted(.swiper-slide-shadow-right),::slotted(.swiper-slide-shadow-top){height:100%;left:0;pointer-events:none;position:absolute;top:0;width:100%;z-index:10}::slotted(.swiper-slide-shadow){background:#00000026}::slotted(.swiper-slide-shadow-left){background-image:linear-gradient(270deg,#00000080,#0000)}::slotted(.swiper-slide-shadow-right){background-image:linear-gradient(90deg,#00000080,#0000)}::slotted(.swiper-slide-shadow-top){background-image:linear-gradient(0deg,#00000080,#0000)}::slotted(.swiper-slide-shadow-bottom){background-image:linear-gradient(180deg,#00000080,#0000)}.swiper-lazy-preloader{animation:swiper-preloader-spin 1s linear infinite;border:4px solid var(--swiper-preloader-color,var(--swiper-theme-color));border-radius:50%;border-top:4px solid #0000;box-sizing:border-box;height:42px;left:50%;margin-left:-21px;margin-top:-21px;position:absolute;top:50%;transform-origin:50%;width:42px;z-index:10}@keyframes swiper-preloader-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}::slotted(.swiper-slide-shadow-cube.swiper-slide-shadow-bottom),::slotted(.swiper-slide-shadow-cube.swiper-slide-shadow-left),::slotted(.swiper-slide-shadow-cube.swiper-slide-shadow-right),::slotted(.swiper-slide-shadow-cube.swiper-slide-shadow-top){backface-visibility:hidden;z-index:0}::slotted(.swiper-slide-shadow-flip.swiper-slide-shadow-bottom),::slotted(.swiper-slide-shadow-flip.swiper-slide-shadow-left),::slotted(.swiper-slide-shadow-flip.swiper-slide-shadow-right),::slotted(.swiper-slide-shadow-flip.swiper-slide-shadow-top){backface-visibility:hidden;z-index:0}::slotted(.swiper-zoom-container){align-items:center;display:flex;height:100%;justify-content:center;text-align:center;width:100%}::slotted(.swiper-zoom-container)>canvas,::slotted(.swiper-zoom-container)>img,::slotted(.swiper-zoom-container)>svg{max-height:100%;max-width:100%;object-fit:contain}", VE = typeof window > "u" || typeof HTMLElement > "u" ? class {} : HTMLElement, HE = (e, t) => {
+	if (typeof CSSStyleSheet < "u" && e.adoptedStyleSheets) {
+		let n = new CSSStyleSheet();
+		n.replaceSync(t), e.adoptedStyleSheets = [n];
+	} else {
+		let n = document.createElement("style");
+		n.rel = "stylesheet", n.textContent = t, e.appendChild(n);
+	}
+}, UE = class extends VE {
+	constructor() {
+		super(), this.attachShadow({ mode: "open" });
+	}
+	cssStyles() {
+		return [zE, ...this.injectStyles && Array.isArray(this.injectStyles) ? this.injectStyles : []].join("\n");
+	}
+	cssLinks() {
+		return this.injectStylesUrls || [];
+	}
+	calcSlideSlots() {
+		let e = this.slideSlots || 0, t = [...this.querySelectorAll("[slot^=slide-]")].map((e) => parseInt(e.getAttribute("slot").split("slide-")[1], 10));
+		if (this.slideSlots = t.length ? Math.max(...t) + 1 : 0, this.rendered) {
+			if (this.slideSlots > e) for (let t = e; t < this.slideSlots; t += 1) {
+				let e = document.createElement("swiper-slide");
+				e.setAttribute("part", `slide slide-${t + 1}`);
+				let n = document.createElement("slot");
+				n.setAttribute("name", `slide-${t + 1}`), e.appendChild(n), this.shadowRoot.querySelector(".swiper-wrapper").appendChild(e);
+			}
+			else if (this.slideSlots < e) {
+				let e = this.swiper.slides;
+				for (let t = e.length - 1; t >= 0; --t) t > this.slideSlots && e[t].remove();
+			}
+		}
+	}
+	render() {
+		if (this.rendered) return;
+		this.calcSlideSlots();
+		let e = this.cssStyles();
+		this.slideSlots > 0 && (e = e.replace(/::slotted\(([a-z-0-9.]*)\)/g, "$1")), e.length && HE(this.shadowRoot, e), this.cssLinks().forEach((e) => {
+			if (this.shadowRoot.querySelector(`link[href="${e}"]`)) return;
+			let t = document.createElement("link");
+			t.rel = "stylesheet", t.href = e, this.shadowRoot.appendChild(t);
+		});
+		let t = document.createElement("div");
+		t.classList.add("swiper"), t.part = "container", gw(t, `
+      <slot name="container-start"></slot>
+      <div class="swiper-wrapper" part="wrapper">
+        <slot></slot>
+        ${Array.from({ length: this.slideSlots }).map((e, t) => `
+        <swiper-slide part="slide slide-${t}">
+          <slot name="slide-${t}"></slot>
+        </swiper-slide>
+        `).join("")}
+      </div>
+      <slot name="container-end"></slot>
+      ${jE(this.passedParams) ? "\n        <div part=\"button-prev\" class=\"swiper-button-prev\"><slot name=\"button-prev\"></slot></div>\n        <div part=\"button-next\" class=\"swiper-button-next\"><slot name=\"button-next\"></slot></div>\n      " : ""}
+      ${ME(this.passedParams) ? "\n        <div part=\"pagination\" class=\"swiper-pagination\"></div>\n      " : ""}
+      ${NE(this.passedParams) ? "\n        <div part=\"scrollbar\" class=\"swiper-scrollbar\"></div>\n      " : ""}
+    `), this.shadowRoot.appendChild(t), this.rendered = !0;
+	}
+	initialize() {
+		if (this.swiper && this.swiper.initialized) return;
+		let { params: e, passedParams: t } = RE(this);
+		this.swiperParams = e, this.passedParams = t, delete this.swiperParams.init, this.render(), this.swiper = new GT(this.shadowRoot.querySelector(".swiper"), {
+			...e.virtual ? {} : { observer: !0 },
+			...e,
+			touchEventsTarget: "container",
+			onAny: (t, ...n) => {
+				t === "observerUpdate" && this.calcSlideSlots();
+				let r = e.eventsPrefix ? `${e.eventsPrefix}${t.toLowerCase()}` : t.toLowerCase(), i = new CustomEvent(r, {
+					detail: n,
+					bubbles: t !== "hashChange",
+					cancelable: !0
+				});
+				this.dispatchEvent(i);
+			}
+		});
+	}
+	connectedCallback() {
+		this.swiper && this.swiper.initialized && this.nested && this.closest("swiper-slide") && this.closest("swiper-slide").swiperLoopMoveDOM || this.init === !1 || this.getAttribute("init") === "false" || this.initialize();
+	}
+	disconnectedCallback() {
+		this.nested && this.closest("swiper-slide") && this.closest("swiper-slide").swiperLoopMoveDOM || this.swiper && this.swiper.destroy && this.swiper.destroy();
+	}
+	updateSwiperOnPropChange(e, t) {
+		let { params: n, passedParams: r } = RE(this, e, t);
+		this.passedParams = r, this.swiperParams = n, !(this.swiper && this.swiper.params[e] === t) && FE({
+			swiper: this.swiper,
+			passedParams: this.passedParams,
+			changedParams: [PE(e)],
+			...e === "navigation" && r[e] ? {
+				prevEl: ".swiper-button-prev",
+				nextEl: ".swiper-button-next"
+			} : {},
+			...e === "pagination" && r[e] ? { paginationEl: ".swiper-pagination" } : {},
+			...e === "scrollbar" && r[e] ? { scrollbarEl: ".swiper-scrollbar" } : {}
+		});
+	}
+	attributeChangedCallback(e, t, n) {
+		this.swiper && this.swiper.initialized && (t === "true" && n === null && (n = !1), this.updateSwiperOnPropChange(e, n));
+	}
+	static get observedAttributes() {
+		return OE.filter((e) => e.includes("_")).map((e) => e.replace(/[A-Z]/g, (e) => `-${e}`).replace("_", "").toLowerCase());
+	}
+};
+OE.forEach((e) => {
+	e !== "init" && (e = e.replace("_", ""), Object.defineProperty(UE.prototype, e, {
+		configurable: !0,
+		get() {
+			return (this.passedParams || {})[e];
+		},
+		set(t) {
+			this.passedParams ||= {}, this.passedParams[e] = t, this.swiper && this.swiper.initialized && this.updateSwiperOnPropChange(e, t);
+		}
+	}));
+});
+var WE = class extends VE {
+	constructor() {
+		super(), this.attachShadow({ mode: "open" });
+	}
+	render() {
+		let e = this.lazy || this.getAttribute("lazy") === "" || this.getAttribute("lazy") === "true";
+		if (HE(this.shadowRoot, BE), this.shadowRoot.appendChild(document.createElement("slot")), e) {
+			let e = document.createElement("div");
+			e.classList.add("swiper-lazy-preloader"), e.part.add("preloader"), this.shadowRoot.appendChild(e);
+		}
+	}
+	initialize() {
+		this.render();
+	}
+	connectedCallback() {
+		this.swiperLoopMoveDOM || this.initialize();
+	}
+}, GE = () => {
+	typeof window > "u" || (window.customElements.get("swiper-container") || window.customElements.define("swiper-container", UE), window.customElements.get("swiper-slide") || window.customElements.define("swiper-slide", WE));
+};
+typeof window < "u" && (window.SwiperElementRegisterParams = (e) => {
+	OE.push(...e);
+});
+//#endregion
+//#region src/lib/components/banner/BannerInquiry.svelte
+var KE = (e, t = T, n = T) => {
+	var r = qE();
+	W(r, 1, "flex min-h-12 items-center justify-center gap-2.5 px-5 lg:min-h-17.75 lg:gap-5 lg:px-15");
+	var i = F(r), a = F(i);
+	M(i);
+	var o = I(i, 2), s = F(o, !0);
+	M(o), M(r), L(() => {
+		G(a, "src", t()), H(s, n());
+	}), V(e, r);
+}, qE = /* @__PURE__ */ B("<swiper-slide><picture class=\"inline-flex size-7.5 lg:size-12.5\"><img loading=\"lazy\" alt=\"\" class=\"h-full object-cover\"/></picture> <h4 class=\"text-primary text-lg font-bold lg:text-4xl\"> </h4></swiper-slide>", 2), JE = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"bg-light-blue flex h-120 flex-col rounded-xl bg-(image:--banner-bg) bg-cover bg-center bg-no-repeat p-5 text-white lg:h-165 lg:p-15\"><div class=\"flex flex-col gap-1\"><h3 class=\"text-2xl leading-tight font-bold text-white lg:text-5xl\"> </h3> <div class=\"max-lg:space-y-2.5 lg:flex lg:items-center lg:gap-5\"><swiper-container></swiper-container> <h3 class=\"text-2xl leading-tight font-bold text-white lg:text-5xl\"> </h3></div> <p class=\"text-2md mt-5 whitespace-pre-line text-white lg:text-2xl\"> </p></div> <div class=\"mt-auto\"><a href=\"/\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
+function YE(e, t) {
+	st(t, !0);
+	let n = q(t, "page", 7, "");
+	Xn(() => {
+		GE();
+	});
+	let r = /* @__PURE__ */ hn(0), i = [
+		Fv,
+		Rv,
+		Vv,
+		Wv,
+		qv,
+		Xv,
+		$v,
+		ny,
+		ay,
+		cy
+	], a = /* @__PURE__ */ P(() => n() === "dao" ? [...i] : []), o = /* @__PURE__ */ P(() => n() === "dao" ? "/output/imgs/banner/bg-banner-dao.png" : "/output/imgs/banner/bg-banner-logi.png"), s = /* @__PURE__ */ P(() => n() === "dao" ? X_?.() : ""), c = /* @__PURE__ */ P(() => n() === "dao" ? $_?.() : ""), l = /* @__PURE__ */ P(() => n() === "dao" ? nv?.() : ""), u = /* @__PURE__ */ P(() => Array.from({ length: z(a).length }).map((e, t) => {
+		let n = z(a)[t];
+		return {
+			img: `/output/imgs/banner/img-banner-dao-${t + 1}.png`,
+			txt: typeof n == "function" ? n() : ""
+		};
+	}));
+	var d = {
+		get page() {
+			return n();
+		},
+		set page(e = "") {
+			n(e), N();
+		}
+	}, f = JE();
+	let p;
+	var m = F(f), h = F(m), g = F(h, !0);
+	M(h);
+	var _ = I(h, 2), v = F(_);
+	K(v, "effect", "cube"), K(v, "cube-effect-shadow", !1), K(v, "cube-effect-slide-shadows", !1), K(v, "loop", !0), K(v, "slides-per-view", 1), K(v, "space-between", z(r)), K(v, "speed", "450"), K(v, "autoplay-delay", "1500"), W(v, 1, "flex flex-none rounded-full bg-white shadow-md lg:w-107.5"), Mi(v, 21, () => z(u), Oi, (e, t) => {
+		KE(e, () => z(t).img, () => z(t).txt);
+	}), M(v);
+	var y = I(v, 2), b = F(y, !0);
+	M(y), M(_);
+	var x = I(_, 2), S = F(x, !0);
+	M(x), M(m);
+	var C = I(m, 2), w = F(C), T = F(w), E = F(T, !0);
+	M(T);
+	var D = I(T, 2);
+	return K(D, "name", "arrow-right"), W(D, 1, "group-hover:stroke-primary size-6 stroke-white"), M(w), M(C), M(f), L((e) => {
+		p = ca(f, "", p, { "--banner-bg": `url(${z(o)})` }), H(g, z(s)), H(b, z(c)), H(S, z(l)), H(E, e);
+	}, [() => Vx()]), V(e, f), ct(d);
+}
+Ha(YE, { page: {} }, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/product/Features.svelte
+var XE = /* @__PURE__ */ B("<p> </p>"), ZE = /* @__PURE__ */ B("<dd class=\"text-2sm text-666 lg:text-lg lg:whitespace-pre-line\"></dd>"), QE = /* @__PURE__ */ B("<dd class=\"text-2sm text-666 lg:text-lg\"> </dd>"), $E = /* @__PURE__ */ B("<li class=\"bg-ebedff lg:text-2md text-2sm text-3f53ff flex flex-none items-center rounded-full px-5 py-1\"> </li>"), eD = /* @__PURE__ */ B("<ul class=\"inline-flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5\"></ul>"), tD = /* @__PURE__ */ B("<img alt=\"logo\" class=\"h-full\"/>"), nD = /* @__PURE__ */ B("<source/>"), rD = /* @__PURE__ */ B("<picture><!> <img alt=\"logo\" class=\"h-full\"/></picture>"), iD = /* @__PURE__ */ B("<li class=\"stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50\"><div class=\"flex flex-col justify-between gap-2.5\"><dl class=\"space-y-2.5 lg:space-y-5\"><dt class=\"text-2xl font-bold lg:text-5xl\"> </dt> <!> <!></dl> <div class=\"divide-d9d9d9 divide-y divide-dashed\"><!> <div class=\"pt-5\"><div class=\"bg-ebedff flex min-h-10 items-center gap-2.5 rounded-[1.25rem] px-1.25 py-2.5 lg:p-1.25\"><picture class=\"flex size-7.5\"><!></picture> <p class=\"lg:text-2md text-2sm\"> </p></div></div></div></div> <div><video src=\"https://videos.pexels.com/video-files/35423737/15008263_2560_1440_30fps.mp4\" class=\"bg-ebedff aspect-video h-auto w-full rounded-2xl object-cover sm:h-90 lg:w-160\" autoplay=\"\" playsinline=\"\" loop=\"\"><source src=\"https://videos.pexels.com/video-files/35423737/15008263_2560_1440_30fps.mp4\" type=\"video/mp4\"/></video></div></li>", 2), aD = /* @__PURE__ */ B("<section class=\"space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15\"><!> <ul data-scroll=\"slide-up\" class=\"flex flex-col gap-5 lg:gap-7.5\"></ul></section>");
+function oD(e, t) {
+	st(t, !0);
+	let n = q(t, "tit", 7, ""), r = q(t, "txt", 7, ""), i = q(t, "subTxt", 7, ""), a = q(t, "lists", 23, () => []), o = q(t, "logo", 7, ""), s = /* @__PURE__ */ P(() => o() === "dao" ? "/output/imgs/logo/logo-dao-only.svg" : "/output/imgs/logo/logo-dsc-only.svg"), c = /* @__PURE__ */ hn(null);
+	Qn(() => {
+		z(c) && (z(c).muted = !0, z(c).play().catch(() => {}));
+	});
+	var l = {
+		get tit() {
+			return n();
+		},
+		set tit(e = "") {
+			n(e), N();
+		},
+		get txt() {
+			return r();
+		},
+		set txt(e = "") {
+			r(e), N();
+		},
+		get subTxt() {
+			return i();
+		},
+		set subTxt(e = "") {
+			i(e), N();
+		},
+		get lists() {
+			return a();
+		},
+		set lists(e = []) {
+			a(e), N();
+		},
+		get logo() {
+			return o();
+		},
+		set logo(e = "") {
+			o(e), N();
+		}
+	}, u = aD(), d = F(u);
+	SC(d, {
+		get tit() {
+			return n();
+		},
+		get txt() {
+			return r();
+		},
+		get subTxt() {
+			return i();
+		}
+	});
+	var f = I(d, 2);
+	return Mi(f, 21, a, Oi, (e, t) => {
+		var n = iD(), r = F(n), i = F(r), a = F(i), o = F(a, !0);
+		M(a);
+		var l = I(a, 2), u = (e) => {
+			var n = ZE();
+			Mi(n, 21, () => z(t).txt, Oi, (e, t) => {
+				var n = XE(), r = F(n, !0);
+				M(n), L(() => H(r, z(t))), V(e, n);
+			}), M(n), V(e, n);
+		};
+		U(l, (e) => {
+			z(t).txt && e(u);
+		});
+		var d = I(l, 2), f = (e) => {
+			var n = QE(), r = F(n, !0);
+			M(n), L((e) => H(r, e), [() => ZS(z(t).subTxt)]), V(e, n);
+		};
+		U(d, (e) => {
+			z(t).subTxt && e(f);
+		}), M(i);
+		var p = I(i, 2), m = F(p), h = (e) => {
+			var n = eD();
+			Mi(n, 21, () => z(t).labels, Oi, (e, t, n, r) => {
+				var i = $E(), a = F(i, !0);
+				M(i), L(() => H(a, z(t))), V(e, i);
+			}), M(n), V(e, n);
+		};
+		U(m, (e) => {
+			z(t).labels && e(h);
+		});
+		var g = I(m, 2), _ = F(g), v = F(_), y = F(v), b = (e) => {
+			var t = ui(), n = Pn(t), r = (e) => {
+				var t = tD();
+				L(() => G(t, "src", z(s))), V(e, t);
+			};
+			U(n, (e) => {
+				e(r, -1);
+			}), V(e, t);
+		}, x = (e) => {
+			var t = rD(), n = F(t);
+			Mi(n, 17, () => Object.entries(z(s).sources), Oi, (e, t) => {
+				var n = /* @__PURE__ */ P(() => ee(z(t), 2));
+				let r = () => z(n)[0], i = () => z(n)[1];
+				var a = nD();
+				L(() => {
+					G(a, "srcset", i()), G(a, "type", "image/" + r());
+				}), V(e, a);
+			});
+			var r = I(n, 2);
+			M(t), L(() => {
+				G(r, "src", z(s).img.src), G(r, "width", z(s).img.w), G(r, "height", z(s).img.h);
+			}), V(e, t);
+		};
+		U(y, (e) => {
+			typeof z(s) == "string" ? e(b) : e(x, -1);
+		}), M(v);
+		var S = I(v, 2), C = F(S, !0);
+		M(S), M(_), M(g), M(p), M(r);
+		var w = I(r, 2), T = F(w);
+		T.muted = !0, ka(T, (e) => _n(c, e), () => z(c)), M(w), M(n), L((e) => {
+			H(o, e), H(C, z(t).logo);
+		}, [() => ZS(z(t).tit)]), V(e, n);
+	}), M(f), M(u), V(e, u), ct(l);
+}
+Ha(oD, {
+	tit: {},
+	txt: {},
+	subTxt: {},
+	lists: {},
+	logo: {}
+}, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/product/Industries.svelte
+var sD = (e, t, n, r) => {
+	let i = /* @__PURE__ */ an(() => k(t?.(), "")), a = /* @__PURE__ */ an(() => k(n?.(), "")), o = /* @__PURE__ */ an(() => k(r?.(), ""));
+	var s = lD(), c = F(s), l = F(c);
+	M(c);
+	var u = I(c, 2), d = (e) => {
+		var t = cD(), n = F(t, !0);
+		M(t), L(() => H(n, z(i))), V(e, t);
+	};
+	U(u, (e) => {
+		z(i) && e(d);
+	});
+	var f = I(u, 2), p = F(f, !0);
+	M(f), M(s), L(() => {
+		G(l, "src", z(o)), G(l, "alt", z(i)), H(p, z(a));
+	}), V(e, s);
+}, cD = /* @__PURE__ */ B("<p class=\"text-2md lg:text-lg\"> </p>"), lD = /* @__PURE__ */ B("<li class=\"bg-ebedff relative grid place-items-center gap-5 rounded-xl p-5 text-center opacity-0 lg:p-7.5\"><picture class=\"grid size-22.5 place-content-center\"><img loading=\"lazy\"/></picture> <!> <p class=\"text-2md lg:text-lg\"> </p></li>"), uD = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"space-y-5 overflow-clip py-11.25 lg:space-y-7.5 lg:py-15\"><div class=\"space-y-5 rounded-xl bg-white p-5 lg:space-y-15 lg:p-15\"><!> <ul></ul></div></section>");
+function dD(e, t) {
+	st(t, !0);
+	let n = q(t, "tit", 7, ""), r = q(t, "txt", 7, ""), i = q(t, "subTxt", 7, ""), a = q(t, "lists", 23, () => []), o = q(t, "cls", 7, ""), s = /* @__PURE__ */ hn(!1), c = (e) => {
+		let t = Dc(e.children, {
+			y: [50, 0],
+			opacity: [0, 1],
+			duration: 600,
+			delay: qc(100),
+			easing: "easeOutQuad",
+			autoplay: !1
+		}), n = Wc({
+			container: document.body,
+			target: e,
+			enter: "bottom center",
+			leave: "top bottom",
+			axis: "y",
+			onEnter: () => {
+				z(s) || (_n(s, !0), t.seek(0), t.play());
+			},
+			onLeaveBackward: () => {
+				_n(s, !1);
+			},
+			debug: !1
+		});
+		return () => n.revert?.();
+	};
+	var l = {
+		get tit() {
+			return n();
+		},
+		set tit(e = "") {
+			n(e), N();
+		},
+		get txt() {
+			return r();
+		},
+		set txt(e = "") {
+			r(e), N();
+		},
+		get subTxt() {
+			return i();
+		},
+		set subTxt(e = "") {
+			i(e), N();
+		},
+		get lists() {
+			return a();
+		},
+		set lists(e = []) {
+			a(e), N();
+		},
+		get cls() {
+			return o();
+		},
+		set cls(e = "") {
+			o(e), N();
+		}
+	}, u = uD(), d = F(u), f = F(d);
+	SC(f, {
+		get tit() {
+			return n();
+		},
+		get txt() {
+			return r();
+		},
+		get subTxt() {
+			return i();
+		}
+	});
+	var p = I(f, 2);
+	return Mi(p, 21, a, Oi, (e, t) => {
+		sD(e, () => z(t).tit, () => z(t).txt, () => z(t).img);
+	}), M(p), Qi(p, () => c), M(d), M(u), L(() => W(p, 1, ta(["grid gap-5", o()]))), V(e, u), ct(l);
+}
+customElements.define("sub-industries", Ha(dD, {
+	tit: {},
+	txt: {},
+	subTxt: {},
+	lists: {},
+	cls: {}
+}, [], []));
+//#endregion
+//#region src/lib/components/product/Problem.svelte
+var fD = /* @__PURE__ */ B("<icon-list></icon-list>", 2), pD = /* @__PURE__ */ B("<icon-list></icon-list>", 2), mD = /* @__PURE__ */ B("<p></p>"), hD = /* @__PURE__ */ B("<div aria-hidden=\"true\" class=\"absolute top-[calc(50%-1.25rem)] left-full z-5 grid size-10 animate-[as-is_5s_ease-in-out_infinite] place-items-center max-lg:hidden\"><div class=\"relative\"><!> <p class=\"relative z-2 size-3 rounded-full bg-white\"></p></div></div>"), gD = /* @__PURE__ */ B("<li data-scroll=\"slide-up\"><button><!> <!> <strong class=\"flex flex-col gap-2.5\"><span class=\"text-2md font-bold lg:text-2xl\"> </span> <span> </span></strong></button> <!></li>"), _D = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"space-y-5 py-11.25 lg:space-y-7.5 lg:py-15\"><!> <ol class=\"grid grid-rows-2 gap-5 lg:grid-cols-[1fr_60px_1fr] lg:grid-rows-1 lg:gap-5 2xl:grid-cols-[1fr_12.5rem_1fr] 2xl:gap-25 starting:opacity-0\"><li class=\"divide-d9d9d9 relative grid h-full divide-y divide-dashed rounded-xl bg-white lg:grid-rows-[90px_1fr]\"><header class=\"grid min-h-15 place-content-center text-xl font-bold lg:min-h-22.5 lg:text-4xl\">AS-IS</header> <ul class=\"divide-d9d9d9 grid grid-rows-4 divide-y divide-dashed px-2\"></ul></li> <li class=\"hidden place-content-center lg:grid\"><p class=\"bg-ebedff grid place-items-center rounded-full lg:size-15 xl:size-50\"><icon-list></icon-list></p></li> <li class=\"divide-d9d9d9 bg-3743ff from-primary to-828aff group relative z-3 grid h-full divide-y divide-dashed rounded-xl bg-linear-to-t text-white lg:grid-rows-[90px_1fr]\"><header class=\"grid min-h-15 place-content-center text-xl font-bold lg:min-h-22.5 lg:text-4xl\">TO-BE</header> <ul class=\"divide-d9d9d9 grid grid-rows-4 divide-y divide-dashed px-2 text-left\"></ul></li></ol></section>", 2);
+function vD(e, t) {
+	st(t, !0);
+	let n = (e, t, n, r, i) => {
+		let a = /* @__PURE__ */ an(() => k(t?.(), "")), o = /* @__PURE__ */ an(() => k(n?.(), "")), s = /* @__PURE__ */ an(() => k(r?.(), "")), c = /* @__PURE__ */ an(() => k(i?.(), 0));
+		var u = gD(), d = F(u), f = F(d), p = (e) => {
+			var t = fD();
+			K(t, "name", "tri-alert"), W(t, 1, "group-aria-current:fill-primary fill-999 relative h-10 w-10.5 flex-none transition-all"), V(e, t);
+		};
+		U(f, (e) => {
+			z(s) === "as" && e(p);
+		});
+		var m = I(f, 2), h = (e) => {
+			var t = pD();
+			K(t, "name", "tick-circle"), W(t, 1, "relative h-10 w-10.5 flex-none fill-white/30 transition-all group-aria-current:fill-white"), V(e, t);
+		};
+		U(m, (e) => {
+			z(s) === "to" && e(h);
+		});
+		var g = I(m, 2), _ = F(g), v = F(_, !0);
+		M(_);
+		var y = I(_, 2), b = F(y, !0);
+		M(y), M(g), M(d);
+		var x = I(d, 2), S = (e) => {
+			var t = hD(), n = F(t);
+			Mi(F(n), 16, () => [
+				,
+				,
+				,
+				,
+				,
+			], Oi, (e, t, n) => {
+				var r = mD();
+				W(r, 1, ta(["border-primary @starting:opacity-0 absolute -top-2.5 -left-2.5 grid animate-[ping-motion_0.6s_cubic-bezier(0,0,0.4,1)_infinite] place-items-center rounded-full border-16 opacity-0", n === 1 ? "animate-[ping-motion_1.1s_cubic-bezier(0,0,0.4,1)_infinite]" : n === 2 ? "animate-[ping-motion_1.1s_cubic-bezier(0,0,0.4,1)_0.6s_infinite]" : n === 3 ? "animate-[ping-motion_1.1s_cubic-bezier(0,0,0.4,1)_1.1s_infinite]" : n === 4 ? "animate-[ping-motion_0.6s_cubic-bezier(0,0,0.4,1)_1.6s_infinite]" : ""])), V(e, r);
+			}), Je(2), M(n), M(t), V(e, t);
+		};
+		U(x, (e) => {
+			z(l) === z(c) && z(s) === "as" && e(S);
+		}), M(u), L(() => {
+			W(u, 1, ta(["before:bg-primary relative flex py-2 before:top-[calc(50%-0.1563rem)] before:z-5 before:rounded-full before:opacity-0 before:transition-all has-aria-current:before:absolute has-aria-current:before:size-1.25 has-aria-current:before:opacity-100 max-lg:before:hidden! max-lg:after:hidden", z(s) === "as" ? "after:border-primary z-6 after:top-[calc(50%-.0156rem)] after:z-1 after:border-dashed has-aria-current:before:right-0 has-aria-current:after:absolute has-aria-current:after:left-full has-aria-current:after:border lg:has-aria-current:after:w-30 2xl:has-aria-current:after:w-105" : "z-7 delay-500 before:z-6 has-aria-current:before:left-0"])), W(d, 1, ta(["@starting:bg-transparnet group z-3 flex flex-1 grid-rows-2 items-center gap-5 space-y-2.5 rounded-xl p-5 text-left transition-all lg:gap-7.5 lg:py-7.5", z(s) === "as" ? "aria-current:bg-light-blue text-666" : "aria-current:bg-9097ff"])), G(d, "aria-current", z(l) === z(c) ? "true" : void 0), H(v, z(a)), W(y, 1, ta(["text-2md text-666 font-normal lg:text-lg", z(s) === "as" ? " text-666" : "text-white"])), H(b, z(o));
+		}), Qr("mouseenter", d, () => _n(l, z(c), !0)), V(e, u);
+	}, r = /* @__PURE__ */ hn(!1), i = mf(), a = df(), o = [
+		{
+			tit: _f(),
+			txt: bf()
+		},
+		{
+			tit: Cf(),
+			txt: Ef()
+		},
+		{
+			tit: kf(),
+			txt: Mf()
+		},
+		{
+			tit: Ff(),
+			txt: Rf()
+		}
+	], s = [
+		{
+			tit: Vf(),
+			txt: Wf()
+		},
+		{
+			tit: qf(),
+			txt: Xf()
+		},
+		{
+			tit: $f(),
+			txt: np()
+		},
+		{
+			tit: ap(),
+			txt: cp()
+		}
+	], c = (e) => {
+		let t = Dc(e, {
+			y: [30, 0],
+			opacity: [0, 1],
+			duration: 400,
+			easing: "easeOutQuad",
+			autoplay: !1
+		}), n = Wc({
+			container: document.body,
+			target: e,
+			enter: "bottom center",
+			leave: "top bottom",
+			axis: "y",
+			onEnter: () => {
+				z(r) || (_n(r, !0), t.seek(0), t.play());
+			},
+			onLeaveBackward: () => {
+				_n(r, !1);
+			},
+			debug: !1
+		});
+		return () => n.revert?.();
+	}, l = /* @__PURE__ */ hn(0);
+	var u = _D(), d = F(u);
+	SC(d, {
+		get tit() {
+			return a;
+		},
+		get txt() {
+			return i;
+		}
+	});
+	var f = I(d, 2), p = F(f), m = I(F(p), 2);
+	Mi(m, 21, () => o, Oi, (e, t, r) => {
+		n(e, () => z(t).tit, () => z(t).txt, () => "as", () => r);
+	}), M(m), M(p);
+	var h = I(p, 2), g = F(h), _ = F(g);
+	K(_, "name", "arrow-as-is"), W(_, 1, "stroke-primary relative w-full max-w-22.5 p-1 transition-all"), M(g), M(h);
+	var v = I(h, 2), y = I(F(v), 2);
+	Mi(y, 21, () => s, Oi, (e, t, r) => {
+		n(e, () => z(t).tit, () => z(t).txt, () => "to", () => r);
+	}), M(y), M(v), M(f), M(u), Qi(u, () => c), V(e, u), ct();
+}
+customElements.define("sub-problem", Ha(vD, {}, [], []));
+//#endregion
+//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+e6c378343f3d3dcf/node_modules/@inlang/paraglide-js-svelte/dist/message.js
+function yD(e) {
+	let { message: t, inputs: n, options: r, ...i } = e, a = n ?? {}, o = i, s = t;
+	if (typeof s.parts != "function") return [s(a, r)];
+	let c = [], l = [], u = s.parts(a, r), d = (e) => {
+		let t = l[l.length - 1];
+		t ? t.children.push(e) : c.push(e);
+	};
+	for (let e of u) switch (e.type) {
+		case "text":
+			d(e.value);
+			break;
+		case "markup-start": {
+			let t = o[e.name];
+			l.push({
+				name: e.name,
+				snippet: t,
+				children: [],
+				options: e.options,
+				attributes: e.attributes
+			});
+			break;
+		}
+		case "markup-end": {
+			let t = l.pop();
+			if (!t) throw Error(`Unexpected closing markup "${e.name}"`);
+			if (t.name !== e.name) throw Error(`Mismatched markup. Expected closing "${t.name}" but received "${e.name}"`);
+			if (!t.snippet) {
+				for (let e of t.children) d(e);
+				break;
+			}
+			d({
+				snippet: t.snippet,
+				children: t.children,
+				options: t.options,
+				attributes: t.attributes
+			});
+			break;
+		}
+		case "markup-standalone": {
+			let t = o[e.name];
+			if (!t) break;
+			d({
+				snippet: t,
+				children: [],
+				options: e.options,
+				attributes: e.attributes
+			});
+			break;
+		}
+	}
+	if (l.length > 0) {
+		let e = l[l.length - 1];
+		if (e) throw Error(`Unclosed markup "${e.name}"`);
+	}
+	return c;
+}
+//#endregion
+//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+e6c378343f3d3dcf/node_modules/@inlang/paraglide-js-svelte/dist/Message.svelte
+function bD(e, t) {
+	st(t, !0);
+	let n = (e, t = T) => {
+		var r = ui();
+		Mi(Pn(r), 17, t, Oi, (e, t) => {
+			var r = ui(), i = Pn(r), o = (e) => {
+				var n = li();
+				L(() => H(n, z(t))), V(e, n);
+			}, c = (e) => {
+				let r = (e) => {
+					n(e, () => z(t).children);
+				};
+				var i = ui();
+				Di(Pn(i), () => z(t).snippet, () => ({
+					options: z(t).options,
+					attributes: z(t).attributes,
+					inputs: z(s),
+					messageOptions: a(),
+					children: r
+				})), V(e, i);
+			};
+			U(i, (e) => {
+				typeof z(t) == "string" ? e(o) : e(c, -1);
+			}), V(e, r);
+		}), V(e, r);
+	}, r = q(t, "message", 7), i = q(t, "inputs", 7), a = q(t, "options", 7), o = /* @__PURE__ */ Pa(t, [
+		"$$slots",
+		"$$events",
+		"$$legacy",
+		"$$host",
+		"message",
+		"inputs",
+		"options"
+	]), s = /* @__PURE__ */ P(() => i() ?? {}), c = o, l = /* @__PURE__ */ P(() => yD({
+		message: r(),
+		inputs: z(s),
+		options: a(),
+		...c
+	}));
+	return n(e, () => z(l)), ct({
+		get message() {
+			return r();
+		},
+		set message(e) {
+			r(e), N();
+		},
+		get inputs() {
+			return i();
+		},
+		set inputs(e) {
+			i(e), N();
+		},
+		get options() {
+			return a();
+		},
+		set options(e) {
+			a(e), N();
+		}
+	});
+}
+Ha(bD, {
+	message: {},
+	inputs: {},
+	options: {}
+}, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/slide/FieldCase.svelte
+var xD = (e, t = T, n = T, r = T, i = T, a = T, o = T) => {
+	var s = kD();
+	W(s, 1, "grid grid-cols-1 items-center gap-5 p-5 lg:grid-cols-[minmax(480px,4fr)_minmax(460px,6fr)] lg:p-7.5 xl:gap-15");
+	var c = F(s), l = F(c), u = F(l);
+	M(l), M(c);
+	var d = I(c, 2), f = F(d), p = (e) => {
+		var t = SD(), n = F(t), r = F(n);
+		K(r, "name", "lock"), W(r, 1, "size-5 fill-white"), Je(), M(n), M(t), V(e, t);
+	}, m = (e) => {
+		var t = CD(), r = F(t);
+		M(t), L(() => G(r, "src", n())), V(e, t);
+	};
+	U(f, (e) => {
+		n() === "client" ? e(p) : e(m, -1);
+	});
+	var h = I(f, 2), g = F(h, !0);
+	M(h);
+	var _ = I(h, 2), v = (e) => {
+		var t = TD();
+		Mi(t, 23, i, (e, t) => `case-b-${t}`, (e, t) => {
+			var n = wD(), r = F(n, !0);
+			M(n), L(() => H(r, z(t))), V(e, n);
+		}), M(t), V(e, t);
+	};
+	U(_, (e) => {
+		i() && e(v);
+	});
+	var y = I(_, 2);
+	Mi(y, 23, a, (e, t) => `case-t-${t}`, (e, t) => {
+		var n = ED(), r = F(n, !0);
+		M(n), L(() => H(r, z(t))), V(e, n);
+	}), M(y);
+	var b = I(y, 2);
+	Mi(b, 23, o, (e, t) => `case-e-${t}`, (e, t, n, r) => {
+		var i = OD(), a = F(i);
+		K(a, "name", "tick-circle-list"), W(a, 1, "fill-primary size-5");
+		var o = I(a, 2);
+		bD(F(o), {
+			get message() {
+				return z(t);
+			},
+			class: "bg-black",
+			b: (e, t) => {
+				let n = () => t?.().children;
+				var r = DD();
+				Di(F(r), n), M(r), V(e, r);
+			},
+			$$slots: { b: !0 }
+		}), M(o), M(i), V(e, i);
+	}), M(b), M(d), M(s), L(() => {
+		G(u, "src", t()), H(g, r());
+	}), V(e, s);
+}, SD = /* @__PURE__ */ B("<p><span class=\"text-2md bg-999 inline-flex min-h-7.5 items-center gap-3 rounded-full px-2.5 text-white\"><icon-list></icon-list> Client Confidential</span></p>", 2), CD = /* @__PURE__ */ B("<picture class=\"inline-flex h-5 overflow-clip\"><img loading=\"lazy\" alt=\"\" class=\"h-full object-cover\"/></picture>"), wD = /* @__PURE__ */ B("<p class=\"bg-primary/10 inline-flex rounded-full px-5 py-1\"> </p>"), TD = /* @__PURE__ */ B("<div></div>"), ED = /* @__PURE__ */ B("<p class=\"text-2md text-666 text-lg\"> </p>"), DD = /* @__PURE__ */ B("<strong class=\"text-primary font-bold\"><!></strong>"), OD = /* @__PURE__ */ B("<li class=\"flex items-center gap-1.5\"><icon-list></icon-list> <div><!></div></li>", 2), kD = /* @__PURE__ */ B("<swiper-slide><div class=\"relative transition-all\"><picture class=\"bg-primary/10 inline-flex h-53.75 w-auto overflow-clip rounded-xl lg:h-120\"><img loading=\"lazy\" alt=\"\" class=\"flex-none object-cover lg:w-full\"/></picture></div> <div class=\"inline-grid place-content-baseline gap-5\"><!> <h4 class=\"text-lg font-bold lg:text-4xl\"> </h4> <!> <div></div> <ul class=\"text-2md border-t-d9d9d9 space-y-2.5 border-t border-dashed pt-5 text-lg font-bold\"></ul></div></swiper-slide>", 2), AD = /* @__PURE__ */ B("<li class=\"flex-none\"><button type=\"button\" class=\"label-check aria-current:border-primary aria-current:bg-primary flex-none place-items-center rounded-full aria-current:text-white\"><span> </span></button></li>"), jD = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"divide-d9d9d9 relative divide-y rounded-xl bg-white\"><ul class=\"flex max-w-dvw snap-x snap-start gap-2.5 overflow-auto p-5 lg:gap-5 lg:p-7.5\"></ul> <swiper-container><!></swiper-container></section>", 2);
+function MD(e, t) {
+	st(t, !0), Xn(() => {
+		GE();
+	});
+	let n = at("case-list"), r = /* @__PURE__ */ hn(null), i = /* @__PURE__ */ hn(0);
+	var a = jD(), o = F(a);
+	Mi(o, 23, () => n.list, ({ btn: e }, t) => `case-btn-${t}`, (e, t, n) => {
+		let a = () => z(t).btn;
+		var o = AD(), s = F(o), c = F(s), l = F(c, !0);
+		M(c), M(s), M(o), L(() => {
+			G(s, "aria-current", z(i) === z(n) ? "true" : void 0), H(l, a());
+		}), $r("click", s, (e) => {
+			e.preventDefault(), _n(i, z(n), !0), z(r)?.swiper?.slideTo(z(n), 450);
+		}), V(e, o);
+	}), M(o);
+	var s = I(o, 2);
+	K(s, "slides-per-view", 1), K(s, "space-between", 10), K(s, "centered-slides", !0), K(s, "speed", "450"), K(s, "autoplay-delay", "5000"), K(s, "pagination", { hideOnClick: !0 }), K(s, "data-scroll", "slide-up");
+	var c = F(s), l = (e) => {
+		var t = ui();
+		Mi(Pn(t), 17, () => n.list, (e) => e.id, (e, t) => {
+			xD(e, () => z(t).img, () => z(t).logo, () => z(t).tit, () => z(t).badge || [], () => z(t).txt, () => z(t).etc);
+		}), V(e, t);
+	};
+	U(c, (e) => {
+		n?.list && e(l);
+	}), M(s), ka(s, (e) => _n(r, e), () => z(r)), M(a), V(e, a), ct();
+}
+ei(["click"]), Ha(MD, {}, [], [], { mode: "open" });
+//#endregion
+//#region ../../node_modules/.bun/countup.js@2.10.0/node_modules/countup.js/dist/countUp.min.js
+var ND = function() {
+	return ND = Object.assign || function(e) {
+		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
+		return e;
+	}, ND.apply(this, arguments);
+}, PD = function() {
+	function e(e, t, n) {
+		var r = this;
+		this.endVal = t, this.options = n, this.version = "2.10.0", this.defaults = {
+			startVal: 0,
+			decimalPlaces: 0,
+			duration: 2,
+			useEasing: !0,
+			useGrouping: !0,
+			useIndianSeparators: !1,
+			smartEasingThreshold: 999,
+			smartEasingAmount: 333,
+			separator: ",",
+			decimal: ".",
+			prefix: "",
+			suffix: "",
+			autoAnimate: !1,
+			autoAnimateDelay: 200,
+			autoAnimateOnce: !1
+		}, this.finalEndVal = null, this.useEasing = !0, this.countDown = !1, this.error = "", this.startVal = 0, this.paused = !0, this.once = !1, this.count = function(e) {
+			r.startTime ||= e;
+			var t = e - r.startTime;
+			r.remaining = r.duration - t, r.useEasing ? r.countDown ? r.frameVal = r.startVal - r.easingFn(t, 0, r.startVal - r.endVal, r.duration) : r.frameVal = r.easingFn(t, r.startVal, r.endVal - r.startVal, r.duration) : r.frameVal = r.startVal + (r.endVal - r.startVal) * (t / r.duration), r.frameVal = (r.countDown ? r.frameVal < r.endVal : r.frameVal > r.endVal) ? r.endVal : r.frameVal, r.frameVal = Number(r.frameVal.toFixed(r.options.decimalPlaces)), r.printValue(r.frameVal), t < r.duration ? r.rAF = requestAnimationFrame(r.count) : r.finalEndVal === null ? r.options.onCompleteCallback && r.options.onCompleteCallback() : r.update(r.finalEndVal);
+		}, this.formatNumber = function(e) {
+			var t, n, i, a, o = e < 0 ? "-" : "";
+			t = Math.abs(e).toFixed(r.options.decimalPlaces);
+			var s = (t += "").split(".");
+			if (n = s[0], i = s.length > 1 ? r.options.decimal + s[1] : "", r.options.useGrouping) {
+				a = "";
+				for (var c = 3, l = 0, u = 0, d = n.length; u < d; ++u) r.options.useIndianSeparators && u === 4 && (c = 2, l = 1), u !== 0 && l % c == 0 && (a = r.options.separator + a), l++, a = n[d - u - 1] + a;
+				n = a;
+			}
+			return r.options.numerals && r.options.numerals.length && (n = n.replace(/[0-9]/g, (function(e) {
+				return r.options.numerals[+e];
+			})), i = i.replace(/[0-9]/g, (function(e) {
+				return r.options.numerals[+e];
+			}))), o + r.options.prefix + n + i + r.options.suffix;
+		}, this.easeOutExpo = function(e, t, n, r) {
+			return n * (1 - 2 ** (-10 * e / r)) * 1024 / 1023 + t;
+		}, this.options = ND(ND({}, this.defaults), n), this.options.enableScrollSpy && (this.options.autoAnimate = !0), this.options.scrollSpyDelay !== void 0 && (this.options.autoAnimateDelay = this.options.scrollSpyDelay), this.options.scrollSpyOnce && (this.options.autoAnimateOnce = !0), this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber, this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo, this.el = typeof e == "string" ? document.getElementById(e) : e, t ??= this.parse(this.el.innerHTML), this.startVal = this.validateValue(this.options.startVal), this.frameVal = this.startVal, this.endVal = this.validateValue(t), this.options.decimalPlaces = Math.max(this.options.decimalPlaces), this.resetDuration(), this.options.separator = String(this.options.separator), this.useEasing = this.options.useEasing, this.options.separator === "" && (this.options.useGrouping = !1), this.el ? this.printValue(this.startVal) : this.error = "[CountUp] target is null or undefined", typeof window < "u" && this.options.autoAnimate && (this.error || typeof IntersectionObserver > "u" ? this.error ? console.error(this.error, e) : console.error("IntersectionObserver is not supported by this browser") : this.setupObserver());
+	}
+	return e.prototype.setupObserver = function() {
+		var t = this, n = e.observedElements.get(this.el);
+		n && n.unobserve(), e.observedElements.set(this.el, this), this.observer = new IntersectionObserver((function(e) {
+			for (var n = 0, r = e; n < r.length; n++) {
+				var i = r[n];
+				i.isIntersecting && t.paused && !t.once ? (t.paused = !1, t.autoAnimateTimeout = setTimeout((function() {
+					return t.start();
+				}), t.options.autoAnimateDelay), t.options.autoAnimateOnce && (t.once = !0, t.observer.disconnect())) : i.isIntersecting || t.paused || (clearTimeout(t.autoAnimateTimeout), t.reset());
+			}
+		}), { threshold: 0 }), this.observer.observe(this.el);
+	}, e.prototype.unobserve = function() {
+		var t;
+		clearTimeout(this.autoAnimateTimeout), (t = this.observer) == null || t.disconnect(), e.observedElements.delete(this.el);
+	}, e.prototype.onDestroy = function() {
+		clearTimeout(this.autoAnimateTimeout), cancelAnimationFrame(this.rAF), this.paused = !0, this.unobserve(), this.options.onCompleteCallback = null, this.options.onStartCallback = null;
+	}, e.prototype.determineDirectionAndSmartEasing = function() {
+		var e = this.finalEndVal ? this.finalEndVal : this.endVal;
+		this.countDown = this.startVal > e;
+		var t = e - this.startVal;
+		if (Math.abs(t) > this.options.smartEasingThreshold && this.options.useEasing) {
+			this.finalEndVal = e;
+			var n = this.countDown ? 1 : -1;
+			this.endVal = e + n * this.options.smartEasingAmount, this.duration /= 2;
+		} else this.endVal = e, this.finalEndVal = null;
+		this.finalEndVal === null ? this.useEasing = this.options.useEasing : this.useEasing = !1;
+	}, e.prototype.start = function(e) {
+		this.error || (this.options.onStartCallback && this.options.onStartCallback(), e && (this.options.onCompleteCallback = e), this.duration > 0 ? (this.determineDirectionAndSmartEasing(), this.paused = !1, this.rAF = requestAnimationFrame(this.count)) : this.printValue(this.endVal));
+	}, e.prototype.pauseResume = function() {
+		this.paused ? (this.startTime = null, this.duration = this.remaining, this.startVal = this.frameVal, this.determineDirectionAndSmartEasing(), this.rAF = requestAnimationFrame(this.count)) : cancelAnimationFrame(this.rAF), this.paused = !this.paused;
+	}, e.prototype.reset = function() {
+		clearTimeout(this.autoAnimateTimeout), cancelAnimationFrame(this.rAF), this.paused = !0, this.once = !1, this.resetDuration(), this.startVal = this.validateValue(this.options.startVal), this.frameVal = this.startVal, this.printValue(this.startVal);
+	}, e.prototype.update = function(e) {
+		cancelAnimationFrame(this.rAF), this.startTime = null, this.endVal = this.validateValue(e), this.endVal !== this.frameVal && (this.startVal = this.frameVal, this.finalEndVal ?? this.resetDuration(), this.finalEndVal = null, this.determineDirectionAndSmartEasing(), this.rAF = requestAnimationFrame(this.count));
+	}, e.prototype.printValue = function(e) {
+		if (this.el) {
+			var t = this.formattingFn(e);
+			this.options.plugin?.render ? this.options.plugin.render(this.el, t) : this.el.tagName === "INPUT" ? this.el.value = t : this.el.tagName === "text" || this.el.tagName === "tspan" ? this.el.textContent = t : this.el.innerHTML = t;
+		}
+	}, e.prototype.ensureNumber = function(e) {
+		return typeof e == "number" && !isNaN(e);
+	}, e.prototype.validateValue = function(e) {
+		var t = Number(e);
+		return this.ensureNumber(t) ? t : (this.error = `[CountUp] invalid start or end value: ${e}`, null);
+	}, e.prototype.resetDuration = function() {
+		this.startTime = null, this.duration = 1e3 * Number(this.options.duration), this.remaining = this.duration;
+	}, e.prototype.parse = function(e) {
+		var t = function(e) {
+			return e.replace(/([.,'  ])/g, "\\$1");
+		}, n = t(this.options.separator), r = t(this.options.decimal), i = e.replace(new RegExp(n, "g"), "").replace(new RegExp(r, "g"), ".");
+		return parseFloat(i);
+	}, e.observedElements = /* @__PURE__ */ new WeakMap(), e;
+}(), FD = /* @__PURE__ */ B("<span> </span>");
+function ID(e, t) {
+	st(t, !0);
+	let n = q(t, "text", 7, 0), r = (e) => {
+		let t = new PD(e, Number(n()), {
+			duration: 1.5,
+			useEasing: !0
+		}), r = new IntersectionObserver((e) => {
+			e.forEach((e) => {
+				e.isIntersecting ? t.error ? console.error(t.error) : t.start() : t.reset();
+			});
+		}, { threshold: .1 });
+		return r.observe(e), () => {
+			t.onDestroy(), r.disconnect();
+		};
+	};
+	var i = {
+		get text() {
+			return n();
+		},
+		set text(e = 0) {
+			n(e), N();
+		}
+	}, a = ui(), o = Pn(a), s = (e) => {
+		var t = FD(), i = F(t, !0);
+		M(t), Qi(t, () => r), L(() => H(i, n())), V(e, t);
+	};
+	return U(o, (e) => {
+		n() && e(s);
+	}), V(e, a), ct(i);
+}
+Ha(ID, { text: {} }, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/product/Results.svelte
+var LD = (e, t, n, r, i, a) => {
+	let o = /* @__PURE__ */ an(() => k(t?.(), 0)), s = /* @__PURE__ */ an(() => k(n?.(), "")), c = /* @__PURE__ */ an(() => k(r?.(), "")), l = /* @__PURE__ */ an(() => k(i?.(), "down")), u = /* @__PURE__ */ an(() => k(a?.(), ""));
+	var d = RD(), f = F(d), p = F(f), m = F(p), h = F(m), g = (e) => {
+		{
+			let t = /* @__PURE__ */ P(() => Number(z(o)));
+			ID(e, { get text() {
+				return z(t);
+			} });
+		}
+	}, _ = (e) => {
+		V(e, li("ZERO"));
+	};
+	U(h, (e) => {
+		z(o) ? e(g) : e(_, -1);
+	});
+	var v = I(h, 2), y = (e) => {
+		var t = li();
+		L(() => H(t, z(u))), V(e, t);
+	};
+	U(v, (e) => {
+		z(u) && e(y);
+	}), M(m);
+	var b = I(m, 2), x = F(b, !0);
+	M(b);
+	var S = I(b, 2), C = F(S);
+	L(() => K(C, "name", z(l) === "up" ? "result-up" : z(l) === "chk" ? "result-chk" : z(l) === "down" ? "result-down" : z(l) === "eye" ? "result-eye" : "result-close")), W(C, 1, "size-12.5"), M(S), M(p);
+	var w = I(p, 2), T = F(w), E = F(T, !0);
+	M(T), M(w), M(f), M(d), L(() => {
+		W(d, 1, ta(["h-90.5 overflow-clip rounded-xl p-5  lg:p-7.5 xl:h-111.25", z(l) === "up" ? "bg-ff4000/10" : z(l) === "chk" ? "bg-1bc900/10" : z(l) === "down" ? "bg-primary/10" : "bg-ddd"])), W(m, 1, ta(["relative pr-15 text-6xl leading-none font-bold transition-colors lg:text-[90px]", z(l) === "up" ? "text-red" : z(l) === "chk" ? "text-149e00" : z(l) === "down" ? "text-primary" : "text-black"])), H(x, z(s)), W(S, 1, ta(["@starting:rotate-180 absolute top-0 right-0 z-1 grid size-10 scale-100 rotate-0 place-content-center rounded-2xl transition-all delay-1000 lg:size-12.5", z(l) === "up" ? "fill-red" : z(l) === "chk" ? "fill-149e00" : z(l) === "down" ? "fill-primary" : "fill-black"])), H(E, z(c));
+	}), V(e, d);
+}, RD = /* @__PURE__ */ B("<li data-scroll=\"slide-up\"><dl class=\"group/res flex h-full flex-col justify-between\"><dt class=\"relative\"><p><!> <!></p> <p class=\"text-2xl font-bold lg:text-4xl lg:whitespace-pre-line\"> </p> <div data-scroll=\"scale-up\"><icon-list></icon-list></div></dt> <dd class=\"text-2xl lg:text-4xl lg:whitespace-pre-line\"><p class=\"text-666 text-2md lg:text-lg\"> </p></dd></dl></li>", 2), zD = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15\"><!> <ul class=\"grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-5 lg:grid-cols-[repeat(auto-fit,minmax(calc(50%-20px),1fr))] xl:grid-cols-[repeat(auto-fit,minmax(calc(25%-20px),1fr))]\"></ul> <!></section>");
+function BD(e, t) {
+	st(t, !0);
+	let n = q(t, "tit", 7, ""), r = q(t, "txt", 7, ""), i = q(t, "subTxt", 7, ""), a = q(t, "lists", 23, () => []);
+	var o = {
+		get tit() {
+			return n();
+		},
+		set tit(e = "") {
+			n(e), N();
+		},
+		get txt() {
+			return r();
+		},
+		set txt(e = "") {
+			r(e), N();
+		},
+		get subTxt() {
+			return i();
+		},
+		set subTxt(e = "") {
+			i(e), N();
+		},
+		get lists() {
+			return a();
+		},
+		set lists(e = []) {
+			a(e), N();
+		}
+	}, s = zD(), c = F(s);
+	SC(c, {
+		get tit() {
+			return n();
+		},
+		get txt() {
+			return r();
+		},
+		get subTxt() {
+			return i();
+		}
+	});
+	var l = I(c, 2);
+	return Mi(l, 23, a, (e, t) => `result-item-${t}`, (e, t) => {
+		LD(e, () => z(t).num, () => z(t).subTit, () => z(t).txt, () => z(t).result, () => z(t).per);
+	}), M(l), MD(I(l, 2), {}), M(s), V(e, s), ct(o);
+}
+Ha(BD, {
+	tit: {},
+	txt: {},
+	subTxt: {},
+	lists: {}
+}, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/visual/SubVisual.svelte
+var VD = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" autoplay=\"\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), HD = /* @__PURE__ */ B("<p class=\"before:bg-7cf5a0 inline-flex min-h-7.5 items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4.5 py-1 text-xs leading-none font-bold before:size-1.5 before:rounded-full\"> </p>"), UD = /* @__PURE__ */ B("<img class=\"h-full\"/>"), WD = /* @__PURE__ */ B("<source sizes=\"(min-width: 1280px) 60px, 40px\"/>"), GD = /* @__PURE__ */ B("<picture><!> <img class=\"h-full\"/></picture>"), KD = /* @__PURE__ */ B("<picture class=\"flex h-10 lg:h-15\"><!></picture>"), qD = /* @__PURE__ */ B("<section class=\"relative flex max-h-dvh min-h-[70dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:p-15 xl:min-h-200 starting:translate-y-0 starting:opacity-0\"><!> <div class=\"relative z-5 starting:opacity-0\"><div><!> <!></div> <h2 class=\"leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line\"> </h2></div> <div class=\"relative z-5 starting:opacity-0\"><p class=\"text-2md mt-5 leading-normal text-white lg:text-lg lg:whitespace-pre-line\"> </p> <div class=\"mt-7.5 flex lg:mt-9\"><a href=\"/\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a></div></div></section>", 2);
+function JD(e, t) {
+	st(t, !0);
+	let n = q(t, "videoUrl", 7, ""), r = q(t, "bg", 7, ""), i = q(t, "badge", 7, ""), a = q(t, "logo", 7, ""), o = q(t, "logoAlt", 7, ""), s = q(t, "tit", 7, ""), c = q(t, "subtit", 7, ""), l = q(t, "btnTxt", 7, ""), u = /* @__PURE__ */ hn(!1), d = (e) => {
+		let t = Dc(e.children, {
+			x: [70, 0],
+			opacity: [0, 1],
+			duration: 600,
+			delay: qc(200),
+			easing: "easeOutQuad",
+			autoplay: !1
+		}), n = Wc({
+			container: document.body,
+			target: e,
+			enter: "bottom center",
+			leave: "top bottom",
+			axis: "y",
+			onEnter: () => {
+				z(u) || (_n(u, !0), t.seek(0), t.play());
+			},
+			onLeaveBackward: () => {
+				_n(u, !1);
+			},
+			debug: !1
+		});
+		return () => n.revert?.();
+	};
+	var f = {
+		get videoUrl() {
+			return n();
+		},
+		set videoUrl(e = "") {
+			n(e), N();
+		},
+		get bg() {
+			return r();
+		},
+		set bg(e = "") {
+			r(e), N();
+		},
+		get badge() {
+			return i();
+		},
+		set badge(e = "") {
+			i(e), N();
+		},
+		get logo() {
+			return a();
+		},
+		set logo(e = "") {
+			a(e), N();
+		},
+		get logoAlt() {
+			return o();
+		},
+		set logoAlt(e = "") {
+			o(e), N();
+		},
+		get tit() {
+			return s();
+		},
+		set tit(e = "") {
+			s(e), N();
+		},
+		get subtit() {
+			return c();
+		},
+		set subtit(e = "") {
+			c(e), N();
+		},
+		get btnTxt() {
+			return l();
+		},
+		set btnTxt(e = "") {
+			l(e), N();
+		}
+	}, p = qD(), m = F(p), h = (e) => {
+		var t = VD(), r = F(t);
+		r.muted = !0;
+		var i = F(r);
+		M(r), M(t), L(() => G(i, "src", n())), V(e, t);
+	};
+	U(m, (e) => {
+		n() && e(h);
+	});
+	var g = I(m, 2), _ = F(g), v = F(_), y = (e) => {
+		var t = HD(), n = F(t, !0);
+		M(t), L(() => H(n, i())), V(e, t);
+	};
+	U(v, (e) => {
+		i() && e(y);
+	});
+	var b = I(v, 2), x = (e) => {
+		var t = KD(), n = F(t), r = (e) => {
+			var t = ui(), n = Pn(t), r = (e) => {
+				var t = UD();
+				L(() => {
+					G(t, "src", a()), G(t, "alt", o());
+				}), V(e, t);
+			};
+			U(n, (e) => {
+				e(r, -1);
+			}), V(e, t);
+		}, i = (e) => {
+			var t = GD(), n = F(t);
+			Mi(n, 17, () => Object.entries(a().sources), Oi, (e, t) => {
+				var n = /* @__PURE__ */ P(() => ee(z(t), 2));
+				let r = () => z(n)[0], i = () => z(n)[1];
+				var a = WD();
+				L(() => {
+					G(a, "srcset", i()), G(a, "type", "image/" + r());
+				}), V(e, a);
+			});
+			var r = I(n, 2);
+			M(t), L(() => {
+				G(r, "src", a().img.src), G(r, "alt", o()), G(r, "width", a().img.w), G(r, "height", a().img.h);
+			}), V(e, t);
+		};
+		U(n, (e) => {
+			typeof a() == "string" ? e(r) : e(i, -1);
+		}), M(t), V(e, t);
+	};
+	U(b, (e) => {
+		a() && e(x);
+	}), M(_);
+	var S = I(_, 2), C = F(S, !0);
+	M(S), M(g);
+	var w = I(g, 2), T = F(w), E = F(T, !0);
+	M(T);
+	var D = I(T, 2), O = F(D), k = F(O), te = F(k, !0);
+	M(k);
+	var A = I(k, 2);
+	return K(A, "name", "arrow-right"), W(A, 1, "group-hover:stroke-primary size-6 stroke-white"), M(O), M(D), M(w), M(p), Qi(p, () => d), L((e) => {
+		ca(p, `background-image: url('${r()}')`), H(C, s()), H(E, c()), H(te, e);
+	}, [() => Vx()]), V(e, p), ct(f);
+}
+customElements.define("sub-visual", Ha(JD, {
+	videoUrl: {},
+	bg: {},
+	badge: {},
+	logo: {},
+	logoAlt: {},
+	tit: {},
+	subtit: {},
+	btnTxt: {}
+}, [], []));
+//#endregion
+//#region ../../node_modules/.bun/lenis@1.3.23/node_modules/lenis/dist/lenis.mjs
+var YD = "1.3.23";
+function XD(e, t, n) {
+	return Math.max(e, Math.min(t, n));
+}
+function ZD(e, t, n) {
+	return (1 - n) * e + n * t;
+}
+function QD(e, t, n, r) {
+	return ZD(e, t, 1 - Math.exp(-n * r));
+}
+function $D(e, t) {
+	return (e % t + t) % t;
+}
+var eO = class {
+	isRunning = !1;
+	value = 0;
+	from = 0;
+	to = 0;
+	currentTime = 0;
+	lerp;
+	duration;
+	easing;
+	onUpdate;
+	advance(e) {
+		if (!this.isRunning) return;
+		let t = !1;
+		if (this.duration && this.easing) {
+			this.currentTime += e;
+			let n = XD(0, this.currentTime / this.duration, 1);
+			t = n >= 1;
+			let r = t ? 1 : this.easing(n);
+			this.value = this.from + (this.to - this.from) * r;
+		} else this.lerp ? (this.value = QD(this.value, this.to, this.lerp * 60, e), Math.round(this.value) === Math.round(this.to) && (this.value = this.to, t = !0)) : (this.value = this.to, t = !0);
+		t && this.stop(), this.onUpdate?.(this.value, t);
+	}
+	stop() {
+		this.isRunning = !1;
+	}
+	fromTo(e, t, { lerp: n, duration: r, easing: i, onStart: a, onUpdate: o }) {
+		this.from = this.value = e, this.to = t, this.lerp = n, this.duration = r, this.easing = i, this.currentTime = 0, this.isRunning = !0, a?.(), this.onUpdate = o;
+	}
+};
+function tO(e, t) {
+	let n;
+	return function(...r) {
+		clearTimeout(n), n = setTimeout(() => {
+			n = void 0, e.apply(this, r);
+		}, t);
+	};
+}
+var nO = class {
+	width = 0;
+	height = 0;
+	scrollHeight = 0;
+	scrollWidth = 0;
+	debouncedResize;
+	wrapperResizeObserver;
+	contentResizeObserver;
+	constructor(e, t, { autoResize: n = !0, debounce: r = 250 } = {}) {
+		this.wrapper = e, this.content = t, n && (this.debouncedResize = tO(this.resize, r), this.wrapper instanceof Window ? window.addEventListener("resize", this.debouncedResize) : (this.wrapperResizeObserver = new ResizeObserver(this.debouncedResize), this.wrapperResizeObserver.observe(this.wrapper)), this.contentResizeObserver = new ResizeObserver(this.debouncedResize), this.contentResizeObserver.observe(this.content)), this.resize();
+	}
+	destroy() {
+		this.wrapperResizeObserver?.disconnect(), this.contentResizeObserver?.disconnect(), this.wrapper === window && this.debouncedResize && window.removeEventListener("resize", this.debouncedResize);
+	}
+	resize = () => {
+		this.onWrapperResize(), this.onContentResize();
+	};
+	onWrapperResize = () => {
+		this.wrapper instanceof Window ? (this.width = window.innerWidth, this.height = window.innerHeight) : (this.width = this.wrapper.clientWidth, this.height = this.wrapper.clientHeight);
+	};
+	onContentResize = () => {
+		this.wrapper instanceof Window ? (this.scrollHeight = this.content.scrollHeight, this.scrollWidth = this.content.scrollWidth) : (this.scrollHeight = this.wrapper.scrollHeight, this.scrollWidth = this.wrapper.scrollWidth);
+	};
+	get limit() {
+		return {
+			x: this.scrollWidth - this.width,
+			y: this.scrollHeight - this.height
+		};
+	}
+}, rO = class {
+	events = {};
+	emit(e, ...t) {
+		let n = this.events[e] || [];
+		for (let e = 0, r = n.length; e < r; e++) n[e]?.(...t);
+	}
+	on(e, t) {
+		return this.events[e] ? this.events[e].push(t) : this.events[e] = [t], () => {
+			this.events[e] = this.events[e]?.filter((e) => t !== e);
+		};
+	}
+	off(e, t) {
+		this.events[e] = this.events[e]?.filter((e) => t !== e);
+	}
+	destroy() {
+		this.events = {};
+	}
+}, iO = 100 / 6, aO = { passive: !1 };
+function oO(e, t) {
+	return e === 1 ? iO : e === 2 ? t : 1;
+}
+var sO = class {
+	touchStart = {
+		x: 0,
+		y: 0
+	};
+	lastDelta = {
+		x: 0,
+		y: 0
+	};
+	window = {
+		width: 0,
+		height: 0
+	};
+	emitter = new rO();
+	constructor(e, t = {
+		wheelMultiplier: 1,
+		touchMultiplier: 1
+	}) {
+		this.element = e, this.options = t, window.addEventListener("resize", this.onWindowResize), this.onWindowResize(), this.element.addEventListener("wheel", this.onWheel, aO), this.element.addEventListener("touchstart", this.onTouchStart, aO), this.element.addEventListener("touchmove", this.onTouchMove, aO), this.element.addEventListener("touchend", this.onTouchEnd, aO);
+	}
+	on(e, t) {
+		return this.emitter.on(e, t);
+	}
+	destroy() {
+		this.emitter.destroy(), window.removeEventListener("resize", this.onWindowResize), this.element.removeEventListener("wheel", this.onWheel, aO), this.element.removeEventListener("touchstart", this.onTouchStart, aO), this.element.removeEventListener("touchmove", this.onTouchMove, aO), this.element.removeEventListener("touchend", this.onTouchEnd, aO);
+	}
+	onTouchStart = (e) => {
+		let { clientX: t, clientY: n } = e.targetTouches ? e.targetTouches[0] : e;
+		this.touchStart.x = t, this.touchStart.y = n, this.lastDelta = {
+			x: 0,
+			y: 0
+		}, this.emitter.emit("scroll", {
+			deltaX: 0,
+			deltaY: 0,
+			event: e
+		});
+	};
+	onTouchMove = (e) => {
+		let { clientX: t, clientY: n } = e.targetTouches ? e.targetTouches[0] : e, r = -(t - this.touchStart.x) * this.options.touchMultiplier, i = -(n - this.touchStart.y) * this.options.touchMultiplier;
+		this.touchStart.x = t, this.touchStart.y = n, this.lastDelta = {
+			x: r,
+			y: i
+		}, this.emitter.emit("scroll", {
+			deltaX: r,
+			deltaY: i,
+			event: e
+		});
+	};
+	onTouchEnd = (e) => {
+		this.emitter.emit("scroll", {
+			deltaX: this.lastDelta.x,
+			deltaY: this.lastDelta.y,
+			event: e
+		});
+	};
+	onWheel = (e) => {
+		let { deltaX: t, deltaY: n, deltaMode: r } = e, i = oO(r, this.window.width), a = oO(r, this.window.height);
+		t *= i, n *= a, t *= this.options.wheelMultiplier, n *= this.options.wheelMultiplier, this.emitter.emit("scroll", {
+			deltaX: t,
+			deltaY: n,
+			event: e
+		});
+	};
+	onWindowResize = () => {
+		this.window = {
+			width: window.innerWidth,
+			height: window.innerHeight
+		};
+	};
+}, cO = (e) => Math.min(1, 1.001 - 2 ** (-10 * e)), lO = class {
+	_isScrolling = !1;
+	_isStopped = !1;
+	_isLocked = !1;
+	_preventNextNativeScrollEvent = !1;
+	_resetVelocityTimeout = null;
+	_rafId = null;
+	isTouching;
+	time = 0;
+	userData = {};
+	lastVelocity = 0;
+	velocity = 0;
+	direction = 0;
+	options;
+	targetScroll;
+	animatedScroll;
+	animate = new eO();
+	emitter = new rO();
+	dimensions;
+	virtualScroll;
+	constructor({ wrapper: e = window, content: t = document.documentElement, eventsTarget: n = e, smoothWheel: r = !0, syncTouch: i = !1, syncTouchLerp: a = .075, touchInertiaExponent: o = 1.7, duration: s, easing: c, lerp: l = .1, infinite: u = !1, orientation: d = "vertical", gestureOrientation: f = d === "horizontal" ? "both" : "vertical", touchMultiplier: p = 1, wheelMultiplier: m = 1, autoResize: h = !0, prevent: g, virtualScroll: _, overscroll: v = !0, autoRaf: y = !1, anchors: b = !1, autoToggle: x = !1, allowNestedScroll: S = !1, __experimental__naiveDimensions: C = !1, naiveDimensions: w = C, stopInertiaOnNavigate: T = !1 } = {}) {
+		window.lenisVersion = YD, window.lenis || (window.lenis = {}), window.lenis.version = YD, d === "horizontal" && (window.lenis.horizontal = !0), i === !0 && (window.lenis.touch = !0), (!e || e === document.documentElement) && (e = window), typeof s == "number" && typeof c != "function" ? c = cO : typeof c == "function" && typeof s != "number" && (s = 1), this.options = {
+			wrapper: e,
+			content: t,
+			eventsTarget: n,
+			smoothWheel: r,
+			syncTouch: i,
+			syncTouchLerp: a,
+			touchInertiaExponent: o,
+			duration: s,
+			easing: c,
+			lerp: l,
+			infinite: u,
+			gestureOrientation: f,
+			orientation: d,
+			touchMultiplier: p,
+			wheelMultiplier: m,
+			autoResize: h,
+			prevent: g,
+			virtualScroll: _,
+			overscroll: v,
+			autoRaf: y,
+			anchors: b,
+			autoToggle: x,
+			allowNestedScroll: S,
+			naiveDimensions: w,
+			stopInertiaOnNavigate: T
+		}, this.dimensions = new nO(e, t, { autoResize: h }), this.updateClassName(), this.targetScroll = this.animatedScroll = this.actualScroll, this.options.wrapper.addEventListener("scroll", this.onNativeScroll), this.options.wrapper.addEventListener("scrollend", this.onScrollEnd, { capture: !0 }), (this.options.anchors || this.options.stopInertiaOnNavigate) && this.options.wrapper.addEventListener("click", this.onClick), this.options.wrapper.addEventListener("pointerdown", this.onPointerDown), this.virtualScroll = new sO(n, {
+			touchMultiplier: p,
+			wheelMultiplier: m
+		}), this.virtualScroll.on("scroll", this.onVirtualScroll), this.options.autoToggle && (this.checkOverflow(), this.rootElement.addEventListener("transitionend", this.onTransitionEnd)), this.options.autoRaf && (this._rafId = requestAnimationFrame(this.raf));
+	}
+	destroy() {
+		this.emitter.destroy(), this.options.wrapper.removeEventListener("scroll", this.onNativeScroll), this.options.wrapper.removeEventListener("scrollend", this.onScrollEnd, { capture: !0 }), this.options.wrapper.removeEventListener("pointerdown", this.onPointerDown), (this.options.anchors || this.options.stopInertiaOnNavigate) && this.options.wrapper.removeEventListener("click", this.onClick), this.virtualScroll.destroy(), this.dimensions.destroy(), this.cleanUpClassName(), this._rafId && cancelAnimationFrame(this._rafId);
+	}
+	on(e, t) {
+		return this.emitter.on(e, t);
+	}
+	off(e, t) {
+		return this.emitter.off(e, t);
+	}
+	onScrollEnd = (e) => {
+		e instanceof CustomEvent || (this.isScrolling === "smooth" || this.isScrolling === !1) && e.stopPropagation();
+	};
+	dispatchScrollendEvent = () => {
+		this.options.wrapper.dispatchEvent(new CustomEvent("scrollend", {
+			bubbles: this.options.wrapper === window,
+			detail: { lenisScrollEnd: !0 }
+		}));
+	};
+	get overflow() {
+		let e = this.isHorizontal ? "overflow-x" : "overflow-y";
+		return getComputedStyle(this.rootElement)[e];
+	}
+	checkOverflow() {
+		["hidden", "clip"].includes(this.overflow) ? this.internalStop() : this.internalStart();
+	}
+	onTransitionEnd = (e) => {
+		e.propertyName?.includes("overflow") && e.target === this.rootElement && this.checkOverflow();
+	};
+	setScroll(e) {
+		this.isHorizontal ? this.options.wrapper.scrollTo({
+			left: e,
+			behavior: "instant"
+		}) : this.options.wrapper.scrollTo({
+			top: e,
+			behavior: "instant"
+		});
+	}
+	onClick = (e) => {
+		let t = e.composedPath().filter((e) => e instanceof HTMLAnchorElement && e.href).map((e) => new URL(e.href)), n = new URL(window.location.href);
+		if (this.options.anchors) {
+			let e = t.find((e) => n.host === e.host && n.pathname === e.pathname && e.hash);
+			if (e) {
+				let t = typeof this.options.anchors == "object" && this.options.anchors ? this.options.anchors : void 0, n = `#${e.hash.split("#")[1]}`;
+				this.scrollTo(n, t);
+				return;
+			}
+		}
+		if (this.options.stopInertiaOnNavigate && t.some((e) => n.host === e.host && n.pathname !== e.pathname)) {
+			this.reset();
+			return;
+		}
+	};
+	onPointerDown = (e) => {
+		e.button === 1 && this.reset();
+	};
+	onVirtualScroll = (e) => {
+		if (typeof this.options.virtualScroll == "function" && this.options.virtualScroll(e) === !1) return;
+		let { deltaX: t, deltaY: n, event: r } = e;
+		if (this.emitter.emit("virtual-scroll", {
+			deltaX: t,
+			deltaY: n,
+			event: r
+		}), r.ctrlKey || r.lenisStopPropagation) return;
+		let i = r.type.includes("touch"), a = r.type.includes("wheel");
+		this.isTouching = r.type === "touchstart" || r.type === "touchmove";
+		let o = t === 0 && n === 0;
+		if (this.options.syncTouch && i && r.type === "touchstart" && o && !this.isStopped && !this.isLocked) {
+			this.reset();
+			return;
+		}
+		let s = this.options.gestureOrientation === "vertical" && n === 0 || this.options.gestureOrientation === "horizontal" && t === 0;
+		if (o || s) return;
+		let c = r.composedPath();
+		c = c.slice(0, c.indexOf(this.rootElement));
+		let l = this.options.prevent, u = Math.abs(t) >= Math.abs(n) ? "horizontal" : "vertical";
+		if (c.find((e) => e instanceof HTMLElement && (typeof l == "function" && l?.(e) || e.hasAttribute?.("data-lenis-prevent") || u === "vertical" && e.hasAttribute?.("data-lenis-prevent-vertical") || u === "horizontal" && e.hasAttribute?.("data-lenis-prevent-horizontal") || i && e.hasAttribute?.("data-lenis-prevent-touch") || a && e.hasAttribute?.("data-lenis-prevent-wheel") || this.options.allowNestedScroll && this.hasNestedScroll(e, {
+			deltaX: t,
+			deltaY: n
+		})))) return;
+		if (this.isStopped || this.isLocked) {
+			r.cancelable && r.preventDefault();
+			return;
+		}
+		if (!(this.options.syncTouch && i || this.options.smoothWheel && a)) {
+			this.isScrolling = "native", this.animate.stop(), r.lenisStopPropagation = !0;
+			return;
+		}
+		let d = n;
+		this.options.gestureOrientation === "both" ? d = Math.abs(n) > Math.abs(t) ? n : t : this.options.gestureOrientation === "horizontal" && (d = t), (!this.options.overscroll || this.options.infinite || this.options.wrapper !== window && this.limit > 0 && (this.animatedScroll > 0 && this.animatedScroll < this.limit || this.animatedScroll === 0 && n > 0 || this.animatedScroll === this.limit && n < 0)) && (r.lenisStopPropagation = !0), r.cancelable && r.preventDefault();
+		let f = i && this.options.syncTouch, p = i && r.type === "touchend";
+		p && (d = Math.sign(d) * Math.abs(this.velocity) ** this.options.touchInertiaExponent), this.scrollTo(this.targetScroll + d, {
+			programmatic: !1,
+			...f ? { lerp: p ? this.options.syncTouchLerp : 1 } : {
+				lerp: this.options.lerp,
+				duration: this.options.duration,
+				easing: this.options.easing
+			}
+		});
+	};
+	resize() {
+		this.dimensions.resize(), this.animatedScroll = this.targetScroll = this.actualScroll, this.emit();
+	}
+	emit() {
+		this.emitter.emit("scroll", this);
+	}
+	onNativeScroll = () => {
+		if (this._resetVelocityTimeout !== null && (clearTimeout(this._resetVelocityTimeout), this._resetVelocityTimeout = null), this._preventNextNativeScrollEvent) {
+			this._preventNextNativeScrollEvent = !1;
+			return;
+		}
+		if (this.isScrolling === !1 || this.isScrolling === "native") {
+			let e = this.animatedScroll;
+			this.animatedScroll = this.targetScroll = this.actualScroll, this.lastVelocity = this.velocity, this.velocity = this.animatedScroll - e, this.direction = Math.sign(this.animatedScroll - e), this.isStopped || (this.isScrolling = "native"), this.emit(), this.velocity !== 0 && (this._resetVelocityTimeout = setTimeout(() => {
+				this.lastVelocity = this.velocity, this.velocity = 0, this.isScrolling = !1, this.emit();
+			}, 400));
+		}
+	};
+	reset() {
+		this.isLocked = !1, this.isScrolling = !1, this.animatedScroll = this.targetScroll = this.actualScroll, this.lastVelocity = this.velocity = 0, this.animate.stop();
+	}
+	start() {
+		if (this.isStopped) {
+			if (this.options.autoToggle) {
+				this.rootElement.style.removeProperty("overflow");
+				return;
+			}
+			this.internalStart();
+		}
+	}
+	internalStart() {
+		this.isStopped && (this.reset(), this.isStopped = !1, this.emit());
+	}
+	stop() {
+		if (!this.isStopped) {
+			if (this.options.autoToggle) {
+				this.rootElement.style.setProperty("overflow", "clip");
+				return;
+			}
+			this.internalStop();
+		}
+	}
+	internalStop() {
+		this.isStopped || (this.reset(), this.isStopped = !0, this.emit());
+	}
+	raf = (e) => {
+		let t = e - (this.time || e);
+		this.time = e, this.animate.advance(t * .001), this.options.autoRaf && (this._rafId = requestAnimationFrame(this.raf));
+	};
+	scrollTo(e, { offset: t = 0, immediate: n = !1, lock: r = !1, programmatic: i = !0, lerp: a = i ? this.options.lerp : void 0, duration: o = i ? this.options.duration : void 0, easing: s = i ? this.options.easing : void 0, onStart: c, onComplete: l, force: u = !1, userData: d } = {}) {
+		if ((this.isStopped || this.isLocked) && !u) return;
+		let f = e, p = t;
+		if (typeof f == "string" && [
+			"top",
+			"left",
+			"start",
+			"#"
+		].includes(f)) f = 0;
+		else if (typeof f == "string" && [
+			"bottom",
+			"right",
+			"end"
+		].includes(f)) f = this.limit;
+		else {
+			let e = null;
+			if (typeof f == "string" ? (e = document.querySelector(f), e || (f === "#top" ? f = 0 : console.warn("Lenis: Target not found", f))) : f instanceof HTMLElement && f?.nodeType && (e = f), e) {
+				if (this.options.wrapper !== window) {
+					let e = this.rootElement.getBoundingClientRect();
+					p -= this.isHorizontal ? e.left : e.top;
+				}
+				let t = e.getBoundingClientRect(), n = getComputedStyle(e), r = this.isHorizontal ? Number.parseFloat(n.scrollMarginLeft) : Number.parseFloat(n.scrollMarginTop), i = getComputedStyle(this.rootElement), a = this.isHorizontal ? Number.parseFloat(i.scrollPaddingLeft) : Number.parseFloat(i.scrollPaddingTop);
+				f = (this.isHorizontal ? t.left : t.top) + this.animatedScroll - (Number.isNaN(r) ? 0 : r) - (Number.isNaN(a) ? 0 : a);
+			}
+		}
+		if (typeof f == "number") {
+			if (f += p, this.options.infinite) {
+				if (i) {
+					this.targetScroll = this.animatedScroll = this.scroll;
+					let e = f - this.animatedScroll;
+					e > this.limit / 2 ? f -= this.limit : e < -this.limit / 2 && (f += this.limit);
+				}
+			} else f = XD(0, f, this.limit);
+			if (f === this.targetScroll) {
+				c?.(this), l?.(this);
+				return;
+			}
+			if (this.userData = d ?? {}, n) {
+				this.animatedScroll = this.targetScroll = f, this.setScroll(this.scroll), this.reset(), this.preventNextNativeScrollEvent(), this.emit(), l?.(this), this.userData = {}, requestAnimationFrame(() => {
+					this.dispatchScrollendEvent();
+				});
+				return;
+			}
+			i || (this.targetScroll = f), typeof o == "number" && typeof s != "function" ? s = cO : typeof s == "function" && typeof o != "number" && (o = 1), this.animate.fromTo(this.animatedScroll, f, {
+				duration: o,
+				easing: s,
+				lerp: a,
+				onStart: () => {
+					r && (this.isLocked = !0), this.isScrolling = "smooth", c?.(this);
+				},
+				onUpdate: (e, t) => {
+					this.isScrolling = "smooth", this.lastVelocity = this.velocity, this.velocity = e - this.animatedScroll, this.direction = Math.sign(this.velocity), this.animatedScroll = e, this.setScroll(this.scroll), i && (this.targetScroll = e), t || this.emit(), t && (this.reset(), this.emit(), l?.(this), this.userData = {}, requestAnimationFrame(() => {
+						this.dispatchScrollendEvent();
+					}), this.preventNextNativeScrollEvent());
+				}
+			});
+		}
+	}
+	preventNextNativeScrollEvent() {
+		this._preventNextNativeScrollEvent = !0, requestAnimationFrame(() => {
+			this._preventNextNativeScrollEvent = !1;
+		});
+	}
+	hasNestedScroll(e, { deltaX: t, deltaY: n }) {
+		let r = Date.now();
+		e._lenis ||= {};
+		let i = e._lenis, a, o, s, c, l, u, d, f, p, m;
+		if (r - (i.time ?? 0) > 2e3) {
+			i.time = Date.now();
+			let t = window.getComputedStyle(e);
+			if (i.computedStyle = t, a = [
+				"auto",
+				"overlay",
+				"scroll"
+			].includes(t.overflowX), o = [
+				"auto",
+				"overlay",
+				"scroll"
+			].includes(t.overflowY), l = ["auto"].includes(t.overscrollBehaviorX), u = ["auto"].includes(t.overscrollBehaviorY), i.hasOverflowX = a, i.hasOverflowY = o, !(a || o)) return !1;
+			d = e.scrollWidth, f = e.scrollHeight, p = e.clientWidth, m = e.clientHeight, s = d > p, c = f > m, i.isScrollableX = s, i.isScrollableY = c, i.scrollWidth = d, i.scrollHeight = f, i.clientWidth = p, i.clientHeight = m, i.hasOverscrollBehaviorX = l, i.hasOverscrollBehaviorY = u;
+		} else s = i.isScrollableX, c = i.isScrollableY, a = i.hasOverflowX, o = i.hasOverflowY, d = i.scrollWidth, f = i.scrollHeight, p = i.clientWidth, m = i.clientHeight, l = i.hasOverscrollBehaviorX, u = i.hasOverscrollBehaviorY;
+		if (!(a && s || o && c)) return !1;
+		let h = Math.abs(t) >= Math.abs(n) ? "horizontal" : "vertical", g, _, v, y, b, x;
+		if (h === "horizontal") g = Math.round(e.scrollLeft), _ = d - p, v = t, y = a, b = s, x = l;
+		else if (h === "vertical") g = Math.round(e.scrollTop), _ = f - m, v = n, y = o, b = c, x = u;
+		else return !1;
+		return !x && (g >= _ || g <= 0) ? !0 : (v > 0 ? g < _ : g > 0) && y && b;
+	}
+	get rootElement() {
+		return this.options.wrapper === window ? document.documentElement : this.options.wrapper;
+	}
+	get limit() {
+		return this.options.naiveDimensions ? this.isHorizontal ? this.rootElement.scrollWidth - this.rootElement.clientWidth : this.rootElement.scrollHeight - this.rootElement.clientHeight : this.dimensions.limit[this.isHorizontal ? "x" : "y"];
+	}
+	get isHorizontal() {
+		return this.options.orientation === "horizontal";
+	}
+	get actualScroll() {
+		let e = this.options.wrapper;
+		return this.isHorizontal ? e.scrollX ?? e.scrollLeft : e.scrollY ?? e.scrollTop;
+	}
+	get scroll() {
+		return this.options.infinite ? $D(this.animatedScroll, this.limit) : this.animatedScroll;
+	}
+	get progress() {
+		return this.limit === 0 ? 1 : this.scroll / this.limit;
+	}
+	get isScrolling() {
+		return this._isScrolling;
+	}
+	set isScrolling(e) {
+		this._isScrolling !== e && (this._isScrolling = e, this.updateClassName());
+	}
+	get isStopped() {
+		return this._isStopped;
+	}
+	set isStopped(e) {
+		this._isStopped !== e && (this._isStopped = e, this.updateClassName());
+	}
+	get isLocked() {
+		return this._isLocked;
+	}
+	set isLocked(e) {
+		this._isLocked !== e && (this._isLocked = e, this.updateClassName());
+	}
+	get isSmooth() {
+		return this.isScrolling === "smooth";
+	}
+	get className() {
+		let e = "lenis";
+		return this.options.autoToggle && (e += " lenis-autoToggle"), this.isStopped && (e += " lenis-stopped"), this.isLocked && (e += " lenis-locked"), this.isScrolling && (e += " lenis-scrolling"), this.isScrolling === "smooth" && (e += " lenis-smooth"), e;
+	}
+	updateClassName() {
+		this.cleanUpClassName(), this.className.split(" ").forEach((e) => {
+			this.rootElement.classList.add(e);
+		});
+	}
+	cleanUpClassName() {
+		for (let e of Array.from(this.rootElement.classList)) (e === "lenis" || e.startsWith("lenis-")) && this.rootElement.classList.remove(e);
+	}
+}, uO = new class {
+	#e;
+	get instance() {
+		return z(this.#e);
+	}
+	set instance(e) {
+		_n(this.#e, e, !0);
+	}
+	constructor() {
+		this.#e = /* @__PURE__ */ hn(null);
+	}
+	setInstance(e) {
+		this.instance = e;
+	}
+	clear() {
+		this.instance &&= (this.instance.destroy(), null);
+	}
+}(), dO = /* @__PURE__ */ B("<!> <!> <!> <!> <!> <!> <!>", 1);
+function fO(e, t) {
+	st(t, !0);
+	let n = q(t, "videoUrl", 7, ""), r = /* @__PURE__ */ hn(Cn([
+		{
+			img: "/output/imgs/banner/img-banner-dao-1.png",
+			txt: bp()
+		},
+		{
+			img: "/output/imgs/banner/img-banner-dao-2.png",
+			txt: Cp()
+		},
+		{
+			img: "/output/imgs/banner/img-banner-dao-3.png",
+			txt: Ep()
+		},
+		{
+			img: "/output/imgs/banner/img-banner-dao-4.png",
+			txt: kp()
+		},
+		{
+			img: "/output/imgs/banner/img-banner-dao-5.png",
+			txt: Mp()
+		},
+		{
+			img: "/output/imgs/banner/img-banner-dao-11.png",
+			txt: Fp()
+		}
+	])), i = /* @__PURE__ */ hn(Cn([
+		{
+			tit: Wp(),
+			txt: [qp(), Xp()],
+			logo: $p(),
+			labels: [
+				nm(),
+				am(),
+				cm(),
+				dm()
+			]
+		},
+		{
+			tit: mm(),
+			txt: [_m()],
+			logo: bm(),
+			labels: [Cm(), Em()]
+		},
+		{
+			tit: km(),
+			txt: [Mm(), Fm()],
+			logo: Rm(),
+			labels: [
+				Vm(),
+				Wm(),
+				qm(),
+				Xm()
+			]
+		},
+		{
+			tit: $m(),
+			txt: [nh(), ah()],
+			logo: ch(),
+			labels: [
+				dh(),
+				mh(),
+				_h()
+			]
+		}
+	])), a = /* @__PURE__ */ hn(Cn([
+		{
+			result: "up",
+			num: 60,
+			subTit: Eh(),
+			txt: kh()
+		},
+		{
+			result: "down",
+			num: 25,
+			subTit: Mh(),
+			txt: Fh()
+		},
+		{
+			result: "down",
+			num: 40,
+			subTit: Rh(),
+			txt: Vh()
+		},
+		{
+			result: "chk",
+			num: 100,
+			subTit: Wh(),
+			txt: qh()
+		}
+	])), o = /* @__PURE__ */ hn(Cn([
+		{
+			id: "das-case-1",
+			btn: Xh(),
+			logo: "/output/imgs/case/logo-case-dao-1.png",
+			img: "/output/imgs/case/img-case-dao-1.png",
+			tit: $h(),
+			txt: [ng(), ag()],
+			etc: [
+				cg,
+				dg,
+				mg
+			]
+		},
+		{
+			id: "das-case-2",
+			btn: _g(),
+			logo: "client",
+			img: "https://www.dummyimage.com/720X480/000/fff",
+			tit: bg(),
+			txt: [Cg(), Eg()],
+			etc: [
+				kg,
+				Mg,
+				Fg
+			]
+		},
+		{
+			id: "das-case-3",
+			btn: Rg(),
+			logo: "client",
+			img: "https://www.dummyimage.com/720X480/000/fff",
+			tit: Vg(),
+			txt: [Wg(), qg()],
+			etc: [
+				Xg,
+				$g,
+				n_
+			]
+		},
+		{
+			id: "das-case-4",
+			btn: a_(),
+			logo: "/output/imgs/case/logo-case-dao-4.png",
+			img: "/output/imgs/case/img-case-dao-4.png",
+			tit: c_(),
+			txt: [d_()],
+			etc: [
+				m_,
+				__,
+				b_
+			]
+		},
+		{
+			id: "das-case-5",
+			btn: C_(),
+			logo: "client",
+			img: "/output/imgs/case/img-case-dao-5.png",
+			tit: E_(),
+			badge: [k_()],
+			txt: [M_(), F_()],
+			etc: [
+				R_,
+				V_,
+				W_
+			]
+		}
+	])), s = /* @__PURE__ */ hn(Cn([
+		{
+			id: "faq-chk-1",
+			tit: av(),
+			txt: cv()
+		},
+		{
+			id: "faq-chk-2",
+			tit: dv(),
+			txt: mv()
+		},
+		{
+			id: "faq-chk-3",
+			tit: _v(),
+			txt: bv()
+		},
+		{
+			id: "faq-chk-4",
+			link: "/",
+			btn: cS(),
+			tit: Cv(),
+			txt: Ev()
+		},
+		{
+			id: "faq-chk-5",
+			link: "/",
+			btn: dS(),
+			tit: kv(),
+			txt: Mv()
+		}
+	]));
+	ot("case-list", { get list() {
+		return z(o);
+	} }), Xn(() => {
+		let e = new lO({ autoRaf: !0 });
+		return uO.setInstance(e), () => {
+			uO.clear();
+		};
+	});
+	var c = {
+		get videoUrl() {
+			return n();
+		},
+		set videoUrl(e = "") {
+			n(e), N();
+		}
+	}, l = dO(), u = Pn(l);
+	{
+		let e = /* @__PURE__ */ P(() => tf()), t = /* @__PURE__ */ P(() => af()), r = /* @__PURE__ */ P(() => cf());
+		JD(u, {
+			get videoUrl() {
+				return n();
+			},
+			get bg() {
+				return "/output/imgs/visual/dao-visual.jpg";
+			},
+			get logo() {
+				return "/output/imgs/logo/logo-dao.svg";
+			},
+			get logoAlt() {
+				return z(e);
+			},
+			get tit() {
+				return z(t);
+			},
+			get subtit() {
+				return z(r);
+			}
+		});
+	}
+	var d = I(u, 2);
+	vD(d, {});
+	var f = I(d, 2);
+	{
+		let e = /* @__PURE__ */ P(() => dp()), t = /* @__PURE__ */ P(() => mp()), n = /* @__PURE__ */ P(() => _p()), i = /* @__PURE__ */ P(() => [...z(r)]);
+		dD(f, {
+			cls: "lg:grid-cols-[repeat(auto-fit,minmax(calc(33%-10px),1fr))] grid-cols-[repeat(auto-fit,1fr)]",
+			get tit() {
+				return z(e);
+			},
+			get txt() {
+				return z(t);
+			},
+			get subTxt() {
+				return z(n);
+			},
+			get lists() {
+				return z(i);
+			}
+		});
+	}
+	var p = I(f, 2);
+	{
+		let e = /* @__PURE__ */ P(() => Rp()), t = /* @__PURE__ */ P(() => Vp()), n = /* @__PURE__ */ P(() => [...z(i)]);
+		oD(p, {
+			get tit() {
+				return z(e);
+			},
+			get txt() {
+				return z(t);
+			},
+			get lists() {
+				return z(n);
+			}
+		});
+	}
+	var m = I(p, 2);
+	{
+		let e = /* @__PURE__ */ P(() => bh()), t = /* @__PURE__ */ P(() => Ch()), n = /* @__PURE__ */ P(() => [...z(a)]);
+		BD(m, {
+			get tit() {
+				return z(e);
+			},
+			get txt() {
+				return z(t);
+			},
+			get lists() {
+				return z(n);
+			}
+		});
+	}
+	var h = I(m, 2);
+	{
+		let e = /* @__PURE__ */ P(() => q_()), t = /* @__PURE__ */ P(() => [...z(s)]);
+		IC(h, {
+			tit: "Proven Results",
+			get txt() {
+				return z(e);
+			},
+			get lists() {
+				return z(t);
+			}
+		});
+	}
+	return YE(I(h, 2), { page: "dao" }), V(e, l), ct(c);
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/flags/legacy.js
+customElements.define("sub-dao", Ha(fO, { videoUrl: {
+	attribute: "data-vide-url",
+	type: "String"
+} }, [], [])), nt();
+//#endregion
+//#region ../../node_modules/.bun/tailwind-merge@3.6.0/node_modules/tailwind-merge/dist/bundle-mjs.mjs
+var pO = (e, t) => {
+	let n = Array(e.length + t.length);
+	for (let t = 0; t < e.length; t++) n[t] = e[t];
+	for (let r = 0; r < t.length; r++) n[e.length + r] = t[r];
+	return n;
+}, mO = (e, t) => ({
+	classGroupId: e,
+	validator: t
+}), hO = (e = /* @__PURE__ */ new Map(), t = null, n) => ({
+	nextPart: e,
+	validators: t,
+	classGroupId: n
+}), gO = "-", _O = [], vO = "arbitrary..", yO = (e) => {
+	let t = SO(e), { conflictingClassGroups: n, conflictingClassGroupModifiers: r } = e;
+	return {
+		getClassGroupId: (e) => {
+			if (e.startsWith("[") && e.endsWith("]")) return xO(e);
+			let n = e.split(gO);
+			return bO(n, +(n[0] === "" && n.length > 1), t);
+		},
+		getConflictingClassGroupIds: (e, t) => {
+			if (t) {
+				let t = r[e], i = n[e];
+				return t ? i ? pO(i, t) : t : i || _O;
+			}
+			return n[e] || _O;
+		}
+	};
+}, bO = (e, t, n) => {
+	if (e.length - t === 0) return n.classGroupId;
+	let r = e[t], i = n.nextPart.get(r);
+	if (i) {
+		let n = bO(e, t + 1, i);
+		if (n) return n;
+	}
+	let a = n.validators;
+	if (a === null) return;
+	let o = t === 0 ? e.join(gO) : e.slice(t).join(gO), s = a.length;
+	for (let e = 0; e < s; e++) {
+		let t = a[e];
+		if (t.validator(o)) return t.classGroupId;
+	}
+}, xO = (e) => e.slice(1, -1).indexOf(":") === -1 ? void 0 : (() => {
+	let t = e.slice(1, -1), n = t.indexOf(":"), r = t.slice(0, n);
+	return r ? vO + r : void 0;
+})(), SO = (e) => {
+	let { theme: t, classGroups: n } = e;
+	return CO(n, t);
+}, CO = (e, t) => {
+	let n = hO();
+	for (let r in e) {
+		let i = e[r];
+		wO(i, n, r, t);
+	}
+	return n;
+}, wO = (e, t, n, r) => {
+	let i = e.length;
+	for (let a = 0; a < i; a++) {
+		let i = e[a];
+		TO(i, t, n, r);
+	}
+}, TO = (e, t, n, r) => {
+	if (typeof e == "string") {
+		EO(e, t, n);
+		return;
+	}
+	if (typeof e == "function") {
+		DO(e, t, n, r);
+		return;
+	}
+	OO(e, t, n, r);
+}, EO = (e, t, n) => {
+	let r = e === "" ? t : kO(t, e);
+	r.classGroupId = n;
+}, DO = (e, t, n, r) => {
+	if (AO(e)) {
+		wO(e(r), t, n, r);
+		return;
+	}
+	t.validators === null && (t.validators = []), t.validators.push(mO(n, e));
+}, OO = (e, t, n, r) => {
+	let i = Object.entries(e), a = i.length;
+	for (let e = 0; e < a; e++) {
+		let [a, o] = i[e];
+		wO(o, kO(t, a), n, r);
+	}
+}, kO = (e, t) => {
+	let n = e, r = t.split(gO), i = r.length;
+	for (let e = 0; e < i; e++) {
+		let t = r[e], i = n.nextPart.get(t);
+		i || (i = hO(), n.nextPart.set(t, i)), n = i;
+	}
+	return n;
+}, AO = (e) => "isThemeGetter" in e && e.isThemeGetter === !0, jO = (e) => {
+	if (e < 1) return {
+		get: () => void 0,
+		set: () => {}
+	};
+	let t = 0, n = Object.create(null), r = Object.create(null), i = (i, a) => {
+		n[i] = a, t++, t > e && (t = 0, r = n, n = Object.create(null));
+	};
+	return {
+		get(e) {
+			let t = n[e];
+			if (t !== void 0) return t;
+			if ((t = r[e]) !== void 0) return i(e, t), t;
+		},
+		set(e, t) {
+			e in n ? n[e] = t : i(e, t);
+		}
+	};
+}, MO = "!", NO = ":", PO = [], FO = (e, t, n, r, i) => ({
+	modifiers: e,
+	hasImportantModifier: t,
+	baseClassName: n,
+	maybePostfixModifierPosition: r,
+	isExternal: i
+}), IO = (e) => {
+	let { prefix: t, experimentalParseClassName: n } = e, r = (e) => {
+		let t = [], n = 0, r = 0, i = 0, a, o = e.length;
+		for (let s = 0; s < o; s++) {
+			let o = e[s];
+			if (n === 0 && r === 0) {
+				if (o === NO) {
+					t.push(e.slice(i, s)), i = s + 1;
+					continue;
+				}
+				if (o === "/") {
+					a = s;
+					continue;
+				}
+			}
+			o === "[" ? n++ : o === "]" ? n-- : o === "(" ? r++ : o === ")" && r--;
+		}
+		let s = t.length === 0 ? e : e.slice(i), c = s, l = !1;
+		s.endsWith(MO) ? (c = s.slice(0, -1), l = !0) : s.startsWith(MO) && (c = s.slice(1), l = !0);
+		let u = a && a > i ? a - i : void 0;
+		return FO(t, l, c, u);
+	};
+	if (t) {
+		let e = t + NO, n = r;
+		r = (t) => t.startsWith(e) ? n(t.slice(e.length)) : FO(PO, !1, t, void 0, !0);
+	}
+	if (n) {
+		let e = r;
+		r = (t) => n({
+			className: t,
+			parseClassName: e
+		});
+	}
+	return r;
+}, LO = (e) => {
+	let t = /* @__PURE__ */ new Map();
+	return e.orderSensitiveModifiers.forEach((e, n) => {
+		t.set(e, 1e6 + n);
+	}), (e) => {
+		let n = [], r = [];
+		for (let i = 0; i < e.length; i++) {
+			let a = e[i], o = a[0] === "[", s = t.has(a);
+			o || s ? (r.length > 0 && (r.sort(), n.push(...r), r = []), n.push(a)) : r.push(a);
+		}
+		return r.length > 0 && (r.sort(), n.push(...r)), n;
+	};
+}, RO = (e) => ({
+	cache: jO(e.cacheSize),
+	parseClassName: IO(e),
+	sortModifiers: LO(e),
+	postfixLookupClassGroupIds: zO(e),
+	...yO(e)
+}), zO = (e) => {
+	let t = Object.create(null), n = e.postfixLookupClassGroups;
+	if (n) for (let e = 0; e < n.length; e++) t[n[e]] = !0;
+	return t;
+}, BO = /\s+/, VO = (e, t) => {
+	let { parseClassName: n, getClassGroupId: r, getConflictingClassGroupIds: i, sortModifiers: a, postfixLookupClassGroupIds: o } = t, s = [], c = e.trim().split(BO), l = "";
+	for (let e = c.length - 1; e >= 0; --e) {
+		let t = c[e], { isExternal: u, modifiers: d, hasImportantModifier: f, baseClassName: p, maybePostfixModifierPosition: m } = n(t);
+		if (u) {
+			l = t + (l.length > 0 ? " " + l : l);
+			continue;
+		}
+		let h = !!m, g;
+		if (h) {
+			g = r(p.substring(0, m));
+			let e = g && o[g] ? r(p) : void 0;
+			e && e !== g && (g = e, h = !1);
+		} else g = r(p);
+		if (!g) {
+			if (!h) {
+				l = t + (l.length > 0 ? " " + l : l);
+				continue;
+			}
+			if (g = r(p), !g) {
+				l = t + (l.length > 0 ? " " + l : l);
+				continue;
+			}
+			h = !1;
+		}
+		let _ = d.length === 0 ? "" : d.length === 1 ? d[0] : a(d).join(":"), v = f ? _ + MO : _, y = v + g;
+		if (s.indexOf(y) > -1) continue;
+		s.push(y);
+		let b = i(g, h);
+		for (let e = 0; e < b.length; ++e) {
+			let t = b[e];
+			s.push(v + t);
+		}
+		l = t + (l.length > 0 ? " " + l : l);
+	}
+	return l;
+}, HO = (...e) => {
+	let t = 0, n, r, i = "";
+	for (; t < e.length;) (n = e[t++]) && (r = UO(n)) && (i && (i += " "), i += r);
+	return i;
+}, UO = (e) => {
+	if (typeof e == "string") return e;
+	let t, n = "";
+	for (let r = 0; r < e.length; r++) e[r] && (t = UO(e[r])) && (n && (n += " "), n += t);
+	return n;
+}, WO = (e, ...t) => {
+	let n, r, i, a, o = (o) => (n = RO(t.reduce((e, t) => t(e), e())), r = n.cache.get, i = n.cache.set, a = s, s(o)), s = (e) => {
+		let t = r(e);
+		if (t) return t;
+		let a = VO(e, n);
+		return i(e, a), a;
+	};
+	return a = o, (...e) => a(HO(...e));
+}, GO = [], KO = (e) => {
+	let t = (t) => t[e] || GO;
+	return t.isThemeGetter = !0, t;
+}, qO = /^\[(?:(\w[\w-]*):)?(.+)\]$/i, JO = /^\((?:(\w[\w-]*):)?(.+)\)$/i, YO = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/, XO = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, ZO = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, QO = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/, $O = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, ek = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, tk = (e) => YO.test(e), nk = (e) => !!e && !Number.isNaN(Number(e)), rk = (e) => !!e && Number.isInteger(Number(e)), ik = (e) => e.endsWith("%") && nk(e.slice(0, -1)), ak = (e) => XO.test(e), ok = () => !0, sk = (e) => ZO.test(e) && !QO.test(e), ck = () => !1, lk = (e) => $O.test(e), uk = (e) => ek.test(e), dk = (e) => !Q(e) && !$(e), fk = (e) => e.startsWith("@container") && (e[10] === "/" && e[11] !== void 0 || e[11] === "s" && e[16] !== void 0 && e.startsWith("-size/", 10) || e[11] === "n" && e[18] !== void 0 && e.startsWith("-normal/", 10)), pk = (e) => Ok(e, Mk, ck), Q = (e) => qO.test(e), mk = (e) => Ok(e, Nk, sk), hk = (e) => Ok(e, Pk, nk), gk = (e) => Ok(e, Ik, ok), _k = (e) => Ok(e, Fk, ck), vk = (e) => Ok(e, Ak, ck), yk = (e) => Ok(e, jk, uk), bk = (e) => Ok(e, Lk, lk), $ = (e) => JO.test(e), xk = (e) => kk(e, Nk), Sk = (e) => kk(e, Fk), Ck = (e) => kk(e, Ak), wk = (e) => kk(e, Mk), Tk = (e) => kk(e, jk), Ek = (e) => kk(e, Lk, !0), Dk = (e) => kk(e, Ik, !0), Ok = (e, t, n) => {
+	let r = qO.exec(e);
+	return r ? r[1] ? t(r[1]) : n(r[2]) : !1;
+}, kk = (e, t, n = !1) => {
+	let r = JO.exec(e);
+	return r ? r[1] ? t(r[1]) : n : !1;
+}, Ak = (e) => e === "position" || e === "percentage", jk = (e) => e === "image" || e === "url", Mk = (e) => e === "length" || e === "size" || e === "bg-size", Nk = (e) => e === "length", Pk = (e) => e === "number", Fk = (e) => e === "family-name", Ik = (e) => e === "number" || e === "weight", Lk = (e) => e === "shadow", Rk = /* @__PURE__ */ WO(() => {
+	let e = KO("color"), t = KO("font"), n = KO("text"), r = KO("font-weight"), i = KO("tracking"), a = KO("leading"), o = KO("breakpoint"), s = KO("container"), c = KO("spacing"), l = KO("radius"), u = KO("shadow"), d = KO("inset-shadow"), f = KO("text-shadow"), p = KO("drop-shadow"), m = KO("blur"), h = KO("perspective"), g = KO("aspect"), _ = KO("ease"), v = KO("animate"), y = () => [
+		"auto",
+		"avoid",
+		"all",
+		"avoid-page",
+		"page",
+		"left",
+		"right",
+		"column"
+	], b = () => [
+		"center",
+		"top",
+		"bottom",
+		"left",
+		"right",
+		"top-left",
+		"left-top",
+		"top-right",
+		"right-top",
+		"bottom-right",
+		"right-bottom",
+		"bottom-left",
+		"left-bottom"
+	], x = () => [
+		...b(),
+		$,
+		Q
+	], S = () => [
+		"auto",
+		"hidden",
+		"clip",
+		"visible",
+		"scroll"
+	], C = () => [
+		"auto",
+		"contain",
+		"none"
+	], w = () => [
+		$,
+		Q,
+		c
+	], T = () => [
+		tk,
+		"full",
+		"auto",
+		...w()
+	], E = () => [
+		rk,
+		"none",
+		"subgrid",
+		$,
+		Q
+	], D = () => [
+		"auto",
+		{ span: [
+			"full",
+			rk,
+			$,
+			Q
+		] },
+		rk,
+		$,
+		Q
+	], O = () => [
+		rk,
+		"auto",
+		$,
+		Q
+	], k = () => [
+		"auto",
+		"min",
+		"max",
+		"fr",
+		$,
+		Q
+	], ee = () => [
+		"start",
+		"end",
+		"center",
+		"between",
+		"around",
+		"evenly",
+		"stretch",
+		"baseline",
+		"center-safe",
+		"end-safe"
+	], te = () => [
+		"start",
+		"end",
+		"center",
+		"stretch",
+		"center-safe",
+		"end-safe"
+	], A = () => ["auto", ...w()], ne = () => [
+		tk,
+		"auto",
+		"full",
+		"dvw",
+		"dvh",
+		"lvw",
+		"lvh",
+		"svw",
+		"svh",
+		"min",
+		"max",
+		"fit",
+		...w()
+	], re = () => [
+		tk,
+		"screen",
+		"full",
+		"dvw",
+		"lvw",
+		"svw",
+		"min",
+		"max",
+		"fit",
+		...w()
+	], ie = () => [
+		tk,
+		"screen",
+		"full",
+		"lh",
+		"dvh",
+		"lvh",
+		"svh",
+		"min",
+		"max",
+		"fit",
+		...w()
+	], j = () => [
+		e,
+		$,
+		Q
+	], ae = () => [
+		...b(),
+		Ck,
+		vk,
+		{ position: [$, Q] }
+	], oe = () => ["no-repeat", { repeat: [
+		"",
+		"x",
+		"y",
+		"space",
+		"round"
+	] }], se = () => [
+		"auto",
+		"cover",
+		"contain",
+		wk,
+		pk,
+		{ size: [$, Q] }
+	], ce = () => [
+		ik,
+		xk,
+		mk
+	], le = () => [
+		"",
+		"none",
+		"full",
+		l,
+		$,
+		Q
+	], ue = () => [
+		"",
+		nk,
+		xk,
+		mk
+	], de = () => [
+		"solid",
+		"dashed",
+		"dotted",
+		"double"
+	], fe = () => [
+		"normal",
+		"multiply",
+		"screen",
+		"overlay",
+		"darken",
+		"lighten",
+		"color-dodge",
+		"color-burn",
+		"hard-light",
+		"soft-light",
+		"difference",
+		"exclusion",
+		"hue",
+		"saturation",
+		"color",
+		"luminosity"
+	], pe = () => [
+		nk,
+		ik,
+		Ck,
+		vk
+	], me = () => [
+		"",
+		"none",
+		m,
+		$,
+		Q
+	], he = () => [
+		"none",
+		nk,
+		$,
+		Q
+	], ge = () => [
+		"none",
+		nk,
+		$,
+		Q
+	], _e = () => [
+		nk,
+		$,
+		Q
+	], ve = () => [
+		tk,
+		"full",
+		...w()
+	];
+	return {
+		cacheSize: 500,
+		theme: {
+			animate: [
+				"spin",
+				"ping",
+				"pulse",
+				"bounce"
+			],
+			aspect: ["video"],
+			blur: [ak],
+			breakpoint: [ak],
+			color: [ok],
+			container: [ak],
+			"drop-shadow": [ak],
+			ease: [
+				"in",
+				"out",
+				"in-out"
+			],
+			font: [dk],
+			"font-weight": [
+				"thin",
+				"extralight",
+				"light",
+				"normal",
+				"medium",
+				"semibold",
+				"bold",
+				"extrabold",
+				"black"
+			],
+			"inset-shadow": [ak],
+			leading: [
+				"none",
+				"tight",
+				"snug",
+				"normal",
+				"relaxed",
+				"loose"
+			],
+			perspective: [
+				"dramatic",
+				"near",
+				"normal",
+				"midrange",
+				"distant",
+				"none"
+			],
+			radius: [ak],
+			shadow: [ak],
+			spacing: ["px", nk],
+			text: [ak],
+			"text-shadow": [ak],
+			tracking: [
+				"tighter",
+				"tight",
+				"normal",
+				"wide",
+				"wider",
+				"widest"
+			]
+		},
+		classGroups: {
+			aspect: [{ aspect: [
+				"auto",
+				"square",
+				tk,
+				Q,
+				$,
+				g
+			] }],
+			container: ["container"],
+			"container-type": [{ "@container": [
+				"",
+				"normal",
+				"size",
+				$,
+				Q
+			] }],
+			"container-named": [fk],
+			columns: [{ columns: [
+				nk,
+				Q,
+				$,
+				s
+			] }],
+			"break-after": [{ "break-after": y() }],
+			"break-before": [{ "break-before": y() }],
+			"break-inside": [{ "break-inside": [
+				"auto",
+				"avoid",
+				"avoid-page",
+				"avoid-column"
+			] }],
+			"box-decoration": [{ "box-decoration": ["slice", "clone"] }],
+			box: [{ box: ["border", "content"] }],
+			display: [
+				"block",
+				"inline-block",
+				"inline",
+				"flex",
+				"inline-flex",
+				"table",
+				"inline-table",
+				"table-caption",
+				"table-cell",
+				"table-column",
+				"table-column-group",
+				"table-footer-group",
+				"table-header-group",
+				"table-row-group",
+				"table-row",
+				"flow-root",
+				"grid",
+				"inline-grid",
+				"contents",
+				"list-item",
+				"hidden"
+			],
+			sr: ["sr-only", "not-sr-only"],
+			float: [{ float: [
+				"right",
+				"left",
+				"none",
+				"start",
+				"end"
+			] }],
+			clear: [{ clear: [
+				"left",
+				"right",
+				"both",
+				"none",
+				"start",
+				"end"
+			] }],
+			isolation: ["isolate", "isolation-auto"],
+			"object-fit": [{ object: [
+				"contain",
+				"cover",
+				"fill",
+				"none",
+				"scale-down"
+			] }],
+			"object-position": [{ object: x() }],
+			overflow: [{ overflow: S() }],
+			"overflow-x": [{ "overflow-x": S() }],
+			"overflow-y": [{ "overflow-y": S() }],
+			overscroll: [{ overscroll: C() }],
+			"overscroll-x": [{ "overscroll-x": C() }],
+			"overscroll-y": [{ "overscroll-y": C() }],
+			position: [
+				"static",
+				"fixed",
+				"absolute",
+				"relative",
+				"sticky"
+			],
+			inset: [{ inset: T() }],
+			"inset-x": [{ "inset-x": T() }],
+			"inset-y": [{ "inset-y": T() }],
+			start: [{
+				"inset-s": T(),
+				start: T()
+			}],
+			end: [{
+				"inset-e": T(),
+				end: T()
+			}],
+			"inset-bs": [{ "inset-bs": T() }],
+			"inset-be": [{ "inset-be": T() }],
+			top: [{ top: T() }],
+			right: [{ right: T() }],
+			bottom: [{ bottom: T() }],
+			left: [{ left: T() }],
+			visibility: [
+				"visible",
+				"invisible",
+				"collapse"
+			],
+			z: [{ z: [
+				rk,
+				"auto",
+				$,
+				Q
+			] }],
+			basis: [{ basis: [
+				tk,
+				"full",
+				"auto",
+				s,
+				...w()
+			] }],
+			"flex-direction": [{ flex: [
+				"row",
+				"row-reverse",
+				"col",
+				"col-reverse"
+			] }],
+			"flex-wrap": [{ flex: [
+				"nowrap",
+				"wrap",
+				"wrap-reverse"
+			] }],
+			flex: [{ flex: [
+				nk,
+				tk,
+				"auto",
+				"initial",
+				"none",
+				Q
+			] }],
+			grow: [{ grow: [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			shrink: [{ shrink: [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			order: [{ order: [
+				rk,
+				"first",
+				"last",
+				"none",
+				$,
+				Q
+			] }],
+			"grid-cols": [{ "grid-cols": E() }],
+			"col-start-end": [{ col: D() }],
+			"col-start": [{ "col-start": O() }],
+			"col-end": [{ "col-end": O() }],
+			"grid-rows": [{ "grid-rows": E() }],
+			"row-start-end": [{ row: D() }],
+			"row-start": [{ "row-start": O() }],
+			"row-end": [{ "row-end": O() }],
+			"grid-flow": [{ "grid-flow": [
+				"row",
+				"col",
+				"dense",
+				"row-dense",
+				"col-dense"
+			] }],
+			"auto-cols": [{ "auto-cols": k() }],
+			"auto-rows": [{ "auto-rows": k() }],
+			gap: [{ gap: w() }],
+			"gap-x": [{ "gap-x": w() }],
+			"gap-y": [{ "gap-y": w() }],
+			"justify-content": [{ justify: [...ee(), "normal"] }],
+			"justify-items": [{ "justify-items": [...te(), "normal"] }],
+			"justify-self": [{ "justify-self": ["auto", ...te()] }],
+			"align-content": [{ content: ["normal", ...ee()] }],
+			"align-items": [{ items: [...te(), { baseline: ["", "last"] }] }],
+			"align-self": [{ self: [
+				"auto",
+				...te(),
+				{ baseline: ["", "last"] }
+			] }],
+			"place-content": [{ "place-content": ee() }],
+			"place-items": [{ "place-items": [...te(), "baseline"] }],
+			"place-self": [{ "place-self": ["auto", ...te()] }],
+			p: [{ p: w() }],
+			px: [{ px: w() }],
+			py: [{ py: w() }],
+			ps: [{ ps: w() }],
+			pe: [{ pe: w() }],
+			pbs: [{ pbs: w() }],
+			pbe: [{ pbe: w() }],
+			pt: [{ pt: w() }],
+			pr: [{ pr: w() }],
+			pb: [{ pb: w() }],
+			pl: [{ pl: w() }],
+			m: [{ m: A() }],
+			mx: [{ mx: A() }],
+			my: [{ my: A() }],
+			ms: [{ ms: A() }],
+			me: [{ me: A() }],
+			mbs: [{ mbs: A() }],
+			mbe: [{ mbe: A() }],
+			mt: [{ mt: A() }],
+			mr: [{ mr: A() }],
+			mb: [{ mb: A() }],
+			ml: [{ ml: A() }],
+			"space-x": [{ "space-x": w() }],
+			"space-x-reverse": ["space-x-reverse"],
+			"space-y": [{ "space-y": w() }],
+			"space-y-reverse": ["space-y-reverse"],
+			size: [{ size: ne() }],
+			"inline-size": [{ inline: ["auto", ...re()] }],
+			"min-inline-size": [{ "min-inline": ["auto", ...re()] }],
+			"max-inline-size": [{ "max-inline": ["none", ...re()] }],
+			"block-size": [{ block: ["auto", ...ie()] }],
+			"min-block-size": [{ "min-block": ["auto", ...ie()] }],
+			"max-block-size": [{ "max-block": ["none", ...ie()] }],
+			w: [{ w: [
+				s,
+				"screen",
+				...ne()
+			] }],
+			"min-w": [{ "min-w": [
+				s,
+				"screen",
+				"none",
+				...ne()
+			] }],
+			"max-w": [{ "max-w": [
+				s,
+				"screen",
+				"none",
+				"prose",
+				{ screen: [o] },
+				...ne()
+			] }],
+			h: [{ h: [
+				"screen",
+				"lh",
+				...ne()
+			] }],
+			"min-h": [{ "min-h": [
+				"screen",
+				"lh",
+				"none",
+				...ne()
+			] }],
+			"max-h": [{ "max-h": [
+				"screen",
+				"lh",
+				...ne()
+			] }],
+			"font-size": [{ text: [
+				"base",
+				n,
+				xk,
+				mk
+			] }],
+			"font-smoothing": ["antialiased", "subpixel-antialiased"],
+			"font-style": ["italic", "not-italic"],
+			"font-weight": [{ font: [
+				r,
+				Dk,
+				gk
+			] }],
+			"font-stretch": [{ "font-stretch": [
+				"ultra-condensed",
+				"extra-condensed",
+				"condensed",
+				"semi-condensed",
+				"normal",
+				"semi-expanded",
+				"expanded",
+				"extra-expanded",
+				"ultra-expanded",
+				ik,
+				Q
+			] }],
+			"font-family": [{ font: [
+				Sk,
+				_k,
+				t
+			] }],
+			"font-features": [{ "font-features": [Q] }],
+			"fvn-normal": ["normal-nums"],
+			"fvn-ordinal": ["ordinal"],
+			"fvn-slashed-zero": ["slashed-zero"],
+			"fvn-figure": ["lining-nums", "oldstyle-nums"],
+			"fvn-spacing": ["proportional-nums", "tabular-nums"],
+			"fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
+			tracking: [{ tracking: [
+				i,
+				$,
+				Q
+			] }],
+			"line-clamp": [{ "line-clamp": [
+				nk,
+				"none",
+				$,
+				hk
+			] }],
+			leading: [{ leading: [a, ...w()] }],
+			"list-image": [{ "list-image": [
+				"none",
+				$,
+				Q
+			] }],
+			"list-style-position": [{ list: ["inside", "outside"] }],
+			"list-style-type": [{ list: [
+				"disc",
+				"decimal",
+				"none",
+				$,
+				Q
+			] }],
+			"text-alignment": [{ text: [
+				"left",
+				"center",
+				"right",
+				"justify",
+				"start",
+				"end"
+			] }],
+			"placeholder-color": [{ placeholder: j() }],
+			"text-color": [{ text: j() }],
+			"text-decoration": [
+				"underline",
+				"overline",
+				"line-through",
+				"no-underline"
+			],
+			"text-decoration-style": [{ decoration: [...de(), "wavy"] }],
+			"text-decoration-thickness": [{ decoration: [
+				nk,
+				"from-font",
+				"auto",
+				$,
+				mk
+			] }],
+			"text-decoration-color": [{ decoration: j() }],
+			"underline-offset": [{ "underline-offset": [
+				nk,
+				"auto",
+				$,
+				Q
+			] }],
+			"text-transform": [
+				"uppercase",
+				"lowercase",
+				"capitalize",
+				"normal-case"
+			],
+			"text-overflow": [
+				"truncate",
+				"text-ellipsis",
+				"text-clip"
+			],
+			"text-wrap": [{ text: [
+				"wrap",
+				"nowrap",
+				"balance",
+				"pretty"
+			] }],
+			indent: [{ indent: w() }],
+			"tab-size": [{ tab: [
+				rk,
+				$,
+				Q
+			] }],
+			"vertical-align": [{ align: [
+				"baseline",
+				"top",
+				"middle",
+				"bottom",
+				"text-top",
+				"text-bottom",
+				"sub",
+				"super",
+				$,
+				Q
+			] }],
+			whitespace: [{ whitespace: [
+				"normal",
+				"nowrap",
+				"pre",
+				"pre-line",
+				"pre-wrap",
+				"break-spaces"
+			] }],
+			break: [{ break: [
+				"normal",
+				"words",
+				"all",
+				"keep"
+			] }],
+			wrap: [{ wrap: [
+				"break-word",
+				"anywhere",
+				"normal"
+			] }],
+			hyphens: [{ hyphens: [
+				"none",
+				"manual",
+				"auto"
+			] }],
+			content: [{ content: [
+				"none",
+				$,
+				Q
+			] }],
+			"bg-attachment": [{ bg: [
+				"fixed",
+				"local",
+				"scroll"
+			] }],
+			"bg-clip": [{ "bg-clip": [
+				"border",
+				"padding",
+				"content",
+				"text"
+			] }],
+			"bg-origin": [{ "bg-origin": [
+				"border",
+				"padding",
+				"content"
+			] }],
+			"bg-position": [{ bg: ae() }],
+			"bg-repeat": [{ bg: oe() }],
+			"bg-size": [{ bg: se() }],
+			"bg-image": [{ bg: [
+				"none",
+				{
+					linear: [
+						{ to: [
+							"t",
+							"tr",
+							"r",
+							"br",
+							"b",
+							"bl",
+							"l",
+							"tl"
+						] },
+						rk,
+						$,
+						Q
+					],
+					radial: [
+						"",
+						$,
+						Q
+					],
+					conic: [
+						rk,
+						$,
+						Q
+					]
+				},
+				Tk,
+				yk
+			] }],
+			"bg-color": [{ bg: j() }],
+			"gradient-from-pos": [{ from: ce() }],
+			"gradient-via-pos": [{ via: ce() }],
+			"gradient-to-pos": [{ to: ce() }],
+			"gradient-from": [{ from: j() }],
+			"gradient-via": [{ via: j() }],
+			"gradient-to": [{ to: j() }],
+			rounded: [{ rounded: le() }],
+			"rounded-s": [{ "rounded-s": le() }],
+			"rounded-e": [{ "rounded-e": le() }],
+			"rounded-t": [{ "rounded-t": le() }],
+			"rounded-r": [{ "rounded-r": le() }],
+			"rounded-b": [{ "rounded-b": le() }],
+			"rounded-l": [{ "rounded-l": le() }],
+			"rounded-ss": [{ "rounded-ss": le() }],
+			"rounded-se": [{ "rounded-se": le() }],
+			"rounded-ee": [{ "rounded-ee": le() }],
+			"rounded-es": [{ "rounded-es": le() }],
+			"rounded-tl": [{ "rounded-tl": le() }],
+			"rounded-tr": [{ "rounded-tr": le() }],
+			"rounded-br": [{ "rounded-br": le() }],
+			"rounded-bl": [{ "rounded-bl": le() }],
+			"border-w": [{ border: ue() }],
+			"border-w-x": [{ "border-x": ue() }],
+			"border-w-y": [{ "border-y": ue() }],
+			"border-w-s": [{ "border-s": ue() }],
+			"border-w-e": [{ "border-e": ue() }],
+			"border-w-bs": [{ "border-bs": ue() }],
+			"border-w-be": [{ "border-be": ue() }],
+			"border-w-t": [{ "border-t": ue() }],
+			"border-w-r": [{ "border-r": ue() }],
+			"border-w-b": [{ "border-b": ue() }],
+			"border-w-l": [{ "border-l": ue() }],
+			"divide-x": [{ "divide-x": ue() }],
+			"divide-x-reverse": ["divide-x-reverse"],
+			"divide-y": [{ "divide-y": ue() }],
+			"divide-y-reverse": ["divide-y-reverse"],
+			"border-style": [{ border: [
+				...de(),
+				"hidden",
+				"none"
+			] }],
+			"divide-style": [{ divide: [
+				...de(),
+				"hidden",
+				"none"
+			] }],
+			"border-color": [{ border: j() }],
+			"border-color-x": [{ "border-x": j() }],
+			"border-color-y": [{ "border-y": j() }],
+			"border-color-s": [{ "border-s": j() }],
+			"border-color-e": [{ "border-e": j() }],
+			"border-color-bs": [{ "border-bs": j() }],
+			"border-color-be": [{ "border-be": j() }],
+			"border-color-t": [{ "border-t": j() }],
+			"border-color-r": [{ "border-r": j() }],
+			"border-color-b": [{ "border-b": j() }],
+			"border-color-l": [{ "border-l": j() }],
+			"divide-color": [{ divide: j() }],
+			"outline-style": [{ outline: [
+				...de(),
+				"none",
+				"hidden"
+			] }],
+			"outline-offset": [{ "outline-offset": [
+				nk,
+				$,
+				Q
+			] }],
+			"outline-w": [{ outline: [
+				"",
+				nk,
+				xk,
+				mk
+			] }],
+			"outline-color": [{ outline: j() }],
+			shadow: [{ shadow: [
+				"",
+				"none",
+				u,
+				Ek,
+				bk
+			] }],
+			"shadow-color": [{ shadow: j() }],
+			"inset-shadow": [{ "inset-shadow": [
+				"none",
+				d,
+				Ek,
+				bk
+			] }],
+			"inset-shadow-color": [{ "inset-shadow": j() }],
+			"ring-w": [{ ring: ue() }],
+			"ring-w-inset": ["ring-inset"],
+			"ring-color": [{ ring: j() }],
+			"ring-offset-w": [{ "ring-offset": [nk, mk] }],
+			"ring-offset-color": [{ "ring-offset": j() }],
+			"inset-ring-w": [{ "inset-ring": ue() }],
+			"inset-ring-color": [{ "inset-ring": j() }],
+			"text-shadow": [{ "text-shadow": [
+				"none",
+				f,
+				Ek,
+				bk
+			] }],
+			"text-shadow-color": [{ "text-shadow": j() }],
+			opacity: [{ opacity: [
+				nk,
+				$,
+				Q
+			] }],
+			"mix-blend": [{ "mix-blend": [
+				...fe(),
+				"plus-darker",
+				"plus-lighter"
+			] }],
+			"bg-blend": [{ "bg-blend": fe() }],
+			"mask-clip": [{ "mask-clip": [
+				"border",
+				"padding",
+				"content",
+				"fill",
+				"stroke",
+				"view"
+			] }, "mask-no-clip"],
+			"mask-composite": [{ mask: [
+				"add",
+				"subtract",
+				"intersect",
+				"exclude"
+			] }],
+			"mask-image-linear-pos": [{ "mask-linear": [nk] }],
+			"mask-image-linear-from-pos": [{ "mask-linear-from": pe() }],
+			"mask-image-linear-to-pos": [{ "mask-linear-to": pe() }],
+			"mask-image-linear-from-color": [{ "mask-linear-from": j() }],
+			"mask-image-linear-to-color": [{ "mask-linear-to": j() }],
+			"mask-image-t-from-pos": [{ "mask-t-from": pe() }],
+			"mask-image-t-to-pos": [{ "mask-t-to": pe() }],
+			"mask-image-t-from-color": [{ "mask-t-from": j() }],
+			"mask-image-t-to-color": [{ "mask-t-to": j() }],
+			"mask-image-r-from-pos": [{ "mask-r-from": pe() }],
+			"mask-image-r-to-pos": [{ "mask-r-to": pe() }],
+			"mask-image-r-from-color": [{ "mask-r-from": j() }],
+			"mask-image-r-to-color": [{ "mask-r-to": j() }],
+			"mask-image-b-from-pos": [{ "mask-b-from": pe() }],
+			"mask-image-b-to-pos": [{ "mask-b-to": pe() }],
+			"mask-image-b-from-color": [{ "mask-b-from": j() }],
+			"mask-image-b-to-color": [{ "mask-b-to": j() }],
+			"mask-image-l-from-pos": [{ "mask-l-from": pe() }],
+			"mask-image-l-to-pos": [{ "mask-l-to": pe() }],
+			"mask-image-l-from-color": [{ "mask-l-from": j() }],
+			"mask-image-l-to-color": [{ "mask-l-to": j() }],
+			"mask-image-x-from-pos": [{ "mask-x-from": pe() }],
+			"mask-image-x-to-pos": [{ "mask-x-to": pe() }],
+			"mask-image-x-from-color": [{ "mask-x-from": j() }],
+			"mask-image-x-to-color": [{ "mask-x-to": j() }],
+			"mask-image-y-from-pos": [{ "mask-y-from": pe() }],
+			"mask-image-y-to-pos": [{ "mask-y-to": pe() }],
+			"mask-image-y-from-color": [{ "mask-y-from": j() }],
+			"mask-image-y-to-color": [{ "mask-y-to": j() }],
+			"mask-image-radial": [{ "mask-radial": [$, Q] }],
+			"mask-image-radial-from-pos": [{ "mask-radial-from": pe() }],
+			"mask-image-radial-to-pos": [{ "mask-radial-to": pe() }],
+			"mask-image-radial-from-color": [{ "mask-radial-from": j() }],
+			"mask-image-radial-to-color": [{ "mask-radial-to": j() }],
+			"mask-image-radial-shape": [{ "mask-radial": ["circle", "ellipse"] }],
+			"mask-image-radial-size": [{ "mask-radial": [{
+				closest: ["side", "corner"],
+				farthest: ["side", "corner"]
+			}] }],
+			"mask-image-radial-pos": [{ "mask-radial-at": b() }],
+			"mask-image-conic-pos": [{ "mask-conic": [nk] }],
+			"mask-image-conic-from-pos": [{ "mask-conic-from": pe() }],
+			"mask-image-conic-to-pos": [{ "mask-conic-to": pe() }],
+			"mask-image-conic-from-color": [{ "mask-conic-from": j() }],
+			"mask-image-conic-to-color": [{ "mask-conic-to": j() }],
+			"mask-mode": [{ mask: [
+				"alpha",
+				"luminance",
+				"match"
+			] }],
+			"mask-origin": [{ "mask-origin": [
+				"border",
+				"padding",
+				"content",
+				"fill",
+				"stroke",
+				"view"
+			] }],
+			"mask-position": [{ mask: ae() }],
+			"mask-repeat": [{ mask: oe() }],
+			"mask-size": [{ mask: se() }],
+			"mask-type": [{ "mask-type": ["alpha", "luminance"] }],
+			"mask-image": [{ mask: [
+				"none",
+				$,
+				Q
+			] }],
+			filter: [{ filter: [
+				"",
+				"none",
+				$,
+				Q
+			] }],
+			blur: [{ blur: me() }],
+			brightness: [{ brightness: [
+				nk,
+				$,
+				Q
+			] }],
+			contrast: [{ contrast: [
+				nk,
+				$,
+				Q
+			] }],
+			"drop-shadow": [{ "drop-shadow": [
+				"",
+				"none",
+				p,
+				Ek,
+				bk
+			] }],
+			"drop-shadow-color": [{ "drop-shadow": j() }],
+			grayscale: [{ grayscale: [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			"hue-rotate": [{ "hue-rotate": [
+				nk,
+				$,
+				Q
+			] }],
+			invert: [{ invert: [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			saturate: [{ saturate: [
+				nk,
+				$,
+				Q
+			] }],
+			sepia: [{ sepia: [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-filter": [{ "backdrop-filter": [
+				"",
+				"none",
+				$,
+				Q
+			] }],
+			"backdrop-blur": [{ "backdrop-blur": me() }],
+			"backdrop-brightness": [{ "backdrop-brightness": [
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-contrast": [{ "backdrop-contrast": [
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-grayscale": [{ "backdrop-grayscale": [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-hue-rotate": [{ "backdrop-hue-rotate": [
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-invert": [{ "backdrop-invert": [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-opacity": [{ "backdrop-opacity": [
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-saturate": [{ "backdrop-saturate": [
+				nk,
+				$,
+				Q
+			] }],
+			"backdrop-sepia": [{ "backdrop-sepia": [
+				"",
+				nk,
+				$,
+				Q
+			] }],
+			"border-collapse": [{ border: ["collapse", "separate"] }],
+			"border-spacing": [{ "border-spacing": w() }],
+			"border-spacing-x": [{ "border-spacing-x": w() }],
+			"border-spacing-y": [{ "border-spacing-y": w() }],
+			"table-layout": [{ table: ["auto", "fixed"] }],
+			caption: [{ caption: ["top", "bottom"] }],
+			transition: [{ transition: [
+				"",
+				"all",
+				"colors",
+				"opacity",
+				"shadow",
+				"transform",
+				"none",
+				$,
+				Q
+			] }],
+			"transition-behavior": [{ transition: ["normal", "discrete"] }],
+			duration: [{ duration: [
+				nk,
+				"initial",
+				$,
+				Q
+			] }],
+			ease: [{ ease: [
+				"linear",
+				"initial",
+				_,
+				$,
+				Q
+			] }],
+			delay: [{ delay: [
+				nk,
+				$,
+				Q
+			] }],
+			animate: [{ animate: [
+				"none",
+				v,
+				$,
+				Q
+			] }],
+			backface: [{ backface: ["hidden", "visible"] }],
+			perspective: [{ perspective: [
+				h,
+				$,
+				Q
+			] }],
+			"perspective-origin": [{ "perspective-origin": x() }],
+			rotate: [{ rotate: he() }],
+			"rotate-x": [{ "rotate-x": he() }],
+			"rotate-y": [{ "rotate-y": he() }],
+			"rotate-z": [{ "rotate-z": he() }],
+			scale: [{ scale: ge() }],
+			"scale-x": [{ "scale-x": ge() }],
+			"scale-y": [{ "scale-y": ge() }],
+			"scale-z": [{ "scale-z": ge() }],
+			"scale-3d": ["scale-3d"],
+			skew: [{ skew: _e() }],
+			"skew-x": [{ "skew-x": _e() }],
+			"skew-y": [{ "skew-y": _e() }],
+			transform: [{ transform: [
+				$,
+				Q,
+				"",
+				"none",
+				"gpu",
+				"cpu"
+			] }],
+			"transform-origin": [{ origin: x() }],
+			"transform-style": [{ transform: ["3d", "flat"] }],
+			translate: [{ translate: ve() }],
+			"translate-x": [{ "translate-x": ve() }],
+			"translate-y": [{ "translate-y": ve() }],
+			"translate-z": [{ "translate-z": ve() }],
+			"translate-none": ["translate-none"],
+			zoom: [{ zoom: [
+				rk,
+				$,
+				Q
+			] }],
+			accent: [{ accent: j() }],
+			appearance: [{ appearance: ["none", "auto"] }],
+			"caret-color": [{ caret: j() }],
+			"color-scheme": [{ scheme: [
+				"normal",
+				"dark",
+				"light",
+				"light-dark",
+				"only-dark",
+				"only-light"
+			] }],
+			cursor: [{ cursor: [
+				"auto",
+				"default",
+				"pointer",
+				"wait",
+				"text",
+				"move",
+				"help",
+				"not-allowed",
+				"none",
+				"context-menu",
+				"progress",
+				"cell",
+				"crosshair",
+				"vertical-text",
+				"alias",
+				"copy",
+				"no-drop",
+				"grab",
+				"grabbing",
+				"all-scroll",
+				"col-resize",
+				"row-resize",
+				"n-resize",
+				"e-resize",
+				"s-resize",
+				"w-resize",
+				"ne-resize",
+				"nw-resize",
+				"se-resize",
+				"sw-resize",
+				"ew-resize",
+				"ns-resize",
+				"nesw-resize",
+				"nwse-resize",
+				"zoom-in",
+				"zoom-out",
+				$,
+				Q
+			] }],
+			"field-sizing": [{ "field-sizing": ["fixed", "content"] }],
+			"pointer-events": [{ "pointer-events": ["auto", "none"] }],
+			resize: [{ resize: [
+				"none",
+				"",
+				"y",
+				"x"
+			] }],
+			"scroll-behavior": [{ scroll: ["auto", "smooth"] }],
+			"scrollbar-thumb-color": [{ "scrollbar-thumb": j() }],
+			"scrollbar-track-color": [{ "scrollbar-track": j() }],
+			"scrollbar-gutter": [{ "scrollbar-gutter": [
+				"auto",
+				"stable",
+				"both"
+			] }],
+			"scrollbar-w": [{ scrollbar: [
+				"auto",
+				"thin",
+				"none"
+			] }],
+			"scroll-m": [{ "scroll-m": w() }],
+			"scroll-mx": [{ "scroll-mx": w() }],
+			"scroll-my": [{ "scroll-my": w() }],
+			"scroll-ms": [{ "scroll-ms": w() }],
+			"scroll-me": [{ "scroll-me": w() }],
+			"scroll-mbs": [{ "scroll-mbs": w() }],
+			"scroll-mbe": [{ "scroll-mbe": w() }],
+			"scroll-mt": [{ "scroll-mt": w() }],
+			"scroll-mr": [{ "scroll-mr": w() }],
+			"scroll-mb": [{ "scroll-mb": w() }],
+			"scroll-ml": [{ "scroll-ml": w() }],
+			"scroll-p": [{ "scroll-p": w() }],
+			"scroll-px": [{ "scroll-px": w() }],
+			"scroll-py": [{ "scroll-py": w() }],
+			"scroll-ps": [{ "scroll-ps": w() }],
+			"scroll-pe": [{ "scroll-pe": w() }],
+			"scroll-pbs": [{ "scroll-pbs": w() }],
+			"scroll-pbe": [{ "scroll-pbe": w() }],
+			"scroll-pt": [{ "scroll-pt": w() }],
+			"scroll-pr": [{ "scroll-pr": w() }],
+			"scroll-pb": [{ "scroll-pb": w() }],
+			"scroll-pl": [{ "scroll-pl": w() }],
+			"snap-align": [{ snap: [
+				"start",
+				"end",
+				"center",
+				"align-none"
+			] }],
+			"snap-stop": [{ snap: ["normal", "always"] }],
+			"snap-type": [{ snap: [
+				"none",
+				"x",
+				"y",
+				"both"
+			] }],
+			"snap-strictness": [{ snap: ["mandatory", "proximity"] }],
+			touch: [{ touch: [
+				"auto",
+				"none",
+				"manipulation"
+			] }],
+			"touch-x": [{ "touch-pan": [
+				"x",
+				"left",
+				"right"
+			] }],
+			"touch-y": [{ "touch-pan": [
+				"y",
+				"up",
+				"down"
+			] }],
+			"touch-pz": ["touch-pinch-zoom"],
+			select: [{ select: [
+				"none",
+				"text",
+				"all",
+				"auto"
+			] }],
+			"will-change": [{ "will-change": [
+				"auto",
+				"scroll",
+				"contents",
+				"transform",
+				$,
+				Q
+			] }],
+			fill: [{ fill: ["none", ...j()] }],
+			"stroke-w": [{ stroke: [
+				nk,
+				xk,
+				mk,
+				hk
+			] }],
+			stroke: [{ stroke: ["none", ...j()] }],
+			"forced-color-adjust": [{ "forced-color-adjust": ["auto", "none"] }]
+		},
+		conflictingClassGroups: {
+			"container-named": ["container-type"],
+			overflow: ["overflow-x", "overflow-y"],
+			overscroll: ["overscroll-x", "overscroll-y"],
+			inset: [
+				"inset-x",
+				"inset-y",
+				"inset-bs",
+				"inset-be",
+				"start",
+				"end",
+				"top",
+				"right",
+				"bottom",
+				"left"
+			],
+			"inset-x": ["right", "left"],
+			"inset-y": ["top", "bottom"],
+			flex: [
+				"basis",
+				"grow",
+				"shrink"
+			],
+			gap: ["gap-x", "gap-y"],
+			p: [
+				"px",
+				"py",
+				"ps",
+				"pe",
+				"pbs",
+				"pbe",
+				"pt",
+				"pr",
+				"pb",
+				"pl"
+			],
+			px: ["pr", "pl"],
+			py: ["pt", "pb"],
+			m: [
+				"mx",
+				"my",
+				"ms",
+				"me",
+				"mbs",
+				"mbe",
+				"mt",
+				"mr",
+				"mb",
+				"ml"
+			],
+			mx: ["mr", "ml"],
+			my: ["mt", "mb"],
+			size: ["w", "h"],
+			"font-size": ["leading"],
+			"fvn-normal": [
+				"fvn-ordinal",
+				"fvn-slashed-zero",
+				"fvn-figure",
+				"fvn-spacing",
+				"fvn-fraction"
+			],
+			"fvn-ordinal": ["fvn-normal"],
+			"fvn-slashed-zero": ["fvn-normal"],
+			"fvn-figure": ["fvn-normal"],
+			"fvn-spacing": ["fvn-normal"],
+			"fvn-fraction": ["fvn-normal"],
+			"line-clamp": ["display", "overflow"],
+			rounded: [
+				"rounded-s",
+				"rounded-e",
+				"rounded-t",
+				"rounded-r",
+				"rounded-b",
+				"rounded-l",
+				"rounded-ss",
+				"rounded-se",
+				"rounded-ee",
+				"rounded-es",
+				"rounded-tl",
+				"rounded-tr",
+				"rounded-br",
+				"rounded-bl"
+			],
+			"rounded-s": ["rounded-ss", "rounded-es"],
+			"rounded-e": ["rounded-se", "rounded-ee"],
+			"rounded-t": ["rounded-tl", "rounded-tr"],
+			"rounded-r": ["rounded-tr", "rounded-br"],
+			"rounded-b": ["rounded-br", "rounded-bl"],
+			"rounded-l": ["rounded-tl", "rounded-bl"],
+			"border-spacing": ["border-spacing-x", "border-spacing-y"],
+			"border-w": [
+				"border-w-x",
+				"border-w-y",
+				"border-w-s",
+				"border-w-e",
+				"border-w-bs",
+				"border-w-be",
+				"border-w-t",
+				"border-w-r",
+				"border-w-b",
+				"border-w-l"
+			],
+			"border-w-x": ["border-w-r", "border-w-l"],
+			"border-w-y": ["border-w-t", "border-w-b"],
+			"border-color": [
+				"border-color-x",
+				"border-color-y",
+				"border-color-s",
+				"border-color-e",
+				"border-color-bs",
+				"border-color-be",
+				"border-color-t",
+				"border-color-r",
+				"border-color-b",
+				"border-color-l"
+			],
+			"border-color-x": ["border-color-r", "border-color-l"],
+			"border-color-y": ["border-color-t", "border-color-b"],
+			translate: [
+				"translate-x",
+				"translate-y",
+				"translate-none"
+			],
+			"translate-none": [
+				"translate",
+				"translate-x",
+				"translate-y",
+				"translate-z"
+			],
+			"scroll-m": [
+				"scroll-mx",
+				"scroll-my",
+				"scroll-ms",
+				"scroll-me",
+				"scroll-mbs",
+				"scroll-mbe",
+				"scroll-mt",
+				"scroll-mr",
+				"scroll-mb",
+				"scroll-ml"
+			],
+			"scroll-mx": ["scroll-mr", "scroll-ml"],
+			"scroll-my": ["scroll-mt", "scroll-mb"],
+			"scroll-p": [
+				"scroll-px",
+				"scroll-py",
+				"scroll-ps",
+				"scroll-pe",
+				"scroll-pbs",
+				"scroll-pbe",
+				"scroll-pt",
+				"scroll-pr",
+				"scroll-pb",
+				"scroll-pl"
+			],
+			"scroll-px": ["scroll-pr", "scroll-pl"],
+			"scroll-py": ["scroll-pt", "scroll-pb"],
+			touch: [
+				"touch-x",
+				"touch-y",
+				"touch-pz"
+			],
+			"touch-x": ["touch"],
+			"touch-y": ["touch"],
+			"touch-pz": ["touch"]
+		},
+		conflictingClassGroupModifiers: { "font-size": ["leading"] },
+		postfixLookupClassGroups: ["container-type"],
+		orderSensitiveModifiers: [
+			"*",
+			"**",
+			"after",
+			"backdrop",
+			"before",
+			"details-content",
+			"file",
+			"first-letter",
+			"first-line",
+			"marker",
+			"placeholder",
+			"selection"
+		]
+	};
+});
+//#endregion
+//#region ../../node_modules/.bun/@selemondev+svelte-marquee@0.1.1+fae4f4242f3a21ce/node_modules/@selemondev/svelte-marquee/dist/utils.js
+function zk(...e) {
+	return Rk(ea(e));
+}
+//#endregion
+//#region ../../node_modules/.bun/@selemondev+svelte-marquee@0.1.1+fae4f4242f3a21ce/node_modules/@selemondev/svelte-marquee/dist/Marquee.svelte
+var Bk = /* @__PURE__ */ B("<div><!></div>"), Vk = /* @__PURE__ */ B("<div></div>");
+function Hk(e, t) {
+	let n = Ia(Ia(t, [
+		"children",
+		"$$slots",
+		"$$events",
+		"$$legacy",
+		"$$host"
+	]), [
+		"direction",
+		"pauseOnHover",
+		"reverse",
+		"fade",
+		"innerClassName",
+		"numberOfCopies"
+	]);
+	st(t, !1);
+	let r = q(t, "direction", 12, "left"), i = q(t, "pauseOnHover", 12, !1), a = q(t, "reverse", 12, !1), o = q(t, "fade", 12, !1), s = q(t, "innerClassName", 12, ""), c = q(t, "numberOfCopies", 12, 2);
+	var l = {
+		get direction() {
+			return r();
+		},
+		set direction(e) {
+			r(e), N();
+		},
+		get pauseOnHover() {
+			return i();
+		},
+		set pauseOnHover(e) {
+			i(e), N();
+		},
+		get reverse() {
+			return a();
+		},
+		set reverse(e) {
+			a(e), N();
+		},
+		get fade() {
+			return o();
+		},
+		set fade(e) {
+			o(e), N();
+		},
+		get innerClassName() {
+			return s();
+		},
+		set innerClassName(e) {
+			s(e), N();
+		},
+		get numberOfCopies() {
+			return c();
+		},
+		set numberOfCopies(e) {
+			c(e), N();
+		}
+	};
+	ja();
+	var u = Vk();
+	return Mi(u, 5, () => (Kr(c()), Gr(() => Array(c()).fill(0))), Oi, (e, n) => {
+		var o = Bk();
+		Ri(F(o), t, "default", {}, null), M(o), L((e) => W(o, 1, e), [() => ta((Kr(zk), Kr(r()), Kr(i()), Kr(a()), Kr(s()), Gr(() => zk("flex justify-around gap-[1rem] [--gap:1rem] shrink-0", r() === "left" ? "animate-marquee-left flex-row" : "animate-marquee-up flex-col", i() && "group-hover:[animation-play-state:paused]", a() && "direction-reverse", s()))))]), V(e, o);
+	}), M(u), L((e) => {
+		W(u, 1, e), ca(u, `mask-image: ${o() ? `linear-gradient(${r() === "left" ? "to right" : "to bottom"}, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)` : "none"};
+	  -webkit-mask-image: ${o() ? `linear-gradient(${r() === "left" ? "to right" : "to bottom"}, transparent 0%, rgba(0, 0, 0, 1.0) 10%, rgba(0, 0, 0, 1.0) 90%, transparent 100%)` : "none"};
+	  `);
+	}, [() => ta((Kr(zk), Kr(n), Kr(r()), Gr(() => zk(`group flex gap-[1rem] overflow-hidden ${n.class}`, {
+		"flex-row": r() === "left",
+		"flex-col": r() !== "left"
+	}))))]), V(e, u), ct(l);
+}
+Ha(Hk, {
+	direction: {},
+	pauseOnHover: {},
+	reverse: {},
+	fade: {},
+	innerClassName: {},
+	numberOfCopies: {}
+}, ["default"], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/main/Industry.svelte
+var Uk = /* @__PURE__ */ B("<picture><img loading=\"lazy\" class=\"w-37.5 lg:w-75\"/></picture>"), Wk = /* @__PURE__ */ B("<section data-scroll=\"first\" class=\"w-full max-w-dvw space-y-7.5 lg:space-y-15\"><h3 class=\"text-center text-lg lg:text-4xl\"> </h3> <!></section>");
+function Gk(e, t) {
+	st(t, !0);
+	let n = [
+		{
+			id: "ind1",
+			alt: "SAMSUNG 삼성전자"
+		},
+		{
+			id: "ind2",
+			alt: "SAMSUNG 상성중공업"
+		},
+		{
+			id: "ind3",
+			alt: "HYUNDAI MOTOR GROUP"
+		},
+		{
+			id: "ind4",
+			alt: "KB증권"
+		},
+		{
+			id: "ind42",
+			alt: "SM Entertainment"
+		},
+		{
+			id: "ind5",
+			alt: "hyosung heavy industrieㄴ"
+		},
+		{
+			id: "ind6",
+			alt: "HYUNDAI ENGINEERING &amp; CONSTRUCTION"
+		},
+		{
+			id: "ind7",
+			alt: "YOKOGAWA"
+		},
+		{
+			id: "ind8",
+			alt: "LS ELECTRIC"
+		},
+		{
+			id: "ind9",
+			alt: "KPS"
+		},
+		{
+			id: "ind10",
+			alt: "LX"
+		},
+		{
+			id: "ind11",
+			alt: "한진택배"
+		},
+		{
+			id: "ind12",
+			alt: "LX판토스"
+		},
+		{
+			id: "ind13",
+			alt: "POSCO"
+		},
+		{
+			id: "ind14",
+			alt: "경기도"
+		},
+		{
+			id: "ind15",
+			alt: "한국관광공사 KOREA TOURISM ORGANIZTION"
+		},
+		{
+			id: "ind16",
+			alt: "LG전자"
+		},
+		{
+			id: "ind17",
+			alt: "LG이노텍"
+		},
+		{
+			id: "ind18",
+			alt: "NIA 한국지능정보사회진흥원"
+		},
+		{
+			id: "ind19",
+			alt: "Mercedes-Benz"
+		},
+		{
+			id: "ind20",
+			alt: "DAESANG"
+		},
+		{
+			id: "ind21",
+			alt: "SAPEON"
+		},
+		{
+			id: "ind22",
+			alt: "식품의약품안전처"
+		},
+		{
+			id: "ind23",
+			alt: "주식회사 오뚜기"
+		},
+		{
+			id: "ind24",
+			alt: "LG 에너지솔루션"
+		},
+		{
+			id: "ind25",
+			alt: "롯데정보통신"
+		},
+		{
+			id: "ind26",
+			alt: "롯데제과"
+		},
+		{
+			id: "ind27",
+			alt: "농심엔지니어링"
+		},
+		{
+			id: "ind28",
+			alt: "IITP 정보통신기획평가원"
+		},
+		{
+			id: "ind29",
+			alt: "과학기술정보통신부"
+		},
+		{
+			id: "ind30",
+			alt: "sunjin"
+		},
+		{
+			id: "ind31",
+			alt: "Pulmuone"
+		},
+		{
+			id: "ind32",
+			alt: "고용노동부"
+		}
+	];
+	var r = Wk(), i = F(r), a = F(i, !0);
+	M(i);
+	var o = I(i, 2), s = (e) => {
+		Hk(e, {
+			pauseOnHover: !0,
+			class: "gap-3.75 lg:gap-7.5",
+			innerClassName: "gap-3.75 lg:gap-7.5",
+			fade: !0,
+			children: (e, t) => {
+				var r = ui();
+				Mi(Pn(r), 19, () => n, ({ alt: e, id: t }) => t, (e, t, n) => {
+					let r = () => z(t).alt;
+					var i = Uk(), a = F(i);
+					M(i), L(() => {
+						G(a, "src", `/output/imgs/industry/img-industry-${z(n) + 1}.png`), G(a, "alt", r());
+					}), V(e, i);
+				}), V(e, r);
+			},
+			$$slots: { default: !0 }
+		});
+	};
+	U(o, (e) => {
+		n && e(s);
+	}), M(r), L((e) => H(a, e), [() => Tl()]), V(e, r), ct();
+}
+customElements.define("main-industry", Ha(Gk, {}, [], []));
+//#endregion
+//#region src/lib/components/main/MainNews.svelte
+var Kk = /* @__PURE__ */ B("<swiper-slide><a href=\"/\" class=\"w-full overflow-clip rounded-xl bg-white\"><picture class=\"flex h-45.5 overflow-clip rounded-t-xl transition-all lg:h-56.25\"><img loading=\"lazy\" src=\"https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png\" alt=\"\" class=\"w-full object-cover\"/></picture> <dl class=\"text-2md lg:43.5 flex h-35 flex-col justify-between overflow-clip rounded-b-xl bg-white p-5 text-xl\"><dt class=\"line-clamp-2 text-lg lg:text-2xl\"> </dt> <dd class=\"text-666 text-right\">2025. 12. 8</dd></dl></a></swiper-slide>", 2), qk = /* @__PURE__ */ B("<section class=\"-mx-5 max-w-dvw overflow-hidden px-5 py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <swiper-container></swiper-container></section>", 2);
+function Jk(e, t) {
+	st(t, !0);
+	var n = qk(), r = F(n);
+	K(r, "line", "none"), L(() => K(r, "title", Pd?.())), L(() => K(r, "subTit", Ld?.())), K(r, "btnRender", "link");
+	var i = I(r, 2);
+	K(i, "slides-per-view", "auto"), K(i, "centered-slides", !1), K(i, "speed", "6000"), K(i, "loop", !0), K(i, "free-mode", !0), K(i, "allow-touch-move", !0), K(i, "space-between", 30), K(i, "autoplay-delay", 1e3), K(i, "autoplay-disable-on-interaction", !1), W(i, 1, "-mx-5 w-[calc(100%+40px)] max-w-dvw"), Mi(i, 22, () => Array(10), (e, t) => `new-slide-${t}`, (e, t, n) => {
+		var r = Kk();
+		W(r, 1, "h-full w-75 select-none lg:w-100");
+		var i = F(r), a = I(F(i), 2), o = F(a), s = F(o);
+		M(o), Je(2), M(a), M(i), M(r), L(() => H(s, `${z(n) ?? ""} DEEP.FINE to Showcase XR-Based Spatial Intelligence Showcase XR-Based Spatial IntelligenceShowcase XR-Based Spatial Intelligence`)), V(e, r);
+	}), M(i), M(n), V(e, n), ct();
+}
+Ha(Jk, {}, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/main/Operations.svelte
+var Yk = /* @__PURE__ */ B("<section class=\"relative max-w-dvw rounded-xl bg-(image:--bg-op) bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15\"><sub-heading-line></sub-heading-line> <div class=\"mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-9\"><a href=\"/\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a> <a href=\"/static/pdf/Company_Introduction_DEEPFINE_kr.pdf\" download=\"딥파인 회사소개서\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\" target=\"_blank\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
+function Xk(e, t) {
+	st(t, !0);
+	var n = Yk();
+	ca(n, "", {}, { "--bg-op": "url(/output/imgs/main/work/bg-operations.png)" });
+	var r = F(n);
+	K(r, "line", "none"), L(() => K(r, "title", Bd())), L(() => K(r, "subTit", Ud()));
+	var i = I(r, 2), a = F(i), o = F(a), s = F(o, !0);
+	M(o);
+	var c = I(o, 2);
+	K(c, "name", "arrow-right"), W(c, 1, "group-hover:stroke-primary size-6 stroke-white"), M(a);
+	var l = I(a, 2), u = F(l), d = F(u, !0);
+	M(u);
+	var f = I(u, 2);
+	K(f, "name", "import"), W(f, 1, "group-hover:stroke-primary size-6 stroke-white"), M(l), M(i), M(n), L((e, t, n) => {
+		H(s, e), G(l, "title", t), H(d, n);
+	}, [
+		() => Vx(),
+		() => qx(),
+		() => qx()
+	]), V(e, n), ct();
+}
+customElements.define("main-operations", Ha(Xk, {}, [], []));
+//#endregion
+//#region src/lib/components/banner/BannerTrial.svelte
+var Zk = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat p-7.5 lg:mt-7.5 lg:min-h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:p-15\"><p class=\"bg-primary absolute -top-2.5 -left-10.5 z-1 -rotate-45 px-10 pt-6 pb-1 text-xs font-bold text-white lg:-top-1.25 lg:-left-9.25 lg:order-1 lg:pt-5 lg:pb-2\">NEW</p> <div data-scroll=\"slide-up\" class=\"flex flex-1 flex-col justify-between lg:row-span-1\"><div class=\"space-y-2.5\"><h4 class=\"text-lg font-bold lg:text-4xl\"> </h4> <p> </p></div></div> <div data-scroll=\"slide-left\" class=\"flex lg:order-2 lg:row-span-2\"><picture class=\"grid place-items-center\"><img loading=\"lazy\" alt=\"img\" class=\"-mt-5 h-3/4 lg:h-auto\"/></picture> <picture class=\"-ml-25 grid place-items-center pt-2 lg:-ml-17\"><img loading=\"lazy\" alt=\"img\" class=\"h-2/3 lg:h-auto\"/></picture></div> <div class=\"flex w-full lg:order-3 lg:row-span-1 lg:inline-flex\"><a href=\"/\" class=\"hover:text-3743ff group flex h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:mt-auto lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
+function Qk(e, t) {
+	st(t, !0);
+	var n = Zk();
+	ca(n, "", {}, { "--bg-trial": "url(/output/imgs/banner/bg-trial.png)" });
+	var r = I(F(n), 2), i = F(r), a = F(i), o = F(a, !0);
+	M(a);
+	var s = I(a, 2), c = F(s, !0);
+	M(s), M(i), M(r);
+	var l = I(r, 2), u = F(l);
+	G(F(u), "src", "/output/imgs/banner/img-glass.png"), M(u);
+	var d = I(u, 2);
+	G(F(d), "src", "/output/imgs/banner/img-barcode.png"), M(d), M(l);
+	var f = I(l, 2), p = F(f), m = F(p), h = F(m, !0);
+	M(m);
+	var g = I(m, 2);
+	K(g, "name", "arrow-right"), W(g, 1, "group-hover:stroke-primary size-6 stroke-black"), M(p), M(f), M(n), L((e, t, n, r) => {
+		H(o, e), H(c, t), G(p, "aria-label", n), H(h, r);
+	}, [
+		() => $x?.(),
+		() => nS?.(),
+		() => aS?.() + "page",
+		() => aS?.()
+	]), V(e, n), ct();
+}
+Ha(Qk, {}, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/main/OurProducts.svelte
+var $k = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" autoplay=\"\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), eA = /* @__PURE__ */ B("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" autoplay=\"\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div>", 2), tA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\" class=\"group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl transition-all duration-400 has-aria-current:flex-1 lg:h-145\"><!> <!> <a href=\"/\"><div class=\"lg:7.5 relative z-2 flex flex-col gap-5\"><picture><source media=\"(min-width: 1024px)\"/> <source media=\"(max-width: 1024px)\"/> <img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture> <dl class=\"text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0\"><dt class=\"font-bold\"> </dt> <dd> </dd></dl></div> <div class=\"z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100\"><p class=\"text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></p></div></a></li>", 2), nA = /* @__PURE__ */ B("<section class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <ul class=\"flex gap-7.5 max-lg:flex-col lg:flex-row\"></ul> <!></section>", 2);
+function rA(e, t) {
+	st(t, !0);
+	let n = [
+		{
+			id: "our-products1",
+			logo: "/output/imgs/logo/logo-main-logi.svg",
+			logoPc: "/output/imgs/logo/logo-main-logi-pc.svg",
+			tit: jl?.(),
+			txt: Pl?.(),
+			link: ""
+		},
+		{
+			id: "our-products2",
+			logo: "/output/imgs/logo/logo-main-dao.svg",
+			logoPc: "/output/imgs/logo/logo-main-dao-pc.svg",
+			tit: Ll?.(),
+			txt: Bl?.(),
+			link: ""
+		},
+		{
+			id: "our-products3",
+			logo: "/output/imgs/logo/logo-main-dsc.svg",
+			logoPc: "/output/imgs/logo/logo-main-dsc-pc.svg",
+			tit: Ul?.(),
+			txt: Kl?.(),
+			link: ""
+		}
+	], r = "/output/video/main-video.webm", i = /* @__PURE__ */ hn(0), a = /* @__PURE__ */ hn(Cn(typeof window < "u" ? window.innerWidth : 0)), o = /* @__PURE__ */ P(() => z(a) >= 1024);
+	var s = nA(), c = F(s);
+	K(c, "line", "none"), K(c, "title", "Our Products"), L(() => K(c, "subTit", Ol()));
+	var l = I(c, 2);
+	Mi(l, 31, () => n, (e) => e.id, (e, t, n) => {
+		var a = tA(), s = F(a), c = (e) => {
+			var t = $k(), i = F(t);
+			i.muted = !0;
+			var a = F(i);
+			M(i), M(t), L(() => {
+				G(i, "poster", z(n) === 0 || z(n) === 1 || z(n) === 2 ? "/output/imgs/logo/bg-main-logi.png" : ""), G(a, "src", r);
+			}), V(e, t);
+		};
+		U(s, (e) => {
+			z(i) === z(n) && z(o) && e(c);
+		});
+		var l = I(s, 2), u = (e) => {
+			var t = eA(), i = F(t);
+			i.muted = !0;
+			var a = F(i);
+			M(i), M(t), L(() => {
+				G(i, "poster", z(n) === 0 || z(n) === 1 || z(n) === 2 ? "/output/imgs/logo/bg-main-logi.png" : ""), G(a, "src", r);
+			}), V(e, t);
+		};
+		U(l, (e) => {
+			z(o) || e(u);
+		});
+		var d = I(l, 2);
+		ca(d, "", {}, {
+			"--bg-main-logi": "url(/output/imgs/logo/bg-main-logi.png)",
+			"--bg-main-dao": "url(/output/imgs/logo/bg-main-dao.png)",
+			"--bg-main-dsc": "url(/output/imgs/logo/bg-main-dsc.png)"
+		});
+		var f = F(d), p = F(f), m = F(p), h = I(m, 2), g = I(h, 2);
+		M(p);
+		var _ = I(p, 2), v = F(_), y = F(v, !0);
+		M(v);
+		var b = I(v, 2), x = F(b, !0);
+		M(b), M(_), M(f);
+		var S = I(f, 2), C = F(S), w = F(C), T = F(w, !0);
+		M(w);
+		var E = I(w, 2);
+		K(E, "name", "arrow-right"), W(E, 1, "group-hover:stroke-primary size-6 stroke-white"), M(C), M(S), M(d), M(a), L((e) => {
+			W(d, 1, `relative flex size-full flex-1 cursor-pointer flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
+							${z(n) === 0 ? "bg-(image:--bg-main-logi)" : ""}
+							${z(n) === 1 ? "bg-(image:--bg-main-dao)" : ""}
+							${z(n) === 2 ? "bg-(image:--bg-main-dsc)" : ""}`), G(d, "aria-current", z(i) === z(n) ? "true" : z(o) ? void 0 : "true"), W(p, 1, `relative flex min-h-10 opacity-100 transition-all transition-discrete duration-300 @min-xl:group-has-aria-current/prod:opacity-100 starting:rotate-0 starting:opacity-0 ${z(i) === z(n) ? "relative" : "lg:absolute lg:bottom-[calc(100%-20px)] lg:left-[calc(100%-20px)] lg:h-25 lg:max-h-105 lg:w-105 lg:origin-left lg:rotate-90"}`), G(m, "srcset", z(t).logoPc), G(h, "srcset", z(t).logo), G(g, "src", z(t).logo), H(y, z(t).tit), H(x, z(t).txt), H(T, e);
+		}, [() => Wx?.()]), Qr("mouseenter", d, () => _n(i, z(n), !0)), Qr("focus", d, () => _n(i, z(n), !0)), Ji(a, () => wC, null), Yi(1, a, () => AC, () => ({ y: 200 })), Yi(2, a, () => kC), V(e, a);
+	}), M(l), Qk(I(l, 2), {}), M(s), Aa("innerWidth", (e) => _n(a, e, !0)), V(e, s), ct();
+}
+customElements.define("main-our-products", Ha(rA, {}, [], []));
+//#endregion
+//#region src/lib/components/main/SlideCard.svelte
+var iA = /* @__PURE__ */ B("<li class=\"rounded-full bg-white px-3 py-1\"> </li>"), aA = /* @__PURE__ */ B("<swiper-slide><picture class=\"flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25\"><img loading=\"lazy\" alt=\"\" class=\"w-full object-cover\"/></picture> <ul class=\"flex items-center justify-center gap-3\"></ul> <dl class=\"text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35\"><dt class=\"text-center text-lg lg:text-2xl\"> </dt> <dd class=\" text-right\">2025. 12. 8</dd></dl></swiper-slide>", 2), oA = /* @__PURE__ */ B("<div class=\"absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5\"><button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Prev</span> <icon-list></icon-list></button> <button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Next</span> <icon-list></icon-list></button></div>", 2), sA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15\"><sub-heading-line></sub-heading-line> <div data-scroll=\"slide-up\" class=\"relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145\"><swiper-container></swiper-container> <!></div></section>", 2);
+function cA(e, t) {
+	st(t, !0);
+	let n = /* @__PURE__ */ P(() => [
+		{
+			id: "card-slide-1",
+			badge: [td?.(), id?.()],
+			txt: Sd?.(),
+			img: "/output/imgs/main/slide/img-card-1.png",
+			logo: "/output/imgs/main/slide/img-logo-1.png"
+		},
+		{
+			id: "card-slide-2",
+			badge: [sd?.(), id?.()],
+			txt: Td?.(),
+			img: "/output/imgs/main/slide/img-card-2.png",
+			logo: "/output/imgs/main/slide/img-logo-1.png"
+		},
+		{
+			id: "card-slide-3",
+			badge: [ud?.(), pd?.()],
+			txt: Od?.(),
+			img: "/output/imgs/main/slide/img-card-3.png",
+			logo: "/output/imgs/main/slide/img-logo-1.png"
+		},
+		{
+			id: "card-slide-4",
+			badge: [gd?.(), yd?.()],
+			txt: jd?.(),
+			img: "/output/imgs/main/slide/img-card-4.png",
+			logo: "/output/imgs/main/slide/img-logo-1.png"
+		}
+	]), r = /* @__PURE__ */ hn(null), i = /* @__PURE__ */ hn(!1);
+	Qn(() => {
+		GE(), _n(i, !0);
+	});
+	var a = sA(), o = F(a);
+	K(o, "line", "none"), L(() => K(o, "title", Yu?.())), L(() => K(o, "subTit", Qu?.()));
+	var s = I(o, 2), c = F(s);
+	K(c, "init", "true"), K(c, "effect", "cards"), K(c, "pagination", "true"), K(c, "speed", "450"), K(c, "autoplay-delay", "3000"), W(c, 1, "*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"), Mi(c, 21, () => z(n), (e) => e.id, (e, t) => {
+		var n = aA();
+		W(n, 1, "gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-[url(/static/imgs/main/slide/bg-card-mo.png)] bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-[url(/static/imgs/main/slide/bg-card.svg)] lg:bg-size-[auto_100%] lg:p-5");
+		var r = F(n), i = F(r);
+		M(r);
+		var a = I(r, 2);
+		Mi(a, 21, () => z(t).badge, Oi, (e, t) => {
+			var n = iA(), r = F(n, !0);
+			M(n), L(() => H(r, z(t))), V(e, n);
+		}), M(a);
+		var o = I(a, 2), s = F(o), c = F(s, !0);
+		M(s), Je(2), M(o), M(n), L(() => {
+			G(i, "src", z(t).img), H(c, z(t).txt);
+		}), V(e, n);
+	}), M(c), ka(c, (e) => _n(r, e), () => z(r));
+	var l = I(c, 2), u = (e) => {
+		var t = oA(), n = F(t), i = I(F(n), 2);
+		K(i, "name", "arrow-right"), W(i, 1, "size-6 rotate-180 stroke-white"), M(n);
+		var a = I(n, 2), o = I(F(a), 2);
+		K(o, "name", "arrow-right"), W(o, 1, "size-6 stroke-white"), M(a), M(t), $r("click", n, () => {
+			console.log(z(r)), z(r)?.swiper?.slidePrev();
+		}), $r("click", a, () => z(r)?.swiper?.slideNext()), V(e, t);
+	};
+	U(l, (e) => {
+		z(i) && e(u);
+	}), M(s), M(a), V(e, a), ct();
+}
+ei(["click"]), customElements.define("main-card", Ha(cA, {}, [], []));
+//#endregion
+//#region src/lib/utils/videoObserve.svelte.ts
+var lA = (e) => {
+	if (!(e instanceof HTMLVideoElement)) return;
+	let t = e, n = new IntersectionObserver((e) => {
+		e.forEach((e) => {
+			e.isIntersecting ? t.play().catch((e) => {
+				console.warn("비디오 자동 재생이 브라우저에 의해 차단됨 (muted 속성을 확인하세요):", e);
+			}) : t.pause();
+		});
+	}, { threshold: .1 });
+	return n.observe(t), () => {
+		n.disconnect();
+	};
+}, uA = /* @__PURE__ */ B("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><video data-scroll=\"slide-up\" playsinline=\"\"><source type=\"video/mp4\"/></video></div>", 2), dA = /* @__PURE__ */ B("<img alt=\"img\"/>"), fA = /* @__PURE__ */ B("<source/>"), pA = /* @__PURE__ */ B("<picture><!> <img alt=\"img\"/></picture>"), mA = /* @__PURE__ */ B("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><picture data-scroll=\"slide-up\"><!></picture></div>"), hA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\"><dl class=\"space-y-2.5 p-5\"><dt><!> <strong class=\"text-primary\"> </strong></dt> <dd class=\"text-2md lg:text-lg\"> </dd></dl> <!> <!></li>"), gA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw\"><sub-heading-line></sub-heading-line> <ul class=\"grid grid-cols-1 grid-rows-1 gap-7.5 lg:grid-cols-4 lg:grid-rows-[repeat(2,385px)]\"></ul></section>", 2);
+function _A(e, t) {
+	st(t, !0);
+	let n = /* @__PURE__ */ P(() => [
+		{
+			id: "why-1",
+			video: "/output/video/img-why-1.mp4",
+			num: 36,
+			txt: Ou?.(),
+			font: "90",
+			cls: "flex-col bg-(image:--why-1-bg) bg-no-repeat bg-center bg-cover text-white lg:row-span-2"
+		},
+		{
+			id: "why-2",
+			video: "/output/video/img-why-2.mp4",
+			num: 22e3,
+			txt: ju?.(),
+			cls: "flex-col bg-white"
+		},
+		{
+			id: "why-3",
+			img: "/output/imgs/main/why/img-why-3.png",
+			num: 70,
+			txt: Pu?.(),
+			font: "90",
+			cls: "flex-col bg-linear-to-r from-[#e8eeff] to-[#c5d3f7] lg:col-span-2"
+		},
+		{
+			id: "why-4",
+			img: "/output/imgs/main/why/img-why-4.png",
+			tit: "No.1",
+			txt: Lu?.(),
+			font: "90",
+			cls: "text-white bg-linear-to-r from-[#3743ff] to-[#90f0ff] lg:flex lg:justify-between lg:col-span-2"
+		},
+		{
+			id: "why-5",
+			img: "/output/imgs/main/why/img-why-5.png",
+			num: 92,
+			txt: Bu?.(),
+			font: "90",
+			cls: "flex-col bg-white"
+		}
+	]);
+	var r = gA(), i = F(r);
+	K(i, "line", "none"), L(() => K(i, "title", Uu?.())), L(() => K(i, "subTit", Ku?.()));
+	var a = I(i, 2);
+	Mi(a, 23, () => z(n), (e) => e.id, (e, t, n) => {
+		var r = hA();
+		ca(r, "", {}, { "--why-1-bg": "url(/output/imgs/main/why/bg-why-1.png)" });
+		var i = F(r), a = F(i), o = F(a), s = (e) => {
+			{
+				let n = /* @__PURE__ */ P(() => Number(z(t).num));
+				ID(e, { get text() {
+					return z(n);
+				} });
+			}
+		}, c = (e) => {
+			var n = li();
+			L(() => H(n, z(t).tit)), V(e, n);
+		};
+		U(o, (e) => {
+			z(t).id === "why-4" ? e(c, -1) : e(s);
+		});
+		var l = I(o, 2), u = F(l, !0);
+		M(l), M(a);
+		var d = I(a, 2), f = F(d, !0);
+		M(d), M(i);
+		var p = I(i, 2), m = (e) => {
+			var n = uA(), r = F(n);
+			r.autoplay = !1, r.muted = !0;
+			var i = F(r);
+			M(r), Qi(r, () => lA), M(n), L(() => {
+				W(r, 1, ta(["relative z-1 max-w-fit", z(t).id === "why-1" ? "h-56.5 lg:left-32 lg:min-h-131.75" : z(t).id === "why-2" ? "h-53.5 max-w-full lg:h-61.5" : ""])), G(i, "src", z(t).video);
+			}), V(e, n);
+		};
+		U(p, (e) => {
+			z(t).video && e(m);
+		});
+		var h = I(p, 2), g = (e) => {
+			var n = mA(), r = F(n), i = F(r), a = (e) => {
+				var n = ui(), r = Pn(n), i = (e) => {
+					var n = dA();
+					L(() => {
+						G(n, "src", z(t).img), W(n, 1, ta(["relative ", z(t).id === "why-3" ? "h-full translate-x-4/10 translate-y-3/10 scale-180 lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-100" : z(t).id === "why-4" ? "h-61.5 w-auto" : z(t).id === "why-5" ? "h-62.5 w-auto lg:h-48" : ""]));
+					}), V(e, n);
+				};
+				U(r, (e) => {
+					e(i, -1);
+				}), V(e, n);
+			}, o = (e) => {
+				var n = pA(), r = F(n);
+				Mi(r, 17, () => Object.entries(z(t).img.sources), Oi, (e, t) => {
+					var n = /* @__PURE__ */ P(() => ee(z(t), 2));
+					let r = () => z(n)[0], i = () => z(n)[1];
+					var a = fA();
+					L(() => {
+						G(a, "srcset", i()), G(a, "type", "image/" + r());
+					}), V(e, a);
+				});
+				var i = I(r, 2);
+				M(n), L(() => {
+					G(i, "src", z(t).img.img.src), W(i, 1, ta(["relative ", z(t).id === "why-3" ? "h-full translate-x-4/10 translate-y-3/10 scale-180 lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-100" : z(t).id === "why-4" ? "h-61.5 w-auto" : z(t).id === "why-5" ? "h-62.5 w-auto lg:h-48" : ""])), G(i, "width", z(t).img.img.w), G(i, "height", z(t).img.img.h);
+				}), V(e, n);
+			};
+			U(i, (e) => {
+				typeof z(t).img == "string" ? e(a) : e(o, -1);
+			}), M(r), M(n), L(() => W(r, 1, ta(["flex justify-end", z(t).id === "why-4" ? "flex flex-wrap items-end px-5 lg:p-5" : ""]))), V(e, n);
+		};
+		U(h, (e) => {
+			z(t).img && e(g);
+		}), M(r), L(() => {
+			G(r, "data-index", z(n)), W(r, 1, ta(["relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105", z(t).cls])), W(a, 1, ta(["flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]", z(t).id === "why-3" ? "text-primary" : ""])), G(a, "data-font", z(t).font), H(u, z(t).id === "why-2" || z(t).id === "why-3" ? "+" : ""), H(f, z(t).txt);
+		}), V(e, r);
+	}), M(a), M(r), V(e, r), ct();
+}
+customElements.define("main-why", Ha(_A, {}, [], []));
+//#endregion
+//#region src/lib/components/main/Work.svelte
+var vA = /* @__PURE__ */ B("<li data-scroll=\"slide-up\" class=\"relative flex flex-col gap-5 text-center\"><picture data-scroll=\"slide-up\" class=\"grid place-items-center\"><img loading=\"lazy\" alt=\"img\" class=\"w-50 lg:w-90.75\"/></picture> <dl class=\"space-y-2.5\"><dt class=\"text-primary text-lg font-bold lg:text-2xl\"> </dt> <dd class=\"text-2md text-666 lg:text-lg\"> </dd> <dd class=\"text-2md lg:text-lg\"> </dd></dl></li>"), yA = /* @__PURE__ */ B("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <dl class=\"space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.png)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:pt-15 lg:pb-50 lg:text-4xl\"><dt class=\"font-bold\">DEEP.FINE SPATIAL INTELLIGENCE AI</dt> <dd class=\"text-2md text-2xl lg:px-50\">Powered by Vision AI, AI Agents, and Spatial Computing technologies, DEEP.FINE connects spatial, operational, and equipment data across industrial environments enabling\n			more efficient and scalable operations.</dd></dl> <ul class=\"relative grid grid-cols-1 gap-7.5 py-7.5 lg:-mt-37.5 lg:grid-cols-3 lg:py-0\"></ul></section>", 2);
+function bA(e, t) {
+	st(t, !0);
+	let n = /* @__PURE__ */ P(() => [
+		{
+			id: "work-1",
+			img: "/output/imgs/main/work/img-work-1.png",
+			tit: tu?.(),
+			subTit: iu?.(),
+			txt: su?.()
+		},
+		{
+			id: "work-2",
+			img: "/output/imgs/main/work/img-work-2.png",
+			tit: uu?.(),
+			subTit: pu?.(),
+			txt: gu?.()
+		},
+		{
+			id: "work-3",
+			img: "/output/imgs/main/work/img-work-3.png",
+			tit: yu?.(),
+			subTit: Su?.(),
+			txt: Tu?.()
+		}
+	]);
+	var r = yA(), i = F(r);
+	K(i, "line", "none"), L(() => K(i, "title", Yl?.())), L(() => K(i, "subTit", Ql?.()));
+	var a = I(i, 4);
+	Mi(a, 23, () => z(n), (e) => e.id, (e, t, n) => {
+		var r = vA(), i = F(r), a = F(i);
+		M(i);
+		var o = I(i, 2), s = F(o), c = F(s, !0);
+		M(s);
+		var l = I(s, 2), u = F(l, !0);
+		M(l);
+		var d = I(l, 2), f = F(d, !0);
+		M(d), M(o), M(r), L(() => {
+			G(r, "data-index", z(n)), G(a, "src", z(t).img), H(c, z(t).tit), H(u, z(t).subTit), H(f, z(t).txt);
+		}), V(e, r);
+	}), M(a), M(r), V(e, r), ct();
+}
+customElements.define("main-work", Ha(bA, {}, [], []));
+//#endregion
+//#region ../../node_modules/.bun/parse-unit@1.0.1/node_modules/parse-unit/index.js
+var xA = /* @__PURE__ */ o(((e, t) => {
+	t.exports = function(e, t) {
+		return t ||= [0, ""], e = String(e), t[0] = parseFloat(e, 10), t[1] = e.match(/[\d.\-\+]*\s*(.*)/)[1] || "", t;
+	};
+})), SA = /* @__PURE__ */ c((/* @__PURE__ */ o(((e, t) => {
+	var n = xA();
+	t.exports = o;
+	var r = a("in", document.body);
+	function i(e, t) {
+		var r = n(getComputedStyle(e).getPropertyValue(t));
+		return r[0] * o(r[1], e);
+	}
+	function a(e, t) {
+		var n = document.createElement("div");
+		n.style.height = "128" + e, t.appendChild(n);
+		var r = i(n, "height") / 128;
+		return t.removeChild(n), r;
+	}
+	function o(e, t) {
+		if (!e) return null;
+		switch (t ||= document.body, e = (e + "" || "px").trim().toLowerCase(), (t === window || t === document) && (t = document.body), e) {
+			case "%": return t.clientHeight / 100;
+			case "ch":
+			case "ex": return a(e, t);
+			case "em": return i(t, "font-size");
+			case "rem": return i(document.body, "font-size");
+			case "vw": return window.innerWidth / 100;
+			case "vh": return window.innerHeight / 100;
+			case "vmin": return Math.min(window.innerWidth, window.innerHeight) / 100;
+			case "vmax": return Math.max(window.innerWidth, window.innerHeight) / 100;
+			case "in": return r;
+			case "cm": return r / 2.54;
+			case "mm": return r / 25.4;
+			case "pt": return r / 72;
+			case "pc": return r / 6;
+			case "px": return 1;
+		}
+		var s = n(e);
+		if (!isNaN(s[0]) && s[1]) {
+			var c = o(s[1], t);
+			return typeof c == "number" ? s[0] * c : null;
+		}
+		return null;
+	}
+})))()), CA = /* @__PURE__ */ B("<div><div class=\"glass-non-edge svelte-tnd21v\"><div class=\"glass-edge svelte-tnd21v\"><div class=\"glass-sheen svelte-tnd21v\"><!></div></div></div></div>"), wA = {
+	hash: "svelte-tnd21v",
+	code: ".glass.svelte-tnd21v {position:relative;overflow:hidden;z-index:1;inset:0;border-radius:inherit;background-color:var(--main-background-color);& :where(.svelte-tnd21v),\n		& :where(.svelte-tnd21v)::before {border-radius:inherit;}.glass-sheen > * {position:relative;z-index:1;}.glass-sheen:where(.svelte-tnd21v)::before {content:'';position:absolute;inset:0;border-radius:inherit;backdrop-filter:blur(var(--sheen-blur));background-color:var(--sheen-background-color);pointer-events:none;z-index:0;-webkit-mask-image:linear-gradient(0deg, #000, transparent var(--sheen-width)),\n				linear-gradient(180deg, #000, transparent var(--sheen-width)),\n				linear-gradient(90deg, #000, transparent var(--sheen-width)),\n				linear-gradient(270deg, #000, transparent var(--sheen-width));mask-image:linear-gradient(0deg, #000, transparent var(--sheen-width)),\n				linear-gradient(180deg, #000, transparent var(--sheen-width)),\n				linear-gradient(90deg, #000, transparent var(--sheen-width)),\n				linear-gradient(270deg, #000, transparent var(--sheen-width));mask-composite:add;mask-type:luminance;pointer-events:none;}.glass-non-edge:where(.svelte-tnd21v)::before {content:'';position:absolute;inset:0;border-radius:inherit;backdrop-filter:blur(var(--main-blur));pointer-events:none;z-index:var(--non-edge-z-index);--gradient:\n				transparent var(--non-edge-width),\n				#000 calc(var(--non-edge-width) + var(--non-edge-gradient-width));-webkit-mask-image:linear-gradient(0deg, var(--gradient)), linear-gradient(180deg, var(--gradient)),\n				linear-gradient(90deg, var(--gradient)), linear-gradient(270deg, var(--gradient));mask-image:linear-gradient(0deg, var(--gradient)), linear-gradient(180deg, var(--gradient)),\n				linear-gradient(90deg, var(--gradient)), linear-gradient(270deg, var(--gradient));mask-composite:intersect;pointer-events:none;}.glass-edge:where(.svelte-tnd21v):before {content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:var(--edge-z-index);background-color:var(--edge-background-color);backdrop-filter:blur(var(--edge-blur));--gradient:\n				#000 var(--edge-width), transparent calc(var(--edge-width) + var(--edge-gradient-width));-webkit-mask-image:linear-gradient(0deg, var(--gradient)), linear-gradient(180deg, var(--gradient)),\n				linear-gradient(90deg, var(--gradient)), linear-gradient(270deg, var(--gradient));mask-image:linear-gradient(0deg, var(--gradient)), linear-gradient(180deg, var(--gradient)),\n				linear-gradient(90deg, var(--gradient)), linear-gradient(270deg, var(--gradient));mask-composite:add;mask-type:luminance;pointer-events:none;}}"
+};
+function TA(e, t) {
+	st(t, !0), Zi(e, wA);
+	let n = {
+		mainBackgroundColor: "hsla(0, 0%, 75%, 0.1)",
+		mainBlur: "1vw",
+		edgeBlur: "0.5vw",
+		edgeBackgroundColor: "hsla(0, 0%, 100%, 0.1)",
+		edgeWidth: "1vw",
+		edgeGradientWidth: "1vw",
+		sheenBlur: "3vw",
+		sheenBackgroundColor: "hsla(0, 0%, 100%, 0.2)",
+		sheenWidth: "0.2vw",
+		edgeZIndex: 1,
+		nonEdgeZIndex: 0,
+		nonEdgeGradientWidth: "0px",
+		nonEdgeWidth: "0px"
+	}, r = q(t, "children", 7), i = q(t, "options", 23, () => ({})), { class: a, style: o, ...s } = /* @__PURE__ */ Pa(t, [
+		"$$slots",
+		"$$events",
+		"$$legacy",
+		"$$host",
+		"children",
+		"options"
+	]), c = {
+		...n,
+		...i()
+	};
+	console.log(c);
+	try {
+		let e = (0, SA.default)(c.mainBlur) ?? 0, t = (0, SA.default)(c.edgeBlur) ?? 0;
+		console.log(`mainBlurPx: ${e}, edgeBlurPx: ${t}`), e > t ? (c.nonEdgeGradientWidth = c.edgeGradientWidth, c.edgeGradientWidth = "0.0001px", c.edgeWidth = `calc(${c.edgeWidth} + ${c.mainBlur})`, c.edgeZIndex = -1, c.nonEdgeZIndex = 0) : (c.nonEdgeGradientWidth = "0.0001px", c.edgeZIndex = 0, c.nonEdgeZIndex = -1);
+	} catch (e) {
+		console.error("Invalid CSS value for blur size:", e);
+	}
+	console.log(c);
+	let l = `--main-background-color:${c.mainBackgroundColor};
+--main-blur:${c.mainBlur};
+--edge-blur:${c.edgeBlur};
+--edge-background-color:${c.edgeBackgroundColor};
+--edge-width:${c.edgeWidth};
+--edge-gradient-width:${c.edgeGradientWidth};
+--non-edge-gradient-width:${c.nonEdgeGradientWidth};
+--non-edge-width:calc(${c.nonEdgeWidth});
+--sheen-blur:${c.sheenBlur};
+--sheen-background-color:${c.sheenBackgroundColor};
+--sheen-width:${c.sheenWidth};
+--edge-z-index:${c.edgeZIndex};
+--non-edge-z-index:${c.nonEdgeZIndex};`;
+	var u = {
+		get children() {
+			return r();
+		},
+		set children(e) {
+			r(e), N();
+		},
+		get options() {
+			return i();
+		},
+		set options(e = {}) {
+			i(e), N();
+		}
+	}, d = CA();
+	Ca(d, () => ({
+		class: `glass ${a || ""}`,
+		style: `${l} ${o || ""}`,
+		...s
+	}), void 0, void 0, void 0, "svelte-tnd21v");
+	var f = F(d), p = F(f), m = F(p);
+	return Di(F(m), () => r() ?? T), M(m), M(p), M(f), M(d), V(e, d), ct(u);
+}
+Ha(TA, {
+	children: {},
+	options: {}
+}, [], [], { mode: "open" });
+//#endregion
+//#region src/lib/components/visual/MainVisual.svelte
+var EA = /* @__PURE__ */ B("<p> </p>"), DA = /* @__PURE__ */ B("<section data-scroll=\"first\" class=\"relative flex max-h-dvh min-h-[60dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:min-h-200 lg:p-15 starting:translate-y-0 starting:opacity-0\"><div class=\"before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" autoplay=\"\" playsinline=\"\" loop=\"\"><source type=\"video/webm\"/></video></div> <div class=\"relative z-5 starting:opacity-0\"><div class=\"p-1\"><!></div> <h2 class=\"leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line\"> </h2></div> <div class=\"relative z-5 starting:opacity-0\"><div class=\"text-2md mt-5 text-white lg:text-lg lg:whitespace-pre-line\"><p class=\"leading-relaxed\"> </p> <p class=\"leading-relaxed\"> </p></div> <div class=\"mt-7.5 flex lg:mt-9\"><a href=\"/\" class=\"hover:text-3743ff group text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a></div></div></section>", 2);
+function OA(e, t) {
+	st(t, !0);
+	var n = DA(), r = F(n), i = F(r);
+	i.muted = !0, G(i, "poster", "/output/video/main-video.png"), G(F(i), "src", "/output/video/main-video.webm"), M(i), M(r);
+	var a = I(r, 2), o = F(a);
+	TA(F(o), {
+		class: "inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl",
+		options: {
+			mainBackgroundColor: "hsla(0, 0%, 75%, 0.1)",
+			mainBlur: "1vw",
+			edgeBlur: "0.5vw",
+			edgeBackgroundColor: "hsla(0, 0%, 100%, 0.1)",
+			edgeWidth: "1vw",
+			edgeGradientWidth: "1vw",
+			sheenBlur: "1vw",
+			sheenBackgroundColor: "hsla(0, 0%, 100%, 0.2)",
+			sheenWidth: "0.2vw"
+		},
+		style: "border-radius: 24px;",
+		children: (e, t) => {
+			var n = EA(), r = F(n, !0);
+			M(n), L((e) => H(r, e), [() => yl()]), V(e, n);
+		},
+		$$slots: { default: !0 }
+	}), M(o);
+	var s = I(o, 2), c = F(s, !0);
+	M(s), M(a);
+	var l = I(a, 2), u = F(l), d = F(u), f = F(d, !0);
+	M(d);
+	var p = I(d, 2), m = F(p, !0);
+	M(p), M(u);
+	var h = I(u, 2), g = F(h), _ = F(g), v = F(_, !0);
+	M(_);
+	var y = I(_, 2);
+	K(y, "name", "arrow-right"), W(y, 1, "group-hover:stroke-primary size-6 stroke-white"), M(g), M(h), M(l), M(n), L((e, t, n, r) => {
+		H(c, e), H(f, t), H(m, n), H(v, r);
+	}, [
+		() => Sl(),
+		() => Fx(),
+		() => Rx(),
+		() => Vx()
+	]), V(e, n), ct();
+}
+customElements.define("main-visual", Ha(OA, {}, [], []));
+//#endregion
+//#region src/lib/components/pages/Main.svelte
+var kA = /* @__PURE__ */ B("<main class=\"main\"><!> <!> <!> <!> <!> <!> <!> <!></main>");
+function AA(e, t) {
+	st(t, !0), Xn(() => {
+		let e = new lO({ autoRaf: !0 });
+		return uO.setInstance(e), () => {
+			uO.clear();
+		};
+	});
+	var n = kA(), r = F(n);
+	OA(r, {});
+	var i = I(r, 2);
+	Gk(i, {});
+	var a = I(i, 2);
+	rA(a, {});
+	var o = I(a, 2);
+	bA(o, {});
+	var s = I(o, 2);
+	_A(s, {});
+	var c = I(s, 2);
+	cA(c, {});
+	var l = I(c, 2);
+	Jk(l, {}), Xk(I(l, 2), {}), M(n), V(e, n), ct();
+}
+customElements.define("main-home", Ha(AA, {}, [], []));
+//#endregion

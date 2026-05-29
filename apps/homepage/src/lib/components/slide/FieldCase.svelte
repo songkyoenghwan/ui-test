@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { getContext } from 'svelte';
-	import { register } from 'swiper/element/bundle';
 	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
 	import * as m from '$lib/paraglide/messages.js';
+	import { getContext } from 'svelte';
+	import { register } from 'swiper/element/bundle';
 
 	$effect(() => {
 		register();

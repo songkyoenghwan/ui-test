@@ -6,9 +6,9 @@
 />
 
 <script lang="ts">
+	import CountNumber from '$lib/components/text/CountNumber.svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { videoObserve } from '$lib/utils/videoObserve.svelte';
-	import CountNumber from '$lib/components/text/CountNumber.svelte';
 
 	let lists = $derived([
 		{

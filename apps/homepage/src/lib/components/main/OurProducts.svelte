@@ -7,9 +7,9 @@
 
 <script lang="ts">
 	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
+	import { m } from '$lib/paraglide/messages.js';
 	import { flip } from 'svelte/animate';
 	import { fade, fly } from 'svelte/transition';
-	import { m } from '$lib/paraglide/messages.js';
 
 	let lists = [
 		{
@@ -134,9 +134,7 @@
 							<dd>{list.txt}</dd>
 						</dl>
 					</div>
-					<div
-						class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100"
-					>
+					<div class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100">
 						<p
 							class="text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 						>

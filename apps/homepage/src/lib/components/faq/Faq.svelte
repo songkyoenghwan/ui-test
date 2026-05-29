@@ -1,7 +1,7 @@
 <script lang="ts">
+	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import { flip } from 'svelte/animate';
 	import { fade, fly } from 'svelte/transition';
-	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 
 	const { tit = '', txt = '', lists = [] } = $props();
 </script>
@@ -36,11 +36,7 @@
 						transition:slide={{ duration: 50, easing: cubicOut }}
 					>
 						{#if chk}
-							<div
-								in:fly={{ y: 15, duration: 400, delay: 100 }}
-								out:fade={{ duration: 150 }}
-								class="space-y-5 py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22"
-							>
+							<div in:fly={{ y: 15, duration: 400, delay: 100 }} out:fade={{ duration: 150 }} class="space-y-5 py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22">
 								<p>
 									{item.txt}
 								</p>
@@ -53,10 +49,7 @@
 											aria-label={item.btn}
 										>
 											<span>{item.btn}</span>
-											<icon-list
-												name="arrow-right"
-												class="group-hover:stroke-primary size-6 stroke-black"
-											></icon-list>
+											<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-black"></icon-list>
 										</a>
 									</div>
 								{/if}

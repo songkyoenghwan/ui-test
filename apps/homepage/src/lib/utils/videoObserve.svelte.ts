@@ -1,4 +1,5 @@
 import type { Attachment } from 'svelte/attachments';
+
 export const videoObserve: Attachment = (element: Element) => {
 	if (!(element instanceof HTMLVideoElement)) {
 		return;

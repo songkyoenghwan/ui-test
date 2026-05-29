@@ -1,7 +1,7 @@
 <script lang="ts">
+	import FieldCase from '$/lib/components/slide/FieldCase.svelte';
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import CountNumber from '$lib/components/text/CountNumber.svelte';
-	import FieldCase from '$/lib/components/slide/FieldCase.svelte';
 
 	let { tit = '', txt = '', subTxt = '', lists = [] } = $props();
 </script>

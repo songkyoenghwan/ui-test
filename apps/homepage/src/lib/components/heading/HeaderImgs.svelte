@@ -29,12 +29,7 @@
 </script>
 
 <picture class="flex w-full">
-	<img
-		loading="lazy"
-		src={activeImg}
-		alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations"
-		class="w-41.75 lg:w-full"
-	/>
+	<img loading="lazy" src={activeImg} alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations" class="w-41.75 lg:w-full" />
 </picture>
 
 {#if name === 'logo'}

@@ -7,11 +7,7 @@
 	class="bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat p-7.5 lg:mt-7.5 lg:min-h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:p-15"
 	style:--bg-trial={`url(${__STATIC_URL__}/imgs/banner/bg-trial.png)`}
 >
-	<p
-		class="bg-primary absolute -top-2.5 -left-10.5 z-1 -rotate-45 px-10 pt-6 pb-1 text-xs font-bold text-white lg:-top-1.25 lg:-left-9.25 lg:order-1 lg:pt-5 lg:pb-2"
-	>
-		NEW
-	</p>
+	<p class="bg-primary absolute -top-2.5 -left-10.5 z-1 -rotate-45 px-10 pt-6 pb-1 text-xs font-bold text-white lg:-top-1.25 lg:-left-9.25 lg:order-1 lg:pt-5 lg:pb-2">NEW</p>
 	<div data-scroll="slide-up" class="flex flex-1 flex-col justify-between lg:row-span-1">
 		<div class="space-y-2.5">
 			<h4 class="text-lg font-bold lg:text-4xl">{m.main_title_trial?.()}</h4>

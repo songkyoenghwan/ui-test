@@ -67,10 +67,7 @@
 	});
 </script>
 
-<section
-	data-scroll="slide-up"
-	class="relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15"
->
+<section data-scroll="slide-up" class="relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15">
 	<sub-heading-line line="none" title={m.main_title_mro?.()} subTit={m.main_subtitle_mro?.()}></sub-heading-line>
 
 	<div
@@ -123,10 +120,7 @@
 					<span class="sr-only">Slide Prev</span>
 					<icon-list name="arrow-right" class="size-6 rotate-180 stroke-white"></icon-list>
 				</button>
-				<button
-					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
-					onclick={() => swiperEl?.swiper?.slideNext()}
-				>
+				<button class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12" onclick={() => swiperEl?.swiper?.slideNext()}>
 					<span class="sr-only">Slide Next</span>
 					<icon-list name="arrow-right" class="size-6 stroke-white"></icon-list>
 				</button>

@@ -45,9 +45,7 @@
 						{#if item.labels}
 							<ul class="inline-flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5">
 								{#each item.labels as laebl, i (i)}
-									<li
-										class="bg-ebedff lg:text-2md text-2sm text-3f53ff flex flex-none items-center rounded-full px-5 py-1"
-									>
+									<li class="bg-ebedff lg:text-2md text-2sm text-3f53ff flex flex-none items-center rounded-full px-5 py-1">
 										{laebl}
 									</li>
 								{/each}

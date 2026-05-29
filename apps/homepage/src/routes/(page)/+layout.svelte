@@ -25,10 +25,7 @@
 			<nav class="relative z-10 hidden items-center gap-5 lg:flex">
 				<ul class="flex gap-15 2xl:group-has-checked/header:gap-5">
 					<li class="group/products relative" aria-current="false">
-						<button
-							type="button"
-							class="group-aria-[current=page]/products:text-primary flex min-h-12 items-center justify-center gap-2.5 hover:underline"
-						>
+						<button type="button" class="group-aria-[current=page]/products:text-primary flex min-h-12 items-center justify-center gap-2.5 hover:underline">
 							<span class="group-hover/products:text-primary">Products</span>
 							<icon-list
 								name="arrow-down"
@@ -38,24 +35,15 @@
 						<ul
 							class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 						>
-							<li
-								class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100"
-								aria-current="false"
-							>
+							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
 								<a href="/logi">
 									<header-imgs name="logi"></header-imgs>
 								</a>
 							</li>
-							<li
-								class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100"
-								aria-current="false"
-							>
+							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
 								<a href="/dao"><header-imgs name="dao"></header-imgs></a>
 							</li>
-							<li
-								class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100"
-								aria-current="false"
-							>
+							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
 								<a href="/dsc"><header-imgs name="dsc"></header-imgs></a>
 							</li>
 						</ul>
@@ -70,11 +58,7 @@
 						</a>
 					</li>
 					<li>
-						<a
-							href="/news"
-							class="hover:text-primary aria-[current=page]:text-primary flex min-h-12 items-center justify-center hover:underline"
-							aria-current="false"
-						>
+						<a href="/news" class="hover:text-primary aria-[current=page]:text-primary flex min-h-12 items-center justify-center hover:underline" aria-current="false">
 							News
 						</a>
 					</li>
@@ -111,37 +95,17 @@
 					<li class="grid gap-5">
 						<h2 class="text-666 text-lg">Products</h2>
 						<ul>
-							<li
-								class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20"
-							>
-								<a
-									href="/logi"
-									class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline"
-									aria-current="false"
-								>
-									Logi Grid
-								</a>
+							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
+								<a href="/logi" class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" aria-current="false">Logi Grid</a>
 							</li>
-							<li
-								class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20"
-							>
-								<a
-									href="/dao"
-									class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline"
-									aria-current="false"
-								>
+							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
+								<a href="/dao" class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" aria-current="false">
 									DAO
 									<span class="text-lg font-normal">(DEEP.FINE AR.ON)</span>
 								</a>
 							</li>
-							<li
-								class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20"
-							>
-								<a
-									href="/dsc"
-									class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline"
-									aria-current="false"
-								>
+							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
+								<a href="/dsc" class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" aria-current="false">
 									DSC
 									<span class="text-lg font-normal">(DEEP.FINE Spatial Crafter)</span>
 								</a>
@@ -150,35 +114,17 @@
 					</li>
 					<li class="grid">
 						<h2>
-							<a
-								href="/company"
-								class="aria-[current=page]:text-primary underline-offset-4 hover:underline"
-								aria-current="false"
-							>
-								Company
-							</a>
+							<a href="/company" class="aria-[current=page]:text-primary underline-offset-4 hover:underline" aria-current="false">Company</a>
 						</h2>
 					</li>
 					<li class="grid">
 						<h2>
-							<a
-								href="/news"
-								class="aria-[current=page]:text-primary underline-offset-4 hover:underline"
-								aria-current="false"
-							>
-								News
-							</a>
+							<a href="/news" class="aria-[current=page]:text-primary underline-offset-4 hover:underline" aria-current="false">News</a>
 						</h2>
 					</li>
 					<li class="grid">
 						<h2>
-							<a
-								href="/contact"
-								class="aria-[current=page]:text-primary underline-offset-4 hover:underline"
-								aria-current="page"
-							>
-								Contact Sales
-							</a>
+							<a href="/contact" class="aria-[current=page]:text-primary underline-offset-4 hover:underline" aria-current="page">Contact Sales</a>
 						</h2>
 					</li>
 				</ul>
@@ -232,17 +178,10 @@
 				<dl class="text-666 flex items-center justify-between gap-5 text-lg">
 					<dt class="font-bold">Language</dt>
 					<dd class="divde-x-black/20 inline-flex items-center divide-x">
-						<button
-							class="aria-current:text-primary hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline"
-							type="button"
-						>
+						<button class="aria-current:text-primary hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline" type="button">
 							<span class="font-bold">EN</span>
 						</button>
-						<button
-							class="aria-current:text-primary hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline"
-							type="button"
-							aria-current="true"
-						>
+						<button class="aria-current:text-primary hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline" type="button" aria-current="true">
 							<span class="font-bold">KR</span>
 						</button>
 					</dd>

@@ -22,9 +22,7 @@
 		m.dao_banner_item_10,
 	] as const;
 	let pageKeys = $derived(page === 'dao' ? [...bannerTitleFunctions] : []);
-	let bg = $derived(
-		page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`,
-	);
+	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`);
 	let tit = $derived(page === 'dao' ? m.dao_banner_title?.() : '');
 	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2?.() : '');
 	let txt = $derived(page === 'dao' ? m.dao_banner_text?.() : '');
