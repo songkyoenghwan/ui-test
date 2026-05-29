@@ -7,6 +7,8 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+	import { lenisStore } from '$lib/utils/scrollMove.svelte';
+	import Lenis from 'lenis';
 
 	const division1 = `${__STATIC_URL__}/imgs/company/img-division-1.png`;
 	const division2 = `${__STATIC_URL__}/imgs/company/img-division-2.png`;
@@ -17,7 +19,7 @@
 	const bgPerson = `${__STATIC_URL__}/imgs/company/bg-join-us-person.png`;
 	const sign = `${__STATIC_URL__}/imgs/ceo/img-sign.png`;
 
-	const teams = [
+	const teams = $state([
 		{
 			img: division1,
 			team: m.our_teams_team_1(),
@@ -42,7 +44,19 @@
 			subtitle: m.our_teams_subtitle_4(),
 			list: [m.our_teams_list_4_1(), m.our_teams_list_4_2(), m.our_teams_list_4_3(), m.our_teams_list_4_4()],
 		},
-	] as const;
+	]);
+
+	$effect(() => {
+		const lenis = new Lenis({
+			autoRaf: true,
+		});
+
+		lenisStore.setInstance(lenis);
+
+		return () => {
+			lenisStore.clear();
+		};
+	});
 </script>
 
 <section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">

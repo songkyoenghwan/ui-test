@@ -11,7 +11,7 @@
 	import { flip } from 'svelte/animate';
 	import { fade, fly } from 'svelte/transition';
 
-	let lists = [
+	let lists = $state([
 		{
 			id: 'our-products1',
 			logo: `${__STATIC_URL__}/imgs/logo/logo-main-logi.svg`,
@@ -36,7 +36,7 @@
 			txt: m.main_our_item_txt_3?.(),
 			link: '',
 		},
-	];
+	]);
 	const videoUrl = `${__STATIC_URL__}/video/main-video.webm`;
 	let current = $state(0);
 	let w = $state(typeof window !== 'undefined' ? window.innerWidth : 0);

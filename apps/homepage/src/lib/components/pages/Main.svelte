@@ -2,6 +2,9 @@
 	customElement={{
 		tag: 'main-home',
 		shadow: 'none',
+		props: {
+			news: { type: 'Array' },
+		},
 	}}
 />
 
@@ -28,6 +31,7 @@
 			lenisStore.clear();
 		};
 	});
+	let { news = [] } = $props();
 </script>
 
 <main class="main">
@@ -43,7 +47,7 @@
 
 	<SlideCard />
 
-	<MainNews />
+	<MainNews list={news} />
 
 	<Operations />
 </main>
