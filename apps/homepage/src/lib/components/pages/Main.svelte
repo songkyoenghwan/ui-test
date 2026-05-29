@@ -6,6 +6,7 @@
 />
 
 <script lang="ts">
+	import Lenis from 'lenis';
 	import Industry from '$lib/components/main/Industry.svelte';
 	import OurProducts from '$lib/components/main/OurProducts.svelte';
 	import SlideCard from '$lib/components/main/SlideCard.svelte';
@@ -13,6 +14,19 @@
 	import Work from '$lib/components/main/Work.svelte';
 	import MainVisual from '$lib/components/visual/MainVisual.svelte';
 	import { m } from '$lib/paraglide/messages.js';
+	import { lenisStore } from '$lib/utils/scrollMove.svelte';
+
+	$effect(() => {
+		const lenis = new Lenis({
+			autoRaf: true,
+		});
+
+		lenisStore.setInstance(lenis);
+
+		return () => {
+			lenisStore.clear();
+		};
+	});
 </script>
 
 <main class="main">

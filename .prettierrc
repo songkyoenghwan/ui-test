@@ -3,7 +3,7 @@
 	"bracketSpacing": true,
 	"endOfLine": "auto",
 	"htmlWhitespaceSensitivity": "ignore",
-	"printWidth": 140,
+	"printWidth": 180,
 	"singleQuote": true,
 	"tabWidth": 4,
 	"useTabs": true,
@@ -19,12 +19,6 @@
 	"cssDeclarationSorterOrder": "smacss",
 	"tailwindPreserveDuplicates": false,
 	"overrides": [
-		{
-			"files": "*.svelte",
-			"options": {
-				"parser": "svelte"
-			}
-		},
 		{
 			"files": "*.ts",
 			"options": {

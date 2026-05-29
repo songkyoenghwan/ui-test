@@ -98,8 +98,8 @@
 	--text-2md: 0.9375rem;
 
 	--font-sans:
-		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
-		'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+		'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 
 	--input-height: 3.25rem;
 
@@ -407,6 +407,7 @@
 			'Segoe UI Symbol',
 			'Noto Color Emoji';
 		font-optical-sizing: auto;
+		scroll-behavior: smooth;
 	}
 
 	html,
@@ -455,6 +456,10 @@
 	.main,
 	.sub {
 		@apply 3xl:p-0 flex flex-col gap-7.5 px-5 pt-25 pb-20 has-[form]:overflow-clip lg:gap-15 lg:py-30;
+	}
+
+	.header {
+		@apply z-10!;
 	}
 
 	.sub-inner {

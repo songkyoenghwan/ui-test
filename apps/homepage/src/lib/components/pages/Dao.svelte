@@ -9,6 +9,7 @@
 />
 
 <script lang="ts">
+	import Lenis from 'lenis';
 	import { setContext } from 'svelte';
 	import Faq from '$/lib/components/faq/Faq.svelte';
 	import BannerInquiry from '$lib/components/banner/BannerInquiry.svelte';
@@ -18,11 +19,13 @@
 	import Results from '$lib/components/product/Results.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
 	import { m } from '$lib/paraglide/messages.js';
+	import { lenisStore } from '$lib/utils/scrollMove.svelte';
 
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-dao.svg`;
 	const bg = `${__STATIC_URL__}/imgs/visual/dao-visual.jpg`;
 
 	let { videoUrl = '' } = $props();
+
 	const industries = $state([
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-1.png`, txt: m.dao_industries_list_1() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-2.png`, txt: m.dao_industries_list_2() },
@@ -122,7 +125,19 @@
 	setContext('case-list', {
 		get list() {
 			return caseKeys;
-		}, // Svelte 5 최적화 게터 기류 동킹
+		},
+	});
+
+	$effect(() => {
+		const lenis = new Lenis({
+			autoRaf: true,
+		});
+
+		lenisStore.setInstance(lenis);
+
+		return () => {
+			lenisStore.clear();
+		};
 	});
 </script>
 

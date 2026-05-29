@@ -241,6 +241,8 @@
 	"btn_more": "더보기",
 	"main_title_trial": "바코드 피킹과 가상 DAS를 14일 무료 체험해보세요",
 	"main_subtitle_trial": "별도 장비 설치 없이 태블릿 앱에서 바로 테스트할 수 있습니다.",
-	"btn_start_trial": "트라이얼 신청하기"
+	"btn_start_trial": "트라이얼 신청하기",
+	"btn_start_trial_free": "무료 데모 신청하기",
+	"btn_quote": "견적 문의하기"
 	
 }
