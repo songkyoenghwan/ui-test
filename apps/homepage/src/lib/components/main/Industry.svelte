@@ -10,7 +10,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import '@selemondev/svelte-marquee/dist/style.css';
 
-	const lists = [
+	const lists = $state([
 		{ id: 'ind1', alt: 'SAMSUNG 삼성전자' },
 		{ id: 'ind2', alt: 'SAMSUNG 상성중공업' },
 		{ id: 'ind3', alt: 'HYUNDAI MOTOR GROUP' },
@@ -44,7 +44,7 @@
 		{ id: 'ind30', alt: 'sunjin' },
 		{ id: 'ind31', alt: 'Pulmuone' },
 		{ id: 'ind32', alt: '고용노동부' },
-	] as const;
+	]);
 </script>
 
 <section data-scroll="first" class="w-full max-w-dvw space-y-7.5 lg:space-y-15">

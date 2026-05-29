@@ -113,7 +113,6 @@
 				<button
 					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
 					onclick={() => {
-						console.log(swiperEl);
 						swiperEl?.swiper?.slidePrev();
 					}}
 				>

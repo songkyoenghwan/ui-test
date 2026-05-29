@@ -10,7 +10,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { videoObserve } from '$lib/utils/videoObserve.svelte';
 
-	let lists = $derived([
+	let lists = $state([
 		{
 			id: 'why-1',
 			video: `${__STATIC_URL__}/video/img-why-1.mp4`,

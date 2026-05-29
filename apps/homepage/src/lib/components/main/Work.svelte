@@ -8,7 +8,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
 
-	let lists = $derived([
+	let lists = $state([
 		{
 			id: 'work-1',
 			img: `${__STATIC_URL__}/imgs/main/work/img-work-1.png`,
