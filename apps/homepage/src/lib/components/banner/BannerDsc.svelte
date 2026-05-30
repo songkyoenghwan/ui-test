@@ -1,7 +1,7 @@
 <script lang="ts">
+	import CountNumber from '$lib/components/text/CountNumber.svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { LiquidGlass } from 'liquid-glass-svelte';
-	import CountNumber from '$lib/components/text/CountNumber.svelte';
 </script>
 
 <section

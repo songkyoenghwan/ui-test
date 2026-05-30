@@ -10,5 +10,7 @@ import '$lib/components/icons/Icons.svelte';
 import '$lib/components/news/newsSection.svelte';
 import '$lib/components/pages/Company.svelte';
 import '$lib/components/pages/Dao.svelte';
+import '$lib/components/pages/Dsc.svelte';
+import '$lib/components/pages/Logi.svelte';
 import '$lib/components/pages/Main.svelte';
 import '$lib/styles/index.css';

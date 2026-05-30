@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'sub-dsc',
+		tag: 'sub-logi',
 		shadow: 'none',
 		props: {
 			videoUrl: { type: 'String', attribute: 'data-vide-url' },
@@ -9,9 +9,9 @@
 />
 
 <script lang="ts">
-	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
 	import Faq from '$/lib/components/faq/Faq.svelte';
 	import BannerInquiry from '$lib/components/banner/BannerInquiry.svelte';
+	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
 	import Features from '$lib/components/product/Features.svelte';
 	import Industries from '$lib/components/product/Industries.svelte';
 	import Problem from '$lib/components/product/Problem.svelte';
@@ -23,7 +23,7 @@
 	import { setContext } from 'svelte';
 
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-sub-logi.svg`;
-	const bg = `${__STATIC_URL__}/imgs/visual/logi-visual.jpg`;
+	const bg = `${__STATIC_URL__}/videol/logi-video.png`;
 	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([
@@ -81,7 +81,7 @@
 		{
 			id: 'logi-case-1',
 			btn: m.logi_case_btn_1(),
-			logo: `${__STATIC_URL__}/imgs/case/logo-case-logi-1.png`,
+			logo: [`${__STATIC_URL__}/imgs/case/logo-case-logi-1.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-logi-1.png`,
 			tit: m.logi_case_tit_1_1(),
 			txt: [m.logi_case_txt_1_1(), m.logi_case_txt_1_2()],
@@ -90,7 +90,7 @@
 		{
 			id: 'logi-case-2',
 			btn: m.logi_case_btn_2(),
-			logo: `${__STATIC_URL__}/imgs/case/logo-case-logi-2.png`,
+			logo: [`${__STATIC_URL__}/imgs/case/logo-case-logi-2.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-logi-2.png`,
 			tit: m.logi_case_tit_2_1(),
 			txt: [m.logi_case_txt_2_1(), m.logi_case_txt_1_2()],

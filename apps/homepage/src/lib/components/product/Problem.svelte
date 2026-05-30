@@ -10,6 +10,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { animate, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
+
 	let { page = '' } = $props();
 
 	let played = $state(false);

@@ -73,7 +73,7 @@
 		{
 			id: 'das-case-1',
 			btn: m.dao_case_btn_1(),
-			logo: `${__STATIC_URL__}/imgs/case/logo-case-dao-1.png`,
+			logo: [`${__STATIC_URL__}/imgs/case/logo-case-dao-1.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-dao-1.png`,
 			tit: m.dao_case_tit_1_1(),
 			txt: [m.dao_case_txt_1_1(), m.dao_case_txt_1_2()],
@@ -100,7 +100,7 @@
 		{
 			id: 'das-case-4',
 			btn: m.dao_case_btn_4(),
-			logo: `${__STATIC_URL__}/imgs/case/logo-case-dao-4.png`,
+			logo: [`${__STATIC_URL__}/imgs/case/logo-case-dao-4.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-dao-4.png`,
 			tit: m.dao_case_tit_4_1(),
 			txt: [m.dao_case_txt_4_1()],
@@ -109,7 +109,7 @@
 		{
 			id: 'das-case-5',
 			btn: m.dao_case_btn_5(),
-			logo: 'client',
+			logo: ['client'],
 			img: `${__STATIC_URL__}/imgs/case/img-case-dao-5.png`,
 			tit: m.dao_case_tit_5_1(),
 			badge: [m.dao_case_badge_5_1()],

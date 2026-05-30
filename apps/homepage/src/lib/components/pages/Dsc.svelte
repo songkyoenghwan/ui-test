@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'sub-dao',
+		tag: 'sub-dsc',
 		shadow: 'none',
 		props: {
 			videoUrl: { type: 'String', attribute: 'data-vide-url' },
@@ -10,11 +10,11 @@
 
 <script lang="ts">
 	import Faq from '$/lib/components/faq/Faq.svelte';
+	import BannerDsc from '$lib/components/banner/BannerDsc.svelte';
 	import Features from '$lib/components/product/Features.svelte';
 	import Industries from '$lib/components/product/Industries.svelte';
 	import Results from '$lib/components/product/Results.svelte';
 	import SubVisual from '$lib/components/visual/SubVisual.svelte';
-	import BannerDsc from '$lib/components/banner/BannerDsc.svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { lenisStore } from '$lib/utils/scrollMove.svelte';
 	import Lenis from 'lenis';
@@ -22,7 +22,7 @@
 
 	let page = 'dsc';
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-sub-${page}.svg`;
-	const bg = `${__STATIC_URL__}/imgs/visual/dsc-visual.jpg`;
+	const bg = `${__STATIC_URL__}/video/dsc-video.png`;
 	const videoUrl = `${__STATIC_URL__}/video/dsc-video.webm`;
 
 	const industries = $state([
