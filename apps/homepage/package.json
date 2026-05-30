@@ -8,7 +8,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"doctor": "svelte-doctor check",
-		"dev": "vite dev --host --port 6713",
+		"dev": "vite dev --host ",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",
 		"fm": "prettier --write . && oxfmt ",

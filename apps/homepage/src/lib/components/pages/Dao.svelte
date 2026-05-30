@@ -27,12 +27,12 @@
 	let { videoUrl = '' } = $props();
 
 	const industries = $state([
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-1.png`, txt: m.dao_industries_list_1() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-2.png`, txt: m.dao_industries_list_2() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-3.png`, txt: m.dao_industries_list_3() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-4.png`, txt: m.dao_industries_list_4() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-5.png`, txt: m.dao_industries_list_5() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-11.png`, txt: m.dao_industries_list_6() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-1.png`, tit: m.dao_industries_list_1() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-2.png`, tit: m.dao_industries_list_2() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-3.png`, tit: m.dao_industries_list_3() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-4.png`, tit: m.dao_industries_list_4() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-5.png`, tit: m.dao_industries_list_5() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-11.png`, tit: m.dao_industries_list_6() },
 	]);
 	const feaKeys = $state([
 		{
@@ -141,9 +141,9 @@
 	});
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} logoAlt={m.dao_visual_badge()} tit={m.dao_visual_title()} subtit={m.dao_visual_subtitle()}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} logoAlt={m.dao_visual_badge()} tit={m.dao_visual_title()} subtit={m.dao_visual_subtitle}></SubVisual>
 
-<Problem />
+<Problem page="dao" />
 
 <Industries
 	cls="lg:grid-cols-[repeat(auto-fit,minmax(calc(33%-10px),1fr))] grid-cols-[repeat(auto-fit,1fr)]"
@@ -153,7 +153,7 @@
 	lists={[...industries]}
 />
 
-<Features tit={m.dao_features_title()} txt={m.dao_features_text()} lists={[...feaKeys]} />
+<Features tit={m.dao_features_title()} txt={m.dao_features_text()} lists={[...feaKeys]} page="dao" />
 
 <Results tit={m.dao_result_tit()} txt={m.dao_result_subTit()} lists={[...resultKeys]} />
 

@@ -24,10 +24,7 @@
 
 	<div class="relative z-5 starting:opacity-0">
 		<div class="p-1">
-			<LiquidGlass
-				class="inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl"
-				style="border-radius: 24px;"
-			>
+			<LiquidGlass class="inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl" style="border-radius: 24px;">
 				<p>{m.main_visual_badge()}</p>
 			</LiquidGlass>
 		</div>

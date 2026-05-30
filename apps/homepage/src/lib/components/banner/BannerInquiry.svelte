@@ -9,7 +9,7 @@
 	});
 
 	const spaceBetween = $state(0);
-	const bannerTitleFunctions = [
+	const bannerTitleDao = $state([
 		m.dao_banner_item_1,
 		m.dao_banner_item_2,
 		m.dao_banner_item_3,
@@ -20,12 +20,22 @@
 		m.dao_banner_item_8,
 		m.dao_banner_item_9,
 		m.dao_banner_item_10,
-	] as const;
-	let pageKeys = $derived(page === 'dao' ? [...bannerTitleFunctions] : []);
+	]);
+	const bannerTitleLogi = $state([
+		m.logi_banner_item_1,
+		m.logi_banner_item_2,
+		m.logi_banner_item_3,
+		m.logi_banner_item_4,
+		m.logi_banner_item_5,
+		m.logi_banner_item_6,
+		m.logi_banner_item_7,
+		m.logi_banner_item_8,
+	]);
+	let pageKeys = $derived(page === 'dao' ? [...bannerTitleDao] : page === 'logi' ? [...bannerTitleLogi] : []);
 	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`);
-	let tit = $derived(page === 'dao' ? m.dao_banner_title?.() : '');
-	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2?.() : '');
-	let txt = $derived(page === 'dao' ? m.dao_banner_text?.() : '');
+	let tit = $derived(page === 'dao' ? m.dao_banner_title() : page === 'logi' ? m.dao_banner_title() : '');
+	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2() : page === 'logi' ? m.dao_banner_title_2() : '');
+	let txt = $derived(page === 'dao' ? m.dao_banner_text() : page === 'logi' ? m.dao_banner_text() : '');
 	const bannerKeys = $derived(
 		Array.from({ length: pageKeys.length }).map((_, i) => {
 			const targetFn = pageKeys[i];
@@ -39,7 +49,7 @@
 </script>
 
 {#snippet inquiryLi(img: string, txt: string)}
-	<swiper-slide class="flex min-h-12 items-center justify-center gap-2.5 px-5 lg:min-h-17.75 lg:gap-5 lg:px-15">
+	<swiper-slide class="flex min-h-12 items-center justify-center gap-2.5 px-5 lg:min-h-17.75 lg:gap-5 lg:px-7.5">
 		<picture class="inline-flex size-7.5 lg:size-12.5"><img loading="lazy" src={img} alt="" class="h-full object-cover" /></picture>
 
 		<h4 class="text-primary text-lg font-bold lg:text-4xl">{txt}</h4>
@@ -51,9 +61,9 @@
 	class="bg-light-blue flex h-120 flex-col rounded-xl bg-(image:--banner-bg) bg-cover bg-center bg-no-repeat p-5 text-white lg:h-165 lg:p-15"
 	style:--banner-bg={`url(${bg})`}
 >
-	<div class="flex flex-col gap-1">
+	<div class={['flex flex-col gap-1', page === 'logi' ? 'space-y-5' : '']}>
 		<h3 class="text-2xl leading-tight font-bold text-white lg:text-5xl">{tit}</h3>
-		<div class="max-lg:space-y-2.5 lg:flex lg:items-center lg:gap-5">
+		<div class={['max-lg:space-y-2.5 lg:gap-5', page === 'dao' ? 'lg:flex lg:items-center ' : page === 'logi' ? 'space-y-5' : '']}>
 			<swiper-container
 				effect="cube"
 				cube-effect-shadow={false}
@@ -71,7 +81,7 @@
 			</swiper-container>
 			<h3 class="text-2xl leading-tight font-bold text-white lg:text-5xl">{tit2}</h3>
 		</div>
-		<p class="text-2md mt-5 whitespace-pre-line text-white lg:text-2xl">{txt}</p>
+		<p class="text-2md whitespace-pre-line text-white lg:mt-5 lg:text-2xl">{txt}</p>
 	</div>
 
 	<div class="mt-auto">

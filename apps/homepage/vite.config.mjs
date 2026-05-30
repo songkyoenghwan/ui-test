@@ -19,17 +19,9 @@ export default defineConfig({
 	ssr: {
 		noExternal: ['flowbite-svelte', 'flowbite-svelte-icons'],
 	},
-	// server: {
-	// 	port: 6713, // homepage는 3000, map은 3001 등으로 분리
-	// 	//strictPort: true, // 포트가 이미 사용 중일 때 자동으로 번호를 바꾸지 않게 함
-	// 	// hmr: {
-	// 	// 	protocol: 'ws',
-	// 	// 	host: 'localhost',
-	// 	// },
-	// },
 	server: {
 		host: true,
-		port: 6713,
+		port: 5173,
 	},
 	define: {
 		__STATIC_URL__: JSON.stringify(''),
@@ -47,13 +39,4 @@ export default defineConfig({
 		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide', strategy: ['localStorage', 'cookie', 'preferredLanguage', 'baseLocale'] }),
 	],
 	resolve: { alias: aliases },
-	// build: {
-	// 	outDir: './dist',
-	// 	// lib: {
-	// 	// 	entry: path.resolve(__dirname, 'src/index.js'),
-	// 	// 	name: 'WebComponents',
-	// 	// 	fileName: (format) => `wc.lit.${format}.js`,
-	// 	// 	formats: ['es', 'cjs'], // ✅ 포맷 추가
-	// 	// },
-	// },
 });

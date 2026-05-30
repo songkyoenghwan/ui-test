@@ -10,12 +10,13 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { animate, onScroll } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
+	let { page = '' } = $props();
 
 	let played = $state(false);
 
 	const dao_problem_text = m.dao_problem_text();
 	const dao_problem_title = m.dao_problem_title();
-	const asList = [
+	const asDao = $state([
 		{
 			tit: m.dao_as_list_tit_1(),
 			txt: m.dao_as_list_txt_1(),
@@ -32,8 +33,8 @@
 			tit: m.dao_as_list_tit_4(),
 			txt: m.dao_as_list_txt_4(),
 		},
-	];
-	const toList = [
+	]);
+	const toDao = $state([
 		{
 			tit: m.dao_to_list_tit_1(),
 			txt: m.dao_to_list_txt_1(),
@@ -50,7 +51,45 @@
 			tit: m.dao_to_list_tit_4(),
 			txt: m.dao_to_list_txt_4(),
 		},
-	];
+	]);
+	const asLogi = $state([
+		{
+			tit: m.logi_as_list_tit_1(),
+			txt: m.logi_as_list_txt_1(),
+		},
+		{
+			tit: m.logi_as_list_tit_2(),
+			txt: m.logi_as_list_txt_2(),
+		},
+		{
+			tit: m.logi_as_list_tit_3(),
+			txt: m.logi_as_list_txt_3(),
+		},
+		{
+			tit: m.logi_as_list_tit_4(),
+			txt: m.logi_as_list_txt_4(),
+		},
+	]);
+	const toLogi = $state([
+		{
+			tit: m.logi_to_list_tit_1(),
+			txt: m.logi_to_list_txt_1(),
+		},
+		{
+			tit: m.logi_to_list_tit_2(),
+			txt: m.logi_to_list_txt_2(),
+		},
+		{
+			tit: m.logi_to_list_tit_3(),
+			txt: m.logi_to_list_txt_3(),
+		},
+		{
+			tit: m.logi_to_list_tit_4(),
+			txt: m.logi_to_list_txt_4(),
+		},
+	]);
+	let asList = $derived(page === 'dao' ? asDao : asLogi);
+	let toList = $derived(page === 'dao' ? toDao : toLogi);
 
 	const proMotion: Attachment<HTMLElement> = (el) => {
 		const animation = animate(el, {

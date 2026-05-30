@@ -8,9 +8,9 @@
 <script lang="ts">
 	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
 	import { m } from '$lib/paraglide/messages.js';
+	import { initLoopMo, videoObserver } from '$lib/utils/videoObserve.svelte';
 	import { flip } from 'svelte/animate';
 	import { fade, fly } from 'svelte/transition';
-	import { videoObserver, initLoopMo } from '$lib/utils/videoObserve.svelte';
 
 	let lists = $state([
 		{

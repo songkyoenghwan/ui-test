@@ -2,11 +2,12 @@
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
-	let { tit = '', txt = '', subTxt = '', lists = [], logo = '' } = $props();
+	let { tit = '', txt = '', subTxt = '', lists = [], page = '' } = $props();
 
 	const daoLogo = `${__STATIC_URL__}/imgs/logo/logo-dao-only.svg`;
 	const dscLogo = `${__STATIC_URL__}/imgs/logo/logo-dsc-only.svg`;
-	let logoType = $derived(logo === 'dao' ? daoLogo : dscLogo);
+	const logiLogo = `${__STATIC_URL__}/imgs/logo/logo-logi-only.svg`;
+	let logoType = $derived(page === 'dao' ? daoLogo : page === 'logi' ? logiLogo : dscLogo);
 	let videoEl: HTMLVideoElement | null = $state(null);
 
 	$effect.pre(() => {
@@ -45,7 +46,7 @@
 						{#if item.labels}
 							<ul class="inline-flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5">
 								{#each item.labels as laebl, i (i)}
-									<li class="bg-ebedff lg:text-2md text-2sm text-3f53ff flex flex-none items-center rounded-full px-5 py-1">
+									<li class="bg-ebedff lg:text-2md text-2sm text-3f53ff text-primary flex flex-none items-center rounded-full px-5 py-1 font-bold">
 										{laebl}
 									</li>
 								{/each}

@@ -51,10 +51,12 @@
 			<img loading="lazy" src={icon} alt={tit} />
 		</picture>
 		{#if tit}
-			<p class="text-2md lg:text-lg">{tit}</p>
+			<p class="text-lg font-bold lg:text-2xl">{tit}</p>
 		{/if}
 
-		<p class="text-2md lg:text-lg">{txt}</p>
+		{#if txt}
+			<p class="text-2md text-666 lg:text-lg">{txt}</p>
+		{/if}
 	</li>
 {/snippet}
 

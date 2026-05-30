@@ -6,11 +6,12 @@
 />
 
 <script lang="ts">
+	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { animate, onScroll, stagger } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
-	let { videoUrl = '', bg = '', badge = '', logo = '', logoAlt = '', tit = '', subtit = '', btnTxt = '' } = $props();
+	let { videoUrl = '', bg = '', badge = '', logo = '', logoAlt = '', tit = '', subtit } = $props();
 	let played = $state(false);
 
 	const visualMotion: Attachment<HTMLElement> = (el) => {
@@ -80,8 +81,12 @@
 		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{tit}</h2>
 	</div>
 
-	<div class="relative z-5 starting:opacity-0">
-		<p class="text-2md mt-5 leading-normal text-white lg:text-lg lg:whitespace-pre-line">{subtit}</p>
+	<div class="ext-2md relative z-5 mt-5 leading-normal text-white lg:text-lg lg:whitespace-pre-line starting:opacity-0">
+		<ParaglideMessage message={subtit}>
+			{#snippet p({ children })}
+				<p>{@render children?.()}</p>
+			{/snippet}
+		</ParaglideMessage>
 
 		<div class="mt-7.5 flex lg:mt-9">
 			<a
