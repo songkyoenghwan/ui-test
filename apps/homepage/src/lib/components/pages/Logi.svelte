@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'sub-dao',
+		tag: 'sub-dsc',
 		shadow: 'none',
 		props: {
 			videoUrl: { type: 'String', attribute: 'data-vide-url' },
@@ -23,9 +23,8 @@
 	import { setContext } from 'svelte';
 
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-sub-logi.svg`;
-	const bg = `${__STATIC_URL__}/imgs/visual/dao-visual.jpg`;
-
-	let { videoUrl = '' } = $props();
+	const bg = `${__STATIC_URL__}/imgs/visual/logi-visual.jpg`;
+	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-1.png`, tit: m.logi_industries_list_1(), txt: m.logi_industries_list_txt_1() },
@@ -37,30 +36,35 @@
 	]);
 	const feaKeys = $state([
 		{
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-1.png`,
 			tit: m.logi_features_tit_1(),
 			txt: [m.logi_features_txt_1(), m.logi_features_txt_1_2()],
 			logo: m.logi_features_logo_1(),
 			labels: [m.logi_features_list_1_1(), m.logi_features_list_1_2(), m.logi_features_list_1_3()],
 		},
 		{
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-2.png`,
 			tit: m.logi_features_tit_2(),
 			txt: [m.logi_features_txt_2()],
 			logo: m.logi_features_logo_2(),
 			labels: [m.logi_features_list_2_1(), m.logi_features_list_2_2(), m.logi_features_list_2_3(), m.logi_features_list_2_4()],
 		},
 		{
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-3.png`,
 			tit: m.logi_features_tit_3(),
 			txt: [m.logi_features_txt_3(), m.logi_features_txt_3_2()],
 			logo: m.logi_features_logo_3(),
 			labels: [m.logi_features_list_3_1(), m.logi_features_list_3_2(), m.logi_features_list_3_3()],
 		},
 		{
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-4.png`,
 			tit: m.logi_features_tit_4(),
 			txt: [m.logi_features_txt_4(), m.logi_features_txt_4_2()],
 			logo: m.logi_features_logo_4(),
 			labels: [m.logi_features_list_4_1(), m.logi_features_list_4_2(), m.logi_features_list_4_3()],
 		},
 		{
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-5.png`,
 			tit: m.logi_features_tit_5(),
 			txt: [m.logi_features_txt_5(), m.logi_features_txt_4_2()],
 			logo: m.logi_features_logo_5(),

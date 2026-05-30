@@ -23,7 +23,7 @@
 	<ul data-scroll="slide-up" class="flex flex-col gap-5 lg:gap-7.5">
 		{#each lists as item, i (i)}
 			<li
-				class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
+				class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md [animation-delay:0.7s] lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
 			>
 				<div class="flex flex-col justify-between gap-2.5">
 					<dl class="space-y-2.5 lg:space-y-5">
@@ -65,17 +65,23 @@
 				</div>
 
 				<div>
-					<video
-						bind:this={videoEl}
-						src="https://videos.pexels.com/video-files/35423737/15008263_2560_1440_30fps.mp4"
-						class="bg-ebedff aspect-video h-auto w-full rounded-2xl object-cover sm:h-90 lg:w-160"
-						autoplay
-						muted
-						playsinline
-						loop
-					>
-						<source src="https://videos.pexels.com/video-files/35423737/15008263_2560_1440_30fps.mp4" type="video/mp4" />
-					</video>
+					{#if item.img}
+						<picture class="bg-ebedff aspect-video h-auto w-full rounded-2xl object-cover sm:h-90 lg:w-160">
+							<img loading="lazy" src={item.img} alt={item.tit} />
+						</picture>
+					{:else}
+						<video
+							bind:this={videoEl}
+							poster={item.postser}
+							class="bg-ebedff aspect-video h-auto w-full rounded-2xl object-cover sm:h-90 lg:w-160"
+							autoplay
+							muted
+							playsinline
+							loop
+						>
+							<source src={item.video} type="video/webm" />
+						</video>
+					{/if}
 				</div>
 			</li>
 		{/each}

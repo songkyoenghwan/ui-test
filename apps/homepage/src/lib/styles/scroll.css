@@ -62,7 +62,7 @@ news-section {
 		view-timeline-axis: block;
 		animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-		animation-name: stackAnimation;
+		animation-name: stack-move;
 		animation-timeline: --card-scroll;
 		animation-range: exit 0% exit 20%;
 	}
@@ -111,7 +111,6 @@ news-section {
 @keyframes slide-up {
 	0% {
 		transform: translateY(6%) scale(0.8);
-		filter: blur(0.01);
 		opacity: 0.05;
 	}
 
@@ -119,12 +118,6 @@ news-section {
 		transform: translateY(0) scale(1);
 		filter: blur(0);
 		opacity: 1;
-	}
-
-	101% {
-		transform: translateY(6%) scale(0.8);
-		filter: blur(0.1);
-		opacity: 0.05;
 	}
 }
 
@@ -143,10 +136,9 @@ news-section {
 .animation-arquee {
 	animation-duration: 3300s;
 }
-@keyframes stackAnimation {
+@keyframes stack-move {
 	to {
 		transform: scale(0.9) translateY(-20px);
-		filter: brightness(0.6);
 	}
 }
 

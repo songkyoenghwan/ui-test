@@ -23,8 +23,7 @@
 
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-dao.svg`;
 	const bg = `${__STATIC_URL__}/imgs/visual/dao-visual.jpg`;
-
-	let { videoUrl = '' } = $props();
+	const videoUrl = `${__STATIC_URL__}/video/dao-video.webm`;
 
 	const industries = $state([
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-1.png`, tit: m.dao_industries_list_1() },
@@ -48,12 +47,16 @@
 			labels: [m.dao_features_list_2_1(), m.dao_features_list_2_2()],
 		},
 		{
+			poster: `${__STATIC_URL__}/video/workflow-video.png`,
+			video: `${__STATIC_URL__}/video/workflow-video.webm`,
 			tit: m.dao_features_tit_3(),
 			txt: [m.dao_features_txt_3(), m.dao_features_txt_3_2()],
 			logo: m.dao_features_logo_3(),
 			labels: [m.dao_features_list_3_1(), m.dao_features_list_3_2(), m.dao_features_list_3_3(), m.dao_features_list_3_4()],
 		},
 		{
+			poster: `${__STATIC_URL__}/video/remote-video.png`,
+			video: `${__STATIC_URL__}/video/remote-video.webm`,
 			tit: m.dao_features_tit_4(),
 			txt: [m.dao_features_txt_4(), m.dao_features_txt_4_2()],
 			logo: m.dao_features_logo_4(),
@@ -79,7 +82,7 @@
 		{
 			id: 'das-case-2',
 			btn: m.dao_case_btn_2(),
-			logo: 'client',
+			logo: ['client'],
 			img: 'https://www.dummyimage.com/720X480/000/fff',
 			tit: m.dao_case_tit_2_1(),
 			txt: [m.dao_case_txt_2_1(), m.dao_case_txt_2_2()],
@@ -88,7 +91,7 @@
 		{
 			id: 'das-case-3',
 			btn: m.dao_case_btn_3(),
-			logo: 'client',
+			logo: ['client'],
 			img: 'https://www.dummyimage.com/720X480/000/fff',
 			tit: m.dao_case_tit_3_1(),
 			txt: [m.dao_case_txt_3_1(), m.dao_case_txt_3_2()],

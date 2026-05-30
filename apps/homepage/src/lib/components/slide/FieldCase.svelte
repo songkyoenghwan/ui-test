@@ -15,7 +15,7 @@
 	const spaceBetween = 10;
 </script>
 
-{#snippet resultLi(img: string, logo: string, tit: string, badge: string[], txt: string[], etc: [])}
+{#snippet resultLi(img: string, logo: string[], tit: string, badge: string[], txt: string[], etc: [])}
 	<swiper-slide class="grid grid-cols-1 items-center gap-5 p-5 lg:grid-cols-[minmax(480px,4fr)_minmax(460px,6fr)] lg:p-7.5 xl:gap-15">
 		<div class="relative transition-all">
 			<picture class="bg-primary/10 inline-flex h-53.75 w-auto overflow-clip rounded-xl lg:h-120">
@@ -24,25 +24,33 @@
 		</div>
 
 		<div class="inline-grid place-content-baseline gap-5">
-			{#if logo === 'client'}
-				<p>
-					<span class="text-2md bg-999 inline-flex min-h-7.5 items-center gap-3 rounded-full px-2.5 text-white">
-						<icon-list name="lock" class="size-5 fill-white"></icon-list>
-						Client Confidential
-					</span>
-				</p>
-			{:else}
-				<picture class="inline-flex h-5 overflow-clip">
-					<img loading="lazy" src={logo} alt="" class="h-full object-cover" />
-				</picture>
+			{#if logo}
+				<div class="inline-flex flex-wrap gap-2.5">
+					{#each logo as l, i (`case-l-${i}`)}
+						{#if l === 'client'}
+							<p>
+								<span class="text-2md bg-999 inline-flex min-h-7.5 items-center gap-3 rounded-full px-2.5 text-white">
+									<icon-list name="lock" class="size-5 fill-white"></icon-list>
+									Client Confidential
+								</span>
+							</p>
+						{/if}
+
+						{#if l !== 'client'}
+							<picture class="inline-flex h-7.5 overflow-clip">
+								<img loading="lazy" src={l} alt="" class="h-full object-cover" />
+							</picture>
+						{/if}
+					{/each}
+				</div>
 			{/if}
 
 			<h4 class="text-lg font-bold lg:text-4xl">{tit}</h4>
 
 			{#if badge}
-				<div>
+				<div class="inline-flex flex-wrap gap-2.5">
 					{#each badge as b, i (`case-b-${i}`)}
-						<p class="bg-primary/10 inline-flex rounded-full px-5 py-1">{b}</p>
+						<p class="bg-primary/10 inline-flex flex-none rounded-full px-5 py-1">{b}</p>
 					{/each}
 				</div>
 			{/if}
