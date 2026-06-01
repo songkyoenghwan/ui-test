@@ -35,7 +35,7 @@
 		space-between={30}
 		autoplay-delay={1000}
 		autoplay-disable-on-interaction={false}
-		class="-mx-5 w-[calc(100%+40px)] max-w-dvw"
+		class="before:from-f0f0f0 after:from-f0f0f0 relative -mx-5 w-[calc(100%+40px)] max-w-dvw before:absolute before:-left-5 before:z-2 before:h-full before:w-20 before:bg-linear-to-r before:to-transparent after:absolute after:top-0 after:-right-5 after:z-2 after:h-full after:w-20 after:bg-linear-to-l after:to-transparent"
 	>
 		{#each lists as { link, img, tit, date }, i (`new-slide-${i}`)}
 			<swiper-slide class="h-full w-75 select-none lg:w-100">

@@ -22,21 +22,21 @@
 			badge: [m.main_mro_badge_3?.(), m.main_mro_badge_2?.()],
 			txt: m.main_mro_txt_2?.(),
 			img: `${__STATIC_URL__}/imgs/main/slide/img-card-2.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-2.png`,
 		},
 		{
 			id: 'card-slide-3',
 			badge: [m.main_mro_badge_4?.(), m.main_mro_badge_5?.()],
 			txt: m.main_mro_txt_3?.(),
 			img: `${__STATIC_URL__}/imgs/main/slide/img-card-3.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-3.png`,
 		},
 		{
 			id: 'card-slide-4',
 			badge: [m.main_mro_badge_6?.(), m.main_mro_badge_7?.()],
 			txt: m.main_mro_txt_4?.(),
 			img: `${__STATIC_URL__}/imgs/main/slide/img-card-4.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
+			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-4.png`,
 		},
 	]);
 
@@ -79,7 +79,7 @@
 			init="true"
 			effect="cards"
 			pagination="true"
-			speed="450"
+			speed="600"
 			autoplay-delay="3000"
 			class="*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"
 		>
@@ -87,7 +87,7 @@
 				<swiper-slide
 					class="gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-(image:--bg-card-mo) bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-(image:--bg-card-pc) lg:bg-size-[auto_100%] lg:p-5"
 					style:--bg-card-mo={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-mo.png)`}
-					style:--bg-card-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card.svg)`}
+					style:--bg-card-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card.png)`}
 				>
 					<picture class="flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25">
 						<img loading="lazy" src={list.img} alt="" class="w-full object-cover" />
@@ -104,7 +104,11 @@
 						<dt class="text-center text-lg lg:text-2xl">
 							{list.txt}
 						</dt>
-						<dd class=" text-right">2025. 12. 8</dd>
+						<dd class=" text-right">
+							<picture class="absolute right-5 bottom-5 flex h-6 lg:h-7.5">
+								<img loading="lazy" src={list.logo} alt="" class="h-full" />
+							</picture>
+						</dd>
 					</dl>
 				</swiper-slide>
 			{/each}

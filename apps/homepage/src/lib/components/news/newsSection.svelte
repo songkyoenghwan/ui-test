@@ -8,7 +8,7 @@
 <script lang="ts">
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
-	let { layout = '', img = '', badges = '', title = '', text = '', date = '', source = '', url = '' } = $props();
+	let { layout = '', img = '', badges = [''], title = '', text = '', date = '', source = '', url = '' } = $props();
 
 	let lastBadges = $state('');
 	let cachedList: string[] = $state([]);

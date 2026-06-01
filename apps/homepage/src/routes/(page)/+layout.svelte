@@ -36,15 +36,15 @@
 							class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 						>
 							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
-								<a href="/logi">
+								<a href="/logi" aria-label="logi.fine page">
 									<header-imgs name="logi"></header-imgs>
 								</a>
 							</li>
 							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
-								<a href="/dao"><header-imgs name="dao"></header-imgs></a>
+								<a href="/dao" aria-label="dao page"><header-imgs name="dao"></header-imgs></a>
 							</li>
 							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
-								<a href="/dsc"><header-imgs name="dsc"></header-imgs></a>
+								<a href="/dsc" aria-label="dsc page"><header-imgs name="dsc"></header-imgs></a>
 							</li>
 						</ul>
 					</li>

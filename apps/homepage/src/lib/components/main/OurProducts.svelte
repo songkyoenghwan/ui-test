@@ -38,7 +38,6 @@
 			link: '',
 		},
 	]);
-	const videoUrl = `${__STATIC_URL__}/video/main-video.webm`;
 	let current = $state(0);
 	let w = $state(typeof window !== 'undefined' ? window.innerWidth : 0);
 	const isDesktop = $derived(w >= 1024);
@@ -60,48 +59,88 @@
 			>
 				{#if current === i && isDesktop}
 					<div
-						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
 						<video
 							{@attach videoObserver}
 							class="relative z-1 aspect-video h-full w-full object-cover"
 							preload="auto"
-							muted
+							muted={true}
 							playsinline
 							loop
+							autoplay
 							poster={i === 0
-								? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+								? `${__STATIC_URL__}/video/logi-video.png`
 								: i === 1
-									? `${__STATIC_URL__}/imgs/logo/bg-main-dao.png`
+									? `${__STATIC_URL__}/video/dao-video.png`
 									: i === 2
-										? `${__STATIC_URL__}/imgs/logo/bg-main-dsc.png`
+										? `${__STATIC_URL__}/video/dsc-video.png`
 										: ''}
 						>
-							<source src={videoUrl} type="video/webm" />
+							<source
+								src={i === 0
+									? `${__STATIC_URL__}/video/logi-video.mp4`
+									: i === 1
+										? `${__STATIC_URL__}/video/dao-video.mp4`
+										: i === 2
+											? `${__STATIC_URL__}/video/dsc-video.mp4`
+											: ''}
+								type="video/mp4"
+							/>
+							<source
+								src={i === 0
+									? `${__STATIC_URL__}/video/logi-video.webm`
+									: i === 1
+										? `${__STATIC_URL__}/video/dao-video.webm`
+										: i === 2
+											? `${__STATIC_URL__}/video/dsc-video.webm`
+											: ''}
+								type="video/webm"
+							/>
 						</video>
 					</div>
 				{/if}
 
 				{#if !isDesktop}
 					<div
-						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 					>
 						<video
 							use:initLoopMo
 							class="relative z-1 aspect-video h-full w-full object-cover"
 							preload="auto"
-							muted
+							muted={true}
 							playsinline
 							loop
+							autoplay
 							poster={i === 0
-								? `${__STATIC_URL__}/imgs/logo/bg-main-logi.png`
+								? `${__STATIC_URL__}/video/logi-video.png`
 								: i === 1
-									? `${__STATIC_URL__}/imgs/logo/bg-main-dao.png`
+									? `${__STATIC_URL__}/video/dsc-video.png`
 									: i === 2
-										? `${__STATIC_URL__}/imgs/logo/bg-main-dsc.png`
+										? `${__STATIC_URL__}/video/dsc-video.png`
 										: ''}
 						>
-							<source src={videoUrl} type="video/webm" />
+							<source
+								src={i === 0
+									? `${__STATIC_URL__}/video/logi-video.mp4`
+									: i === 1
+										? `${__STATIC_URL__}/video/dao-video.mp4`
+										: i === 2
+											? `${__STATIC_URL__}/video/dsc-video.mp4`
+											: ''}
+								type="video/mp4"
+							/>
+							<source
+								src={i === 0
+									? `${__STATIC_URL__}/video/logi-video.webm`
+									: i === 1
+										? `${__STATIC_URL__}/video/dao-video.webm`
+										: i === 2
+											? `${__STATIC_URL__}/video/dsc-video.webm`
+											: ''}
+								type="video/webm"
+							/>
 						</video>
 					</div>
 				{/if}

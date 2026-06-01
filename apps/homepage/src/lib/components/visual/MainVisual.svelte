@@ -17,7 +17,8 @@
 	<div
 		class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
 	>
-		<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop poster={`${__STATIC_URL__}/video/main-video.jpg`}>
+		<video class="relative z-1 aspect-video h-full w-full object-cover" preload="auto" autoplay loop playsinline muted poster={`${__STATIC_URL__}/video/main-video.jpg`}>
+			<source src={`${__STATIC_URL__}/video/main-video.mp4`} type="video/mp4" />
 			<source src={`${__STATIC_URL__}/video/main-video.webm`} type="video/webm" />
 		</video>
 	</div>

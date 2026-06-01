@@ -13,4 +13,5 @@ import '$lib/components/pages/Dao.svelte';
 import '$lib/components/pages/Dsc.svelte';
 import '$lib/components/pages/Logi.svelte';
 import '$lib/components/pages/Main.svelte';
+import '$lib/components/pages/Term.svelte';
 import '$lib/styles/index.css';

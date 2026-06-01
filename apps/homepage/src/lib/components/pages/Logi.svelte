@@ -23,7 +23,7 @@
 	import { setContext } from 'svelte';
 
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-sub-logi.svg`;
-	const bg = `${__STATIC_URL__}/videol/logi-video.png`;
+	const bg = `${__STATIC_URL__}/video/logi-video.png`;
 	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([

@@ -95,13 +95,13 @@
 								'relative z-1',
 								list.id === 'why-1' ? 'h-56.5 lg:left-32 lg:min-h-131.75 lg:min-w-130' : list.id === 'why-2' ? 'h-53.5 max-w-full lg:h-61.5' : '',
 							]}
+							autoplay
 							preload="auto"
 							muted
 							playsinline
 							poster={list.poster}
 						>
 							<source src={list.video} type="video/mp4" />
-							<source src={list.webm} type="video/webm" />
 						</video>
 					</div>
 				{/if}

@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	<div data-scroll="slide-left" class="flex lg:order-2 lg:row-span-2">
+	<div data-scroll="slide-left" class="flex justify-center lg:order-2 lg:row-span-2">
 		<picture class="grid place-items-center">
 			<img loading="lazy" src={`${__STATIC_URL__}/imgs/banner/img-glass.png`} alt="img" class="-mt-5 h-3/4 lg:h-auto" />
 		</picture>
