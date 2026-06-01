@@ -6328,14 +6328,14 @@ function jR(e) {
 }
 //#endregion
 //#region src/lib/components/heading/SubHeadingLine.svelte
-var MR = /* @__PURE__ */ H("<div><a class=\"hover:text-3743ff group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div>", 2), NR = /* @__PURE__ */ H("<header><div class=\"space-y-2.5\"><h2 class=\"text-3xl font-bold transition-all lg:text-6xl\"> </h2> <p class=\"text-2md transition-all lg:text-lg\"> </p></div> <!></header>");
+var MR = /* @__PURE__ */ H("<div><a class=\"hover:text-3743ff group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div>", 2), NR = /* @__PURE__ */ H("<header><div><h2 class=\"text-3xl font-bold transition-all lg:text-6xl\"> </h2> <p class=\"text-2md transition-all lg:text-2xl\"> </p></div> <!></header>");
 function PR(e, t) {
 	ot(t, !0);
-	let n = Y(t, "line", 7, "bottom"), r = Y(t, "title", 7, ""), i = Y(t, "subTit", 7, ""), a = Y(t, "btnRender", 7, ""), o = /* @__PURE__ */ F(() => jR(r())), s = /* @__PURE__ */ F(() => {
+	let n = Y(t, "line", 7, "bottom"), r = Y(t, "title", 7, ""), i = Y(t, "subTit", 7, ""), a = Y(t, "btnRender", 7, ""), o = Y(t, "cls", 7, ""), s = /* @__PURE__ */ F(() => jR(r())), c = /* @__PURE__ */ F(() => {
 		let e = r().toLocaleLowerCase();
 		return e === "news" ? qd() : e === "compnay" ? Xd() : e === "contact" ? $d() : "";
 	});
-	var c = {
+	var l = {
 		get line() {
 			return n();
 		},
@@ -6359,29 +6359,36 @@ function PR(e, t) {
 		},
 		set btnRender(e = "") {
 			a(e), P();
+		},
+		get cls() {
+			return o();
+		},
+		set cls(e = "") {
+			o(e), P();
 		}
-	}, l = NR(), u = L(l), d = L(u), f = L(d, !0);
-	N(d);
-	var p = R(d, 2), m = L(p, !0);
-	N(p), N(u);
-	var h = R(u, 2), g = (e) => {
+	}, u = NR(), d = L(u), f = L(d), p = L(f, !0);
+	N(f);
+	var m = R(f, 2), h = L(m, !0);
+	N(m), N(d);
+	var g = R(d, 2), _ = (e) => {
 		var t = MR(), n = L(t), r = L(n), i = L(r, !0);
 		N(r);
 		var a = R(r, 2);
 		J(a, "name", "arrow-right"), K(a, 1, "group-hover:stroke-primary size-6 stroke-black"), N(n), N(t), z((e) => {
-			q(n, "href", `/${V(s)}`), q(n, "aria-label", V(s)), W(i, e);
+			q(n, "href", `/${V(c)}`), q(n, "aria-label", V(c)), W(i, e);
 		}, [() => GN()]), U(e, t);
 	};
-	return G(h, (e) => {
-		a() === "link" && e(g);
-	}), N(l), Zi(l, () => Yc), z(() => {
-		K(l, 1, `${n() === "bottom" ? "border-b border-b-black lg:pb-15" : "lg:pb-7.5"} flex justify-between pb-5 opacity-100 max-lg:flex-col lg:whitespace-pre-line`), W(f, V(o)), W(m, i() ? i() : V(s));
-	}), U(e, l), st(c);
+	return G(g, (e) => {
+		a() === "link" && e(_);
+	}), N(u), Zi(u, () => Yc), z(() => {
+		K(u, 1, `${n() === "bottom" ? "border-b border-b-black lg:pb-15" : "lg:pb-7.5"} flex justify-between pb-5 opacity-100 max-lg:flex-col lg:whitespace-pre-line`), K(d, 1, ea(o() ? o() : "space-y-2.5")), W(p, V(s)), W(h, i() ? i() : V(c));
+	}), U(e, u), st(l);
 }
 customElements.define("sub-heading-line", Va(PR, {
 	title: { type: "String" },
 	subTit: { type: "String" },
 	btnRender: { type: "String" },
+	cls: { type: "String" },
 	line: {}
 }, [], []));
 //#endregion
@@ -13933,24 +13940,26 @@ customElements.define("sub-dsc", Va(mW, { videoUrl: {
 } }, [], []));
 //#endregion
 //#region src/lib/components/banner/BannerTrial.svelte
-var hW = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat p-7.5 lg:mt-7.5 lg:min-h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:p-15\"><p class=\"bg-primary absolute -top-2.5 -left-10.5 z-1 -rotate-45 px-10 pt-6 pb-1 text-xs font-bold text-white lg:-top-1.25 lg:-left-9.25 lg:order-1 lg:pt-5 lg:pb-2\">NEW</p> <div data-scroll=\"slide-up\" class=\"flex flex-1 flex-col justify-between lg:row-span-1\"><div class=\"space-y-2.5\"><h4 class=\"text-lg font-bold lg:text-4xl\"> </h4> <p> </p></div></div> <div data-scroll=\"slide-left\" class=\"flex justify-center lg:order-2 lg:row-span-2\"><picture class=\"grid place-items-center\"><img loading=\"lazy\" alt=\"img\" class=\"-mt-5 h-3/4 lg:h-auto\"/></picture> <picture class=\"-ml-25 grid place-items-center pt-2 lg:-ml-17\"><img loading=\"lazy\" alt=\"img\" class=\"h-2/3 lg:h-auto\"/></picture></div> <div class=\"flex w-full lg:order-3 lg:row-span-1 lg:inline-flex\"><a href=\"/\" class=\"hover:text-3743ff group flex h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:mt-auto lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
+var hW = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat px-7.5 lg:mt-7.5 lg:h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:px-15\"><picture class=\"absolute top-0 left-0 z-1 grid place-items-center\"><img loading=\"lazy\" alt=\"new\" class=\"h-14 lg:h-20\"/></picture> <div data-scroll=\"slide-up\" class=\"flex flex-1 flex-col justify-between lg:row-span-1\"><div class=\"space-y-2.5 py-7.5 lg:py-15\"><h4 class=\"text-lg font-bold lg:text-4xl\"> </h4> <p> </p></div></div> <div data-scroll=\"slide-left\" class=\"flex justify-center lg:order-2 lg:row-span-2\"><picture class=\"grid place-items-center\"><img loading=\"lazy\" alt=\"img\" class=\"-mt-5 h-3/4 lg:h-auto\"/></picture> <picture class=\"-ml-25 grid place-items-center pt-2 lg:-ml-17\"><img loading=\"lazy\" alt=\"img\" class=\"h-2/3 lg:h-auto\"/></picture></div> <div class=\"flex w-full py-5 lg:order-3 lg:row-span-1 lg:inline-flex lg:py-15\"><a href=\"/\" class=\"hover:text-3743ff group flex h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:mt-auto lg:min-h-13.5 lg:w-auto lg:flex-none\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
 function gW(e, t) {
 	ot(t, !0);
 	var n = hW();
 	sa(n, "", {}, { "--bg-trial": "url(/output/imgs/banner/bg-trial.png)" });
-	var r = R(L(n), 2), i = L(r), a = L(i), o = L(a, !0);
-	N(a);
-	var s = R(a, 2), c = L(s, !0);
-	N(s), N(i), N(r);
-	var l = R(r, 2), u = L(l);
-	q(L(u), "src", "/output/imgs/banner/img-glass.png"), N(u);
-	var d = R(u, 2);
-	q(L(d), "src", "/output/imgs/banner/img-barcode.png"), N(d), N(l);
-	var f = R(l, 2), p = L(f), m = L(p), h = L(m, !0);
-	N(m);
-	var g = R(m, 2);
-	J(g, "name", "arrow-right"), K(g, 1, "group-hover:stroke-primary size-6 stroke-black"), N(p), N(f), N(n), z((e, t, n, r) => {
-		W(o, e), W(c, t), q(p, "aria-label", n), W(h, r);
+	var r = L(n);
+	q(L(r), "src", "/output/imgs/banner/img-new.png"), N(r);
+	var i = R(r, 2), a = L(i), o = L(a), s = L(o, !0);
+	N(o);
+	var c = R(o, 2), l = L(c, !0);
+	N(c), N(a), N(i);
+	var u = R(i, 2), d = L(u);
+	q(L(d), "src", "/output/imgs/banner/img-glass.png"), N(d);
+	var f = R(d, 2);
+	q(L(f), "src", "/output/imgs/banner/img-barcode.png"), N(f), N(u);
+	var p = R(u, 2), m = L(p), h = L(m), g = L(h, !0);
+	N(h);
+	var _ = R(h, 2);
+	J(_, "name", "arrow-right"), K(_, 1, "group-hover:stroke-primary size-6 stroke-black"), N(m), N(p), N(n), z((e, t, n, r) => {
+		W(s, e), W(l, t), q(m, "aria-label", n), W(g, r);
 	}, [
 		() => JN?.(),
 		() => ZN?.(),
@@ -16225,13 +16234,13 @@ function eK(e, t) {
 customElements.define("main-news", Va(eK, { list: { type: "Array" } }, [], []));
 //#endregion
 //#region src/lib/components/main/Operations.svelte
-var tK = /* @__PURE__ */ H("<section class=\"relative max-w-dvw rounded-xl bg-(image:--bg-op) bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15\"><sub-heading-line></sub-heading-line> <div class=\"mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-9\"><a href=\"/\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a> <a href=\"/static/pdf/Company_Introduction_DEEPFINE_kr.pdf\" download=\"딥파인 회사소개서\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\" target=\"_blank\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
+var tK = /* @__PURE__ */ H("<section class=\"relative flex h-90.5 max-w-dvw flex-col justify-between rounded-xl bg-(image:--bg-op) bg-size-[100%_100%] bg-no-repeat p-5 text-white lg:h-165 lg:bg-cover lg:bg-center lg:p-15\"><sub-heading-line></sub-heading-line> <div class=\"mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-auto\"><a href=\"/\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a> <a href=\"/static/pdf/Company_Introduction_DEEPFINE_kr.pdf\" download=\"딥파인 회사소개서\" class=\"hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\" target=\"_blank\"><span> </span> <icon-list></icon-list></a></div></section>", 2);
 function nK(e, t) {
 	ot(t, !0);
 	var n = tK();
 	sa(n, "", {}, { "--bg-op": "url(/output/imgs/main/work/bg-operations.png)" });
 	var r = L(n);
-	J(r, "line", "none"), z(() => J(r, "title", Vd())), z(() => J(r, "subTit", Wd()));
+	J(r, "line", "none"), z(() => J(r, "title", Vd())), z(() => J(r, "subTit", Wd())), J(r, "cls", "lg:space-y-5 space-y-2.5");
 	var i = R(r, 2), a = L(i), o = L(a), s = L(o, !0);
 	N(o);
 	var c = R(o, 2);
@@ -16284,7 +16293,7 @@ function iK(e) {
 }
 //#endregion
 //#region src/lib/components/main/OurProducts.svelte
-var aK = /* @__PURE__ */ H("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" playsinline=\"\" loop=\"\" autoplay=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div>", 2), oK = /* @__PURE__ */ H("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" playsinline=\"\" loop=\"\" autoplay=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div>", 2), sK = /* @__PURE__ */ H("<li data-scroll=\"slide-up\" class=\"group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl transition-all duration-400 has-aria-current:flex-1 lg:h-145\"><!> <!> <a href=\"/\"><div class=\"lg:7.5 relative z-2 flex flex-col gap-5\"><picture><source media=\"(min-width: 1024px)\"/> <source media=\"(max-width: 1024px)\"/> <img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture> <dl class=\"text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0\"><dt class=\"font-bold\"> </dt> <dd> </dd></dl></div> <div class=\"z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100\"><p class=\"text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></p></div></a></li>", 2), cK = /* @__PURE__ */ H("<section class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <ul class=\"flex gap-7.5 max-lg:flex-col lg:flex-row\"></ul> <!></section>", 2);
+var aK = /* @__PURE__ */ H("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-2 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" playsinline=\"\" loop=\"\" autoplay=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div>", 2), oK = /* @__PURE__ */ H("<div class=\"before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" playsinline=\"\" loop=\"\" autoplay=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div>", 2), sK = /* @__PURE__ */ H("<li data-scroll=\"slide-up\" class=\"group/prod relative flex min-h-[40dvh] flex-[0_0_200px] flex-col overflow-clip rounded-xl transition-all duration-400 has-aria-current:flex-1 lg:h-145\"><!> <!> <a href=\"/\"><div class=\"lg:7.5 relative z-2 flex flex-col gap-5\"><picture><source media=\"(min-width: 1024px)\"/> <source media=\"(max-width: 1024px)\"/> <img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture> <dl class=\"text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0\"><dt class=\"font-bold\"> </dt> <dd class=\"lg:max-w-130\"> </dd></dl></div> <div class=\"z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100\"><p class=\"text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></p></div></a></li>", 2), cK = /* @__PURE__ */ H("<section class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <ul class=\"flex gap-7.5 max-lg:flex-col lg:flex-row\"></ul> <!></section>", 2);
 function lK(e, t) {
 	ot(t, !0);
 	let n = /* @__PURE__ */ I(xn([
@@ -16358,14 +16367,14 @@ function lK(e, t) {
 			K(u, 1, `relative flex size-full flex-1 cursor-pointer flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
 							${V(n) === 0 ? "bg-(image:--bg-main-logi)" : ""}
 							${V(n) === 1 ? "bg-(image:--bg-main-dao)" : ""}
-							${V(n) === 2 ? "bg-(image:--bg-main-dsc)" : ""}`), q(u, "aria-current", V(r) === V(n) ? "true" : V(a) ? void 0 : "true"), K(f, 1, `relative flex min-h-10 opacity-100 transition-all transition-discrete duration-300 @min-xl:group-has-aria-current/prod:opacity-100 starting:rotate-0 starting:opacity-0 ${V(r) === V(n) ? "relative" : "lg:absolute lg:bottom-[calc(100%-20px)] lg:left-[calc(100%-20px)] lg:h-25 lg:max-h-105 lg:w-105 lg:origin-left lg:rotate-90"}`), q(p, "srcset", V(t).logoPc), q(m, "srcset", V(t).logo), q(h, "src", V(t).logo), W(v, V(t).tit), W(b, V(t).txt), W(w, e);
+							${V(n) === 2 ? "bg-(image:--bg-main-dsc)" : ""}`), q(u, "aria-current", V(r) === V(n) ? "true" : V(a) ? void 0 : "true"), K(f, 1, `relative flex min-h-10 opacity-100 @min-xl:group-has-aria-current/prod:opacity-100 starting:opacity-0 ${V(r) === V(n) ? "relative" : "lg:absolute lg:bottom-[calc(100%-20px)] lg:left-[calc(100%-20px)] lg:h-25 lg:max-h-105 lg:w-105 lg:origin-left lg:rotate-90"}`), q(p, "srcset", V(t).logoPc), q(m, "srcset", V(t).logo), q(h, "src", V(t).logo), W(v, V(t).tit), W(b, V(t).txt), W(w, e);
 		}, [() => zN?.()]), Xr("mouseenter", u, () => hn(r, V(n), !0)), Xr("focus", u, () => hn(r, V(n), !0)), Ki(i, () => bz, null), qi(1, i, () => Ez, () => ({ y: 200 })), qi(2, i, () => Tz), U(e, i);
 	}), N(c), gW(R(c, 2), {}), N(o), ka("innerWidth", (e) => hn(i, e, !0)), U(e, o), st();
 }
 customElements.define("main-our-products", Va(lK, {}, [], []));
 //#endregion
 //#region src/lib/components/main/SlideCard.svelte
-var uK = /* @__PURE__ */ H("<li class=\"rounded-full bg-white px-3 py-1\"> </li>"), dK = /* @__PURE__ */ H("<swiper-slide><picture class=\"flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25\"><img loading=\"lazy\" alt=\"\" class=\"w-full object-cover\"/></picture> <ul class=\"flex items-center justify-center gap-3\"></ul> <dl class=\"text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35\"><dt class=\"text-center text-lg lg:text-2xl\"> </dt> <dd class=\" text-right\"><picture class=\"absolute right-5 bottom-5 flex h-6 lg:h-7.5\"><img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture></dd></dl></swiper-slide>", 2), fK = /* @__PURE__ */ H("<div class=\"absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5\"><button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Prev</span> <icon-list></icon-list></button> <button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Next</span> <icon-list></icon-list></button></div>", 2), pK = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15\"><sub-heading-line></sub-heading-line> <div data-scroll=\"slide-up\" class=\"relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145\"><swiper-container></swiper-container> <!></div></section>", 2);
+var uK = /* @__PURE__ */ H("<li class=\"text-primary rounded-xl bg-white px-3 py-1 font-bold\"> </li>"), dK = /* @__PURE__ */ H("<swiper-slide><picture class=\"flex h-47 overflow-clip rounded-xl transition-all lg:h-56.25\"><img loading=\"lazy\" alt=\"\" class=\"w-full object-cover\"/></picture> <ul class=\"flex items-center justify-center gap-3\"></ul> <dl class=\"text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white lg:min-h-35\"><dt class=\"text-center text-lg lg:text-2xl\"> </dt> <dd class=\" text-right\"><picture class=\"absolute right-5 bottom-5 flex h-6 lg:h-7.5\"><img loading=\"lazy\" alt=\"\" class=\"h-full\"/></picture></dd></dl></swiper-slide>", 2), fK = /* @__PURE__ */ H("<div class=\"absolute -bottom-1 -left-1 z-1 flex items-center gap-2 rounded-tr-3xl pt-3 lg:bottom-0 lg:-left-5 lg:gap-5 lg:px-5\"><button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Prev</span> <icon-list></icon-list></button> <button class=\"hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12\"><span class=\"sr-only\">Slide Next</span> <icon-list></icon-list></button></div>", 2), pK = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15\"><div class=\"space-y-2.5 lg:space-y-15 lg:whitespace-pre-line\"><h2 class=\"text-3xl font-bold transition-all lg:text-6xl\"> </h2> <p class=\"text-666 text-base transition-all lg:text-3xl\"> </p></div> <div data-scroll=\"slide-up\" class=\"relative flex w-full max-w-80.5 items-center justify-center gap-5 not-[:has(.swiper-slide-active)]:hidden empty:hidden max-lg:mx-auto lg:max-w-145\"><swiper-container></swiper-container> <!></div></section>", 2);
 function mK(e, t) {
 	ot(t, !0);
 	let n = /* @__PURE__ */ F(() => [
@@ -16401,10 +16410,12 @@ function mK(e, t) {
 	Xn(() => {
 		VH(), hn(i, !0);
 	});
-	var a = pK(), o = L(a);
-	J(o, "line", "none"), z(() => J(o, "title", Xu?.())), z(() => J(o, "subTit", $u?.()));
-	var s = R(o, 2), c = L(s);
-	J(c, "init", "true"), J(c, "effect", "cards"), J(c, "pagination", "true"), J(c, "speed", "600"), J(c, "autoplay-delay", "3000"), K(c, 1, "*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"), Ai(c, 21, () => V(n), (e) => e.id, (e, t) => {
+	var a = pK(), o = L(a), s = L(o), c = L(s, !0);
+	N(s);
+	var l = R(s, 2), u = L(l, !0);
+	N(l), N(o);
+	var d = R(o, 2), f = L(d);
+	J(f, "init", "true"), J(f, "effect", "cards"), J(f, "pagination", "true"), J(f, "speed", "600"), J(f, "autoplay-delay", "3000"), K(f, 1, "*:bg-7785ff min-h-96.5 w-full max-w-80.5 *:opacity-0 lg:h-150 lg:w-full lg:max-w-125 lg:*:h-100 *:[.swiper-slide-active]:bg-transparent *:[.swiper-slide-active]:bg-[url(/static/imgs/main/slide/bg-card.svg)] *:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-active]:h-150 lg:*:[.swiper-slide-active]:opacity-100 lg:*:[.swiper-slide-next]:h-125 lg:*:[.swiper-slide-next]:opacity-50 lg:*:[.swiper-slide-prev]:h-125 lg:*:[.swiper-slide-prev]:opacity-50"), Ai(f, 21, () => V(n), (e) => e.id, (e, t) => {
 		var n = dK();
 		K(n, 1, "gorup h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-(image:--bg-card-mo) bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-10 shadow-transparent transition-all lg:w-125 lg:space-y-5 lg:bg-(image:--bg-card-pc) lg:bg-size-[auto_100%] lg:p-5"), sa(n, "", {}, {
 			"--bg-card-mo": "url(/output/imgs/main/slide/bg-card-mo.png)",
@@ -16423,8 +16434,8 @@ function mK(e, t) {
 		N(u), N(l), N(o), N(n), z(() => {
 			q(i, "src", V(t).img), W(c, V(t).txt), q(d, "src", V(t).logo);
 		}), U(e, n);
-	}), N(c), Oa(c, (e) => hn(r, e), () => V(r));
-	var l = R(c, 2), u = (e) => {
+	}), N(f), Oa(f, (e) => hn(r, e), () => V(r));
+	var p = R(f, 2), m = (e) => {
 		var t = fK(), n = L(t), i = R(L(n), 2);
 		J(i, "name", "arrow-right"), K(i, 1, "size-6 rotate-180 stroke-white"), N(n);
 		var a = R(n, 2), o = R(L(a), 2);
@@ -16432,14 +16443,16 @@ function mK(e, t) {
 			V(r)?.swiper?.slidePrev();
 		}), Zr("click", a, () => V(r)?.swiper?.slideNext()), U(e, t);
 	};
-	G(l, (e) => {
-		V(i) && e(u);
-	}), N(s), N(a), U(e, a), st();
+	G(p, (e) => {
+		V(i) && e(m);
+	}), N(d), N(a), z((e, t) => {
+		W(c, e), W(u, t);
+	}, [() => Xu?.(), () => $u?.()]), U(e, a), st();
 }
 Qr(["click"]), customElements.define("main-card", Va(mK, {}, [], []));
 //#endregion
 //#region src/lib/components/main/Why.svelte
-var hK = /* @__PURE__ */ H("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><video data-scroll=\"slide-up\" autoplay=\"\" preload=\"auto\" playsinline=\"\"><source type=\"video/mp4\"/></video></div>", 2), gK = /* @__PURE__ */ H("<img alt=\"img\"/>"), _K = /* @__PURE__ */ H("<source/>"), vK = /* @__PURE__ */ H("<picture><!> <img alt=\"img\"/></picture>"), yK = /* @__PURE__ */ H("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><picture data-scroll=\"slide-up\"><!></picture></div>"), bK = /* @__PURE__ */ H("<li data-scroll=\"slide-up\"><dl class=\"space-y-2.5 p-5\"><dt><!> <strong class=\"text-primary\"> </strong></dt> <dd class=\"text-2md lg:text-lg\"> </dd></dl> <!> <!></li>"), xK = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw\"><sub-heading-line></sub-heading-line> <ul class=\"grid grid-cols-1 grid-rows-1 gap-7.5 lg:grid-cols-4 lg:grid-rows-[repeat(2,385px)]\"></ul></section>", 2);
+var hK = /* @__PURE__ */ H("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><video data-scroll=\"slide-up\" preload=\"auto\" playsinline=\"\"><source type=\"video/mp4\"/></video></div>", 2), gK = /* @__PURE__ */ H("<img alt=\"img\"/>"), _K = /* @__PURE__ */ H("<source/>"), vK = /* @__PURE__ */ H("<picture><!> <img alt=\"img\"/></picture>"), yK = /* @__PURE__ */ H("<div data-scroll=\"slide-up\" class=\"flex justify-end\"><picture data-scroll=\"slide-up\"><!></picture></div>"), bK = /* @__PURE__ */ H("<li data-scroll=\"slide-up\"><dl class=\"space-y-2.5 p-5\"><dt><!> <strong class=\"text-primary\"> </strong></dt> <dd> </dd></dl> <!> <!></li>"), xK = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw\"><sub-heading-line></sub-heading-line> <ul class=\"grid grid-cols-1 grid-rows-1 gap-7.5 lg:h-200 lg:grid-cols-4 lg:grid-rows-[repeat(2,385px)]\"></ul></section>", 2);
 function SK(e, t) {
 	ot(t, !0);
 	let n = /* @__PURE__ */ I(xn([
@@ -16480,54 +16493,56 @@ function SK(e, t) {
 		},
 		{
 			id: "why-5",
-			img: "/output/imgs/main/why/img-why-5.png",
+			poster: "/output/video/img-why-5.png",
+			webm: "/output/video/img-why-5.webm",
+			video: "/output/video/img-why-5.mp4",
 			num: 92,
 			txt: Vu?.(),
 			font: "90",
 			cls: "flex-col bg-white"
 		}
-	]));
-	var r = xK(), i = L(r);
-	J(i, "line", "none"), z(() => J(i, "title", Wu?.())), z(() => J(i, "subTit", qu?.()));
-	var a = R(i, 2);
-	Ai(a, 23, () => V(n), (e) => e.id, (e, t, n) => {
-		var r = bK();
-		sa(r, "", {}, { "--why-1-bg": "url(/output/imgs/main/why/bg-why-1.png)" });
-		var i = L(r), a = L(i), o = L(a), s = (e) => {
+	])), r = /* @__PURE__ */ I(xn([]));
+	var i = xK(), a = L(i);
+	J(a, "line", "none"), z(() => J(a, "title", Wu?.())), z(() => J(a, "subTit", qu?.()));
+	var o = R(a, 2);
+	Ai(o, 23, () => V(n), (e) => e.id, (e, t, n) => {
+		var i = bK();
+		sa(i, "", {}, { "--why-1-bg": "url(/output/imgs/main/why/bg-why-1.png)" });
+		var a = L(i), o = L(a), s = L(o), c = (e) => {
 			{
 				let n = /* @__PURE__ */ F(() => Number(V(t).num));
 				LU(e, { get text() {
 					return V(n);
 				} });
 			}
-		}, c = (e) => {
+		}, l = (e) => {
 			var n = si();
 			z(() => W(n, V(t).tit)), U(e, n);
 		};
-		G(o, (e) => {
-			V(t).id === "why-4" ? e(c, -1) : e(s);
+		G(s, (e) => {
+			V(t).id === "why-4" ? e(l, -1) : e(c);
 		});
-		var l = R(o, 2), u = L(l, !0);
-		N(l), N(a);
-		var d = R(a, 2), f = L(d, !0);
-		N(d), N(i);
-		var p = R(i, 2), m = (e) => {
-			var n = hK(), r = L(n);
-			r.muted = !0;
-			var i = L(r);
-			N(r), Zi(r, () => rK), N(n), z(() => {
-				K(r, 1, ea(["relative z-1", V(t).id === "why-1" ? "h-56.5 lg:left-32 lg:min-h-131.75 lg:min-w-130" : V(t).id === "why-2" ? "h-53.5 max-w-full lg:h-61.5" : ""])), q(r, "poster", V(t).poster), q(i, "src", V(t).video);
-			}), U(e, n);
+		var u = R(s, 2), d = L(u, !0);
+		N(u), N(o);
+		var f = R(o, 2), p = L(f, !0);
+		N(f), N(a);
+		var m = R(a, 2), h = (e) => {
+			var i = hK(), a = L(i);
+			a.muted = !0;
+			var o = L(a);
+			N(a), Zi(a, () => rK), Oa(a, (e, t) => V(r)[t] = e, (e) => V(r)?.[e], () => [V(n)]), N(i), z(() => {
+				K(a, 1, ea(["relative z-1", V(t).id === "why-1" ? "h-56.5 lg:left-32 lg:min-h-131.75 lg:min-w-130" : V(t).id === "why-2" ? "h-53.5 max-w-full lg:h-61.5" : V(t).id === "why-5" ? "h-62.5 w-auto lg:h-48 lg:max-w-85.5" : ""])), q(a, "poster", V(t).poster), q(o, "src", V(t).video);
+			}), U(e, i);
 		};
-		G(p, (e) => {
-			V(t).video && e(m);
+		G(m, (e) => {
+			V(t).video && e(h);
 		});
-		var h = R(p, 2), g = (e) => {
+		var g = R(m, 2), _ = (e) => {
 			var n = yK(), r = L(n), i = L(r), a = (e) => {
 				var n = ci(), r = Mn(n), i = (e) => {
 					var n = gK();
 					z(() => {
-						q(n, "src", V(t).img), K(n, 1, ea(["relative ", V(t).id === "why-3" ? "h-full translate-x-4/10 translate-y-3/10 scale-180 lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-100" : V(t).id === "why-4" ? "h-61.5 w-auto" : V(t).id === "why-5" ? "h-62.5 w-auto lg:h-48" : ""]));
+						q(n, "src", V(t).img), K(n, 1, ea(["relative ", V(t).id === "why-3" ? "relative h-full translate-x-4/10 translate-y-3/10 scale-180 transition-all lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-130 lg:group-hover/why:-translate-y-[calc(20%+30px)]" : V(t).id === "why-4" ? "flex-1 lg:min-h-61.5" : ""]));
 					}), U(e, n);
 				};
 				G(r, (e) => {
@@ -16545,24 +16560,28 @@ function SK(e, t) {
 				});
 				var i = R(r, 2);
 				N(n), z(() => {
-					q(i, "src", V(t).img.img.src), K(i, 1, ea(["relative ", V(t).id === "why-3" ? "h-full translate-x-4/10 translate-y-3/10 scale-180 lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-100" : V(t).id === "why-4" ? "h-61.5 w-auto" : V(t).id === "why-5" ? "h-62.5 w-auto lg:h-48" : ""])), q(i, "width", V(t).img.img.w), q(i, "height", V(t).img.img.h);
+					q(i, "src", V(t).img.img.src), K(i, 1, ea(["relative ", V(t).id === "why-3" ? "relative h-full translate-x-4/10 translate-y-3/10 scale-180 transition-all lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-130 lg:group-hover/why:-translate-y-[calc(20%+30px)]" : V(t).id === "why-4" ? "flex-1 lg:min-h-61.5" : ""])), q(i, "width", V(t).img.img.w), q(i, "height", V(t).img.img.h);
 				}), U(e, n);
 			};
 			G(i, (e) => {
 				typeof V(t).img == "string" ? e(a) : e(o, -1);
-			}), N(r), N(n), z(() => K(r, 1, ea(["flex justify-end", V(t).id === "why-4" ? "flex flex-wrap items-end px-5 lg:p-5" : ""]))), U(e, n);
+			}), N(r), N(n), z(() => K(r, 1, ea(["relative flex flex-1 justify-end", V(t).id === "why-4" ? "flex w-full flex-1 flex-wrap items-end px-5 lg:w-124.75 lg:translate-y-15 lg:p-5" : ""]))), U(e, n);
 		};
-		G(h, (e) => {
-			V(t).img && e(g);
-		}), N(r), z(() => {
-			q(r, "data-index", V(n)), K(r, 1, ea(["relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105", V(t).cls])), K(a, 1, ea(["flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]", V(t).id === "why-3" ? "text-primary" : ""])), q(a, "data-font", V(t).font), W(u, V(t).id === "why-2" || V(t).id === "why-3" ? "+" : ""), W(f, V(t).txt);
-		}), U(e, r);
-	}), N(a), N(r), U(e, r), st();
+		G(g, (e) => {
+			V(t).img && e(_);
+		}), N(i), z(() => {
+			q(i, "data-index", V(n)), K(i, 1, ea(["group/why relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105", V(t).cls])), K(o, 1, ea(["flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]", V(t).id === "why-3" ? "text-primary" : ""])), q(o, "data-font", V(t).font), W(d, V(t).id === "why-2" || V(t).id === "why-3" ? "+" : ""), K(f, 1, ea([V(t).id !== "why-3" && V(t).id !== "why-4" ? "text-2md lg:text-lg" : "text-lg lg:text-2xl"])), W(p, V(t).txt);
+		}), Xr("pointerenter", i, () => {
+			V(r)[V(n)] && (V(r)[V(n)].pause(), V(r)[V(n)].play());
+		}), Xr("pointerleave", i, () => {
+			V(r)[V(n)] && V(r)[V(n)].pause();
+		}), U(e, i);
+	}), N(o), N(i), U(e, i), st();
 }
 customElements.define("main-why", Va(SK, {}, [], []));
 //#endregion
 //#region src/lib/components/main/Work.svelte
-var CK = /* @__PURE__ */ H("<li data-scroll=\"slide-up\" class=\"relative flex flex-col gap-5 text-center\"><picture data-scroll=\"slide-up\" class=\"grid place-items-center\"><img loading=\"lazy\" alt=\"img\" class=\"w-50 lg:w-90.75\"/></picture> <dl class=\"space-y-2.5\"><dt class=\"text-primary text-lg font-bold lg:text-2xl\"> </dt> <dd class=\"text-2md text-666 lg:text-lg\"> </dd> <dd class=\"text-2md lg:text-lg\"> </dd></dl></li>"), wK = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <dl class=\"space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.png)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:pt-15 lg:pb-50 lg:text-4xl\"><dt class=\"font-bold\">DEEP.FINE SPATIAL INTELLIGENCE AI</dt> <dd class=\"text-2md text-2xl lg:px-50\">Powered by Vision AI, AI Agents, and Spatial Computing technologies, DEEP.FINE connects spatial, operational, and equipment data across industrial environments enabling\n			more efficient and scalable operations.</dd></dl> <ul class=\"relative grid grid-cols-1 gap-7.5 py-7.5 lg:-mt-37.5 lg:grid-cols-3 lg:py-0\"></ul></section>", 2);
+var CK = /* @__PURE__ */ H("<li data-scroll=\"slide-up\" class=\"relative flex flex-col gap-2.5 text-center\"><picture data-scroll=\"slide-up\" class=\"grid place-items-center\"><img loading=\"lazy\" alt=\"img\" class=\"w-50 lg:w-90.75\"/></picture> <dl class=\"space-y-2.5\"><dt class=\"text-primary text-lg font-bold lg:text-4xl\"> </dt> <dd class=\"text-2md text-666 lg:text-lg\"> </dd> <dd class=\"text-2md lg:text-lg\"> </dd></dl></li>"), wK = /* @__PURE__ */ H("<section data-scroll=\"slide-up\" class=\"relative max-w-dvw py-5 lg:py-15\"><sub-heading-line></sub-heading-line> <dl class=\"space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.png)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl\"><dt class=\"text-lg font-bold lg:text-4xl\">DEEP.FINE SPATIAL INTELLIGENCE AI</dt> <dd class=\"text-2md lg:px-10 lg:text-2xl\">Powered by Vision AI, AI Agents, and Spatial Computing technologies, DEEP.FINE connects spatial, operational, and equipment data across industrial environments enabling\n			more efficient and scalable operations.</dd></dl> <ul class=\"relative grid grid-cols-1 gap-7.5 py-7.5 lg:-mt-37.5 lg:grid-cols-3 lg:py-0\"></ul></section>", 2);
 function TK(e, t) {
 	ot(t, !0);
 	let n = /* @__PURE__ */ I(xn([
@@ -16607,7 +16626,7 @@ function TK(e, t) {
 customElements.define("main-work", Va(TK, {}, [], []));
 //#endregion
 //#region src/lib/components/visual/MainVisual.svelte
-var EK = /* @__PURE__ */ H("<p> </p>"), DK = /* @__PURE__ */ H("<section data-scroll=\"first\" class=\"relative flex max-h-dvh min-h-[60dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:min-h-200 lg:p-15 starting:translate-y-0 starting:opacity-0\"><div class=\"before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" autoplay=\"\" loop=\"\" playsinline=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div> <div class=\"relative z-5 starting:opacity-0\"><div class=\"p-1\"><!></div> <h2 class=\"leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line\"> </h2></div> <div class=\"relative z-5 starting:opacity-0\"><div class=\"text-2md mt-5 text-white lg:text-lg lg:whitespace-pre-line\"><p class=\"leading-relaxed\"> </p> <p class=\"leading-relaxed\"> </p></div> <div class=\"mt-7.5 flex lg:mt-9\"><a href=\"/\" class=\"hover:text-3743ff group text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a></div></div></section>", 2);
+var EK = /* @__PURE__ */ H("<p> </p>"), DK = /* @__PURE__ */ H("<section data-scroll=\"first\" class=\"relative flex max-h-dvh min-h-[60dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:min-h-200 lg:p-15 starting:translate-y-0 starting:opacity-0\"><div class=\"before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black\"><video class=\"relative z-1 aspect-video h-full w-full object-cover\" preload=\"auto\" autoplay=\"\" loop=\"\" playsinline=\"\"><source type=\"video/mp4\"/> <source type=\"video/webm\"/></video></div> <div class=\"relative z-5 starting:opacity-0\"><div class=\"p-1\"><!></div> <h2 class=\"leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line\"> </h2></div> <div class=\"relative z-5 starting:opacity-0\"><div class=\"text-2md mt-5 text-white lg:text-lg lg:whitespace-pre-line\"><p class=\"leading-relaxed\"> </p> <p class=\"leading-relaxed\"> </p></div> <div class=\"mt-7.5 flex lg:mt-9\"><a href=\"/\" class=\"hover:text-3743ff group text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto\"><span> </span> <icon-list></icon-list></a></div></div></section>", 2);
 function OK(e, t) {
 	ot(t, !0);
 	var n = DK(), r = L(n), i = L(r);
