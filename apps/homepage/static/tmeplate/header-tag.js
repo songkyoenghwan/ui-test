@@ -16,9 +16,7 @@ class HeaderTag extends HTMLElement {
 		>
 			<header-imgs class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex" name="left"></header-imgs>
 
-			<div
-				class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-12"
-			>
+			<div class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0">
 				<h1>
 					<a href="/output/index.html" title="deepfine homepage">
 						<span class="sr-only">deepfine</span>
