@@ -36,22 +36,22 @@
 <section data-scroll="slide-up" class="relative max-w-dvw py-5 lg:py-15">
 	<sub-heading-line line="none" title={m.main_title_work?.()} subTit={m.main_subtitle_work?.()}></sub-heading-line>
 
-	<dl class="space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.png)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:pt-15 lg:pb-50 lg:text-4xl">
-		<dt class="font-bold">DEEP.FINE SPATIAL INTELLIGENCE AI</dt>
-		<dd class="text-2md text-2xl lg:px-50">
+	<dl class="space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.png)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl">
+		<dt class="text-lg font-bold lg:text-4xl">DEEP.FINE SPATIAL INTELLIGENCE AI</dt>
+		<dd class="text-2md lg:px-10 lg:text-2xl">
 			Powered by Vision AI, AI Agents, and Spatial Computing technologies, DEEP.FINE connects spatial, operational, and equipment data across industrial environments enabling
 			more efficient and scalable operations.
 		</dd>
 	</dl>
 	<ul class="relative grid grid-cols-1 gap-7.5 py-7.5 lg:-mt-37.5 lg:grid-cols-3 lg:py-0">
 		{#each lists as list, i (list.id)}
-			<li data-scroll="slide-up" data-index={i} class="relative flex flex-col gap-5 text-center">
+			<li data-scroll="slide-up" data-index={i} class="relative flex flex-col gap-2.5 text-center">
 				<picture data-scroll="slide-up" class="grid place-items-center">
 					<img loading="lazy" src={list.img} alt="img" class="w-50 lg:w-90.75" />
 				</picture>
 
 				<dl class="space-y-2.5">
-					<dt class="text-primary text-lg font-bold lg:text-2xl">
+					<dt class="text-primary text-lg font-bold lg:text-4xl">
 						{list.tit}
 					</dt>
 					<dd class="text-2md text-666 lg:text-lg">{list.subTit}</dd>

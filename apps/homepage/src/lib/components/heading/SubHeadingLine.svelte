@@ -6,6 +6,7 @@
 			title: { type: 'String' },
 			subTit: { type: 'String' },
 			btnRender: { type: 'String' },
+			cls: { type: 'String' },
 		},
 	}}
 />
@@ -15,7 +16,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { parseBreakline } from '$lib/utils/textUtils.svelte';
 
-	let { line = 'bottom', title = '', subTit = '', btnRender = '' } = $props();
+	let { line = 'bottom', title = '', subTit = '', btnRender = '', cls = '' } = $props();
 
 	const titParse = $derived(parseBreakline(title));
 
@@ -42,9 +43,9 @@
 	{@attach visualMotion}
 	class="{line === 'bottom' ? 'border-b border-b-black lg:pb-15' : 'lg:pb-7.5'} flex justify-between pb-5 opacity-100 max-lg:flex-col lg:whitespace-pre-line"
 >
-	<div class="space-y-2.5">
+	<div class={cls ? cls : 'space-y-2.5'}>
 		<h2 class="text-3xl font-bold transition-all lg:text-6xl">{titParse}</h2>
-		<p class="text-2md transition-all lg:text-lg">{subTit ? subTit : txt}</p>
+		<p class="text-2md transition-all lg:text-2xl">{subTit ? subTit : txt}</p>
 	</div>
 
 	{#if btnRender === 'link'}

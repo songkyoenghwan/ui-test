@@ -11,9 +11,7 @@
 >
 	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex"></header-imgs>
 
-	<div
-		class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-12"
-	>
+	<div class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0">
 		<h1>
 			<a href="/" title="deepfine homepage">
 				<span class="sr-only">deepfine</span>
@@ -195,7 +193,7 @@
 	{@render children()}
 </main>
 
-<footer data-scroll="slide-up" class="text-2md text-666 p-5 pb-5 lg:pb-7.5 lg:text-lg">
+<footer data-scroll="slide-up" class="text-2md text-666 pb-5 lg:pb-7.5 lg:text-lg">
 	<div class="relative rounded-xl bg-white lg:grid lg:grid-cols-2">
 		<footer-adress class="flex flex-col gap-5 p-5 lg:p-7.5"></footer-adress>
 

@@ -15,7 +15,7 @@
 	class="relative flex max-h-dvh min-h-[60dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:min-h-200 lg:p-15 starting:translate-y-0 starting:opacity-0"
 >
 	<div
-		class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+		class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black"
 	>
 		<video class="relative z-1 aspect-video h-full w-full object-cover" preload="auto" autoplay loop playsinline muted poster={`${__STATIC_URL__}/video/main-video.jpg`}>
 			<source src={`${__STATIC_URL__}/video/main-video.mp4`} type="video/mp4" />

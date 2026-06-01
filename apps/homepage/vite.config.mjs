@@ -29,7 +29,7 @@ export default defineConfig({
 	// publicDir: './static',
 	preview: {
 		// outDir: 'dist',
-		port: 6714,
+		port: 5183,
 		host: true,
 	},
 	plugins: [

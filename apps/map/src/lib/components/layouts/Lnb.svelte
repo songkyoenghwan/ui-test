@@ -141,7 +141,7 @@
 		>
 			<icon-list
 				data-name={hoveredId === id || displayName === id ? `${icon}-on` : icon}
-				class="stroke-90efd0 size-5 fill-white transition-all delay-0 group-hover/lnb-link:fill-white group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
+				class="size-5 fill-white stroke-slate-50 transition-all delay-0 group-hover/lnb-link:fill-white group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
 			></icon-list>
 			<p>{h3}</p>
 		</a>

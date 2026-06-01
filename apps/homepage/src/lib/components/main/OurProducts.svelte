@@ -59,7 +59,7 @@
 			>
 				{#if current === i && isDesktop}
 					<div
-						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover before:absolute before:top-0 before:left-0 before:z-2 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black"
 					>
 						<video
 							{@attach videoObserver}
@@ -160,8 +160,7 @@
 				>
 					<div class="lg:7.5 relative z-2 flex flex-col gap-5">
 						<picture
-							class="relative flex min-h-10 opacity-100 transition-all transition-discrete duration-300 @min-xl:group-has-aria-current/prod:opacity-100 starting:rotate-0 starting:opacity-0 {current ===
-							i
+							class="relative flex min-h-10 opacity-100 @min-xl:group-has-aria-current/prod:opacity-100 starting:opacity-0 {current === i
 								? 'relative'
 								: 'lg:absolute lg:bottom-[calc(100%-20px)] lg:left-[calc(100%-20px)] lg:h-25 lg:max-h-105 lg:w-105 lg:origin-left lg:rotate-90'}"
 						>
@@ -173,7 +172,7 @@
 							class="text-2md relative space-y-5 opacity-100 transition-all duration-300 lg:text-lg lg:opacity-0 lg:group-has-aria-current/prod:block lg:group-has-aria-current/prod:opacity-100 @min-xl:group-has-aria-current/prod:max-w-3/5 starting:opacity-0"
 						>
 							<dt class="font-bold">{list.tit}</dt>
-							<dd>{list.txt}</dd>
+							<dd class="lg:max-w-130">{list.txt}</dd>
 						</dl>
 					</div>
 					<div class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100">

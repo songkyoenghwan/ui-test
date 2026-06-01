@@ -381,5 +381,20 @@ export const getIconData = () => {
 				<path d="M6.33203 8.33301H9.66536" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 			`,
 		},
+
+		{
+			name: 'roate-left',
+			size: '16',
+			html: /* HTML */ `
+				<path
+					d="M6.07404 3.38823C6.65404 3.2149 7.29404 3.10156 8.0007 3.10156C11.194 3.10156 13.7807 5.68823 13.7807 8.88156C13.7807 12.0749 11.194 14.6616 8.0007 14.6616C4.80737 14.6616 2.2207 12.0749 2.2207 8.88156C2.2207 7.6949 2.5807 6.58823 3.19404 5.66823"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path d="M5.24609 3.54536L7.17276 1.33203" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M5.24609 3.54688L7.49276 5.18688" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
 	];
 };

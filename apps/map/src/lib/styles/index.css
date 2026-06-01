@@ -75,18 +75,29 @@
 	--color-emerald-950: #002c22;
 
 	/* (Info / 브랜드 서브) */
+	--color-primary: #33a33b;
+	--color-primary-50: #f2fbf2;
+	--color-primary-100: #e0f8e1;
+	--color-primary-200: #c3efc5;
+	--color-primary-300: #94e199;
+	--color-primary-400: #5dcb65;
+	--color-primary-500: #33a33b;
+	--color-primary-600: #289130;
+	--color-primary-700: #237229;
+	--color-primary-800: #205b25;
+	--color-primary-900: #1c4b21;
+	--color-primary-950: #0a290e;
 
 	--color-bright: #00dc88;
-	--color-primary: #00cc87;
 	--color-secondary: #e5f8f1;
-	--color-darken: #05ba75;
+	--color-darken: #289130;
 	--color-error: #ff4c4c;
 
 	--color-fffa65: #fffa65;
 	--color-3282f5: #3282f5;
-	--color-ff9a47: ##ff9a47;
+	--color-ff9a47: #ff9a47;
 	--color-65ff9d: #65ff9d;
-	--color-af54ff: ##af54ff;
+	--color-af54ff: #af54ff;
 	--color-90efd0: #90efd0;
 	--color-f0fdfa: #f0fdfa;
 
@@ -109,8 +120,9 @@
 		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
 		'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 
+	--shadow-header: 0 6px 10px rgba(0, 0, 0, 0.05);
 	--shadow-1xs: 0 0 2px rgba(0, 0, 0, 0.2);
-	--shadow-2xs: 0 0 0 rgba(0, 0, 0, 0.15);
+	--shadow-2xs: 0 0 0 rgba(0, 0, 0, 0.1);
 
 	--input-height: 3.25rem;
 	--y-padding: 40px;
@@ -173,10 +185,22 @@
 	--color-fff: rgb(255, 255, 255);
 
 	/* primary */
+	--color-primary: #33a33b;
+	--color-primary-50: #f2fbf2;
+	--color-primary-100: #e0f8e1;
+	--color-primary-200: #c3efc5;
+	--color-primary-300: #94e199;
+	--color-primary-400: #5dcb65;
+	--color-primary-500: #33a33b;
+	--color-primary-600: #289130;
+	--color-primary-700: #237229;
+	--color-primary-800: #205b25;
+	--color-primary-900: #1c4b21;
+	--color-primary-950: #0a290e;
+
 	--color-bright: #00dc88;
-	--color-primary: #00cc87;
 	--color-secondary: #e5f8f1;
-	--color-darken: #05ba75;
+	--color-darken: #289130;
 	--color-error: #ff4c4c;
 	--color-90efd0: #90efd0;
 	--color-f0fdfa: #f0fdfa;
@@ -184,9 +208,9 @@
 	--color-black: #121212;
 	--color-yellow: #fffa65;
 	--color-blue: #3282f5;
-	--color-orange: ##ff9a47;
+	--color-orange: #ff9a47;
 	--color-green: #65ff9d;
-	--color-purple: ##af54ff;
+	--color-purple: #af54ff;
 
 	--color-emerald-50: #ecfdf5;
 	--color-emerald-100: #d0fae5;
@@ -215,8 +239,9 @@
 
 	--font-sans: var(--font-sans);
 
+	--shadow-header: 0 6px 10px rgba(0, 0, 0, 0.05);
 	--shadow-1xs: 0 0 0.125rem rgb(0 0 0 / 0.2);
-	--shadow-2xs: 0 0 0.5rem rgb(0 0 0 / 0.15);
+	--shadow-2xs: 0 0 0.5rem rgb(0 0 0 / 0.1);
 
 	--text-2sm: 0.8125rem;
 	--text-2md: 0.9375rem;
@@ -622,6 +647,57 @@
 
 			.stepper-text {
 				@apply group-aria-[current=step]/stepper-item:before:bg-primary group-aria-[current=step]/stepper-item:before:border-primary group-data-[step=completed]/stepper-item:before:border-primary group-aria-[current=step]/stepper-item:before:outline-primary relative flex min-h-12.5 flex-1 items-center justify-center gap-2 px-5 text-slate-400 [counter-increment:list-number] before:grid before:size-6 before:flex-none before:place-content-center before:rounded-full before:border before:border-slate-400 before:bg-white before:bg-size-[8px_5px] before:bg-center before:bg-no-repeat before:text-xs before:content-[counter(list-number)] group-aria-[current=step]/stepper-item:before:text-white group-aria-[current=step]/stepper-item:before:outline group-aria-[current=step]/stepper-item:before:outline-offset-2 group-aria-[current=step]/stepper-item:before:outline-dashed group-data-[step=completed]/stepper-item:before:bg-[url(/static/images/chk/stepper-chk.svg)] group-data-[step=completed]/stepper-item:before:text-[0px];
+			}
+		}
+	}
+
+	.table-wrap {
+		@apply inline-grid w-full max-w-[calc(100dvw-130px)] overflow-auto;
+
+		table {
+			@apply table-fixed whitespace-nowrap;
+		}
+
+		thead {
+			@apply font-bold text-slate-500;
+		}
+
+		thead {
+			th {
+				@apply place-content-center bg-slate-50 p-3 text-center;
+			}
+		}
+
+		tbody {
+			& > tr {
+				@apply rounded-sm border border-slate-200;
+			}
+
+			th,
+			td {
+				@apply p-3 text-center;
+			}
+		}
+	}
+
+	.table-grid {
+		@apply inline-grid w-full max-w-[calc(100dvw-130px)] overflow-auto text-sm *:min-w-6xl;
+
+		& {
+			> ul:first-child {
+				@apply mb-3 grid auto-cols-auto overflow-clip rounded-sm;
+
+				& > li {
+					@apply place-content-center bg-slate-50 p-3 px-3 text-center font-bold text-slate-500;
+				}
+			}
+
+			> ul:not(:first-child) {
+				@apply grid auto-cols-auto space-y-1 overflow-clip rounded-sm border border-slate-200 tracking-tight;
+
+				& > li {
+					@apply place-content-center bg-white p-3 px-3 text-center text-slate-500;
+				}
 			}
 		}
 	}

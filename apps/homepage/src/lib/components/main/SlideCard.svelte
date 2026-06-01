@@ -68,7 +68,10 @@
 </script>
 
 <section data-scroll="slide-up" class="relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_500px] lg:gap-15 lg:p-15">
-	<sub-heading-line line="none" title={m.main_title_mro?.()} subTit={m.main_subtitle_mro?.()}></sub-heading-line>
+	<div class="space-y-2.5 lg:space-y-15 lg:whitespace-pre-line">
+		<h2 class="text-3xl font-bold transition-all lg:text-6xl">{m.main_title_mro?.()}</h2>
+		<p class="text-666 text-base transition-all lg:text-3xl">{m.main_subtitle_mro?.()}</p>
+	</div>
 
 	<div
 		data-scroll="slide-up"
@@ -95,7 +98,7 @@
 
 					<ul class="flex items-center justify-center gap-3">
 						{#each list.badge as bed, i (i)}
-							<li class="rounded-full bg-white px-3 py-1">
+							<li class="text-primary rounded-xl bg-white px-3 py-1 font-bold">
 								{bed}
 							</li>
 						{/each}

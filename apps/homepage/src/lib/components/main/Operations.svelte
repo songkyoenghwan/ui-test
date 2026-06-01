@@ -10,11 +10,11 @@
 </script>
 
 <section
-	class="relative max-w-dvw rounded-xl bg-(image:--bg-op) bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15"
+	class="relative flex h-90.5 max-w-dvw flex-col justify-between rounded-xl bg-(image:--bg-op) bg-size-[100%_100%] bg-no-repeat p-5 text-white lg:h-165 lg:bg-cover lg:bg-center lg:p-15"
 	style:--bg-op={`url(${__STATIC_URL__}/imgs/main/work/bg-operations.png)`}
 >
-	<sub-heading-line line="none" title={m.main_title_ai()} subTit={m.main_subtitle_ai()}></sub-heading-line>
-	<div class="mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-9">
+	<sub-heading-line line="none" title={m.main_title_ai()} subTit={m.main_subtitle_ai()} cls="lg:space-y-5 space-y-2.5"></sub-heading-line>
+	<div class="mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-auto">
 		<a
 			href="/"
 			class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"

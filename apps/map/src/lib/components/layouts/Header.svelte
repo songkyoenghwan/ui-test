@@ -26,7 +26,7 @@
 {#snippet name({ link = '', text = '' })}
 	<li class="flex h-full">
 		<a
-			class="aria-[current=page]:text-primary aria-[current=page]:border-b-primary hover:text-90efd0 grid place-content-center px-4 aria-[current=page]:border-b-3 aria-[current=page]:font-bold"
+			class="aria-[current=page]:text-primary aria-[current=page]:border-b-primary grid place-content-center px-4 hover:text-slate-50 aria-[current=page]:border-b-3 aria-[current=page]:font-bold"
 			href={link}
 			aria-current={currentSub === link ? 'page' : undefined}
 			onclick={(e) => {
@@ -39,9 +39,9 @@
 	</li>
 {/snippet}
 
-<header class="border-t-primary box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-primary flex h-(--header-height) items-center justify-between border-t-8">
+<header class="border-t-primary box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-primary shadow-header flex h-(--header-height) items-center justify-between border-t-8">
 	<section class="grid h-full flex-1 grid-cols-[90px_1fr] items-center rounded-tl-md bg-white px-2 text-slate-300">
-		<div class="min-w-21.5 flex-1 border-r border-r-slate-100">
+		<div class="flex h-full min-w-21.5 flex-1 items-center justify-center border-r border-r-slate-100">
 			<h2 class="text-121212 text-center text-xl font-semibold">
 				{displayH3 || ''}
 			</h2>
