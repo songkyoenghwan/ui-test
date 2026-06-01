@@ -60,9 +60,9 @@
 </script>
 
 <section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
-	<h3 class="text-2xl font-bold lg:text-5xl">CEO Message</h3>
+	<h3 class="relative z-2 text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
-	<div class="space-y-5 lg:space-y-10">
+	<div class="relative z-4 space-y-5 lg:space-y-10 lg:whitespace-pre-line">
 		<p class="text-lg font-bold lg:text-4xl">
 			{m.ceo_txt_0()}
 		</p>
@@ -78,7 +78,7 @@
 		</p>
 	</div>
 
-	<div class="space-y-2.5">
+	<div class="relative z-2 space-y-2.5">
 		<p class="text-sm font-bold lg:text-lg">CEO</p>
 		<p class="text-2md lg:text-2xl">
 			{m.ceo_name()}
@@ -87,6 +87,14 @@
 		<picture>
 			<img loading="lazy" src={sign} alt={m.ceo_name()} />
 		</picture>
+	</div>
+
+	<div
+		class="relative z-1 h-full w-full max-w-273.5 before:absolute before:-left-5 before:z-3 before:h-20 before:w-full before:bg-linear-to-b before:from-white/10 before:to-transparent xl:absolute xl:right-0 xl:bottom-0"
+	>
+		<video class="relative z-1 aspect-video h-full w-full max-w-273.5 object-cover" autoplay muted playsinline loop>
+			<source src={`${__STATIC_URL__}/video/ceo-video.mp4`} type="video/mp4" />
+		</video>
 	</div>
 </section>
 

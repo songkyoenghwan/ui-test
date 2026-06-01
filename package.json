@@ -6,7 +6,7 @@
 		"apps/map"
 	],
 	"scripts": {
-		"build": "bun run fm && bun run --filter \"*\" build",
+		"build": "bun run --filter \"*\" build",
 		"dev": "bun run --filter \"*\" dev",
 		"wc": "bun run fm && bun run --filter \"*\" wc",
 		"dev:homepage": " bun run --filter homepage dev",

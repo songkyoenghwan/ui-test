@@ -10,7 +10,7 @@
 </script>
 
 <main class="sub">
-	<sub-heading-line title="개인정보처리방침"></sub-heading-line>
+	<sub-heading-line title={m.term_privacy_title()}></sub-heading-line>
 
 	<section class="text-2md grid gap-5 rounded-xl bg-white p-5 lg:gap-15 lg:p-15 lg:text-lg">
 		<p>{m.term_privacy_intro()}</p>
