@@ -408,6 +408,10 @@
 			'Noto Color Emoji';
 		font-optical-sizing: auto;
 		scroll-behavior: smooth;
+
+		&:has([data-section='floating']) {
+			padding-bottom: 100px;
+		}
 	}
 
 	html,

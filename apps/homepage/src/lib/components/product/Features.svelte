@@ -18,12 +18,13 @@
 	});
 </script>
 
-<section class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
+<section class="space-y-5 rounded-xl pt-15 lg:space-y-7.5 lg:py-15">
 	<SubHeading {tit} {txt} {subTxt} />
 	<ul data-scroll="slide-up" class="flex flex-col gap-5 lg:gap-7.5">
 		{#each lists as item, i (i)}
 			<li
-				class="stack-card relative grid gap-5 rounded-xl bg-white p-5 shadow-md [animation-delay:0.7s] lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
+				data-scroll="slide-up"
+				class="relative grid gap-5 rounded-xl bg-white p-5 lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
 			>
 				<div class="flex flex-col justify-between gap-2.5">
 					<dl class="space-y-2.5 lg:space-y-5">

@@ -11,7 +11,7 @@
 	import { animate, onScroll, stagger } from 'animejs';
 	import type { Attachment } from 'svelte/attachments';
 
-	let { videoUrl = '', bg = '', badge = '', logo = '', logoAlt = '', tit = '', subtit } = $props();
+	let { videoUrl = '', bg = '', badge = '', logo = '', page = '', logoAlt = '', tit = '', subtit } = $props();
 	let played = $state(false);
 
 	const visualMotion: Attachment<HTMLElement> = (el) => {
@@ -53,7 +53,7 @@
 >
 	{#if videoUrl}
 		<div
-			class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+			class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black"
 		>
 			<video class="relative z-1 aspect-video h-full w-full object-cover" autoplay muted playsinline loop>
 				<source src={videoUrl} type="video/webm" />
@@ -90,7 +90,13 @@
 
 		<div class="mt-7.5 flex lg:mt-9">
 			<a
-				href="/"
+				href={page === 'logi'
+					? '/solution/logi?selectSolution=LOGI.FINE'
+					: page === 'dao'
+						? '/solution/dao?selectSolution=DAO'
+						: page === 'dsc'
+							? '/solution/dsc?selectSolution=DSC'
+							: '/'}
 				class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 			>
 				<span>{m.btn_inquiry()}</span>

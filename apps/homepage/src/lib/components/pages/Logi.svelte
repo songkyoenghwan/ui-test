@@ -10,6 +10,7 @@
 
 <script lang="ts">
 	import Faq from '$/lib/components/faq/Faq.svelte';
+	import BannerFoot from '$lib/components/banner/BannerFoot.svelte';
 	import BannerInquiry from '$lib/components/banner/BannerInquiry.svelte';
 	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
 	import Features from '$lib/components/product/Features.svelte';
@@ -27,12 +28,12 @@
 	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-5.png`, tit: m.logi_industries_list_5(), txt: m.logi_industries_list_txt_5() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-1.png`, tit: m.logi_industries_list_1(), txt: m.logi_industries_list_txt_1() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-2.png`, tit: m.logi_industries_list_2(), txt: m.logi_industries_list_txt_2() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-6.png`, tit: m.logi_industries_list_6(), txt: m.logi_industries_list_txt_6() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-3.png`, tit: m.logi_industries_list_3(), txt: m.logi_industries_list_txt_3() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-4.png`, tit: m.logi_industries_list_4(), txt: m.logi_industries_list_txt_4() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-5.png`, tit: m.logi_industries_list_5(), txt: m.logi_industries_list_txt_5() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-6.png`, tit: m.logi_industries_list_6(), txt: m.logi_industries_list_txt_6() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-2.png`, tit: m.logi_industries_list_2(), txt: m.logi_industries_list_txt_2() },
 	]);
 	const feaKeys = $state([
 		{
@@ -84,6 +85,7 @@
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-logi-1.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-logi-1.png`,
 			tit: m.logi_case_tit_1_1(),
+			badge: [m.logi_case_badge_1_1()],
 			txt: [m.logi_case_txt_1_1(), m.logi_case_txt_1_2()],
 			etc: [m.logi_case_etc_1_1, m.logi_case_etc_1_2, m.logi_case_etc_1_3],
 		},
@@ -93,6 +95,7 @@
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-logi-2.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-logi-2.png`,
 			tit: m.logi_case_tit_2_1(),
+			badge: [m.logi_case_badge_2_1()],
 			txt: [m.logi_case_txt_2_1(), m.logi_case_txt_1_2()],
 			etc: [m.logi_case_etc_2_1, m.logi_case_etc_2_2, m.logi_case_etc_2_3],
 		},
@@ -123,7 +126,7 @@
 	});
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} logoAlt={m.logi_visual_badge()} tit={m.logi_visual_title()} subtit={m.logi_visual_subtitle}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} page="logi" logoAlt={m.logi_visual_badge()} tit={m.logi_visual_title()} subtit={m.logi_visual_subtitle}></SubVisual>
 
 <BannerTrial />
 
@@ -144,3 +147,5 @@
 <Faq tit="FAQ" txt={m.logi_subtitle_faq()} lists={[...faqtKeys]} />
 
 <BannerInquiry page="logi" />
+
+<BannerFoot />

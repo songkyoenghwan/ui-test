@@ -26,24 +26,16 @@
 	const videoUrl = `${__STATIC_URL__}/video/dsc-video.webm`;
 
 	const industries = $state([
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-1.png`, tit: m.dsc_industries_list_1(), txt: m.dsc_industries_list_txt_1() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-8.png`, tit: m.dsc_industries_list_8(), txt: m.dsc_industries_list_txt_8() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-2.png`, tit: m.dsc_industries_list_2(), txt: m.dsc_industries_list_txt_2() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-3.png`, tit: m.dsc_industries_list_3(), txt: m.dsc_industries_list_txt_3() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-1.png`, tit: m.dsc_industries_list_1(), txt: m.dsc_industries_list_txt_1() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-3.png`, tit: m.dsc_industries_list_6(), txt: m.dsc_industries_list_txt_6() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-8.png`, tit: m.dsc_industries_list_4(), txt: m.dsc_industries_list_txt_4() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-9.png`, tit: m.dsc_industries_list_5(), txt: m.dsc_industries_list_txt_5() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-3.png`, tit: m.dsc_industries_list_6(), txt: m.dsc_industries_list_txt_6() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-10.png`, tit: m.dsc_industries_list_7(), txt: m.dsc_industries_list_txt_7() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-8.png`, tit: m.dsc_industries_list_8(), txt: m.dsc_industries_list_txt_8() },
 	]);
 	const feaKeys = $state([
-		{
-			poster: `${__STATIC_URL__}/video/scan-video.png`,
-			video: `${__STATIC_URL__}/video/scan-video.webm`,
-			tit: m.dsc_features_tit_1(),
-			txt: [m.dsc_features_txt_1(), m.dsc_features_txt_1_2()],
-			logo: m.dsc_features_logo_1(),
-			labels: [m.dsc_features_list_1_1(), m.dsc_features_list_1_2(), m.dsc_features_list_1_3()],
-		},
 		{
 			poster: `${__STATIC_URL__}/video/vps-video.png`,
 			video: `${__STATIC_URL__}/video/vps-video.webm`,
@@ -51,6 +43,14 @@
 			txt: [m.dsc_features_txt_2()],
 			logo: m.dsc_features_logo_2(),
 			labels: [m.dsc_features_list_2_1(), m.dsc_features_list_2_2(), m.dsc_features_list_2_3()],
+		},
+		{
+			poster: `${__STATIC_URL__}/video/scan-video.png`,
+			video: `${__STATIC_URL__}/video/scan-video.webm`,
+			tit: m.dsc_features_tit_1(),
+			txt: [m.dsc_features_txt_1(), m.dsc_features_txt_1_2()],
+			logo: m.dsc_features_logo_1(),
+			labels: [m.dsc_features_list_1_1(), m.dsc_features_list_1_2(), m.dsc_features_list_1_3()],
 		},
 		{
 			tit: m.dsc_features_tit_3(),
@@ -140,7 +140,7 @@
 	});
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} logoAlt={m.logi_visual_badge()} tit={m.logi_visual_title()} subtit={m.logi_visual_subtitle}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} page="dsc" logoAlt={m.dsc_visual_badge()} tit={m.dsc_visual_title()} subtit={m.dsc_visual_subtitle}></SubVisual>
 
 <Industries
 	cls=" xl:grid-cols-4 lg:grid-cols-2 grid-cols-[repeat(auto-fit,1fr)]"
@@ -148,6 +148,7 @@
 	txt={m.dsc_industries_text()}
 	subTxt={m.dsc_industries_subtext()}
 	lists={[...industries]}
+	page="dsc"
 />
 
 <Features tit={m.dsc_features_title()} txt={m.dsc_features_text()} lists={[...featuresPart1]} page="dsc" />

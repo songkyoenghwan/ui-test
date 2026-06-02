@@ -97,7 +97,7 @@
 {/snippet}
 
 {#snippet resultLiCase2(tit = '', txt = '', icon = '')}
-	<li class="relative grid place-items-center gap-5 rounded-xl bg-white p-5 text-center opacity-0 lg:p-7.5">
+	<li data-scroll="slide-up" class="relative grid place-items-center gap-5 rounded-xl bg-white p-5 text-center opacity-0 lg:p-7.5">
 		<picture class="grid size-22.5 place-content-center">
 			<img loading="lazy" src={icon} alt={tit} />
 		</picture>
@@ -111,7 +111,7 @@
 	</li>
 {/snippet}
 
-<section data-scroll="slide-up" class="space-y-5 rounded-xl py-11.25 lg:space-y-7.5 lg:py-15">
+<section class="space-y-5 rounded-xl pt-15 lg:space-y-15 lg:py-0">
 	<SubHeading {tit} {txt} {subTxt} />
 
 	{#if page === 'dsc'}

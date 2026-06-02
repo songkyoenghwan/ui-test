@@ -49,7 +49,7 @@
 </script>
 
 {#snippet inquiryLi(img: string, txt: string)}
-	<swiper-slide class="flex min-h-12 items-center justify-center gap-2.5 px-5 lg:min-h-17.75 lg:gap-5 lg:px-7.5">
+	<swiper-slide class="flex min-h-12 items-center justify-center gap-2.5 px-5 not-[.swiper-slide-active]:opacity-0 lg:min-h-17.75 lg:w-107.5 lg:gap-5 lg:px-7.5">
 		<picture class="inline-flex size-7.5 lg:size-12.5"><img loading="lazy" src={img} alt="" class="h-full object-cover" /></picture>
 
 		<h4 class="text-primary text-lg font-bold lg:text-4xl">{txt}</h4>
@@ -86,7 +86,13 @@
 
 	<div class="mt-auto">
 		<a
-			href="/"
+			href={page === 'logi'
+				? '/solution/logi?selectSolution=LOGI.FINE'
+				: page === 'dao'
+					? '/solution/dao?selectSolution=DAO'
+					: page === 'dsc'
+						? '/solution/dsc?selectSolution=DSC'
+						: '/'}
 			class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 		>
 			<span>{m.btn_inquiry()}</span>

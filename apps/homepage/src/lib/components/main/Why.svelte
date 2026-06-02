@@ -58,6 +58,30 @@
 		},
 	]);
 	let videoRefs: HTMLVideoElement[] = $state([]);
+	let playPromises = new Map<number, Promise<void> | null>();
+	const handleVideoEnter = async (i: number) => {
+		const video = videoRefs[i];
+		if (!video) return;
+		if (!video.paused) return;
+
+		video.muted = true;
+		const promise = video.play();
+		playPromises.set(i, promise);
+
+		try {
+			await promise;
+		} catch (error) {
+			if (error.name === 'AbortError') {
+				console.warn('호버링 제어가 너무 빨라 play() 연산이 양보되었습니다.');
+			} else {
+				console.error('비디오 가동 실패:', error);
+			}
+		} finally {
+			if (playPromises.get(i) === promise) {
+				playPromises.set(i, null);
+			}
+		}
+	};
 </script>
 
 <section data-scroll="slide-up" class="relative max-w-dvw">
@@ -69,19 +93,11 @@
 				data-scroll="slide-up"
 				data-index={i}
 				class={[
-					'group/why relative flex h-90 w-full flex-[0_0_360px] justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105',
+					'group/why relative flex h-90 w-full justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105',
 					list.cls,
 				]}
 				style:--why-1-bg={`url(${__STATIC_URL__}/imgs/main/why/bg-why-1.png)`}
-				onpointerenter={() => {
-					if (videoRefs[i]) {
-						videoRefs[i].pause();
-						videoRefs[i].play();
-					}
-				}}
-				onpointerleave={() => {
-					if (videoRefs[i]) videoRefs[i].pause();
-				}}
+				onpointerenter={() => handleVideoEnter(i)}
 			>
 				<dl class="space-y-2.5 p-5">
 					<dt
@@ -111,15 +127,14 @@
 									: list.id === 'why-2'
 										? 'h-53.5 max-w-full lg:h-61.5'
 										: list.id === 'why-5'
-											? 'h-62.5 w-auto lg:h-48 lg:max-w-85.5'
+											? 'h-31.5 w-auto lg:h-48 lg:max-w-85.5'
 											: '',
 							]}
-							preload="auto"
 							muted
-							playsinline
 							poster={list.poster}
 						>
 							<source src={list.video} type="video/mp4" />
+							<source src={list.webm} type="video/webm" />
 						</video>
 					</div>
 				{/if}
@@ -130,7 +145,7 @@
 							data-scroll="slide-up"
 							class={[
 								'relative flex flex-1 justify-end',
-								list.id === 'why-4' ? 'flex w-full flex-1 flex-wrap items-end px-5 lg:w-124.75 lg:translate-y-15 lg:p-5' : '',
+								list.id === 'why-4' ? 'flex h-full max-h-43.5 flex-wrap items-end justify-center px-5 lg:w-124.75 lg:translate-y-15 lg:p-5' : '',
 							]}
 						>
 							<enhanced:img
@@ -139,9 +154,9 @@
 								class={[
 									'relative ',
 									list.id === 'why-3'
-										? 'relative h-full translate-x-4/10 translate-y-3/10 scale-180 transition-all lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-130 lg:group-hover/why:-translate-y-[calc(20%+30px)]'
+										? 'relative h-full translate-x-4/10 translate-y-[15%] scale-180 transition-all max-lg:w-full lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-130 lg:group-hover/why:-translate-y-[calc(20%+30px)]'
 										: list.id === 'why-4'
-											? 'flex-1 lg:min-h-61.5'
+											? 'h-full flex-1 max-lg:max-w-59 lg:min-h-61.5'
 											: '',
 								]}
 							/>

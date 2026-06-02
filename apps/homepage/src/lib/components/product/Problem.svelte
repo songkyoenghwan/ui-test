@@ -181,7 +181,7 @@
 	</li>
 {/snippet}
 
-<section data-scroll="slide-up" {@attach proMotion} class="space-y-5 py-11.25 lg:space-y-7.5 lg:py-15">
+<section data-scroll="slide-up" {@attach proMotion} class={['space-y-5 py-7.5 lg:space-y-7.5', page === 'dao' ? 'py-15' : 'lg:pt-7.5 lg:pb-15']}>
 	<SubHeading tit={dao_problem_title} txt={dao_problem_text} />
 	<ol class="grid grid-rows-2 gap-5 lg:grid-cols-[1fr_60px_1fr] lg:grid-rows-1 lg:gap-5 2xl:grid-cols-[1fr_12.5rem_1fr] 2xl:gap-25 starting:opacity-0">
 		<li class="divide-d9d9d9 relative grid h-full divide-y divide-dashed rounded-xl bg-white lg:grid-rows-[90px_1fr]">
@@ -198,7 +198,7 @@
 			</p>
 		</li>
 		<li
-			class="divide-d9d9d9 bg-3743ff from-primary to-828aff group relative z-3 grid h-full divide-y divide-dashed rounded-xl bg-linear-to-t text-white lg:grid-rows-[90px_1fr]"
+			class="divide-d9d9d9 bg-3743ff from-primary to-828aff group relative z-3 grid h-full divide-y divide-dashed rounded-xl bg-linear-to-l text-white lg:grid-rows-[90px_1fr]"
 		>
 			<header class="grid min-h-15 place-content-center text-xl font-bold lg:min-h-22.5 lg:text-4xl">TO-BE</header>
 			<ul class="divide-d9d9d9 grid grid-rows-4 divide-y divide-dashed px-2 text-left">

@@ -27,13 +27,12 @@
 							</p>
 							<icon-list
 								name="faq_arr"
-								class="group-has-checked/faq:fill-primary group-hover:fill-primary/80 relative ml-auto size-6.25 flex-none fill-black transition-all group-has-checked/faq:-rotate-180 lg:size-8.5"
+								class="group-has-checked/faq:fill-primary group-hover:fill-primary relative ml-auto size-6.25 flex-none fill-black transition-all group-has-checked/faq:-rotate-180 lg:size-8.5"
 							></icon-list>
 						</label>
 					</dt>
 					<dd
 						class="text-666 @starting:opacity-0 relative hidden whitespace-pre-line opacity-0 transition-all transition-discrete duration-300 group-not-checked/faq:opacity-0 group-has-checked/faq:grid group-has-checked/faq:opacity-100"
-						transition:slide={{ duration: 50, easing: cubicOut }}
 					>
 						{#if chk}
 							<div in:fly={{ y: 15, duration: 400, delay: 100 }} out:fade={{ duration: 150 }} class="space-y-5 py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22">

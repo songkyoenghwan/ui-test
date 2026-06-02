@@ -103,7 +103,7 @@
 
 				{#if !isDesktop}
 					<div
-						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-t before:from-black before:to-black/0"
+						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black"
 					>
 						<video
 							use:initLoopMo

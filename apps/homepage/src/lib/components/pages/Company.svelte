@@ -59,7 +59,7 @@
 	});
 </script>
 
-<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
+<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all max-xl:pr-0 max-xl:pb-0 xl:gap-15 xl:pt-15 xl:pl-15">
 	<h3 class="relative z-2 text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
 	<div class="relative z-4 space-y-5 lg:space-y-10 lg:whitespace-pre-line">
@@ -90,15 +90,19 @@
 	</div>
 
 	<div
-		class="relative z-1 h-full w-full max-w-273.5 before:absolute before:-left-5 before:z-3 before:h-20 before:w-full before:bg-linear-to-b before:from-white/10 before:to-transparent xl:absolute xl:right-0 xl:bottom-0"
+		class="relative z-1 h-full w-full max-w-273.5 before:absolute before:-left-5 before:z-3 before:h-20 before:w-full before:bg-linear-to-b before:from-white/10 before:to-transparent max-xl:hidden max-lg:hidden xl:absolute xl:right-0 xl:bottom-0"
 	>
 		<video class="relative z-1 aspect-video h-full w-full max-w-273.5 object-cover" autoplay muted playsinline loop>
 			<source src={`${__STATIC_URL__}/video/ceo-video.mp4`} type="video/mp4" />
 		</video>
 	</div>
+
+	<picture class="relative -mt-5 flex justify-end lg:-mt-60">
+		<img loading="lazy" src={`${__STATIC_URL__}/imgs/ceo/img-ceo.png`} alt={m.ceo_name()} class="max-h-127.25" />
+	</picture>
 </section>
 
-<section class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all lg:gap-15 lg:p-15">
+<section class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">Our Teams</h3>
 
 	<ul class="text-2md grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-15 lg:text-lg">
@@ -110,7 +114,7 @@
 
 				<div class="flex flex-col gap-5 p-5 lg:gap-7.5 lg:p-7.5">
 					<h4 class="text-primary text-2xl font-bold lg:text-4xl">{team.team}</h4>
-					<p class="text-666">{team.subtitle}</p>
+					<p class="text-666 text-lg lg:text-2xl">{team.subtitle}</p>
 
 					<ul>
 						{#each team.list as list, i (`team-text-${i}`)}

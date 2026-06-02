@@ -9,6 +9,7 @@
 />
 
 <script lang="ts">
+	import BannerFoot from '$lib/components/banner/BannerFoot.svelte';
 	import Industry from '$lib/components/main/Industry.svelte';
 	import MainNews from '$lib/components/main/MainNews.svelte';
 	import Operations from '$lib/components/main/Operations.svelte';
@@ -51,3 +52,5 @@
 
 	<Operations />
 </main>
+
+<BannerFoot />

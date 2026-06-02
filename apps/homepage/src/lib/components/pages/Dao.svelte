@@ -123,8 +123,9 @@
 		{ id: 'faq-chk-2', tit: m.dao_faq_tit_2(), txt: m.dao_faq_txt_2() },
 		{ id: 'faq-chk-3', tit: m.dao_faq_tit_3(), txt: m.dao_faq_txt_3() },
 		{ id: 'faq-chk-4', link: '/', btn: m.btn_start_trial_free(), tit: m.dao_faq_tit_4(), txt: m.dao_faq_txt_4() },
-		{ id: 'faq-chk-5', link: '/', btn: m.btn_quote(), tit: m.dao_faq_tit_5(), txt: m.dao_faq_txt_5() },
+		{ id: 'faq-chk-5', link: '/solution/dao?selectSolution=DAO', btn: m.btn_quote(), tit: m.dao_faq_tit_5(), txt: m.dao_faq_txt_5() },
 	]);
+
 	setContext('case-list', {
 		get list() {
 			return caseKeys;
@@ -144,7 +145,7 @@
 	});
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} logoAlt={m.dao_visual_badge()} tit={m.dao_visual_title()} subtit={m.dao_visual_subtitle}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} page="dao" logoAlt={m.dao_visual_badge()} tit={m.dao_visual_title()} subtit={m.dao_visual_subtitle}></SubVisual>
 
 <Problem page="dao" />
 

@@ -8,7 +8,7 @@
 <script lang="ts">
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 
-	let { tit = '', txt = '', subTxt = '', lists = [], cls = '' } = $props();
+	let { tit = '', txt = '', subTxt = '', lists = [], cls = '', page = '' } = $props();
 </script>
 
 {#snippet contentIndustries(tit = '', txt = '', icon = '')}
@@ -26,7 +26,7 @@
 	</li>
 {/snippet}
 
-<section class="space-y-5 overflow-clip py-11.25 lg:space-y-7.5 lg:py-15">
+<section class={['space-y-5 overflow-clip pt-15 lg:space-y-7.5', page === 'dsc' ? 'lg:pt-15' : 'lg:py-0']}>
 	<div class="space-y-5 rounded-xl bg-white p-5 lg:space-y-15 lg:p-15">
 		<SubHeading {tit} {txt} {subTxt} />
 		<ul class={['grid gap-5', cls]}>

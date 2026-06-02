@@ -3,7 +3,7 @@
 
 	<sub-company class="sub-inner"></sub-company>
 
-	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 drop-shadow-md transition-all [animation-timeline:view()] lg:gap-15 lg:p-15">
+	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all [animation-timeline:view()] lg:gap-15 lg:p-15">
 		<h3 class="text-2xl font-bold lg:text-5xl">History</h3>
 
 		<ol class="flex flex-col gap-5 lg:gap-7.5">

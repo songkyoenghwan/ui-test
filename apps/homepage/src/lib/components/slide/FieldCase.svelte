@@ -104,7 +104,6 @@
 		space-between={spaceBetween}
 		centered-slides={true}
 		speed="450"
-		autoplay-delay="5000"
 		pagination={{
 			hideOnClick: true,
 		}}
