@@ -84,6 +84,7 @@
 	--color-primary: #3743ff;
 	--color-black: #201f25;
 	--color-light-blue: #ebedff;
+	--color-9cc5e8: #9cc5e8;
 
 	--color-1bc900: #1bc900;
 	--color-7cf5a0: #7cf5a0;
@@ -93,6 +94,7 @@
 	--color-9097ff: #9097ff;
 	--color-red: #ff0000;
 	--color-ff4000: #ff4000;
+	--color-e8d5a7: #e8d5a7;
 
 	--text-2sm: 0.8125rem;
 	--text-2md: 0.9375rem;
@@ -186,8 +188,10 @@
 	--color-primary: #3743ff;
 	--color-black: #201f25;
 	--color-light-blue: #ebedff;
+	--color-9cc5e8: #9cc5e8;
 	--color-red: #ff0000;
 	--color-ff4000: #ff4000;
+	--color-e8d5a7: #e8d5a7;
 
 	--color-1bc900: #1bc900;
 	--color-7cf5a0: #7cf5a0;
@@ -410,7 +414,7 @@
 		scroll-behavior: smooth;
 
 		&:has([data-section='floating']) {
-			padding-bottom: 100px;
+			padding-bottom: 3.75rem;
 		}
 	}
 

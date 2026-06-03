@@ -1,18 +1,32 @@
 <script lang="ts">
 	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
-	import { getContext } from 'svelte';
+	import { m } from '$lib/paraglide/messages.js';
+	import { getContext, tick } from 'svelte';
 	import { register } from 'swiper/element/bundle';
-
-	$effect(() => {
-		register();
-	});
 
 	// oxlint-disable-next-line typescript/no-explicit-any
 	const caseContext = getContext<{ list: any[] }>('case-list');
 
-	let swiperEl: Element | null = $state(null);
+	let swiperEl: HTMLElement | null = $state(null);
 	let curretIndex = $state(0);
 	const spaceBetween = 10;
+
+	$effect(() => {
+		register();
+
+		if (swiperEl) {
+			// oxlint-disable-next-line typescript/no-explicit-any
+			const handleSlideChange = (e: any) => {
+				tick();
+				const [swiper] = e.detail;
+				curretIndex = swiper.realIndex;
+			};
+			swiperEl.addEventListener('swiperslidechange', handleSlideChange);
+			return () => {
+				swiperEl?.removeEventListener('swiperslidechange', handleSlideChange);
+			};
+		}
+	});
 </script>
 
 {#snippet resultLi(img: string, logo: string[], tit: string, badge: string[], txt: string[], etc: [])}
@@ -50,7 +64,7 @@
 			{#if badge}
 				<div class="inline-flex flex-wrap gap-2.5">
 					{#each badge as b, i (`case-b-${i}`)}
-						<p class="bg-primary/10 inline-flex flex-none rounded-full px-5 py-1">{b}</p>
+						<p class="bg-primary/10 text-primary text-2md inline-flex flex-none rounded-full px-5 py-1 font-bold">{b}</p>
 					{/each}
 				</div>
 			{/if}
@@ -75,6 +89,12 @@
 					</li>
 				{/each}
 			</ul>
+
+			{#if logo.includes('client')}
+				<p class="text-2md text-666 lg:text-lg">
+					{m.case_confi()}
+				</p>
+			{/if}
 		</div>
 	</swiper-slide>
 {/snippet}

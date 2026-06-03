@@ -33,15 +33,15 @@
 						<ul
 							class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 						>
-							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
+							<li class="relative opacity-40 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 								<a href="/logi" aria-label="logi.fine page">
 									<header-imgs name="logi"></header-imgs>
 								</a>
 							</li>
-							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
+							<li class="relative opacity-40 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="page">
 								<a href="/dao" aria-label="dao page"><header-imgs name="dao"></header-imgs></a>
 							</li>
-							<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
+							<li class="relative opacity-40 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 								<a href="/dsc" aria-label="dsc page"><header-imgs name="dsc"></header-imgs></a>
 							</li>
 						</ul>
@@ -131,25 +131,15 @@
 				<dl class="text-666 flex flex-col gap-5 text-lg">
 					<dt class="font-bold">Downloads</dt>
 					<dd class="inline-flex items-center gap-10">
-						<p>Logis Grid</p>
+						<p>LOGI.FINE</p>
 						<ul class="inline-flex flex-wrap items-center gap-2.5">
 							<li>
 								<a
 									href=""
-									download="Logis Grid Demo"
+									download="LOGI.FINE Brochure"
 									class="hover:bg-primary group flex min-h-10.5 flex-none items-center gap-5 rounded-full border border-black px-5 py-1 font-normal hover:text-white"
 								>
-									Logis Grid Demo
-									<icon-list name="import" class="size-6 stroke-black group-hover:stroke-white"></icon-list>
-								</a>
-							</li>
-							<li>
-								<a
-									href=""
-									download="Logis Grid Brochure"
-									class="hover:bg-primary group flex min-h-10.5 flex-none items-center gap-5 rounded-full border border-black px-5 py-1 font-normal hover:text-white"
-								>
-									Logis Grid Brochure
+									LOGI.FINE Brochure
 									<icon-list name="import" class="size-6 stroke-black group-hover:stroke-white"></icon-list>
 								</a>
 							</li>

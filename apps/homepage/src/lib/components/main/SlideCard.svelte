@@ -7,35 +7,42 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+	import { tick } from 'svelte';
 	import { register } from 'swiper/element/bundle';
 
 	const cardList = $state([
 		{
-			badge: [m.main_mro_badge_1?.(), m.main_mro_badge_2?.()],
-			txt: m.main_mro_txt_1?.(),
-			img: `${__STATIC_URL__}/imgs/main/slide/img-card-1.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-1.png`,
+			type: 'dao',
+			badge: [m.main_mro_badge_1()],
+			txt: m.main_mro_txt_1(),
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-1.jpg`,
 		},
 		{
-			badge: [m.main_mro_badge_3?.(), m.main_mro_badge_2?.()],
-			txt: m.main_mro_txt_2?.(),
-			img: `${__STATIC_URL__}/imgs/main/slide/img-card-2.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-2.png`,
+			type: 'dao',
+			badge: [m.main_mro_badge_2()],
+			txt: m.main_mro_txt_2(),
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-2.jpg`,
 		},
 		{
-			badge: [m.main_mro_badge_4?.(), m.main_mro_badge_5?.()],
-			txt: m.main_mro_txt_3?.(),
-			img: `${__STATIC_URL__}/imgs/main/slide/img-card-3.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-3.png`,
+			type: 'logi',
+			badge: [m.main_mro_badge_3()],
+			txt: [m.main_mro_txt_3()],
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-3.jpg`,
 		},
 		{
-			badge: [m.main_mro_badge_6?.(), m.main_mro_badge_7?.()],
-			txt: m.main_mro_txt_4?.(),
-			img: `${__STATIC_URL__}/imgs/main/slide/img-card-4.png`,
-			logo: `${__STATIC_URL__}/imgs/main/slide/img-logo-4.png`,
+			type: 'dsc',
+			badge: [m.main_mro_badge_4()],
+			txt: m.main_mro_txt_4(),
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-4.jpg`,
+		},
+		{
+			type: 'dsc',
+			badge: [m.main_mro_badge_5()],
+			txt: [m.main_mro_txt_5()],
+			img: `${__STATIC_URL__}/imgs/main/slide/img-card-5.jpg`,
 		},
 	]);
-	const lists = $derived([...cardList, ...cardList]);
+	const lists = $state([...cardList, ...cardList]);
 
 	const creativeConfig = {
 		effect: 'cards',
@@ -50,6 +57,8 @@
 		rewind: false,
 		loop: true,
 		slidesPerView: 1,
+		slidesPerGroup: 1,
+		loopAdditionalSlides: 2,
 		autoHeight: false,
 		speed: 300,
 		// autoplay: {
@@ -63,27 +72,37 @@
 	let swiperEl: HTMLElement | any | null = $state(null);
 	let isOn = $state(false);
 	let currentIndex = $state(0);
+	const handleSlideChange = async () => {
+		await tick();
+		if (swiperEl?.swiper) {
+			currentIndex = swiperEl.swiper.realIndex % cardList.length;
+		}
+	};
 
-	$effect.pre(() => {
+	$effect(() => {
 		register();
 		isOn = true;
 
 		if (swiperEl) {
 			Object.assign(swiperEl, creativeConfig);
 			swiperEl.initialize();
+			swiperEl.addEventListener('swiperslidechange', handleSlideChange);
 
-			swiperEl.addEventListener('swiperslidechange', (e: any) => {
-				const [swiper] = e.detail;
-				currentIndex = swiper.realIndex % 4;
-			});
+			return () => {
+				isOn = false;
+				if (swiperEl) {
+					swiperEl.removeEventListener('swiperslidechange', handleSlideChange);
+					swiperEl = null;
+				}
+			};
 		}
 	});
 </script>
 
 <section data-scroll="slide-up" class="slide-card relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_620px] lg:gap-15 lg:p-15">
 	<div data-scroll="slide-up" class="space-y-2.5 lg:space-y-15 lg:whitespace-pre-line">
-		<h2 class="text-3xl font-bold transition-all lg:text-6xl">{m.main_title_mro?.()}</h2>
-		<p class="text-666 text-base transition-all lg:text-3xl">{m.main_subtitle_mro?.()}</p>
+		<h2 class="text-3xl font-bold transition-all lg:text-6xl">{m.main_title_mro()}</h2>
+		<p class="text-666 text-base transition-all lg:text-3xl">{m.main_subtitle_mro()}</p>
 	</div>
 
 	<div
@@ -97,9 +116,16 @@
 		>
 			{#each lists as list, i (`slide-card-${i}`)}
 				<swiper-slide
-					class="group not-[.swiper-slide-active]:bg-7785ff relative h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-0 shadow-transparent not-[.swiper-slide-active]:top-2 not-[.swiper-slide-active]:h-[80%] lg:w-125 lg:space-y-5 lg:bg-size-[auto_100%] lg:p-5 lg:nth-[2]:opacity-10 lg:nth-[6]:opacity-10 [.swiper-slide-active]:bg-(image:--bg-card-mo) lg:[.swiper-slide-active]:bg-(image:--bg-card-pc)"
+					class={[
+						'group  relative h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-0 shadow-transparent not-[.swiper-slide-active]:top-2 not-[.swiper-slide-active]:h-[80%] lg:w-125 lg:space-y-5 lg:bg-size-[auto_100%] lg:p-5 lg:nth-[1]:opacity-10 lg:nth-[10]:opacity-10',
+						list.type === 'dao' ? 'not-[.swiper-slide-active]:bg-9cc5e8 [.swiper-slide-active]:bg-(image:--bg-card-dao-pc)' : '',
+						list.type === 'dsc' ? 'not-[.swiper-slide-active]:bg-e8d5a7 [.swiper-slide-active]:bg-(image:--bg-card-dsc-pc)' : '',
+						list.type === 'logi' ? 'not-[.swiper-slide-active]:bg-7785ff [.swiper-slide-active]:bg-(image:--bg-card-logi-pc)' : '',
+					]}
 					style:--bg-card-mo={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-mo.png)`}
-					style:--bg-card-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card.png)`}
+					style:--bg-card-dao-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-dao.png)`}
+					style:--bg-card-dsc-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-dsc.png)`}
+					style:--bg-card-logi-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-logi.png)`}
 				>
 					<picture class="flex h-47 overflow-clip rounded-xl transition-all group-not-[.swiper-slide-active]:opacity-0 lg:h-56.25">
 						<img loading="lazy" src={list.img} alt="" class="w-full object-cover" />
@@ -112,26 +138,21 @@
 							</li>
 						{/each}
 					</ul>
-					<dl class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white group-not-[.swiper-slide-active]:opacity-0 lg:min-h-35">
-						<dt class="text-center text-lg lg:text-2xl">
+					<div class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white group-not-[.swiper-slide-active]:opacity-0 lg:min-h-35">
+						<p class="text-2md text-center font-bold whitespace-pre-line lg:text-2xl">
 							{list.txt}
-						</dt>
-						<dd class=" text-right">
-							<picture class="absolute right-5 bottom-5 flex h-6 lg:h-7.5">
-								<img loading="lazy" src={list.logo} alt="" class="h-full" />
-							</picture>
-						</dd>
-					</dl>
+						</p>
+					</div>
 				</swiper-slide>
 			{/each}
 		</swiper-container>
 
 		<div class="absolute bottom-2 z-3 inline-flex gap-1">
-			{#each cardList.slice(0, 4) as _, y (`dot-${y}`)}
+			{#each cardList.slice(0, 5) as _, y (`dot-${y}`)}
 				<p
 					class="size-2 rounded-full shadow-md transition-all duration-300"
-					class:bg-white={(swiperEl?.swiper?.realIndex ?? 0) % 4 === y}
-					class:bg-9097ff={(swiperEl?.swiper?.realIndex ?? 0) % 4 !== y}
+					class:bg-white={currentIndex === y}
+					class:bg-9097ff={currentIndex !== y}
 					class:w-6={currentIndex === y}
 				>
 					<span class="sr-only">{y + 1}번째 슬라이드 구역</span>
@@ -150,7 +171,12 @@
 					<span class="sr-only">Slide Prev</span>
 					<icon-list name="arrow-right" class="size-6 rotate-180 stroke-white"></icon-list>
 				</button>
-				<button class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12" onclick={() => swiperEl?.swiper?.slideNext()}>
+				<button
+					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
+					onclick={() => {
+						swiperEl?.swiper?.slideNext();
+					}}
+				>
 					<span class="sr-only">Slide Next</span>
 					<icon-list name="arrow-right" class="size-6 stroke-white"></icon-list>
 				</button>

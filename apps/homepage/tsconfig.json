@@ -49,7 +49,8 @@
 		"bun.lockb",
 		"eslint.config",
 		"wc/**",
-		"eslint.config.*"
+		"eslint.config.*",
+		"output"
 	],
 	"extends": "./.svelte-kit/tsconfig.json",
 	"include": ["./src", ".astro/types.d.ts", "**/*.astro", "./src/env.d.ts", "global.d.ts", "./src/wc.ts"]

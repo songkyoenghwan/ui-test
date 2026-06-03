@@ -93,7 +93,7 @@
 					: page === 'dsc'
 						? '/solution/dsc?selectSolution=DSC'
 						: '/'}
-			class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
+			class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
 		>
 			<span>{m.btn_inquiry()}</span>
 			<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>

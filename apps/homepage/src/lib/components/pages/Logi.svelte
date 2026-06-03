@@ -24,7 +24,7 @@
 	import { setContext } from 'svelte';
 
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-sub-logi.svg`;
-	const bg = `${__STATIC_URL__}/video/logi-video.png`;
+	const bg = `${__STATIC_URL__}/video/logi-video.jpg`;
 	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([
@@ -37,35 +37,35 @@
 	]);
 	const feaKeys = $state([
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-1.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-1.jpg`,
 			tit: m.logi_features_tit_1(),
 			txt: [m.logi_features_txt_1(), m.logi_features_txt_1_2()],
 			logo: m.logi_features_logo_1(),
 			labels: [m.logi_features_list_1_1(), m.logi_features_list_1_2(), m.logi_features_list_1_3()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-2.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-2.jpg`,
 			tit: m.logi_features_tit_2(),
 			txt: [m.logi_features_txt_2()],
 			logo: m.logi_features_logo_2(),
 			labels: [m.logi_features_list_2_1(), m.logi_features_list_2_2(), m.logi_features_list_2_3(), m.logi_features_list_2_4()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-3.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-3.jpg`,
 			tit: m.logi_features_tit_3(),
 			txt: [m.logi_features_txt_3(), m.logi_features_txt_3_2()],
 			logo: m.logi_features_logo_3(),
 			labels: [m.logi_features_list_3_1(), m.logi_features_list_3_2(), m.logi_features_list_3_3()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-4.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-4.jpg`,
 			tit: m.logi_features_tit_4(),
 			txt: [m.logi_features_txt_4(), m.logi_features_txt_4_2()],
 			logo: m.logi_features_logo_4(),
 			labels: [m.logi_features_list_4_1(), m.logi_features_list_4_2(), m.logi_features_list_4_3()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-5.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-5.jpg`,
 			tit: m.logi_features_tit_5(),
 			txt: [m.logi_features_txt_5(), m.logi_features_txt_4_2()],
 			logo: m.logi_features_logo_5(),
@@ -82,22 +82,22 @@
 		{
 			id: 'logi-case-1',
 			btn: m.logi_case_btn_1(),
-			logo: [`${__STATIC_URL__}/imgs/case/logo-case-logi-1.png`],
-			img: `${__STATIC_URL__}/imgs/case/img-case-logi-1.png`,
+			logo: ['client'],
+			img: `${__STATIC_URL__}/imgs/case/img-case-logi-1.jpg`,
 			tit: m.logi_case_tit_1_1(),
 			badge: [m.logi_case_badge_1_1()],
 			txt: [m.logi_case_txt_1_1(), m.logi_case_txt_1_2()],
-			etc: [m.logi_case_etc_1_1, m.logi_case_etc_1_2, m.logi_case_etc_1_3],
+			etc: [m.logi_case_etc_1_1, m.logi_case_etc_1_2],
 		},
 		{
 			id: 'logi-case-2',
 			btn: m.logi_case_btn_2(),
-			logo: [`${__STATIC_URL__}/imgs/case/logo-case-logi-2.png`],
-			img: `${__STATIC_URL__}/imgs/case/img-case-logi-2.png`,
+			logo: ['client'],
+			img: `${__STATIC_URL__}/imgs/case/img-case-logi-2.jpg`,
 			tit: m.logi_case_tit_2_1(),
 			badge: [m.logi_case_badge_2_1()],
 			txt: [m.logi_case_txt_2_1(), m.logi_case_txt_1_2()],
-			etc: [m.logi_case_etc_2_1, m.logi_case_etc_2_2, m.logi_case_etc_2_3],
+			etc: [m.logi_case_etc_2_1, m.logi_case_etc_2_2],
 		},
 	]);
 	const faqtKeys = $state([

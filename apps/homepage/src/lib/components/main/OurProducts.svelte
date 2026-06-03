@@ -70,11 +70,11 @@
 							loop
 							autoplay
 							poster={i === 0
-								? `${__STATIC_URL__}/video/logi-video.png`
+								? `${__STATIC_URL__}/video/logi-video.jpg`
 								: i === 1
-									? `${__STATIC_URL__}/video/dao-video.png`
+									? `${__STATIC_URL__}/video/dao-video.jpg`
 									: i === 2
-										? `${__STATIC_URL__}/video/dsc-video.png`
+										? `${__STATIC_URL__}/video/dsc-video.jpg`
 										: ''}
 						>
 							<source
@@ -114,11 +114,11 @@
 							loop
 							autoplay
 							poster={i === 0
-								? `${__STATIC_URL__}/video/logi-video.png`
+								? `${__STATIC_URL__}/video/logi-video.jpg`
 								: i === 1
-									? `${__STATIC_URL__}/video/dsc-video.png`
+									? `${__STATIC_URL__}/video/dsc-video.jpg`
 									: i === 2
-										? `${__STATIC_URL__}/video/dsc-video.png`
+										? `${__STATIC_URL__}/video/dsc-video.jpg`
 										: ''}
 						>
 							<source
@@ -151,9 +151,9 @@
 							{i === 0 ? 'bg-(image:--bg-main-logi)' : ''}
 							{i === 1 ? 'bg-(image:--bg-main-dao)' : ''}
 							{i === 2 ? 'bg-(image:--bg-main-dsc)' : ''}"
-					style:--bg-main-logi={`url(${__STATIC_URL__}/imgs/logo/bg-main-logi.png)`}
-					style:--bg-main-dao={`url(${__STATIC_URL__}/imgs/logo/bg-main-dao.png)`}
-					style:--bg-main-dsc={`url(${__STATIC_URL__}/imgs/logo/bg-main-dsc.png)`}
+					style:--bg-main-logi={`url(${__STATIC_URL__}/imgs/logo/bg-main-logi.jpg)`}
+					style:--bg-main-dao={`url(${__STATIC_URL__}/imgs/logo/bg-main-dao.jpg)`}
+					style:--bg-main-dsc={`url(${__STATIC_URL__}/imgs/logo/bg-main-dsc.jpg)`}
 					onmouseenter={() => (current = i)}
 					onfocus={() => (current = i)}
 					aria-current={current === i ? 'true' : !isDesktop ? 'true' : undefined}

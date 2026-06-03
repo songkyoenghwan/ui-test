@@ -26,7 +26,7 @@
 	<div class="relative z-5 starting:opacity-0">
 		<div class="p-1">
 			<LiquidGlass class="inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl" style="border-radius: 24px;">
-				<p>{m.main_visual_badge()}</p>
+				<p>Spatial Intelligence Platform</p>
 			</LiquidGlass>
 		</div>
 
@@ -41,7 +41,7 @@
 		<div class="mt-7.5 flex lg:mt-9">
 			<a
 				href="/"
-				class="hover:text-3743ff group text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
+				class="hover:text-3743ff group text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
 			>
 				<span>{m.btn_inquiry()}</span>
 				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>

@@ -12,8 +12,8 @@
 
 <section
 	class="rounded-xl bg-black bg-(image:--bg-mo) bg-cover bg-center p-5 text-white transition-all lg:bg-(image:--bg-pc) lg:p-15"
-	style:--bg-mo={`url(${__STATIC_URL__}/imgs/visual/bg-addr-mo.png)`}
-	style:--bg-pc={`url(${__STATIC_URL__}/imgs/visual/bg-addr-pc.png)`}
+	style:--bg-mo={`url(${__STATIC_URL__}/imgs/visual/bg-addr-mo.jpg)`}
+	style:--bg-pc={`url(${__STATIC_URL__}/imgs/visual/bg-addr-pc.jpg)`}
 >
 	<ul {@attach visualMotion} class="grid grid-cols-1 gap-7.5 lg:grid-cols-2">
 		<li class="space-y-2">

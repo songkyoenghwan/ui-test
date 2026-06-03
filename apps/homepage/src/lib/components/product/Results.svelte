@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
 	import FieldCase from '$/lib/components/slide/FieldCase.svelte';
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import CountNumber from '$lib/components/text/CountNumber.svelte';
@@ -58,6 +59,7 @@
 				>
 					{#if num}
 						<CountNumber text={Number(num)} />
+						<span class="font-normal">%</span>
 					{:else}
 						ZERO
 					{/if}
@@ -96,7 +98,7 @@
 	</li>
 {/snippet}
 
-{#snippet resultLiCase2(tit = '', txt = '', icon = '')}
+{#snippet resultLiCase2(tit = '', txt: any, icon = '')}
 	<li data-scroll="slide-up" class="relative grid place-items-center gap-5 rounded-xl bg-white p-5 text-center opacity-0 lg:p-7.5">
 		<picture class="grid size-22.5 place-content-center">
 			<img loading="lazy" src={icon} alt={tit} />
@@ -106,7 +108,13 @@
 		{/if}
 
 		{#if txt}
-			<p class="text-2md text-666 lg:text-lg">{txt}</p>
+			<p class="text-2md text-666 lg:text-lg">
+				<ParaglideMessage message={txt}>
+					{#snippet b({ children })}
+						<strong class="text-primary font-bold">{@render children?.()}</strong>
+					{/snippet}
+				</ParaglideMessage>
+			</p>
 		{/if}
 	</li>
 {/snippet}

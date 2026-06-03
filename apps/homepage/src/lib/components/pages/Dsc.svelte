@@ -22,7 +22,7 @@
 
 	let page = 'dsc';
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-sub-${page}.svg`;
-	const bg = `${__STATIC_URL__}/video/dsc-video.png`;
+	const bg = `${__STATIC_URL__}/video/dsc-video.jpg`;
 	const videoUrl = `${__STATIC_URL__}/video/dsc-video.webm`;
 
 	const industries = $state([
@@ -37,7 +37,7 @@
 	]);
 	const feaKeys = $state([
 		{
-			poster: `${__STATIC_URL__}/video/vps-video.png`,
+			poster: `${__STATIC_URL__}/video/vps-video.jpg`,
 			video: `${__STATIC_URL__}/video/vps-video.webm`,
 			tit: m.dsc_features_tit_2(),
 			txt: [m.dsc_features_txt_2()],
@@ -45,7 +45,7 @@
 			labels: [m.dsc_features_list_2_1(), m.dsc_features_list_2_2(), m.dsc_features_list_2_3()],
 		},
 		{
-			poster: `${__STATIC_URL__}/video/scan-video.png`,
+			poster: `${__STATIC_URL__}/video/scan-video.jpg`,
 			video: `${__STATIC_URL__}/video/scan-video.webm`,
 			tit: m.dsc_features_tit_1(),
 			txt: [m.dsc_features_txt_1(), m.dsc_features_txt_1_2()],
@@ -53,20 +53,21 @@
 			labels: [m.dsc_features_list_1_1(), m.dsc_features_list_1_2(), m.dsc_features_list_1_3()],
 		},
 		{
+			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-3.jpg`,
 			tit: m.dsc_features_tit_3(),
 			txt: [m.dsc_features_txt_3()],
 			logo: m.dsc_features_logo_3(),
 			labels: [m.dsc_features_list_3_1(), m.dsc_features_list_3_2()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-4.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-4.jpg`,
 			tit: m.dsc_features_tit_4(),
 			txt: [m.dsc_features_txt_4(), m.dsc_features_txt_4_2()],
 			logo: m.dsc_features_logo_4(),
 			labels: [m.dsc_features_list_4_1(), m.dsc_features_list_4_2(), m.dsc_features_list_4_3()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-5.png`,
+			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-5.jpg`,
 			tit: m.dsc_features_tit_5(),
 			txt: [m.dsc_features_txt_5(), m.dsc_features_txt_4_2()],
 			logo: m.dsc_features_logo_5(),
@@ -76,17 +77,17 @@
 	let featuresPart1 = $derived(feaKeys.slice(0, 3));
 	let featuresPart2 = $derived(feaKeys.slice(3, 5));
 	const resultKeys = $state([
-		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-1.png`, tit: m.dsc_result_subTit_1(), txt: m.dsc_result_txt_1() },
-		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-2.png`, tit: m.dsc_result_subTit_2(), txt: m.dsc_result_txt_2() },
-		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-3.png`, tit: m.dsc_result_subTit_3(), txt: m.dsc_result_txt_3() },
-		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-4.png`, tit: m.dsc_result_subTit_4(), txt: m.dsc_result_txt_4() },
+		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-1.png`, tit: m.dsc_result_subTit_1(), txt: m.dsc_result_txt_1 },
+		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-2.png`, tit: m.dsc_result_subTit_2(), txt: m.dsc_result_txt_2 },
+		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-3.png`, tit: m.dsc_result_subTit_3(), txt: m.dsc_result_txt_3 },
+		{ img: `${__STATIC_URL__}/imgs/result/img-result-${page}-4.png`, tit: m.dsc_result_subTit_4(), txt: m.dsc_result_txt_4 },
 	]);
 	const caseKeys = $state([
 		{
 			id: 'dsc-case-1',
 			btn: m.dsc_case_btn_1(),
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-${page}-1.png`],
-			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-1.png`,
+			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-1.jpg`,
 			tit: m.dsc_case_tit_1_1(),
 			badge: [m.dsc_case_badge_1_1(), m.dsc_case_badge_1_2(), m.dsc_case_badge_1_3(), m.dsc_case_badge_1_4()],
 			txt: [m.dsc_case_txt_1_1()],
@@ -96,7 +97,7 @@
 			id: 'dsc-case-2',
 			btn: m.dsc_case_btn_2(),
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-${page}-2.png`, 'client'],
-			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-2.png`,
+			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-2.jpg`,
 			tit: m.dsc_case_tit_2_1(),
 			badge: [m.dsc_case_badge_2_1(), m.dsc_case_badge_2_2(), m.dsc_case_badge_2_3()],
 			txt: [m.dsc_case_txt_2_1()],
@@ -106,7 +107,7 @@
 			id: 'dsc-case-3',
 			btn: m.dsc_case_btn_3(),
 			logo: ['client'],
-			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-3.png`,
+			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-3.jpg`,
 			tit: m.dsc_case_tit_3_1(),
 			badge: [m.dsc_case_badge_3_1(), m.dsc_case_badge_3_2(), m.dsc_case_badge_3_3()],
 			txt: [m.dsc_case_txt_3_1()],
@@ -156,6 +157,6 @@
 
 <Results tit={m.dsc_result_tit()} txt={m.dsc_result_subTit()} lists={[...resultKeys]} page="dsc" />
 
-<Faq tit="FAQ" txt={m.dsc_subtitle_faq()} lists={[...faqtKeys]} />
+<Faq tit="FAQ" txt={m.dao_subtitle_faq()} lists={[...faqtKeys]} />
 
 <BannerDsc />

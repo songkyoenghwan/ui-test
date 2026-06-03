@@ -35,19 +35,23 @@
 	]);
 	const feaKeys = $state([
 		{
+			poster: `${__STATIC_URL__}/video/vision-video.jpg`,
+			video: `${__STATIC_URL__}/video/vision-video.webm`,
 			tit: m.dao_features_tit_1(),
 			txt: [m.dao_features_txt_1(), m.dao_features_txt_1_2()],
 			logo: m.dao_features_logo_1(),
 			labels: [m.dao_features_list_1_1(), m.dao_features_list_1_2(), m.dao_features_list_1_3(), m.dao_features_list_1_4()],
 		},
 		{
+			poster: `${__STATIC_URL__}/video/photo-video.jpg`,
+			video: `${__STATIC_URL__}/video/photo-video.webm`,
 			tit: m.dao_features_tit_2(),
 			txt: [m.dao_features_txt_2()],
 			logo: m.dao_features_logo_2(),
 			labels: [m.dao_features_list_2_1(), m.dao_features_list_2_2()],
 		},
 		{
-			poster: `${__STATIC_URL__}/video/workflow-video.png`,
+			poster: `${__STATIC_URL__}/video/workflow-video.jpg`,
 			video: `${__STATIC_URL__}/video/workflow-video.webm`,
 			tit: m.dao_features_tit_3(),
 			txt: [m.dao_features_txt_3(), m.dao_features_txt_3_2()],
@@ -55,7 +59,7 @@
 			labels: [m.dao_features_list_3_1(), m.dao_features_list_3_2(), m.dao_features_list_3_3(), m.dao_features_list_3_4()],
 		},
 		{
-			poster: `${__STATIC_URL__}/video/remote-video.png`,
+			poster: `${__STATIC_URL__}/video/remote-video.jpg`,
 			video: `${__STATIC_URL__}/video/remote-video.webm`,
 			tit: m.dao_features_tit_4(),
 			txt: [m.dao_features_txt_4(), m.dao_features_txt_4_2()],
@@ -74,7 +78,7 @@
 			id: 'das-case-1',
 			btn: m.dao_case_btn_1(),
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-dao-1.png`],
-			img: `${__STATIC_URL__}/imgs/case/img-case-dao-1.png`,
+			img: `${__STATIC_URL__}/imgs/case/img-case-dao-1.jpg`,
 			tit: m.dao_case_tit_1_1(),
 			txt: [m.dao_case_txt_1_1(), m.dao_case_txt_1_2()],
 			etc: [m.dao_case_etc_1_1, m.dao_case_etc_1_2, m.dao_case_etc_1_3],
@@ -101,7 +105,7 @@
 			id: 'das-case-4',
 			btn: m.dao_case_btn_4(),
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-dao-4.png`],
-			img: `${__STATIC_URL__}/imgs/case/img-case-dao-4.png`,
+			img: `${__STATIC_URL__}/imgs/case/img-case-dao-4.jpg`,
 			tit: m.dao_case_tit_4_1(),
 			txt: [m.dao_case_txt_4_1()],
 			etc: [m.dao_case_etc_4_1, m.dao_case_etc_4_2, m.dao_case_etc_4_3],
@@ -110,7 +114,7 @@
 			id: 'das-case-5',
 			btn: m.dao_case_btn_5(),
 			logo: ['client'],
-			img: `${__STATIC_URL__}/imgs/case/img-case-dao-5.png`,
+			img: `${__STATIC_URL__}/imgs/case/img-case-dao-5.jpg`,
 			tit: m.dao_case_tit_5_1(),
 			badge: [m.dao_case_badge_5_1()],
 			txt: [m.dao_case_txt_5_1(), m.dao_case_txt_5_2()],
@@ -161,6 +165,6 @@
 
 <Results tit={m.dao_result_tit()} txt={m.dao_result_subTit()} lists={[...resultKeys]} />
 
-<Faq tit="Proven Results" txt={m.dao_subtitle_faq()} lists={[...faqtKeys]} />
+<Faq tit="FAQ" txt={m.dao_subtitle_faq()} lists={[...faqtKeys]} />
 
 <BannerInquiry page="dao" />

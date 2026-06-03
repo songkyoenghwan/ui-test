@@ -10,12 +10,12 @@
 	import { lenisStore } from '$lib/utils/scrollMove.svelte';
 	import Lenis from 'lenis';
 
-	const division1 = `${__STATIC_URL__}/imgs/company/img-division-1.png`;
-	const division2 = `${__STATIC_URL__}/imgs/company/img-division-2.png`;
-	const division3 = `${__STATIC_URL__}/imgs/company/img-division-3.png`;
-	const division4 = `${__STATIC_URL__}/imgs/company/img-division-4.png`;
-	const bannerBgMo = `${__STATIC_URL__}/imgs/company/bg-join-us-mo.png`;
-	const bannerBgPc = `${__STATIC_URL__}/imgs/company/bg-join-us-pc.png`;
+	const division1 = `${__STATIC_URL__}/imgs/company/img-division-1.jpg`;
+	const division2 = `${__STATIC_URL__}/imgs/company/img-division-2.jpg`;
+	const division3 = `${__STATIC_URL__}/imgs/company/img-division-3.jpg`;
+	const division4 = `${__STATIC_URL__}/imgs/company/img-division-4.jpg`;
+	const bannerBgMo = `${__STATIC_URL__}/imgs/company/bg-join-us-mo.jpg`;
+	const bannerBgPc = `${__STATIC_URL__}/imgs/company/bg-join-us-pc.jpg`;
 	const bgPerson = `${__STATIC_URL__}/imgs/company/bg-join-us-person.png`;
 	const sign = `${__STATIC_URL__}/imgs/ceo/img-sign.png`;
 

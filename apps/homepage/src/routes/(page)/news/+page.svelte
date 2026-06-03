@@ -47,7 +47,7 @@
 				<news-section
 					layout="list"
 					img="https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png"
-					badges="Company"
+					badges="Company, News"
 					title="DeepFine to Participate in CES 2026, Showcasing XR-Based Spatial Intelligence Solutions"
 					text="DeepFine, an XR (Extended Reality) spatial computing platform company, announced that it will participate in CES 2026, taking place in Las Vegas, USA, from January 6 to
 			9, 2026. Through this exhibition, DeepFine aims to accelerate its global market expansion by highlighting its flagship solution, DeepFine Spatial Crafter"

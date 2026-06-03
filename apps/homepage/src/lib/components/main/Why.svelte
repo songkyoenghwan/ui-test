@@ -96,7 +96,7 @@
 					'group/why relative flex h-90 w-full justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105',
 					list.cls,
 				]}
-				style:--why-1-bg={`url(${__STATIC_URL__}/imgs/main/why/bg-why-1.png)`}
+				style:--why-1-bg={`url(${__STATIC_URL__}/imgs/main/why/bg-why-1.jpg)`}
 				onpointerenter={() => handleVideoEnter(i)}
 			>
 				<dl class="space-y-2.5 p-5">
@@ -105,7 +105,10 @@
 						data-font={list.font}
 					>
 						{#if list.id !== 'why-4'}
-							<CountNumber text={Number(list.num)} />
+							<strong class="flex min-w-29 gap-px font-bold tracking-tight"><CountNumber text={Number(list.num)} /></strong>
+							{#if list.id === 'why-5'}
+								<span class="font-normal">%</span>
+							{/if}
 						{:else}
 							{list.tit}
 						{/if}

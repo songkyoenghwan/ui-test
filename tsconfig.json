@@ -76,7 +76,8 @@
 		"bun.lockb",
 		"eslint.config",
 		"wc/**",
-		"eslint.config.*"
+		"eslint.config.*",
+		"output"
 	]
 	//   "extends": "./.svelte-kit/tsconfig.json",
 	//   "include": [

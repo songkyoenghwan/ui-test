@@ -6,9 +6,18 @@
 />
 
 <script lang="ts">
-	import { parseBreakline } from '$lib/utils/textUtils.svelte';
+	interface Props {
+		layout?: string;
+		img?: string;
+		badges?: string;
+		title?: string;
+		text?: string;
+		date?: string;
+		source?: string;
+		url?: string;
+	}
 
-	let { layout = '', img = '', badges = [''], title = '', text = '', date = '', source = '', url = '' } = $props();
+	let { layout = '', img = '', badges = '', title = '', text = '', date = '', source = '', url = '' }: Props = $props();
 
 	let lastBadges = $state('');
 	let cachedList: string[] = $state([]);
@@ -23,6 +32,10 @@
 		}
 
 		return cachedList;
+	});
+
+	$effect(() => {
+		badgeList();
 	});
 </script>
 
@@ -42,7 +55,7 @@
 	<div class="flex flex-col gap-5">
 		<div class="inline-flex flex-wrap gap-3">
 			{#if hasComma}
-				{#each badgeList as badge, i (i)}
+				{#each cachedList as badge, i (i)}
 					{@render badgeRender(badge)}
 				{/each}
 			{:else}
@@ -58,7 +71,7 @@
 			</div>
 		{/if}
 
-		<p>{parseBreakline(text)}</p>
+		<p>{@html text}</p>
 
 		<div class="text-666 text-2md mt-auto flex justify-between gap-2 lg:pt-2.5 lg:text-lg">
 			{#if source}

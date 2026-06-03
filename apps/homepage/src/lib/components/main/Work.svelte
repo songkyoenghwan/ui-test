@@ -36,11 +36,10 @@
 <section data-scroll="slide-up" class="relative max-w-dvw py-5 lg:py-15">
 	<sub-heading-line line="none" title={m.main_title_work?.()} subTit={m.main_subtitle_work?.()}></sub-heading-line>
 
-	<dl class="space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.png)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl">
+	<dl class="space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.jpg)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl">
 		<dt class="text-lg font-bold lg:text-4xl">DEEP.FINE SPATIAL INTELLIGENCE AI</dt>
-		<dd class="text-2md lg:px-10 lg:text-2xl">
-			Powered by Vision AI, AI Agents, and Spatial Computing technologies, DEEP.FINE connects spatial, operational, and equipment data across industrial environments enabling
-			more efficient and scalable operations.
+		<dd class="text-2md lg:px-10 lg:text-2xl lg:whitespace-pre-line">
+			{m.main_work_item_top_1()}
 		</dd>
 	</dl>
 	<ul class="relative grid grid-cols-1 gap-7.5 py-7.5 lg:-mt-37.5 lg:grid-cols-3 lg:py-0">

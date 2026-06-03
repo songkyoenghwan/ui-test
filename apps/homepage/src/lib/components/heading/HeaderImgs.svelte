@@ -9,11 +9,11 @@
 />
 
 <script lang="ts">
-	const left = `${__STATIC_URL__}/imgs/logo/img-header.png`;
-	const dao = `${__STATIC_URL__}/imgs/logo/log-header-dao.png`;
+	const left = `${__STATIC_URL__}/imgs/logo/img-header.jpg`;
+	const dao = `${__STATIC_URL__}/imgs/logo/log-header-dao.jpg`;
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-deepfine.svg`;
-	const dsc = `${__STATIC_URL__}/imgs/logo/logo-header-dsc.png`;
-	const logi = `${__STATIC_URL__}/imgs/logo/logo-header-logi.png`;
+	const dsc = `${__STATIC_URL__}/imgs/logo/logo-header-dsc.jpg`;
+	const logi = `${__STATIC_URL__}/imgs/logo/logo-header-logi.jpg`;
 
 	let { name = '' } = $props<{ name?: string }>();
 
