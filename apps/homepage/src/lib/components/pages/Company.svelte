@@ -92,7 +92,7 @@
 	<div
 		class="relative z-1 h-full w-full max-w-273.5 before:absolute before:-left-5 before:z-3 before:h-20 before:w-full before:bg-linear-to-b before:from-white/10 before:to-transparent max-xl:hidden max-lg:hidden xl:absolute xl:right-0 xl:bottom-0"
 	>
-		<video class="relative z-1 aspect-video h-full w-full max-w-273.5 object-cover" autoplay muted playsinline loop>
+		<video class="relative z-1 aspect-video h-full w-full max-w-273.5 object-cover" autoplay muted playsinline>
 			<source src={`${__STATIC_URL__}/video/ceo-video.mp4`} type="video/mp4" />
 		</video>
 	</div>
@@ -138,7 +138,10 @@
 
 			<div class="flex w-full items-center lg:inline-flex">
 				<a
-					href="/"
+					href="https://www.jobkorea.co.kr/Recruit/Co_Read/Recruit/C/29884596"
+					aria-label={m.join_btn()}
+					target="_blank"
+					rel="noopener noreferrer"
 					class="hover:text-primary group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-white px-5 text-white hover:bg-white lg:flex-none lg:justify-baseline"
 				>
 					<span>{m.join_btn()}</span>

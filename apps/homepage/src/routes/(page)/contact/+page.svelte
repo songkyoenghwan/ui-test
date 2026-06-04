@@ -1,3 +1,38 @@
+<script lang="ts">
+	import type { SwiperContainerElement } from '$lib/types/swiperType';
+	import { tick } from 'svelte';
+	import { register } from 'swiper/element/bundle';
+
+	register();
+	let swiperEl = $state<SwiperContainerElement | null>(null);
+	let swipe = $derived(swiperEl?.swiper);
+	let currentIndex = $state(0);
+
+	const handleSlideChange = async () => {
+		await tick();
+		if (swiperEl?.swiper) {
+			currentIndex = swiperEl.swiper.realIndex;
+		}
+	};
+
+	$effect(() => {
+		//		document?.querySelector('dialog').show();
+
+		$inspect(swipe);
+
+		if (swiperEl) {
+			swiperEl.addEventListener('swiperslidechange', handleSlideChange);
+
+			return () => {
+				if (swiperEl) {
+					swiperEl.removeEventListener('swiperslidechange', handleSlideChange);
+					swiperEl = null;
+				}
+			};
+		}
+	});
+</script>
+
 <main class="sub">
 	<sub-heading-line title="Contact"></sub-heading-line>
 
@@ -211,7 +246,7 @@
 					<label class="label" for="contactCheckbox">
 						<input class="checkbox size-9 rounded-lg lg:size-15" id="contactCheckbox" type="checkbox" />
 					</label>
-					<a href="" title="개인정보보호정책 페이지로 이동하기" aria-label="개인정보보호정책 페이지로 이동하기">
+					<a href="/term" title="개인정보보호정책 페이지로 이동하기" aria-label="개인정보보호정책 페이지로 이동하기">
 						<span class="text-primary text-2md underline lg:text-2xl">개인정보보호정책</span>
 						<span class="text-2md lg:text-2xl">에 동의합니다.</span>
 						<span class="text-2md lg:text-2xl">(필수)</span>
@@ -231,3 +266,67 @@
 		</form>
 	</section>
 </main>
+
+<dialog class="backdrop:bg-000/70 bg-000/70 top-0 left-0 z-200 hidden h-dvh w-dvw place-content-center open:fixed">
+	<section class="relative w-full max-w-90 rounded-xl bg-white">
+		<swiper-container
+			bind:this={swiperEl}
+			class="w-full overflow-clip rounded-xl"
+			pagination="false"
+			slides-per-view="1"
+			speed="500"
+			loop="true"
+			onslidechange={() => {
+				swiperEl = swiperEl;
+
+				console.log(swipe);
+			}}
+		>
+			<swiper-slide lazy="true">
+				<pictur class="rounded-t-xl"><img src="/imgs/popup/main-popup.jpg" loading="lazy" alt="" /></pictur>
+				<div class="rounded--b-xl grid w-full grid-cols-1 overflow-clip">
+					<button type="button" class="bg-primary text-2xl font-bold text-white lg:min-h-15">
+						<span>Button</span>
+					</button>
+				</div>
+			</swiper-slide>
+			<swiper-slide lazy="true">
+				<pictur class="rounded-t-xl"><img src="/imgs/popup/main-popup.jpg" loading="lazy" alt="" /></pictur>
+				<div class="rounded--b-xl grid w-full grid-cols-1 overflow-clip">
+					<button type="button" class="bg-primary text-2xl font-bold text-white lg:min-h-15">
+						<span>Button</span>
+					</button>
+				</div>
+			</swiper-slide>
+		</swiper-container>
+
+		<div class="absolute -bottom-11 -left-1 z-1 flex w-full items-center justify-between gap-2 pt-3">
+			<button
+				class="group grid size-6 place-content-center rounded-full bg-black transition-colors hover:bg-white"
+				onclick={() => {
+					swipe?.slidePrev();
+				}}
+			>
+				<span class="sr-only">Slide Prev</span>
+				<icon-list name="arrow-right" class="size-4 rotate-180 stroke-white group-hover:stroke-black"></icon-list>
+			</button>
+
+			<p class="min-w-18 rounded-full bg-white/20 px-5 py-px text-white">
+				<strong>{currentIndex + 1}</strong>
+				&#47;
+				<span>
+					{swipe?.slides?.length ?? 0}
+				</span>
+			</p>
+			<button
+				class="group grid size-6 place-content-center rounded-full bg-black transition-colors hover:bg-white"
+				onclick={() => {
+					swipe?.slideNext();
+				}}
+			>
+				<span class="sr-only">Slide Next</span>
+				<icon-list name="arrow-right" class="size-4 stroke-white group-hover:stroke-black"></icon-list>
+			</button>
+		</div>
+	</section>
+</dialog>

@@ -45,7 +45,7 @@
 
 					<div class="divide-d9d9d9 divide-y divide-dashed">
 						{#if item.labels}
-							<ul class="inline-flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5">
+							<ul class="flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5">
 								{#each item.labels as laebl, i (i)}
 									<li class="bg-ebedff lg:text-2md text-2sm text-3f53ff text-primary flex flex-none items-center rounded-full px-5 py-1 font-bold">
 										{laebl}

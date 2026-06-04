@@ -11,13 +11,15 @@
 >
 	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex"></header-imgs>
 
-	<div class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0">
-		<h1>
+	<div
+		class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0 2xl:group-has-checked/header:px-12"
+	>
+		<p>
 			<a href="/" title="deepfine homepage">
 				<span class="sr-only">deepfine</span>
 				<header-imgs name="logo"></header-imgs>
 			</a>
-		</h1>
+		</p>
 
 		<div class="flex items-center gap-7.5">
 			<nav class="relative z-10 hidden items-center gap-5 lg:flex">
@@ -33,15 +35,15 @@
 						<ul
 							class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 						>
-							<li class="relative opacity-40 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
+							<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 								<a href="/logi" aria-label="logi.fine page">
 									<header-imgs name="logi"></header-imgs>
 								</a>
 							</li>
-							<li class="relative opacity-40 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="page">
+							<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="page">
 								<a href="/dao" aria-label="dao page"><header-imgs name="dao"></header-imgs></a>
 							</li>
-							<li class="relative opacity-40 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
+							<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 								<a href="/dsc" aria-label="dsc page"><header-imgs name="dsc"></header-imgs></a>
 							</li>
 						</ul>
@@ -67,7 +69,7 @@
 							aria-current="false"
 						>
 							<span class="flex-none">Contact Sales</span>
-							<icon-list name="tick-circle" class="group-hover:fill-primary size-6 fill-white"></icon-list>
+							<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
 						</a>
 					</li>
 				</ul>
@@ -94,7 +96,7 @@
 						<h2 class="text-666 text-lg">Products</h2>
 						<ul>
 							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-								<a href="/logi" class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" aria-current="false">Logi Grid</a>
+								<a href="/logi" class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" aria-current="false">LOGI.FINE</a>
 							</li>
 							<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
 								<a href="/dao" class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" aria-current="false">
@@ -192,7 +194,7 @@
 				<li class="grid gap-5">
 					<h2 class="text-2md text-black lg:text-lg">Products</h2>
 					<ul class="space-y-5">
-						<li><a href="" class="underline-offset-4 hover:underline">Logi Grid</a></li>
+						<li><a href="" class="underline-offset-4 hover:underline">LOGI.FINE</a></li>
 						<li><a href="" class="underline-offset-4 hover:underline">DAO</a></li>
 						<li><a href="" class="underline-offset-4 hover:underline">DSC</a></li>
 					</ul>

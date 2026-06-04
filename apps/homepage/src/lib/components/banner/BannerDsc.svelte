@@ -6,7 +6,7 @@
 
 <section
 	data-scroll="slide-up"
-	class="flex flex-col gap-5 rounded-xl bg-(image:--bg-banner-dsc) bg-cover bg-center bg-no-repeat p-5 text-center whitespace-pre-line text-white lg:min-h-165 lg:gap-7.5 lg:p-7.5"
+	class="flex flex-col gap-5 rounded-xl bg-(image:--bg-banner-dsc) bg-cover bg-center bg-no-repeat p-5 text-center whitespace-pre-line text-white lg:min-h-165 lg:gap-7.5 lg:p-15"
 	style:--bg-banner-dsc={`url(${__STATIC_URL__}/imgs/banner/bg-banner-dsc.png)`}
 >
 	<h3 class="text-2xl leading-tight font-bold lg:text-5xl">{m.dsc_banner_tit()}</h3>

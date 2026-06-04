@@ -26,7 +26,9 @@
 
 	<div class="flex w-full pb-5 lg:order-3 lg:row-span-1 lg:inline-flex lg:py-15">
 		<a
-			href="/"
+			href="https://logifine.deepfine.com/signup/trial"
+			target="_blank"
+			rel="noopener noreferrer"
 			class="hover:text-3743ff group flex h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:mt-auto lg:min-h-13.5 lg:w-auto lg:flex-none"
 			aria-label={m.btn_start_trial?.() + 'page'}
 		>

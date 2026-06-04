@@ -17,14 +17,14 @@ class HeaderTag extends HTMLElement {
 				<header-imgs class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex" name="left"></header-imgs>
 
 				<div
-					class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0"
+					class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0 2xl:group-has-checked/header:px-12"
 				>
-					<h1>
+					<p>
 						<a href="/output/index.html" title="deepfine homepage">
 							<span class="sr-only">deepfine</span>
 							<header-imgs name="logo"></header-imgs>
 						</a>
-					</h1>
+					</p>
 
 					<div class="flex items-center gap-7.5">
 						<nav class="relative z-10 hidden items-center gap-5 lg:flex">
@@ -40,15 +40,15 @@ class HeaderTag extends HTMLElement {
 									<ul
 										class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 									>
-										<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
+										<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 											<a href="/output/logi.html">
 												<header-imgs name="logi"></header-imgs>
 											</a>
 										</li>
-										<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
+										<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 											<a href="/output/dao.html"><header-imgs name="dao"></header-imgs></a>
 										</li>
-										<li class="aria-[current=page]:text-primary:opacity-100 relative opacity-50 transition-all hover:opacity-100" aria-current="false">
+										<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 											<a href="/output/dsc.html"><header-imgs name="dsc"></header-imgs></a>
 										</li>
 									</ul>
@@ -78,7 +78,7 @@ class HeaderTag extends HTMLElement {
 										aria-current="false"
 									>
 										<span class="flex-none">Contact Sales</span>
-										<icon-list class="group-hover:fill-primary size-6 fill-white" name="tick-circle"></icon-list>
+										<icon-list class="group-hover:stroke-primary size-6 stroke-white" name="arrow-right"></icon-list>
 									</a>
 								</li>
 							</ul>
@@ -105,7 +105,7 @@ class HeaderTag extends HTMLElement {
 									<h2 class="text-666 text-lg">Products</h2>
 									<ul>
 										<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-											<a class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" href="/logi" aria-current="false">Logi Grid</a>
+											<a class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" href="/logi" aria-current="false">LOGI.FINE</a>
 										</li>
 										<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
 											<a class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" href="/dao" aria-current="false">

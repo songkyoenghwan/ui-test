@@ -44,7 +44,7 @@
 			tit: 'No.1',
 			txt: m.main_why_txt_4?.(),
 			font: '90',
-			cls: 'text-white bg-linear-to-r from-[#3743ff] to-[#90f0ff] lg:flex lg:justify-between lg:col-span-2',
+			cls: 'text-white bg-linear-to-r from-[#3743ff] to-[#90f0ff] lg:flex lg:flex-wrap lg:justify-between lg:col-span-2 @container @max-[550px]:flex-wrap',
 		},
 		{
 			id: 'why-5',
@@ -93,19 +93,31 @@
 				data-scroll="slide-up"
 				data-index={i}
 				class={[
-					'group/why relative flex h-90 w-full justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-105',
+					'group/why relative flex h-90 w-full justify-between overflow-clip rounded-xl transition-all duration-300 max-lg:flex-col lg:h-full lg:hover:scale-101',
 					list.cls,
 				]}
 				style:--why-1-bg={`url(${__STATIC_URL__}/imgs/main/why/bg-why-1.jpg)`}
 				onpointerenter={() => handleVideoEnter(i)}
 			>
-				<dl class="space-y-2.5 p-5">
+				<dl
+					class={[
+						'space-y-2.5 p-5',
+						list.id === 'why-3'
+							? 'h-full bg-(image:--why-3-bg) bg-size-[529.5px_auto] bg-position-[calc(100%+200px)_200px] bg-no-repeat before:absolute before:top-0 before:left-0 before:z-1 before:size-full before:bg-(image:--why-3) before:bg-size-[529.5px_auto] before:bg-position-[calc(100%+200px)_196px] before:bg-no-repeat before:transition-all group-hover/why:before:bg-position-[calc(100%+200px)_190px] lg:bg-size-[1059px_auto] lg:bg-position-[170px_50px] lg:before:bg-size-[1059px_auto] lg:before:bg-position-[170px_46px] lg:group-hover/why:before:bg-position-[170px_30px]'
+							: '',
+					]}
+					style:--why-3-bg={`url(${__STATIC_URL__}/imgs/main/why/img-why-bg-3.png)`}
+					style:--why-3={`url(${__STATIC_URL__}/imgs/main/why/img-why-3.png)`}
+				>
 					<dt
-						class={['flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]', list.id === 'why-3' ? 'text-primary' : '']}
+						class={[
+							'relative z-3 flex items-center text-5xl leading-none font-bold lg:text-6xl lg:data-[font=90]:text-[90px]',
+							list.id === 'why-3' ? 'text-primary' : '',
+						]}
 						data-font={list.font}
 					>
 						{#if list.id !== 'why-4'}
-							<strong class="flex min-w-29 gap-px font-bold tracking-tight"><CountNumber text={Number(list.num)} /></strong>
+							<strong class="inline-flex gap-px font-bold tracking-tight lg:min-w-29"><CountNumber text={Number(list.num)} /></strong>
 							{#if list.id === 'why-5'}
 								<span class="font-normal">%</span>
 							{/if}
@@ -114,7 +126,7 @@
 						{/if}
 						<strong class="text-primary">{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}</strong>
 					</dt>
-					<dd class={[list.id !== 'why-3' && list.id !== 'why-4' ? 'text-2md lg:text-lg' : 'text-lg lg:text-2xl']}>{list.txt}</dd>
+					<dd class={['text-2md', list.id !== 'why-3' && list.id !== 'why-4' ? 'relative z-3 lg:text-lg' : 'lg:text-2xl']}>{list.txt}</dd>
 				</dl>
 
 				{#if list.video}
@@ -142,27 +154,10 @@
 					</div>
 				{/if}
 
-				{#if list.img}
-					<div data-scroll="slide-up" class="flex justify-end">
-						<picture
-							data-scroll="slide-up"
-							class={[
-								'relative flex flex-1 justify-end',
-								list.id === 'why-4' ? 'flex h-full max-h-43.5 flex-wrap items-end justify-center px-5 lg:w-124.75 lg:translate-y-15 lg:p-5' : '',
-							]}
-						>
-							<enhanced:img
-								src={list.img}
-								alt="img"
-								class={[
-									'relative ',
-									list.id === 'why-3'
-										? 'relative h-full translate-x-4/10 translate-y-[15%] scale-180 transition-all max-lg:w-full lg:translate-x-[40%] lg:-translate-y-1/5 lg:scale-130 lg:group-hover/why:-translate-y-[calc(20%+30px)]'
-										: list.id === 'why-4'
-											? 'h-full flex-1 max-lg:max-w-59 lg:min-h-61.5'
-											: '',
-								]}
-							/>
+				{#if list.id === 'why-4'}
+					<div data-scroll="slide-up" class={[list.id === 'why-4' ? 'relative flex flex-none items-end justify-end' : 'relative']}>
+						<picture class="frelative flex w-full flex-1 flex-wrap items-end justify-end px-5 lg:p-5">
+							<enhanced:img src={list.img} alt="img" class="relative w-full flex-1 max-lg:max-w-59 lg:max-w-118" />
 						</picture>
 					</div>
 				{/if}

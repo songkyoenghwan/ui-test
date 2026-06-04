@@ -33,15 +33,15 @@
 	]);
 	let pageKeys = $derived(page === 'dao' ? [...bannerTitleDao] : page === 'logi' ? [...bannerTitleLogi] : []);
 	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`);
-	let tit = $derived(page === 'dao' ? m.dao_banner_title() : page === 'logi' ? m.dao_banner_title() : '');
-	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2() : page === 'logi' ? m.dao_banner_title_2() : '');
-	let txt = $derived(page === 'dao' ? m.dao_banner_text() : page === 'logi' ? m.dao_banner_text() : '');
+	let tit = $derived(page === 'dao' ? m.dao_banner_title() : page === 'logi' ? m.logi_banner_title() : '');
+	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2() : page === 'logi' ? m.logi_banner_title_2() : '');
+	let txt = $derived(page === 'dao' ? m.dao_banner_text() : page === 'logi' ? m.logi_banner_text() : '');
 	const bannerKeys = $derived(
 		Array.from({ length: pageKeys.length }).map((_, i) => {
 			const targetFn = pageKeys[i];
 
 			return {
-				img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-${i + 1}.png`,
+				img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-slide-${i + 1}.png`,
 				txt: typeof targetFn === 'function' ? (targetFn as () => string)() : '',
 			};
 		}),
@@ -49,7 +49,7 @@
 </script>
 
 {#snippet inquiryLi(img: string, txt: string)}
-	<swiper-slide class="flex min-h-12 items-center justify-center gap-2.5 px-5 not-[.swiper-slide-active]:opacity-0 lg:min-h-17.75 lg:w-107.5 lg:gap-5 lg:px-7.5">
+	<swiper-slide class="flex min-h-12 w-full flex-1 items-center justify-center gap-2.5 px-5 not-[.swiper-slide-active]:opacity-0 lg:min-h-17.75 lg:gap-5 lg:px-7.5">
 		<picture class="inline-flex size-7.5 lg:size-12.5"><img loading="lazy" src={img} alt="" class="h-full object-cover" /></picture>
 
 		<h4 class="text-primary text-lg font-bold lg:text-4xl">{txt}</h4>
@@ -63,7 +63,7 @@
 >
 	<div class={['flex flex-col gap-1', page === 'logi' ? 'space-y-5' : '']}>
 		<h3 class="text-2xl leading-tight font-bold text-white lg:text-5xl">{tit}</h3>
-		<div class={['max-lg:space-y-2.5 lg:gap-5', page === 'dao' ? 'lg:flex lg:items-center ' : page === 'logi' ? 'space-y-5' : '']}>
+		<div class={['max-lg:space-y-2.5 lg:gap-5', page === 'dao' ? 'space-y-5' : page === 'logi' ? 'space-y-5' : '']}>
 			<swiper-container
 				effect="cube"
 				cube-effect-shadow={false}
@@ -73,7 +73,8 @@
 				space-between={spaceBetween}
 				speed="450"
 				autoplay-delay="1500"
-				class="flex flex-none rounded-full bg-white shadow-md lg:w-107.5"
+				direction="vertical"
+				class={['flex h-15 flex-none justify-between rounded-full bg-white shadow-md lg:h-17.5', page === 'dao' ? 'lg:w-107.5' : page === 'logi' ? 'lg:w-155' : '']}
 			>
 				{#each bannerKeys as list}
 					{@render inquiryLi(list.img, list.txt)}

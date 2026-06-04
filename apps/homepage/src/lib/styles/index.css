@@ -378,7 +378,7 @@
 
 	body {
 		min-width: 18.75rem;
-		max-width: 115rem;
+		max-width: 120rem;
 		min-height: 100dvh;
 		margin: 0 auto;
 		font-synthesis: none;
@@ -461,9 +461,13 @@
 		cursor: pointer;
 	}
 
+	html {
+		@apply max-lg:px-2.5 lg:px-5;
+	}
+
 	.main,
 	.sub {
-		@apply 3xl:p-0 flex flex-col gap-7.5 px-5 pt-25 pb-20 has-[form]:overflow-clip lg:gap-15 lg:py-30;
+		@apply flex flex-col gap-7.5 px-5 pt-25 pb-20 has-[form]:overflow-clip max-lg:px-0 lg:gap-15;
 	}
 
 	.header {

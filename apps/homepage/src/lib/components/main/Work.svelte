@@ -36,7 +36,10 @@
 <section data-scroll="slide-up" class="relative max-w-dvw py-5 lg:py-15">
 	<sub-heading-line line="none" title={m.main_title_work?.()} subTit={m.main_subtitle_work?.()}></sub-heading-line>
 
-	<dl class="space-y-5 rounded-xl bg-[url(/imgs/main/work/bg-work.jpg)] bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl">
+	<dl
+		class="space-y-5 rounded-xl bg-(image:--work) bg-cover bg-fixed bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl"
+		style:--work={`url(${__STATIC_URL__}/imgs/main/work/bg-work.jpg)`}
+	>
 		<dt class="text-lg font-bold lg:text-4xl">DEEP.FINE SPATIAL INTELLIGENCE AI</dt>
 		<dd class="text-2md lg:px-10 lg:text-2xl lg:whitespace-pre-line">
 			{m.main_work_item_top_1()}
@@ -54,7 +57,7 @@
 						{list.tit}
 					</dt>
 					<dd class="text-2md text-666 lg:text-lg">{list.subTit}</dd>
-					<dd class="text-2md lg:text-lg">{list.txt}</dd>
+					<dd class="text-2md lg:text-lg lg:whitespace-pre-line">{list.txt}</dd>
 				</dl>
 			</li>
 		{/each}

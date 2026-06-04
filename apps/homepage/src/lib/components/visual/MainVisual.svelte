@@ -30,7 +30,8 @@
 			</LiquidGlass>
 		</div>
 
-		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{m.main_visual_title()}</h2>
+		<h1 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{m.main_visual_title()}</h1>
+		<h2 class="sr-only">main page</h2>
 	</div>
 
 	<div class="relative z-5 starting:opacity-0">
@@ -40,7 +41,8 @@
 		</div>
 		<div class="mt-7.5 flex lg:mt-9">
 			<a
-				href="/"
+				href="/contact/contact"
+				aria-label={m.btn_inquiry()}
 				class="hover:text-3743ff group text-2md inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
 			>
 				<span>{m.btn_inquiry()}</span>

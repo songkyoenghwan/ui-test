@@ -7,6 +7,7 @@
 
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
+	import type { SwiperContainerElement } from '$lib/types/swiperType';
 	import { tick } from 'svelte';
 	import { register } from 'swiper/element/bundle';
 
@@ -24,7 +25,7 @@
 			img: `${__STATIC_URL__}/imgs/main/slide/img-card-2.jpg`,
 		},
 		{
-			type: 'logi',
+			type: 'logi.fine',
 			badge: [m.main_mro_badge_3()],
 			txt: [m.main_mro_txt_3()],
 			img: `${__STATIC_URL__}/imgs/main/slide/img-card-3.jpg`,
@@ -33,6 +34,7 @@
 			type: 'dsc',
 			badge: [m.main_mro_badge_4()],
 			txt: m.main_mro_txt_4(),
+			txt2: m.main_mro_txt_4_2(),
 			img: `${__STATIC_URL__}/imgs/main/slide/img-card-4.jpg`,
 		},
 		{
@@ -68,13 +70,13 @@
 		pagination: false,
 	};
 
-	// oxlint-disable-next-line typescript/no-explicit-any
-	let swiperEl: HTMLElement | any | null = $state(null);
+	let swiperEl = $state<SwiperContainerElement | null>(null);
+	let swipe = $derived(swiperEl?.swiper);
 	let isOn = $state(false);
 	let currentIndex = $state(0);
 	const handleSlideChange = async () => {
 		await tick();
-		if (swiperEl?.swiper) {
+		if (swiperEl) {
 			currentIndex = swiperEl.swiper.realIndex % cardList.length;
 		}
 	};
@@ -99,7 +101,7 @@
 	});
 </script>
 
-<section data-scroll="slide-up" class="slide-card relative grid max-w-dvw grid-cols-1 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_620px] lg:gap-15 lg:p-15">
+<section data-scroll="slide-up" class="slide-card relative grid max-w-dvw grid-cols-1 gap-5 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_620px] lg:gap-15 lg:p-15">
 	<div data-scroll="slide-up" class="space-y-2.5 lg:space-y-15 lg:whitespace-pre-line">
 		<h2 class="text-3xl font-bold transition-all lg:text-6xl">{m.main_title_mro()}</h2>
 		<p class="text-666 text-base transition-all lg:text-3xl">{m.main_subtitle_mro()}</p>
@@ -120,7 +122,7 @@
 						'group  relative h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-0 shadow-transparent not-[.swiper-slide-active]:top-2 not-[.swiper-slide-active]:h-[80%] lg:w-125 lg:space-y-5 lg:bg-size-[auto_100%] lg:p-5 lg:nth-[1]:opacity-10 lg:nth-[10]:opacity-10',
 						list.type === 'dao' ? 'not-[.swiper-slide-active]:bg-9cc5e8 [.swiper-slide-active]:bg-(image:--bg-card-dao-pc)' : '',
 						list.type === 'dsc' ? 'not-[.swiper-slide-active]:bg-e8d5a7 [.swiper-slide-active]:bg-(image:--bg-card-dsc-pc)' : '',
-						list.type === 'logi' ? 'not-[.swiper-slide-active]:bg-7785ff [.swiper-slide-active]:bg-(image:--bg-card-logi-pc)' : '',
+						list.type === 'logi.fine' ? 'not-[.swiper-slide-active]:bg-7785ff [.swiper-slide-active]:bg-(image:--bg-card-logi-pc)' : '',
 					]}
 					style:--bg-card-mo={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-mo.png)`}
 					style:--bg-card-dao-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-dao.png)`}
@@ -128,7 +130,7 @@
 					style:--bg-card-logi-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-logi.png)`}
 				>
 					<picture class="flex h-47 overflow-clip rounded-xl transition-all group-not-[.swiper-slide-active]:opacity-0 lg:h-56.25">
-						<img loading="lazy" src={list.img} alt="" class="w-full object-cover" />
+						<img loading="lazy" src={list.img} alt={`${list.type} Example image`} class="w-full object-cover" />
 					</picture>
 
 					<ul class="flex items-center justify-center gap-3 group-not-[.swiper-slide-active]:opacity-0">
@@ -141,8 +143,13 @@
 					<div class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white group-not-[.swiper-slide-active]:opacity-0 lg:min-h-35">
 						<p class="text-2md text-center font-bold whitespace-pre-line lg:text-2xl">
 							{list.txt}
+							{#if list.txt2}
+								<span class="block text-center text-sm font-normal lg:text-base">{list.txt2}</span>
+							{/if}
 						</p>
 					</div>
+
+					<p class="absolute right-5 bottom-5 text-white/70">{list.type.toUpperCase()}</p>
 				</swiper-slide>
 			{/each}
 		</swiper-container>
@@ -165,7 +172,7 @@
 				<button
 					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
 					onclick={() => {
-						swiperEl?.swiper?.slidePrev();
+						swipe?.slidePrev();
 					}}
 				>
 					<span class="sr-only">Slide Prev</span>
@@ -174,7 +181,7 @@
 				<button
 					class="hover:bg-primary grid size-9 place-content-center rounded-full bg-black transition-colors lg:size-12"
 					onclick={() => {
-						swiperEl?.swiper?.slideNext();
+						swipe?.slideNext();
 					}}
 				>
 					<span class="sr-only">Slide Next</span>

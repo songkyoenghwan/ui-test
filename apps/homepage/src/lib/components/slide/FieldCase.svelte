@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
 	import { m } from '$lib/paraglide/messages.js';
+	import type { SwiperContainerElement } from '$lib/types/swiperType';
 	import { getContext, tick } from 'svelte';
 	import { register } from 'swiper/element/bundle';
 
 	// oxlint-disable-next-line typescript/no-explicit-any
 	const caseContext = getContext<{ list: any[] }>('case-list');
 
-	let swiperEl: HTMLElement | null = $state(null);
+	let swiperEl = $state<SwiperContainerElement | null>(null);
+	let swipe = $derived(swiperEl?.swiper);
 	let curretIndex = $state(0);
 	const spaceBetween = 10;
 
@@ -109,7 +111,7 @@
 					onclick={(e) => {
 						e.preventDefault();
 						curretIndex = i;
-						(swiperEl as any)?.swiper?.slideTo(i, 450);
+						swipe?.slideTo(i, 450);
 					}}
 					aria-current={curretIndex === i ? 'true' : undefined}
 				>

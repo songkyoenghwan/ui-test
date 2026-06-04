@@ -60,14 +60,16 @@
 			labels: [m.dsc_features_list_3_1(), m.dsc_features_list_3_2()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-4.jpg`,
+			poster: `${__STATIC_URL__}/video/dsc-part2-video-1.jpg`,
+			video: `${__STATIC_URL__}/video/dsc-part2-video-1.webm`,
 			tit: m.dsc_features_tit_4(),
 			txt: [m.dsc_features_txt_4(), m.dsc_features_txt_4_2()],
 			logo: m.dsc_features_logo_4(),
 			labels: [m.dsc_features_list_4_1(), m.dsc_features_list_4_2(), m.dsc_features_list_4_3()],
 		},
 		{
-			img: `${__STATIC_URL__}/imgs/features/logo-features-dsc-5.jpg`,
+			poster: `${__STATIC_URL__}/video/dsc-part2-video-2.jpg`,
+			video: `${__STATIC_URL__}/video/dsc-part2-video-2.webm`,
 			tit: m.dsc_features_tit_5(),
 			txt: [m.dsc_features_txt_5(), m.dsc_features_txt_4_2()],
 			logo: m.dsc_features_logo_5(),
@@ -115,11 +117,11 @@
 		},
 	]);
 	const faqtKeys = $state([
-		{ id: 'faq-dsc-chk-1', tit: m.dsc_faq_tit_1(), txt: m.dsc_faq_txt_1() },
-		{ id: 'faq-dsc-chk-2', tit: m.dsc_faq_tit_2(), txt: m.dsc_faq_txt_2() },
-		{ id: 'faq-dsc-chk-3', tit: m.dsc_faq_tit_3(), txt: m.dsc_faq_txt_3() },
-		{ id: 'faq-dsc-chk-4', tit: m.dsc_faq_tit_4(), txt: m.dsc_faq_txt_4() },
-		{ id: 'faq-dsc-chk-5', link: '/', btn: m.btn_start_trial_free(), tit: m.dsc_faq_tit_5(), txt: m.dsc_faq_txt_5() },
+		{ id: 'faq-dsc-chk-1', tit: m.dsc_faq_tit_1(), txt: m.dsc_faq_txt_1 },
+		{ id: 'faq-dsc-chk-2', tit: m.dsc_faq_tit_2(), txt: m.dsc_faq_txt_2 },
+		{ id: 'faq-dsc-chk-3', tit: m.dsc_faq_tit_3(), txt: m.dsc_faq_txt_3 },
+		{ id: 'faq-dsc-chk-4', tit: m.dsc_faq_tit_4(), txt: m.dsc_faq_txt_4 },
+		{ id: 'faq-dsc-chk-5', link: 'https://logifine.deepfine.com/signup/trial', btn: m.btn_start_trial_free(), tit: m.dsc_faq_tit_5, txt: m.dsc_faq_txt_5() },
 	]);
 
 	setContext('case-list', {

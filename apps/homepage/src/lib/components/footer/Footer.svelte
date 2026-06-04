@@ -17,7 +17,7 @@
 				<li class="grid gap-5">
 					<h2 class="text-2md text-black lg:text-lg">Products</h2>
 					<ul class="space-y-5">
-						<li><a href="" class="underline-offset-4 hover:underline">Logi Grid</a></li>
+						<li><a href="" class="underline-offset-4 hover:underline">LOGI.FINE</a></li>
 						<li><a href="" class="underline-offset-4 hover:underline">DAO</a></li>
 						<li><a href="" class="underline-offset-4 hover:underline">DSC</a></li>
 					</ul>

@@ -28,12 +28,12 @@
 	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-5.png`, tit: m.logi_industries_list_5(), txt: m.logi_industries_list_txt_5() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-1.png`, tit: m.logi_industries_list_1(), txt: m.logi_industries_list_txt_1() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-6.png`, tit: m.logi_industries_list_6(), txt: m.logi_industries_list_txt_6() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-3.png`, tit: m.logi_industries_list_3(), txt: m.logi_industries_list_txt_3() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-4.png`, tit: m.logi_industries_list_4(), txt: m.logi_industries_list_txt_4() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-2.png`, tit: m.logi_industries_list_2(), txt: m.logi_industries_list_txt_2() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-1.png`, tit: m.logi_industries_list_5(), txt: m.logi_industries_list_txt_5() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-2.png`, tit: m.logi_industries_list_1(), txt: m.logi_industries_list_txt_1() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-3.png`, tit: m.logi_industries_list_6(), txt: m.logi_industries_list_txt_6() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-4.png`, tit: m.logi_industries_list_3(), txt: m.logi_industries_list_txt_3() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-5.png`, tit: m.logi_industries_list_4(), txt: m.logi_industries_list_txt_4() },
+		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-6.png`, tit: m.logi_industries_list_2(), txt: m.logi_industries_list_txt_2() },
 	]);
 	const feaKeys = $state([
 		{
@@ -75,7 +75,7 @@
 	const resultKeys = $state([
 		{ result: 'close', subTit: m.logi_result_subTit_1(), txt: m.logi_result_txt_1() },
 		{ result: 'up', num: 25, subTit: m.logi_result_subTit_2(), txt: m.logi_result_txt_2() },
-		{ result: 'eye', subTit: m.logi_result_subTit_3(), txt: m.logi_result_txt_3() },
+		{ result: 'up', subTit: m.logi_result_subTit_3(), txt: m.logi_result_txt_3() },
 		{ result: 'chk', num: 100, subTit: m.logi_result_subTit_4(), txt: m.logi_result_txt_4() },
 	]);
 	const caseKeys = $state([
@@ -101,10 +101,10 @@
 		},
 	]);
 	const faqtKeys = $state([
-		{ id: 'faq-logi-chk-1', tit: m.logi_faq_tit_1(), txt: m.logi_faq_txt_1() },
-		{ id: 'faq-logi-chk-2', tit: m.logi_faq_tit_2(), txt: m.logi_faq_txt_2() },
-		{ id: 'faq-logi-chk-3', tit: m.logi_faq_tit_3(), txt: m.logi_faq_txt_3() },
-		{ id: 'faq-logi-chk-4', tit: m.logi_faq_tit_4(), txt: m.logi_faq_txt_4() },
+		{ id: 'faq-logi-chk-1', tit: m.logi_faq_tit_1(), txt: m.logi_faq_txt_1 },
+		{ id: 'faq-logi-chk-2', tit: m.logi_faq_tit_2(), txt: m.logi_faq_txt_2 },
+		{ id: 'faq-logi-chk-3', tit: m.logi_faq_tit_3(), txt: m.logi_faq_txt_3 },
+		{ id: 'faq-logi-chk-4', tit: m.logi_faq_tit_4(), txt: m.logi_faq_txt_4 },
 	]);
 
 	setContext('case-list', {

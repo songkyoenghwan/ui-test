@@ -61,7 +61,7 @@
 						<CountNumber text={Number(num)} />
 						<span class="font-normal">%</span>
 					{:else}
-						ZERO
+						<strong>ZERO</strong>
 					{/if}
 					{#if per}
 						{per}
@@ -129,9 +129,7 @@
 			{/each}
 		</ul>
 	{:else}
-		<ul
-			class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-5 lg:grid-cols-[repeat(auto-fit,minmax(calc(50%-20px),1fr))] xl:grid-cols-[repeat(auto-fit,minmax(calc(25%-20px),1fr))]"
-		>
+		<ul class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-5 lg:grid-cols-2 2xl:grid-cols-[repeat(auto-fit,minmax(calc(25%-20px),1fr))]">
 			{#each lists as list, i (`result-item-${i}`)}
 				{@render resultLi(list.num, list.subTit, list.txt, list.result, list.per)}
 			{/each}

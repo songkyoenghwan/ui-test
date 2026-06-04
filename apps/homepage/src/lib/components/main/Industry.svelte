@@ -11,39 +11,34 @@
 	import '@selemondev/svelte-marquee/dist/style.css';
 
 	const lists = $state([
-		{ id: 'ind1', alt: 'SAMSUNG 삼성전자' },
-		{ id: 'ind2', alt: 'SAMSUNG 상성중공업' },
-		{ id: 'ind3', alt: 'HYUNDAI MOTOR GROUP' },
-		{ id: 'ind4', alt: 'KB증권' },
-		{ id: 'ind42', alt: 'SM Entertainment' },
-		{ id: 'ind5', alt: 'hyosung heavy industrieㄴ' },
-		{ id: 'ind6', alt: 'HYUNDAI ENGINEERING &amp; CONSTRUCTION' },
-		{ id: 'ind7', alt: 'YOKOGAWA' },
-		{ id: 'ind8', alt: 'LS ELECTRIC' },
-		{ id: 'ind9', alt: 'KPS' },
-		{ id: 'ind10', alt: 'LX' },
-		{ id: 'ind11', alt: '한진택배' },
-		{ id: 'ind12', alt: 'LX판토스' },
-		{ id: 'ind13', alt: 'POSCO' },
-		{ id: 'ind14', alt: '경기도' },
-		{ id: 'ind15', alt: '한국관광공사 KOREA TOURISM ORGANIZTION' },
-		{ id: 'ind16', alt: 'LG전자' },
-		{ id: 'ind17', alt: 'LG이노텍' },
-		{ id: 'ind18', alt: 'NIA 한국지능정보사회진흥원' },
-		{ id: 'ind19', alt: 'Mercedes-Benz' },
-		{ id: 'ind20', alt: 'DAESANG' },
-		{ id: 'ind21', alt: 'SAPEON' },
-		{ id: 'ind22', alt: '식품의약품안전처' },
-		{ id: 'ind23', alt: '주식회사 오뚜기' },
-		{ id: 'ind24', alt: 'LG 에너지솔루션' },
-		{ id: 'ind25', alt: '롯데정보통신' },
-		{ id: 'ind26', alt: '롯데제과' },
-		{ id: 'ind27', alt: '농심엔지니어링' },
-		{ id: 'ind28', alt: 'IITP 정보통신기획평가원' },
-		{ id: 'ind29', alt: '과학기술정보통신부' },
-		{ id: 'ind30', alt: 'sunjin' },
-		{ id: 'ind31', alt: 'Pulmuone' },
-		{ id: 'ind32', alt: '고용노동부' },
+		{ id: 'industry-1', alt: 'hyosung heavy industrie' },
+		{ id: 'industry-2', alt: 'SAMSUNG 삼성전자' },
+		{ id: 'industry-3', alt: 'SAMSUNG 상성중공업' },
+		{ id: 'industry-4', alt: 'HYUNDAI MOTOR GROUP' },
+		{ id: 'industry-5', alt: 'KB증권' },
+		{ id: 'industry-6', alt: 'SM Entertainment' },
+		{ id: 'industry-7', alt: 'HYUNDAI ENGINEERING &amp; CONSTRUCTION' },
+		{ id: 'industry-8', alt: 'YOKOGAWA' },
+		{ id: 'industry-9', alt: '식품의약품안전처' },
+		{ id: 'industry-10', alt: '한전 KPS' },
+		{ id: 'industry-11', alt: '한진택배' },
+		{ id: 'industry-12', alt: 'LX판토스' },
+		{ id: 'industry-13', alt: '경기도' },
+		{ id: 'industry-14', alt: '한국관광공사 KOREA TOURISM ORGANIZTION' },
+		{ id: 'industry-15', alt: 'LG전자' },
+		{ id: 'industry-16', alt: 'LG이노텍' },
+		{ id: 'industry-17', alt: 'NIA 한국지능정보사회진흥원' },
+		{ id: 'industry-18', alt: 'Mercedes-Benz' },
+		{ id: 'industry-19', alt: 'DAESANG' },
+		{ id: 'industry-20', alt: 'rebellions' },
+		{ id: 'industry-21', alt: '식품의약품안전처' },
+		{ id: 'industry-22', alt: '롯데정보통신' },
+		{ id: 'industry-23', alt: '농심엔지니어링' },
+		{ id: 'industry-24', alt: 'IITP 정보통신기획평가원' },
+		{ id: 'industry-25', alt: '과학기술정보통신부' },
+		{ id: 'industry-26', alt: 'sunjin' },
+		{ id: 'industry-27', alt: 'Pulmuone' },
+		{ id: 'industry-28', alt: '고용노동부' },
 	]);
 </script>
 
@@ -52,9 +47,9 @@
 
 	{#if lists}
 		<Marquee pauseOnHover={true} class="gap-3.75 lg:gap-7.5" innerClassName="gap-3.75 lg:gap-7.5" fade={true}>
-			{#each lists as { alt, id }, i (id)}
+			{#each lists as { alt, id } (id)}
 				<picture>
-					<img loading="lazy" src="{__STATIC_URL__}/imgs/industry/img-industry-{i + 1}.png" {alt} class="w-37.5 lg:w-75" />
+					<img loading="lazy" src="{__STATIC_URL__}/imgs/industry/img-{id}.png" {alt} class="w-37.5 lg:w-75" />
 				</picture>
 			{/each}
 		</Marquee>

@@ -46,7 +46,7 @@
 {#snippet imgRender(img = '')}
 	{#if img}
 		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
-			<img loading="lazy" src={img} alt={`${title} image`} class="w-full max-w-300 object-cover" />
+			<img loading="lazy" src={img ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${title} image`} class="w-full max-w-300 object-cover" />
 		</picture>
 	{/if}
 {/snippet}

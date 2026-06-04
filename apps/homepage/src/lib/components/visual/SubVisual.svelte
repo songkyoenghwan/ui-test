@@ -78,7 +78,9 @@
 			{/if}
 		</div>
 
-		<h2 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{tit}</h2>
+		<h1 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{tit}</h1>
+
+		<h2 class="sr-only">{page} page</h2>
 	</div>
 
 	<div class="ext-2md relative z-5 mt-5 leading-normal text-white lg:text-lg lg:whitespace-pre-line starting:opacity-0">

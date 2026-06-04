@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ParaglideMessage } from '@inlang/paraglide-js-svelte';
 	import SubHeading from '$lib/components/heading/SubHeading.svelte';
 	import { flip } from 'svelte/animate';
 	import { fade, fly } from 'svelte/transition';
@@ -13,7 +14,7 @@
 			{@const chk = item.checked}
 
 			<li data-scroll="slide-up" animate:flip={{ delay: 500 }} class="rounded-xl bg-white">
-				<dl class="text-2md divide-d9d9d9 group/faq flex flex-col divide-y divide-dashed lg:text-2xl">
+				<dl class="text-2md divide-d9d9d9 group/faq flex flex-col divide-dashed has-checked:divide-y lg:text-2xl">
 					<dt class="flex">
 						<label
 							for={item.id}
@@ -35,10 +36,12 @@
 						class="text-666 @starting:opacity-0 relative hidden whitespace-pre-line opacity-0 transition-all transition-discrete duration-300 group-not-checked/faq:opacity-0 group-has-checked/faq:grid group-has-checked/faq:opacity-100"
 					>
 						{#if chk}
-							<div in:fly={{ y: 15, duration: 400, delay: 100 }} out:fade={{ duration: 150 }} class="space-y-5 py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22">
-								<p>
-									{item.txt}
-								</p>
+							<div in:fly={{ y: 15, duration: 400, delay: 100 }} out:fade={{ duration: 150 }} class="py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22">
+								<ParaglideMessage message={item.txt}>
+									{#snippet b({ children })}
+										<p class="pl-4 -indent-4">{@render children?.()}</p>
+									{/snippet}
+								</ParaglideMessage>
 
 								{#if item.link}
 									<div class="flex">

@@ -146,7 +146,7 @@
 				{/if}
 
 				<a
-					href="/"
+					href={i === 0 ? '/solution/logi' : i === 1 ? '/solution/dao' : i === 2 ? '/solution/dsc' : '/'}
 					class="relative flex size-full flex-1 cursor-pointer flex-col justify-between overflow-clip rounded-xl bg-cover bg-center bg-no-repeat p-5 text-white lg:p-15
 							{i === 0 ? 'bg-(image:--bg-main-logi)' : ''}
 							{i === 1 ? 'bg-(image:--bg-main-dao)' : ''}

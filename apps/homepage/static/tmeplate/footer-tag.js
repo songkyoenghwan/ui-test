@@ -20,7 +20,7 @@ class FooterTag extends HTMLElement {
 							<li class="grid gap-5">
 								<h2 class="text-2md text-black lg:text-lg">Products</h2>
 								<ul class="space-y-5">
-									<li><a class="underline-offset-4 hover:underline" href="">Logi Grid</a></li>
+									<li><a class="underline-offset-4 hover:underline" href="">LOGI.FINE</a></li>
 									<li><a class="underline-offset-4 hover:underline" href="">DAO</a></li>
 									<li><a class="underline-offset-4 hover:underline" href="">DSC</a></li>
 								</ul>
