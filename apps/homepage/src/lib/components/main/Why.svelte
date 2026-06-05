@@ -44,7 +44,7 @@
 			tit: 'No.1',
 			txt: m.main_why_txt_4?.(),
 			font: '90',
-			cls: 'text-white bg-linear-to-r from-[#3743ff] to-[#90f0ff] lg:flex lg:flex-wrap lg:justify-between lg:col-span-2 @container @max-[550px]:flex-wrap',
+			cls: 'text-white bg-linear-to-r from-[#3743ff] to-[#90f0ff] lg:flex lg:justify-between lg:col-span-2 @container',
 		},
 		{
 			id: 'why-5',
@@ -155,7 +155,7 @@
 				{/if}
 
 				{#if list.id === 'why-4'}
-					<div data-scroll="slide-up" class={[list.id === 'why-4' ? 'relative flex flex-none items-end justify-end' : 'relative']}>
+					<div data-scroll="slide-up" class="relative flex items-end justify-end">
 						<picture class="frelative flex w-full flex-1 flex-wrap items-end justify-end px-5 lg:p-5">
 							<enhanced:img src={list.img} alt="img" class="relative w-full flex-1 max-lg:max-w-59 lg:max-w-118" />
 						</picture>

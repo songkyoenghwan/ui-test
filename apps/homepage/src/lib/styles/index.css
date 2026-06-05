@@ -467,7 +467,7 @@
 
 	.main,
 	.sub {
-		@apply flex flex-col gap-7.5 px-5 pt-25 pb-20 has-[form]:overflow-clip max-lg:px-0 lg:gap-15;
+		@apply flex flex-col gap-7.5 px-5 pt-27 pb-20 has-[form]:overflow-clip max-lg:px-0 lg:gap-15;
 	}
 
 	.header {

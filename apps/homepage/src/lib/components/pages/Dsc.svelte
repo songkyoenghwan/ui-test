@@ -121,7 +121,7 @@
 		{ id: 'faq-dsc-chk-2', tit: m.dsc_faq_tit_2(), txt: m.dsc_faq_txt_2 },
 		{ id: 'faq-dsc-chk-3', tit: m.dsc_faq_tit_3(), txt: m.dsc_faq_txt_3 },
 		{ id: 'faq-dsc-chk-4', tit: m.dsc_faq_tit_4(), txt: m.dsc_faq_txt_4 },
-		{ id: 'faq-dsc-chk-5', link: 'https://logifine.deepfine.com/signup/trial', btn: m.btn_start_trial_free(), tit: m.dsc_faq_tit_5, txt: m.dsc_faq_txt_5() },
+		{ id: 'faq-dsc-chk-5', link: 'https://logifine.deepfine.com/signup/trial', btn: m.btn_start_trial_free(), tit: m.dsc_faq_tit_5(), txt: m.dsc_faq_txt_5 },
 	]);
 
 	setContext('case-list', {

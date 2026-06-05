@@ -7,9 +7,9 @@
 
 <!-- 현재 창 활성 시 -  aria-current="page" 를 생성, 언어 선택시 aria-current="true" 생성 -->
 <header
-	class="header bg-f5f5f5 group/header fixed top-0 left-0 z-5 grid w-full max-w-dvw place-items-center has-checked:bg-white! 2xl:has-checked:grid-cols-2 2xl:has-checked:items-start"
+	class="header bg-f5f5f5 group/header fixed top-0 left-0 z-5 grid w-full max-w-dvw place-items-center backdrop-blur-[20px] has-checked:bg-white! 2xl:has-checked:grid-cols-2 2xl:has-checked:items-start"
 >
-	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex"></header-imgs>
+	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex 2xl:group-has-checked/header:h-dvh"></header-imgs>
 
 	<div
 		class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0 2xl:group-has-checked/header:px-12"
@@ -35,15 +35,15 @@
 						<ul
 							class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 						>
-							<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
+							<li class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 								<a href="/logi" aria-label="logi.fine page">
 									<header-imgs name="logi"></header-imgs>
 								</a>
 							</li>
-							<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="page">
+							<li class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="page">
 								<a href="/dao" aria-label="dao page"><header-imgs name="dao"></header-imgs></a>
 							</li>
-							<li class="relative opacity-50 transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
+							<li class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
 								<a href="/dsc" aria-label="dsc page"><header-imgs name="dsc"></header-imgs></a>
 							</li>
 						</ul>

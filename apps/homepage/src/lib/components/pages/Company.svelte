@@ -59,7 +59,7 @@
 	});
 </script>
 
-<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all max-xl:pr-0 max-xl:pb-0 xl:gap-15 xl:pt-15 xl:pl-15">
+<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all max-xl:pr-0 max-xl:pb-0 lg:gap-15 lg:pt-15 lg:pl-15">
 	<h3 class="relative z-2 text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
 	<div class="relative z-4 space-y-5 lg:space-y-10 lg:whitespace-pre-line">

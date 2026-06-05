@@ -1,7 +1,3 @@
-<script lang="ts">
-	import { m } from '$lib/paraglide/messages.js';
-</script>
-
 <section class="fixed bottom-0 z-2 flex gap-5 rounded-t-xl bg-black p-1.5 text-white max-md:w-full md:right-3 md:w-25 md:flex-col md:rounded-xl md:p-2.5" data-section="floating">
 	<picture class="flex flex-none justify-center text-center"><img src={`${__STATIC_URL__}/imgs/main/foot-logo.png`} alt="logi.fine" /></picture>
 

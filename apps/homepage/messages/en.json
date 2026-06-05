@@ -1,6 +1,8 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from en!",
+	"header_logo_1": "AI-Powered Logistics Picking &\n Packing Solution",
+	"header_logo_2": "Smart-Glasses-Based Remote\n Collaboration Solution",
+	"header_logo_3": "AR-Based Spatial Information\n Platform",
 	"main_visual_badge": "Smart Glasses × AI",
 	"main_visual_title": "Transforming industrial operations \n through Spatial Intelligence",
 	"main_industry": "Deepfine's products and technical capabilities have been verified across a wide range of industrial sites.",

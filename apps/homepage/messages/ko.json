@@ -1,6 +1,8 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from ko!",
+	"header_logo_1": "디지털 물류 운영 플랫폼",
+	"header_logo_2": "산업 현장 AI 업무지원 플랫폼",
+	"header_logo_3": "공간 인식 기반 \n디지털 공간 제작/배포 플랫폼",
 	"main_visual_badge": "Smart Glasses × AI",
 	"main_visual_title": "산업 현장의 일하는 방식을 \n 공간지능으로 바꿉니다",
 	"main_industry": "딥파인의 제품과 기술력은 다양한 산업 현장에서 검증되었습니다.",

@@ -44,7 +44,7 @@
 								</ParaglideMessage>
 
 								{#if item.link}
-									<div class="flex">
+									<div class="mt-5 flex lg:mt-7.5">
 										<a
 											href={item.link}
 											class="hover:text-3743ff group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"

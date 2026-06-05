@@ -28,7 +28,7 @@
 			return m.page_subtitle_news();
 		}
 
-		if (currentTitle === 'compnay') {
+		if (currentTitle === 'company') {
 			return m.page_subtitle_company();
 		}
 
@@ -46,13 +46,13 @@
 		'flex justify-between pb-5 opacity-100 max-lg:flex-col lg:whitespace-pre-line',
 		line === 'bottom' ? 'border-b border-b-black lg:pb-15' : 'lg:pb-7.5',
 		title.toLocaleLowerCase() === 'news' ? 'pt-5 lg:pt-15' : '',
-		title.toLocaleLowerCase() === 'compnay' ? 'pt-5 lg:pt-15' : '',
+		title.toLocaleLowerCase() === 'company' ? 'pt-5 lg:pt-15' : '',
 		title.toLocaleLowerCase() === 'contact' ? 'pt-5 lg:pt-15' : '',
 		page.toLocaleLowerCase() === 'term' ? 'pt-5 lg:pt-15' : '',
 	]}
 >
 	<div class={cls ? cls : 'space-y-2.5'}>
-		{#if title.toLocaleLowerCase() === 'news' || title.toLocaleLowerCase() === 'compnay' || title.toLocaleLowerCase() === 'contact'}
+		{#if title.toLocaleLowerCase() === 'news' || title.toLocaleLowerCase() === 'company' || title.toLocaleLowerCase() === 'contact'}
 			<h1 class="text-3xl font-bold transition-all lg:text-6xl">{titParse}</h1>
 			<h2 class="sr-only">{title}</h2>
 		{:else}
