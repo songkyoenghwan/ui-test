@@ -12,7 +12,7 @@
 	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex 2xl:group-has-checked/header:h-dvh"></header-imgs>
 
 	<div
-		class="flex w-full max-w-460 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white md:py-7.5 2xl:items-start 2xl:px-0 2xl:group-has-checked/header:px-12"
+		class="flex w-full max-w-490 flex-1 items-center justify-between gap-3 px-2.5 py-5 transition-discrete group-has-checked/header:bg-white md:px-10 md:py-7.5 2xl:items-start 2xl:group-has-checked/header:px-12"
 	>
 		<p>
 			<a href="/" title="deepfine homepage">
@@ -22,8 +22,8 @@
 		</p>
 
 		<div class="flex items-center gap-7.5">
-			<nav class="relative z-10 hidden items-center gap-5 lg:flex">
-				<ul class="flex gap-15 2xl:group-has-checked/header:gap-5">
+			<nav class="relative z-10 hidden items-center gap-5 group-has-checked/header:hidden lg:flex">
+				<ul class="flex text-2xl lg:gap-7.5 2xl:gap-15 2xl:group-has-checked/header:gap-5">
 					<li class="group/products relative" aria-current="false">
 						<button type="button" class="group-aria-[current=page]/products:text-primary flex min-h-12 items-center justify-center gap-2.5 hover:underline">
 							<span class="group-hover/products:text-primary">Products</span>
@@ -68,7 +68,7 @@
 							class="bg-primary hover:text-primary hover:border-primary group border-primary flex min-h-12 items-center gap-2 rounded-md border px-5 text-white hover:border hover:bg-white"
 							aria-current="false"
 						>
-							<span class="flex-none">Contact Sales</span>
+							<span class="flex-none text-lg">Contact Sales</span>
 							<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
 						</a>
 					</li>
@@ -87,9 +87,9 @@
 		</div>
 	</div>
 	<div
-		class="fixed top-22 left-0 hidden max-h-[calc(100vh-88px)] w-dvw overflow-y-auto bg-white px-5 opacity-100 shadow-md group-has-checked/header:grid lg:top-27 lg:px-12.5 2xl:right-0 2xl:left-auto 2xl:h-[calc(100dvh-108px)] 2xl:w-[50dvw] 2xl:px-12 starting:opacity-0"
+		class="fixed top-22 left-0 hidden h-[calc(100dvh-88px)] w-dvw overflow-y-auto bg-white px-5 opacity-100 shadow-md group-has-checked/header:grid lg:top-27 lg:h-[calc(100dvh-6.75rem)] lg:px-12.5 2xl:right-0 2xl:left-auto 2xl:h-[calc(100dvh-108px)] 2xl:w-[50dvw] 2xl:px-12 starting:opacity-0"
 	>
-		<div class="divide-y divide-black/20">
+		<div class="flex flex-col divide-y divide-black/20">
 			<section class="flex flex-col justify-between gap-15 py-5 font-bold lg:gap-5 lg:py-7.5">
 				<ul class="grid gap-10 text-2xl 2xl:gap-5">
 					<li class="grid gap-5">
@@ -129,34 +129,19 @@
 					</li>
 				</ul>
 			</section>
-			<section class="flex flex-col justify-between gap-15 py-5 lg:gap-5 lg:py-7.5">
+			<section class="mt-auto flex flex-col justify-between gap-15 py-5 lg:gap-5 lg:py-7.5">
 				<dl class="text-666 flex flex-col gap-5 text-lg">
 					<dt class="font-bold">Downloads</dt>
 					<dd class="inline-flex items-center gap-10">
-						<p>LOGI.FINE</p>
 						<ul class="inline-flex flex-wrap items-center gap-2.5">
 							<li>
 								<a
-									href=""
-									download="LOGI.FINE Brochure"
+									href="https://deepfine.my.salesforce.com/sfc/p/IR000001ZM92/a/TJ00000djirN/Lc54cHS.pbOehXcpItel0OxkWqb66lW7m.7qOou0CU0"
+									aria-label="LOGI.FINE Brochure"
+									target="_blank"
 									class="hover:bg-primary group flex min-h-10.5 flex-none items-center gap-5 rounded-full border border-black px-5 py-1 font-normal hover:text-white"
 								>
 									LOGI.FINE Brochure
-									<icon-list name="import" class="size-6 stroke-black group-hover:stroke-white"></icon-list>
-								</a>
-							</li>
-						</ul>
-					</dd>
-					<dd class="inline-flex items-center gap-10">
-						<p>Company</p>
-						<ul class="inline-flex flex-wrap items-center gap-2.5">
-							<li>
-								<a
-									href=""
-									download="Company Brochure"
-									class="hover:bg-primary group flex min-h-10.5 flex-none items-center gap-5 rounded-full border border-black px-5 py-1 font-normal hover:text-white"
-								>
-									Company Brochure
 									<icon-list name="import" class="size-6 stroke-black group-hover:stroke-white"></icon-list>
 								</a>
 							</li>
@@ -181,18 +166,16 @@
 	</div>
 </header>
 
-<main class="">
-	{@render children()}
-</main>
+{@render children()}
 
-<footer data-scroll="slide-up" class="text-2md text-666 pb-5 lg:pb-7.5 lg:text-lg">
+<footer data-scroll="slide-up" class="text-2md text-666 px-5 pb-5 lg:pb-7.5 lg:text-lg">
 	<div class="relative rounded-xl bg-white lg:grid lg:grid-cols-2">
 		<footer-adress class="flex flex-col gap-5 p-5 lg:p-7.5"></footer-adress>
 
 		<section class="flex flex-col justify-between gap-15 p-5 lg:gap-5 lg:p-7.5">
-			<ul class="grid grid-cols-2 gap-15 lg:grid-cols-4">
+			<ul class="grid grid-cols-2 gap-7.5 lg:grid-cols-4">
 				<li class="grid gap-5">
-					<h2 class="text-2md text-black lg:text-lg">Products</h2>
+					<h2 class="text-2md font-bold text-black lg:text-lg">Products</h2>
 					<ul class="space-y-5">
 						<li><a href="" class="underline-offset-4 hover:underline">LOGI.FINE</a></li>
 						<li><a href="" class="underline-offset-4 hover:underline">DAO</a></li>
@@ -200,15 +183,15 @@
 					</ul>
 				</li>
 				<li class="grid">
-					<h2 class="text-2md text-black lg:text-lg">
+					<h2 class="text-2md font-bold text-black lg:text-lg">
 						<a href="/company" class="underline-offset-4 hover:underline">Company</a>
 					</h2>
 				</li>
 				<li class="grid">
-					<h2 class="text-2md text-black lg:text-lg"><a href="/news/news" class="underline-offset-4 hover:underline">News</a></h2>
+					<h2 class="text-2md font-bold text-black lg:text-lg"><a href="/news/news" class="underline-offset-4 hover:underline">News</a></h2>
 				</li>
 				<li class="grid">
-					<h2 class="text-2md text-black lg:text-lg">
+					<h2 class="text-2md font-bold text-black lg:text-lg">
 						<a href="conatact" class="underline-offset-4 hover:underline">Conatact Sales</a>
 					</h2>
 				</li>

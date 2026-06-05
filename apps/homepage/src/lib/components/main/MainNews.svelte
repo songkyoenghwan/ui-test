@@ -22,7 +22,7 @@
 	let lists = $derived(list);
 </script>
 
-<section class="-mx-5 max-w-dvw overflow-hidden px-5 py-5 max-lg:space-y-5 lg:py-15">
+<section class="max-w-dvw overflow-hidden py-5 max-lg:space-y-5 lg:py-15">
 	<sub-heading-line line="none" title={m.main_title_news?.()} subTit={m.main_subtitle_news?.()} btnRender="link" link="/news/news"></sub-heading-line>
 
 	<swiper-container
@@ -35,7 +35,7 @@
 		space-between={30}
 		autoplay-delay={1000}
 		autoplay-disable-on-interaction={false}
-		class="before:from-f0f0f0 after:from-f0f0f0 relative -mx-5 w-[calc(100%+40px)] max-w-dvw before:absolute before:-left-5 before:z-2 before:h-full before:w-20 before:bg-linear-to-r before:to-transparent after:absolute after:top-0 after:-right-5 after:z-2 after:h-full after:w-20 after:bg-linear-to-l after:to-transparent"
+		class="before:from-f0f0f0 after:from-f0f0f0 relative w-[calc(100dvw+40px)] max-w-dvw before:absolute before:left-0 before:z-2 before:h-full before:w-20 before:bg-linear-to-r before:to-transparent after:absolute after:top-0 after:right-10 after:z-2 after:h-full after:w-20 after:bg-linear-to-l after:to-transparent lg:w-[calc(100%+80px)] lg:before:left-0 lg:after:right-20"
 	>
 		{#each lists as { link, img, tit, date }, i (`new-slide-${i}`)}
 			<swiper-slide class="h-full w-75 select-none lg:w-100">

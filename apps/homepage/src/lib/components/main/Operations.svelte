@@ -17,23 +17,10 @@
 	<div class="mt-7.5 inline-flex w-full gap-5 max-lg:flex-col lg:mt-auto">
 		<a
 			href="/"
-			class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
+			class="text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white hover:text-black max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
 		>
 			<span>{m.btn_inquiry()}</span>
-			<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
-		</a>
-
-		<a
-			href="/static/pdf/Company_Introduction_DEEPFINE_kr.pdf"
-			download="딥파인 회사소개서"
-			class="hover:text-3743ff text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold text-white transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
-			title={m.btn_introduction()}
-			target="_blank"
-		>
-			<span>
-				{m.btn_introduction()}
-			</span>
-			<icon-list name="import" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+			<icon-list name="arrow-right" class="size-6 stroke-white group-hover:stroke-black"></icon-list>
 		</a>
 	</div>
 </section>

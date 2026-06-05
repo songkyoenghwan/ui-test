@@ -11,6 +11,7 @@
 <script lang="ts">
 	import { m } from '$lib/paraglide/messages.js';
 	import { tick } from 'svelte';
+
 	const left = `${__STATIC_URL__}/imgs/logo/img-header.png`;
 	const logo = `${__STATIC_URL__}/imgs/logo/logo-deepfine.svg`;
 	const logi = `${__STATIC_URL__}/imgs/logo/logo-main-logi.svg`;
@@ -36,24 +37,25 @@
 
 	$effect(() => {
 		if (name === 'left') {
-			tick();
-			vid?.pause();
-			gnbMenuChk = document.getElementById('gnb-menu') as HTMLInputElement;
-			console.dir(gnbMenuChk);
+			gnbMenuChk = document?.getElementById('gnb-menu') as HTMLInputElement;
 
-			gnbMenuChk?.addEventListener('change', () => {
-				if (gnbMenuChk?.checked) {
+			const handleToggle = () => {
+				if (!vid) return;
+
+				if (gnbMenuChk?.checked && isDesktop) {
 					tick().then(() => {
-						vid?.play();
+						vid?.play().catch((err) => console.warn('비디오 재생 거부:', err));
 					});
 				} else {
 					vid?.pause();
 				}
-			});
+			};
+
+			gnbMenuChk.addEventListener('change', handleToggle);
 
 			return () => {
+				gnbMenuChk?.removeEventListener('change', handleToggle);
 				vid?.pause();
-				vid = null;
 			};
 		}
 	});
@@ -95,7 +97,7 @@
 	</figure>
 {/if}
 
-{#if name === 'left' && isDesktop && gnbMenuChk?.checked}
+{#if name === 'left'}
 	<section class="before:bg-000/70 absolute flex size-full w-full object-cover before:absolute before:z-2 before:size-full">
 		<video
 			class="absoltue z-1 aspect-video h-full w-full object-cover"

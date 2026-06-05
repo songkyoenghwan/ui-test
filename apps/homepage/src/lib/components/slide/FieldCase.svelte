@@ -33,9 +33,9 @@
 
 {#snippet resultLi(img: string, logo: string[], tit: string, badge: string[], txt: string[], etc: [])}
 	<swiper-slide class="grid grid-cols-1 items-center gap-5 p-5 lg:grid-cols-[minmax(480px,4fr)_minmax(460px,6fr)] lg:p-7.5 xl:gap-15">
-		<div class="relative transition-all">
-			<picture class="bg-primary/10 inline-flex h-53.75 w-auto overflow-clip rounded-xl max-lg:max-w-80.5 lg:h-120">
-				<img loading="lazy" src={img} alt="" class="flex-none object-cover lg:w-full" />
+		<div class="relative transition-all max-sm:w-full">
+			<picture class="bg-primary/10 inline-flex min-h-53.75 w-auto overflow-clip rounded-xl max-sm:w-full max-sm:max-w-full lg:h-120">
+				<img loading="lazy" src={img} alt="" class="flex-none object-cover max-sm:w-full lg:w-full" />
 			</picture>
 		</div>
 
@@ -126,6 +126,7 @@
 		space-between={spaceBetween}
 		centered-slides={true}
 		speed="450"
+		autoplay-delay="5000"
 		pagination={{
 			hideOnClick: true,
 		}}

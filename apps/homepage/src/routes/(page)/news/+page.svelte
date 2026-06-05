@@ -1,8 +1,8 @@
 <main class="sub">
 	<sub-heading-line title="NEWS"></sub-heading-line>
 
-	<nav class="slide-left max-w-full overflow-x-auto">
-		<ul class=" flex snap-center items-center gap-5 scroll-smooth">
+	<nav class="slide-left max-w-dvw overflow-x-auto lg:max-w-full">
+		<ul class="flex snap-center items-center gap-2.5 scroll-smooth lg:gap-5">
 			<li>
 				<a href="" class="tab-link" aria-current="page">ALL</a>
 			</li>
@@ -32,7 +32,7 @@
 			<a href="/news/detail" title="상세피이지 이동" class="flex">
 				<news-section
 					layout="list"
-					img="https://www.deepfine.com/filestorage/2026/1/23/1aeaeb1a-8e4c-4042-8bea-8cdf124e1515.png"
+					img=""
 					badges="Company,AR.ON"
 					title="DeepFine to Participate in CES 2026, Showcasing XR-Based Spatial Intelligence Solutions"
 					text="DeepFine, an XR (Extended Reality) spatial computing platform company, announced that it will participate in CES 2026, taking place in Las Vegas, USA, from January 6 to

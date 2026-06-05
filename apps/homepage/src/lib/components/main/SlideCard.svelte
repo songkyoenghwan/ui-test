@@ -103,8 +103,8 @@
 
 <section data-scroll="slide-up" class="slide-card relative grid max-w-dvw grid-cols-1 gap-5 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_620px] lg:gap-15 lg:p-15">
 	<div data-scroll="slide-up" class="space-y-2.5 lg:space-y-15 lg:whitespace-pre-line">
-		<h2 class="text-3xl font-bold transition-all lg:text-6xl">{m.main_title_mro()}</h2>
-		<p class="text-666 text-base transition-all lg:text-3xl">{m.main_subtitle_mro()}</p>
+		<h2 class="text-3xl leading-tight font-bold transition-all lg:text-6xl">{m.main_title_mro()}</h2>
+		<p class="text-666 text-base transition-all lg:text-2xl">{m.main_subtitle_mro()}</p>
 	</div>
 
 	<div

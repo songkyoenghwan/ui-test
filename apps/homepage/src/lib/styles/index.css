@@ -96,14 +96,14 @@
 	--color-ff4000: #ff4000;
 	--color-e8d5a7: #e8d5a7;
 
-	--text-2sm: 0.8125rem;
-	--text-2md: 0.9375rem;
+	--text-2sm: 13px;
+	--text-2md: 15px;
 
 	--font-sans:
 		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
 		'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
 
-	--input-height: 3.25rem;
+	--input-height: 52px;
 
 	--duration: 100s;
 	--animate-marquee-left: marquee-left var(--duration, 100s) linear infinite;
@@ -204,10 +204,10 @@
 
 	--font-sans: var(--font-sans);
 
-	--text-2sm: 0.8125rem;
-	--text-2md: 0.9375rem;
+	--text-2sm: 13px;
+	--text-2md: 15px;
 
-	--breakpoint-3xl: 1840px;
+	--breakpoint-3xl: 115rem;
 
 	--animate-marquee-left: marquee-left var(--duration, 100s) linear infinite;
 	--animate-marquee-up: marquee-up var(--duration, 100s) linear infinite;
@@ -414,7 +414,7 @@
 		scroll-behavior: smooth;
 
 		&:has([data-section='floating']) {
-			padding-bottom: 3.75rem;
+			padding-bottom: 60px;
 		}
 	}
 
@@ -447,27 +447,32 @@
 
 	/* Select button */
 	select {
-		--radius: 6.25rem;
-		--option-size: 3.125rem;
+		--radius: 100px;
+		--option-size: 50px;
 		display: grid;
 		anchor-name: --anchor-el;
 		place-items: center;
 		height: var(--option-size);
 		padding: 0;
-		border: 0.0625rem solid #ccc;
-		border-radius: 0.5rem;
+		border: 1px solid #ccc;
+		border-radius: 8px;
 
 		background: white;
 		cursor: pointer;
+
+		& {
+			@apply bg-[url(/imgs/input/icon-select.png)];
+		}
 	}
 
-	html {
-		@apply max-lg:px-2.5 lg:px-5;
+	video,
+	img {
+		@apply pointer-events-auto select-none;
 	}
 
 	.main,
 	.sub {
-		@apply flex flex-col gap-7.5 px-5 pt-27 pb-20 has-[form]:overflow-clip max-lg:px-0 lg:gap-15;
+		@apply flex flex-col gap-7.5 px-5 pt-27 pb-20 has-[form]:overflow-clip lg:gap-15 lg:px-10;
 	}
 
 	.header {
@@ -487,39 +492,56 @@
 	}
 
 	.input-text {
-		@apply text-2md border-d9d9d9 placeholder:text-999 flex min-h-12 w-full items-center rounded-xl border px-5 lg:text-lg;
+		@apply text-2md border-d9d9d9 placeholder:text-999 hover:outline-primary flex min-h-12 w-full items-center rounded-xl border px-5 hover:outline lg:text-lg;
 	}
 
 	.textarea {
-		@apply text-2md border-d9d9d9 placeholder:text-999 flex min-h-60 w-full items-center rounded-xl border p-5 lg:text-lg;
+		@apply text-2md border-d9d9d9 placeholder:text-999 hover:outline-primary flex min-h-60 w-full items-center rounded-xl border p-5 hover:outline lg:text-lg;
 	}
 
 	.select {
-		@apply text-2md border-d9d9d9 placeholder:text-999 flex min-h-12 w-full items-center rounded-xl border px-5 lg:text-lg;
+		@apply text-2md border-d9d9d9 placeholder:text-999 hover:outline-primary flex min-h-12 w-full items-center rounded-xl border bg-[url(/imgs/input/icon-select-down.png)] bg-size-[1.5rem_1.5rem] bg-position-[calc(100%-1.25rem)_center] bg-no-repeat px-5 hover:bg-white hover:outline lg:text-lg;
 
 		.option {
-			@apply hover:bg-light-blue min-h-9 rounded-lg px-3;
+			@apply hover:bg-primary min-h-9 rounded-lg px-3 hover:text-white;
+
+			&::checkmark {
+				@apply hidden;
+			}
 		}
 
 		&::picker(select) {
-			appearance: base-select;
+			@apply [appearance:base-select];
 
 			& {
-				@apply border-d9d9d9 text-2md my-2 w-full translate-y-1 rounded-xl border bg-white p-3 opacity-100 transition-all lg:text-lg starting:translate-y-0 starting:opacity-0;
+				@apply border-d9d9d9 text-2md max-h-50 w-fit rounded-xl border bg-white p-3 opacity-100 transition-all lg:text-lg starting:translate-y-0 starting:opacity-0;
 			}
+		}
+
+		&::picker-icon {
+			@apply hidden;
+		}
+
+		&:has(&:popover-open),
+		&:has(&::backdrop) {
+			background-image: url('/imgs/input/icon-select.png');
 		}
 
 		&:focus-within::picker(select) {
 			@apply translate-y-0 opacity-100;
 		}
-
-		&:hover {
-			@apply bg-light-blue;
-		}
 	}
 
 	.label-check {
-		@apply has-checked:bg-primary has-checked:border-primary text-2md hover:bg-light-blue grid min-h-12 gap-2 rounded-xl border border-black px-5 py-1 transition-colors has-checked:text-white lg:min-h-15 lg:text-2xl;
+		@apply has-checked:bg-primary has-checked:border-primary hover:border-primary text-2md hover:bg-primary grid min-h-12 gap-2 rounded-xl border border-black px-5 py-1 transition-colors hover:text-white has-checked:text-white lg:min-h-15 lg:text-2xl;
+	}
+
+	.label-check-box {
+		@apply has-checked:bg-primary has-checked:border-primary hover:border-primary text-2md hover:bg-primary flex min-h-12 flex-col justify-center gap-2.5 rounded-xl border border-black p-5 leading-tight transition-colors hover:text-white has-checked:text-white lg:min-h-30 lg:text-2xl;
+	}
+
+	.label-chk {
+		@apply border-d9d9d9 size-15 overflow-clip rounded-xl border transition-colors has-checked:border-black has-checked:bg-black;
 	}
 
 	.form-item {

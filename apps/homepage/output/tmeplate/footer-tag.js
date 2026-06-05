@@ -26,13 +26,17 @@ class FooterTag extends HTMLElement {
 								</ul>
 							</li>
 							<li class="grid">
-								<h2 class="text-2md text-black lg:text-lg"><a class="underline-offset-4 hover:underline" href="/company">Company</a></h2>
+								<h2 class="text-2md text-black lg:text-lg">
+									<a class="underline-offset-4 hover:underline" href="/company">Company</a>
+								</h2>
 							</li>
 							<li class="grid">
 								<h2 class="text-2md text-black lg:text-lg"><a class="underline-offset-4 hover:underline" href="/news/news">News</a></h2>
 							</li>
 							<li class="grid">
-								<h2 class="text-2md text-black lg:text-lg"><a class="underline-offset-4 hover:underline" href="conatact">Conatact Sales</a></h2>
+								<h2 class="text-2md text-black lg:text-lg">
+									<a class="underline-offset-4 hover:underline" href="conatact">Conatact Sales</a>
+								</h2>
 							</li>
 						</ul>
 						<footer-sns class="inline-flex w-full items-center justify-center gap-7.5 lg:justify-end"></footer-sns>

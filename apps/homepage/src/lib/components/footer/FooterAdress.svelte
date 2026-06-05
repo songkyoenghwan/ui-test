@@ -12,7 +12,7 @@
 <section class="flex flex-col gap-5">
 	<p><enhanced:img src={`${__STATIC_URL__}/imgs/logo/logo-deepfine.svg`} alt="DEEP.FINE" class="w-35 lg:w-69.25" /></p>
 	<div class="grid grid-cols-1">
-		<p class="text-2md text-black lg:text-2xl">{m.company_address_tit?.()}</p>
+		<p class="text-2md text-black lg:text-lg">{m.company_address_tit?.()}</p>
 		<address>{m.company_address_txt?.()}</address>
 	</div>
 	<ul class="grid grid-cols-1 gap-2 lg:pt-7.5">

@@ -53,10 +53,10 @@
 >
 	<div class={cls ? cls : 'space-y-2.5'}>
 		{#if title.toLocaleLowerCase() === 'news' || title.toLocaleLowerCase() === 'company' || title.toLocaleLowerCase() === 'contact'}
-			<h1 class="text-3xl font-bold transition-all lg:text-6xl">{titParse}</h1>
+			<h1 class="text-3xl leading-tight font-bold transition-all lg:text-6xl">{titParse}</h1>
 			<h2 class="sr-only">{title}</h2>
 		{:else}
-			<h2 class="text-3xl font-bold transition-all lg:text-6xl">{titParse}</h2>
+			<h2 class="text-3xl leading-tight font-bold transition-all lg:text-6xl">{titParse}</h2>
 		{/if}
 
 		<p class="text-2md transition-all lg:text-2xl">{subTit ? subTit : txt}</p>
@@ -66,7 +66,7 @@
 		<div class="max-lg:mt-5">
 			<a
 				href={`${link ?? '/'}`}
-				class="hover:text-3743ff group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
+				class="group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white hover:text-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
 				aria-label={txt}
 			>
 				<span>{m.btn_more()}</span>

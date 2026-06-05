@@ -103,7 +103,7 @@
 
 				{#if !isDesktop}
 					<div
-						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black"
+						class="before:[''] absolute top-0 left-0 z-1 size-full object-cover transition-all before:absolute before:top-0 before:z-2 before:size-full before:bg-linear-to-r before:from-black before:from-0% before:via-black/0 before:via-120% before:to-transparent before:to-130%"
 					>
 						<video
 							use:initLoopMo
@@ -177,10 +177,10 @@
 					</div>
 					<div class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100">
 						<p
-							class="text-2md hover:text-primary group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white max-lg:justify-between lg:min-h-13.5 lg:w-auto"
+							class="text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white hover:text-black max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 						>
 							<span>{m.btn_detail?.()}</span>
-							<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-white"></icon-list>
+							<icon-list name="arrow-right" class="size-6 stroke-white group-hover:stroke-black"></icon-list>
 						</p>
 					</div>
 				</a>

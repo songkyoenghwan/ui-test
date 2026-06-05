@@ -45,8 +45,12 @@
 
 {#snippet imgRender(img = '')}
 	{#if img}
-		<picture class={`grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
-			<img loading="lazy" src={img ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${title} image`} class="w-full max-w-300 object-cover" />
+		<picture class={`bg-light-blue grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
+			<img loading="lazy" src={img !== '' ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${title} image`} class="w-full max-w-300 object-cover" />
+		</picture>
+	{:else}
+		<picture class={`bg-light-blue grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
+			<img loading="lazy" src={img !== '' ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${title} image`} class="w-full max-w-300 object-cover" />
 		</picture>
 	{/if}
 {/snippet}
@@ -63,7 +67,7 @@
 			{/if}
 		</div>
 
-		<h4 class="text-lg font-bold lg:text-4xl">{title}</h4>
+		<h4 class={['font-bold', layout === 'list' ? 'text-lg lg:text-4xl' : 'text-2xl lg:text-5xl']}>{title}</h4>
 
 		{#if layout !== 'list'}
 			<div class="lg:py-5">
@@ -81,22 +85,22 @@
 		</div>
 
 		{#if url}
-			<div class="border-t-d9d9d9 text-666 text-2md flex flex-col gap-2 border-t border-dashed pt-5 lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg">
+			<div class="border-t-d9d9d9 text-666 text-2md flex gap-2 border-t border-dashed pt-5 max-lg:flex-col lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg">
 				<p class="font-bold">URL</p>
-				<p class="flex-1">{url}</p>
+				<a href={url} aria-label={title} target="_blank" rel="noopener noreferrer" class="flex-1 break-all underline">{url}</a>
 			</div>
 		{/if}
 	</div>
 {/snippet}
 
 {#if layout === 'list'}
-	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15">
+	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15 lg:p-7.5">
 		{@render imgRender(img)}
 
 		{@render newsRender(img, badges, title, text, date, source)}
 	</section>
 {:else}
-	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:gap-15 lg:p-15">
+	<section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:gap-15 lg:p-15">
 		{@render newsRender(img, badges, title, text, date, source, url)}
 	</section>
 {/if}

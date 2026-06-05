@@ -39,7 +39,7 @@
 </script>
 
 {#if text}
-	<span {@attach countUpAttachment}>
+	<span class="leading-none" {@attach countUpAttachment}>
 		{text}
 	</span>
 {/if}

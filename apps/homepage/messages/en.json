@@ -105,22 +105,20 @@
 	"dao_case_etc_5_3": "{#b}40% Shortening{/b} of New Worker OJT Period",
 	"dao_subtitle_faq": "Frequently Asked Questions",
 
+	"dao_faq_tit_1": "Can DAO only be used on Smart Glasses?",
+	"dao_faq_txt_1": "DAO supports a wide range of device environments.\n\n[For On-site Operations]\n{#b}• Smart Glasses: RealWear, Vuzix, Google Glass Enterprise, Magic Leap, etc.\n* Supports most major industrial smart glasses. Please contact us for inquiries regarding specific models.{/b}\n{#b}• Mobile:{/b} Android, iOS\n\n[For Management/Monitoring]\n{#b}• PC Web-based CMS (Admin System){/b}",
 
-    "dao_faq_tit_1": "Can DAO only be used on Smart Glasses?",
-    "dao_faq_txt_1": "DAO supports a wide range of device environments.\n\n[For On-site Operations]\n{#b}• Smart Glasses: RealWear, Vuzix, Google Glass Enterprise, Magic Leap, etc.\n* Supports most major industrial smart glasses. Please contact us for inquiries regarding specific models.{/b}\n{#b}• Mobile:{/b} Android, iOS\n\n[For Management/Monitoring]\n{#b}• PC Web-based CMS (Admin System){/b}",
+	"dao_faq_tit_2": "Can it be used in offline environments (without internet)?",
+	"dao_faq_txt_2": "Yes, it is possible.\nDAO supports an offline mode that allows you to complete checklists, take photos, and record data without an internet connection.\n\nAll data will automatically synchronize with the server once a connection is re-established.",
 
-    "dao_faq_tit_2": "Can it be used in offline environments (without internet)?",
-    "dao_faq_txt_2": "Yes, it is possible.\nDAO supports an offline mode that allows you to complete checklists, take photos, and record data without an internet connection.\n\nAll data will automatically synchronize with the server once a connection is re-established.",
+	"dao_faq_tit_3": "Can it be customized to fit our company’s specific environment?",
+	"dao_faq_txt_3": "Yes, it is possible.\nDAO provides universal features ready for immediate use in various industrial sectors, including manufacturing, construction, logistics, and facility maintenance.\n\nCustomized requirements—such as integration with existing systems (ERP, MES, CMMS), custom workflow design, and specialized report formats—are available through separate consultation.",
 
-    "dao_faq_tit_3": "Can it be customized to fit our company’s specific environment?",
-    "dao_faq_txt_3": "Yes, it is possible.\nDAO provides universal features ready for immediate use in various industrial sectors, including manufacturing, construction, logistics, and facility maintenance.\n\nCustomized requirements—such as integration with existing systems (ERP, MES, CMMS), custom workflow design, and specialized report formats—are available through separate consultation.",
+	"dao_faq_tit_4": "Can we try the solution before full implementation?",
+	"dao_faq_txt_4": "Yes, it is possible.\n\nOnce you request a product demo, we will send an invitation email to issue a trial account. You can freely experience DAO in your actual work environment for 2 to 4 weeks using the issued account. If satisfied with the experience, you can proceed with the official implementation.",
 
-    "dao_faq_tit_4": "Can we try the solution before full implementation?",
-    "dao_faq_txt_4": "Yes, it is possible.\n\nOnce you request a product demo, we will send an invitation email to issue a trial account. You can freely experience DAO in your actual work environment for 2 to 4 weeks using the issued account. If satisfied with the experience, you can proceed with the official implementation.",
-
-    "dao_faq_tit_5": "How are the implementation costs and technical support provided?",
-    "dao_faq_txt_5": "DAO is available through a per-account billing system with monthly or annual subscriptions. Upon implementation, we provide initial training support (online or offline), and a dedicated technical support team ensures stable operation. Detailed pricing and support plans can be provided through a consultation inquiry.",
-
+	"dao_faq_tit_5": "How are the implementation costs and technical support provided?",
+	"dao_faq_txt_5": "DAO is available through a per-account billing system with monthly or annual subscriptions. Upon implementation, we provide initial training support (online or offline), and a dedicated technical support team ensures stable operation. Detailed pricing and support plans can be provided through a consultation inquiry.",
 
 	"dao_banner_title": "Adopt a DAO Today and",
 	"dao_banner_title_2": "Operate the site.",
@@ -349,7 +347,7 @@
 	"logi_result_subTit_2": "Enhanced picking processing speed",
 	"logi_result_txt_2": "The same workforce handles more orders through optimized routing and automated guidance.",
 	"logi_result_subTit_3": "Quantity Processed Per Hour",
-"logi_result_txt_3": "Complete more orders in the same amount of time with the new UI and optimized workflow",
+	"logi_result_txt_3": "Complete more orders in the same amount of time with the new UI and optimized workflow",
 	"logi_result_subTit_4": "Compatibility rate with existing picking strategies",
 	"logi_result_txt_4": "Use your current methods and strategies exactly as they are without changing picking formats like piece, batch, or wave.",
 

@@ -117,20 +117,20 @@
 						data-font={list.font}
 					>
 						{#if list.id !== 'why-4'}
-							<strong class="inline-flex gap-px font-bold tracking-tight lg:min-w-29"><CountNumber text={Number(list.num)} /></strong>
+							<strong class="inline-flex gap-px leading-none font-bold tracking-tight lg:min-w-29"><CountNumber text={Number(list.num)} /></strong>
 							{#if list.id === 'why-5'}
-								<span class="font-normal">%</span>
+								<span class="leading-none font-normal">%</span>
 							{/if}
 						{:else}
 							{list.tit}
 						{/if}
-						<strong class="text-primary">{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}</strong>
+						<strong class="text-primary leading-none">{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}</strong>
 					</dt>
 					<dd class={['text-2md', list.id !== 'why-3' && list.id !== 'why-4' ? 'relative z-3 lg:text-lg' : 'lg:text-2xl']}>{list.txt}</dd>
 				</dl>
 
 				{#if list.video}
-					<div data-scroll="slide-up" class="flex justify-end">
+					<div data-scroll="slide-up" class="relative flex justify-end after:absolute after:z-2 after:flex after:size-full after:bg-transparent">
 						<video
 							{@attach videoObserver}
 							bind:this={videoRefs[i]}
@@ -146,6 +146,8 @@
 											: '',
 							]}
 							muted
+							playsinline
+							preload="metadata"
 							poster={list.poster}
 						>
 							<source src={list.video} type="video/mp4" />

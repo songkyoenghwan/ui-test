@@ -214,5 +214,12 @@ export const getIconData = () => {
 				/>
 			`,
 		},
+		{
+			name: 'chk',
+			size: '60',
+			html: /* HTML */ `
+				<path d="M19 30L26.6576 38L42 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
 	];
 };

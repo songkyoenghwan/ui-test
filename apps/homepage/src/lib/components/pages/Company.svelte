@@ -105,7 +105,7 @@
 <section class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:gap-15 lg:p-15">
 	<h3 class="text-2xl font-bold lg:text-5xl">Our Teams</h3>
 
-	<ul class="text-2md grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-15 lg:text-lg">
+	<ul class="text-2md grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-15 lg:text-lg">
 		{#each teams as team, i (`team-${i}`)}
 			<li data-scroll="slide-up" class="bg-light-blue flex flex-col overflow-clip rounded-xl">
 				<picture class="flex">

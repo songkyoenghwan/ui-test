@@ -19,8 +19,8 @@
 			<section class="first opacity-100">
 				<form class="form-list w-full space-y-7.5 lg:space-y-15" id="form" data-scoll-x="form">
 					<div class="w-full overflow-hidden rounded-xl bg-white p-5 lg:p-15">
-						<div class="flex w-full items-center overflow-x-auto sm:overflow-auto">
-							<div class="itmes-cehter inline-flex w-full flex-none gap-5 sm:flex-wrap">
+						<div class="flex w-full items-center overflow-x-auto sm:overflow-auto lg:mb-7.5">
+							<div class="inline-flex w-full flex-none items-center gap-2.5 sm:flex-wrap lg:gap-5">
 								<label class="label-check flex-none place-items-center rounded-full" for="tabRdo1">
 									<input class="peer sr-only" id="tabRdo1" type="radio" name="tabRdo1" checked />
 									<strong class="text-lg font-bold lg:text-2xl">제품 데모 문의</strong>
@@ -99,20 +99,24 @@
 								</p>
 							</dt>
 							<dd class="form-content grid gap-2.5 lg:grid-cols-3 lg:gap-5">
-								<label class="label-check" for="solutionRdo1">
+								<label class="label-check-box group" for="solutionRdo1">
 									<input class="peer sr-only" id="solutionRdo1" type="checkbox" name="solutionRdo1" checked />
-									<strong class="text-2md font-bold lg:text-lg">DSC</strong>
-									<span class="text-2md text-666 peer-checked:text-white/70 lg:text-lg">AR 기반 공간 정보 플랫폼</span>
+									<strong class="text-2md font-bold lg:text-2xl">DSC</strong>
+									<span class="text-2md text-666 leading-tight group-hover:text-white peer-checked:text-white/70 lg:text-lg">AR 기반 공간 정보 플랫폼</span>
 								</label>
-								<label class="label-check" for="solutionRdo2">
+								<label class="label-check-box group" for="solutionRdo2">
 									<input class="peer sr-only" id="solutionRdo2" type="checkbox" name="solutionRdo2" />
-									<strong class="text-2md font-bold lg:text-lg">DSC</strong>
-									<span class="text-2md text-666 peer-checked:text-white/70 lg:text-lg">스마트글라스 기반 원격 협업 솔루션</span>
+									<strong class="text-2md font-bold lg:text-2xl">DAO</strong>
+									<span class="text-2md text-666 leading-tight group-hover:text-white peer-checked:text-white/70 lg:text-lg">
+										스마트글라스 기반 원격 협업 솔루션
+									</span>
 								</label>
-								<label class="label-check" for="solutionRdo3">
+								<label class="label-check-box group" for="solutionRdo3">
 									<input class="peer sr-only" id="solutionRdo3" type="checkbox" name="solutionRdo3" />
-									<strong class="text-2md font-bold lg:text-lg">DSL</strong>
-									<span class="text-2md text-666 peer-checked:text-white/70 lg:text-lg">AI 기반 물류 피킹 및 포장 솔루션</span>
+									<strong class="text-2md font-bold lg:text-2xl">Logi.Fine</strong>
+									<span class="text-2md text-666 leading-tight group-hover:text-white peer-checked:text-white/70 lg:text-lg">
+										AI 기반 물류 피킹 및 포장 솔루션
+									</span>
 								</label>
 							</dd>
 						</dl>
@@ -229,10 +233,11 @@
 						</dl>
 
 						<div class="border-t-d9d9d9 border-t-dashed flex items-center gap-5 border-t pt-5 lg:pt-15">
-							<label class="label" for="contactCheckbox">
-								<input class="checkbox size-9 rounded-lg lg:size-15" id="contactCheckbox" type="checkbox" />
+							<label class="label label-chk" for="contactCheckbox">
+								<input class="peer sr-only" id="contactCheckbox" type="checkbox" />
+								<icon-list class="hidden size-15 stroke-white peer-checked:flex" name="chk"></icon-list>
 							</label>
-							<a href="" title="개인정보보호정책 페이지로 이동하기" aria-label="개인정보보호정책 페이지로 이동하기">
+							<a href="/term" title="개인정보보호정책 페이지로 이동하기" target="_blank" aria-label="개인정보보호정책 페이지로 이동하기">
 								<span class="text-primary text-2md underline lg:text-2xl">개인정보보호정책</span>
 								<span class="text-2md lg:text-2xl">에 동의합니다.</span>
 								<span class="text-2md lg:text-2xl">(필수)</span>

@@ -53,22 +53,22 @@
 			<dt class="relative">
 				<p
 					class={[
-						'relative pr-15 text-6xl leading-none font-bold transition-colors lg:text-[90px]',
+						'relative flex pt-2 pr-15 text-6xl  leading-none font-bold transition-colors lg:text-[90px]',
 						result === 'up' ? 'text-red' : result === 'chk' ? 'text-149e00' : result === 'down' ? 'text-primary' : 'text-black',
 					]}
 				>
 					{#if num}
 						<CountNumber text={Number(num)} />
-						<span class="font-normal">%</span>
+						<span class="leading-none font-bold">%</span>
 					{:else}
-						<strong>ZERO</strong>
+						<strong class="leading-none font-bold">ZERO</strong>
 					{/if}
 					{#if per}
-						{per}
+						<strong class="leading-none font-bold">{per}</strong>
 					{/if}
 				</p>
 
-				<p class="text-2xl font-bold lg:text-4xl lg:whitespace-pre-line">{subTit}</p>
+				<p class="mt-2.5 text-2xl font-bold lg:text-4xl lg:whitespace-pre-line">{subTit}</p>
 
 				<div
 					data-scroll="scale-up"
@@ -92,7 +92,7 @@
 				</div>
 			</dt>
 			<dd class="text-2xl lg:text-4xl lg:whitespace-pre-line">
-				<p class="text-666 text-2md lg:text-lg">{txt}</p>
+				<p class="text-2md text-black lg:text-lg">{txt}</p>
 			</dd>
 		</dl>
 	</li>
