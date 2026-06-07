@@ -11,7 +11,7 @@ class FooterTag extends HTMLElement {
 	render() {
 		this.rendered = true;
 		this.innerHTML = /* HTML */ `
-			<footer class="text-2md text-666 pb-5 lg:pb-7.5 lg:text-lg" data-scroll="slide-up">
+			<footer class="footer text-2md text-666 pb-5 lg:pb-7.5 lg:text-lg" data-scroll="slide-up">
 				<div class="relative rounded-xl bg-white lg:grid lg:grid-cols-2">
 					<footer-adress class="flex flex-col gap-5 p-5 lg:p-7.5"></footer-adress>
 
@@ -35,7 +35,7 @@ class FooterTag extends HTMLElement {
 							</li>
 							<li class="grid">
 								<h2 class="text-2md text-black lg:text-lg">
-									<a class="underline-offset-4 hover:underline" href="conatact">Conatact Sales</a>
+									<a class="underline-offset-4 hover:underline" href="Contact">Contact Sales</a>
 								</h2>
 							</li>
 						</ul>

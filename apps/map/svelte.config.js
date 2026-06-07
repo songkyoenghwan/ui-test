@@ -11,15 +11,15 @@ const config = {
 			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
-			fallback: undefined,
+			fallback: 'index.html',
 			precompress: false,
 			strict: true,
 		}),
 		alias: aliases,
 	},
-	// vitePlugin: {
-	// 	dynamicCompileOptions: ({ filename }) => (filename.includes('node_modules') ? undefined : { runes: true }),
-	// },
+	vitePlugin: {
+		dynamicCompileOptions: ({ filename }) => (filename.includes('node_modules') ? undefined : { runes: true }),
+	},
 	compilerOptions: {
 		customElement: true,
 	},

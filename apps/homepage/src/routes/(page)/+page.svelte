@@ -1,6 +1,6 @@
 <script lang="ts">
 	$effect(() => {
-		const mainNews = document?.querySelector('main-home');
+		const mainNews = document?.querySelector('main-home') as HTMLElement;
 		if (!mainNews) return;
 		mainNews.news = [
 			...Array.from({ length: 10 }).map((_) => {

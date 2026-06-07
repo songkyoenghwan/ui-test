@@ -479,6 +479,10 @@
 		@apply z-10!;
 	}
 
+	.footer {
+		@apply px-5 lg:px-10;
+	}
+
 	.sub-inner {
 		@apply flex flex-col gap-7.5 lg:gap-15;
 	}

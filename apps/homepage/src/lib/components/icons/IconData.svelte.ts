@@ -91,6 +91,15 @@ export const getIconData = () => {
 			`,
 		},
 		{
+			name: 'arrow-link-underline',
+			size: '24',
+			html: /* HTML */ `
+				<path d="M20.5 22H3.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M19 3.5L5 17.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M19 13.77V3.5H8.73" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		{
 			name: 'menu',
 			size: '24',
 			html: /* HTML */ `
