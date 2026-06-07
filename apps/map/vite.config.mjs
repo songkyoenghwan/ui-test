@@ -13,21 +13,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+	define: {
+		__STATIC_URL__: JSON.stringify(''),
+	},
 	optimizeDeps: {
 		exclude: ['flowbite-svelte', 'flowbite-svelte-icons'],
 	},
 	ssr: {
 		noExternal: ['flowbite-svelte', 'flowbite-svelte-icons'],
 	},
-	server: {
-		host: true,
-		port: 5174,
-	},
-	preview: {
-		// outDir: 'dist',
-		port: 5184,
-		host: true,
-	},
+
 	plugins: [
 		tailwindcss(),
 		enhancedImages(),
