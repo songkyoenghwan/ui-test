@@ -86,16 +86,6 @@
 	]);
 	const caseKeys = $state([
 		{
-			id: 'dsc-case-1',
-			btn: m.dsc_case_btn_1(),
-			logo: [`${__STATIC_URL__}/imgs/case/logo-case-${page}-1.png`],
-			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-1.jpg`,
-			tit: m.dsc_case_tit_1_1(),
-			badge: [m.dsc_case_badge_1_1(), m.dsc_case_badge_1_2(), m.dsc_case_badge_1_3(), m.dsc_case_badge_1_4()],
-			txt: [m.dsc_case_txt_1_1()],
-			etc: [m.dsc_case_etc_1_1, m.dsc_case_etc_1_2, m.logi_case_etc_1_3],
-		},
-		{
 			id: 'dsc-case-2',
 			btn: m.dsc_case_btn_2(),
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-${page}-2.png`, 'client'],
@@ -114,6 +104,16 @@
 			badge: [m.dsc_case_badge_3_1(), m.dsc_case_badge_3_2(), m.dsc_case_badge_3_3()],
 			txt: [m.dsc_case_txt_3_1()],
 			etc: [m.dsc_case_etc_3_1, m.dsc_case_etc_3_2],
+		},
+		{
+			id: 'dsc-case-1',
+			btn: m.dsc_case_btn_1(),
+			logo: [`${__STATIC_URL__}/imgs/case/logo-case-${page}-1.png`],
+			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-1.jpg`,
+			tit: m.dsc_case_tit_1_1(),
+			badge: [m.dsc_case_badge_1_1(), m.dsc_case_badge_1_2(), m.dsc_case_badge_1_3(), m.dsc_case_badge_1_4()],
+			txt: [m.dsc_case_txt_1_1()],
+			etc: [m.dsc_case_etc_1_1, m.dsc_case_etc_1_2],
 		},
 	]);
 	const faqtKeys = $state([

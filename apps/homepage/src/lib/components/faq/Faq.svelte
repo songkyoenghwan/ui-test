@@ -23,8 +23,8 @@
 						>
 							<input type="checkbox" id={item.id} name={item.id} bind:checked={item.checked} class="sr-only" />
 							<p class="flex items-center gap-2.5 lg:gap-7.5">
-								<span class="text-primary text-2md flex-none lg:text-4xl">Q</span>
-								<strong>{item.tit}</strong>
+								<span class="text-primary text-2md flex-none font-bold lg:text-4xl">Q</span>
+								<strong class="font-bold">{item.tit}</strong>
 							</p>
 							<icon-list
 								name="faq_arr"
@@ -47,11 +47,13 @@
 									<div class="mt-5 flex lg:mt-7.5">
 										<a
 											href={item.link}
-											class="group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white hover:text-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
+											class="group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-black hover:text-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
 											aria-label={item.btn}
+											target={item.target ?? undefined}
+											rel={item.target ? 'noopener noreferrer' : undefined}
 										>
 											<span>{item.btn}</span>
-											<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-black"></icon-list>
+											<icon-list name="arrow-right" class="size-6 stroke-black group-hover:stroke-white"></icon-list>
 										</a>
 									</div>
 								{/if}

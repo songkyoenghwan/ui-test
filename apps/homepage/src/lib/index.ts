@@ -14,4 +14,7 @@ import '$lib/components/pages/Dsc.svelte';
 import '$lib/components/pages/Logi.svelte';
 import '$lib/components/pages/Main.svelte';
 import '$lib/components/pages/Term.svelte';
+import '$lib/components/modal/ModalMain.svelte';
+import '$lib/components/banner/BannerFoot.svelte';
+import '$lib/components/pages/NotFound.svelte';
 import '$lib/styles/index.css';

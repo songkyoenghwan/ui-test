@@ -73,7 +73,7 @@
 
 			<div>
 				{#each txt as t, i (`case-t-${i}`)}
-					<p class="text-2md text-666 text-lg">{t}</p>
+					<p class="text-2md text-666 lg:text-lg">{t}</p>
 				{/each}
 			</div>
 

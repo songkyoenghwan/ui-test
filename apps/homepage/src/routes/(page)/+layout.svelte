@@ -13,7 +13,7 @@
 	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex 2xl:group-has-checked/header:h-dvh"></header-imgs>
 
 	<div
-		class="flex w-full max-w-490 flex-1 items-center justify-between gap-3 px-2.5 py-5 transition-discrete group-has-checked/header:bg-white md:px-10 md:py-7.5 2xl:items-start 2xl:group-has-checked/header:px-12"
+		class="flex w-full max-w-490 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white lg:px-10 lg:py-7.5 2xl:items-start 2xl:group-has-checked/header:px-12"
 	>
 		<p>
 			<a href="/" title="deepfine homepage">
@@ -170,3 +170,4 @@
 {@render children()}
 
 <footer-tag></footer-tag>
+<banner-foot></banner-foot>

@@ -44,15 +44,14 @@
 {/snippet}
 
 {#snippet imgRender(img = '')}
-	{#if img}
-		<picture class={`bg-light-blue grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
-			<img loading="lazy" src={img !== '' ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${title} image`} class="w-full max-w-300 object-cover" />
-		</picture>
-	{:else}
-		<picture class={`bg-light-blue grid place-content-center overflow-clip rounded-xl transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
-			<img loading="lazy" src={img !== '' ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${title} image`} class="w-full max-w-300 object-cover" />
-		</picture>
-	{/if}
+	<picture class={`grid place-content-center overflow-clip rounded-xl bg-white transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
+		<img
+			loading="lazy"
+			src={img !== '' && img !== null && img !== undefined && img !== 'undefined' ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`}
+			alt={`${title} image`}
+			class="w-full max-w-300 object-cover"
+		/>
+	</picture>
 {/snippet}
 
 {#snippet newsRender(img = '', badges = '', title = '', text = '', date = '', source = '', url = '')}
@@ -69,13 +68,7 @@
 
 		<h4 class={['font-bold', layout === 'list' ? 'text-lg lg:text-4xl' : 'text-2xl lg:text-5xl']}>{title}</h4>
 
-		{#if layout !== 'list'}
-			<div class="lg:py-5">
-				{@render imgRender(img)}
-			</div>
-		{/if}
-
-		<p>{@html text}</p>
+		<p class="text-2md lg:py-5 lg:text-lg">{@html text}</p>
 
 		<div class="text-666 text-2md mt-auto flex justify-between gap-2 lg:pt-2.5 lg:text-lg">
 			{#if source}

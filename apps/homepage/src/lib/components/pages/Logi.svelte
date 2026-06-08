@@ -67,7 +67,7 @@
 		{
 			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-5.jpg`,
 			tit: m.logi_features_tit_5(),
-			txt: [m.logi_features_txt_5(), m.logi_features_txt_4_2()],
+			txt: [m.logi_features_txt_5()],
 			logo: m.logi_features_logo_5(),
 			labels: [m.logi_features_list_5_1(), m.logi_features_list_5_2(), m.logi_features_list_5_3(), m.logi_features_list_5_4()],
 		},
@@ -75,7 +75,7 @@
 	const resultKeys = $state([
 		{ result: 'close', subTit: m.logi_result_subTit_1(), txt: m.logi_result_txt_1() },
 		{ result: 'up', num: 25, subTit: m.logi_result_subTit_2(), txt: m.logi_result_txt_2() },
-		{ result: 'up', subTit: m.logi_result_subTit_3(), txt: m.logi_result_txt_3() },
+		{ result: 'up', num: 18, subTit: m.logi_result_subTit_3(), txt: m.logi_result_txt_3() },
 		{ result: 'chk', num: 100, subTit: m.logi_result_subTit_4(), txt: m.logi_result_txt_4() },
 	]);
 	const caseKeys = $state([

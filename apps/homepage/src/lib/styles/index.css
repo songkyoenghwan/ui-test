@@ -95,6 +95,7 @@
 	--color-red: #ff0000;
 	--color-ff4000: #ff4000;
 	--color-e8d5a7: #e8d5a7;
+	--color-ffa100: #ffa100;
 
 	--text-2sm: 13px;
 	--text-2md: 15px;
@@ -192,6 +193,7 @@
 	--color-red: #ff0000;
 	--color-ff4000: #ff4000;
 	--color-e8d5a7: #e8d5a7;
+	--color-ffa100: #ffa100;
 
 	--color-1bc900: #1bc900;
 	--color-7cf5a0: #7cf5a0;
@@ -378,7 +380,7 @@
 
 	body {
 		min-width: 18.75rem;
-		max-width: 120rem;
+		max-width: 122.5rem;
 		min-height: 100dvh;
 		margin: 0 auto;
 		font-synthesis: none;
@@ -415,6 +417,14 @@
 
 		&:has([data-section='floating']) {
 			padding-bottom: 60px;
+		}
+
+		&.scroll--none {
+			overflow: hidden;
+		}
+
+		&:has(.error) {
+			max-width: 100dvw;
 		}
 	}
 
@@ -475,6 +485,10 @@
 		@apply flex flex-col gap-7.5 px-5 pt-27 pb-20 has-[form]:overflow-clip lg:gap-15 lg:px-10;
 	}
 
+	.error {
+		@apply w-dvw;
+	}
+
 	.header {
 		@apply z-10!;
 	}
@@ -504,7 +518,7 @@
 	}
 
 	.select {
-		@apply text-2md border-d9d9d9 placeholder:text-999 hover:outline-primary flex min-h-12 w-full items-center rounded-xl border bg-[url(/imgs/input/icon-select-down.png)] bg-size-[1.5rem_1.5rem] bg-position-[calc(100%-1.25rem)_center] bg-no-repeat px-5 hover:bg-white hover:outline lg:text-lg;
+		@apply text-2md border-d9d9d9 placeholder:text-999 hover:outline-primary flex min-h-12 w-full items-center rounded-xl border bg-[url(/imgs/input/icon-select-tri.png)] bg-size-[16px_9px] bg-position-[calc(100%-1.25rem)_center] bg-no-repeat px-5 hover:bg-white hover:outline lg:text-lg;
 
 		.option {
 			@apply hover:bg-primary min-h-9 rounded-lg px-3 hover:text-white;
@@ -545,15 +559,11 @@
 	}
 
 	.label-chk {
-		@apply border-d9d9d9 size-15 overflow-clip rounded-xl border transition-colors has-checked:border-black has-checked:bg-black;
+		@apply border-d9d9d9 size-10 overflow-clip rounded-xl border transition-colors has-checked:border-black has-checked:bg-black;
 	}
 
 	.form-item {
-		@apply border-b-d9d9d9 grid gap-2 border-b border-dashed py-5 lg:grid-cols-8 lg:py-7.5;
-
-		& + .form-item {
-			@apply border-t-d9d9d9 border-t border-dashed;
-		}
+		@apply border-t-d9d9d9 grid gap-2 border-t border-dashed py-5 first:border-b-white lg:grid-cols-8 lg:py-7.5 [.first]:border-0;
 	}
 
 	.form-tit {

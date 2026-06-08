@@ -4,7 +4,7 @@
 
 <section
 	data-scroll="slide-up"
-	class="bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat px-7.5 lg:mt-7.5 lg:h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:px-15"
+	class="bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat px-7.5 whitespace-pre-line lg:mt-7.5 lg:h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:px-15"
 	style:--bg-trial={`url(${__STATIC_URL__}/imgs/banner/bg-trial.jpg)`}
 >
 	<picture class="absolute top-0 left-0 z-1 grid place-items-center">

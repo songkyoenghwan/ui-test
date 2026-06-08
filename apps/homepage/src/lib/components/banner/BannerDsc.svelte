@@ -29,7 +29,7 @@
 
 		<div class="mt-auto">
 			<a
-				href="/contact?selectSolution=DSC"
+				href="/contact/contact?selectSolution=DSC"
 				class="text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white hover:text-black max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
 			>
 				<span>{m.btn_inquiry()}</span>

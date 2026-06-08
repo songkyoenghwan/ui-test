@@ -12,7 +12,21 @@
 				};
 			}),
 		];
+
+		const modalMain = document?.querySelector('modal-main') as HTMLElement;
+		if (!modalMain) return;
+		modalMain.list = [
+			...Array.from({ length: 3 }).map((_) => {
+				return {
+					link: 'https://www.deepfine.com/news/news-detail',
+					img: '/imgs/popup/main-popup.jpg',
+					tit: 'title',
+				};
+			}),
+		];
 	});
 </script>
 
 <main-home></main-home>
+
+<modal-main open="open"></modal-main>

@@ -126,7 +126,7 @@
 		{ id: 'faq-chk-1', tit: m.dao_faq_tit_1(), txt: m.dao_faq_txt_1 },
 		{ id: 'faq-chk-2', tit: m.dao_faq_tit_2(), txt: m.dao_faq_txt_2 },
 		{ id: 'faq-chk-3', tit: m.dao_faq_tit_3(), txt: m.dao_faq_txt_3 },
-		{ id: 'faq-chk-4', link: 'https://logifine.deepfine.com/signup/trial', btn: m.btn_start_trial_free(), tit: m.dao_faq_tit_4(), txt: m.dao_faq_txt_4 },
+		{ id: 'faq-chk-4', link: '/solution/dao?selectSolution=DAO', btn: m.btn_start_trial_free(), tit: m.dao_faq_tit_4(), txt: m.dao_faq_txt_4 },
 		{ id: 'faq-chk-5', link: '/solution/dao?selectSolution=DAO', btn: m.btn_quote(), tit: m.dao_faq_tit_5(), txt: m.dao_faq_txt_5 },
 	]);
 

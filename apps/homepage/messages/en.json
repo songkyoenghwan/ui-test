@@ -100,9 +100,9 @@
 	"dao_case_badge_5_1": "Large Shipbuilding / Marine",
 	"dao_case_txt_5_1": "Resolved complex blueprint interpretation issues and skilled labor shortages during large vessel maintenance through AR glasses-based real-time task guides and remote expert support.",
 	"dao_case_txt_5_2": "Scanning equipment numbers with Vision Assist instantly displays blueprints and task instructions,\ncutting maintenance time by 30% and shortening new worker OJT periods by 40%.",
-	"dao_case_etc_5_1": "{#b}30% Reduction{/b} in Maintenance Time",
-	"dao_case_etc_5_2": "{#b}50% Decrease{/b} in Error Rate",
-	"dao_case_etc_5_3": "{#b}40% Shortening{/b} of New Worker OJT Period",
+	"dao_case_etc_5_1": "{#b}Immediate maintenance possible{/b} without paper drawings",
+	"dao_case_etc_5_2": "{#b}Accurate work performed{/b} without relying on skilled workers",
+	"dao_case_etc_5_3": "{#b}New workers available for immediate on-site deployment{/b}",
 	"dao_subtitle_faq": "Frequently Asked Questions",
 
 	"dao_faq_tit_1": "Can DAO only be used on Smart Glasses?",
@@ -159,50 +159,81 @@
 	"dsc_industries_list_txt_8": "Urban traffic · crowd density management, spatial information services",
 
 	"dsc_features_title": "Features part.1",
-	"dsc_features_text": "Transforming real-world spaces into data and managing them",
+
+	"dsc_features_text": "Creating and managing real-world spaces as data",
+
 	"dsc_features_title_2": "Features part.2",
+
 	"dsc_features_text_2": "Analyzing and utilizing spatial information",
 
-	"dsc_features_tit_1": "Easy spatial scanning and no-code editor (spatial data editing)",
-	"dsc_features_txt_1": "Even large-scale facilities like exhibition halls, factories, and stores can be scanned with a LiDAR-equipped tablet, and the AI will automatically generate a 3D Map.",
-	"dsc_features_txt_1_2": "In the no-code editor, you can place, modify, or delete all content—such as 2D panels, 3D assets, videos, and audio—using a simple drag-and-drop interface.",
-	"dsc_features_logo_1": "Gwanghwamun area of approx. 50,000㎡ digitalized into DSC (Seoul Metropolitan Government · LX)",
-	"dsc_features_list_1_1": "LiDAR Scanning",
-	"dsc_features_list_1_2": "LiDAR Scanning",
+	"dsc_features_tit_1": "Anyone can easily scan spaces & edit them using no-code space",
+
+	"dsc_features_txt_1": "Even for large-scale facilities such as exhibition halls, factories, and stores, AI automatically generates 3D maps when the space is scanned with a LiDAR-equipped device.",
+
+	"dsc_features_txt_1_2": "In the no-code space editor, place, modify, and delete all content, including 2D panels, 3D assets, videos, and audio, in 3D space by dragging and dropping.",
+
+	"dsc_features_logo_1": "The Gwanghwamun area approximately Digitalizing 50,000㎡ with DSC (Seoul Metropolitan Government · LX Korea Land Information Corporation)",
+
+	"dsc_features_list_1_1": "LiDAR Scan",
+
+	"dsc_features_list_1_2": "Automatic 3D Map Generation",
+
 	"dsc_features_list_1_3": "All-in-One Editor",
 
-	"dsc_features_tit_2": "Precise VPS Indoor Positioning & AR Navigation",
-	"dsc_features_txt_2": "Vision AI-based VPS (Visual Positioning System) matches camera video features with the server's 3D Map in real time to recognize the user's position and direction within centimeters.",
-	"dsc_features_txt_2_2": "Even in indoor environments where GPS fails, it accurately augments optimal AR route guidance, exhibition commentary, and work manuals onto the precise coordinates.",
-	"dsc_features_logo_2": "Indoor AR route guidance in large stations including Gwanghwamun, Seoul, and Suseo Stations — Specialized service built for the transportation vulnerable",
-	"dsc_features_list_2_1": "VPS Indoor/Outdoor Positioning",
-	"dsc_features_list_2_2": "cm-Level Accuracy",
-	"dsc_features_list_2_3": "AR Docent",
+	"dsc_features_tit_2": "VPS Precise Location Recognition and AR Navigation",
 
-	"dsc_features_tit_3": "Effortless Digital Space Sharing",
-	"dsc_features_txt_3": "Content modifications are applied in real time, eliminating the need for app updates. By sharing a digital space link, users can experience the XR space without installing any app.",
-	"dsc_features_logo_3": "Provided AR experiences through link sharing at numerous exhibitions and pop-up stores",
-	"dsc_features_list_3_1": "URL-Based Deployment",
-	"dsc_features_list_3_2": "Real-Time Content Management",
+	"dsc_features_txt_2": "Vision AI-based VPS (Visual Positioning System) matches feature points of camera images with the server's 3D map in real-time to recognize the user's location and direction down to the centimeter. ",
 
-	"dsc_features_tit_4": "Real-Time Congestion Analysis & Guidance",
-	"dsc_features_txt_4": "Based on CCTV and LiDAR sensors, it collects and analyzes the location, movement paths, density, and congestion levels of visitors within the space in real time.",
-	"dsc_features_txt_4_2": "Hazardous areas are immediately identified to trigger alerts, while visitors are guided via AR maps to less crowded routes. It also supports booth/parking location guidance and eases traffic congestion through vehicle recognition.",
-	"dsc_features_logo_4": "Chuk-Jibsa (3 festivals, 29,206 users), Gwang-Jibsa (Naejangsan National Park, 4,614 users)",
-	"dsc_features_list_4_1": "AI Crowd Density Analysis",
-	"dsc_features_list_4_2": "Color-Coded Congestion Levels",
-	"dsc_features_list_4_3": "Safety Accident Prevention Alerts",
+	"dsc_features_txt_2_2": "Even indoors where GPS does not reach, it augments shortest path AR navigation, exhibition commentary, and work manuals to accurate coordinates.",
+
+	"dsc_features_logo_2": "Indoor AR navigation within major stations at Gwanghwamun Station, Seoul Station, and Suseo Station — Establishment of specialized services for the transportation vulnerable",
+
+	"dsc_features_list_2_1": " VPS Indoor/Outdoor Positioning",
+
+	"dsc_features_list_2_2": "cm precision",
+
+	"dsc_features_list_2_3": "Docent",
+
+	"dsc_features_tit_3": "Easy Digital Space Sharing",
+
+	"dsc_features_txt_3": "Content modifications are reflected in real-time, eliminating the need for app updates, and sharing a digital space link allows you to share the XR space without installing the app. ",
+
+	"dsc_features_logo_3": "Providing AR experiences via link sharing in multiple exhibitions and pop-ups",
+
+	"dsc_features_list_3_1": "URL-based distribution",
+
+	"dsc_features_list_3_2": "Real-time content management",
+
+	"dsc_features_tit_4": "Real-time Congestion Analysis & Guidance",
+
+	"dsc_features_txt_4": "Collects and analyzes the location, movement paths, density, and congestion of visitors within the space in real time based on CCTV and LiDAR sensors.",
+
+	"dsc_features_txt_4_2": "Immediately identifies and sends alerts for hazardous zones, and guides visitors to less crowded routes using AR maps. It also supports booth and parking lot location guidance and traffic congestion mitigation through vehicle recognition.",
+
+	"dsc_features_logo_4": "Chukjipsa (3 festivals, 29,206 visitors), Gwangjipsa (Naejangsan National Park, 4,614 visits)",
+
+	"dsc_features_list_4_1": "AI Analysis of Crowd Density",
+
+	"dsc_features_list_4_2": "Color-coded Congestion Display",
+
+	"dsc_features_list_4_3": "Safety Accident Prevention Alert",
 
 	"dsc_features_tit_5": "AI Smart Control Dashboard",
-	"dsc_features_txt_5": "Visually tracks and visualizes 3D spatial data collected by LiDAR sensors in real time.",
-	"dsc_features_txt_5_2": "Easily monitor object locations, movement paths, congestion, and hazard zones on a single dashboard, while driving operational decisions based on visitor flow, dwell time, and content click data.",
+
+	"dsc_features_txt_5": "Visualizes 3D spatial data collected by LiDAR sensors in real time. ",
+
+	"dsc_features_txt_5_2": "Identifies object locations, movement paths, congestion, and danger zones at a glance on the dashboard, and supports operational decision-making based on visitor movement patterns, dwell time, and content click data.",
+
 	"dsc_features_logo_5": "Currently applied to various industries including tourism, logistics, and transportation infrastructure",
-	"dsc_features_list_5_1": "Real-Time Dashboard",
+
+	"dsc_features_list_5_1": "Real-time Dashboard",
+
 	"dsc_features_list_5_2": "Visitor Data Analysis",
-	"dsc_features_list_5_3": "Hazard Zone Alerts",
+
+	"dsc_features_list_5_3": "Danger Zone Alert",
 
 	"dsc_result_tit": "Proven Results",
-	"dsc_result_subTit": "Proven Results in the Field",
+	"dsc_result_subTit": "This is a result proven in the actual field.",
 	"dsc_result_subTit_1": "Start immediately with your existing scanning equipment",
 	"dsc_result_txt_1": "Scan spaces and complete AR content editing with equipment you already have, such as LiDAR tablets, professional scanners, and 360° cameras.{#b} Planners and marketers can create and operate directly with the no-code editor.{/b}",
 	"dsc_result_subTit_2": "Centimeter-level accuracy indoors,\ncompared to GPS",
@@ -213,7 +244,7 @@
 	"dsc_result_txt_4": "Using 3D Gaussian Splatting technology through video shooting alone, without complex modeling work,{#b} automatically generate 3D space models close to the actual space.{/b} Quickly create immersive XR content and space-based services.",
 
 	"dsc_case_btn_1": "Tourism · Festivals",
-	"dsc_case_tit_1_1": "Smart Tourism AI Map Solution Introduction",
+	"dsc_case_tit_1_1": "Introduction of Smart Tourism AI Map Solution (Chukjipsa · Gwangjipsa)",
 	"dsc_case_badge_1_1": "Real-Time Congestion · Parking Info",
 	"dsc_case_badge_1_2": "Real-Time Congestion · Parking Info",
 	"dsc_case_badge_1_3": "QR Simple Payment",
@@ -239,10 +270,13 @@
 	"dsc_case_etc_3_2": "Analyzing and enhancing productivity through {#b}real-time process progress visualization{/b} and workstation-specific {#b}KPI monitoring{/b}.",
 
 	"dsc_subtitle_faq": "Common Questions About DSC",
-	"dsc_faq_tit_1": "What equipment can be used to scan spaces?",
-	"dsc_faq_txt_1": "You don't need to purchase separate LiDAR equipment or 3D scanners; immediate space scanning is possible with just a tablet equipped with a LiDAR sensor.\nAdditionally, professional equipment you already own can be utilized (e.g., professional LiDAR 3D scanners, 360° cameras, etc.).",
-	"dsc_faq_tit_2": "Do I need a developer to create XR content?",
-	"dsc_faq_txt_2": "No, you can create XR content without a developer.\nDSC provides an iPad app-based no-code editor that allows you to place images, videos, text, and 3D objects onto the 3D space via a drag-and-drop method.\nContent updates are reflected in real time, making separate app updates unnecessary, so planners or marketers can directly produce and operate content.\nAnyone can complete AR/VR content in a few minutes without complex coding.",
+	"dsc_faq_tit_1": "Is professional equipment absolutely necessary for spatial scanning?",
+
+	"dsc_faq_txt_1": "If you have a mobile device equipped with a LiDAR sensor, you can scan spaces immediately with just one app, without the need for separate professional equipment.\n You can also utilize existing equipment you already own, such as professional LiDAR scanners or 360° cameras.",
+
+	"dsc_faq_tit_2": "Do I need a developer to create XR content to place in digital spaces?",
+
+	"dsc_faq_txt_2": "No, you can create XR content without a developer. DSC provides an iPad app-based no-code editor that allows you to place images, videos, text, and 3D objects in 3D spaces using a drag-and-drop method. \nModifications to content are reflected in real-time, eliminating the need for separate app updates, and planners or marketers can directly create and manage content. Anyone can complete content within minutes without complex coding.",
 	"dsc_faq_tit_3": "Do users have to install an app to experience AR?",
 	"dsc_faq_txt_3": "No, AR experiences are possible without installing an app.\nYou can offer AR experiences on web browsers by sharing a link, or via the DSC Viewer app.\nAccessible instantly through QR code scanning or URL connection, making it easy to distribute and showcase AR content to unspecified large numbers of visitors at pop-up stores, exhibitions, and tourist destinations.",
 	"dsc_faq_tit_4": "Is it possible to scan large-scale spaces? How long does it take to build a digital space?",
@@ -257,7 +291,7 @@
 
 	"logi_visual_badge": "LOGI.FINE",
 	"logi_visual_title": "Start Virtual DAS Picking Right Now,\n Without Any Equipment",
-	"logi_visual_subtitle": "DSL is a tote-based virtual DAS picking solution that can be executed instantly, \nregardless of your picking strategy, without the need for paper or facilities.",
+	"logi_visual_subtitle": "LOGI.FINE is a tote-based virtual DAS picking solution that can be executed immediately without paper or equipment, regardless of picking strategy.",
 
 	"logi_problem_title": "Problem & Solution",
 	"logi_problem_text": "Before and after adopting DAS picking, the field changes.",
@@ -275,7 +309,7 @@
 	"logi_to_list_txt_1": "Work is automatically defined based on picking orders generated on the web, proceeding paperless throughout the entire process. Confusion disappears as all stages from instruction to progress and completion are logged.",
 	"logi_to_list_tit_2": "Instant configuration of tote-based Virtual DAS",
 	"logi_to_list_txt_2": "A DAS environment can be configured on the same day without separate facilities. Immediate responses are possible without extra construction even if SKUs, lines, or location layouts change.",
-	"logi_to_list_tit_3": "Smart Glass Hands-free picking",
+	"logi_to_list_tit_3": "Same work quality regardless of skill level",
 	"logi_to_list_txt_3": "The system provides real-time guidance for picking route, quantity, and location, enabling anyone to work at the same level. New personnel can be deployed on the same day.",
 	"logi_to_list_tit_4": "Automatic operational improvement data collection",
 	"logi_to_list_txt_4": "Field data automatically accumulates, covering work time, paths, error occurrence locations, and difficulty by SKU. Staff assignment and path design can be enhanced based on this data.",
@@ -296,12 +330,12 @@
 	"logi_industries_list_6": "Parts · MRO Warehouses",
 	"logi_industries_list_txt_6": "Fundamentally blocking picking errors for multi-product, small-quantity parts and consumables",
 
-	"logi_features_title": "Features part.1",
-	"logi_features_text": "Core features that elevate field efficiency",
+	"logi_features_title": "Features",
+	"logi_features_text": "Increase on-site efficiency with LOGI.FINE's core features.",
 	"logi_features_tit_1": "Instant Virtual DAS configuration \nsimply by uploading picking orders",
 	"logi_features_txt_1": "When you select tote options during picking order uploads, totes are automatically assigned in order number sequence.",
 	"logi_features_txt_1_2": "The sorting environment is instantly completed with a single upload, without separate mapping tasks.",
-	"logi_features_logo_1": "Saves over 90% in initial investment costs compared to building DAS facilities",
+	"logi_features_logo_1": "Immediate implementation of DAS environment without investment burden",
 	"logi_features_list_1_1": "Automatic Tote Assignment",
 	"logi_features_list_1_2": "No Equipment Needed",
 	"logi_features_list_1_3": "Wave-Based Management",
@@ -309,39 +343,45 @@
 	"logi_features_tit_2": "Real-time mis-picking block \nvia 3-step scan sequence",
 	"logi_features_txt_2": "Validates picking in real time by recognizing in the order of Location → Product Barcode → Destination Tote.",
 	"logi_features_txt_2_2": "Immediate alerts are issued for quantity or product errors, fundamentally blocking re-work and claims.",
-	"logi_features_logo_2": "Achieved 0 re-work cases from mis-picking / 100% picking accuracy",
+	"logi_features_logo_2": "Real-time triple verification for zero picking errors",
 	"logi_features_list_2_1": "Location Scan",
-	"logi_features_list_2_2": "Barcode Verification",
+	"logi_features_list_2_2": "Product Barcode Verification",
 	"logi_features_list_2_3": "Tote Scan Check",
-	"logi_features_list_2_4": "Real-Time Error Detection",
+	"logi_features_list_2_4": "Notify Immediately of Error",
 
 	"logi_features_tit_3": "Cart slot visualization / \nMulti-order simultaneous processing",
 	"logi_features_txt_3": "Check progress by slot in real time via the cart slot panel on the right side of the picking screen.",
 	"logi_features_txt_3_2": "Grasp at a glance which tote has been filled with how many items to efficiently handle multi-orders.",
-	"logi_features_logo_3": "Improves units per hour (UPH) processed orders",
-	"logi_features_list_3_1": "Multi-Slot Processing",
-	"logi_features_list_3_2": "Real-Time Slot Monitoring",
-	"logi_features_list_3_3": "Tote Slot Customization",
+	"logi_features_logo_3": "Improvement in Orders Processed Per Hour (UPH)",
+	"logi_features_list_3_1": "Simultaneous monitoring of multiple slots",
+	"logi_features_list_3_2": "Display progress per slot",
+	"logi_features_list_3_3": "Custom setting for the number of totes",
 
 	"logi_features_tit_4": "Complete hands-free picking \nlinked with Smart Glasses",
 	"logi_features_txt_4": "Instantly pairs with Smart Glasses via a single QR code scan on the tablet.",
 	"logi_features_txt_4_2": "Receive real-time guidance for SKUs, quantities, and locations through the glasses, keeping both hands free to focus purely on picking.",
 	"logi_features_logo_4": "Shortens adaptation period for new workers",
-	"logi_features_list_4_1": "Hands-Free Workflow",
-	"logi_features_list_4_2": "QR Pairing",
-	"logi_features_list_4_3": "Voice Guidance",
-	"logi_features_list_4_4": "Improved Work Speed & Accuracy",
+	"logi_features_list_4_1": "Hands-free operation",
+
+	"logi_features_list_4_2": "Instant QR pairing",
+
+	"logi_features_list_4_3": "Voice guidance support",
+
+	"logi_features_list_4_4": "Improved speed and accuracy",
 
 	"logi_features_tit_5": "Immediate KPI feedback upon completion \nData-driven operational enhancement",
 	"logi_features_txt_5": "Check UPH, elapsed time, and accuracy immediately after picking completion. It automatically collects and analyzes data applicable to improving field operations, such as picking time by SKU and throughput by time slot.",
 	"logi_features_logo_5": "Automatic collection of core indicators such as UPH, accuracy, and elapsed time",
-	"logi_features_list_5_1": "Real-Time UPH",
-	"logi_features_list_5_2": "Automatic Accuracy Tracking",
-	"logi_features_list_5_3": "SKU Analysis",
-	"logi_features_list_5_4": "Delay & Error Insights",
+	"logi_features_list_5_1": "Real-time UPH calculation",
+
+	"logi_features_list_5_2": "Automatic accuracy aggregation",
+
+	"logi_features_list_5_3": "Analysis by SKU",
+
+	"logi_features_list_5_4": "Identification of latency and errors",
 
 	"logi_result_tit": "Proven Results",
-	"logi_result_subTit": "Proven Results in the Field",
+	"logi_result_subTit": "This is a result proven in the actual field.",
 	"logi_result_subTit_1": "Zero facility investment costs",
 	"logi_result_txt_1": "Configure a virtual DAS instantly with just totes and tablets. Reduces initial investment costs compared to traditional DAS.",
 	"logi_result_subTit_2": "Enhanced picking processing speed",
@@ -362,8 +402,9 @@
 	"logi_case_btn_2": "Fulfillment / Delivery",
 	"logi_case_tit_2_1": "Smart Logistics Solution",
 	"logi_case_badge_2_1": "Fulfillment / Delivery",
-	"logi_case_txt_2_1": "Introduced a smart glass-based picking solution to a comprehensive logistics center, significantly improving on-site work efficiency.",
-	"logi_case_txt_2_2": "Built a standardized picking environment where new personnel can be deployed immediately, moving away from a structure reliant on skilled workers.",
+	"logi_case_txt_2_1": "We introduced a smart glass-based picking solution to our integrated logistics center to significantly improve on-site work efficiency.",
+
+	"logi_case_txt_2_2": "We moved away from a structure dependent on skilled workers and established a standardized picking environment where new personnel can be deployed immediately.",
 	"logi_case_etc_2_1": "{#b}58% or more productivity improvement per hour{/b} : Based on comparison before and after applying picking work process",
 	"logi_case_etc_2_2": "{#b}75% reduction in time per pick{/b} : Indicator compared to manual work before applying smart glass-based guidance",
 	"logi_case_etc_2_3": "{#b}44% increase{/b} : Daily average picking productivity (1,389 Box → 2,000 Box)",
@@ -371,13 +412,13 @@
 
 	"logi_subtitle_faq": "Frequently Asked Questions",
 	"logi_faq_tit_1": "Is integration with existing WMS/ERP systems required?",
-	"logi_faq_txt_1": "No. You can use it immediately simply by uploading excel files without separate integration. Since you only need to extract picking orders in a standard excel format, it operates independently regardless of your existing system. If WMS/ERP integration is required, we support it through separate consultation via API methods.",
+	"logi_faq_txt_1": "No. You can use it immediately simply by uploading excel files without separate integration. \nSince you only need to extract picking orders in a standard excel format, it operates independently regardless of your existing system. \nIf WMS/ERP integration is required, we support it through separate consultation via API methods.",
 	"logi_faq_tit_2": "Can it not be used without Smart Glasses?",
-	"logi_faq_txt_2": "You can use all features identically with just tablets. Smart Glasses are an optional addition for fields that want to keep both hands completely free. It is also possible to introduce tablets first to verify the effects, and then gradually expand the application of Smart Glasses according to necessity.",
+	"logi_faq_txt_2": "You can use all features identically with just tablets.\n Smart Glasses are an optional addition for fields that want to keep both hands completely free. \nIt is also possible to introduce tablets first to verify the effects, and then gradually expand the application of Smart Glasses according to necessity.",
 	"logi_faq_tit_3": "Can I see the work status from the office in real time?",
-	"logi_faq_txt_3": "Through the web-based management screen, you can grasp the work situation in real time without being on site. Progress status by wave, UPH, picking accuracy, and error occurrence status can be checked directly on the dashboard, and delayed or erroneous work is immediately detected. Since managers can connect via a PC browser without installing a separate client, they can monitor field operational status remotely.",
+	"logi_faq_txt_3": "Through the web-based management screen, you can grasp the work situation in real time without being on site.\n Progress status by wave, UPH, picking accuracy, and error occurrence status can be checked directly on the dashboard, and delayed or erroneous work is immediately detected.\n Since managers can connect via a PC browser without installing a separate client, they can monitor field operational status remotely.",
 	"logi_faq_tit_4": "Can we test on a small scale before adoption?",
-	"logi_faq_txt_4": "You can validate with a small pilot in an actual field environment through a trial account. It proceeds via a phased rollout method where it is applied to a specific wave or part of a work line first to check effects, and then transitions to company-wide expansion once verified. During the trial period, a dedicated Deepfine manager directly supports everything from field setup to operational settlement.",
+	"logi_faq_txt_4": "You can validate with a small pilot in an actual field environment through a trial account. \nIt proceeds via a phased rollout method where it is applied to a specific wave or part of a work line first to check effects, and then transitions to company-wide expansion once verified. During the trial period, a dedicated Deepfine manager directly supports everything from field setup to operational settlement.",
 
 	"logi_banner_title": "Transforming Picking Fields",
 	"logi_banner_title_2": "with LOGI.FINE",
@@ -399,10 +440,10 @@
 	"ceo_name": "Hyunbae Kim",
 	"our_teams_team_1": "Technology Development Division",
 	"our_teams_subtitle_1": "We develop the core technologies that realize DEEP.FINE's Spatial AI and industrial operational solutions. From Vision AI, 3D spatial mapping, and VPS to cloud systems and smart glass applications, we build the technological foundation that works directly on the job site.",
-	"our_teams_list_1_1": "AI & Vision Development: Developing industrial scene recognition, object recognition, Vision AI, and AI Agent technologies.",
-	"our_teams_list_1_2": "Platform Development: Building cloud architectures, backends, APIs, and data processing infrastructures.",
-	"our_teams_list_1_3": "Application Development: Creating mobile, web, smart glass, and XR-based on-site applications.",
-	"our_teams_list_1_4": "Spatial Intelligence Development: Advancing VPS, 3D mapping, indoor positioning, and spatial data processing technologies.",
+	"our_teams_list_1_1": "AI·Vision 개발: 산업 현장 인식, 객체 인식, Vision AI, AI Agent 기술 개발",
+	"our_teams_list_1_2": "Spatial Computing 개발: VPS, 3D 매핑, 실내 측위, 공간 데이터 처리 기술 개발",
+	"our_teams_list_1_3": "플랫폼 개발: 클라우드, 백엔드, API, 데이터 처리 인프라 구축",
+	"our_teams_list_1_4": "애플리케이션 개발: 모바일, 웹, 스마트글래스, XR 기반 현장 앱 개발",
 	"our_teams_team_2": "Product & Service Division",
 	"our_teams_subtitle_2": "We translate industrial site requirements into actual product and service experiences. We analyze client workflows to design interfaces, features, contents, and deployment structures that users can easily navigate on-site.",
 	"our_teams_list_2_1": "Product Planning: Establishing solution direction, feature prioritization, and product roadmaps.",
@@ -442,8 +483,9 @@
 	"btn_inquiry": "Introduction Inquiry",
 	"btn_detail": "Learn More",
 	"btn_introduction": "Company Introduction DEEPFINE",
-	"main_title_trial": "Try Virtual DAS for Free for 28 Days Now",
-	"main_subtitle_trial": "DSL is a tote-based virtual DAS picking solution \nthat can be executed immediately regardless of picking strategy, \nwithout paper or equipment.",
+	"main_title_trial": "End logistics inefficiencies with LOGI.FINE.",
+
+	"main_subtitle_trial": "Challenge yourself to 0% picking errors with a barcode scan-based picking system and virtual DAS. We offer a 14-day free trial.",
 	"btn_start_trial": "Start Free Trial",
 	"btn_more": "See more",
 	"dao_visual_badge": "DEEP.FINE AR.ON — DAO",
@@ -488,7 +530,7 @@
 	"dao_features_txt_2": "Capture the field directly through various devices including smart glasses, and record work status by combining voice memos with photos.",
 	"dao_features_logo_2": "Shipyard & construction sites — Streamlined on-site documentation",
 	"dao_features_list_2_1": "Automatic photo + memo combination",
-	"dao_features_list_2_2": "Dashboard integration",
+	"dao_features_list_2_2": "Comparison before/after operation",
 	"dao_features_tit_3": "Workflow",
 	"dao_features_txt_3": "From creating standard work checklists to report writing, result reports (PDF, Excel) are automatically generated upon completion, and all data supports real-time synchronization across PC, mobile, and smart glasses.",
 	"dao_features_logo_3": "Food company vendor quality inspection — 34% improvement in work productivity",
@@ -496,7 +538,8 @@
 	"dao_features_list_3_2": "Offline mode support",
 	"dao_features_list_3_3": "IoT data augmentation",
 	"dao_features_tit_4": "Multi-party real-time collaboration",
-	"dao_features_txt_4": "Resolve on-site issues without travel using multi-party multi-party real-time collaboration with AR drawing and pointing for intuitive work instructions.",
+	"dao_features_txt_4": "Issue on-site issues without business trips by issuing intuitive work instructions via AR drawing and pointing through multi-party video conferencing.",
+	"dao_features_txt_4_2": "Multiple users can simultaneously access augmented AR objects, enabling multi-interaction.",
 	"dao_features_logo_4": "Gyeonggi-do remote safety inspection — 60% reduction in travel time and costs",
 	"dao_features_list_4_1": "Smart glasses remote control",
 	"dao_features_list_4_2": "Collaborative checklist creation",
@@ -505,7 +548,6 @@
 	"dao_features_list_1_4": "Manual search (LLM)",
 	"dao_features_txt_3_2": "Augmented AR manuals and 3D objects overlaid on real-world objects enable intuitive information recognition.",
 	"dao_features_list_3_4": "AR manuals",
-	"dao_features_txt_4_2": "Multiple users can simultaneously access augmented AR objects for multi-interaction.",
 	"btn_start_trial_free": "Start Free Trial",
 	"btn_quote": "Request a quote",
 
@@ -578,5 +620,8 @@
 
 	"floating_tit": "Try Barcode Picking \n& Virtual DAS for Free.",
 	"floating_btn_1": "Brochure",
-	"floating_btn_2": "Free Trial"
+	"floating_btn_2": "Free Trial",
+
+	"not_found_txt": "The information you are looking for has been moved or does not exist.",
+	"not_found_btn": "Return to Main"
 }

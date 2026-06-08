@@ -32,7 +32,7 @@
 			<a href="/news/detail" title="상세피이지 이동" class="flex">
 				<news-section
 					layout="list"
-					img=""
+					img="undefined"
 					badges="Company,AR.ON"
 					title="DeepFine to Participate in CES 2026, Showcasing XR-Based Spatial Intelligence Solutions"
 					text="DeepFine, an XR (Extended Reality) spatial computing platform company, announced that it will participate in CES 2026, taking place in Las Vegas, USA, from January 6 to
