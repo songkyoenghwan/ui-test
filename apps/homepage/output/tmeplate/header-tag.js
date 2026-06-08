@@ -101,15 +101,15 @@ class HeaderTag extends HTMLElement {
 				<div
 					class="fixed top-22 left-0 hidden h-[calc(100dvh-88px)] w-dvw overflow-y-auto bg-white px-5 opacity-100 shadow-md group-has-checked/header:grid lg:top-27 lg:h-[calc(100dvh-6.75rem)] lg:px-12.5 2xl:right-0 2xl:left-auto 2xl:h-[calc(100dvh-108px)] 2xl:w-[50dvw] 2xl:px-12 starting:opacity-0"
 				>
-					<div class="flex flex-col divide-y divide-black/20">
-						<section class="flex flex-col justify-between gap-15 py-5 font-bold lg:gap-5 lg:py-7.5">
+					<div class="flex flex-col">
+						<section class="flex flex-col justify-between gap-5 pt-10 font-bold">
 							<ul class="grid gap-10 text-2xl 2xl:gap-5">
 								<li class="grid gap-5">
 									<h2 class="text-666 text-lg">Products</h2>
 									<ul>
 										<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
 											<a
-												class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline"
+												class="aria-[current=page]:text-primary pb-2.5 leading-tight underline-offset-4 hover:underline"
 												href="/output/html/logi.html"
 												aria-current="false"
 											>
@@ -117,13 +117,21 @@ class HeaderTag extends HTMLElement {
 											</a>
 										</li>
 										<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-											<a class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" href="/output/html/dao.html" aria-current="false">
+											<a
+												class="aria-[current=page]:text-primary py-2.5 leading-tight underline-offset-4 hover:underline"
+												href="/output/html/dao.html"
+												aria-current="false"
+											>
 												DAO
 												<span class="text-lg font-normal">(DEEP.FINE AR.ON)</span>
 											</a>
 										</li>
 										<li class="flex items-center gap-5 before:relative before:h-[stretch] before:min-h-full before:w-px before:bg-black/20">
-											<a class="aria-[current=page]:text-primary py-2.5 underline-offset-4 hover:underline" href="/output/html/dsc.html" aria-current="false">
+											<a
+												class="aria-[current=page]:text-primary pt-2.5 leading-tight underline-offset-4 hover:underline"
+												href="/output/html/dsc.html"
+												aria-current="false"
+											>
 												DSC
 												<span class="text-lg font-normal">(DEEP.FINE Spatial Crafter)</span>
 											</a>
@@ -151,7 +159,7 @@ class HeaderTag extends HTMLElement {
 								</li>
 							</ul>
 						</section>
-						<section class="mt-auto flex flex-col justify-between gap-15 py-5 lg:gap-5 lg:py-7.5">
+						<section class="mt-auto flex flex-col justify-between gap-15 border-t border-t-black/20 py-5 lg:gap-5 lg:py-7.5">
 							<dl class="text-666 flex flex-col gap-5 text-lg">
 								<dt class="font-bold">Downloads</dt>
 								<dd class="inline-flex items-center gap-10">
@@ -175,10 +183,14 @@ class HeaderTag extends HTMLElement {
 							<dl class="text-666 flex items-center justify-between gap-5 text-lg">
 								<dt class="font-bold">Language</dt>
 								<dd class="divde-x-black/20 inline-flex items-center divide-x">
-									<button class="aria-current:text-primary hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline" type="button">
+									<button class="hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline aria-current:text-black aria-current:underline" type="button">
 										<span class="font-bold">EN</span>
 									</button>
-									<button class="aria-current:text-primary hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline" type="button" aria-current="true">
+									<button
+										class="hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline aria-current:text-black aria-current:underline"
+										type="button"
+										aria-current="true"
+									>
 										<span class="font-bold">KR</span>
 									</button>
 								</dd>
