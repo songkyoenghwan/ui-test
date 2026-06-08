@@ -1,4 +1,4 @@
-import path from 'node:path';
+// import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
@@ -10,28 +10,29 @@ import { defineConfig } from 'vite';
 import { aliases } from './aliases';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+	publicDir: './static',
+	define: {
+		__STATIC_URL__: JSON.stringify(''),
+	},
 	optimizeDeps: {
 		exclude: ['flowbite-svelte', 'flowbite-svelte-icons'],
 	},
 	ssr: {
 		noExternal: ['flowbite-svelte', 'flowbite-svelte-icons'],
 	},
-	server: {
-		host: true,
-		port: 5173,
-	},
-	define: {
-		__STATIC_URL__: JSON.stringify(''),
-	},
-	// publicDir: './static',
-	preview: {
-		// outDir: 'dist',
-		port: 5183,
-		host: true,
-	},
+	// server: {
+	// 	host: true,
+	// 	port: 5173,
+	// 	strictPort: true,
+	// },
+	// preview: {
+	// 	// outDir: 'dist',
+	// 	host: true,
+	// 	open: true,
+	// },
 	plugins: [
 		tailwindcss(),
 		enhancedImages(),
