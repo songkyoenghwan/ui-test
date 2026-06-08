@@ -8,7 +8,6 @@
 <script lang="ts">
 	import CountNumber from '$lib/components/text/CountNumber.svelte';
 	import { m } from '$lib/paraglide/messages.js';
-	import { videoObserver } from '$lib/utils/videoObserve.svelte';
 
 	let lists = $state([
 		{
@@ -130,15 +129,17 @@
 				</dl>
 
 				{#if list.video}
-					<div data-scroll="slide-up" class="relative flex justify-end after:absolute after:z-2 after:flex after:size-full after:bg-transparent">
+					<div
+						data-scroll="slide-up"
+						class={['relative flex justify-end after:absolute after:z-2 after:flex after:size-full after:bg-transparent ', list.id === 'why-1' ? 'lg:-mr-23.75' : '']}
+					>
 						<video
-							{@attach videoObserver}
 							bind:this={videoRefs[i]}
 							data-scroll="slide-up"
 							class={[
 								'relative z-1',
 								list.id === 'why-1'
-									? 'h-56.5 lg:left-32 lg:min-h-131.75 lg:min-w-130'
+									? 'h-56.5 max-sm:hidden lg:min-h-131.75 lg:min-w-130'
 									: list.id === 'why-2'
 										? 'h-53.5 max-w-full lg:h-61.5'
 										: list.id === 'why-5'
@@ -150,9 +151,19 @@
 							preload="metadata"
 							poster={list.poster}
 						>
-							<source src={list.video} type="video/mp4" />
-							<source src={list.webm} type="video/webm" />
+							{#if list.video}
+								<source src={list.video} type="video/mp4" />
+							{/if}
+							{#if list.webm}
+								<source src={list.webm} type="video/webm" />
+							{/if}
 						</video>
+
+						{#if list.id === 'why-1'}
+							<picture class="relative hidden w-full flex-1 flex-wrap items-end justify-end max-sm:flex">
+								<enhanced:img src={list.poster} alt="img" class="relative w-full flex-1 max-lg:max-w-59 lg:max-w-118" />
+							</picture>
+						{/if}
 					</div>
 				{/if}
 

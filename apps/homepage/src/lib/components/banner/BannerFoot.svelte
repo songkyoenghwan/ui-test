@@ -38,17 +38,31 @@
 	};
 </script>
 
-<section data-section="floating" class={['group/foot fixed bottom-5 z-2 px-5 whitespace-pre-line text-white md:right-5', closeState ? '' : ' max-md:w-full ']}>
+{#snippet img()}
+	<figure class="flex flex-none items-center gap-5 text-center text-white">
+		<img src={`${__STATIC_URL__}/imgs/logo/logo-logi-only.svg`} alt="logi.fine" class="min-h-12" />
+		<figcaption class="hidden text-left font-bold group-has-aria-expanded/foot:flex">{m.floating_tit()}</figcaption>
+	</figure>
+{/snippet}
+
+<section data-section="floating" class={['group/foot fixed right-0 bottom-5 z-2 px-5 whitespace-pre-line text-white duration-600 md:right-5', closeState ? '' : ' max-md:w-full ']}>
 	<div
 		class={[
-			'relative  grid gap-2.5 rounded-xl bg-black/70 px-5 py-2.5 transition-all lg:rounded-xl lg:p-5',
-			closeState ? '' : 'grid-cols-1 md:w-135.75 md:grid-cols-2 md:gap-5',
+			'relative grid  gap-2.5 rounded-xl transition-colors  duration-600',
+			closeState ? '' : 'grid-cols-1 bg-black/70 px-5 py-2.5 backdrop-blur-[20px] md:w-135.75 md:grid-cols-2 md:gap-5 lg:p-5',
 		]}
 	>
-		<figure class="flex flex-none items-center gap-5 text-center text-white">
-			<img src={`${__STATIC_URL__}/imgs/logo/logo-logi-only.svg`} alt="logi.fine" class="min-h-12" />
-			<figcaption class="hidden text-left font-bold group-has-aria-expanded/foot:flex">{m.floating_tit()}</figcaption>
-		</figure>
+		{#if !closeState}
+			{@render img()}
+		{:else}
+			<button
+				class="group grid size-20 place-content-center rounded-xl bg-black/70 p-2.5 backdrop-blur-[20px] transition-colors lg:p-2.5"
+				onclick={close}
+				aria-expanded={closeState ? 'false' : 'true'}
+			>
+				{@render img()}
+			</button>
+		{/if}
 
 		<div class="text-2sm whi hidden grid-cols-2 gap-2.5 font-bold group-has-aria-expanded/foot:grid">
 			<a
@@ -73,18 +87,33 @@
 		</div>
 
 		<div class="absolute -top-2.5 -left-2.5 z-2">
-			<button
-				class={['group  grid size-7.5 place-content-center rounded-full transition-colors', closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white']}
-				onclick={close}
-				aria-expanded={closeState ? 'false' : 'true'}
-			>
-				<span class="sr-only">Close</span>
-				{#if closeState}
-					<span class="text-2md font-bold text-white">N</span>
-				{:else}
-					<icon-list name="close" class="stroke-ccc group-hover:stroke-000 size-3"></icon-list>
-				{/if}
-			</button>
+			{#if !closeState}
+				<button
+					class={['group  grid size-7.5 place-content-center rounded-full transition-colors', closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white']}
+					onclick={close}
+					aria-expanded={closeState ? 'false' : 'true'}
+				>
+					<span class="sr-only">Close</span>
+					{#if closeState}
+						<span class="text-2md font-bold text-white">N</span>
+					{:else}
+						<icon-list name="close" class="stroke-ccc group-hover:stroke-000 size-3"></icon-list>
+					{/if}
+				</button>
+			{:else}
+				<button
+					class={['group  grid size-7.5 place-content-center rounded-full transition-colors', closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white']}
+					onclick={close}
+					aria-expanded={closeState ? 'false' : 'true'}
+				>
+					<span class="sr-only">Close</span>
+					{#if closeState}
+						<span class="text-2md font-bold text-white">N</span>
+					{:else}
+						<icon-list name="close" class="stroke-ccc group-hover:stroke-000 size-3"></icon-list>
+					{/if}
+				</button>
+			{/if}
 		</div>
 	</div>
 </section>

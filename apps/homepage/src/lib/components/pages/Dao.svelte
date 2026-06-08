@@ -87,7 +87,7 @@
 			id: 'das-case-2',
 			btn: m.dao_case_btn_2(),
 			logo: ['client'],
-			img: 'https://www.dummyimage.com/720X480/000/fff',
+			img: `${__STATIC_URL__}/imgs/case/img-case-dao-2.jpg`,
 			tit: m.dao_case_tit_2_1(),
 			txt: [m.dao_case_txt_2_1(), m.dao_case_txt_2_2()],
 			etc: [m.dao_case_etc_2_1, m.dao_case_etc_2_2, m.dao_case_etc_2_3],
@@ -96,7 +96,7 @@
 			id: 'das-case-3',
 			btn: m.dao_case_btn_3(),
 			logo: ['client'],
-			img: 'https://www.dummyimage.com/720X480/000/fff',
+			img: `${__STATIC_URL__}/imgs/case/img-case-dao-3.jpg`,
 			tit: m.dao_case_tit_3_1(),
 			txt: [m.dao_case_txt_3_1(), m.dao_case_txt_3_2()],
 			etc: [m.dao_case_etc_3_1, m.dao_case_etc_3_2, m.dao_case_etc_3_3],
@@ -126,8 +126,8 @@
 		{ id: 'faq-chk-1', tit: m.dao_faq_tit_1(), txt: m.dao_faq_txt_1 },
 		{ id: 'faq-chk-2', tit: m.dao_faq_tit_2(), txt: m.dao_faq_txt_2 },
 		{ id: 'faq-chk-3', tit: m.dao_faq_tit_3(), txt: m.dao_faq_txt_3 },
-		{ id: 'faq-chk-4', link: '/solution/dao?selectSolution=DAO', btn: m.btn_start_trial_free(), tit: m.dao_faq_tit_4(), txt: m.dao_faq_txt_4 },
-		{ id: 'faq-chk-5', link: '/solution/dao?selectSolution=DAO', btn: m.btn_quote(), tit: m.dao_faq_tit_5(), txt: m.dao_faq_txt_5 },
+		{ id: 'faq-chk-4', link: '/contact/contact?selectSolution=DAO', btn: m.btn_start_trial_free(), tit: m.dao_faq_tit_4(), txt: m.dao_faq_txt_4 },
+		{ id: 'faq-chk-5', link: '/contact/contact?selectSolution=DAO', btn: m.btn_quote(), tit: m.dao_faq_tit_5(), txt: m.dao_faq_txt_5 },
 	]);
 
 	setContext('case-list', {

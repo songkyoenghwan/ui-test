@@ -10,7 +10,6 @@
 
 <script lang="ts">
 	import Faq from '$/lib/components/faq/Faq.svelte';
-	import BannerFoot from '$lib/components/banner/BannerFoot.svelte';
 	import BannerInquiry from '$lib/components/banner/BannerInquiry.svelte';
 	import BannerTrial from '$lib/components/banner/BannerTrial.svelte';
 	import Features from '$lib/components/product/Features.svelte';
@@ -46,7 +45,7 @@
 		{
 			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-2.jpg`,
 			tit: m.logi_features_tit_2(),
-			txt: [m.logi_features_txt_2()],
+			txt: [m.logi_features_txt_2(), m.logi_features_txt_2_2()],
 			logo: m.logi_features_logo_2(),
 			labels: [m.logi_features_list_2_1(), m.logi_features_list_2_2(), m.logi_features_list_2_3(), m.logi_features_list_2_4()],
 		},
@@ -62,7 +61,7 @@
 			tit: m.logi_features_tit_4(),
 			txt: [m.logi_features_txt_4(), m.logi_features_txt_4_2()],
 			logo: m.logi_features_logo_4(),
-			labels: [m.logi_features_list_4_1(), m.logi_features_list_4_2(), m.logi_features_list_4_3()],
+			labels: [m.logi_features_list_4_1(), m.logi_features_list_4_2(), m.logi_features_list_4_3(), m.logi_features_list_4_4()],
 		},
 		{
 			img: `${__STATIC_URL__}/imgs/features/logo-features-logi-5.jpg`,
@@ -74,7 +73,7 @@
 	]);
 	const resultKeys = $state([
 		{ result: 'close', subTit: m.logi_result_subTit_1(), txt: m.logi_result_txt_1() },
-		{ result: 'up', num: 25, subTit: m.logi_result_subTit_2(), txt: m.logi_result_txt_2() },
+		{ result: 'up', num: 60, subTit: m.logi_result_subTit_2(), txt: m.logi_result_txt_2() },
 		{ result: 'up', num: 18, subTit: m.logi_result_subTit_3(), txt: m.logi_result_txt_3() },
 		{ result: 'chk', num: 100, subTit: m.logi_result_subTit_4(), txt: m.logi_result_txt_4() },
 	]);
@@ -96,7 +95,7 @@
 			img: `${__STATIC_URL__}/imgs/case/img-case-logi-2.jpg`,
 			tit: m.logi_case_tit_2_1(),
 			badge: [m.logi_case_badge_2_1()],
-			txt: [m.logi_case_txt_2_1(), m.logi_case_txt_1_2()],
+			txt: [m.logi_case_txt_2_1(), m.logi_case_txt_2_2()],
 			etc: [m.logi_case_etc_2_1, m.logi_case_etc_2_2],
 		},
 	]);
@@ -147,5 +146,3 @@
 <Faq tit="FAQ" txt={m.logi_subtitle_faq()} lists={[...faqtKeys]} />
 
 <BannerInquiry page="logi" />
-
-<BannerFoot />

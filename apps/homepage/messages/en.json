@@ -250,7 +250,7 @@
 	"dsc_case_badge_1_3": "QR Simple Payment",
 	"dsc_case_badge_1_4": "AI Chatbot",
 	"dsc_case_txt_1_1": "Ensuring safe and convenient festival operations through real-time congestion and parking info guidance powered by AI analysis, alongside AI-customized route recommendations based on visitor profiles.",
-	"dsc_case_etc_1_1": "{#b}Applied Festivals/Sites{/b} : Busan International Rock Festival, Jinju Namgang Yudeung Festival, National Parks, National Gardens, large-scale exhibitions, etc.",
+	"dsc_case_etc_1_1": "{#b}Applied Festivals/Sites{/b} : A total of 7, including the Busan International Rock Festival, Jinju Namgang Lantern Festival, national parks, national gardens, and large-scale exhibitions",
 	"dsc_case_etc_1_2": "{#b}Results{/b} : 71,594 total visitors, satisfaction score of 4.3/5.0",
 	"dsc_case_btn_2": "Large Public Facilities",
 	"dsc_case_tit_2_1": "Indoor/Outdoor AR Navigation for Large Public Facilities",
@@ -346,7 +346,7 @@
 	"logi_features_logo_2": "Real-time triple verification for zero picking errors",
 	"logi_features_list_2_1": "Location Scan",
 	"logi_features_list_2_2": "Product Barcode Verification",
-	"logi_features_list_2_3": "Tote Scan Check",
+	"logi_features_list_2_3": "Tote Scan Confirmed",
 	"logi_features_list_2_4": "Notify Immediately of Error",
 
 	"logi_features_tit_3": "Cart slot visualization / \nMulti-order simultaneous processing",

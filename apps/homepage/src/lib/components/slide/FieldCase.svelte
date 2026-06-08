@@ -80,7 +80,7 @@
 			<ul class="text-2md border-t-d9d9d9 space-y-2.5 border-t border-dashed pt-5 text-lg font-bold">
 				{#each etc as msg, i (`case-e-${i}`)}
 					<li class="flex items-center gap-1.5">
-						<icon-list name="tick-circle-list" class="fill-primary size-5"></icon-list>
+						<icon-list name="tick-circle-list" class="fill-primary size-5 flex-none"></icon-list>
 						<div>
 							<ParaglideMessage message={msg}>
 								{#snippet b({ children })}
