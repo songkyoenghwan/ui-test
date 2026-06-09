@@ -6,15 +6,19 @@ import { aliases } from './aliases.js';
 const config = {
 	kit: {
 		// adapter-auto 대신 adapter-static 사용
-		adapter: adapter(),
-
-		// 	{
-		// 	pages: 'dist',
-		// 	assets: 'dist',
-		// 	fallback: 'index.html',
-		// 	precompress: false,
-		// 	strict: true,
-		// }
+		adapter: adapter({
+			pages: 'dist',
+			assets: 'dist',
+			fallback: '404.html',
+			precompress: false,
+			strict: true,
+		}),
+		paths: {
+			base: '/ui-test/apps/homepage',
+		},
+		prerender: {
+			handleHttpError: 'warn',
+		},
 		alias: aliases,
 	},
 	vitePlugin: {
