@@ -62,18 +62,18 @@
 <section data-scroll="first" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all max-xl:pr-0 max-xl:pb-0 lg:gap-15 lg:pt-15 lg:pl-15">
 	<h3 class="relative z-2 text-2xl font-bold lg:text-5xl">CEO Message</h3>
 
-	<div class="relative z-4 space-y-5 lg:space-y-10 lg:whitespace-pre-line">
-		<p class="text-lg font-bold lg:text-4xl">
+	<div class="relative z-4 space-y-5 break-all max-lg:pr-5 lg:space-y-10 lg:whitespace-pre-line">
+		<p class="break-alllg:text-4xl text-lg font-bold">
 			{m.ceo_txt_0()}
 		</p>
 
-		<p class="text-2md lg:text-2xl">
+		<p class="text-2md break-all lg:text-2xl">
 			{m.ceo_text_1()}
 		</p>
-		<p class="text-2md lg:text-2xl">
+		<p class="text-2md break-all lg:text-2xl">
 			{m.ceo_text_2()}
 		</p>
-		<p class="text-2md lg:text-2xl">
+		<p class="text-2md break-all lg:text-2xl">
 			{m.ceo_text_3()}
 		</p>
 	</div>

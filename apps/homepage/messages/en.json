@@ -46,7 +46,7 @@
 	"main_mro_txt_2": "30% shorter maintenance time and 40% shorter training period by instantly displaying drawings and work instructions with Vision Assist",
 	"main_mro_txt_3": "58% productivity gain per hour and 75% reduction in time per pick by implementing smart glass-based picking/inspection solution",
 	"main_mro_txt_4": "4.28 user satisfaction score achieved through VPS-based large station AR navigation",
-	"main_mro_txt_4_2": "* Targeting non-disabled people, transportation vulnerable people, and foreigners ",
+	"main_mro_txt_4_2": "* Targeting non-disabled people, transportation vulnerable people, and foreigners",
 	"main_mro_txt_5": "4.16 million cumulative uses and 4.3 visitor satisfaction score achieved with AI congestion analysis and personalized route recommendations",
 	"main_title_news": "DEEP.FINE NEWS",
 	"main_subtitle_news": "Check out Deepfine's application cases and latest news on industrial AI, spatial intelligence, and smart glass platforms.",
@@ -182,13 +182,13 @@
 
 	"dsc_features_tit_2": "VPS Precise Location Recognition and AR Navigation",
 
-	"dsc_features_txt_2": "Vision AI-based VPS (Visual Positioning System) matches feature points of camera images with the server's 3D map in real-time to recognize the user's location and direction down to the centimeter. ",
+	"dsc_features_txt_2": "Vision AI-based VPS (Visual Positioning System) matches feature points of camera images with the server's 3D map in real-time to recognize the user's location and direction down to the centimeter.",
 
 	"dsc_features_txt_2_2": "Even indoors where GPS does not reach, it augments shortest path AR navigation, exhibition commentary, and work manuals to accurate coordinates.",
 
-	"dsc_features_logo_2": "Indoor AR navigation within major stations at Gwanghwamun Station, Seoul Station, and Suseo Station — Establishment of specialized services for the transportation vulnerable",
+	"dsc_features_logo_2": "Indoor AR navigation within major stations at Gwanghwamun Station, Seoul Station, and Suseo Station Establishment of specialized services for the transportation vulnerable",
 
-	"dsc_features_list_2_1": " VPS Indoor/Outdoor Positioning",
+	"dsc_features_list_2_1": "VPS Indoor/Outdoor Positioning",
 
 	"dsc_features_list_2_2": "cm precision",
 
@@ -196,7 +196,7 @@
 
 	"dsc_features_tit_3": "Easy Digital Space Sharing",
 
-	"dsc_features_txt_3": "Content modifications are reflected in real-time, eliminating the need for app updates, and sharing a digital space link allows you to share the XR space without installing the app. ",
+	"dsc_features_txt_3": "Content modifications are reflected in real-time, eliminating the need for app updates, and sharing a digital space link allows you to share the XR space without installing the app.",
 
 	"dsc_features_logo_3": "Providing AR experiences via link sharing in multiple exhibitions and pop-ups",
 
@@ -220,7 +220,7 @@
 
 	"dsc_features_tit_5": "AI Smart Control Dashboard",
 
-	"dsc_features_txt_5": "Visualizes 3D spatial data collected by LiDAR sensors in real time. ",
+	"dsc_features_txt_5": "Visualizes 3D spatial data collected by LiDAR sensors in real time.",
 
 	"dsc_features_txt_5_2": "Identifies object locations, movement paths, congestion, and danger zones at a glance on the dashboard, and supports operational decision-making based on visitor movement patterns, dwell time, and content click data.",
 
@@ -485,10 +485,10 @@
 	"btn_introduction": "Company Introduction DEEPFINE",
 	"main_title_trial": "End logistics inefficiencies with LOGI.FINE.",
 
-	"main_subtitle_trial": "Challenge yourself to 0% picking errors with a barcode scan-based picking system and virtual DAS. We offer a 14-day free trial.",
+	"main_subtitle_trial": "Challenge yourself to 0% picking errors with a barcode scan-based picking system and virtual DAS. We offer a 28-day free trial.",
 	"btn_start_trial": "Start Free Trial",
 	"btn_more": "See more",
-	"dao_visual_badge": "DEEP.FINE AR.ON — DAO",
+	"dao_visual_badge": "DEEP.FINE AR.ON DAO",
 	"dao_visual_title": "Turn real-world spaces into \ndata with AI and control them intelligently",
 	"dao_visual_subtitle": "{#p}Scan the equipment number to \ndisplay drawings and manuals right before your eyes, \ncomplete checklists with voice commands,\n and automatically record work results.{/p} {#p}Discover the AI ​​work support and management platform for industrial sites.{/p}",
 	"dao_problem_title": "Problem & Solution",
@@ -522,25 +522,25 @@
 	"dao_features_text": "We transform industrial workplaces with core DAO features.",
 	"dao_features_tit_1": "Vision Assist",
 	"dao_features_txt_1": "Scan equipment IDs with smart glasses, and drawings/manuals appear instantly in your field of view.",
-	"dao_features_logo_1": "Shipyard MRO site — 30% reduction in maintenance time",
+	"dao_features_logo_1": "Shipyard MRO site 30% reduction in maintenance time",
 	"dao_features_list_1_1": "Automatic equipment ID recognition",
 	"dao_features_list_1_2": "QR scanning",
 	"dao_features_list_1_3": "Drawing viewer",
 	"dao_features_tit_2": "Photo & Notes",
 	"dao_features_txt_2": "Capture the field directly through various devices including smart glasses, and record work status by combining voice memos with photos.",
-	"dao_features_logo_2": "Shipyard & construction sites — Streamlined on-site documentation",
+	"dao_features_logo_2": "Shipyard & construction sites Streamlined on-site documentation",
 	"dao_features_list_2_1": "Automatic photo + memo combination",
 	"dao_features_list_2_2": "Comparison before/after operation",
 	"dao_features_tit_3": "Workflow",
 	"dao_features_txt_3": "From creating standard work checklists to report writing, result reports (PDF, Excel) are automatically generated upon completion, and all data supports real-time synchronization across PC, mobile, and smart glasses.",
-	"dao_features_logo_3": "Food company vendor quality inspection — 34% improvement in work productivity",
+	"dao_features_logo_3": "Food company vendor quality inspection 34% improvement in work productivity",
 	"dao_features_list_3_1": "Automatic reports",
 	"dao_features_list_3_2": "Offline mode support",
 	"dao_features_list_3_3": "IoT data augmentation",
 	"dao_features_tit_4": "Multi-party real-time collaboration",
 	"dao_features_txt_4": "Issue on-site issues without business trips by issuing intuitive work instructions via AR drawing and pointing through multi-party video conferencing.",
 	"dao_features_txt_4_2": "Multiple users can simultaneously access augmented AR objects, enabling multi-interaction.",
-	"dao_features_logo_4": "Gyeonggi-do remote safety inspection — 60% reduction in travel time and costs",
+	"dao_features_logo_4": "Gyeonggi-do remote safety inspection 60% reduction in travel time and costs",
 	"dao_features_list_4_1": "Smart glasses remote control",
 	"dao_features_list_4_2": "Collaborative checklist creation",
 	"dao_features_list_4_3": "Automatic face mosaic",
@@ -566,7 +566,7 @@
 	"term_privacy_section_2_title": "Processing and Retention Period of Personal Information",
 	"term_privacy_section_2_item_1": "1. DEEP.FINE Co., Ltd. processes and retains personal information within the personal information retention and use period required by statutes or the personal information retention and use period consented to by the data subject upon collection.",
 	"term_privacy_section_2_item_2_title": "2. The specific processing and retention periods for each category of personal information are as follows:",
-	"term_privacy_section_2_item_2_desc": "Records on collection/processing and use of credit information: 3 years ",
+	"term_privacy_section_2_item_2_desc": "Records on collection/processing and use of credit information: 3 years",
 	"term_privacy_section_2_item_2_desc_2": "Records on consumer complaints or dispute resolution: 5 years from the date of dispute resolution completion.",
 	"term_privacy_section_3_title": "Third-Party Provision of Personal Information",
 	"term_privacy_section_3_desc": "DEEP.FINE Co., Ltd. uses the user's personal information only within the scope notified in the 'Purposes of Processing Personal Information' and does not use it beyond that scope or provide it to third parties without the prior consent of the user, except as permitted under general legal principles.",
@@ -614,7 +614,7 @@
 	"term_privacy_agency_1": "1. Personal Information Dispute Mediation Committee: (Without Area Code) 1833-6972",
 	"term_privacy_agency_2": "2. Personal Information Infringement Report Center: (Without Area Code) 118",
 	"term_privacy_agency_3": "3. Cybercrime Investigation Division, Supreme Prosecutors' Office: (Without Area Code) 1301",
-	"term_privacy_agency_4": "4. Cyber Log-in, National Police Agency: (Without Area Code) 182 ",
+	"term_privacy_agency_4": "4. Cyber Log-in, National Police Agency: (Without Area Code) 182",
 	"term_privacy_section_10_title": "Amendment of Privacy Policy",
 	"term_privacy_section_10_desc": "This Privacy Policy is effective as of February 25, 2022.",
 

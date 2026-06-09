@@ -116,14 +116,18 @@
 						data-font={list.font}
 					>
 						{#if list.id !== 'why-4'}
-							<strong class="inline-flex gap-px leading-none font-bold tracking-tight lg:min-w-29"><CountNumber text={Number(list.num)} /></strong>
+							<strong class={['inline-flex gap-px leading-none font-bold tracking-tight lg:min-w-29', list.id === 'why-2' ? 'max-xl:text-4xl max-lg:text-5xl' : '']}>
+								<CountNumber text={Number(list.num)} />
+							</strong>
 							{#if list.id === 'why-5'}
 								<span class="leading-none font-normal">%</span>
 							{/if}
 						{:else}
 							{list.tit}
 						{/if}
-						<strong class="text-primary leading-none">{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}</strong>
+						<strong class={['text-primary leading-none', list.id === 'why-2' ? 'max-xl:text-4xl max-lg:text-5xl' : '']}>
+							{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}
+						</strong>
 					</dt>
 					<dd class={['text-2md', list.id !== 'why-3' && list.id !== 'why-4' ? 'relative z-3 lg:text-lg' : 'lg:text-2xl']}>{list.txt}</dd>
 				</dl>

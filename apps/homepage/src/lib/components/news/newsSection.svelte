@@ -68,12 +68,6 @@
 
 		<h4 class={['font-bold', layout === 'list' ? 'text-lg lg:text-4xl' : 'text-2xl lg:text-5xl']}>{title}</h4>
 
-		{#if layout !== 'list' && img !== '' && img !== null && img !== undefined && img !== 'undefined'}
-			<div class="lg:py-5">
-				{@render imgRender(img)}
-			</div>
-		{/if}
-
 		<p class="text-2md lg:py-5 lg:text-lg">{@html text}</p>
 
 		<div class="text-666 text-2md mt-auto flex justify-between gap-2 lg:pt-2.5 lg:text-lg">
