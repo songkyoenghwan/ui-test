@@ -1,0 +1,30 @@
+import { dt as a, ut as c, F as e, _ as i, Y as n, h as o, Z as r, r as s, N as t } from '../chunks/DWWkaRp_.js';
+import '../chunks/xihTtKlq.js';
+
+var l = e(
+	`<main class="sub"><sub-heading-line></sub-heading-line> <sub-company></sub-company> <section class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:gap-15 lg:p-15"><h3 class="text-2xl font-bold lg:text-5xl">History</h3> <ol class="flex flex-col gap-5 lg:gap-7.5"><li data-scroll="slide-up" class="grid items-center gap-5 rounded-xl bg-white lg:grid-cols-[minmax(0,1fr)_322px] lg:flex-row lg:gap-15"><header-year></header-year> <header-year></header-year> <header-year></header-year> <header-year></header-year> <div class="col-span-2 flex flex-col gap-5 lg:col-span-1"><p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p> <p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p></div> <picture class="border-d9d9d9 col-span-2 grid h-53.5 place-content-center overflow-clip rounded-xl border transition-all lg:col-span-1 lg:h-60"><img loading="lazy" src="" alt="" class="object-cover"/></picture></li> <li data-scroll="slide-up" class="grid items-center gap-5 rounded-xl bg-white lg:grid-cols-[minmax(0,1fr)_322px] lg:flex-row lg:gap-15"><header-year></header-year> <div class="col-span-2 flex flex-col gap-5 lg:col-span-1"><p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p> <p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p></div> <picture class="border-d9d9d9 col-span-2 grid h-53.5 place-content-center overflow-clip rounded-xl border transition-all lg:col-span-1 lg:h-60"><img loading="lazy" src="" alt="" class="object-cover"/></picture></li> <li data-scroll="slide-up" class="grid items-center gap-5 rounded-xl bg-white lg:grid-cols-[minmax(0,1fr)_322px] lg:flex-row lg:gap-15"><div class="col-span-2 flex flex-col gap-5 lg:col-span-1"><p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p> <p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p></div> <picture class="border-d9d9d9 col-span-2 grid h-53.5 place-content-center overflow-clip rounded-xl border transition-all lg:col-span-1 lg:h-60"><img loading="lazy" src="" alt="" class="object-cover"/></picture></li> <li data-scroll="slide-up" class="grid items-center gap-5 rounded-xl bg-white lg:grid-cols-[minmax(0,1fr)_322px] lg:flex-row lg:gap-15"><div class="col-span-2 flex flex-col gap-5 lg:col-span-1"><p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p> <p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p></div></li> <li data-scroll="slide-up" class="grid items-center gap-5 rounded-xl bg-white lg:grid-cols-[minmax(0,1fr)_322px] lg:flex-row lg:gap-15"><div class="col-span-2 flex flex-col gap-5 lg:col-span-1"><p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p> <p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p></div></li></ol></section></main>`,
+	2,
+);
+function u(e) {
+	var s = l(),
+		u = n(s);
+	o(u, `title`, `Company`);
+	var d = r(u, 2);
+	i(d, 1, `sub-inner`);
+	var f = r(d, 2),
+		p = r(n(f), 2),
+		m = n(p),
+		h = n(m);
+	(o(h, `year`, `2025`), i(h, 1, `col-span-2`));
+	var g = r(h, 2);
+	(o(g, `year`, `2023`), i(g, 1, `col-span-2`));
+	var _ = r(g, 2);
+	(o(_, `year`, `2021`), i(_, 1, `col-span-2`));
+	var v = r(_, 2);
+	(o(v, `year`, `2019`), i(v, 1, `col-span-2`), c(4), a(m));
+	var y = r(m, 2),
+		b = n(y);
+	(o(b, `year`, `2025`), i(b, 1, `col-span-2`), c(4), a(y), c(6), a(p), a(f), a(s), t(e, s));
+}
+s(u, {}, [], [], { mode: `open` });
+export { u as component };

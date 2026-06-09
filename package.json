@@ -8,7 +8,6 @@
 	],
 	"scripts": {
 		"build:all": "bash deploy.sh",
-		"deploy": "npm run build:all && gh-pages -d deploy_build",
 		"build": "bun run --filter \"*\" build",
 		"dev": "bun run --filter \"*\" dev",
 		"wc": "bun run fm && bun run --filter \"*\" wc",
@@ -29,6 +28,7 @@
 		"doctor": "svelte-doctor check"
 	},
 	"dependencies": {
+		"gh-pages": "^6.3.0",
 		"swiper": "^12.2.0"
 	},
 	"devDependencies": {

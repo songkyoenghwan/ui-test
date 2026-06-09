@@ -1,1 +1,0 @@
-import{F as e,N as t,r as n}from"../chunks/80agDHj0.js";import"../chunks/xihTtKlq.js";var r=e(`<not-found></not-found>`,2);function i(e){t(e,r())}n(i,{},[],[],{mode:`open`});export{i as component};

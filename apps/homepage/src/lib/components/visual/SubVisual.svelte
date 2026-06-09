@@ -93,13 +93,15 @@
 		<div class="mt-7.5 flex lg:mt-9">
 			<a
 				href={page === 'logi'
-					? '/solution/logi?selectSolution=LOGI.FINE'
+					? 'https://logifine.deepfine.com/signup/trial'
 					: page === 'dao'
 						? '/contact/contact?selectSolution=DAO'
 						: page === 'dsc'
 							? '/contact/contact?selectSolution=DSC'
 							: '/contact/contact'}
 				class="text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white hover:text-black max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:text-lg"
+				target={page === 'logi' ? '_black' : undefined}
+				rel={page === 'logi' ? 'noopener noreferrer' : undefined}
 			>
 				<span>{m.btn_inquiry()}</span>
 				<icon-list name="arrow-right" class="size-6 stroke-white group-hover:stroke-black"></icon-list>

@@ -16,14 +16,14 @@
 		<p class="text-lg lg:text-2xl">{m.dsc_banner_txt()}</p>
 
 		<div>
-			<LiquidGlass class="inline-flex w-full max-w-225 items-center justify-center gap-2 rounded-full p-5" style="border-radius: 12px;">
+			<LiquidGlass class="inline-flex w-full max-w-225 items-center justify-center  rounded-full p-5 " style="border-radius: 12px;">
 				<p class="text-2md lg:text-lg">{m.dsc_banner_box_txt_1()}</p>
 
-				<div class="flex items-end justify-center gap-2.5 text-3xl font-bold lg:text-[5.625rem]">
+				<div class=" flex items-end justify-center gap-2.5 text-3xl font-bold lg:mt-2.5 lg:text-[5.625rem]">
 					<CountNumber text={Number(1500000)} />
 					<p class="text-3xl font-bold">m²</p>
 				</div>
-				<p class="text-2md lg:text-lg">{m.dsc_banner_box_txt_2()}</p>
+				<p class="text-2md mt-5 lg:mt-2.5 lg:text-lg">{m.dsc_banner_box_txt_2()}</p>
 			</LiquidGlass>
 		</div>
 

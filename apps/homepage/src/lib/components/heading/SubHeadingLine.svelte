@@ -66,11 +66,11 @@
 		<div class="max-lg:mt-5">
 			<a
 				href={`${link ?? '/'}`}
-				class="group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-white hover:text-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
+				class="group flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 transition-colors hover:bg-black hover:text-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
 				aria-label={txt}
 			>
 				<span>{m.btn_more()}</span>
-				<icon-list name="arrow-right" class="group-hover:stroke-primary size-6 stroke-black"></icon-list>
+				<icon-list name="arrow-right" class="size-6 stroke-black group-hover:stroke-white"></icon-list>
 			</a>
 		</div>
 	{/if}

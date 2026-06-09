@@ -35,16 +35,16 @@
 	]);
 	const feaKeys = $state([
 		{
-			poster: `${__STATIC_URL__}/video/vision-video.jpg`,
-			video: `${__STATIC_URL__}/video/vision-video.webm`,
+			poster: `${__STATIC_URL__}/video/vi-video.jpg`,
+			video: `${__STATIC_URL__}/video/vi-video.webm`,
 			tit: m.dao_features_tit_1(),
 			txt: [m.dao_features_txt_1(), m.dao_features_txt_1_2()],
 			logo: m.dao_features_logo_1(),
 			labels: [m.dao_features_list_1_1(), m.dao_features_list_1_2(), m.dao_features_list_1_3(), m.dao_features_list_1_4()],
 		},
 		{
-			poster: `${__STATIC_URL__}/video/photo-video.jpg`,
-			video: `${__STATIC_URL__}/video/photo-video.webm`,
+			poster: `${__STATIC_URL__}/video/sc-video.jpg`,
+			video: `${__STATIC_URL__}/video/sc-video.webm`,
 			tit: m.dao_features_tit_2(),
 			txt: [m.dao_features_txt_2()],
 			logo: m.dao_features_logo_2(),
@@ -74,6 +74,16 @@
 		{ result: 'chk', num: 100, subTit: m.dao_result_subTit_4(), txt: m.dao_result_txt_4() },
 	]);
 	const caseKeys = $state([
+		{
+			id: 'das-case-5',
+			btn: m.dao_case_btn_5(),
+			logo: ['client'],
+			img: `${__STATIC_URL__}/imgs/case/img-case-dao-5.jpg`,
+			tit: m.dao_case_tit_5_1(),
+			badge: [m.dao_case_badge_5_1()],
+			txt: [m.dao_case_txt_5_1(), m.dao_case_txt_5_2()],
+			etc: [m.dao_case_etc_5_1, m.dao_case_etc_5_2, m.dao_case_etc_5_3],
+		},
 		{
 			id: 'das-case-1',
 			btn: m.dao_case_btn_1(),
@@ -109,16 +119,6 @@
 			tit: m.dao_case_tit_4_1(),
 			txt: [m.dao_case_txt_4_1()],
 			etc: [m.dao_case_etc_4_1, m.dao_case_etc_4_2, m.dao_case_etc_4_3],
-		},
-		{
-			id: 'das-case-5',
-			btn: m.dao_case_btn_5(),
-			logo: ['client'],
-			img: `${__STATIC_URL__}/imgs/case/img-case-dao-5.jpg`,
-			tit: m.dao_case_tit_5_1(),
-			badge: [m.dao_case_badge_5_1()],
-			txt: [m.dao_case_txt_5_1(), m.dao_case_txt_5_2()],
-			etc: [m.dao_case_etc_5_1, m.dao_case_etc_5_2, m.dao_case_etc_5_3],
 		},
 	]);
 

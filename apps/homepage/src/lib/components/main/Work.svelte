@@ -33,11 +33,11 @@
 	]);
 </script>
 
-<section data-scroll="slide-up" class="relative max-w-dvw py-5 lg:py-15">
+<section data-scroll="slide-up" class="relative max-w-dvw pb-5 lg:pb-15">
 	<sub-heading-line line="none" title={m.main_title_work?.()} subTit={m.main_subtitle_work?.()}></sub-heading-line>
 
 	<dl
-		class="space-y-5 rounded-xl bg-(image:--work) bg-cover bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:bg-fixed lg:pt-15 lg:pb-50 lg:text-4xl"
+		class="space-y-5 rounded-xl bg-(image:--work) bg-cover bg-no-repeat p-5 text-center text-lg text-white lg:h-105 lg:pt-15 lg:pb-50 lg:text-4xl"
 		style:--work={`url(${__STATIC_URL__}/imgs/main/work/bg-work.jpg)`}
 	>
 		<dt class="text-lg font-bold lg:text-4xl">DEEP.FINE SPATIAL INTELLIGENCE AI</dt>

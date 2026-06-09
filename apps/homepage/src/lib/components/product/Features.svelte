@@ -24,7 +24,7 @@
 		{#each lists as item, i (i)}
 			<li
 				data-scroll="slide-up"
-				class="relative grid gap-5 rounded-xl bg-white p-5 lg:grid-cols-[1fr_fit-content(460px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
+				class="relative grid gap-5 rounded-xl bg-white p-5 lg:grid-cols-[1fr_fit-content(480px)] lg:flex-row lg:gap-15 lg:p-15 xl:grid-cols-[1fr_fit-content(640px)] xl:gap-50"
 			>
 				<div class="flex flex-col justify-between gap-2.5">
 					<dl class="space-y-2.5 lg:space-y-5">
@@ -67,19 +67,11 @@
 
 				<div>
 					{#if item.img}
-						<picture class="bg-ebedff aspect-video h-auto w-full rounded-2xl object-cover sm:h-90 lg:w-160">
+						<picture class="aspect-video w-full rounded-2xl object-cover">
 							<img loading="lazy" src={item.img} alt={item.tit} />
 						</picture>
 					{:else}
-						<video
-							bind:this={videoEl}
-							poster={item.postser}
-							class="bg-ebedff aspect-video h-auto w-full rounded-2xl object-cover sm:h-90 lg:w-160"
-							autoplay
-							muted
-							playsinline
-							loop
-						>
+						<video bind:this={videoEl} poster={item.postser} class="aspect-video w-full rounded-2xl object-cover" autoplay muted playsinline loop>
 							<source src={item.video} type="video/webm" />
 						</video>
 					{/if}

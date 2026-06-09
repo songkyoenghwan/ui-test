@@ -11,6 +11,7 @@ import { aliases } from './aliases';
 
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
+const isDeployMode = process.env.IS_DEPLOY === 'true';
 
 export default defineConfig({
 	// publicDir: './static',
@@ -40,5 +41,5 @@ export default defineConfig({
 		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide', strategy: ['localStorage', 'cookie', 'preferredLanguage', 'baseLocale'] }),
 	],
 	resolve: { alias: aliases },
-	base: '/ui-test/apps/homepage/',
+	base: isDeployMode ? '/ui-test/apps/homepage' : '',
 });

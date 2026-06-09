@@ -27,7 +27,7 @@
 </script>
 
 <header
-	class="bg-primary items mt-5 flex h-30 flex-col justify-center gap-1.5 overflow-clip rounded-xl bg-(image:--bg-history-url) bg-cover bg-center bg-no-repeat p-5 text-white lg:mt-7.5 lg:h-45 lg:gap-2.5 lg:px-15 lg:py-5"
+	class="bg-primary items flex h-30 flex-col justify-center gap-1.5 overflow-clip rounded-xl bg-(image:--bg-history-url) bg-cover bg-center bg-no-repeat p-5 text-white lg:h-45 lg:gap-2.5 lg:px-15 lg:py-5"
 	style:--bg-history-url={`url('${activeBg}')`}
 >
 	<p class="text-2md lg:text-2xl">{year}~{Number(year) + 1}</p>

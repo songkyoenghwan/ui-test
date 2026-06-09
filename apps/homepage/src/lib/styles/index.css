@@ -450,9 +450,9 @@
 		--select-arrow: var(--select-border);
 	}
 
-	select,
 	::picker(select) {
 		appearance: base-select;
+		--webkit-appearance: base-select;
 	}
 
 	/* Select button */
@@ -460,13 +460,13 @@
 		--radius: 100px;
 		--option-size: 50px;
 		display: grid;
+		appearance: none;
 		anchor-name: --anchor-el;
 		place-items: center;
 		height: var(--option-size);
 		padding: 0;
 		border: 1px solid #ccc;
 		border-radius: 8px;
-
 		background: white;
 		cursor: pointer;
 
@@ -580,6 +580,12 @@
 
 	icon-list {
 		@apply inline-flex;
+	}
+
+	news-section {
+		img {
+			@apply inline-block;
+		}
 	}
 }
 

@@ -11,6 +11,7 @@ import { aliases } from './aliases';
 
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
+const isDeployMode = process.env.IS_DEPLOY === 'true';
 
 export default defineConfig({
 	// publicDir: './static',
@@ -49,5 +50,5 @@ export default defineConfig({
 	// 		formats: ['es', 'cjs'], // ✅ 포맷 추가
 	// 	},
 	// },);
-	base: '/ui-test/apps/map/',
+	base: isDeployMode ? '/ui-test/apps/map' : '',
 });

@@ -1,1 +1,1 @@
-import"./CoJq17Tl.js";
+import './CoJq17Tl.js';
