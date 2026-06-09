@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-	publicDir: './static',
+	// publicDir: './static',
 	define: {
 		__STATIC_URL__: JSON.stringify(''),
 	},
@@ -49,4 +49,5 @@ export default defineConfig({
 	// 		formats: ['es', 'cjs'], // ✅ 포맷 추가
 	// 	},
 	// },);
+	base: '/ui-test/apps/map/',
 });

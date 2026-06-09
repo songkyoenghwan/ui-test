@@ -1,7 +1,7 @@
 import { r as hydratable } from "./index-server.js";
 import { _t as stringify_string, dt as get_type, ft as is_plain_object$1, gt as stringify_key, ht as is_valid_array_len, lt as DevalueError, mt as is_valid_array_index, pt as is_primitive, ut as enumerable_symbols, vt as valid_array_indices, yt as MAX_ARRAY_INDEX } from "./dev.js";
 import { HttpError, SvelteKitError } from "@sveltejs/kit/internal";
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/functions.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/functions.js
 function noop() {}
 /**
 * @template T
@@ -436,7 +436,7 @@ function stringify_primitive(thing) {
 	return String(thing);
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/utils.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/utils.js
 var text_encoder = new TextEncoder();
 /**
 * Like node's path.relative, but without using node
@@ -480,7 +480,7 @@ function base64_decode(encoded) {
 	return bytes;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/error.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/error.js
 /**
 * @param {unknown} err
 * @return {Error}
@@ -510,7 +510,7 @@ function get_message(error) {
 	return error instanceof SvelteKitError ? error.text : "Internal Error";
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/shared.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/shared.js
 /** @import { Transport } from '@sveltejs/kit' */
 /**
 * @param {string} route_id
@@ -569,6 +569,7 @@ function to_sorted(value, clones) {
 var remote_object = "__skrao";
 var remote_map = "__skram";
 var remote_set = "__skras";
+var remote_file = "__skraf";
 var remote_regex_guard = "__skrag";
 var remote_arg_marker = Symbol(remote_object);
 /**
@@ -578,7 +579,9 @@ var remote_arg_marker = Symbol(remote_object);
 */
 function create_remote_arg_reducers(transport, sort, remote_arg_clones) {
 	/** @type {Record<string, (value: unknown) => unknown>} */
-	const remote_fns_reducers = { [remote_regex_guard]: (value) => {
+	const remote_fns_reducers = { 
+	/** @param {unknown} value */
+[remote_regex_guard]: (value) => {
 		if (value instanceof RegExp) throw new Error("Regular expressions are not valid remote function arguments");
 	} };
 	if (sort) {
@@ -646,6 +649,12 @@ function create_remote_arg_revivers(transport) {
 				set.add(parse$1(item));
 			}
 			return set;
+		},
+		/** @type {(value: any) => File} */
+		[remote_file]: (value) => {
+			if (!value || typeof value !== "object" || typeof value.name !== "string" || typeof value.type !== "string" || typeof value.size !== "number" || typeof value.lastModified !== "number" || !(value.data instanceof ArrayBuffer)) throw new Error("Invalid data for File reviver");
+			const { data, name, ...meta } = value;
+			return new File([data], name, meta);
 		}
 	};
 	const all_revivers = {
@@ -661,12 +670,18 @@ function create_remote_arg_revivers(transport) {
 * it is both a valid URL and a valid file name (necessary for prerendering).
 * @param {any} value
 * @param {Transport} transport
-* @param {boolean} [sort]
 */
-function stringify_remote_arg(value, transport, sort = true) {
+function stringify_remote_arg(value, transport) {
 	if (value === void 0) return "";
-	const json_string = stringify$1(value, create_remote_arg_reducers(transport, sort, /* @__PURE__ */ new Map()));
-	return base64_encode(text_encoder.encode(json_string)).replaceAll("=", "").replaceAll("+", "-").replaceAll("/", "_");
+	return url_friendly_base64_encode(stringify$1(value, create_remote_arg_reducers(transport, true, /* @__PURE__ */ new Map())));
+}
+/**
+* Base64-encodes `string` in such a way that the result is safe to use
+* as both a URI component and a filename
+* @param {string} string
+*/
+function url_friendly_base64_encode(string) {
+	return base64_encode(text_encoder.encode(string)).replaceAll("=", "").replaceAll("+", "-").replaceAll("/", "_");
 }
 /**
 * Parses the argument (if any) for a remote function

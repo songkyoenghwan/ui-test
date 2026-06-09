@@ -1,10 +1,10 @@
 import { t as index_server_exports } from "../../chunks/index-server.js";
 import { b as noop } from "../../chunks/shared.js";
-import "../../chunks/environment.js";
+import "../../chunks/internal.js";
 import { T as writable, Y as noop$1, et as getContext, z as escape_html } from "../../chunks/dev.js";
 import "../../chunks/exports.js";
 import "../../chunks/index-server2.js";
-import "../../chunks/internal.js";
+import "../../chunks/internal2.js";
 import "@sveltejs/kit/internal";
 import "@sveltejs/kit/internal/server";
 var PRELOAD_PRIORITIES = {
@@ -51,13 +51,11 @@ function create_updated_store() {
 		check: async () => false
 	};
 }
-var navigating$1;
 var updated$1;
 var is_legacy = noop$1.toString().includes("$$") || /function \w+\(\) \{\}/.test(noop$1.toString());
 var placeholder_url = "a:";
 if (is_legacy) {
 	new URL(placeholder_url);
-	navigating$1 = { current: null };
 	updated$1 = { current: false };
 } else {
 	new class Page {
@@ -70,7 +68,7 @@ if (is_legacy) {
 		status = -1;
 		url = new URL(placeholder_url);
 	}();
-	navigating$1 = new class Navigating {
+	new class Navigating {
 		current = null;
 	}();
 	updated$1 = new class Updated {
@@ -79,47 +77,25 @@ if (is_legacy) {
 	updated_listener.v = () => updated$1.current = true;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/client/client.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/client/client.js
+/** @import { ServerNodesResponse, ServerRedirectNode } from 'types' */
 /** @import { CacheEntry } from './remote-functions/cache.svelte.js' */
 /** @import { Query } from './remote-functions/query/instance.svelte.js' */
 /** @import { LiveQuery } from './remote-functions/query-live/instance.svelte.js' */
 var { onMount, tick } = index_server_exports;
-var stores = {
+({
 	url: /* @__PURE__ */ notifiable_store({}),
 	page: /* @__PURE__ */ notifiable_store({}),
 	navigating: /* @__PURE__ */ writable(null),
 	updated: /* @__PURE__ */ create_updated_store()
-};
-Object.defineProperty({
-	get from() {
-		return navigating$1.current ? navigating$1.current.from : null;
-	},
-	get to() {
-		return navigating$1.current ? navigating$1.current.to : null;
-	},
-	get type() {
-		return navigating$1.current ? navigating$1.current.type : null;
-	},
-	get willUnload() {
-		return navigating$1.current ? navigating$1.current.willUnload : null;
-	},
-	get delta() {
-		return navigating$1.current ? navigating$1.current.delta : null;
-	},
-	get complete() {
-		return navigating$1.current ? navigating$1.current.complete : null;
-	}
-}, "current", { get() {
-	throw new Error("Replace navigating.current.<prop> with navigating.<prop>");
-} });
-stores.updated.check;
+}).updated.check;
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/state/server.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js
 function context() {
 	return getContext("__request__");
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/state/index.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/state/index.js
 /**
 * A read-only reactive object with information about the current page, serving several use cases:
 * - retrieving the combined `data` of all pages/layouts anywhere in your component tree (also see [loading data](https://svelte.dev/docs/kit/load))
@@ -184,7 +160,7 @@ var page = {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte
 function Error$1($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
 		$$renderer.push(`<h1>${escape_html(page.status)}</h1> <p>${escape_html(page.error?.message)}</p>`);

@@ -1,15 +1,15 @@
 import { i as __commonJSMin } from "./chunks/index-server.js";
 import { _ as text_encoder, a as split_remote_key, b as noop, g as get_relative_path, h as base64_encode, i as parse_remote_arg, m as normalize_error, n as TRAILING_SLASH_PARAM, o as stringify$1, p as get_status, r as create_remote_key, t as INVALIDATED_PARAM, v as stringify, x as once } from "./chunks/shared.js";
-import { a as public_env, c as app_dir, d as override, f as reset, l as assets, o as set_private_env, s as set_public_env, u as base } from "./chunks/environment.js";
-import { D as PAGE_METHODS, T as ENDPOINT_METHODS, _ as negotiate, a as get_global_name, b as deserialize_binary_form, c as handle_fatal_error, d as redirect_response, f as serialize_uses, g as is_form_content_type, h as s, i as format_server_error, l as has_prerendered_path, m as escape_html, o as get_node_type, p as static_error_page, r as create_replacer, s as handle_error_and_jsonify, t as clarify_devalue_error, u as method_not_allowed } from "./chunks/utils.js";
+import { a as public_env, c as app_dir, d as override, f as reset, l as assets, o as set_private_env, s as set_public_env, u as base } from "./chunks/internal.js";
+import { D as ENDPOINT_METHODS, E as parseString, _ as is_form_content_type, a as get_global_name, c as handle_fatal_error, d as redirect_response, f as serialize_uses, g as get_set_cookies, h as s, i as format_server_error, k as PAGE_METHODS, l as has_prerendered_path, m as escape_html, o as get_node_type, p as static_error_page, r as create_replacer, s as handle_error_and_jsonify, t as clarify_devalue_error, u as method_not_allowed, v as negotiate, x as deserialize_binary_form } from "./chunks/utils.js";
 import { T as writable, ct as uneval, w as readable } from "./chunks/dev.js";
 import { _ as has_data_suffix, b as strip_resolution_suffix, d as make_trackable, f as normalize_path, g as add_resolution_suffix, h as add_data_suffix, i as validate_page_server_exports, l as decode_pathname, m as noop_span, n as validate_layout_server_exports, o as find_route, p as resolve, r as validate_page_exports, s as hash, t as validate_layout_exports, u as disable_search, v as has_resolution_suffix, x as compact, y as strip_data_suffix } from "./chunks/exports.js";
 import "./chunks/index-server2.js";
-import { a as set_read_implementation, i as set_manifest, n as options, r as read_implementation, t as get_hooks } from "./chunks/internal.js";
+import { a as set_read_implementation, i as set_manifest, n as options, r as read_implementation, t as get_hooks } from "./chunks/internal2.js";
 import { error, isRedirect, json, text } from "@sveltejs/kit";
 import { ActionFailure, HttpError, Redirect, SvelteKitError } from "@sveltejs/kit/internal";
 import { merge_tracing, with_request_store } from "@sveltejs/kit/internal/server";
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/promise.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/promise.js
 /** @see https://github.com/microsoft/TypeScript/blob/904e7dd97dc8da1352c8e05d70829dff17c73214/src/lib/es2024.promise.d.ts */
 /**
 * @template T
@@ -38,7 +38,7 @@ function with_resolvers() {
 	};
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/constants.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/constants.js
 var NULL_BODY_STATUS = [
 	101,
 	103,
@@ -48,7 +48,7 @@ var NULL_BODY_STATUS = [
 ];
 var IN_WEBCONTAINER = !!globalThis.process?.versions?.webcontainer;
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js
 /**
 * @param {import('@sveltejs/kit').RequestEvent} event
 * @param {import('types').RequestState} event_state
@@ -105,14 +105,14 @@ function is_endpoint_request(event) {
 	return negotiate(event.request.headers.get("accept") ?? "*/*", ["*", "text/html"]) !== "text/html";
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/telemetry/record_span.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/telemetry/record_span.js
 /** @import { RecordSpan } from 'types' */
 /** @type {RecordSpan} */
 async function record_span({ name, attributes, fn }) {
 	return fn(noop_span);
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/actions.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/actions.js
 /** @import { RequestEvent, ActionResult, Actions } from '@sveltejs/kit' */
 /** @import { SSROptions, SSRNode, ServerNode, ServerHooks } from 'types' */
 /** @param {RequestEvent} event */
@@ -312,7 +312,7 @@ function try_serialize(data, fn, route_id) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/streaming.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/streaming.js
 /**
 * Create an async iterator and a function to push values into it
 * @template T
@@ -351,7 +351,7 @@ function create_async_iterator() {
 	};
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/data_serializer.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/data_serializer.js
 /**
 * If the serialized data contains promises, `chunks` will be an
 * async iterable containing their resolutions
@@ -510,7 +510,7 @@ function server_data_serializer_json(event, event_state, options) {
 	};
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/load_data.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/load_data.js
 /**
 * Calls the user's server `load` function.
 * @param {{
@@ -802,7 +802,7 @@ async function stream_to_string(stream) {
 	return result;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/serialize_data.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/serialize_data.js
 /**
 * Inside a script element, only `<\/script` and `<!--` hold special meaning to the HTML parser.
 *
@@ -882,7 +882,7 @@ function serialize_data(fetched, filter, prerendering = false) {
 	return `<script ${attrs.join(" ")}>${safe_payload}<\/script>`;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/crypto.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/crypto.js
 /**
 * SHA-256 hashing function adapted from https://bitwiseshiftleft.github.io/sjcl
 * modified and redistributed under BSD license
@@ -987,7 +987,7 @@ function encode(str) {
 	return words;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/csp.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/csp.js
 var array = new Uint8Array(16);
 function generate_nonce() {
 	crypto.getRandomValues(array);
@@ -1195,7 +1195,7 @@ var Csp = class {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/server_routing.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/server_routing.js
 /**
 * @param {import('types').SSRClientRoute} route
 * @param {URL} url
@@ -1290,7 +1290,7 @@ function create_css_import(route, url, manifest) {
 	return `${create_client_import(manifest._.client.start, url)}.then(x => x.load_css([${css}]));`;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/render.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/render.js
 var updated = {
 	...readable(false),
 	check: () => false
@@ -1636,6 +1636,7 @@ async function render_response({ branch, fetched, options, manifest, state, page
 		}
 		const init_app = `
 				{
+					
 					${blocks.join("\n\n					")}
 				}
 			`;
@@ -1745,7 +1746,7 @@ var Head = class {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/page_nodes.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/page_nodes.js
 var PageNodes = class {
 	/** All layout nodes and the page node, if any */
 	data;
@@ -1813,7 +1814,7 @@ var PageNodes = class {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/respond_with_error.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/respond_with_error.js
 /**
 * @typedef {import('./types.js').Loaded} Loaded
 */
@@ -1901,7 +1902,7 @@ async function respond_with_error({ event, event_state, options, manifest, state
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/remote.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/remote.js
 /** @import { ActionResult, RemoteForm, RequestEvent, SSRManifest } from '@sveltejs/kit' */
 /** @import { RemoteFormInternals, RemoteFunctionResponse, RemoteInternals, RequestState, SSROptions } from 'types' */
 /** @type {typeof handle_remote_call_internal} */
@@ -1995,7 +1996,7 @@ async function handle_remote_call_internal(event, state, options, manifest, id) 
 			* @param {any} payload
 			*/
 			function send(controller, payload) {
-				controller.enqueue(encoder.encode(JSON.stringify(payload) + "\n"));
+				controller.enqueue(encoder.encode("data: " + JSON.stringify(payload) + "\n\n"));
 			}
 			let closed = false;
 			/** @type {string | undefined} */
@@ -2049,7 +2050,7 @@ async function handle_remote_call_internal(event, state, options, manifest, id) 
 				cancel
 			}), { headers: {
 				"cache-control": "private, no-store",
-				"content-type": "application/x-ndjson"
+				"content-type": "text/event-stream"
 			} });
 		}
 		const payload = internals.type === "prerender" ? additional_args : new URL(event.request.url).searchParams.get("payload");
@@ -2184,7 +2185,7 @@ function get_remote_action(url) {
 	return url.searchParams.get("/remote");
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/page/index.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/page/index.js
 /** @import { ActionResult, RequestEvent, SSRManifest } from '@sveltejs/kit' */
 /** @import { PageNodeIndexes, RequestState, RequiredResolveOptions, ServerDataNode, SSRComponent, SSRNode, SSROptions, SSRState } from 'types' */
 /**
@@ -2447,7 +2448,7 @@ async function load_error_components(options, ssr, branch, page, manifest) {
 	return error_components;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/data/index.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/data/index.js
 /**
 * @param {import('@sveltejs/kit').RequestEvent} event
 * @param {import('types').RequestState} event_state
@@ -2560,7 +2561,7 @@ function redirect_json_response(redirect) {
 * MIT Licensed
 */
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/cookie.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/cookie.js
 var import_cookie = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	/**
 	* Module exports.
@@ -2937,145 +2938,7 @@ function add_cookies_to_headers(headers, cookies) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/set-cookie-parser@3.1.0/node_modules/set-cookie-parser/lib/set-cookie.js
-var defaultParseOptions = {
-	decodeValues: true,
-	map: false,
-	silent: false,
-	split: "auto"
-};
-function isForbiddenKey(key) {
-	return typeof key !== "string" || key in {};
-}
-function createNullObj() {
-	return Object.create(null);
-}
-function isNonEmptyString(str) {
-	return typeof str === "string" && !!str.trim();
-}
-function parseString(setCookieValue, options) {
-	var parts = setCookieValue.split(";").filter(isNonEmptyString);
-	var parsed = parseNameValuePair(parts.shift());
-	var name = parsed.name;
-	var value = parsed.value;
-	options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions;
-	if (isForbiddenKey(name)) return null;
-	try {
-		value = options.decodeValues ? decodeURIComponent(value) : value;
-	} catch (e) {
-		console.error("set-cookie-parser: failed to decode cookie value. Set options.decodeValues=false to disable decoding.", e);
-	}
-	var cookie = createNullObj();
-	cookie.name = name;
-	cookie.value = value;
-	parts.forEach(function(part) {
-		var sides = part.split("=");
-		var key = sides.shift().trimLeft().toLowerCase();
-		if (isForbiddenKey(key)) return;
-		var value = sides.join("=");
-		if (key === "expires") cookie.expires = new Date(value);
-		else if (key === "max-age") {
-			var n = parseInt(value, 10);
-			if (!Number.isNaN(n)) cookie.maxAge = n;
-		} else if (key === "secure") cookie.secure = true;
-		else if (key === "httponly") cookie.httpOnly = true;
-		else if (key === "samesite") cookie.sameSite = value;
-		else if (key === "partitioned") cookie.partitioned = true;
-		else if (key) cookie[key] = value;
-	});
-	return cookie;
-}
-function parseNameValuePair(nameValuePairStr) {
-	var name = "";
-	var value = "";
-	var nameValueArr = nameValuePairStr.split("=");
-	if (nameValueArr.length > 1) {
-		name = nameValueArr.shift();
-		value = nameValueArr.join("=");
-	} else value = nameValuePairStr;
-	return {
-		name,
-		value
-	};
-}
-function parseSetCookie(input, options) {
-	options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions;
-	if (!input) if (!options.map) return [];
-	else return createNullObj();
-	if (input.headers) if (typeof input.headers.getSetCookie === "function") input = input.headers.getSetCookie();
-	else if (input.headers["set-cookie"]) input = input.headers["set-cookie"];
-	else {
-		var sch = input.headers[Object.keys(input.headers).find(function(key) {
-			return key.toLowerCase() === "set-cookie";
-		})];
-		if (!sch && input.headers.cookie && !options.silent) console.warn("Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning.");
-		input = sch;
-	}
-	var split = options.split;
-	var isArray = Array.isArray(input);
-	if (split === "auto") split = !isArray;
-	if (!isArray) input = [input];
-	input = input.filter(isNonEmptyString);
-	if (split) input = input.map(splitCookiesString).flat();
-	if (!options.map) return input.map(function(str) {
-		return parseString(str, options);
-	}).filter(Boolean);
-	else {
-		var cookies = createNullObj();
-		return input.reduce(function(cookies, str) {
-			var cookie = parseString(str, options);
-			if (cookie && !isForbiddenKey(cookie.name)) cookies[cookie.name] = cookie;
-			return cookies;
-		}, cookies);
-	}
-}
-function splitCookiesString(cookiesString) {
-	if (Array.isArray(cookiesString)) return cookiesString;
-	if (typeof cookiesString !== "string") return [];
-	var cookiesStrings = [];
-	var pos = 0;
-	var start;
-	var ch;
-	var lastComma;
-	var nextStart;
-	var cookiesSeparatorFound;
-	function skipWhitespace() {
-		while (pos < cookiesString.length && /\s/.test(cookiesString.charAt(pos))) pos += 1;
-		return pos < cookiesString.length;
-	}
-	function notSpecialChar() {
-		ch = cookiesString.charAt(pos);
-		return ch !== "=" && ch !== ";" && ch !== ",";
-	}
-	while (pos < cookiesString.length) {
-		start = pos;
-		cookiesSeparatorFound = false;
-		while (skipWhitespace()) {
-			ch = cookiesString.charAt(pos);
-			if (ch === ",") {
-				lastComma = pos;
-				pos += 1;
-				skipWhitespace();
-				nextStart = pos;
-				while (pos < cookiesString.length && notSpecialChar()) pos += 1;
-				if (pos < cookiesString.length && cookiesString.charAt(pos) === "=") {
-					cookiesSeparatorFound = true;
-					pos = nextStart;
-					cookiesStrings.push(cookiesString.substring(start, lastComma));
-					start = pos;
-				} else pos = lastComma + 1;
-			} else pos += 1;
-		}
-		if (!cookiesSeparatorFound || pos >= cookiesString.length) cookiesStrings.push(cookiesString.substring(start, cookiesString.length));
-	}
-	return cookiesStrings;
-}
-parseSetCookie.parseSetCookie = parseSetCookie;
-parseSetCookie.parse = parseSetCookie;
-parseSetCookie.parseString = parseString;
-parseSetCookie.splitCookiesString = splitCookiesString;
-//#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/fetch.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/fetch.js
 /**
 * @param {{
 *   event: import('@sveltejs/kit').RequestEvent;
@@ -3145,8 +3008,7 @@ function create_fetch({ event, options, manifest, state, get_cookie_header, set_
 				if (!request.headers.has("accept")) request.headers.set("accept", "*/*");
 				if (!request.headers.has("accept-language")) request.headers.set("accept-language", event.request.headers.get("accept-language"));
 				const response = await internal_fetch(request, options, manifest, state);
-				const set_cookie = response.headers.get("set-cookie");
-				if (set_cookie) for (const str of splitCookiesString(set_cookie)) {
+				for (const str of get_set_cookies(response.headers)) {
 					const { name, value, ...options } = parseString(str, { decodeValues: false });
 					set_internal(name, value, {
 						path: options.path ?? (url.pathname.split("/").slice(0, -1).join("/") || "/"),
@@ -3204,9 +3066,9 @@ async function internal_fetch(request, options, manifest, state) {
 	});
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/env_module.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/env_module.js
 /** @type {string} */
-var body;
+var payload;
 /** @type {string} */
 var etag;
 /** @type {Headers} */
@@ -3216,7 +3078,8 @@ var headers;
 * @returns {Response}
 */
 function get_public_env(request) {
-	body ??= `export const env=${JSON.stringify(public_env)}`;
+	const script = request.url.endsWith(".script.js");
+	payload ??= uneval(public_env);
 	etag ??= `W/${Date.now()}`;
 	headers ??= new Headers({
 		"content-type": "application/javascript; charset=utf-8",
@@ -3226,7 +3089,8 @@ function get_public_env(request) {
 		status: 304,
 		headers
 	});
-	return new Response(body, { headers });
+	if (script) return new Response(`globalThis.__sveltekit_sw={env:${payload}}`, { headers });
+	return new Response(`export const env=${payload}`, { headers });
 }
 new Set([
 	"max-age",
@@ -3246,7 +3110,7 @@ new Set([
 	"min-fresh"
 ]);
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/respond.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/respond.js
 /** @import { RequestState, SSRNode } from 'types' */
 /** @type {import('types').RequiredResolveOptions['transformPageChunk']} */
 var default_transform = ({ html }) => html;
@@ -3431,7 +3295,7 @@ async function internal_respond(request, options, manifest, state) {
 		resolved_path = resolved_path.slice(base.length) || "/";
 	}
 	if (is_route_resolution_request) return resolve_route(resolved_path, new URL(request.url), manifest);
-	if (resolved_path === `/_app/env.js`) return get_public_env(request);
+	if (resolved_path === `/_app/env.js` || resolved_path === `/_app/env.script.js`) return get_public_env(request);
 	if (!remote_id && resolved_path.startsWith(`/_app`)) {
 		const headers = new Headers();
 		headers.set("cache-control", "public, max-age=0, must-revalidate");
@@ -3556,12 +3420,12 @@ async function internal_respond(request, options, manifest, state) {
 					"content-location",
 					"date",
 					"expires",
-					"vary",
-					"set-cookie"
+					"vary"
 				]) {
 					const value = response.headers.get(key);
 					if (value) headers.set(key, value);
 				}
+				for (const cookie of get_set_cookies(response.headers)) headers.append("set-cookie", cookie);
 				return new Response(void 0, {
 					status: 304,
 					headers
@@ -3704,7 +3568,7 @@ function propagate_context(fn) {
 	};
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/env.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/env.js
 /**
 * @param {Record<string, string>} env
 * @param {string} allowed
@@ -3715,7 +3579,7 @@ function filter_env(env, allowed, disallowed) {
 	return Object.fromEntries(Object.entries(env).filter(([k]) => k.startsWith(allowed) && (disallowed === "" || !k.startsWith(disallowed))));
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/server/index.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/index.js
 /** @import { PromiseWithResolvers } from '../../utils/promise.js' */
 /** @type {Promise<any>} */
 var init_promise;

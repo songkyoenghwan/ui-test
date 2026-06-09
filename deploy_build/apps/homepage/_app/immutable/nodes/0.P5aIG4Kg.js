@@ -1,0 +1,1 @@
+import{E as e,N as t,P as n,X as r,o as i,ot as a,r as o,rt as s,st as c}from"../chunks/80agDHj0.js";import"../chunks/xihTtKlq.js";function l(o,l){c(l,!0);let u=i(l,`children`,7);var d={get children(){return u()},set children(e){u(e),s()}},f=n();return e(r(f),u),t(o,f),a(d)}o(l,{children:{}},[],[],{mode:`open`});export{l as component};

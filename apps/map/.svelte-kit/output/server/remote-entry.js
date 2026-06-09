@@ -1,10 +1,10 @@
 import { b as noop, c as unfriendly_hydratable, i as parse_remote_arg, o as stringify, r as create_remote_key, s as stringify_remote_arg, y as parse } from "./chunks/shared.js";
-import { c as app_dir, t as prerendering, u as base } from "./chunks/environment.js";
-import { C as set_nested_value, E as MUTATIVE_METHODS, S as normalize_issue, s as handle_error_and_jsonify, v as create_field_proxy, x as flatten_issues, y as deep_set } from "./chunks/utils.js";
+import { c as app_dir, t as prerendering, u as base } from "./chunks/internal.js";
+import { C as normalize_issue, O as MUTATIVE_METHODS, S as flatten_issues, b as deep_set, s as handle_error_and_jsonify, w as set_nested_value, y as create_field_proxy } from "./chunks/utils.js";
 import { error, json } from "@sveltejs/kit";
 import { HttpError, SvelteKitError, ValidationError } from "@sveltejs/kit/internal";
 import { get_request_store, with_request_store } from "@sveltejs/kit/internal/server";
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/server/remote/shared.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/shared.js
 /** @import { RequestEvent } from '@sveltejs/kit' */
 /** @import { ServerHooks, MaybePromise, RequestState, RemoteInternals, RequestStore, RemoteLiveQueryUserFunctionReturnType } from 'types' */
 /**
@@ -168,7 +168,7 @@ function get_cache(internals, state = get_request_store().state) {
 	return cache;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/server/remote/command.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/command.js
 /** @import { RemoteCommand } from '@sveltejs/kit' */
 /** @import { MaybePromise, RemoteCommandInternals } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -217,7 +217,7 @@ function get_cache(internals, state = get_request_store().state) {
 * @returns {RemoteCommand<Input, Output>}
 * @since 2.27
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function command(validate_or_fn, maybe_fn) {
 	/** @type {(arg?: Input) => MaybePromise<Output>} */
 	const fn = maybe_fn ?? validate_or_fn;
@@ -247,7 +247,7 @@ function command(validate_or_fn, maybe_fn) {
 	return wrapper;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/server/remote/form.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/form.js
 /** @import { RemoteFormInput, RemoteForm, InvalidField } from '@sveltejs/kit' */
 /** @import { InternalRemoteFormIssue, MaybePromise, RemoteFormInternals } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -296,7 +296,7 @@ function command(validate_or_fn, maybe_fn) {
 * @returns {RemoteForm<Input, Output>}
 * @since 2.27
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function form(validate_or_fn, maybe_fn) {
 	/** @type {any} */
 	const fn = maybe_fn ?? validate_or_fn;
@@ -471,7 +471,7 @@ function create_issues() {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/server/remote/prerender.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/prerender.js
 /** @import { RemoteResource, RemotePrerenderFunction } from '@sveltejs/kit' */
 /** @import { RemotePrerenderInputsGenerator, RemotePrerenderInternals, MaybePromise } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -524,7 +524,7 @@ function create_issues() {
 * @returns {RemotePrerenderFunction<Input, Output>}
 * @since 2.27
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function prerender(validate_or_fn, fn_or_options, maybe_options) {
 	const maybe_fn = typeof fn_or_options === "function" ? fn_or_options : void 0;
 	/** @type {typeof maybe_options} */
@@ -587,7 +587,7 @@ function prerender(validate_or_fn, fn_or_options, maybe_options) {
 	return wrapper;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/utils/shared-iterator.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/shared-iterator.js
 /**
 * A pull-style async iterator that fans out a single stream of values to
 * multiple `for await (...)` consumers. Each subscriber gets its own
@@ -785,7 +785,7 @@ var SharedIterator = class {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/server/remote/query.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/query.js
 /** @import { RemoteLiveQuery, RemoteLiveQueryFunction, RemoteQuery, RemoteQueryFunction } from '@sveltejs/kit' */
 /** @import { RemoteInternals, MaybePromise, RequestState, RemoteQueryLiveInternals, RemoteQueryBatchInternals, RemoteQueryInternals, RemoteLiveQueryUserFunctionReturnType } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -834,7 +834,7 @@ var SharedIterator = class {
 * @returns {RemoteQueryFunction<Input, Output>}
 * @since 2.27
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function query(validate_or_fn, maybe_fn) {
 	/** @type {(arg?: Input) => Output} */
 	const fn = maybe_fn ?? validate_or_fn;
@@ -893,7 +893,7 @@ function query(validate_or_fn, maybe_fn) {
 * @param {(args: Input) => RemoteLiveQueryUserFunctionReturnType<Output>} [maybe_fn]
 * @returns {RemoteLiveQueryFunction<Input, Output>}
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function live(validate_or_fn, maybe_fn) {
 	/** @type {(arg: Input) => RemoteLiveQueryUserFunctionReturnType<Output>} */
 	const fn = maybe_fn ?? validate_or_fn;
@@ -960,7 +960,7 @@ function live(validate_or_fn, maybe_fn) {
 * @returns {RemoteQueryFunction<Input, Output>}
 * @since 2.35
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function batch(validate_or_fn, maybe_fn) {
 	/** @type {(args?: Input[]) => MaybePromise<(arg: Input, idx: number) => Output>} */
 	const fn = maybe_fn ?? validate_or_fn;
@@ -1300,7 +1300,7 @@ function update_refresh_value({ __, refreshes, refreshes_key, cache, payload }, 
 	return Promise.resolve();
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.61.1+d5c48f3efaa00625/node_modules/@sveltejs/kit/src/runtime/app/server/remote/requested.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/requested.js
 /** @import { RemoteLiveQuery, RemoteLiveQueryFunction, RemoteQuery, RemoteQueryFunction, RequestedResult, QueryRequestedResult, LiveQueryRequestedResult } from '@sveltejs/kit' */
 /** @import { MaybePromise, RemoteAnyQueryInternals } from 'types' */
 /**

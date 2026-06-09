@@ -447,7 +447,7 @@ function stringify_primitive(thing) {
 	return str;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/shared/errors.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/shared/errors.js
 /**
 * Cannot use `%name%(...)` unless the `experimental.async` compiler option is `true`
 * @param {string} name
@@ -472,7 +472,7 @@ function missing_context() {
 	throw new Error(`https://svelte.dev/e/missing_context`);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/errors.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/errors.js
 /**
 * The node API `AsyncLocalStorage` is not available, but is required to use async server rendering.
 * @returns {never}
@@ -574,7 +574,7 @@ function server_context_required() {
 	throw error;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/context.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/context.js
 /** @import { SSRContext } from '#server' */
 /** @type {SSRContext | null} */
 var ssr_context = null;
@@ -658,7 +658,7 @@ function get_parent_context(ssr_context) {
 	return null;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/shared/utils.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/shared/utils.js
 var is_array = Array.isArray;
 var index_of = Array.prototype.indexOf;
 var includes = Array.prototype.includes;
@@ -736,7 +736,7 @@ var STALE_REACTION = new class StaleReactionError extends Error {
 }();
 globalThis.document?.contentType;
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/abort-signal.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/abort-signal.js
 /** @type {AbortController | null} */
 var controller = null;
 function abort() {
@@ -747,13 +747,13 @@ function getAbortSignal() {
 	return (controller ??= new AbortController()).signal;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/flags/index.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/flags/index.js
 /** True if experimental.async=true */
 var async_mode_flag = false;
 /** True if we're not certain that we only have Svelte 5 code in the compilation */
 var legacy_mode_flag = false;
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/render-context.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/render-context.js
 /** @import { AsyncLocalStorage } from 'node:async_hooks' */
 /** @import { RenderContext } from '#server' */
 /** @type {Promise<void> | null} */
@@ -809,7 +809,7 @@ function in_webcontainer() {
 	return !!globalThis.process?.versions?.webcontainer;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/constants.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/constants.js
 var HYDRATION_ERROR = {};
 var UNINITIALIZED = Symbol("uninitialized");
 /**
@@ -845,11 +845,11 @@ function unresolved_hydratable(key, stack) {
 	console.warn(`https://svelte.dev/e/unresolved_hydratable`);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/hydration.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/hydration.js
 var BLOCK_OPEN = `<!--[-->`;
 var BLOCK_CLOSE = `<!--]-->`;
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/escaping.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/escaping.js
 var ATTR_REGEX = /[&"<]/g;
 var CONTENT_REGEX = /[&<]/g;
 /**
@@ -887,7 +887,7 @@ function clsx$1() {
 	return n;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/shared/attributes.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/shared/attributes.js
 /**
 * `<div translate={false}>` should be rendered as `<div translate="no">` and _not_
 * `<div translate="false">`, which is equivalent to `<div translate="yes">`. There
@@ -1107,7 +1107,7 @@ function svelte_boundary_reset_noop() {
 	console.warn(`https://svelte.dev/e/svelte_boundary_reset_noop`);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/hydration.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/hydration.js
 /** @import { TemplateNode } from '#client' */
 /**
 * Use this variable to guard everything related to hydration code so it can be treeshaken out
@@ -1166,7 +1166,7 @@ function skip_nodes(remove = true) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/equality.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/equality.js
 /** @import { Equals } from '#client' */
 /** @type {Equals} */
 function equals(value) {
@@ -1185,7 +1185,7 @@ function safe_equals(value) {
 	return !safe_not_equal(value, this.v);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/context.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/context.js
 /** @import { ComponentContext, DevStackEntry, Effect } from '#client' */
 /** @type {ComponentContext | null} */
 var component_context = null;
@@ -1237,7 +1237,7 @@ function is_runes() {
 	return !legacy_mode_flag || component_context !== null && component_context.l === null;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/task.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/task.js
 /** @type {Array<() => void>} */
 var micro_tasks = [];
 function run_micro_tasks() {
@@ -1280,6 +1280,7 @@ function handle_error(error) {
 * @param {Effect | null} effect
 */
 function invoke_error_boundary(error, effect) {
+	if (effect !== null && (effect.f & 16384) !== 0) return;
 	while (effect !== null) {
 		if ((effect.f & 128) !== 0) {
 			if ((effect.f & 32768) === 0) throw error;
@@ -1295,7 +1296,7 @@ function invoke_error_boundary(error, effect) {
 	throw error;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/status.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/status.js
 /** @import { Derived, Signal } from '#client' */
 var STATUS_MASK = ~(DIRTY | MAYBE_DIRTY | CLEAN);
 /**
@@ -1314,7 +1315,7 @@ function update_derived_status(derived) {
 	else set_signal_status(derived, MAYBE_DIRTY);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/utils.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/utils.js
 /** @import { Derived, Effect, Value } from '#client' */
 /**
 * @param {Value[] | null} deps
@@ -1342,7 +1343,7 @@ function defer_effect(effect, dirty_effects, maybe_dirty_effects) {
 	set_signal_status(effect, CLEAN);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/store/shared/index.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/store/shared/index.js
 /** @import { Readable, StartStopNotifier, Subscriber, Unsubscriber, Updater, Writable } from '../public.js' */
 /** @import { Stores, StoresValues, SubscribeInvalidateTuple } from '../private.js' */
 /**
@@ -1493,757 +1494,14 @@ function derived$1(stores, fn, initial_value) {
 	});
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/store.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/store.js
 /**
 * We set this to `true` when updating a store so that we correctly
 * schedule effects if the update takes place inside a `$:` effect
 */
 var legacy_is_updating_store = false;
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/batch.js
-/** @import { Fork } from 'svelte' */
-/** @import { Derived, Effect, Reaction, Source, Value } from '#client' */
-/** @type {Batch | null} */
-var first_batch = null;
-/** @type {Batch | null} */
-var last_batch = null;
-/** @type {Batch | null} */
-var current_batch = null;
-/**
-* This is needed to avoid overwriting inputs
-* @type {Batch | null}
-*/
-var previous_batch = null;
-/**
-* When time travelling (i.e. working in one batch, while other batches
-* still have ongoing work), we ignore the real values of affected
-* signals in favour of their values within the batch
-* @type {Map<Value, any> | null}
-*/
-var batch_values = null;
-/** @type {Effect | null} */
-var last_scheduled_effect = null;
-var is_flushing_sync = false;
-var is_processing = false;
-/**
-* During traversal, this is an array. Newly created effects are (if not immediately
-* executed) pushed to this array, rather than going through the scheduling
-* rigamarole that would cause another turn of the flush loop.
-* @type {Effect[] | null}
-*/
-var collected_effects = null;
-/**
-* An array of effects that are marked during traversal as a result of a `set`
-* (not `internal_set`) call. These will be added to the next batch and
-* trigger another `batch.process()`
-* @type {Effect[] | null}
-* @deprecated when we get rid of legacy mode and stores, we can get rid of this
-*/
-var legacy_updates = null;
-var flush_count = 0;
-var uid = 1;
-var Batch = class Batch {
-	id = uid++;
-	/** True as soon as `#process` was called */
-	#started = false;
-	linked = true;
-	/** @type {Batch | null} */
-	#prev = null;
-	/** @type {Batch | null} */
-	#next = null;
-	/** @type {Map<Effect, ReturnType<typeof deferred<any>>>} */
-	async_deriveds = /* @__PURE__ */ new Map();
-	/**
-	* The current values of any signals that are updated in this batch.
-	* Tuple format: [value, is_derived] (note: is_derived is false for deriveds, too, if they were overridden via assignment)
-	* They keys of this map are identical to `this.#previous`
-	* @type {Map<Value, [any, boolean]>}
-	*/
-	current = /* @__PURE__ */ new Map();
-	/**
-	* The values of any signals (sources and deriveds) that are updated in this batch _before_ those updates took place.
-	* They keys of this map are identical to `this.#current`
-	* @type {Map<Value, any>}
-	*/
-	previous = /* @__PURE__ */ new Map();
-	/**
-	* When the batch is committed (and the DOM is updated), we need to remove old branches
-	* and append new ones by calling the functions added inside (if/each/key/etc) blocks
-	* @type {Set<(batch: Batch) => void>}
-	*/
-	#commit_callbacks = /* @__PURE__ */ new Set();
-	/**
-	* If a fork is discarded, we need to destroy any effects that are no longer needed
-	* @type {Set<(batch: Batch) => void>}
-	*/
-	#discard_callbacks = /* @__PURE__ */ new Set();
-	/**
-	* Callbacks that should run only when a fork is committed.
-	* @type {Set<(batch: Batch) => void>}
-	*/
-	#fork_commit_callbacks = /* @__PURE__ */ new Set();
-	/**
-	* The number of async effects that are currently in flight
-	*/
-	#pending = 0;
-	/**
-	* Async effects that are currently in flight, _not_ inside a pending boundary
-	* @type {Map<Effect, number>}
-	*/
-	#blocking_pending = /* @__PURE__ */ new Map();
-	/**
-	* A deferred that resolves when the batch is committed, used with `settled()`
-	* TODO replace with Promise.withResolvers once supported widely enough
-	* @type {{ promise: Promise<void>, resolve: (value?: any) => void, reject: (reason: unknown) => void } | null}
-	*/
-	#deferred = null;
-	/**
-	* The root effects that need to be flushed
-	* @type {Effect[]}
-	*/
-	#roots = [];
-	/**
-	* Effects created while this batch was active.
-	* @type {Effect[]}
-	*/
-	#new_effects = [];
-	/**
-	* Deferred effects (which run after async work has completed) that are DIRTY
-	* @type {Set<Effect>}
-	*/
-	#dirty_effects = /* @__PURE__ */ new Set();
-	/**
-	* Deferred effects that are MAYBE_DIRTY
-	* @type {Set<Effect>}
-	*/
-	#maybe_dirty_effects = /* @__PURE__ */ new Set();
-	/**
-	* A map of branches that still exist, but will be destroyed when this batch
-	* is committed — we skip over these during `process`.
-	* The value contains child effects that were dirty/maybe_dirty before being reset,
-	* so they can be rescheduled if the branch survives.
-	* @type {Map<Effect, { d: Effect[], m: Effect[] }>}
-	*/
-	#skipped_branches = /* @__PURE__ */ new Map();
-	/**
-	* Inverse of #skipped_branches which we need to tell prior batches to unskip them when committing
-	* @type {Set<Effect>}
-	*/
-	#unskipped_branches = /* @__PURE__ */ new Set();
-	is_fork = false;
-	#decrement_queued = false;
-	constructor() {
-		if (last_batch === null) first_batch = last_batch = this;
-		else {
-			last_batch.#next = this;
-			this.#prev = last_batch;
-		}
-		last_batch = this;
-	}
-	#is_deferred() {
-		if (this.is_fork) return true;
-		for (const effect of this.#blocking_pending.keys()) {
-			var e = effect;
-			var skipped = false;
-			while (e.parent !== null) {
-				if (this.#skipped_branches.has(e)) {
-					skipped = true;
-					break;
-				}
-				e = e.parent;
-			}
-			if (!skipped) return true;
-		}
-		return false;
-	}
-	/**
-	* Add an effect to the #skipped_branches map and reset its children
-	* @param {Effect} effect
-	*/
-	skip_effect(effect) {
-		if (!this.#skipped_branches.has(effect)) this.#skipped_branches.set(effect, {
-			d: [],
-			m: []
-		});
-		this.#unskipped_branches.delete(effect);
-	}
-	/**
-	* Remove an effect from the #skipped_branches map and reschedule
-	* any tracked dirty/maybe_dirty child effects
-	* @param {Effect} effect
-	* @param {(e: Effect) => void} callback
-	*/
-	unskip_effect(effect, callback = (e) => this.schedule(e)) {
-		var tracked = this.#skipped_branches.get(effect);
-		if (tracked) {
-			this.#skipped_branches.delete(effect);
-			for (var e of tracked.d) {
-				set_signal_status(e, DIRTY);
-				callback(e);
-			}
-			for (e of tracked.m) {
-				set_signal_status(e, MAYBE_DIRTY);
-				callback(e);
-			}
-		}
-		this.#unskipped_branches.add(effect);
-	}
-	#process() {
-		this.#started = true;
-		if (flush_count++ > 1e3) {
-			this.#unlink();
-			infinite_loop_guard();
-		}
-		for (const e of this.#dirty_effects) {
-			this.#maybe_dirty_effects.delete(e);
-			set_signal_status(e, DIRTY);
-			this.schedule(e);
-		}
-		for (const e of this.#maybe_dirty_effects) {
-			set_signal_status(e, MAYBE_DIRTY);
-			this.schedule(e);
-		}
-		const roots = this.#roots;
-		this.#roots = [];
-		this.apply();
-		/** @type {Effect[]} */
-		var effects = collected_effects = [];
-		/** @type {Effect[]} */
-		var render_effects = [];
-		/**
-		* @type {Effect[]}
-		* @deprecated when we get rid of legacy mode and stores, we can get rid of this
-		*/
-		var updates = legacy_updates = [];
-		for (const root of roots) try {
-			this.#traverse(root, effects, render_effects);
-		} catch (e) {
-			reset_all(root);
-			if (!this.#is_deferred()) this.discard();
-			throw e;
-		}
-		current_batch = null;
-		if (updates.length > 0) {
-			var batch = Batch.ensure();
-			for (const e of updates) batch.schedule(e);
-		}
-		collected_effects = null;
-		legacy_updates = null;
-		if (this.#is_deferred()) {
-			this.#defer_effects(render_effects);
-			this.#defer_effects(effects);
-			for (const [e, t] of this.#skipped_branches) reset_branch(e, t);
-			if (updates.length > 0)
- /** @type {Batch} */ current_batch.#process();
-			return;
-		}
-		const earlier_batch = this.#find_earlier_batch();
-		if (earlier_batch) {
-			this.#defer_effects(render_effects);
-			this.#defer_effects(effects);
-			earlier_batch.#merge(this);
-			return;
-		}
-		this.#dirty_effects.clear();
-		this.#maybe_dirty_effects.clear();
-		for (const fn of this.#commit_callbacks) fn(this);
-		this.#commit_callbacks.clear();
-		previous_batch = this;
-		flush_queued_effects(render_effects);
-		flush_queued_effects(effects);
-		previous_batch = null;
-		this.#deferred?.resolve();
-		var next_batch = current_batch;
-		if (this.#pending === 0 && (this.#roots.length === 0 || next_batch !== null)) {
-			this.#unlink();
-			if (async_mode_flag) {
-				this.#commit();
-				current_batch = next_batch;
-			}
-		}
-		if (this.#roots.length > 0) if (next_batch !== null) {
-			const batch = next_batch;
-			batch.#roots.push(...this.#roots.filter((r) => !batch.#roots.includes(r)));
-		} else next_batch = this;
-		if (next_batch !== null) next_batch.#process();
-	}
-	/**
-	* Traverse the effect tree, executing effects or stashing
-	* them for later execution as appropriate
-	* @param {Effect} root
-	* @param {Effect[]} effects
-	* @param {Effect[]} render_effects
-	*/
-	#traverse(root, effects, render_effects) {
-		root.f ^= CLEAN;
-		var effect = root.first;
-		while (effect !== null) {
-			var flags = effect.f;
-			var is_branch = (flags & 96) !== 0;
-			if (!(is_branch && (flags & 1024) !== 0 || (flags & 8192) !== 0 || this.#skipped_branches.has(effect)) && effect.fn !== null) {
-				if (is_branch) effect.f ^= CLEAN;
-				else if ((flags & 4) !== 0) effects.push(effect);
-				else if (async_mode_flag && (flags & 16777224) !== 0) render_effects.push(effect);
-				else if (is_dirty(effect)) {
-					if ((flags & 16) !== 0) this.#maybe_dirty_effects.add(effect);
-					update_effect(effect);
-				}
-				var child = effect.first;
-				if (child !== null) {
-					effect = child;
-					continue;
-				}
-			}
-			while (effect !== null) {
-				var next = effect.next;
-				if (next !== null) {
-					effect = next;
-					break;
-				}
-				effect = effect.parent;
-			}
-		}
-	}
-	#find_earlier_batch() {
-		var batch = this.#prev;
-		while (batch !== null) {
-			if (!batch.is_fork) {
-				for (const [value, [, is_derived]] of this.current) if (batch.current.has(value) && !is_derived) return batch;
-			}
-			batch = batch.#prev;
-		}
-		return null;
-	}
-	/**
-	* @param {Batch} batch
-	*/
-	#merge(batch) {
-		for (const [source, value] of batch.current) {
-			if (!this.previous.has(source) && batch.previous.has(source)) this.previous.set(source, batch.previous.get(source));
-			this.current.set(source, value);
-		}
-		for (const [effect, deferred] of batch.async_deriveds) {
-			const d = this.async_deriveds.get(effect);
-			if (d) deferred.promise.then(d.resolve).catch(d.reject);
-		}
-		this.transfer_effects(batch.#dirty_effects, batch.#maybe_dirty_effects);
-		/**
-		* mark all effects that depend on `batch.current`, except the
-		* async effects that we just resolved (TODO unless they depend
-		* on values in this batch that are NOT in the later batch?).
-		* Through this we also will populate the correct #skipped_branches,
-		* oncommit callbacks etc, so we don't need to merge them separately.
-		* @param {Value} value
-		*/
-		const mark = (value) => {
-			var reactions = value.reactions;
-			if (reactions === null) return;
-			for (const reaction of reactions) {
-				var flags = reaction.f;
-				if ((flags & 2) !== 0) mark(reaction);
-				else {
-					var effect = reaction;
-					if (flags & 4194320 && !this.async_deriveds.has(effect)) {
-						this.#maybe_dirty_effects.delete(effect);
-						set_signal_status(effect, DIRTY);
-						this.schedule(effect);
-					}
-				}
-			}
-		};
-		for (const source of this.current.keys()) mark(source);
-		this.oncommit(() => batch.discard());
-		batch.#unlink();
-		current_batch = this;
-		this.#process();
-	}
-	/**
-	* @param {Effect[]} effects
-	*/
-	#defer_effects(effects) {
-		for (var i = 0; i < effects.length; i += 1) defer_effect(effects[i], this.#dirty_effects, this.#maybe_dirty_effects);
-	}
-	/**
-	* Associate a change to a given source with the current
-	* batch, noting its previous and current values
-	* @param {Value} source
-	* @param {any} value
-	* @param {boolean} [is_derived]
-	*/
-	capture(source, value, is_derived = false) {
-		if (source.v !== UNINITIALIZED && !this.previous.has(source)) this.previous.set(source, source.v);
-		if ((source.f & 8388608) === 0) {
-			this.current.set(source, [value, is_derived]);
-			batch_values?.set(source, value);
-		}
-		if (!this.is_fork) source.v = value;
-	}
-	activate() {
-		current_batch = this;
-	}
-	deactivate() {
-		current_batch = null;
-		batch_values = null;
-	}
-	flush() {
-		try {
-			is_processing = true;
-			current_batch = this;
-			this.#process();
-		} finally {
-			flush_count = 0;
-			last_scheduled_effect = null;
-			collected_effects = null;
-			legacy_updates = null;
-			is_processing = false;
-			current_batch = null;
-			batch_values = null;
-			old_values.clear();
-		}
-	}
-	discard() {
-		for (const fn of this.#discard_callbacks) fn(this);
-		this.#discard_callbacks.clear();
-		this.#fork_commit_callbacks.clear();
-		this.#unlink();
-		this.#deferred?.resolve();
-	}
-	/**
-	* @param {Effect} effect
-	*/
-	register_created_effect(effect) {
-		this.#new_effects.push(effect);
-	}
-	#commit() {
-		for (let batch = first_batch; batch !== null; batch = batch.#next) {
-			var is_earlier = batch.id < this.id;
-			/** @type {Source[]} */
-			var sources = [];
-			for (const [source, [value, is_derived]] of this.current) {
-				if (batch.current.has(source)) {
-					var batch_value = batch.current.get(source)[0];
-					if (is_earlier && value !== batch_value) batch.current.set(source, [value, is_derived]);
-					else continue;
-				}
-				sources.push(source);
-			}
-			if (is_earlier) for (const [effect, deferred] of this.async_deriveds) {
-				const d = batch.async_deriveds.get(effect);
-				if (d) deferred.promise.then(d.resolve).catch(d.reject);
-			}
-			if (!batch.#started) continue;
-			var others = [...batch.current.keys()].filter((s) => !batch.current.get(s)[1] && !this.current.has(s));
-			if (others.length === 0) {
-				if (is_earlier) batch.discard();
-			} else if (sources.length > 0) {
-				if (is_earlier) for (const unskipped of this.#unskipped_branches) batch.unskip_effect(unskipped, (e) => {
-					if ((e.f & 4194320) !== 0) batch.schedule(e);
-					else batch.#defer_effects([e]);
-				});
-				batch.activate();
-				/** @type {Set<Value>} */
-				var marked = /* @__PURE__ */ new Set();
-				/** @type {Map<Reaction, boolean>} */
-				var checked = /* @__PURE__ */ new Map();
-				for (var source of sources) mark_effects(source, others, marked, checked);
-				checked = /* @__PURE__ */ new Map();
-				var current_unequal = [...batch.current].filter(([c, v1]) => {
-					const v2 = this.current.get(c);
-					if (!v2) return true;
-					return v2[0] !== v1[0] || v2[1] !== v1[1];
-				}).map(([c]) => c);
-				if (current_unequal.length > 0) {
-					for (const effect of this.#new_effects) if ((effect.f & 155648) === 0 && depends_on(effect, current_unequal, checked)) if ((effect.f & 4194320) !== 0) {
-						set_signal_status(effect, DIRTY);
-						batch.schedule(effect);
-					} else batch.#dirty_effects.add(effect);
-				}
-				if (batch.#roots.length > 0 && !batch.#decrement_queued) {
-					batch.apply();
-					for (var root of batch.#roots) batch.#traverse(root, [], []);
-					batch.#roots = [];
-				}
-				batch.deactivate();
-			}
-		}
-	}
-	/**
-	* @param {boolean} blocking
-	* @param {Effect} effect
-	*/
-	increment(blocking, effect) {
-		this.#pending += 1;
-		if (blocking) {
-			let blocking_pending_count = this.#blocking_pending.get(effect) ?? 0;
-			this.#blocking_pending.set(effect, blocking_pending_count + 1);
-		}
-	}
-	/**
-	* @param {boolean} blocking
-	* @param {Effect} effect
-	*/
-	decrement(blocking, effect) {
-		this.#pending -= 1;
-		if (blocking) {
-			let blocking_pending_count = this.#blocking_pending.get(effect) ?? 0;
-			if (blocking_pending_count === 1) this.#blocking_pending.delete(effect);
-			else this.#blocking_pending.set(effect, blocking_pending_count - 1);
-		}
-		if (this.#decrement_queued) return;
-		this.#decrement_queued = true;
-		queue_micro_task(() => {
-			this.#decrement_queued = false;
-			if (this.linked) this.flush();
-		});
-	}
-	/**
-	* @param {Set<Effect>} dirty_effects
-	* @param {Set<Effect>} maybe_dirty_effects
-	*/
-	transfer_effects(dirty_effects, maybe_dirty_effects) {
-		for (const e of dirty_effects) this.#dirty_effects.add(e);
-		for (const e of maybe_dirty_effects) this.#maybe_dirty_effects.add(e);
-		dirty_effects.clear();
-		maybe_dirty_effects.clear();
-	}
-	/** @param {(batch: Batch) => void} fn */
-	oncommit(fn) {
-		this.#commit_callbacks.add(fn);
-	}
-	/** @param {(batch: Batch) => void} fn */
-	ondiscard(fn) {
-		this.#discard_callbacks.add(fn);
-	}
-	/** @param {(batch: Batch) => void} fn */
-	on_fork_commit(fn) {
-		this.#fork_commit_callbacks.add(fn);
-	}
-	run_fork_commit_callbacks() {
-		for (const fn of this.#fork_commit_callbacks) fn(this);
-		this.#fork_commit_callbacks.clear();
-	}
-	settled() {
-		return (this.#deferred ??= deferred()).promise;
-	}
-	static ensure() {
-		if (current_batch === null) {
-			const batch = current_batch = new Batch();
-			if (!is_processing && !is_flushing_sync) queue_micro_task(() => {
-				if (!batch.#started) batch.flush();
-			});
-		}
-		return current_batch;
-	}
-	apply() {
-		if (!async_mode_flag || !this.is_fork && this.#prev === null && this.#next === null) {
-			batch_values = null;
-			return;
-		}
-		batch_values = /* @__PURE__ */ new Map();
-		for (const [source, [value]] of this.current) batch_values.set(source, value);
-		for (let batch = first_batch; batch !== null; batch = batch.#next) {
-			if (batch === this || batch.is_fork) continue;
-			var intersects = false;
-			if (batch.id < this.id) for (const [source, [, is_derived]] of batch.current) {
-				if (is_derived) continue;
-				if (this.current.has(source)) {
-					intersects = true;
-					break;
-				}
-			}
-			if (!intersects) {
-				for (const [source, previous] of batch.previous) if (!batch_values.has(source)) batch_values.set(source, previous);
-			}
-		}
-	}
-	/**
-	*
-	* @param {Effect} effect
-	*/
-	schedule(effect) {
-		last_scheduled_effect = effect;
-		if (effect.b?.is_pending && (effect.f & 16777228) !== 0 && (effect.f & 32768) === 0) {
-			effect.b.defer_effect(effect);
-			return;
-		}
-		var e = effect;
-		while (e.parent !== null) {
-			e = e.parent;
-			var flags = e.f;
-			if (collected_effects !== null && e === active_effect) {
-				if (async_mode_flag) return;
-				if ((active_reaction === null || (active_reaction.f & 2) === 0) && !legacy_is_updating_store) return;
-			}
-			if ((flags & 96) !== 0) {
-				if ((flags & 1024) === 0) return;
-				e.f ^= CLEAN;
-			}
-		}
-		this.#roots.push(e);
-	}
-	#unlink() {
-		if (!this.linked) return;
-		var prev = this.#prev;
-		var next = this.#next;
-		if (prev === null) first_batch = next;
-		else prev.#next = next;
-		if (next === null) last_batch = prev;
-		else next.#prev = prev;
-		this.linked = false;
-	}
-};
-/**
-* Synchronously flush any pending updates.
-* Returns void if no callback is provided, otherwise returns the result of calling the callback.
-* @template [T=void]
-* @param {(() => T) | undefined} [fn]
-* @returns {T}
-*/
-function flushSync(fn) {
-	var was_flushing_sync = is_flushing_sync;
-	is_flushing_sync = true;
-	try {
-		var result;
-		if (fn) {
-			if (current_batch !== null && !current_batch.is_fork) current_batch.flush();
-			result = fn();
-		}
-		while (true) {
-			flush_tasks();
-			if (current_batch === null) return result;
-			current_batch.flush();
-		}
-	} finally {
-		is_flushing_sync = was_flushing_sync;
-	}
-}
-function infinite_loop_guard() {
-	try {
-		effect_update_depth_exceeded();
-	} catch (error) {
-		invoke_error_boundary(error, last_scheduled_effect);
-	}
-}
-/** @type {Set<Effect> | null} */
-var eager_block_effects = null;
-/**
-* @param {Array<Effect>} effects
-* @returns {void}
-*/
-function flush_queued_effects(effects) {
-	var length = effects.length;
-	if (length === 0) return;
-	var i = 0;
-	while (i < length) {
-		var effect = effects[i++];
-		if ((effect.f & 24576) === 0 && is_dirty(effect)) {
-			eager_block_effects = /* @__PURE__ */ new Set();
-			update_effect(effect);
-			if (effect.deps === null && effect.first === null && effect.nodes === null && effect.teardown === null && effect.ac === null) unlink_effect(effect);
-			if (eager_block_effects?.size > 0) {
-				old_values.clear();
-				for (const e of eager_block_effects) {
-					if ((e.f & 24576) !== 0) continue;
-					/** @type {Effect[]} */
-					const ordered_effects = [e];
-					let ancestor = e.parent;
-					while (ancestor !== null) {
-						if (eager_block_effects.has(ancestor)) {
-							eager_block_effects.delete(ancestor);
-							ordered_effects.push(ancestor);
-						}
-						ancestor = ancestor.parent;
-					}
-					for (let j = ordered_effects.length - 1; j >= 0; j--) {
-						const e = ordered_effects[j];
-						if ((e.f & 24576) !== 0) continue;
-						update_effect(e);
-					}
-				}
-				eager_block_effects.clear();
-			}
-		}
-	}
-	eager_block_effects = null;
-}
-/**
-* This is similar to `mark_reactions`, but it only marks async/block effects
-* depending on `value` and at least one of the other `sources`, so that
-* these effects can re-run after another batch has been committed
-* @param {Value} value
-* @param {Source[]} sources
-* @param {Set<Value>} marked
-* @param {Map<Reaction, boolean>} checked
-*/
-function mark_effects(value, sources, marked, checked) {
-	if (marked.has(value)) return;
-	marked.add(value);
-	if (value.reactions !== null) for (const reaction of value.reactions) {
-		const flags = reaction.f;
-		if ((flags & 2) !== 0) mark_effects(reaction, sources, marked, checked);
-		else if ((flags & 4194320) !== 0 && (flags & 2048) === 0 && depends_on(reaction, sources, checked)) {
-			set_signal_status(reaction, DIRTY);
-			schedule_effect(reaction);
-		}
-	}
-}
-/**
-* @param {Reaction} reaction
-* @param {Source[]} sources
-* @param {Map<Reaction, boolean>} checked
-*/
-function depends_on(reaction, sources, checked) {
-	const depends = checked.get(reaction);
-	if (depends !== void 0) return depends;
-	if (reaction.deps !== null) for (const dep of reaction.deps) {
-		if (includes.call(sources, dep)) return true;
-		if ((dep.f & 2) !== 0 && depends_on(dep, sources, checked)) {
-			checked.set(dep, true);
-			return true;
-		}
-	}
-	checked.set(reaction, false);
-	return false;
-}
-/**
-* @param {Effect} effect
-* @returns {void}
-*/
-function schedule_effect(effect) {
-	/** @type {Batch} */ current_batch.schedule(effect);
-}
-/**
-* Mark all the effects inside a skipped branch CLEAN, so that
-* they can be correctly rescheduled later. Tracks dirty and maybe_dirty
-* effects so they can be rescheduled if the branch survives.
-* @param {Effect} effect
-* @param {{ d: Effect[], m: Effect[] }} tracked
-*/
-function reset_branch(effect, tracked) {
-	if ((effect.f & 32) !== 0 && (effect.f & 1024) !== 0) return;
-	if ((effect.f & 2048) !== 0) tracked.d.push(effect);
-	else if ((effect.f & 4096) !== 0) tracked.m.push(effect);
-	set_signal_status(effect, CLEAN);
-	var e = effect.first;
-	while (e !== null) {
-		reset_branch(e, tracked);
-		e = e.next;
-	}
-}
-/**
-* Mark an entire effect tree clean following an error
-* @param {Effect} effect
-*/
-function reset_all(effect) {
-	set_signal_status(effect, CLEAN);
-	var e = effect.first;
-	while (e !== null) {
-		reset_all(e);
-		e = e.next;
-	}
-}
-//#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/reactivity/create-subscriber.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/reactivity/create-subscriber.js
 /**
 * Returns a `subscribe` function that integrates external event-based systems with Svelte's reactivity.
 * It's particularly useful for integrating with web APIs like `MediaQuery`, `IntersectionObserver`, or `WebSocket`.
@@ -2316,7 +1574,7 @@ function createSubscriber(start) {
 	};
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/blocks/boundary.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/blocks/boundary.js
 /** @import { Effect, Source, TemplateNode, } from '#client' */
 /**
 * @typedef {{
@@ -2571,7 +1829,7 @@ var Boundary = class {
 			if (this.#main_effect) current_batch.skip_effect(this.#main_effect);
 			if (this.#pending_effect) current_batch.skip_effect(this.#pending_effect);
 			if (this.#failed_effect) current_batch.skip_effect(this.#failed_effect);
-			current_batch.on_fork_commit(() => {
+			current_batch.oncommit(() => {
 				this.#handle_error(error);
 			});
 		} else this.#handle_error(error);
@@ -2657,6 +1915,7 @@ var Boundary = class {
 		});
 	}
 };
+var OBSOLETE = Symbol("obsolete");
 /**
 * @param {Derived} derived
 * @returns {void}
@@ -2737,7 +1996,739 @@ function unfreeze_derived_effects(derived) {
 	for (const e of derived.effects) if (e.teardown && e.fn !== null) update_effect(e);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/sources.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/batch.js
+/** @import { Fork } from 'svelte' */
+/** @import { Derived, Effect, Reaction, Source, Value } from '#client' */
+/** @type {Batch | null} */
+var first_batch = null;
+/** @type {Batch | null} */
+var last_batch = null;
+/** @type {Batch | null} */
+var current_batch = null;
+/**
+* This is needed to avoid overwriting inputs
+* @type {Batch | null}
+*/
+var previous_batch = null;
+/**
+* When time travelling (i.e. working in one batch, while other batches
+* still have ongoing work), we ignore the real values of affected
+* signals in favour of their values within the batch
+* @type {Map<Value, any> | null}
+*/
+var batch_values = null;
+/** @type {Effect | null} */
+var last_scheduled_effect = null;
+var is_flushing_sync = false;
+var is_processing = false;
+/**
+* During traversal, this is an array. Newly created effects are (if not immediately
+* executed) pushed to this array, rather than going through the scheduling
+* rigamarole that would cause another turn of the flush loop.
+* @type {Effect[] | null}
+*/
+var collected_effects = null;
+/**
+* An array of effects that are marked during traversal as a result of a `set`
+* (not `internal_set`) call. These will be added to the next batch and
+* trigger another `batch.process()`
+* @type {Effect[] | null}
+* @deprecated when we get rid of legacy mode and stores, we can get rid of this
+*/
+var legacy_updates = null;
+var flush_count = 0;
+var uid = 1;
+var Batch = class Batch {
+	id = uid++;
+	/** True as soon as `#process` was called */
+	#started = false;
+	linked = true;
+	/** @type {Batch | null} */
+	#prev = null;
+	/** @type {Batch | null} */
+	#next = null;
+	/** @type {Map<Effect, ReturnType<typeof deferred<any>>>} */
+	async_deriveds = /* @__PURE__ */ new Map();
+	/**
+	* The current values of any signals that are updated in this batch.
+	* Tuple format: [value, is_derived] (note: is_derived is false for deriveds, too, if they were overridden via assignment)
+	* They keys of this map are identical to `this.#previous`
+	* @type {Map<Value, [any, boolean]>}
+	*/
+	current = /* @__PURE__ */ new Map();
+	/**
+	* The values of any signals (sources and deriveds) that are updated in this batch _before_ those updates took place.
+	* They keys of this map are identical to `this.#current`
+	* @type {Map<Value, any>}
+	*/
+	previous = /* @__PURE__ */ new Map();
+	/**
+	* When the batch is committed (and the DOM is updated), we need to remove old branches
+	* and append new ones by calling the functions added inside (if/each/key/etc) blocks
+	* @type {Set<(batch: Batch) => void>}
+	*/
+	#commit_callbacks = /* @__PURE__ */ new Set();
+	/**
+	* If a fork is discarded, we need to destroy any effects that are no longer needed
+	* @type {Set<(batch: Batch) => void>}
+	*/
+	#discard_callbacks = /* @__PURE__ */ new Set();
+	/**
+	* The number of async effects that are currently in flight
+	*/
+	#pending = 0;
+	/**
+	* Async effects that are currently in flight, _not_ inside a pending boundary
+	* @type {Map<Effect, number>}
+	*/
+	#blocking_pending = /* @__PURE__ */ new Map();
+	/**
+	* A deferred that resolves when the batch is committed, used with `settled()`
+	* TODO replace with Promise.withResolvers once supported widely enough
+	* @type {{ promise: Promise<void>, resolve: (value?: any) => void, reject: (reason: unknown) => void } | null}
+	*/
+	#deferred = null;
+	/**
+	* The root effects that need to be flushed
+	* @type {Effect[]}
+	*/
+	#roots = [];
+	/**
+	* Effects created while this batch was active.
+	* @type {Effect[]}
+	*/
+	#new_effects = [];
+	/**
+	* Deferred effects (which run after async work has completed) that are DIRTY
+	* @type {Set<Effect>}
+	*/
+	#dirty_effects = /* @__PURE__ */ new Set();
+	/**
+	* Deferred effects that are MAYBE_DIRTY
+	* @type {Set<Effect>}
+	*/
+	#maybe_dirty_effects = /* @__PURE__ */ new Set();
+	/**
+	* A map of branches that still exist, but will be destroyed when this batch
+	* is committed — we skip over these during `process`.
+	* The value contains child effects that were dirty/maybe_dirty before being reset,
+	* so they can be rescheduled if the branch survives.
+	* @type {Map<Effect, { d: Effect[], m: Effect[] }>}
+	*/
+	#skipped_branches = /* @__PURE__ */ new Map();
+	/**
+	* Inverse of #skipped_branches which we need to tell prior batches to unskip them when committing
+	* @type {Set<Effect>}
+	*/
+	#unskipped_branches = /* @__PURE__ */ new Set();
+	is_fork = false;
+	#decrement_queued = false;
+	constructor() {
+		if (last_batch === null) first_batch = last_batch = this;
+		else {
+			last_batch.#next = this;
+			this.#prev = last_batch;
+		}
+		last_batch = this;
+	}
+	#is_deferred() {
+		if (this.is_fork) return true;
+		for (const effect of this.#blocking_pending.keys()) {
+			var e = effect;
+			var skipped = false;
+			while (e.parent !== null) {
+				if (this.#skipped_branches.has(e)) {
+					skipped = true;
+					break;
+				}
+				e = e.parent;
+			}
+			if (!skipped) return true;
+		}
+		return false;
+	}
+	/**
+	* Add an effect to the #skipped_branches map and reset its children
+	* @param {Effect} effect
+	*/
+	skip_effect(effect) {
+		if (!this.#skipped_branches.has(effect)) this.#skipped_branches.set(effect, {
+			d: [],
+			m: []
+		});
+		this.#unskipped_branches.delete(effect);
+	}
+	/**
+	* Remove an effect from the #skipped_branches map and reschedule
+	* any tracked dirty/maybe_dirty child effects
+	* @param {Effect} effect
+	* @param {(e: Effect) => void} callback
+	*/
+	unskip_effect(effect, callback = (e) => this.schedule(e)) {
+		var tracked = this.#skipped_branches.get(effect);
+		if (tracked) {
+			this.#skipped_branches.delete(effect);
+			for (var e of tracked.d) {
+				set_signal_status(e, DIRTY);
+				callback(e);
+			}
+			for (e of tracked.m) {
+				set_signal_status(e, MAYBE_DIRTY);
+				callback(e);
+			}
+		}
+		this.#unskipped_branches.add(effect);
+	}
+	#process() {
+		this.#started = true;
+		if (flush_count++ > 1e3) {
+			this.#unlink();
+			infinite_loop_guard();
+		}
+		for (const e of this.#dirty_effects) {
+			this.#maybe_dirty_effects.delete(e);
+			set_signal_status(e, DIRTY);
+			this.schedule(e);
+		}
+		for (const e of this.#maybe_dirty_effects) {
+			set_signal_status(e, MAYBE_DIRTY);
+			this.schedule(e);
+		}
+		const roots = this.#roots;
+		this.#roots = [];
+		this.apply();
+		/** @type {Effect[]} */
+		var effects = collected_effects = [];
+		/** @type {Effect[]} */
+		var render_effects = [];
+		/**
+		* @type {Effect[]}
+		* @deprecated when we get rid of legacy mode and stores, we can get rid of this
+		*/
+		var updates = legacy_updates = [];
+		for (const root of roots) try {
+			this.#traverse(root, effects, render_effects);
+		} catch (e) {
+			reset_all(root);
+			if (!this.#is_deferred()) this.discard();
+			throw e;
+		}
+		current_batch = null;
+		if (updates.length > 0) {
+			var batch = Batch.ensure();
+			for (const e of updates) batch.schedule(e);
+		}
+		collected_effects = null;
+		legacy_updates = null;
+		if (this.#is_deferred()) {
+			this.#defer_effects(render_effects);
+			this.#defer_effects(effects);
+			for (const [e, t] of this.#skipped_branches) reset_branch(e, t);
+			if (updates.length > 0)
+ /** @type {Batch} */ current_batch.#process();
+			return;
+		}
+		const earlier_batch = this.#find_earlier_batch();
+		if (earlier_batch) {
+			this.#defer_effects(render_effects);
+			this.#defer_effects(effects);
+			earlier_batch.#merge(this);
+			return;
+		}
+		this.#dirty_effects.clear();
+		this.#maybe_dirty_effects.clear();
+		for (const fn of this.#commit_callbacks) fn(this);
+		this.#commit_callbacks.clear();
+		previous_batch = this;
+		flush_queued_effects(render_effects);
+		flush_queued_effects(effects);
+		previous_batch = null;
+		this.#deferred?.resolve();
+		var next_batch = current_batch;
+		if (this.#pending === 0 && (this.#roots.length === 0 || next_batch !== null)) {
+			this.#unlink();
+			if (async_mode_flag) {
+				this.#commit();
+				current_batch = next_batch;
+			}
+		}
+		if (this.#roots.length > 0) if (next_batch !== null) {
+			const batch = next_batch;
+			batch.#roots.push(...this.#roots.filter((r) => !batch.#roots.includes(r)));
+		} else next_batch = this;
+		if (next_batch !== null) next_batch.#process();
+	}
+	/**
+	* Traverse the effect tree, executing effects or stashing
+	* them for later execution as appropriate
+	* @param {Effect} root
+	* @param {Effect[]} effects
+	* @param {Effect[]} render_effects
+	*/
+	#traverse(root, effects, render_effects) {
+		root.f ^= CLEAN;
+		var effect = root.first;
+		while (effect !== null) {
+			var flags = effect.f;
+			var is_branch = (flags & 96) !== 0;
+			if (!(is_branch && (flags & 1024) !== 0 || (flags & 8192) !== 0 || this.#skipped_branches.has(effect)) && effect.fn !== null) {
+				if (is_branch) effect.f ^= CLEAN;
+				else if ((flags & 4) !== 0) effects.push(effect);
+				else if (async_mode_flag && (flags & 16777224) !== 0) render_effects.push(effect);
+				else if (is_dirty(effect)) {
+					if ((flags & 16) !== 0) this.#maybe_dirty_effects.add(effect);
+					update_effect(effect);
+				}
+				var child = effect.first;
+				if (child !== null) {
+					effect = child;
+					continue;
+				}
+			}
+			while (effect !== null) {
+				var next = effect.next;
+				if (next !== null) {
+					effect = next;
+					break;
+				}
+				effect = effect.parent;
+			}
+		}
+	}
+	#find_earlier_batch() {
+		var batch = this.#prev;
+		while (batch !== null) {
+			if (!batch.is_fork) {
+				for (const [value, [, is_derived]] of this.current) if (batch.current.has(value) && !is_derived) return batch;
+			}
+			batch = batch.#prev;
+		}
+		return null;
+	}
+	/**
+	* @param {Batch} batch
+	*/
+	#merge(batch) {
+		for (const [source, value] of batch.current) {
+			if (!this.previous.has(source) && batch.previous.has(source)) this.previous.set(source, batch.previous.get(source));
+			this.current.set(source, value);
+		}
+		for (const [effect, deferred] of batch.async_deriveds) {
+			const d = this.async_deriveds.get(effect);
+			if (d) deferred.promise.then(d.resolve).catch(d.reject);
+		}
+		batch.async_deriveds.clear();
+		this.transfer_effects(batch.#dirty_effects, batch.#maybe_dirty_effects);
+		/**
+		* mark all effects that depend on `batch.current`, except the
+		* async effects that we just resolved (TODO unless they depend
+		* on values in this batch that are NOT in the later batch?).
+		* Through this we also will populate the correct #skipped_branches,
+		* oncommit callbacks etc, so we don't need to merge them separately.
+		* @param {Value} value
+		*/
+		const mark = (value) => {
+			var reactions = value.reactions;
+			if (reactions === null) return;
+			for (const reaction of reactions) {
+				var flags = reaction.f;
+				if ((flags & 2) !== 0) mark(reaction);
+				else {
+					var effect = reaction;
+					if (flags & 4194320 && !this.async_deriveds.has(effect)) {
+						this.#maybe_dirty_effects.delete(effect);
+						set_signal_status(effect, DIRTY);
+						this.schedule(effect);
+					}
+				}
+			}
+		};
+		for (const source of this.current.keys()) mark(source);
+		this.oncommit(() => batch.discard());
+		batch.#unlink();
+		current_batch = this;
+		this.#process();
+	}
+	/**
+	* @param {Effect[]} effects
+	*/
+	#defer_effects(effects) {
+		for (var i = 0; i < effects.length; i += 1) defer_effect(effects[i], this.#dirty_effects, this.#maybe_dirty_effects);
+	}
+	/**
+	* Associate a change to a given source with the current
+	* batch, noting its previous and current values
+	* @param {Value} source
+	* @param {any} value
+	* @param {boolean} [is_derived]
+	*/
+	capture(source, value, is_derived = false) {
+		if (source.v !== UNINITIALIZED && !this.previous.has(source)) this.previous.set(source, source.v);
+		if ((source.f & 8388608) === 0) {
+			this.current.set(source, [value, is_derived]);
+			batch_values?.set(source, value);
+		}
+		if (!this.is_fork) source.v = value;
+	}
+	activate() {
+		current_batch = this;
+	}
+	deactivate() {
+		current_batch = null;
+		batch_values = null;
+	}
+	flush() {
+		try {
+			is_processing = true;
+			current_batch = this;
+			this.#process();
+		} finally {
+			flush_count = 0;
+			last_scheduled_effect = null;
+			collected_effects = null;
+			legacy_updates = null;
+			is_processing = false;
+			current_batch = null;
+			batch_values = null;
+			old_values.clear();
+		}
+	}
+	discard() {
+		for (const fn of this.#discard_callbacks) fn(this);
+		this.#discard_callbacks.clear();
+		for (const deferred of this.async_deriveds.values()) deferred.reject(OBSOLETE);
+		this.#unlink();
+		this.#deferred?.resolve();
+	}
+	/**
+	* @param {Effect} effect
+	*/
+	register_created_effect(effect) {
+		this.#new_effects.push(effect);
+	}
+	#commit() {
+		for (let batch = first_batch; batch !== null; batch = batch.#next) {
+			var is_earlier = batch.id < this.id;
+			/** @type {Source[]} */
+			var sources = [];
+			for (const [source, [value, is_derived]] of this.current) {
+				if (batch.current.has(source)) {
+					var batch_value = batch.current.get(source)[0];
+					if (is_earlier && value !== batch_value) batch.current.set(source, [value, is_derived]);
+					else continue;
+				}
+				sources.push(source);
+			}
+			if (is_earlier) for (const [effect, deferred] of this.async_deriveds) {
+				const d = batch.async_deriveds.get(effect);
+				if (d) deferred.promise.then(d.resolve).catch(d.reject);
+			}
+			var current = [...batch.current.keys()].filter((source) => !batch.current.get(source)[1]);
+			if (!batch.#started || current.length === 0) continue;
+			var others = current.filter((source) => !this.current.has(source));
+			if (others.length === 0) {
+				if (is_earlier) batch.discard();
+			} else if (sources.length > 0) {
+				if (is_earlier) for (const unskipped of this.#unskipped_branches) batch.unskip_effect(unskipped, (e) => {
+					if ((e.f & 4194320) !== 0) batch.schedule(e);
+					else batch.#defer_effects([e]);
+				});
+				batch.activate();
+				/** @type {Set<Value>} */
+				var marked = /* @__PURE__ */ new Set();
+				/** @type {Map<Reaction, boolean>} */
+				var checked = /* @__PURE__ */ new Map();
+				for (var source of sources) mark_effects(source, others, marked, checked);
+				checked = /* @__PURE__ */ new Map();
+				var current_unequal = [...batch.current].filter(([c, v1]) => {
+					const v2 = this.current.get(c);
+					if (!v2) return true;
+					return v2[0] !== v1[0] || v2[1] !== v1[1];
+				}).map(([c]) => c);
+				if (current_unequal.length > 0) {
+					for (const effect of this.#new_effects) if ((effect.f & 155648) === 0 && depends_on(effect, current_unequal, checked)) if ((effect.f & 4194320) !== 0) {
+						set_signal_status(effect, DIRTY);
+						batch.schedule(effect);
+					} else batch.#dirty_effects.add(effect);
+				}
+				if (batch.#roots.length > 0 && !batch.#decrement_queued) {
+					batch.apply();
+					for (var root of batch.#roots) batch.#traverse(root, [], []);
+					batch.#roots = [];
+				}
+				batch.deactivate();
+			}
+		}
+	}
+	/**
+	* @param {boolean} blocking
+	* @param {Effect} effect
+	*/
+	increment(blocking, effect) {
+		this.#pending += 1;
+		if (blocking) {
+			let blocking_pending_count = this.#blocking_pending.get(effect) ?? 0;
+			this.#blocking_pending.set(effect, blocking_pending_count + 1);
+		}
+	}
+	/**
+	* @param {boolean} blocking
+	* @param {Effect} effect
+	*/
+	decrement(blocking, effect) {
+		this.#pending -= 1;
+		if (blocking) {
+			let blocking_pending_count = this.#blocking_pending.get(effect) ?? 0;
+			if (blocking_pending_count === 1) this.#blocking_pending.delete(effect);
+			else this.#blocking_pending.set(effect, blocking_pending_count - 1);
+		}
+		if (this.#decrement_queued) return;
+		this.#decrement_queued = true;
+		queue_micro_task(() => {
+			this.#decrement_queued = false;
+			if (this.linked) this.flush();
+		});
+	}
+	/**
+	* @param {Set<Effect>} dirty_effects
+	* @param {Set<Effect>} maybe_dirty_effects
+	*/
+	transfer_effects(dirty_effects, maybe_dirty_effects) {
+		for (const e of dirty_effects) this.#dirty_effects.add(e);
+		for (const e of maybe_dirty_effects) this.#maybe_dirty_effects.add(e);
+		dirty_effects.clear();
+		maybe_dirty_effects.clear();
+	}
+	/** @param {(batch: Batch) => void} fn */
+	oncommit(fn) {
+		this.#commit_callbacks.add(fn);
+	}
+	/** @param {(batch: Batch) => void} fn */
+	ondiscard(fn) {
+		this.#discard_callbacks.add(fn);
+	}
+	settled() {
+		return (this.#deferred ??= deferred()).promise;
+	}
+	static ensure() {
+		if (current_batch === null) {
+			const batch = current_batch = new Batch();
+			if (!is_processing && !is_flushing_sync) queue_micro_task(() => {
+				if (!batch.#started) batch.flush();
+			});
+		}
+		return current_batch;
+	}
+	apply() {
+		if (!async_mode_flag || !this.is_fork && this.#prev === null && this.#next === null) {
+			batch_values = null;
+			return;
+		}
+		batch_values = /* @__PURE__ */ new Map();
+		for (const [source, [value]] of this.current) batch_values.set(source, value);
+		for (let batch = first_batch; batch !== null; batch = batch.#next) {
+			if (batch === this || batch.is_fork) continue;
+			var intersects = false;
+			if (batch.id < this.id) for (const [source, [, is_derived]] of batch.current) {
+				if (is_derived) continue;
+				if (this.current.has(source)) {
+					intersects = true;
+					break;
+				}
+			}
+			if (!intersects) {
+				for (const [source, previous] of batch.previous) if (!batch_values.has(source)) batch_values.set(source, previous);
+			}
+		}
+	}
+	/**
+	*
+	* @param {Effect} effect
+	*/
+	schedule(effect) {
+		last_scheduled_effect = effect;
+		if (effect.b?.is_pending && (effect.f & 16777228) !== 0 && (effect.f & 32768) === 0) {
+			effect.b.defer_effect(effect);
+			return;
+		}
+		var e = effect;
+		while (e.parent !== null) {
+			e = e.parent;
+			var flags = e.f;
+			if (collected_effects !== null && e === active_effect) {
+				if (async_mode_flag) return;
+				if ((active_reaction === null || (active_reaction.f & 2) === 0) && !legacy_is_updating_store) return;
+			}
+			if ((flags & 96) !== 0) {
+				if ((flags & 1024) === 0) return;
+				e.f ^= CLEAN;
+			}
+		}
+		this.#roots.push(e);
+	}
+	#unlink() {
+		if (!this.linked) return;
+		var prev = this.#prev;
+		var next = this.#next;
+		if (prev === null) first_batch = next;
+		else prev.#next = next;
+		if (next === null) last_batch = prev;
+		else next.#prev = prev;
+		this.linked = false;
+	}
+};
+/**
+* Synchronously flush any pending updates.
+* Returns void if no callback is provided, otherwise returns the result of calling the callback.
+* @template [T=void]
+* @param {(() => T) | undefined} [fn]
+* @returns {T}
+*/
+function flushSync(fn) {
+	var was_flushing_sync = is_flushing_sync;
+	is_flushing_sync = true;
+	try {
+		var result;
+		if (fn) {
+			if (current_batch !== null && !current_batch.is_fork) current_batch.flush();
+			result = fn();
+		}
+		while (true) {
+			flush_tasks();
+			if (current_batch === null) return result;
+			current_batch.flush();
+		}
+	} finally {
+		is_flushing_sync = was_flushing_sync;
+	}
+}
+function infinite_loop_guard() {
+	try {
+		effect_update_depth_exceeded();
+	} catch (error) {
+		invoke_error_boundary(error, last_scheduled_effect);
+	}
+}
+/** @type {Set<Effect> | null} */
+var eager_block_effects = null;
+/**
+* @param {Array<Effect>} effects
+* @returns {void}
+*/
+function flush_queued_effects(effects) {
+	var length = effects.length;
+	if (length === 0) return;
+	var i = 0;
+	while (i < length) {
+		var effect = effects[i++];
+		if ((effect.f & 24576) === 0 && is_dirty(effect)) {
+			eager_block_effects = /* @__PURE__ */ new Set();
+			update_effect(effect);
+			if (effect.deps === null && effect.first === null && effect.nodes === null && effect.teardown === null && effect.ac === null) unlink_effect(effect);
+			if (eager_block_effects?.size > 0) {
+				old_values.clear();
+				for (const e of eager_block_effects) {
+					if ((e.f & 24576) !== 0) continue;
+					/** @type {Effect[]} */
+					const ordered_effects = [e];
+					let ancestor = e.parent;
+					while (ancestor !== null) {
+						if (eager_block_effects.has(ancestor)) {
+							eager_block_effects.delete(ancestor);
+							ordered_effects.push(ancestor);
+						}
+						ancestor = ancestor.parent;
+					}
+					for (let j = ordered_effects.length - 1; j >= 0; j--) {
+						const e = ordered_effects[j];
+						if ((e.f & 24576) !== 0) continue;
+						update_effect(e);
+					}
+				}
+				eager_block_effects.clear();
+			}
+		}
+	}
+	eager_block_effects = null;
+}
+/**
+* This is similar to `mark_reactions`, but it only marks async/block effects
+* depending on `value` and at least one of the other `sources`, so that
+* these effects can re-run after another batch has been committed
+* @param {Value} value
+* @param {Source[]} sources
+* @param {Set<Value>} marked
+* @param {Map<Reaction, boolean>} checked
+*/
+function mark_effects(value, sources, marked, checked) {
+	if (marked.has(value)) return;
+	marked.add(value);
+	if (value.reactions !== null) for (const reaction of value.reactions) {
+		const flags = reaction.f;
+		if ((flags & 2) !== 0) mark_effects(reaction, sources, marked, checked);
+		else if ((flags & 4194320) !== 0 && (flags & 2048) === 0 && depends_on(reaction, sources, checked)) {
+			set_signal_status(reaction, DIRTY);
+			schedule_effect(reaction);
+		}
+	}
+}
+/**
+* @param {Reaction} reaction
+* @param {Source[]} sources
+* @param {Map<Reaction, boolean>} checked
+*/
+function depends_on(reaction, sources, checked) {
+	const depends = checked.get(reaction);
+	if (depends !== void 0) return depends;
+	if (reaction.deps !== null) for (const dep of reaction.deps) {
+		if (includes.call(sources, dep)) return true;
+		if ((dep.f & 2) !== 0 && depends_on(dep, sources, checked)) {
+			checked.set(dep, true);
+			return true;
+		}
+	}
+	checked.set(reaction, false);
+	return false;
+}
+/**
+* @param {Effect} effect
+* @returns {void}
+*/
+function schedule_effect(effect) {
+	/** @type {Batch} */ current_batch.schedule(effect);
+}
+/**
+* Mark all the effects inside a skipped branch CLEAN, so that
+* they can be correctly rescheduled later. Tracks dirty and maybe_dirty
+* effects so they can be rescheduled if the branch survives.
+* @param {Effect} effect
+* @param {{ d: Effect[], m: Effect[] }} tracked
+*/
+function reset_branch(effect, tracked) {
+	if ((effect.f & 32) !== 0 && (effect.f & 1024) !== 0) return;
+	if ((effect.f & 2048) !== 0) tracked.d.push(effect);
+	else if ((effect.f & 4096) !== 0) tracked.m.push(effect);
+	set_signal_status(effect, CLEAN);
+	var e = effect.first;
+	while (e !== null) {
+		reset_branch(e, tracked);
+		e = e.next;
+	}
+}
+/**
+* Mark an entire effect tree clean following an error
+* @param {Effect} effect
+*/
+function reset_all(effect) {
+	set_signal_status(effect, CLEAN);
+	var e = effect.first;
+	while (e !== null) {
+		reset_all(e);
+		e = e.next;
+	}
+}
+//#endregion
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/sources.js
 /** @import { Derived, Effect, Source, Value } from '#client' */
 /** @type {Set<Effect>} */
 var eager_effects = /* @__PURE__ */ new Set();
@@ -2765,7 +2756,7 @@ function source(v, stack) {
 * @param {V} v
 * @param {Error | null} [stack]
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*#__NO_SIDE_EFFECTS__*/
 function state(v, stack) {
 	const s = source(v, stack);
 	push_reaction_value(s);
@@ -2777,7 +2768,7 @@ function state(v, stack) {
 * @param {boolean} [immutable]
 * @returns {Source<V>}
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*#__NO_SIDE_EFFECTS__*/
 function mutable_source(initial_value, immutable = false, trackable = true) {
 	const s = source(initial_value);
 	if (!immutable) s.equals = safe_equals;
@@ -2792,7 +2783,7 @@ function mutable_source(initial_value, immutable = false, trackable = true) {
 * @returns {V}
 */
 function set(source, value, should_proxy = false) {
-	if (active_reaction !== null && (!untracking || (active_reaction.f & 131072) !== 0) && is_runes() && (active_reaction.f & 4325394) !== 0 && (current_sources === null || !includes.call(current_sources, source))) state_unsafe_mutation();
+	if (active_reaction !== null && (!untracking || (active_reaction.f & 131072) !== 0) && is_runes() && (active_reaction.f & 4325394) !== 0 && (current_sources === null || !current_sources.has(source))) state_unsafe_mutation();
 	return internal_set(source, should_proxy ? proxy(value) : value, legacy_updates);
 }
 /**
@@ -3044,7 +3035,7 @@ new Set([
 	"unshift"
 ]);
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/operations.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/operations.js
 /** @type {Window} */
 var $window;
 /** @type {() => Node | null} */
@@ -3084,7 +3075,7 @@ function create_text(value = "") {
 * @template {Node} N
 * @param {N} node
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function get_first_child(node) {
 	return first_child_getter.call(node);
 }
@@ -3092,7 +3083,7 @@ function get_first_child(node) {
 * @template {Node} N
 * @param {N} node
 */
-/* @__NO_SIDE_EFFECTS__ */
+/*@__NO_SIDE_EFFECTS__*/
 function get_next_sibling(node) {
 	return next_sibling_getter.call(node);
 }
@@ -3105,6 +3096,12 @@ function clear_text_content(node) {
 	node.textContent = "";
 }
 /**
+* Branching here is intentional and load-bearing for perf. `createElement(tag)`
+* hits a fast path in Blink that `createElementNS(NAMESPACE_HTML, tag)` doesn't,
+* and passing an explicit `undefined` as the trailing options arg measurably
+* slows both APIs. Funnelling every case through a single `createElementNS(ns,
+* tag, options)` call would be smaller but slower on the HTML path.
+*
 * @template {keyof HTMLElementTagNameMap | string} T
 * @param {T} tag
 * @param {string} [namespace]
@@ -3112,11 +3109,11 @@ function clear_text_content(node) {
 * @returns {T extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[T] : Element}
 */
 function create_element(tag, namespace, is) {
-	let options = is ? { is } : void 0;
-	return document.createElementNS(namespace ?? "http://www.w3.org/1999/xhtml", tag, options);
+	if (namespace == null || namespace === "http://www.w3.org/1999/xhtml") return is ? document.createElement(tag, { is }) : document.createElement(tag);
+	return is ? document.createElementNS(namespace, tag, { is }) : document.createElementNS(namespace, tag);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/bindings/shared.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/elements/bindings/shared.js
 /**
 * @template T
 * @param {() => T} fn
@@ -3134,7 +3131,7 @@ function without_reactive_context(fn) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/reactivity/effects.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/reactivity/effects.js
 /** @import { Blocker, ComponentContext, ComponentContextLegacy, Derived, Effect, TemplateNode, TransitionManager } from '#client' */
 /**
 * @param {Effect} effect
@@ -3327,7 +3324,7 @@ function destroy_effect(effect, remove_dom = true) {
 		remove_effect_dom(effect.nodes.start, effect.nodes.end);
 		removed = true;
 	}
-	set_signal_status(effect, DESTROYING);
+	effect.f |= DESTROYING;
 	destroy_effect_children(effect, remove_dom && !removed);
 	remove_reactions(effect, 0);
 	var transitions = effect.nodes && effect.nodes.t;
@@ -3431,14 +3428,14 @@ function move_effect(effect, fragment) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/legacy.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/legacy.js
 /**
 * @type {Set<Value> | null}
 * @deprecated
 */
 var captured_signals = null;
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/runtime.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/runtime.js
 /** @import { Derived, Effect, Reaction, Source, Value } from '#client' */
 var is_updating_effect = false;
 var is_destroying_effect = false;
@@ -3462,13 +3459,12 @@ function set_active_effect(effect) {
 /**
 * When sources are created within a reaction, reading and writing
 * them within that reaction should not cause a re-run
-* @type {null | Source[]}
+* @type {null | Set<Source>}
 */
 var current_sources = null;
 /** @param {Value} value */
 function push_reaction_value(value) {
-	if (active_reaction !== null && (!async_mode_flag || (active_reaction.f & 2) !== 0)) if (current_sources === null) current_sources = [value];
-	else current_sources.push(value);
+	if (active_reaction !== null && (!async_mode_flag || (active_reaction.f & 2) !== 0)) (current_sources ??= /* @__PURE__ */ new Set()).add(value);
 }
 /**
 * The dependencies of the reaction that is currently being executed. In many cases,
@@ -3533,7 +3529,7 @@ function is_dirty(reaction) {
 function schedule_possible_effect_self_invalidation(signal, effect, root = true) {
 	var reactions = signal.reactions;
 	if (reactions === null) return;
-	if (!async_mode_flag && current_sources !== null && includes.call(current_sources, signal)) return;
+	if (!async_mode_flag && current_sources !== null && current_sources.has(signal)) return;
 	for (var i = 0; i < reactions.length; i++) {
 		var reaction = reactions[i];
 		if ((reaction.f & 2) !== 0) schedule_possible_effect_self_invalidation(reaction, effect, false);
@@ -3685,7 +3681,7 @@ function get(signal) {
 	var is_derived = (signal.f & 2) !== 0;
 	captured_signals?.add(signal);
 	if (active_reaction !== null && !untracking) {
-		if (!(active_effect !== null && (active_effect.f & 16384) !== 0) && (current_sources === null || !includes.call(current_sources, signal))) {
+		if (!(active_effect !== null && (active_effect.f & 16384) !== 0) && (current_sources === null || !current_sources.has(signal))) {
 			var deps = active_reaction.deps;
 			if ((active_reaction.f & 2097152) !== 0) {
 				if (signal.rv < read_version) {
@@ -3779,7 +3775,7 @@ function untrack(fn) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/store/utils.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/store/utils.js
 /** @import { Readable } from './public' */
 /**
 * @template T
@@ -3798,7 +3794,7 @@ function subscribe_to_store(store, run, invalidate) {
 	return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/utils.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/utils.js
 /**
 * Attributes that are boolean, i.e. they are present or not present.
 */
@@ -3858,7 +3854,7 @@ function is_passive_event(name) {
 	return PASSIVE_EVENTS.includes(name);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/index.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/index.js
 var INVALID_ATTR_NAME_CHAR_REGEX = /[\s'">/=\u{FDD0}-\u{FDEF}\u{FFFE}\u{FFFF}\u{1FFFE}\u{1FFFF}\u{2FFFE}\u{2FFFF}\u{3FFFE}\u{3FFFF}\u{4FFFE}\u{4FFFF}\u{5FFFE}\u{5FFFF}\u{6FFFE}\u{6FFFF}\u{7FFFE}\u{7FFFF}\u{8FFFE}\u{8FFFF}\u{9FFFE}\u{9FFFF}\u{AFFFE}\u{AFFFF}\u{BFFFE}\u{BFFFF}\u{CFFFE}\u{CFFFF}\u{DFFFE}\u{DFFFF}\u{EFFFE}\u{EFFFF}\u{FFFFE}\u{FFFFF}\u{10FFFE}\u{10FFFF}]/u;
 /**
 * Only available on the server and when compiling with the `server` option.
@@ -3934,7 +3930,7 @@ function derived(fn) {
 	};
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/crypto.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/crypto.js
 var text_encoder;
 var crypto;
 /** @param {string} module_name */
@@ -3959,7 +3955,7 @@ function base64_encode(bytes) {
 	return btoa(binary);
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/renderer.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/renderer.js
 /** @import { Component } from 'svelte' */
 /** @import { Csp, HydratableContext, RenderOutput, SSRContext, SyncRenderOutput, Sha256Source } from './types.js' */
 /** @import { MaybePromise } from '#shared' */
@@ -4643,9 +4639,9 @@ var SSRState = class {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/server/dev.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/server/dev.js
 function get_user_code_location() {
 	return get_stack().filter((line) => line.trim().startsWith("at ")).map((line) => line.replace(/\((.*):\d+:\d+\)$/, (_, file) => `(${file})`)).join("\n");
 }
 //#endregion
-export { getAllContexts as $, hydrate_node as A, HYDRATION_ERROR as B, derived$1 as C, pop as D, component_context as E, lifecycle_double_unmount as F, REACTION_RAN as G, async_mode_flag as H, state_proxy_unmount as I, define_property as J, STATE_SYMBOL as K, hydration_failed as L, set_hydrate_node as M, set_hydrating as N, push as O, hydration_mismatch as P, createContext as Q, rune_outside_svelte as R, flushSync as S, writable as T, getAbortSignal as U, get_render_context as V, LEGACY_PROPS as W, object_keys as X, noop as Y, run as Z, get_next_sibling as _, stringify_string as _t, active_effect as a, hydratable_serialization_failed as at, set as b, set_active_effect as c, uneval as ct, effect_root as d, get_type as dt, getContext as et, render_effect as f, is_plain_object as ft, get_first_child as g, stringify_key as gt, create_text as h, is_valid_array_len as ht, is_passive_event as i, hydratable_clobbering as it, hydrating as j, hydrate_next as k, set_active_reaction as l, DevalueError as lt, create_element as m, is_valid_array_index as mt, derived as n, setContext as nt, active_reaction as o, lifecycle_function_unavailable as ot, clear_text_content as p, is_primitive as pt, array_from as q, render as r, ssr_context as rt, get as s, experimental_async_required as st, get_user_code_location as t, hasContext as tt, component_root as u, enumerable_symbols as ut, init_operations as v, valid_array_indices as vt, readable as w, boundary as x, mutable_source as y, MAX_ARRAY_INDEX as yt, escape_html as z };
+export { getAllContexts as $, hydrate_node as A, HYDRATION_ERROR as B, derived$1 as C, pop as D, component_context as E, lifecycle_double_unmount as F, REACTION_RAN as G, async_mode_flag as H, state_proxy_unmount as I, define_property as J, STATE_SYMBOL as K, hydration_failed as L, set_hydrate_node as M, set_hydrating as N, push as O, hydration_mismatch as P, createContext as Q, rune_outside_svelte as R, boundary as S, writable as T, getAbortSignal as U, get_render_context as V, LEGACY_PROPS as W, object_keys as X, noop as Y, run as Z, get_next_sibling as _, stringify_string as _t, active_effect as a, hydratable_serialization_failed as at, set as b, set_active_effect as c, uneval as ct, effect_root as d, get_type as dt, getContext as et, render_effect as f, is_plain_object as ft, get_first_child as g, stringify_key as gt, create_text as h, is_valid_array_len as ht, is_passive_event as i, hydratable_clobbering as it, hydrating as j, hydrate_next as k, set_active_reaction as l, DevalueError as lt, create_element as m, is_valid_array_index as mt, derived as n, setContext as nt, active_reaction as o, lifecycle_function_unavailable as ot, clear_text_content as p, is_primitive as pt, array_from as q, render as r, ssr_context as rt, get as s, experimental_async_required as st, get_user_code_location as t, hasContext as tt, component_root as u, enumerable_symbols as ut, init_operations as v, valid_array_indices as vt, readable as w, flushSync as x, mutable_source as y, MAX_ARRAY_INDEX as yt, escape_html as z };

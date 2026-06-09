@@ -1,5 +1,5 @@
-import { A as hydrate_node, B as HYDRATION_ERROR, D as pop, E as component_context, H as async_mode_flag, J as define_property, L as hydration_failed, M as set_hydrate_node, N as set_hydrating, O as push, P as hydration_mismatch, S as flushSync, W as LEGACY_PROPS, _ as get_next_sibling, a as active_effect, b as set, c as set_active_effect, g as get_first_child, h as create_text, i as is_passive_event, j as hydrating, k as hydrate_next, l as set_active_reaction, o as active_reaction, p as clear_text_content, q as array_from, s as get, u as component_root, v as init_operations, x as boundary, y as mutable_source } from "./dev.js";
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/elements/events.js
+import { A as hydrate_node, B as HYDRATION_ERROR, D as pop, E as component_context, H as async_mode_flag, J as define_property, L as hydration_failed, M as set_hydrate_node, N as set_hydrating, O as push, P as hydration_mismatch, S as boundary, W as LEGACY_PROPS, _ as get_next_sibling, a as active_effect, b as set, c as set_active_effect, g as get_first_child, h as create_text, i as is_passive_event, j as hydrating, k as hydrate_next, l as set_active_reaction, o as active_reaction, p as clear_text_content, q as array_from, s as get, u as component_root, v as init_operations, x as flushSync, y as mutable_source } from "./dev.js";
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/elements/events.js
 /**
 * Used on elements, as a map of event type -> event handler,
 * and on events themselves to track which element handled an event
@@ -83,7 +83,7 @@ function handle_event_propagation(event) {
 }
 globalThis?.window?.trustedTypes;
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/internal/client/dom/template.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/internal/client/dom/template.js
 /** @import { Effect, EffectNodes, TemplateNode } from '#client' */
 /** @import { TemplateStructure } from './types' */
 /**
@@ -291,7 +291,7 @@ function unmount(component, options) {
 	return Promise.resolve();
 }
 //#endregion
-//#region ../../node_modules/.bun/svelte@5.55.10/node_modules/svelte/src/legacy/legacy-client.js
+//#region ../../node_modules/.bun/svelte@5.56.3/node_modules/svelte/src/legacy/legacy-client.js
 /** @import { ComponentConstructorOptions, ComponentType, SvelteComponent, Component } from 'svelte' */
 /**
 * Takes the same options as a Svelte 4 component and the component function and returns a Svelte 4 compatible component.
