@@ -1,6 +1,1 @@
-import { i as e } from '../chunks/CoJq17Tl.js';
-import '../chunks/xihTtKlq.js';
-
-function t(e) {}
-e(t, {}, [], [], { mode: `open` });
-export { t as component };
+import{i as e}from"../chunks/CoJq17Tl.js";import"../chunks/xihTtKlq.js";function t(e){}e(t,{},[],[],{mode:`open`});export{t as component};

@@ -12515,7 +12515,7 @@ function IU(e, t) {
 		Tj,
 		Oj,
 		jj
-	])), o = /* @__PURE__ */ N(() => n() === "dao" ? [...V(i)] : n() === "logi" ? [...V(a)] : []), s = /* @__PURE__ */ N(() => n() === "dao" ? "/output/imgs/banner/bg-banner-dao.png" : "/output/imgs/banner/bg-banner-logi.png"), c = /* @__PURE__ */ N(() => n() === "dao" ? Bv() : n() === "logi" ? tj() : ""), l = /* @__PURE__ */ N(() => n() === "dao" ? Uv() : n() === "logi" ? ij() : ""), u = /* @__PURE__ */ N(() => n() === "dao" ? Kv() : n() === "logi" ? sj() : ""), d = /* @__PURE__ */ N(() => Array.from({ length: V(o).length }).map((e, t) => {
+	])), o = /* @__PURE__ */ N(() => n() === "dao" ? [...V(i)] : n() === "logi" ? [...V(a)] : []), s = /* @__PURE__ */ N(() => n() === "dao" ? "/output/imgs/banner/bg-banner-dao.jpg" : "/output/imgs/banner/bg-banner-logi.jpg"), c = /* @__PURE__ */ N(() => n() === "dao" ? Bv() : n() === "logi" ? tj() : ""), l = /* @__PURE__ */ N(() => n() === "dao" ? Uv() : n() === "logi" ? ij() : ""), u = /* @__PURE__ */ N(() => n() === "dao" ? Kv() : n() === "logi" ? sj() : ""), d = /* @__PURE__ */ N(() => Array.from({ length: V(o).length }).map((e, t) => {
 		let r = V(o)[t];
 		return {
 			img: n() === "dao" ? `/output/imgs/banner/img-banner-dao-slide-${t + 1}.png` : `/output/imgs/banner/img-banner-logi-slide-${t + 1}.png`,

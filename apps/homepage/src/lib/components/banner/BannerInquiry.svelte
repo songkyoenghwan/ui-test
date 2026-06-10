@@ -32,7 +32,7 @@
 		m.logi_banner_item_8,
 	]);
 	let pageKeys = $derived(page === 'dao' ? [...bannerTitleDao] : page === 'logi' ? [...bannerTitleLogi] : []);
-	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.png` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.png`);
+	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.jpg` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.jpg`);
 	let tit = $derived(page === 'dao' ? m.dao_banner_title() : page === 'logi' ? m.logi_banner_title() : '');
 	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2() : page === 'logi' ? m.logi_banner_title_2() : '');
 	let txt = $derived(page === 'dao' ? m.dao_banner_text() : page === 'logi' ? m.logi_banner_text() : '');

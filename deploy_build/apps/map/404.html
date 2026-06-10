@@ -7,15 +7,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg" href="/favicon.svg" />
 
-		<link href="/ui-test/apps/map/_app/immutable/entry/start.DIRp4z9d.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/chunks/CMYhYntx.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/chunks/CoJq17Tl.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/chunks/DocvIO9Y.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/entry/app.COxGz6Bt.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/chunks/kNaey6uv.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/chunks/xihTtKlq.js" rel="modulepreload" />
-		<link href="/ui-test/apps/map/_app/immutable/nodes/0.DxrqSAb4.js" rel="modulepreload" />
-
+		<link href="/_app/immutable/entry/start.DjaSSXte.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/ixCKAvok.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/CoJq17Tl.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/DocvIO9Y.js" rel="modulepreload">
+		<link href="/_app/immutable/entry/app.C2MGCWiW.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/kNaey6uv.js" rel="modulepreload">
+		<link href="/_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="/_app/immutable/nodes/0.DxrqSAb4.js" rel="modulepreload">
+		
 		<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ"></script>
 	</head>
 
@@ -23,18 +23,19 @@
 		<div style="display: contents">
 			<script>
 				{
-					__sveltekit_b7360k = {
-						base: '/ui-test/apps/map',
-						assets: '/ui-test/apps/map',
+					
+					__sveltekit_nwauxk = {
+						base: ""
 					};
 
 					const element = document.currentScript.parentElement;
 
-					Promise.all([import('/ui-test/apps/map/_app/immutable/entry/start.DIRp4z9d.js'), import('/ui-test/apps/map/_app/immutable/entry/app.COxGz6Bt.js')]).then(
-						([kit, app]) => {
-							kit.start(app, element);
-						},
-					);
+					Promise.all([
+						import("/_app/immutable/entry/start.DjaSSXte.js"),
+						import("/_app/immutable/entry/app.C2MGCWiW.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
 				}
 			</script>
 		</div>
