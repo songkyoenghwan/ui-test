@@ -5,7 +5,7 @@
 		props: {
 			admin: { type: 'String', reflect: true },
 			current: { type: 'String', reflect: true },
-			lnblist: { type: 'Array' },
+			list: { type: 'Array' },
 		},
 	}}
 />
@@ -17,10 +17,10 @@
 	let {
 		authority = 'user',
 		current = 'CMS-MAP',
-		lnblist = [
+		list = [
 			{
 				h2: '관리',
-				list: [
+				item: [
 					{
 						id: 'CMS-MAP',
 						link: 'CMS-MAP-001',
@@ -71,7 +71,7 @@
 			},
 			{
 				h2: '현황',
-				list: [
+				item: [
 					{
 						id: 'CMS-CON',
 						link: 'CMS-CON-001',
@@ -98,7 +98,7 @@
 			},
 			{
 				h2: 'UI',
-				list: [
+				item: [
 					{
 						id: 'CMS-UI',
 						link: 'CMS-UI',
@@ -112,8 +112,8 @@
 	let hoveredId = $state('');
 
 	$effect.pre(() => {
-		if ($navigationStore.lnblist.length === 0) {
-			initNavigation(lnblist);
+		if ($navigationStore.list.length === 0) {
+			initNavigation(list);
 		}
 	});
 
@@ -124,16 +124,16 @@
 
 	let displayName = $derived($currentItemFromPath?.id || '');
 	let auth = $derived(authority || 'user');
+
+	const currentUrlValue = window.location.pathname.split('/').filter(Boolean).pop() || '';
 </script>
 
 {#snippet li(id = '', link = '', icon = '', h3 = '')}
 	<li class="grid min-h-15">
 		<a
-			class="group/lnb-link aria-[current=page]:shadow-1xs aria-[current=page]:bg-darken hover:shadow-1xs grid size-full place-items-center rounded-lg p-1 transition-colors aria-[current=page]:text-white"
+			class="group/lnb-link shadow-1xs grid size-full place-items-center rounded-lg border border-transparent p-1 transition-colors hover:border-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-2xs"
 			aria-current={displayName === id ? 'page' : undefined}
 			href={link}
-			onmouseenter={() => (hoveredId = id)}
-			onmouseleave={() => (hoveredId = '')}
 			onclick={(e) => {
 				e.stopPropagation();
 				handleNavClick(id, link);
@@ -141,30 +141,30 @@
 		>
 			<icon-list
 				data-name={hoveredId === id || displayName === id ? `${icon}-on` : icon}
-				class="size-5 fill-white stroke-slate-50 transition-all delay-0 group-hover/lnb-link:fill-white group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
+				class="size-5 fill-white stroke-slate-50 transition-all delay-0 group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
 			></icon-list>
-			<p>{h3}</p>
+			<p class="group-aria-[current=page]/lnb-link:font-semibold">{h3}</p>
 		</a>
 	</li>
 {/snippet}
 
-<aside class="bg-primary flex h-full flex-col space-y-3 px-2 py-6">
+<aside class="from-002e1e to-2e5345 flex h-full flex-col space-y-3 bg-linear-to-t px-2 py-6">
 	<picture class="flex h-10 justify-center">
 		<enhanced:img class="h-10 w-auto" src={logo} alt="logo" />
 	</picture>
 	<nav class="text-base text-slate-50">
-		<ul class="divide-darken flex flex-col divide-y text-center leading-tight break-keep">
-			{#each lnblist as lnb, i (i)}
+		<ul class="flex flex-col divide-y divide-white/50 text-center leading-tight break-keep">
+			{#each list as lnb, i (i)}
 				<li class="grid gap-4 py-5">
 					{#if lnb?.h2}
 						<h2 class="font-semibold text-white">{lnb?.h2}</h2>
 					{/if}
 
-					{#if lnb.list}
+					{#if lnb.item}
 						<ul class="flex flex-col gap-3 text-center leading-tight break-keep">
-							{#each lnb.list as list (list.id)}
-								{#if !(auth === 'user' && list.id === 'CMS-LOC')}
-									{@render li(list.id, list.link, list.icon, list.h3)}
+							{#each lnb.item as item (item.id)}
+								{#if !(auth === 'user' && item.id === 'CMS-LOC')}
+									{@render li(item.id, item.link, item.icon, item.h3)}
 								{/if}
 							{/each}
 						</ul>

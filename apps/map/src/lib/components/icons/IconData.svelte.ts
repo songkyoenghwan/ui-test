@@ -383,7 +383,7 @@ export const getIconData = () => {
 		},
 
 		{
-			name: 'roate-left',
+			name: 'rotate-left',
 			size: '16',
 			html: /* HTML */ `
 				<path

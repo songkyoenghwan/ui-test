@@ -38,12 +38,12 @@
 	<div class="flex items-center gap-2">
 		<label for="" class="label">List</label>
 		<div class="grid grid-cols-[1fr_100px] items-center gap-0.5">
-			<input type="text" name="" id="" class="input-text" />
-			<button type="button" class="button primary-outline flex-none">
+			<input type="text" name="" id="" class="input-text s" />
+			<button type="button" class="button m secondary flex-none">
 				<span>자동번역</span>
-				<icon-list data-name="translate" class="icon stroke-primary size-4"></icon-list>
+				<icon-list data-name="translate" class="icon stroke-cms-3 size-4"></icon-list>
 			</button>
-			<input type="text" name="" id="" class="input-text col-span-2" />
+			<input type="text" name="" id="" class="input-text s col-span-2" />
 		</div>
 	</div>
 
@@ -52,13 +52,16 @@
 		<button type="button" class="button primary">
 			<span>button</span>
 		</button>
+		<button type="button" class="button primary" disabled>
+			<span>button</span>
+		</button>
 		<button type="button" class="button s primary">
 			<span>button</span>
 		</button>
-		<button type="button" class="button primary-outline">
+		<button type="button" class="button secondary">
 			<span>button</span>
 		</button>
-		<button type="button" class="button primary-outline" disabled>
+		<button type="button" class="button secondary" disabled>
 			<span>button</span>
 		</button>
 		<button type="button" class="button ghost">
@@ -69,7 +72,7 @@
 		</button>
 		<button type="button" class="button icon">
 			<span class="sr-only">button</span>
-			<icon-list data-name="translate" class="icon stroke-primary size-4"></icon-list>
+			<icon-list data-name="translate" class="icon stroke-cms-3 size-4"></icon-list>
 		</button>
 	</div>
 
@@ -135,13 +138,13 @@
 	<ul class="inline-flex items-center gap-2">
 		<li class="inline-flex items-center gap-2">
 			<input type="radio" id="label-1" name="label-1" class="peer sr-only" checked />
-			<label for="label-1" class="button s ghost min-w-15">
+			<label for="label-1" class="button m ghost min-w-15">
 				<span>상시</span>
 			</label>
 		</li>
 		<li class="inline-flex items-center gap-2">
 			<input type="radio" id="label-2" name="label-1" class="peer sr-only" checked />
-			<label for="label-2" class="button s ghost min-w-15">
+			<label for="label-2" class="button m ghost min-w-15">
 				<span>기간</span>
 			</label>
 			<input type="text" name="" id="" class="input-date m hidden peer-checked:flex" placeholder="YYYY &#47; MM &#47; DD" />
@@ -157,13 +160,13 @@
 		<ul class="inline-flex items-center gap-2">
 			<li class="inline-flex items-center gap-2">
 				<input type="radio" id="label-day-off-1" name="label-day-off-1" class="peer sr-only" checked />
-				<label for="label-day-off-1" class="button s ghost min-w-15">
+				<label for="label-day-off-1" class="button m ghost min-w-15">
 					<span>없음</span>
 				</label>
 			</li>
 			<li class="inline-flex items-center gap-2">
 				<input type="radio" id="label-day-off-2" name="label-day-off-1" class="peer sr-only" checked />
-				<label for="label-day-off-2" class="button s ghost min-w-15">
+				<label for="label-day-off-2" class="button m ghost min-w-15">
 					<span>매달 휴무</span>
 				</label>
 			</li>
@@ -172,32 +175,32 @@
 		<dl class="inline-flex items-center gap-1">
 			<dt class="label">주차</dt>
 			<dd>
-				<input type="checkbox" id="label-week-1" name="label-week-1" class="peer sr-only" />
-				<label for="label-week-1" class="button s ghost min-w-12.5">
+				<label for="label-week-1" class="button m ghost min-w-12.5">
+					<input type="checkbox" id="label-week-1" name="label-week-1" class="peer sr-only" />
 					<span>첫째</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-week-2" name="label-week-2" class="peer sr-only" />
-				<label for="label-week-2" class="button s ghost min-w-12.5">
+				<label for="label-week-2" class="button m ghost min-w-12.5">
+					<input type="checkbox" id="label-week-2" name="label-week-2" class="peer sr-only" />
 					<span>둘째</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-week-3" name="label-week-3" class="peer sr-only" />
-				<label for="label-week-3" class="button s ghost min-w-12.5">
+				<label for="label-week-3" class="button m ghost min-w-12.5">
+					<input type="checkbox" id="label-week-3" name="label-week-3" class="peer sr-only" />
 					<span>셋째</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-week-4" name="label-week-4" class="peer sr-only" />
-				<label for="label-week-4" class="button s ghost min-w-12.5">
+				<label for="label-week-4" class="button m ghost min-w-12.5">
+					<input type="checkbox" id="label-week-4" name="label-week-4" class="peer sr-only" />
 					<span>넷째</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-week-5" name="label-week-5" class="peer sr-only" />
-				<label for="label-week-5" class="button s ghost min-w-12.5">
+				<label for="label-week-5" class="button m ghost min-w-12.5">
+					<input type="checkbox" id="label-week-5" name="label-week-5" class="peer sr-only" />
 					<span>마지막</span>
 				</label>
 			</dd>
@@ -206,44 +209,44 @@
 		<dl class="inline-flex items-center gap-1">
 			<dt class="label">요일</dt>
 			<dd>
-				<input type="checkbox" id="label-day-1" name="label-day-1" class="peer sr-only" />
-				<label for="label-day-1" class="button s ghost size-7">
+				<label for="label-day-1" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-1" name="label-day-1" class="peer sr-only" />
 					<span>월</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-day-2" name="label-day-2" class="peer sr-only" />
-				<label for="label-day-2" class="button s ghost size-7">
+				<label for="label-day-2" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-2" name="label-day-2" class="peer sr-only" />
 					<span>화</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-day-3" name="label-day-3" class="peer sr-only" />
-				<label for="label-day-3" class="button s ghost size-7">
+				<label for="label-day-3" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-3" name="label-day-3" class="peer sr-only" />
 					<span>수</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-day-4" name="label-day-4" class="peer sr-only" />
-				<label for="label-day-4" class="button s ghost size-7">
+				<label for="label-day-4" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-4" name="label-day-4" class="peer sr-only" />
 					<span>목</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-day-5" name="label-day-5" class="peer sr-only" />
-				<label for="label-day-5" class="button s ghost size-7">
+				<label for="label-day-5" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-5" name="label-day-5" class="peer sr-only" />
 					<span>금</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-day-6" name="label-day-6" class="peer sr-only" />
-				<label for="label-day-6" class="button s ghost size-7">
+				<label for="label-day-6" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-6" name="label-day-6" class="peer sr-only" />
 					<span>토</span>
 				</label>
 			</dd>
 			<dd>
-				<input type="checkbox" id="label-day-7" name="label-day-7" class="peer sr-only" />
-				<label for="label-day-7" class="button s ghost size-7">
+				<label for="label-day-7" class="button m ghost size-7">
+					<input type="checkbox" id="label-day-7" name="label-day-7" class="peer sr-only" />
 					<span>일</span>
 				</label>
 			</dd>
@@ -255,14 +258,14 @@
 	<div class="grid items-center gap-2">
 		<ul class="inline-flex items-center gap-2">
 			<li class="inline-flex items-center gap-2">
-				<input type="radio" id="label-day-every-1" name="label-day-every-1" class="peer sr-only" checked />
-				<label for="label-day-every-1" class="button s ghost min-w-15">
+				<label for="label-day-every-1" class="button m ghost min-w-15">
+					<input type="radio" id="label-day-every-1" name="label-day-every-1" class="peer sr-only" checked />
 					<span>매일</span>
 				</label>
 			</li>
 			<li class="inline-flex items-center gap-2">
-				<input type="radio" id="label-day-every-2" name="label-day-every-1" class="peer sr-only" checked />
-				<label for="label-day-every-2" class="button s ghost min-w-15">
+				<label for="label-day-every-2" class="button m ghost min-w-15">
+					<input type="radio" id="label-day-every-2" name="label-day-every-1" class="peer sr-only" checked />
 					<span>요일별</span>
 				</label>
 			</li>
@@ -274,8 +277,8 @@
 			<input type="time" name="" id="" class="input-time m" placeholder="시간 선택" />
 
 			<li class="inline-flex items-center gap-2">
-				<input type="radio" id="label-time-every-1" name="label-time-every-1" class="peer sr-only" checked />
-				<label for="label-time-every-1" class="button s ghost min-w-15">
+				<label for="label-time-every-1" class="button m ghost min-w-15">
+					<input type="radio" id="label-time-every-1" name="label-time-every-1" class="peer sr-only" checked />
 					<span>요일별</span>
 				</label>
 			</li>
@@ -290,10 +293,10 @@
 				</h4>
 
 				<div class="flex items-center justify-end gap-2">
-					<button type="button" class="button ghost basis-20">
+					<button type="button" class="button ghost m basis-20">
 						<span>취소</span>
 					</button>
-					<button type="button" class="button primary flex-1">
+					<button type="button" class="button primary m flex-1">
 						<span>확인</span>
 					</button>
 				</div>
@@ -302,14 +305,14 @@
 			<div>
 				<section class="group/top-tip inline-flex min-h-12 items-center gap-1 rounded-sm bg-white shadow-2xs">
 					<div class="flex items-center gap-2 py-1 pl-4">
-						<icon-list data-name="info-circle" class="icon fill-primary size-5"></icon-list>
+						<icon-list data-name="info-circle" class="icon fill-cms-3 size-5"></icon-list>
 						<h4 class="text-121212 hidden text-base font-semibold opacity-100 transition-opacity transition-discrete group-has-checked/top-tip:flex starting:opacity-0">
 							지도를 우클릭하여 위치 변경
 						</h4>
 					</div>
 					<label
 						for="top-label-1"
-						class="icon hover:bg-primary/20 inline-flex h-full min-h-[stretch] min-w-15 flex-[0_0_50px] items-center justify-center rounded-r-sm px-1 text-base text-slate-400 group-has-checked/top-tip:flex-[0_0_80px]"
+						class="icon hover:bg-cms-3/20 inline-flex h-full min-h-[stretch] min-w-15 flex-[0_0_50px] items-center justify-center rounded-r-sm px-1 text-base text-slate-400 group-has-checked/top-tip:flex-[0_0_80px]"
 					>
 						<icon-list
 							data-name="arrow-left"
@@ -321,7 +324,7 @@
 				</section>
 
 				<section
-					class="group/toast bg-primary grid translate-y-0 items-center gap-1 rounded-md pl-1 opacity-100 shadow-2xs transition-all transition-discrete starting:translate-y-5 starting:opacity-0"
+					class="group/toast bg-cms-3 grid translate-y-0 items-center gap-1 rounded-md pl-1 opacity-100 shadow-2xs transition-all transition-discrete starting:translate-y-5 starting:opacity-0"
 				>
 					<div
 						class="rounded-l-4 flex h-full min-h-12 items-center gap-2 rounded-l-sm bg-white px-4 py-1 opacity-100 transition-opacity transition-discrete starting:opacity-0"

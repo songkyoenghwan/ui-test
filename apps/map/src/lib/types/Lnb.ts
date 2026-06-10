@@ -13,7 +13,7 @@ export interface LnbItem {
 
 export interface LnbGroup {
 	h2: string;
-	list: LnbItem[];
+	item: LnbItem[];
 }
 
-export type Lnblist = LnbGroup[];
+export type LnbList = LnbGroup[];

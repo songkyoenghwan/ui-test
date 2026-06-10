@@ -202,7 +202,7 @@
 						required
 						bind:value={ko}
 					/>
-					<button type="button" class="button primary-outline s flex-none" onclick={(e) => autoTranlate(e)}>
+					<button type="button" class="button secondary s flex-none" onclick={(e) => autoTranlate(e)}>
 						<span>자동번역</span>
 						<icon-list data-name="translate" class="icon stroke-primary size-4"></icon-list>
 					</button>
@@ -234,7 +234,7 @@
 			<div class="flex items-center gap-2">
 				<button
 					type="button"
-					class="button primary-outline s flex-1"
+					class="button secondary s flex-1"
 					onclick={(e) => {
 						e.preventDefault();
 						langToggle = !langToggle;
@@ -308,7 +308,7 @@
 			<p class="text-xs text-slate-400">* 다중 등록할 경우, 운영 상태 순으로 우선 정렬되어 노출됩니다</p>
 
 			<div class="flex w-full items-center gap-2 py-3">
-				<button type="button" class="button s primary-outline flex-1">
+				<button type="button" class="button s secondary flex-1">
 					<span>새 시설 등록</span>
 				</button>
 				<button type="button" class="button s primary flex-1">

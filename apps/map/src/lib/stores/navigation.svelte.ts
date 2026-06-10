@@ -1,12 +1,12 @@
 // src/lib/stores/navigation.ts
-import type { Lnblist } from '$lib/types/Lnb';
+import type { LnbList } from '$lib/types/Lnb';
 import { derived, get, writable } from 'svelte/store';
 
 // 스토어 타입 (필수 필드만)
 interface NavigationState {
 	currentId: string;
 	currentLink?: string;
-	lnblist: Lnblist;
+	list: LnbList;
 	lastPathname?: string;
 }
 
@@ -14,23 +14,23 @@ interface NavigationState {
 export const navigationStore = writable<NavigationState>({
 	currentId: 'CMS-MAP',
 	currentLink: '',
-	lnblist: [],
+	list: [],
 });
 
 // 초기화 (서버 데이터로)
-export function initNavigation(lnblist: Lnblist) {
-	const defaultItem = lnblist.flatMap((g) => g.list)[0];
+export function initNavigation(list: LnbList) {
+	const defaultItem = list.flatMap((g) => g.item)[0];
 	navigationStore.set({
 		currentId: defaultItem?.id || 'CMS-MAP',
 		currentLink: defaultItem?.link || '/',
-		lnblist,
+		list,
 	});
 }
 
 // ID 설정
 export function setCurrentId(itemId: string): boolean {
 	const state = get(navigationStore);
-	const matchedItem = state.lnblist.flatMap((g) => g.list).find((item) => item.id === itemId);
+	const matchedItem = state.list.flatMap((g) => g.item).find((it) => it.id === itemId);
 
 	if (!matchedItem) return false;
 
@@ -45,7 +45,7 @@ export function setCurrentId(itemId: string): boolean {
 
 export function getCurrentId(itemId: string): boolean {
 	const state = get(navigationStore);
-	const matchedItem = state.lnblist.flatMap((g) => g.list).find((item) => item.id === itemId);
+	const matchedItem = state.list.flatMap((g) => g.item).find((it) => it.id === itemId);
 
 	if (!matchedItem) return false;
 
@@ -63,7 +63,7 @@ export const currentItemFromPath = derived(navigationStore, ($state) => {
 	if (typeof window === 'undefined') return undefined;
 
 	const pathname = window.location.pathname.toLowerCase();
-	return $state.lnblist.flatMap((g) => g.list).find((item) => pathname.includes(item.id.toLowerCase()));
+	return $state.list.flatMap((g) => g.item).find((item) => pathname.includes(item.id.toLowerCase()));
 });
 
 export const currentSubItem = derived([currentItemFromPath, navigationStore], ([$menu]) => {

@@ -7,4 +7,7 @@ import '@/components/layouts/Lnb.svelte';
 import '@/components/map/MapList.svelte';
 import '@/components/map/MapReg.svelte';
 import '@/components/tooltip/TopTooltip.svelte';
+import '$lib/components/btn/UiBtn.svelte';
+import '$lib/components/title/UiTit.svelte';
+import '$lib/components/title/UiTxt.svelte';
 import '@/styles/index.css';

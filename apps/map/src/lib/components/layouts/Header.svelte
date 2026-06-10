@@ -18,7 +18,7 @@
 	let displaySub = $derived(($currentItemFromPath?.sub as LnbSubItem[]) ?? []);
 	let currentSub = $derived($currentSubItem?.link || '');
 
-	function handleNavClick(listId: string) {
+	function handleNavClick(displayId: string) {
 		setCurrentId(displayId);
 	}
 </script>
@@ -26,7 +26,7 @@
 {#snippet name({ link = '', text = '' })}
 	<li class="flex h-full">
 		<a
-			class="aria-[current=page]:text-primary aria-[current=page]:border-b-primary grid place-content-center px-4 hover:text-slate-50 aria-[current=page]:border-b-3 aria-[current=page]:font-bold"
+			class="aria-[current=page]:text-3d5f52 aria-[current=page]:border-b-3d5f52 grid place-content-center px-4 text-slate-600 hover:bg-slate-100 aria-[current=page]:border-b-3 aria-[current=page]:font-bold"
 			href={link}
 			aria-current={currentSub === link ? 'page' : undefined}
 			onclick={(e) => {
@@ -39,7 +39,7 @@
 	</li>
 {/snippet}
 
-<header class="border-t-primary box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-primary shadow-header flex h-(--header-height) items-center justify-between border-t-8">
+<header class="border-t-3d5f52 box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-3d5f52 shadow-header flex h-(--header-height) items-center justify-between border-t-8">
 	<section class="grid h-full flex-1 grid-cols-[90px_1fr] items-center rounded-tl-md bg-white px-2 text-slate-300">
 		<div class="flex h-full min-w-21.5 flex-1 items-center justify-center border-r border-r-slate-100">
 			<h2 class="text-121212 text-center text-xl font-semibold">
@@ -48,8 +48,8 @@
 		</div>
 		{#if displaySub && displayId !== 'CMS-LOC' && displayId !== 'CMS-CON'}
 			<ul class="text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0">
-				{#each displaySub as list (list.link)}
-					{@render name({ link: list.link, text: list.h4 })}
+				{#each displaySub as sub (sub.link)}
+					{@render name({ link: sub.link, text: sub.h4 })}
 				{/each}
 			</ul>
 		{/if}

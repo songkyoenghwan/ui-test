@@ -8,32 +8,23 @@
 				<h3>검색 조건</h3>
 				<button type="button" class="button icon" aria-label="refresh">
 					<span class="sr-only">refresh</span>
-					<icon-list data-name="roate-left" class="icon size-4 stroke-slate-500"></icon-list>
+					<icon-list data-name="rotate-left" class="icon size-4 stroke-slate-500"></icon-list>
 				</button>
 			</div>
 			<div>
-				<button type="button" class="button primary px-4" aria-label="refresh">
-					<icon-list data-name="arrow-up" class="icon size-4 stroke-white"></icon-list>
+				<button type="button" class="button primary l px-4" aria-label="refresh">
+					<icon-list data-name="arrow-up" class="icon size-3 stroke-white"></icon-list>
 					<span>대상지 추가</span>
 				</button>
 			</div>
 		</div>
 
 		<div class="flex flex-wrap items-center justify-between gap-2">
-			<ul class="inline-flex gap-1 text-sm">
-				<li class="bg-primary flex min-h-10 items-center gap-4 rounded-sm px-3 py-1 text-white">
-					<p>전체</p>
-					<p>NN개</p>
-				</li>
-				<li class="flex min-h-10 items-center gap-4 rounded-sm border border-slate-300 px-3 py-1 text-white">
-					<p class="text-slate-800">운영 중</p>
-					<p class="text-slate-300">NN개</p>
-				</li>
-				<li class="flex min-h-10 items-center gap-4 rounded-sm border border-slate-300 px-3 py-1 text-white">
-					<p class="text-slate-800">운영 종료</p>
-					<p class="text-slate-300">NN개</p>
-				</li>
-			</ul>
+			<div class="inline-flex items-center gap-2">
+				<select name="" id="" class="select min-w-35">
+					<option value="">매칭 전 + 완료</option>
+				</select>
+			</div>
 			<div>
 				<div class="input-search group/input-search">
 					<input type="text" name="" id="" class="input-text peer" placeholder="대상지명 검색" />
@@ -57,35 +48,62 @@
 			</select>
 		</div>
 
-		<div role="table" aria-label="운영 현황 테이블" class="table-grid *:grid-cols-30">
-			<ul>
-				<li>NO.</li>
-				<li class="col-span-4 text-left">대상지명</li>
-				<li class="col-span-4 text-left">사용 언어</li>
-				<li class="col-span-2 text-left">운영상태</li>
-				<li class="col-span-3 text-left">운영기간</li>
-				<li class="col-span-3 text-left">운영시간</li>
-				<li class="col-span-2">AI 추천</li>
-				<li class="col-span-2">시설 혼잡도</li>
-				<li class="col-span-2">구역 혼잡도</li>
-				<li class="col-span-2">위치기반 콘텐츠</li>
-				<li class="col-span-2">사용자 지도</li>
-				<li class="col-span-3 text-left">수정일시</li>
-			</ul>
-			<ul>
-				<li>99</li>
-				<li class="col-span-4 text-left">여주오곡나루축제</li>
-				<li class="col-span-4 text-left">KO, EN, ZH, JA, TH, VI</li>
-				<li class="col-span-2 text-left">운영 전</li>
-				<li class="col-span-3 text-left">25.04.01(수) ~ 25.04.01(수)</li>
-				<li class="col-span-3 text-left">09:00 ~ 22:00</li>
-				<li class="col-span-2">사용</li>
-				<li class="col-span-2">사용</li>
-				<li class="col-span-2">사용</li>
-				<li class="col-span-2">사용</li>
-				<li class="col-span-2">이동</li>
-				<li class="col-span-3 text-left">25.04.01(수) HH:MM</li>
-			</ul>
+		<div role="table" aria-label="운영 현황 테이블" class="table-wrap">
+			<table>
+				<thead>
+					<tr>
+						<th scope="row">NO.</th>
+						<th scope="row" class="col-span-4 text-left">대상지명</th>
+						<th scope="row" class="col-span-4 text-left">사용 언어</th>
+						<th scope="row" class="col-span-2 text-left">운영상태</th>
+						<th scope="row" class="col-span-3 text-left">운영기간</th>
+						<th scope="row" class="col-span-3 text-left">운영시간</th>
+						<th scope="row" class="col-span-2">AI 추천</th>
+						<th scope="row" class="col-span-2">
+							시설 <br />
+							혼잡도
+						</th>
+						<th scope="row" class="col-span-2">
+							구역 <br />
+							혼잡도
+						</th>
+						<th scope="row" class="col-span-2">
+							위치기반 <br />
+							콘텐츠
+						</th>
+						<th scope="row" class="col-span-2">
+							사용자 <br />
+							지도
+						</th>
+						<th scope="row" class="col-span-3 text-left">수정일시</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>99</td>
+						<td class="col-span-4 text-left">여주오곡나루축제</td>
+						<td class="col-span-4 text-left">KO, EN, ZH, JA, TH, VI</td>
+						<td class="col-span-2 text-left">
+							<span class="text-slate-400">운영 전</span>
+						</td>
+						<td class="col-span-3 text-left">
+							25.04.01(수) <br />
+							~ 25.04.01(수)
+						</td>
+						<td class="col-span-3 text-left">09:00 ~ 22:00</td>
+						<td class="col-span-2">사용</td>
+						<td class="col-span-2">사용</td>
+						<td class="col-span-2">사용</td>
+						<td class="col-span-2">사용</td>
+						<td class="col-span-2">
+							<a href="/" class="undertdne">
+								<span>이동</span>
+							</a>
+						</td>
+						<td class="col-span-3 text-left">25.04.01(수) HH:MM</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 
 		<div></div>

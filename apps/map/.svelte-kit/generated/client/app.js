@@ -17,7 +17,8 @@ export const nodes = [
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
 	() => import('./nodes/15'),
-	() => import('./nodes/16')
+	() => import('./nodes/16'),
+	() => import('./nodes/17')
 ];
 
 export const server_loads = [];
@@ -26,15 +27,16 @@ export const dictionary = {
 		"/(page)": [5,[3]],
 		"/(page)/CMS-CON-001": [6,[3]],
 		"/(page)/CMS-LOC-001": [7,[3]],
-		"/(page)/CMS-MAP-001": [8,[3]],
-		"/(page)/CMS-MAP-002": [9,[3]],
-		"/(page)/CMS-MAP-003": [10,[3]],
-		"/(page)/CMS-MAP-004": [11,[3]],
-		"/(page)/CMS-OBD-001": [12,[3]],
-		"/(page)/CMS-OBD-002": [13,[3]],
-		"/(page)/CMS-STA-001": [14,[3]],
-		"/(page)/CMS-STA-002": [15,[3]],
-		"/(page)/CMS-UI": [16,[3]],
+		"/(page)/CMS-LOC-001/[...id]": [8,[3]],
+		"/(page)/CMS-MAP-001": [9,[3]],
+		"/(page)/CMS-MAP-002": [10,[3]],
+		"/(page)/CMS-MAP-003": [11,[3]],
+		"/(page)/CMS-MAP-004": [12,[3]],
+		"/(page)/CMS-OBD-001": [13,[3]],
+		"/(page)/CMS-OBD-002": [14,[3]],
+		"/(page)/CMS-STA-001": [15,[3]],
+		"/(page)/CMS-STA-002": [16,[3]],
+		"/(page)/CMS-UI": [17,[3]],
 		"/(menulist)/menulist": [4,[2]]
 	};
 
