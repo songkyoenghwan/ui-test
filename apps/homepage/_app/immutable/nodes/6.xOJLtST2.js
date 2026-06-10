@@ -1,0 +1,1 @@
+import{F as e,N as t,Y as n,dt as r,r as i}from"../chunks/DWWkaRp_.js";import"../chunks/xihTtKlq.js";import{t as a}from"../chunks/8jx6K4jR.js";var o=e(`<main class="sub"><!></main>`);function s(e){var i=o();a(n(i),{}),r(i),t(e,i)}i(s,{},[],[],{mode:`open`});export{s as component};
