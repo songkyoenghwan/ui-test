@@ -8,6 +8,7 @@
 			variant: { type: 'String' },
 			cls: { type: 'String' },
 			size: { type: 'String' },
+			arr: { type: 'Array' },
 			name: { type: 'String' },
 			value: { type: 'String', reflect: true },
 		},
@@ -24,6 +25,7 @@
 		txt?: string;
 		cls?: string;
 		name?: string;
+		arr?: string[];
 		value?: string;
 		click?: (event: MouseEvent) => void;
 	}
@@ -35,11 +37,15 @@
 		}
 	});
 
-	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, value = $bindable(''), click }: Props = $props();
+	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, arr, value = $bindable(''), click }: Props = $props();
 
 	const role = $derived(tag === 'a' ? 'link' : tag === 'button' ? 'button' : undefined);
 	function parseArrayString(value: string): string[] {
 		if (!value) return [];
+
+		if (Array.isArray(value)) {
+			return value;
+		}
 
 		const trimmed = value.trim();
 		if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
@@ -58,7 +64,7 @@
 	}
 	const txtList = $derived(parseArrayString(txt ?? ''));
 	const isSegmented = $derived(variant === 'segmented');
-	let fillings: string[] = $derived(txtList);
+	let fillings: string[] = $derived(arr);
 
 	$effect(() => {
 		if (!value && txtList.length > 0) {
