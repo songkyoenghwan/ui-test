@@ -13,7 +13,7 @@
 		<ui-tit tit="섹션" class="px-4.5"></ui-tit>
 
 		<div class="itmes-center flex gap-3">
-			<ui-btn tag="label" variant="segmented" size="lg" name="ui-seg-group" txt="['1. 대상지 정보','2. 커스텀 항목']" class="w-60 gap-3"></ui-btn>
+			<ui-btn tag="label" variant="segmented" size="lg" name="tab-section" txt="['1. 대상지 정보','2. 커스텀 항목']" class="w-60 gap-3"></ui-btn>
 		</div>
 	</section>
 

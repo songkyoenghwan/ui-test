@@ -65,14 +65,22 @@
 			value = txtList[0];
 		}
 	});
-
-	$inspect(value);
 </script>
 
 {#if isSegmented}
 	{#each fillings as item, i (`seg-${name}-${i}`)}
 		<label for={`${name}-${i}`} class="button {variant} {size} {cls}">
-			<input type="radio" id={`${name}-${i}`} {name} value={item} bind:group={value} class="sr-only" />
+			<input
+				type="radio"
+				id={`${name}-${i}`}
+				{name}
+				value={item}
+				bind:group={value}
+				class="sr-only"
+				onchange={() => {
+					value = item;
+				}}
+			/>
 			{item}
 		</label>
 	{/each}
