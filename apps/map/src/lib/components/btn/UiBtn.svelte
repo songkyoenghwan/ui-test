@@ -40,41 +40,19 @@
 	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, arr, value = $bindable(''), click }: Props = $props();
 
 	const role = $derived(tag === 'a' ? 'link' : tag === 'button' ? 'button' : undefined);
-	function parseArrayString(value: string): string[] {
-		if (!value) return [];
 
-		if (Array.isArray(value)) {
-			return value;
-		}
-
-		const trimmed = value.trim();
-		if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
-			try {
-				const validJson = trimmed.replace(/'/g, '"');
-				return JSON.parse(validJson);
-			} catch (e) {
-				return trimmed
-					.slice(1, -1)
-					.split(',')
-					.map((t) => t.trim().replace(/^['"]|['"]$/g, ''));
-			}
-		}
-
-		return trimmed.split(',').map((t) => t.trim());
-	}
-	const txtList = $derived(parseArrayString(txt ?? ''));
 	const isSegmented = $derived(variant === 'segmented');
-	let fillings: string[] = $derived(arr);
+	const segmentList = $derived(Array.isArray(arr) ? arr : []);
 
 	$effect(() => {
-		if (!value && txtList.length > 0) {
-			value = txtList[0];
+		if (!value && segmentList.length > 0) {
+			value = segmentList[0];
 		}
 	});
 </script>
 
 {#if isSegmented}
-	{#each fillings as item, i (`seg-${name}-${i}`)}
+	{#each segmentList as item, i (`seg-${name}-${i}`)}
 		<label for={`${name}-${i}`} class="button {variant} {size} {cls}">
 			<input
 				type="radio"
@@ -115,18 +93,30 @@
 			min-height: 2.5rem;
 			font-size: 1rem;
 			line-height: 1.5rem;
+
+			&.segmented {
+				font-size: 0.875rem;
+			}
 		}
 
 		&.md {
 			min-height: 1.75rem;
 			font-size: 0.875rem;
 			line-height: 1.25rem;
+
+			&.segmented {
+				font-size: 0.875rem;
+			}
 		}
 
 		&.sm {
 			min-height: 1.25rem;
 			font-size: 0.625rem;
 			line-height: 1.25;
+
+			&.segmented {
+				font-size: 0.625rem;
+			}
 		}
 
 		&.primary {

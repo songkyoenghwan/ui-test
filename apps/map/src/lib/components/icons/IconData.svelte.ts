@@ -396,5 +396,35 @@ export const getIconData = () => {
 				<path d="M5.24609 3.54688L7.49276 5.18688" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 			`,
 		},
+		{
+			name: 'radio-off',
+			size: '24',
+			html: /* HTML */ `
+				<circle cx="12" cy="12" r="11.5" />
+			`,
+		},
+		{
+			name: 'radio-on',
+			size: '24',
+			html: /* HTML */ `
+				<circle cx="12" cy="12" r="11.5" fill="white" />
+				<circle cx="12" cy="12" r="6" stroke="none" />
+			`,
+		},
+		{
+			name: 'checkbox-off',
+			size: '16',
+			html: /* HTML */ `
+				<rect x="0.5" y="0.5" width="15" height="15" rx="2" />
+			`,
+		},
+		{
+			name: 'checkbox-on',
+			size: '16',
+			html: /* HTML */ `
+				<rect width="16" height="16" rx="2.5" stroke="none" />
+				<path d="M4.25 7.42315L7.13462 10.3078L11.75 5.69238" fill="none" stroke="white" stroke-width="1.15385" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
 	];
 };

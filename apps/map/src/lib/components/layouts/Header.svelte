@@ -57,6 +57,9 @@
 
 	<div class="grid flex-[0_0_300px] items-center bg-white px-2 py-1.5">
 		<select name="" id="" class="select h-10">
+			<button type="button">
+				<selectedcontent class="truncate"></selectedcontent>
+			</button>
 			<option class="max-w-66" value="">최대20자 최대20자 최대20자최대20자</option>
 			<option class="max-w-66" value="">2025 용산어린이축제 4회</option>
 			<option class="max-w-66" value="">2025 용산어린이축제 4회</option>

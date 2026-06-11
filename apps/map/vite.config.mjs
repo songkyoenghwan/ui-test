@@ -18,12 +18,12 @@ export default defineConfig({
 	define: {
 		__STATIC_URL__: JSON.stringify(''),
 	},
-	optimizeDeps: {
-		exclude: ['flowbite-svelte', 'flowbite-svelte-icons'],
-	},
-	ssr: {
-		noExternal: ['flowbite-svelte', 'flowbite-svelte-icons'],
-	},
+	// optimizeDeps: {
+	// 	exclude: ['flowbite-svelte', 'flowbite-svelte-icons'],
+	// },
+	// ssr: {
+	// 	noExternal: ['flowbite-svelte', 'flowbite-svelte-icons'],
+	// },
 	// server: {
 	// 	host: true,
 	// 	port: 5174,

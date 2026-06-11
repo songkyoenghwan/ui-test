@@ -1,4 +1,17 @@
 <script lang="ts">
+	const myTabs: string[] = ['1. 대상지 정보', '2. 커스텀 항목'];
+	const rdoList = [
+		{
+			id: '1',
+			txt: '1. 대상지 정보',
+			value: 'y',
+		},
+		{
+			id: '2',
+			txt: '2. 대상지 정보',
+			value: 'n',
+		},
+	];
 </script>
 
 <div class="space-y-5 bg-white p-5">
@@ -74,6 +87,15 @@
 			<span class="sr-only">button</span>
 			<icon-list data-name="translate" class="icon stroke-cms-3 size-4"></icon-list>
 		</button>
+	</div>
+
+	<div>
+		<ui-btn tag="label" variant="segmented" size="lg" name="tab-section" arr={myTabs} class="w-60 gap-3"></ui-btn>
+	</div>
+
+	<div>
+		<ui-checkbox item-id="chk" txt="체크박스"></ui-checkbox>
+		<ui-input-group item-id="rdo-11" name="rdo" arr={rdoList}></ui-input-group>
 	</div>
 
 	<section class="tab">

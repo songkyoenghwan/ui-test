@@ -11,19 +11,20 @@
 />
 
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import { applyGlobalReset } from '$lib/styles/shadow-theme';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		tag?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 		tit?: string;
+		sub?: string;
 		size?: 'lg' | 'md' | 'sm';
 		cls?: string;
 		icon?: Snippet;
 		rt?: Snippet;
 		children?: Snippet;
 	}
-	let { tag = 'h3', tit, size, cls, icon, rt, children }: Props = $props();
+	let { tag = 'h3', tit, sub, size, cls, icon, rt, children }: Props = $props();
 
 	$effect(() => {
 		const host = $host()?.shadowRoot;
@@ -47,6 +48,10 @@
 
 	<slot name="rt" />
 
+	{#if sub}
+		<p class="sub">{sub}</p>
+	{/if}
+
 	{#if rt}
 		{@render rt()}
 	{/if}
@@ -62,11 +67,17 @@
 		font-weight: 600;
 
 		&.lg {
-			font-size: 1.125rem;
+			font-size: 18px;
 		}
 
 		&.md {
-			font-size: 1rem;
+			font-size: 16px;
 		}
+	}
+
+	.sub {
+		color: var(--color-slate-500);
+		font-weight: 400;
+		font-size: 0.875rem;
 	}
 </style>

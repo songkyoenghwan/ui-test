@@ -1,5 +1,29 @@
 <script>
+	import { langStore, toggleLang, resetLangs } from '$lib/stores/langStore';
 	const myTabs = ['1. 대상지 정보', '2. 커스텀 항목'];
+	const rdoList = [
+		{
+			id: '1',
+			txt: '1. 대상지 정보',
+			value: 'y',
+		},
+		{
+			id: '2',
+			txt: '2. 대상지 정보',
+			value: 'n',
+		},
+	];
+
+	$effect(() => {
+		const langChk = document.querySelector('lang-chk');
+
+		if (langChk instanceof HTMLElement) {
+			langChk.zh = false;
+			langChk.ja = true;
+			langChk.th = false;
+			langChk.vi = true;
+		}
+	});
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
@@ -24,17 +48,22 @@
 		</header>
 
 		<ul>
-			<li class="flex justify-between px-5 py-4">
-				<p class="tit md">
-					<strong>제공 언어</strong>
-					<span class="txt sm">사용자에게 제공할 언어를 선택해 주세요</span>
-				</p>
-
-				<div class="txt md grid-cols-6 gap-5">
-					<p>한국어(KO)</p>
-					<p>영어(EN)</p>
-
-					<label for=""></label>
+			<li class="grid grid-cols-[240px_1fr] gap-5 px-5 py-4">
+				<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
+				<lang-chk class="flex flex-wrap items-center justify-end gap-5"></lang-chk>
+				<!-- 나노스토어로 언어값 체크 연동 중 -->
+			</li>
+			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
+				<ui-tit tit="대상지명" sub="15자 이내 권장"></ui-tit>
+				<lang-auto class="flex-1"></lang-auto>
+				<!-- 나노스토어로 언어값 체크 연동 중 -->
+			</li>
+			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
+				<ui-tit tit="위치"></ui-tit>
+				<div class="txt md gap-5">
+					<p>지도의 중심 좌표를 선택해 주세요</p>
+					<ui-btn variant="ghost" size="md" txt="지도에서 선택하기" class="min-w-30"></ui-btn>
+					<p class="text-black">34.9732111, 127.7343111</p>
 				</div>
 			</li>
 		</ul>

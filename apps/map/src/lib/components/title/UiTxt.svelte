@@ -4,26 +4,26 @@
 		shadow: 'open',
 		props: {
 			tag: { type: 'String' },
-			tit: { type: 'String', reflect: true },
+			txt: { type: 'String' },
 			cls: { type: 'String' },
 		},
 	}}
 />
 
 <script lang="ts">
-	import type { Snippet } from 'svelte';
 	import { applyGlobalReset } from '$lib/styles/shadow-theme';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		tag: 'p' | 'strong' | 'span' | 'div';
-		tit?: string;
+		txt?: string;
 		size?: 'md' | 'sm' | 'xs';
 		cls?: string;
 		lt?: Snippet;
 		rt?: Snippet;
 		children?: Snippet;
 	}
-	let { tag = 'p', tit = '', cls = '', size, lt, rt, children }: Props = $props();
+	let { tag = 'p', txt = '', cls = '', size, lt, rt, children }: Props = $props();
 
 	$effect(() => {
 		const host = $host()?.shadowRoot;
@@ -35,14 +35,14 @@
 	const s = $derived(size);
 </script>
 
-<svelte:element this={tag} class="tit {s} {cls}">
+<svelte:element this={tag} class="txt {s} {cls}">
 	{#if lt}
 		{@render lt()}
 	{/if}
 
 	<slot name="lt" />
 
-	{tit}
+	{txt}
 
 	<slot name="rt" />
 
