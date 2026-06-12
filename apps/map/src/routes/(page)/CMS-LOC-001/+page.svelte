@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
@@ -12,7 +16,14 @@
 				</button>
 			</div>
 			<div>
-				<button type="button" class="button primary l px-4" aria-label="refresh">
+				<button
+					type="button"
+					class="button primary l px-4"
+					aria-label="refresh"
+					onclick={() => {
+						goto(`/CMS-LOC-001/reg`);
+					}}
+				>
 					<icon-list data-name="arrow-up" class="icon size-3 stroke-white"></icon-list>
 					<span>대상지 추가</span>
 				</button>
@@ -79,29 +90,34 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>99</td>
-						<td class="col-span-4 text-left">여주오곡나루축제</td>
-						<td class="col-span-4 text-left">KO, EN, ZH, JA, TH, VI</td>
-						<td class="col-span-2 text-left">
-							<span class="text-slate-400">운영 전</span>
-						</td>
-						<td class="col-span-3 text-left">
-							25.04.01(수) <br />
-							~ 25.04.01(수)
-						</td>
-						<td class="col-span-3 text-left">09:00 ~ 22:00</td>
-						<td class="col-span-2">사용</td>
-						<td class="col-span-2">사용</td>
-						<td class="col-span-2">사용</td>
-						<td class="col-span-2">사용</td>
-						<td class="col-span-2">
-							<a href="/" class="undertdne">
-								<span>이동</span>
-							</a>
-						</td>
-						<td class="col-span-3 text-left">25.04.01(수) HH:MM</td>
-					</tr>
+					{#each data.list as item (item.id)}
+						<tr
+							onclick={() => {
+								goto(`/CMS-LOC-001/${item.id}`);
+							}}
+						>
+							<td>99</td>
+							<td class="col-span-4 text-left">{item.targetName}</td>
+							<td class="col-span-4 text-left">{item.language}</td>
+							<td class="col-span-2 text-left">
+								<span class="text-slate-400">{item.operationStatus}</span>
+							</td>
+							<td class="col-span-3 text-left">
+								{item.operationPeriod}
+							</td>
+							<td class="col-span-3 text-left">{item.operationHours}</td>
+							<td class="col-span-2">사용</td>
+							<td class="col-span-2">사용</td>
+							<td class="col-span-2">사용</td>
+							<td class="col-span-2">사용</td>
+							<td class="col-span-2">
+								<a href="/" class="undertdne">
+									<span>이동</span>
+								</a>
+							</td>
+							<td class="col-span-3 text-left">{item.mapUpdatedAt}</td>
+						</tr>
+					{/each}
 				</tbody>
 			</table>
 		</div>

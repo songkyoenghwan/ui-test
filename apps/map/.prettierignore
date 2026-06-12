@@ -14,7 +14,7 @@ output/
 .astro/
 
 # 정적 자산 디렉터리 (HTML, 이미지, 폰트 등 — 포맷팅 불필요)
-static/
+# static/
 
 # 국제화/번역 관련 생성 디렉터리
 **/paraglide/

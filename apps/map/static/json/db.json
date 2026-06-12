@@ -1,0 +1,64 @@
+{
+	"CMS-LOC-001": [
+		{
+			"id": 1,
+			"targetName": "송도센트럴파크",
+			"targetColor": "#000000",
+			"language": "ko",
+			"operationStatus": "운영중",
+			"operationPeriod": "상시 운영",
+			"operationHours": "요일별 상이",
+			"aiRecommended": true,
+			"facilityCongestion": true,
+			"zoneCongestion": true,
+			"location-basedContent": true,
+			"userMap": "",
+			"mapUpdatedAt": "2026-06-12 08:48"
+		},
+		{
+			"id": 2,
+			"targetName": "월미도문화의거리",
+			"targetColor": "#ff0000",
+			"language": "ko,en",
+			"operationStatus": "운영중",
+			"operationPeriod": "상시 운영",
+			"operationHours": "10:00~22:00",
+			"aiRecommended": true,
+			"facilityCongestion": true,
+			"zoneCongestion": true,
+			"location-basedContent": true,
+			"userMap": "",
+			"mapUpdatedAt": "2026-06-12 08:48"
+		},
+		{
+			"id": 3,
+			"targetName": "차이나타운",
+			"targetColor": "#0089ff",
+			"language": "ko,zh,en",
+			"operationStatus": "운영전",
+			"operationPeriod": "상시 운영",
+			"operationHours": "10:00~22:00",
+			"aiRecommended": true,
+			"facilityCongestion": true,
+			"zoneCongestion": true,
+			"location-basedContent": true,
+			"userMap": "",
+			"mapUpdatedAt": "2026-06-12 08:48"
+		},
+		{
+			"id": 5,
+			"targetName": "개항장거리",
+			"targetColor": "#0089ff",
+			"language": "ko,en,ja",
+			"operationStatus": "운영종료",
+			"operationPeriod": "25.04.01(수)~25.04.01(수)",
+			"operationHours": "10:00~22:00",
+			"aiRecommended": true,
+			"facilityCongestion": true,
+			"zoneCongestion": true,
+			"location-basedContent": true,
+			"userMap": "",
+			"mapUpdatedAt": "2026-06-12 08:48"
+		}
+	]
+}

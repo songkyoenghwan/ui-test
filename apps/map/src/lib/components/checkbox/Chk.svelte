@@ -12,6 +12,7 @@
 />
 
 <script lang="ts">
+	import { applyGlobalReset } from '$lib/styles/shadow-theme';
 	interface Props {
 		itemId?: string;
 		txt?: string;
@@ -21,6 +22,13 @@
 		change?: (event: Event) => void;
 	}
 	let { itemId = '', txt = '', checked = $bindable(false), disabled = false, change }: Props = $props();
+
+	$effect(() => {
+		const host = $host()?.shadowRoot;
+		if (host) {
+			applyGlobalReset(host);
+		}
+	});
 </script>
 
 <label for={itemId} class="check-box">
@@ -30,8 +38,6 @@
 </label>
 
 <style>
-	@import '../../../../src/lib/styles/ui-reset.css';
-
 	.check-box {
 		display: inline-flex;
 		align-items: center;

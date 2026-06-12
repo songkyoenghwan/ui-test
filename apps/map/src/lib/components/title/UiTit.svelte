@@ -24,7 +24,7 @@
 		rt?: Snippet;
 		children?: Snippet;
 	}
-	let { tag = 'h3', tit, sub, size, cls, icon, rt, children }: Props = $props();
+	let { tag = 'h3', tit, sub, size = 'sm', cls, icon, rt, children }: Props = $props();
 
 	$effect(() => {
 		const host = $host()?.shadowRoot;
@@ -72,6 +72,10 @@
 
 		&.md {
 			font-size: 16px;
+		}
+
+		&.sm {
+			font-size: 14px;
 		}
 	}
 

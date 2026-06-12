@@ -1,18 +1,22 @@
 <script>
-	import { langStore, toggleLang, initLangStore } from '$lib/stores/langStore';
 	const myTabs = ['1. 대상지 정보', '2. 커스텀 항목'];
-	const rdoList = [
-		{
-			id: '1',
-			txt: '1. 대상지 정보',
-			value: 'y',
-		},
-		{
-			id: '2',
-			txt: '2. 대상지 정보',
-			value: 'n',
-		},
-	];
+
+	$effect(() => {
+		const langChk = document.querySelector('lang-chk');
+
+		if (langChk) {
+			// @ts-ignore
+			langChk.lang = {
+				zh: true,
+				ja: true,
+				th: true,
+				vi: true,
+			};
+		}
+	});
+
+	import InputDate from '$/lib/components/inputs/InputDate.svelte';
+	import InputClosed from '$/lib/components/inputs/InputClosed.svelte';
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
@@ -49,11 +53,21 @@
 			</li>
 			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
 				<ui-tit tit="위치"></ui-tit>
-				<div class="txt md gap-5">
-					<p>지도의 중심 좌표를 선택해 주세요</p>
+				<div class="flex flex-wrap items-center gap-5">
+					<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
 					<ui-btn variant="ghost" size="md" txt="지도에서 선택하기" class="min-w-30"></ui-btn>
-					<p class="text-black">34.9732111, 127.7343111</p>
+					<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
 				</div>
+			</li>
+			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
+				<ui-tit tit="운영 기간"></ui-tit>
+
+				<input-date item-id="input-1"></input-date>
+			</li>
+			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
+				<ui-tit tit="정기 휴무"></ui-tit>
+
+				<InputClosed />
 			</li>
 		</ul>
 	</section>

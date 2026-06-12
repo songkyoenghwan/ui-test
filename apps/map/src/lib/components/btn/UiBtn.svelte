@@ -10,6 +10,8 @@
 			size: { type: 'String' },
 			arr: { type: 'Array' },
 			name: { type: 'String' },
+			iconName: { type: 'String', attribute: 'icon-name' },
+			iconPos: { type: 'String', attribute: 'icon-pos' },
 			value: { type: 'String', reflect: true },
 		},
 	}}
@@ -27,6 +29,8 @@
 		name?: string;
 		arr?: string[];
 		value?: string;
+		iconName?: string;
+		iconPos?: string;
 		click?: (event: MouseEvent) => void;
 	}
 
@@ -37,10 +41,9 @@
 		}
 	});
 
-	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, arr, value = $bindable(''), click }: Props = $props();
+	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, iconName, iconPos = 'rt', arr, value = $bindable(''), click }: Props = $props();
 
 	const role = $derived(tag === 'a' ? 'link' : tag === 'button' ? 'button' : undefined);
-
 	const isSegmented = $derived(variant === 'segmented');
 	const segmentList = $derived(Array.isArray(arr) ? arr : []);
 
@@ -70,19 +73,25 @@
 	{/each}
 {:else}
 	<svelte:element this={tag} type={tag === 'button' ? 'button' : undefined} {role} class="button {variant} {size} {cls}" aria-label={txt} onclick={click}>
+		{#if iconName && iconPos === 'lt'}
+			<icon-list data-name={iconName} class="icon stroke-cms-3 size-4"></icon-list>
+		{/if}
 		{txt}
+		{#if iconName && iconPos === 'rt'}
+			<icon-list data-name={iconName} class="icon stroke-cms-3 size-4"></icon-list>
+		{/if}
 	</svelte:element>
 {/if}
 
 <style>
 	.button {
-		display: inline-flex;
+		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
 		min-height: 1.75rem;
-		padding-right: 0.4375rem;
-		padding-left: 0.4375rem;
+		padding-right: 0.25rem;
+		padding-left: 0.25rem;
 		gap: 0.5rem;
 		border-radius: 0.25rem;
 		font-size: 0.875rem;
@@ -91,7 +100,7 @@
 
 		&.lg {
 			min-height: 2.5rem;
-			font-size: 1rem;
+			font-size: 0.875rem;
 			line-height: 1.5rem;
 
 			&.segmented {
@@ -101,7 +110,7 @@
 
 		&.md {
 			min-height: 1.75rem;
-			font-size: 0.875rem;
+			font-size: 0.625rem;
 			line-height: 1.25rem;
 
 			&.segmented {
@@ -250,6 +259,71 @@
 			position: absolute;
 			top: 0;
 			right: 0;
+		}
+
+		&:has(.icon) {
+			gap: 8px;
+		}
+
+		.icon {
+			display: flex;
+			flex: none;
+
+			&.size-1 {
+				width: 4px;
+			}
+
+			&.size-2 {
+				width: 8px;
+			}
+
+			&.size-3 {
+				width: 12px;
+			}
+
+			&.size-4 {
+				width: 16px;
+			}
+
+			&.size-5 {
+				width: 20px;
+			}
+
+			&.size-6 {
+				width: 24px;
+			}
+		}
+
+		&.fill-cms-1 {
+			fill: var(--color-cms-1);
+		}
+		&.fill-cms-2 {
+			fill: var(--color-cms-2);
+		}
+		&.fill-cms-3 {
+			fill: var(--color-cms-3);
+		}
+		&.fill-cms-4 {
+			fill: var(--color-cms-4);
+		}
+		&.fill-cms-5 {
+			fill: var(--color-cms-5);
+		}
+
+		&.stroke-cms-1 {
+			stroke: var(--color-cms-1);
+		}
+		&.stroke-cms-2 {
+			stroke: var(--color-cms-2);
+		}
+		&.stroke-cms-3 {
+			stroke: var(--color-cms-3);
+		}
+		&.stroke-cms-4 {
+			stroke: var(--color-cms-4);
+		}
+		&.stroke-cms-5 {
+			stroke: var(--color-cms-5);
 		}
 	}
 </style>

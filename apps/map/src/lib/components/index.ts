@@ -13,5 +13,6 @@ import '$lib/components/title/UiTit.svelte';
 import '$lib/components/title/UiTxt.svelte';
 import '$lib/components/checkbox/Chk.svelte';
 import '$/lib/components/checkbox/InputGroup.svelte';
-import '$/lib/components/lang/LangAuto.svelte';
+import '$/lib/components/lang/LangTranslate.svelte';
 import '$/lib/components/lang/LangChk.svelte';
+import '$/lib/components/datePicker/DatePeriod.svelte';
