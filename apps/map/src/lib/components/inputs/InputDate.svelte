@@ -3,7 +3,8 @@
 		tag: 'input-date',
 		shadow: 'none',
 		props: {
-			lang: { type: 'Object', reflect: true },
+			itemId: { type: 'String', reflect: true },
+			selectedDate: { type: 'String', reflect: true },
 		},
 	}}
 />
@@ -11,20 +12,18 @@
 <script lang="ts">
 	interface Props {
 		itemId?: string;
-		txt?: string;
+		selectedDate?: string;
 		checked?: boolean;
 		disabled?: boolean;
 		cls?: string;
-		change?: (event: Event) => void;
 	}
-	let { itemId = '', txt = '', checked = $bindable(false), disabled = false, change }: Props = $props();
+	let { itemId = '', selectedDate = '', checked = $bindable(false) }: Props = $props();
 
 	const list = $derived([
 		{ id: `${itemId}-always`, name: 'always', txt: '상시 운영' },
 		{ id: `${itemId}-period`, name: 'period', txt: '기간' },
 	]);
 	let value = $state('always');
-	let period = $state('');
 </script>
 
 <div class="felx-wrap flex gap-2">
@@ -37,7 +36,7 @@
 				</label>
 
 				{#if value === 'period' && item.name === 'period'}
-					<date-period input-id={`${item.id}-picker`} date-type="range" selectedDate="2026.06.02(화) ~ 2026.06.24(수)"></date-period>
+					<date-period input-id={`${item.id}-picker`} date-type="range" {selectedDate}></date-period>
 				{/if}
 			</li>
 		{/each}

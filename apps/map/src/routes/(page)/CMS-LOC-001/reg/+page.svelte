@@ -62,7 +62,7 @@
 			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
 				<ui-tit tit="운영 기간"></ui-tit>
 
-				<input-date item-id="input-1"></input-date>
+				<input-date item-id="input-1" selectedDate="2026.06.02(화)~2026.06.02(화)"></input-date>
 			</li>
 			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
 				<ui-tit tit="정기 휴무"></ui-tit>
