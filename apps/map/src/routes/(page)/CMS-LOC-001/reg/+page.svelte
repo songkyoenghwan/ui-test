@@ -77,7 +77,7 @@
 
 				<input-closing-day item-id="input-2" selected="none" week="" all-week="" day="" date=""></input-closing-day>
 			</li>
-			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
+			<li class="relative z-2 grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
 				<ui-tit tit="운영 시간"></ui-tit>
 
 				<input-operating-hours item-id="input-2" selected="always"></input-operating-hours>

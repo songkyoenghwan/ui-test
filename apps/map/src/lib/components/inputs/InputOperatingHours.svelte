@@ -111,6 +111,7 @@
 			{#each localResult as group, i (group.id)}
 				<li
 					class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all not-first:border-t not-first:border-t-slate-200 first:pt-0 starting:left-1 starting:opacity-0"
+					style="z-index: {localResult.length - i};"
 				>
 					<div class="flex flex-wrap gap-1">
 						{#each group.weekDay as day, y (`${group.id}-week-${y}`)}
@@ -132,7 +133,7 @@
 
 					<ul>
 						{#each group.time as hour (hour.id)}
-							<li class="flex flex-wrap gap-2">
+							<li class={['relative z-1 flex flex-wrap gap-2']}>
 								<div class="inline-flex items-center gap-2">
 									<SveltyPicker mode="time" inputClasses="input-time m w-22" placeholder="시간선택" format="hh:ii" bind:value={hour.timeStart}></SveltyPicker>
 									<span>~</span>
