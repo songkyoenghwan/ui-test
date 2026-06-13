@@ -14,9 +14,6 @@
 			};
 		}
 	});
-
-	import InputDate from '$/lib/components/inputs/InputDate.svelte';
-	import InputClosed from '$/lib/components/inputs/InputClosed.svelte';
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
@@ -62,12 +59,17 @@
 			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
 				<ui-tit tit="운영 기간"></ui-tit>
 
-				<input-date item-id="input-1" selectedDate="2026.06.02(화)~2026.06.02(화)"></input-date>
+				<input-operating-period item-id="input-1" value="always" day="2026.06.02(화)~2026.06.02(화)"></input-operating-period>
 			</li>
 			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
 				<ui-tit tit="정기 휴무"></ui-tit>
 
-				<InputClosed />
+				<input-closing-day item-id="input-2" value="none" week="" all-week="" day="" date=""></input-closing-day>
+			</li>
+			<li class="grid grid-cols-[100px_1fr] gap-5 px-5 py-4">
+				<ui-tit tit="운영 시간"></ui-tit>
+
+				<input-operating-time item-id="input-2" value="none" week="" all-week="" day="" date=""></input-operating-time>
 			</li>
 		</ul>
 	</section>

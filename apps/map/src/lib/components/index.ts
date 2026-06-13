@@ -15,4 +15,7 @@ import '$lib/components/checkbox/Chk.svelte';
 import '$/lib/components/checkbox/InputGroup.svelte';
 import '$/lib/components/lang/LangTranslate.svelte';
 import '$/lib/components/lang/LangChk.svelte';
-import '$/lib/components/datePicker/DatePeriod.svelte';
+import '$/lib/components/datePicker/InputPicker.svelte';
+import '$/lib/components/inputs/InputOperatingPeriod.svelte';
+import '$/lib/components/inputs/InputOperatingTime.svelte';
+import '$/lib/components/inputs/InputClosingDay.svelte';

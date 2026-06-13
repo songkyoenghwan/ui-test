@@ -12,7 +12,7 @@
 			name: { type: 'String' },
 			iconName: { type: 'String', attribute: 'icon-name' },
 			iconPos: { type: 'String', attribute: 'icon-pos' },
-			value: { type: 'String', reflect: true },
+			selected: { type: 'String', reflect: true },
 		},
 	}}
 />
@@ -21,17 +21,18 @@
 	import { applyGlobalReset } from '$lib/styles/shadow-theme';
 
 	interface Props {
-		tag?: 'button' | 'a' | 'label';
+		tag?: 'button' | 'a' | 'label' | 'chk' | 'rdo';
 		variant?: 'primary' | 'secondary' | 'ghost' | 'segmented' | 'text';
 		size?: 'lg' | 'md' | 'sm';
 		txt?: string;
 		cls?: string;
 		name?: string;
-		arr?: string[];
-		value?: string;
+		arr?: { id: string; name: string; txt: string }[];
+		selected?: string | string[];
 		iconName?: string;
 		iconPos?: string;
 		click?: (event: MouseEvent) => void;
+		change?: (event: Event) => void;
 	}
 
 	$effect(() => {
@@ -41,34 +42,28 @@
 		}
 	});
 
-	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, iconName, iconPos = 'rt', arr, value = $bindable(''), click }: Props = $props();
+	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, iconName, iconPos = 'rt', arr, selected = $bindable(''), click, change }: Props = $props();
 
 	const role = $derived(tag === 'a' ? 'link' : tag === 'button' ? 'button' : undefined);
 	const isSegmented = $derived(variant === 'segmented');
 	const segmentList = $derived(Array.isArray(arr) ? arr : []);
 
 	$effect(() => {
-		if (!value && segmentList.length > 0) {
-			value = segmentList[0];
+		if (!selected && segmentList.length > 0) {
+			selected = segmentList[0].name;
 		}
 	});
 </script>
 
 {#if isSegmented}
-	{#each segmentList as item, i (`seg-${name}-${i}`)}
-		<label for={`${name}-${i}`} class="button {variant} {size} {cls}">
-			<input
-				type="radio"
-				id={`${name}-${i}`}
-				{name}
-				value={item}
-				bind:group={value}
-				class="sr-only"
-				onchange={() => {
-					value = item;
-				}}
-			/>
-			{item}
+	{#each segmentList as item, i (`seg-${item.name}-${i}`)}
+		<label for={`${name}-${item.name}-${i}`} class="button {variant} {size} {cls}">
+			{#if tag === 'chk'}
+				<input type="checkbox" id={`${name}-${item.name}-${i}`} {name} value={item.name} bind:group={selected} class="sr-only" onchange={change} />
+			{:else}
+				<input type="radio" id={`${name}-${item.name}-${i}`} {name} value={item.name} bind:group={selected} class="sr-only" onchange={change} />
+			{/if}
+			{item?.txt ? item?.txt : item}
 		</label>
 	{/each}
 {:else}
@@ -114,7 +109,7 @@
 			line-height: 1.25rem;
 
 			&.segmented {
-				font-size: 0.875rem;
+				font-size: 0.75rem;
 			}
 		}
 

@@ -25,7 +25,7 @@
 <svelte:element this={tag} class="txt {s} {cls ? cls : 'text-slate-500'}">
 	<slot name="lt" />
 
-	{txt}
+	{@html txt}
 
 	<slot name="rt" />
 </svelte:element>

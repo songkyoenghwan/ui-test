@@ -1,11 +1,10 @@
 <svelte:options
 	customElement={{
-		tag: 'date-period',
+		tag: 'input-picker',
 		shadow: 'none',
 		props: {
 			inputId: { reflect: true, attribute: 'input-id' },
 			placeholder: { reflect: true, attribute: 'input-placeholder' },
-			selectedDate: { reflect: true, attribute: 'selected-date' },
 			dateType: { reflect: true, attribute: 'date-type' },
 			day: { reflect: true, attribute: 'day' },
 			error: { reflect: true, type: 'Boolean', attribute: 'error' },
@@ -20,16 +19,7 @@
 	import { Korean } from 'flatpickr/dist/l10n/ko.js';
 	import type { Attachment } from 'svelte/attachments';
 
-	let {
-		inputId = '',
-		placeholder = 'YYYY / MM / DD',
-		selectedDate = $bindable(''),
-		day = $bindable(''),
-		dateType = 'default',
-		error = false,
-		inline = 'false',
-		position = 'auto',
-	} = $props();
+	let { inputId = '', placeholder = 'YYYY / MM / DD', day = $bindable(''), dateType = 'default', error = false, inline = 'false', position = 'auto' } = $props();
 
 	interface DatepickerConfig {
 		dateType: 'default' | 'range' | string;
@@ -55,7 +45,7 @@
 	const handleFocus = () => {
 		// 라이브러리가 팝업을 생성할 시간을 약간 주기 위해 setTimeout 사용
 		setTimeout(() => {
-			const dia = $host().querySelector('.flatpickr-calendar') as HTMLElement | null;
+			const dia = $host() as HTMLElement | null;
 			if (dia) {
 				dia.style.display = '';
 				dia.style.position = 'fixed';
@@ -107,11 +97,11 @@
 				inline: config.inline === 'true',
 				position: 'auto', // 이제 타입이 완벽히 일치합니다.
 				dateFormat: 'Y.m.d\\(D\\)',
-				defaultDate: getDefaultDate(selectedDate, config.dateType),
+				defaultDate: getDefaultDate(day, config.dateType),
 				static: false,
 				closeOnSelect: config.dateType === 'range',
 				onReady: (selectedDates, dateStr, instance) => {
-					const dia = $host().querySelector('.flatpickr-calendar') as HTMLElement;
+					const dia = $host() as HTMLElement;
 					input.setAttribute('data-date', `${selectedDates}`);
 					input.title = `${dateStr}`;
 
@@ -150,7 +140,7 @@
 					instance.calendarContainer.appendChild(btnWrapper);
 
 					if (datepickerRef) {
-						const dia = $host().querySelector('.flatpickr-calendar') as HTMLElement | null;
+						const dia = $host() as HTMLElement | null;
 						if (dia) {
 							dia.style.display = 'none';
 						}
@@ -169,19 +159,15 @@
 						const start = inst.formatDate(selectedDates[0], 'Y.m.d\\(D\\)');
 						const end = inst.formatDate(selectedDates[1], 'Y.m.d\\(D\\)');
 						day = `${start}~${end}`;
-					} else {
-						day = dateStr;
 					}
 
-					input.focus();
+					if (config.dateType === 'default') {
+						day = dateStr;
+					}
 				},
 
 				onClose: (selectedDates, dateStr, inst) => {
-					input.title = day;
-					input.setAttribute('data-date', day);
-
-					error = day.trim() === '';
-					input.focus();
+					error = dateStr.trim() === '';
 				},
 			});
 
@@ -194,7 +180,7 @@
 
 	$effect(() => {
 		if (!instance) return;
-		const value = getDefaultDate(day || selectedDate, dateType);
+		const value = getDefaultDate(day, dateType);
 		if (value) {
 			instance.setDate(value, false);
 		}
@@ -205,7 +191,6 @@
 	{@attach flatpickrAttachment({ dateType, inline })}
 	id={inputId}
 	bind:this={datepickerRef}
-	bind:value={day}
 	class={['input-date m w-78.5 read-only:border-slate-300 read-only:bg-white', error ? 'error border-error! outline-error' : '']}
 	{placeholder}
 />
