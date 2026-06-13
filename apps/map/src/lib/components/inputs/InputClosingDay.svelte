@@ -87,27 +87,20 @@
 		<dl class="inline-flex items-center gap-2.5">
 			<dt class="label">주차</dt>
 			<dd class="flex flex-wrap gap-1">
-				<UiBtn tag="chk" variant="segmented" name={`${itemId}-closing-week`} arr={weekList} cls="min-w-12.5 flex-[0_0_50px]" bind:selected={week} change={} />
-
-				<!-- {#each weekList as item (item.id)}
-					<label for={item.id} class="button m segmented min-w-12.5">
-						<input
-							type="checkbox"
-							id={item.id}
-							name={item.name}
-							class="peer sr-only"
-							value={item.name}
-							bind:group={week}
-							onchange={(e: Event) => {
-								const target = e.currentTarget;
-								if (target instanceof HTMLInputElement && target.checked) {
-									allWeek = '';
-								}
-							}}
-						/>
-						<span>{item.txt}</span>
-					</label>
-				{/each} -->
+				<UiBtn
+					tag="chk"
+					variant="segmented"
+					name={`${itemId}-closing-week`}
+					arr={weekList}
+					cls="min-w-12.5 flex-[0_0_50px]"
+					bind:selected={week}
+					change={(e: Event) => {
+						const target = e.currentTarget;
+						if (target instanceof HTMLInputElement && target.checked) {
+							allWeek = '';
+						}
+					}}
+				/>
 			</dd>
 			<dd class="flex flex-wrap gap-1">
 				<ui-checkbox
@@ -117,7 +110,6 @@
 					checked={allWeek === 'all-week' ? true : false}
 					change={(e: Event & { currentTarget: HTMLInputElement }) => {
 						allWeek = e.currentTarget.checked ? 'all-week' : '';
-
 						if (e.currentTarget.checked) {
 							week = [];
 						}
@@ -135,12 +127,7 @@
 		<dl class="inline-flex items-center gap-2.5">
 			<dt class="label">요일</dt>
 			<dd class="flex flex-wrap gap-1">
-				{#each dateList as item (item.id)}
-					<label for={item.id} class="button m segmented size-7">
-						<input type="checkbox" id={item.id} name={item.name} class="peer sr-only" value={item.name} bind:group={day} />
-						<span>{item.txt}</span>
-					</label>
-				{/each}
+				<UiBtn tag="chk" variant="segmented" name={`${itemId}-closing-day`} arr={dateList} cls="min-w-7 flex-[0_0_28px]" bind:selected={day} />
 			</dd>
 		</dl>
 

@@ -87,11 +87,14 @@
       "dependencies": {
         "@master/css": "^1.37.8",
         "alpinejs": "^3.15.12",
+        "es-toolkit": "^1.47.1",
+        "keen-slider": "^6.8.6",
         "lit": "^3.3.2",
         "nanostores": "^1.3.0",
         "sortablejs": "^1.15.7",
         "svelte": "^5.55.5",
         "svelte-draggable-plus": "^0.1.1",
+        "svelty-picker": "^6.1.6",
       },
       "devDependencies": {
         "@floating-ui/utils": "^0.2.11",
@@ -1036,6 +1039,8 @@
 
     "svelte-parse-markup": ["svelte-parse-markup@0.1.5", "", { "peerDependencies": { "svelte": "^3.0.0 || ^4.0.0 || ^5.0.0-next.1" } }, "sha512-T6mqZrySltPCDwfKXWQ6zehipVLk4GWfH1zCMGgRtLlOIFPuw58ZxVYxVvotMJgJaurKi1i14viB2GIRKXeJTQ=="],
 
+    "svelty-picker": ["svelty-picker@6.1.6", "", { "dependencies": { "@floating-ui/dom": "^1.6.13" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-p7JX+xzrcTFJFgPwshfRPCD1lETvdbEPDWFlJu6S6/GGum09Kgk+aJbSEnbnZrCAOIUALlwJS+LpWPmsvG1zDA=="],
+
     "swiper": ["swiper@12.2.0", "", {}, "sha512-K8uXsBZU6ME97Ia3xbBge8IRCnR1lOmIILzvY/jGVic7dSTQ530s3uO8RvXbPUtkkXLWIwmZLRPbtDxRWVAFdg=="],
 
     "tailwind-merge": ["tailwind-merge@3.6.0", "", {}, "sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w=="],
@@ -1155,6 +1160,8 @@
     "map/@types/node": ["@types/node@25.9.3", "", { "dependencies": { "undici-types": ">=7.24.0 <7.24.7" } }, "sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg=="],
 
     "map/concurrently": ["concurrently@9.2.1", "", { "dependencies": { "chalk": "4.1.2", "rxjs": "7.8.2", "shell-quote": "1.8.3", "supports-color": "8.1.1", "tree-kill": "1.2.2", "yargs": "17.7.2" }, "bin": { "conc": "dist/bin/concurrently.js", "concurrently": "dist/bin/concurrently.js" } }, "sha512-fsfrO0MxV64Znoy8/l1vVIjjHa29SZyyqPgQBwhiDcaW8wJc2W3XWVOGx4M3oJBnv/zdUZIIp1gDeS98GzP8Ng=="],
+
+    "map/es-toolkit": ["es-toolkit@1.47.1", "", {}, "sha512-5RAqEwf4P4E17p+W75KLOWw/nOvKZzSQpxM32IpI2KZLaVonjTrZ0Ai5ghMaVI9eKC2p8eoQgcBdkEDgzFk6+Q=="],
 
     "map/prettier": ["prettier@3.8.4", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q=="],
 

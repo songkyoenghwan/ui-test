@@ -426,5 +426,16 @@ export const getIconData = () => {
 				<path d="M4.25 7.42315L7.13462 10.3078L11.75 5.69238" fill="none" stroke="white" stroke-width="1.15385" stroke-linecap="round" stroke-linejoin="round" />
 			`,
 		},
+		{
+			name: 'btn-del',
+			size: '20',
+			html: /* HTML */ `
+				<rect x="0.384615" y="0.384615" width="19.2308" height="19.2308" rx="5" fill="none" stroke-width="0.769231" />
+				<path
+					d="M6.47707 14.4339L5.89553 13.8524L9.42784 10.2986L5.89553 6.74471L6.47707 6.16317L10.0094 9.71702L13.5202 6.16317L14.1017 6.74471L10.5694 10.2986L14.1017 13.8524L13.5202 14.4339L10.0094 10.9016L6.47707 14.4339Z"
+					stroke="none"
+				/>
+			`,
+		},
 	];
 };

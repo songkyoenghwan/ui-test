@@ -8,6 +8,7 @@
 /* @source '../../../node_modules/flowbite-svelte/dist';
 @source '../../../node_modules/flowbite-svelte-icons/dist'; */
 
+@import '../../../node_modules/keen-slider/keen-slider.min.css';
 @import '../../../node_modules/flatpickr/dist/flatpickr.min.css';
 
 @theme {

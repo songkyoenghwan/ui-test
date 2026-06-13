@@ -3,16 +3,20 @@
 		tag: 'ui-btn',
 		shadow: 'open',
 		props: {
+			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
 			tag: { type: 'String' },
 			txt: { type: 'String', reflect: true },
 			variant: { type: 'String' },
 			cls: { type: 'String' },
 			size: { type: 'String' },
+			value: { type: 'String' },
 			arr: { type: 'Array' },
 			name: { type: 'String' },
 			iconName: { type: 'String', attribute: 'icon-name' },
 			iconPos: { type: 'String', attribute: 'icon-pos' },
 			selected: { type: 'String', reflect: true },
+			disabled: { type: 'String', reflect: true },
+			checked: { type: 'Boolean', reflect: true },
 		},
 	}}
 />
@@ -22,15 +26,19 @@
 
 	interface Props {
 		tag?: 'button' | 'a' | 'label' | 'chk' | 'rdo';
-		variant?: 'primary' | 'secondary' | 'ghost' | 'segmented' | 'text';
+		variant?: 'primary' | 'secondary' | 'ghost' | 'segmented' | 'text' | 'icon';
 		size?: 'lg' | 'md' | 'sm';
+		itemId?: string;
 		txt?: string;
+		value?: string;
 		cls?: string;
 		name?: string;
-		arr?: { id: string; name: string; txt: string }[];
-		selected?: string | string[];
+		arr?: { id?: string; name?: string; txt?: string }[];
+		selected?: string | string[] | string[][];
 		iconName?: string;
 		iconPos?: string;
+		disabled?: string | boolean;
+		checked?: boolean;
 		click?: (event: MouseEvent) => void;
 		change?: (event: Event) => void;
 	}
@@ -42,10 +50,27 @@
 		}
 	});
 
-	let { tag = 'button', variant = 'primary', size = 'md', txt, cls, name, iconName, iconPos = 'rt', arr, selected = $bindable(''), click, change }: Props = $props();
+	let {
+		tag = 'button',
+		variant = 'primary',
+		size = 'md',
+		itemId,
+		txt,
+		cls,
+		name,
+		iconName,
+		iconPos = 'rt',
+		arr,
+		value = '',
+		selected = $bindable(),
+		disabled,
+		checked = $bindable(false),
+		click,
+		change,
+	}: Props = $props();
 
 	const role = $derived(tag === 'a' ? 'link' : tag === 'button' ? 'button' : undefined);
-	const isSegmented = $derived(variant === 'segmented');
+	const isSegmented = $derived(variant === 'segmented' && arr);
 	const segmentList = $derived(Array.isArray(arr) ? arr : []);
 
 	$effect(() => {
@@ -66,16 +91,36 @@
 			{item?.txt ? item?.txt : item}
 		</label>
 	{/each}
-{:else}
-	<svelte:element this={tag} type={tag === 'button' ? 'button' : undefined} {role} class="button {variant} {size} {cls}" aria-label={txt} onclick={click}>
+{:else if !isSegmented && tag === 'button'}
+	<svelte:element
+		this={tag}
+		type={tag === 'button' ? 'button' : undefined}
+		{role}
+		class="button {variant} {size} {cls}"
+		aria-label={txt}
+		onclick={click}
+		disabled={disabled === true || disabled === 'true' ? true : undefined}
+	>
 		{#if iconName && iconPos === 'lt'}
-			<icon-list data-name={iconName} class="icon stroke-cms-3 size-4"></icon-list>
+			<icon-list data-name={iconName} class="icon size-4"></icon-list>
 		{/if}
-		{txt}
+
+		{#if variant === 'icon'}
+			<span class="sr-only">
+				{txt}
+			</span>
+		{:else}
+			{txt}
+		{/if}
 		{#if iconName && iconPos === 'rt'}
-			<icon-list data-name={iconName} class="icon stroke-cms-3 size-4"></icon-list>
+			<icon-list data-name={iconName} class="icon size-4"></icon-list>
 		{/if}
 	</svelte:element>
+{:else if !isSegmented && tag === 'chk'}
+	<label for={itemId} class="button segmented {variant} {size} {cls}">
+		<input type="checkbox" id={itemId} {name} {value} bind:checked class="sr-only" onchange={change} />
+		{txt}
+	</label>
 {/if}
 
 <style>
