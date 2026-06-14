@@ -127,7 +127,14 @@
 		<dl class="inline-flex items-center gap-2.5">
 			<dt class="label">요일</dt>
 			<dd class="flex flex-wrap gap-1">
-				<UiBtn tag="chk" variant="segmented" name={`${itemId}-closing-day`} arr={dateList} cls="min-w-7 flex-[0_0_28px]" bind:selected={day} />
+				<UiBtn
+					tag="chk"
+					variant="segmented"
+					name={`${itemId}-closing-day`}
+					arr={dateList}
+					cls="min-w-7 flex-[0_0_28px]"
+					bind:selected={day}
+				/>
 			</dd>
 		</dl>
 
@@ -146,7 +153,12 @@
 			<dt class="label">매달</dt>
 			<dd>
 				<div class="grid flex-[0_0_300px] items-center bg-white px-2 py-1.5">
-					<select name={`${itemId}-closing-date`} id={`${itemId}-closing-date`} class="select h-7 min-h-7 min-w-50" bind:value={date}>
+					<select
+						name={`${itemId}-closing-date`}
+						id={`${itemId}-closing-date`}
+						class="select h-7 min-h-7 min-w-50"
+						bind:value={date}
+					>
 						{#each Array(31) as _, i (`sel-date-${i}`)}
 							<option class="max-w-66" value={String(i + 1)}>{i + 1}일</option>
 						{/each}

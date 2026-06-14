@@ -19,7 +19,15 @@
 	import { Korean } from 'flatpickr/dist/l10n/ko.js';
 	import type { Attachment } from 'svelte/attachments';
 
-	let { inputId = '', placeholder = 'YYYY / MM / DD', day = $bindable(''), dateType = 'default', error = false, inline = 'false', position = 'auto' } = $props();
+	let {
+		inputId = '',
+		placeholder = 'YYYY / MM / DD',
+		day = $bindable(''),
+		dateType = 'default',
+		error = false,
+		inline = 'false',
+		position = 'auto',
+	} = $props();
 
 	interface DatepickerConfig {
 		dateType: 'default' | 'range' | string;

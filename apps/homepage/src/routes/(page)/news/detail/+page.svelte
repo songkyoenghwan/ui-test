@@ -23,7 +23,10 @@
 	></news-section>
 
 	<div class="flex justify-center lg:inline-flex">
-		<a href="/news" class="flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 hover:bg-white lg:flex-none">
+		<a
+			href="/news"
+			class="flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 hover:bg-white lg:flex-none"
+		>
 			<span>Back to List</span>
 			<icon-list name="undo" class="size-6 stroke-black"></icon-list>
 		</a>

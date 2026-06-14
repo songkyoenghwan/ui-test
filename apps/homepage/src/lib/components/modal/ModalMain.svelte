@@ -145,7 +145,11 @@
 					<swiper-slide lazy="true" class="overflow-clip rounded-xl bg-white max-lg:w-[calc(100dvw-40px)] lg:w-90">
 						<picture class="rounded-t-xl"><img src={item.img} loading="lazy" alt="" class="lg:h-105 lg:w-90" /></picture>
 						<div class="rounded--b-xl grid w-full grid-cols-1 overflow-clip">
-							<a href={item.link} aria-label={item.title} class="bg-primary grid place-content-center text-2xl font-bold text-white lg:min-h-15">
+							<a
+								href={item.link}
+								aria-label={item.title}
+								class="bg-primary grid place-content-center text-2xl font-bold text-white lg:min-h-15"
+							>
 								<span>{item.title}</span>
 							</a>
 						</div>

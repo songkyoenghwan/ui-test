@@ -36,10 +36,28 @@
 {#each txtList as item (item.id)}
 	<label for={item.id} class="radio-box">
 		{#if box === 'radio'}
-			<input type="radio" id={item.id} {name} value={item.value} class="peer sr-only" {disabled} bind:group={value} onchange={change} />
+			<input
+				type="radio"
+				id={item.id}
+				{name}
+				value={item.value}
+				class="peer sr-only"
+				{disabled}
+				bind:group={value}
+				onchange={change}
+			/>
 			<icon-list data-name={value === item.value ? 'radio-on' : 'radio-off'} class="icon"></icon-list>
 		{:else}
-			<input type="checkbox" id={item.id} {name} value={item.value} class="peer sr-only" {disabled} bind:group={value} onchange={change} />
+			<input
+				type="checkbox"
+				id={item.id}
+				{name}
+				value={item.value}
+				class="peer sr-only"
+				{disabled}
+				bind:group={value}
+				onchange={change}
+			/>
 			<icon-list data-name={value === item.value ? 'checkbox-on' : 'checkbox-off'} class="icon"></icon-list>
 		{/if}
 		<span class="text-2sm text-black">{item.txt}</span>

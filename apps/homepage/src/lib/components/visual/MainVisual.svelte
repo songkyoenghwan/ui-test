@@ -17,7 +17,15 @@
 	<div
 		class="before:[''] absolute top-0 left-0 h-full w-full object-cover before:absolute before:top-0 before:left-0 before:z-3 before:size-full before:bg-linear-to-l before:from-black/0 before:to-black"
 	>
-		<video class="relative z-1 aspect-video h-full w-full object-cover" preload="auto" autoplay loop playsinline muted poster={`${__STATIC_URL__}/video/main-video.jpg`}>
+		<video
+			class="relative z-1 aspect-video h-full w-full object-cover"
+			preload="auto"
+			autoplay
+			loop
+			playsinline
+			muted
+			poster={`${__STATIC_URL__}/video/main-video.jpg`}
+		>
 			<source src={`${__STATIC_URL__}/video/main-video.mp4`} type="video/mp4" />
 			<source src={`${__STATIC_URL__}/video/main-video.webm`} type="video/webm" />
 		</video>
@@ -25,12 +33,17 @@
 
 	<div class="relative z-5 starting:opacity-0">
 		<div class="p-1">
-			<LiquidGlass class="inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl" style="border-radius: 24px;">
+			<LiquidGlass
+				class="inline-flex min-h-12 items-center gap-2 rounded-full px-5 py-1 text-lg leading-none font-bold lg:text-2xl"
+				style="border-radius: 24px;"
+			>
 				<p>Spatial Intelligence Platform</p>
 			</LiquidGlass>
 		</div>
 
-		<h1 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">{m.main_visual_title()}</h1>
+		<h1 class="leading-sung mt-5 text-3xl font-bold delay-75 lg:mt-7.5 lg:text-[3.75rem] lg:whitespace-pre-line">
+			{m.main_visual_title()}
+		</h1>
 		<h2 class="sr-only">main page</h2>
 	</div>
 

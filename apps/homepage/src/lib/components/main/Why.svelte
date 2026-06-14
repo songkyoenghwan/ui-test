@@ -116,7 +116,12 @@
 						data-font={list.font}
 					>
 						{#if list.id !== 'why-4'}
-							<strong class={['inline-flex gap-px leading-none font-bold tracking-tight lg:min-w-29', list.id === 'why-2' ? 'max-xl:text-4xl max-lg:text-5xl' : '']}>
+							<strong
+								class={[
+									'inline-flex gap-px leading-none font-bold tracking-tight lg:min-w-29',
+									list.id === 'why-2' ? 'max-xl:text-4xl max-lg:text-5xl' : '',
+								]}
+							>
 								<CountNumber text={Number(list.num)} />
 							</strong>
 							{#if list.id === 'why-5'}
@@ -129,13 +134,18 @@
 							{list.id === 'why-2' || list.id === 'why-3' ? '+' : ''}
 						</strong>
 					</dt>
-					<dd class={['text-2md', list.id !== 'why-3' && list.id !== 'why-4' ? 'relative z-3 lg:text-lg' : 'lg:text-2xl']}>{list.txt}</dd>
+					<dd class={['text-2md', list.id !== 'why-3' && list.id !== 'why-4' ? 'relative z-3 lg:text-lg' : 'lg:text-2xl']}>
+						{list.txt}
+					</dd>
 				</dl>
 
 				{#if list.video}
 					<div
 						data-scroll="slide-up"
-						class={['relative flex justify-end after:absolute after:z-2 after:flex after:size-full after:bg-transparent ', list.id === 'why-1' ? 'lg:-mr-23.75' : '']}
+						class={[
+							'relative flex justify-end after:absolute after:z-2 after:flex after:size-full after:bg-transparent ',
+							list.id === 'why-1' ? 'lg:-mr-23.75' : '',
+						]}
 					>
 						<video
 							bind:this={videoRefs[i]}

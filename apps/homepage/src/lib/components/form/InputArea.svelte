@@ -1,5 +1,13 @@
 <script lang="ts">
-	let { id = '', name = '', value = $bindable(''), disabled = '', placeholder = '작업번호를 입력하세요', cls = '', onkeydown = undefined } = $props();
+	let {
+		id = '',
+		name = '',
+		value = $bindable(''),
+		disabled = '',
+		placeholder = '작업번호를 입력하세요',
+		cls = '',
+		onkeydown = undefined,
+	} = $props();
 
 	let isDisabled = $derived(disabled === 'true' ? true : false);
 </script>

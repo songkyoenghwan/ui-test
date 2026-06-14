@@ -8,7 +8,16 @@
 <script lang="ts">
 	import { Modal } from 'flowbite-svelte';
 
-	type ModalPlacementType = 'top-left' | 'top-center' | 'top-right' | 'center-left' | 'center' | 'center-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+	type ModalPlacementType =
+		| 'top-left'
+		| 'top-center'
+		| 'top-right'
+		| 'center-left'
+		| 'center'
+		| 'center-right'
+		| 'bottom-left'
+		| 'bottom-center'
+		| 'bottom-right';
 
 	interface AlertPopupProps {
 		open?: 'open' | 'close'; // 명확한 유니온 타입 지정

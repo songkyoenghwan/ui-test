@@ -23,7 +23,13 @@
 </script>
 
 <section class="max-w-dvw overflow-hidden py-5 max-lg:space-y-5 lg:py-15">
-	<sub-heading-line line="none" title={m.main_title_news?.()} subTit={m.main_subtitle_news?.()} btnRender="link" link="/news/news"></sub-heading-line>
+	<sub-heading-line
+		line="none"
+		title={m.main_title_news?.()}
+		subTit={m.main_subtitle_news?.()}
+		btnRender="link"
+		link="/news/news"
+	></sub-heading-line>
 
 	<swiper-container
 		slides-per-view="auto"
@@ -41,7 +47,12 @@
 			<swiper-slide class="h-full w-75 select-none lg:w-100">
 				<a href={link} aria-label={`${tit} page`} class="w-full overflow-clip rounded-xl bg-white">
 					<picture class="bg-light-blue flex h-45.5 overflow-clip rounded-t-xl transition-all lg:h-56.25">
-						<img loading="lazy" src={img ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`} alt={`${tit} exemple image`} class="w-full object-cover" />
+						<img
+							loading="lazy"
+							src={img ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`}
+							alt={`${tit} exemple image`}
+							class="w-full object-cover"
+						/>
 					</picture>
 					<dl class="text-2md lg:43.5 flex h-35 flex-col justify-between overflow-clip rounded-b-xl bg-white p-5 text-xl">
 						<dt class="line-clamp-2 text-lg lg:text-2xl">

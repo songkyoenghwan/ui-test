@@ -27,12 +27,36 @@
 	const videoUrl = `${__STATIC_URL__}/video/logi-video.webm`;
 
 	const industries = $state([
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-1.png`, tit: m.logi_industries_list_5(), txt: m.logi_industries_list_txt_5() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-2.png`, tit: m.logi_industries_list_1(), txt: m.logi_industries_list_txt_1() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-3.png`, tit: m.logi_industries_list_6(), txt: m.logi_industries_list_txt_6() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-4.png`, tit: m.logi_industries_list_3(), txt: m.logi_industries_list_txt_3() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-5.png`, tit: m.logi_industries_list_4(), txt: m.logi_industries_list_txt_4() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-6.png`, tit: m.logi_industries_list_2(), txt: m.logi_industries_list_txt_2() },
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-1.png`,
+			tit: m.logi_industries_list_5(),
+			txt: m.logi_industries_list_txt_5(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-2.png`,
+			tit: m.logi_industries_list_1(),
+			txt: m.logi_industries_list_txt_1(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-3.png`,
+			tit: m.logi_industries_list_6(),
+			txt: m.logi_industries_list_txt_6(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-4.png`,
+			tit: m.logi_industries_list_3(),
+			txt: m.logi_industries_list_txt_3(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-5.png`,
+			tit: m.logi_industries_list_4(),
+			txt: m.logi_industries_list_txt_4(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-logi-6.png`,
+			tit: m.logi_industries_list_2(),
+			txt: m.logi_industries_list_txt_2(),
+		},
 	]);
 	const feaKeys = $state([
 		{
@@ -125,7 +149,8 @@
 	});
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} page="logi" logoAlt={m.logi_visual_badge()} tit={m.logi_visual_title()} subtit={m.logi_visual_subtitle}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} page="logi" logoAlt={m.logi_visual_badge()} tit={m.logi_visual_title()} subtit={m.logi_visual_subtitle}
+></SubVisual>
 
 <BannerTrial />
 

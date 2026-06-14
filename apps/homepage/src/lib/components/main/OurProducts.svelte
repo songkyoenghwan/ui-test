@@ -160,7 +160,8 @@
 				>
 					<div class="lg:7.5 relative z-2 flex flex-col gap-5">
 						<picture
-							class="relative flex min-h-10 opacity-100 @min-xl:group-has-aria-current/prod:opacity-100 starting:opacity-0 {current === i
+							class="relative flex min-h-10 opacity-100 @min-xl:group-has-aria-current/prod:opacity-100 starting:opacity-0 {current ===
+							i
 								? 'relative'
 								: 'lg:absolute lg:bottom-[calc(100%-20px)] lg:left-[calc(100%-20px)] lg:h-25 lg:max-h-105 lg:w-105 lg:origin-left lg:rotate-90'}"
 						>
@@ -175,7 +176,9 @@
 							<dd class="lg:max-w-130">{list.txt}</dd>
 						</dl>
 					</div>
-					<div class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100">
+					<div
+						class="z-2 mt-auto opacity-100 transition-all duration-300 lg:opacity-0 lg:group-has-aria-current/prod:flex lg:group-has-aria-current/prod:opacity-100"
+					>
 						<p
 							class="text-2md group inline-flex min-h-12 w-full items-center gap-2.5 rounded-md border border-white px-5 text-left font-bold transition-colors hover:bg-white hover:text-black max-lg:justify-between lg:min-h-13.5 lg:w-auto"
 						>

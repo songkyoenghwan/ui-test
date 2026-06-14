@@ -11,7 +11,17 @@
 /> -->
 
 <script lang="ts">
-	type Variant = 'primary' | 'succes' | 'complete' | 'pending' | 'danger' | 'incomplete' | 'wating' | 'BEFORE' | 'IN_PROGRESS' | 'COMPLETED';
+	type Variant =
+		| 'primary'
+		| 'succes'
+		| 'complete'
+		| 'pending'
+		| 'danger'
+		| 'incomplete'
+		| 'wating'
+		| 'BEFORE'
+		| 'IN_PROGRESS'
+		| 'COMPLETED';
 	interface Props {
 		variant?: Variant;
 		text?: string;
@@ -42,6 +52,12 @@
 	let sizeClasses = $derived(SIZE_MAP[size ?? 'md']);
 </script>
 
-<p class={['inline-grid place-content-center text-center text-pretty break-all  transition-opacity duration-300', variantBgClasses, sizeClasses]}>
+<p
+	class={[
+		'inline-grid place-content-center text-center text-pretty break-all  transition-opacity duration-300',
+		variantBgClasses,
+		sizeClasses,
+	]}
+>
 	{text}
 </p>

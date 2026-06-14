@@ -212,23 +212,63 @@
 				</li>
 				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
 					<label for="map-reg-en" class="label">EN</label>
-					<input type="text" name="map-reg-en" id="map-reg-en" class="input-text s" placeholder="영어로 입력해 주세요." maxlength="25" bind:value={en} />
+					<input
+						type="text"
+						name="map-reg-en"
+						id="map-reg-en"
+						class="input-text s"
+						placeholder="영어로 입력해 주세요."
+						maxlength="25"
+						bind:value={en}
+					/>
 				</li>
 				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
 					<label for="map-reg-zh" class="label">ZH</label>
-					<input type="text" name="map-reg-zh" id="map-reg-zh" class="input-text s" placeholder="중국어로 입력해 주세요." maxlength="25" bind:value={zh} />
+					<input
+						type="text"
+						name="map-reg-zh"
+						id="map-reg-zh"
+						class="input-text s"
+						placeholder="중국어로 입력해 주세요."
+						maxlength="25"
+						bind:value={zh}
+					/>
 				</li>
 				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
 					<label for="map-reg-ja" class="label">jA</label>
-					<input type="text" name="map-reg-ja" id="map-reg-ja" class="input-text s" placeholder="일본어로 입력해 주세요." maxlength="25" bind:value={ja} />
+					<input
+						type="text"
+						name="map-reg-ja"
+						id="map-reg-ja"
+						class="input-text s"
+						placeholder="일본어로 입력해 주세요."
+						maxlength="25"
+						bind:value={ja}
+					/>
 				</li>
 				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
 					<label for="map-reg-th" class="label">TH</label>
-					<input type="text" name="map-reg-th" id="map-reg-th" class="input-text s" placeholder="태국어로 입력해 주세요." maxlength="25" bind:value={th} />
+					<input
+						type="text"
+						name="map-reg-th"
+						id="map-reg-th"
+						class="input-text s"
+						placeholder="태국어로 입력해 주세요."
+						maxlength="25"
+						bind:value={th}
+					/>
 				</li>
 				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
 					<label for="map-reg-vi" class="label">VI</label>
-					<input type="text" name="map-reg-vi" id="map-reg-vi" class="input-text s" placeholder="베트남어로 입력해 주세요." maxlength="25" bind:value={vi} />
+					<input
+						type="text"
+						name="map-reg-vi"
+						id="map-reg-vi"
+						class="input-text s"
+						placeholder="베트남어로 입력해 주세요."
+						maxlength="25"
+						bind:value={vi}
+					/>
 				</li>
 			</ul>
 			<div class="flex items-center gap-2">
@@ -240,7 +280,10 @@
 						langToggle = !langToggle;
 					}}
 				>
-					<icon-list data-name="arrow-down" class="icon stroke-primary relative size-4 transition-transform {langToggle ? 'rotate-180' : 'rotate-0'}"></icon-list>
+					<icon-list
+						data-name="arrow-down"
+						class="icon stroke-primary relative size-4 transition-transform {langToggle ? 'rotate-180' : 'rotate-0'}"
+					></icon-list>
 					<span>다국어 입력</span>
 				</button>
 			</div>
@@ -275,7 +318,15 @@
 				</li>
 				<li class="grid grid-cols-[22px_1fr] items-center gap-2">
 					<label for="map-reg-addr" class="label flex-none">주소</label>
-					<input type="text" name="map-reg-addr" id="map-reg-addr" class="input-text s" placeholder="주소" readonly bind:value={addr} />
+					<input
+						type="text"
+						name="map-reg-addr"
+						id="map-reg-addr"
+						class="input-text s"
+						placeholder="주소"
+						readonly
+						bind:value={addr}
+					/>
 				</li>
 			</ul>
 		</div>
@@ -317,7 +368,10 @@
 			</div>
 		</header>
 
-		<ul {@attach handleSortable} class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5">
+		<ul
+			{@attach handleSortable}
+			class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5"
+		>
 			{#each places as place (place.id)}
 				{@render placeItem(place)}
 			{/each}

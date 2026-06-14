@@ -12,14 +12,7 @@
 />
 
 <script lang="ts">
-	let {
-		itemId = '',
-		itemName = '',
-		text = '',
-		value = $bindable(''),
-		checked = false,
-		disabled = $bindable(false),
-	} = $props();
+	let { itemId = '', itemName = '', text = '', value = $bindable(''), checked = false, disabled = $bindable(false) } = $props();
 
 	function handleChange(e: Event) {
 		const target = e.currentTarget as HTMLInputElement;
@@ -40,22 +33,13 @@
 	}
 </script>
 
-<label for={itemId} class="flex min-h-6 gap-3 items-center select-none disabled:cursor-no-drop" aria-label={value}>
-	<input
-		type="radio"
-		id={itemId}
-		name={itemName}
-		class="peer sr-only"
-		{disabled}
-		{value}
-		{checked}
-		onchange={handleChange}
-	/>
+<label for={itemId} class="flex min-h-6 items-center gap-3 select-none disabled:cursor-no-drop" aria-label={value}>
+	<input type="radio" id={itemId} name={itemName} class="peer sr-only" {disabled} {value} {checked} onchange={handleChange} />
 	<icon-list
 		data-name="radio"
 		class={[
 			disabled ? 'peer-checked:fill-ccc stroke-ccc' : 'peer-checked:fill-primary stroke-primary',
-			'transition-all size-6 fill-white',
+			'size-6 fill-white transition-all',
 		]}
 	></icon-list>
 

@@ -13,6 +13,7 @@
 
 <script lang="ts">
 	import { applyGlobalReset } from '$lib/styles/shadow-theme';
+
 	interface Props {
 		itemId?: string;
 		txt?: string;

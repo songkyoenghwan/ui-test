@@ -101,7 +101,10 @@
 	});
 </script>
 
-<section data-scroll="slide-up" class="slide-card relative grid max-w-dvw grid-cols-1 gap-5 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_620px] lg:gap-15 lg:p-15">
+<section
+	data-scroll="slide-up"
+	class="slide-card relative grid max-w-dvw grid-cols-1 gap-5 overflow-hidden rounded-xl bg-white p-5 lg:grid-cols-[1fr_620px] lg:gap-15 lg:p-15"
+>
 	<div data-scroll="slide-up" class="space-y-2.5 lg:space-y-15 lg:whitespace-pre-line">
 		<h2 class="text-3xl leading-tight font-bold transition-all lg:text-6xl">{m.main_title_mro()}</h2>
 		<p class="text-666 text-base transition-all lg:text-2xl">{m.main_subtitle_mro()}</p>
@@ -120,16 +123,24 @@
 				<swiper-slide
 					class={[
 						'group  relative h-full min-h-96.5 w-full space-y-2.5 overflow-clip rounded-xl bg-size-[auto_100%] bg-top bg-no-repeat p-2.5 opacity-0 shadow-transparent not-[.swiper-slide-active]:top-2 not-[.swiper-slide-active]:h-[80%] lg:w-125 lg:space-y-5 lg:bg-size-[auto_100%] lg:p-5 lg:nth-[1]:opacity-10 lg:nth-[10]:opacity-10',
-						list.type === 'dao' ? 'not-[.swiper-slide-active]:bg-9cc5e8 [.swiper-slide-active]:bg-(image:--bg-card-dao-pc)' : '',
-						list.type === 'dsc' ? 'not-[.swiper-slide-active]:bg-e8d5a7 [.swiper-slide-active]:bg-(image:--bg-card-dsc-pc)' : '',
-						list.type === 'logi.fine' ? 'not-[.swiper-slide-active]:bg-7785ff [.swiper-slide-active]:bg-(image:--bg-card-logi-pc)' : '',
+						list.type === 'dao'
+							? 'not-[.swiper-slide-active]:bg-9cc5e8 [.swiper-slide-active]:bg-(image:--bg-card-dao-pc)'
+							: '',
+						list.type === 'dsc'
+							? 'not-[.swiper-slide-active]:bg-e8d5a7 [.swiper-slide-active]:bg-(image:--bg-card-dsc-pc)'
+							: '',
+						list.type === 'logi.fine'
+							? 'not-[.swiper-slide-active]:bg-7785ff [.swiper-slide-active]:bg-(image:--bg-card-logi-pc)'
+							: '',
 					]}
 					style:--bg-card-mo={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-mo.png)`}
 					style:--bg-card-dao-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-dao.png)`}
 					style:--bg-card-dsc-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-dsc.png)`}
 					style:--bg-card-logi-pc={`url(${__STATIC_URL__}/imgs/main/slide/bg-card-logi.png)`}
 				>
-					<picture class="flex h-47 overflow-clip rounded-xl transition-all group-not-[.swiper-slide-active]:opacity-0 lg:h-56.25">
+					<picture
+						class="flex h-47 overflow-clip rounded-xl transition-all group-not-[.swiper-slide-active]:opacity-0 lg:h-56.25"
+					>
 						<img loading="lazy" src={list.img} alt={`${list.type} Example image`} class="w-full object-cover" />
 					</picture>
 
@@ -140,7 +151,9 @@
 							</li>
 						{/each}
 					</ul>
-					<div class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white group-not-[.swiper-slide-active]:opacity-0 lg:min-h-35">
+					<div
+						class="text-2md flex flex-col justify-between overflow-clip rounded-b-xl text-lg text-white group-not-[.swiper-slide-active]:opacity-0 lg:min-h-35"
+					>
 						<p class="text-2md text-center font-bold whitespace-pre-line lg:text-2xl">
 							{list.txt}
 							{#if list.txt2}

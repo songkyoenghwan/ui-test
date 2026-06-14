@@ -75,7 +75,10 @@
 	</ul>
 
 	<div class="flex justify-center lg:inline-flex">
-		<button type="button" class="flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 hover:bg-white lg:flex-none">
+		<button
+			type="button"
+			class="flex min-h-12 flex-1 items-center justify-between gap-2 rounded-md border border-black px-5 hover:bg-white lg:flex-none"
+		>
 			<span>더 보기</span>
 			<icon-list name="add" class="group-hover:fill-primary size-6 stroke-black"></icon-list>
 		</button>

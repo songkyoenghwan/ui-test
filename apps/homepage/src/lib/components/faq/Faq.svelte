@@ -36,7 +36,11 @@
 						class="text-666 @starting:opacity-0 relative hidden whitespace-pre-line opacity-0 transition-all transition-discrete duration-300 group-not-checked/faq:opacity-0 group-has-checked/faq:grid group-has-checked/faq:opacity-100"
 					>
 						{#if chk}
-							<div in:fly={{ y: 15, duration: 400, delay: 100 }} out:fade={{ duration: 150 }} class="py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22">
+							<div
+								in:fly={{ y: 15, duration: 400, delay: 100 }}
+								out:fade={{ duration: 150 }}
+								class="py-5 pr-5 pl-10.5 lg:p-7.5 lg:px-22"
+							>
 								<ParaglideMessage message={item.txt}>
 									{#snippet b({ children })}
 										<p class="pl-4 -indent-4">{@render children?.()}</p>

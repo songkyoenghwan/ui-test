@@ -68,7 +68,11 @@
 		</p>
 	</div>
 {:else}
-	<ul bind:this={containerRef} onscroll={handleScroll} class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5">
+	<ul
+		bind:this={containerRef}
+		onscroll={handleScroll}
+		class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5"
+	>
 		{#each visibleItems as item, index (item?.id)}
 			<li data-index={index} class="w-full">
 				<button
@@ -77,7 +81,9 @@
 					class="grid w-full grid-cols-[1fr_minmax(0,40px)] grid-rows-2 space-y-1 rounded-sm border border-slate-200 bg-white px-4 py-3"
 					onclick={(e) => handleClick(e, item)}
 				>
-					<span class="order-1 col-span-1 row-span-1 truncate text-left text-base">{item.tit === '' ? '이름 없음' : item.tit}</span>
+					<span class="order-1 col-span-1 row-span-1 truncate text-left text-base">
+						{item.tit === '' ? '이름 없음' : item.tit}
+					</span>
 					<strong class="order-3 col-span-1 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal">
 						<span class="pr-2 text-slate-600">{item.poi}</span>
 						<strong class="flex items-center font-normal">

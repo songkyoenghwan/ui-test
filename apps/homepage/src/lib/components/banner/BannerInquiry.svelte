@@ -32,7 +32,9 @@
 		m.logi_banner_item_8,
 	]);
 	let pageKeys = $derived(page === 'dao' ? [...bannerTitleDao] : page === 'logi' ? [...bannerTitleLogi] : []);
-	let bg = $derived(page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.jpg` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.jpg`);
+	let bg = $derived(
+		page === 'dao' ? `${__STATIC_URL__}/imgs/banner/bg-banner-dao.jpg` : `${__STATIC_URL__}/imgs/banner/bg-banner-logi.jpg`,
+	);
 	let tit = $derived(page === 'dao' ? m.dao_banner_title() : page === 'logi' ? m.logi_banner_title() : '');
 	let tit2 = $derived(page === 'dao' ? m.dao_banner_title_2() : page === 'logi' ? m.logi_banner_title_2() : '');
 	let txt = $derived(page === 'dao' ? m.dao_banner_text() : page === 'logi' ? m.logi_banner_text() : '');
@@ -41,7 +43,10 @@
 			const targetFn = pageKeys[i];
 
 			return {
-				img: page === 'dao' ? `${__STATIC_URL__}/imgs/banner/img-banner-dao-slide-${i + 1}.png` : `${__STATIC_URL__}/imgs/banner/img-banner-logi-slide-${i + 1}.png`,
+				img:
+					page === 'dao'
+						? `${__STATIC_URL__}/imgs/banner/img-banner-dao-slide-${i + 1}.png`
+						: `${__STATIC_URL__}/imgs/banner/img-banner-logi-slide-${i + 1}.png`,
 				txt: typeof targetFn === 'function' ? (targetFn as () => string)() : '',
 			};
 		}),
@@ -71,7 +76,10 @@
 				speed="450"
 				autoplay-delay="1500"
 				direction="vertical"
-				class={['flex h-12 flex-none justify-between rounded-full bg-white shadow-md lg:h-17.5', page === 'dao' ? 'lg:w-107.5' : page === 'logi' ? 'lg:w-155' : '']}
+				class={[
+					'flex h-12 flex-none justify-between rounded-full bg-white shadow-md lg:h-17.5',
+					page === 'dao' ? 'lg:w-107.5' : page === 'logi' ? 'lg:w-155' : '',
+				]}
 			>
 				<!-- 	a-->
 				{#each bannerKeys as list}

@@ -31,7 +31,9 @@ class FooterTag extends HTMLElement {
 								</h2>
 							</li>
 							<li class="grid">
-								<h2 class="text-2md text-black lg:text-lg"><a class="underline-offset-4 hover:underline" href="/news/news">News</a></h2>
+								<h2 class="text-2md text-black lg:text-lg">
+									<a class="underline-offset-4 hover:underline" href="/news/news">News</a>
+								</h2>
 							</li>
 							<li class="grid">
 								<h2 class="text-2md text-black lg:text-lg">

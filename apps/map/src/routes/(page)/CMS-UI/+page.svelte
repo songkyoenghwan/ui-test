@@ -328,7 +328,9 @@
 				<section class="group/top-tip inline-flex min-h-12 items-center gap-1 rounded-sm bg-white shadow-2xs">
 					<div class="flex items-center gap-2 py-1 pl-4">
 						<icon-list data-name="info-circle" class="icon fill-cms-3 size-5"></icon-list>
-						<h4 class="text-121212 hidden text-base font-semibold opacity-100 transition-opacity transition-discrete group-has-checked/top-tip:flex starting:opacity-0">
+						<h4
+							class="text-121212 hidden text-base font-semibold opacity-100 transition-opacity transition-discrete group-has-checked/top-tip:flex starting:opacity-0"
+						>
 							지도를 우클릭하여 위치 변경
 						</h4>
 					</div>

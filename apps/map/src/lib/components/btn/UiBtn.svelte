@@ -84,9 +84,25 @@
 	{#each segmentList as item, i (`seg-${item.name}-${i}`)}
 		<label for={`${name}-${item.name}-${i}`} class="button {variant} {size} {cls}">
 			{#if tag === 'chk'}
-				<input type="checkbox" id={`${name}-${item.name}-${i}`} {name} value={item.name} bind:group={selected} class="sr-only" onchange={change} />
+				<input
+					type="checkbox"
+					id={`${name}-${item.name}-${i}`}
+					{name}
+					value={item.name}
+					bind:group={selected}
+					class="sr-only"
+					onchange={change}
+				/>
 			{:else}
-				<input type="radio" id={`${name}-${item.name}-${i}`} {name} value={item.name} bind:group={selected} class="sr-only" onchange={change} />
+				<input
+					type="radio"
+					id={`${name}-${item.name}-${i}`}
+					{name}
+					value={item.name}
+					bind:group={selected}
+					class="sr-only"
+					onchange={change}
+				/>
 			{/if}
 			{item?.txt ? item?.txt : item}
 		</label>

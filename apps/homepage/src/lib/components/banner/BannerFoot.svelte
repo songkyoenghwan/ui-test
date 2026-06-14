@@ -45,7 +45,13 @@
 	</figure>
 {/snippet}
 
-<section data-section="floating" class={['group/foot fixed right-0 bottom-5 z-2 px-5 whitespace-pre-line text-white duration-600 md:right-5', closeState ? '' : ' max-md:w-full ']}>
+<section
+	data-section="floating"
+	class={[
+		'group/foot fixed right-0 bottom-5 z-2 px-5 whitespace-pre-line text-white duration-600 md:right-5',
+		closeState ? '' : ' max-md:w-full ',
+	]}
+>
 	<div
 		class={[
 			'relative grid  gap-2.5 rounded-xl transition-colors  duration-600',
@@ -89,7 +95,10 @@
 		<div class="absolute -top-2.5 -left-2.5 z-2">
 			{#if !closeState}
 				<button
-					class={['group  grid size-7.5 place-content-center rounded-full transition-colors', closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white']}
+					class={[
+						'group  grid size-7.5 place-content-center rounded-full transition-colors',
+						closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white',
+					]}
 					onclick={close}
 					aria-expanded={closeState ? 'false' : 'true'}
 				>
@@ -102,7 +111,10 @@
 				</button>
 			{:else}
 				<button
-					class={['group  grid size-7.5 place-content-center rounded-full transition-colors', closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white']}
+					class={[
+						'group  grid size-7.5 place-content-center rounded-full transition-colors',
+						closeState ? 'bg-ffa100' : 'bg-000  border border-white/50 hover:bg-white',
+					]}
 					onclick={close}
 					aria-expanded={closeState ? 'false' : 'true'}
 				>

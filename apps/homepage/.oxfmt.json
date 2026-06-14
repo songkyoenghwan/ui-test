@@ -48,7 +48,7 @@
 	"importOrderParserPlugins": ["typescript", "decorators-legacy"],
 	"insertPragma": false,
 	"jsxSingleQuote": false,
-	"printWidth": 180,
+	"printWidth": 140,
 	"proseWrap": "never",
 	"quoteProps": "consistent",
 	"requirePragma": false,

@@ -144,10 +144,16 @@
 			onmouseenter={() => (current = i)}
 		>
 			{#if type === 'as'}
-				<icon-list name="tri-alert" class="group-aria-current:fill-primary fill-999 relative h-10 w-10.5 flex-none transition-all"></icon-list>
+				<icon-list
+					name="tri-alert"
+					class="group-aria-current:fill-primary fill-999 relative h-10 w-10.5 flex-none transition-all"
+				></icon-list>
 			{/if}
 			{#if type === 'to'}
-				<icon-list name="tick-circle" class="relative h-10 w-10.5 flex-none fill-white/30 transition-all group-aria-current:fill-white"></icon-list>
+				<icon-list
+					name="tick-circle"
+					class="relative h-10 w-10.5 flex-none fill-white/30 transition-all group-aria-current:fill-white"
+				></icon-list>
 			{/if}
 			<strong class="flex flex-col gap-2.5">
 				<span class="text-2md font-bold lg:text-2xl">{tit}</span>
@@ -156,7 +162,10 @@
 		</button>
 
 		{#if current === i && type === 'as'}
-			<div aria-hidden="true" class="absolute top-[calc(50%-1.25rem)] left-full z-5 grid size-10 animate-[as-is_5s_ease-in-out_infinite] place-items-center max-lg:hidden">
+			<div
+				aria-hidden="true"
+				class="absolute top-[calc(50%-1.25rem)] left-full z-5 grid size-10 animate-[as-is_5s_ease-in-out_infinite] place-items-center max-lg:hidden"
+			>
 				<div class="relative">
 					{#each Array(5) as _, y}
 						<p
@@ -181,7 +190,11 @@
 	</li>
 {/snippet}
 
-<section data-scroll="slide-up" {@attach proMotion} class={['space-y-5 py-7.5 lg:space-y-7.5', page === 'dao' ? 'py-15' : 'lg:pt-7.5 lg:pb-15']}>
+<section
+	data-scroll="slide-up"
+	{@attach proMotion}
+	class={['space-y-5 py-7.5 lg:space-y-7.5', page === 'dao' ? 'py-15' : 'lg:pt-7.5 lg:pb-15']}
+>
 	{#if page === 'dao'}
 		<SubHeading tit={m.dao_problem_title()} txt={m.dao_problem_text()} />
 	{/if}
@@ -189,7 +202,9 @@
 		<SubHeading tit={m.dao_problem_title()} txt={m.logi_problem_text()} />
 	{/if}
 
-	<ol class="grid grid-rows-2 gap-5 lg:grid-cols-[1fr_60px_1fr] lg:grid-rows-1 lg:gap-5 2xl:grid-cols-[1fr_12.5rem_1fr] 2xl:gap-25 starting:opacity-0">
+	<ol
+		class="grid grid-rows-2 gap-5 lg:grid-cols-[1fr_60px_1fr] lg:grid-rows-1 lg:gap-5 2xl:grid-cols-[1fr_12.5rem_1fr] 2xl:gap-25 starting:opacity-0"
+	>
 		<li class="divide-d9d9d9 relative grid h-full divide-y divide-dashed rounded-xl bg-white lg:grid-rows-[90px_1fr]">
 			<header class="grid min-h-15 place-content-center text-xl font-bold lg:min-h-22.5 lg:text-4xl">AS-IS</header>
 			<ul class="divide-d9d9d9 grid grid-rows-4 divide-y divide-dashed px-2">

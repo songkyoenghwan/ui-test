@@ -16,11 +16,18 @@
 
 				<div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
 					<p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p>
-					<p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p>
+					<p class="text-lg lg:text-2xl">
+						USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT
+					</p>
 				</div>
 
 				<picture class="col-span-2 flex h-53.5 overflow-clip rounded-xl transition-all lg:col-span-1 lg:h-60">
-					<img class="h-full flex-1 object-cover" loading="lazy" src="https://www.deepfine.com/filestorage/2024/8/20/a7211551-2827-4481-ba29-acde02488a3e.png" alt="" />
+					<img
+						class="h-full flex-1 object-cover"
+						loading="lazy"
+						src="https://www.deepfine.com/filestorage/2024/8/20/a7211551-2827-4481-ba29-acde02488a3e.png"
+						alt=""
+					/>
 				</picture>
 			</li>
 			<li
@@ -29,7 +36,9 @@
 			>
 				<div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
 					<p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p>
-					<p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p>
+					<p class="text-lg lg:text-2xl">
+						USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT
+					</p>
 				</div>
 			</li>
 			<li
@@ -38,7 +47,9 @@
 			>
 				<div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
 					<p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p>
-					<p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p>
+					<p class="text-lg lg:text-2xl">
+						USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT
+					</p>
 				</div>
 			</li>
 			<li
@@ -50,11 +61,18 @@
 
 				<div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
 					<p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p>
-					<p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p>
+					<p class="text-lg lg:text-2xl">
+						USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT
+					</p>
 				</div>
 
 				<picture class="col-span-2 flex h-53.5 overflow-clip rounded-xl transition-all lg:col-span-1 lg:h-60">
-					<img class="h-full flex-1 object-cover" loading="lazy" src="https://www.deepfine.com/filestorage/2024/8/20/a7211551-2827-4481-ba29-acde02488a3e.png" alt="" />
+					<img
+						class="h-full flex-1 object-cover"
+						loading="lazy"
+						src="https://www.deepfine.com/filestorage/2024/8/20/a7211551-2827-4481-ba29-acde02488a3e.png"
+						alt=""
+					/>
 				</picture>
 			</li>
 			<li
@@ -63,11 +81,18 @@
 			>
 				<div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
 					<p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p>
-					<p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p>
+					<p class="text-lg lg:text-2xl">
+						USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT
+					</p>
 				</div>
 
 				<picture class="col-span-2 flex h-53.5 overflow-clip rounded-xl transition-all lg:col-span-1 lg:h-60">
-					<img class="h-full flex-1 object-cover" loading="lazy" src="https://www.deepfine.com/filestorage/2024/8/20/a7211551-2827-4481-ba29-acde02488a3e.png" alt="" />
+					<img
+						class="h-full flex-1 object-cover"
+						loading="lazy"
+						src="https://www.deepfine.com/filestorage/2024/8/20/a7211551-2827-4481-ba29-acde02488a3e.png"
+						alt=""
+					/>
 				</picture>
 			</li>
 			<li
@@ -76,7 +101,9 @@
 			>
 				<div class="col-span-2 flex flex-col gap-5 lg:col-span-1">
 					<p class="text-primary text-2md font-bold lg:text-2xl">2024. 12</p>
-					<p class="text-lg lg:text-2xl">USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT</p>
+					<p class="text-lg lg:text-2xl">
+						USD 4.8 million Series A Investment – SM Culture Partners, Smilegate Investment, IBK Industrial Bank, KODIT
+					</p>
 				</div>
 			</li>
 		</ol>

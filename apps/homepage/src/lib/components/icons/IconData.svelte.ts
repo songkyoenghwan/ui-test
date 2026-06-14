@@ -37,7 +37,13 @@ export const getIconData = () => {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				/>
-				<path d="M6.42914 10.8099L3.86914 8.24994L6.42914 5.68994" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M6.42914 10.8099L3.86914 8.24994L6.42914 5.68994"
+					fill="none"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
@@ -67,17 +73,52 @@ export const getIconData = () => {
 			name: 'arrow-right',
 			size: '24',
 			html: /* HTML */ `
-				<path d="M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M3.5 12H20.33" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M3.5 12H20.33"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
 			name: 'arrow-new-link',
 			size: '20',
 			html: /* HTML */ `
-				<path d="M20.5 22H3.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M19 3.5L5 17.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M19 13.77V3.5H8.73" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M20.5 22H3.5"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M19 3.5L5 17.5"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M19 13.77V3.5H8.73"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
@@ -85,8 +126,22 @@ export const getIconData = () => {
 			size: '90',
 			html: /* HTML */ `
 				<g opacity="0.2">
-					<path d="M54.1123 22.2375L76.8748 45L54.1123 67.7625" fill="none" stroke-width="12" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-					<path d="M13.125 45H76.2375" fill="none" stroke-width="12" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+					<path
+						d="M54.1123 22.2375L76.8748 45L54.1123 67.7625"
+						fill="none"
+						stroke-width="12"
+						stroke-miterlimit="10"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+					<path
+						d="M13.125 45H76.2375"
+						fill="none"
+						stroke-width="12"
+						stroke-miterlimit="10"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
 				</g>
 			`,
 		},
@@ -94,9 +149,30 @@ export const getIconData = () => {
 			name: 'arrow-link-underline',
 			size: '24',
 			html: /* HTML */ `
-				<path d="M20.5 22H3.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M19 3.5L5 17.5" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M19 13.77V3.5H8.73" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M20.5 22H3.5"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M19 3.5L5 17.5"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M19 13.77V3.5H8.73"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
@@ -112,8 +188,22 @@ export const getIconData = () => {
 			name: 'import',
 			size: '24',
 			html: /* HTML */ `
-				<path d="M9.32007 11.6799L11.8801 14.2399L14.4401 11.6799" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M11.8799 4V14.17" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M9.32007 11.6799L11.8801 14.2399L14.4401 11.6799"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M11.8799 4V14.17"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 				<path
 					d="M20 12.1799C20 16.5999 17 20.1799 12 20.1799C7 20.1799 4 16.5999 4 12.1799"
 					fill="none"

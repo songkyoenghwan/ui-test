@@ -1,4 +1,5 @@
 export default class MapController {
+	// oxlint-disable-next-line typescript/no-explicit-any
 	private map: any;
 	private containerId: string;
 	private defaultCenter: { lat: number; lng: number };

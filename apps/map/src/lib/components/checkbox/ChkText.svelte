@@ -32,7 +32,7 @@
 	}
 </script>
 
-<label for={itemId} class="input-checkbox min-h-6 gap-3 items-center select-none">
+<label for={itemId} class="input-checkbox min-h-6 items-center gap-3 select-none">
 	<input type="checkbox" id={itemId} class="peer sr-only" {disabled} bind:checked onchange={handleChange} />
 	<icon-checkbox {checked} {disabled}></icon-checkbox>
 	<span class="text-2sm text-black">{text}</span>

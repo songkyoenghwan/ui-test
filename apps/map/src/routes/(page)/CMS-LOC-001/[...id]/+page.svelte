@@ -1,5 +1,6 @@
 <script>
-	import { langStore, toggleLang, initLangStore } from '$lib/stores/langStore';
+	import { initLangStore, langStore, toggleLang } from '$lib/stores/langStore';
+
 	const myTabs = ['1. 대상지 정보', '2. 커스텀 항목'];
 	const rdoList = [
 		{

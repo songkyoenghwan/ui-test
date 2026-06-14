@@ -26,10 +26,26 @@
 	const videoUrl = `${__STATIC_URL__}/video/dsc-video.webm`;
 
 	const industries = $state([
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-8.png`, tit: m.dsc_industries_list_8(), txt: m.dsc_industries_list_txt_8() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-2.png`, tit: m.dsc_industries_list_2(), txt: m.dsc_industries_list_txt_2() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-3.png`, tit: m.dsc_industries_list_3(), txt: m.dsc_industries_list_txt_3() },
-		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-1.png`, tit: m.dsc_industries_list_1(), txt: m.dsc_industries_list_txt_1() },
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-8.png`,
+			tit: m.dsc_industries_list_8(),
+			txt: m.dsc_industries_list_txt_8(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-2.png`,
+			tit: m.dsc_industries_list_2(),
+			txt: m.dsc_industries_list_txt_2(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-3.png`,
+			tit: m.dsc_industries_list_3(),
+			txt: m.dsc_industries_list_txt_3(),
+		},
+		{
+			img: `${__STATIC_URL__}/imgs/banner/img-banner-${page}-1.png`,
+			tit: m.dsc_industries_list_1(),
+			txt: m.dsc_industries_list_txt_1(),
+		},
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-3.png`, tit: m.dsc_industries_list_6(), txt: m.dsc_industries_list_txt_6() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-8.png`, tit: m.dsc_industries_list_4(), txt: m.dsc_industries_list_txt_4() },
 		{ img: `${__STATIC_URL__}/imgs/banner/img-banner-dao-9.png`, tit: m.dsc_industries_list_5(), txt: m.dsc_industries_list_txt_5() },
@@ -121,7 +137,13 @@
 		{ id: 'faq-dsc-chk-2', tit: m.dsc_faq_tit_2(), txt: m.dsc_faq_txt_2 },
 		{ id: 'faq-dsc-chk-3', tit: m.dsc_faq_tit_3(), txt: m.dsc_faq_txt_3 },
 		{ id: 'faq-dsc-chk-4', tit: m.dsc_faq_tit_4(), txt: m.dsc_faq_txt_4 },
-		{ id: 'faq-dsc-chk-5', link: '/contact/contact?selectSolution=DSC', btn: m.btn_start_trial_free(), tit: m.dsc_faq_tit_5(), txt: m.dsc_faq_txt_5 },
+		{
+			id: 'faq-dsc-chk-5',
+			link: '/contact/contact?selectSolution=DSC',
+			btn: m.btn_start_trial_free(),
+			tit: m.dsc_faq_tit_5(),
+			txt: m.dsc_faq_txt_5,
+		},
 	]);
 
 	setContext('case-list', {
@@ -143,7 +165,8 @@
 	});
 </script>
 
-<SubVisual {videoUrl} {bg} {logo} page="dsc" logoAlt={m.dsc_visual_badge()} tit={m.dsc_visual_title()} subtit={m.dsc_visual_subtitle}></SubVisual>
+<SubVisual {videoUrl} {bg} {logo} page="dsc" logoAlt={m.dsc_visual_badge()} tit={m.dsc_visual_title()} subtit={m.dsc_visual_subtitle}
+></SubVisual>
 
 <Industries
 	cls=" xl:grid-cols-4 lg:grid-cols-2 grid-cols-[repeat(auto-fit,1fr)]"

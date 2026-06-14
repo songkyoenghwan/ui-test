@@ -32,6 +32,8 @@
     "package-lock.json",
     "bun.lockb",
     "wc/**",
+    "**/wc","**/output/**",         
+    "apps/homepage/output/**",
     "project.inlang/",
     "messages/",
     "**/.tsconfig.json",

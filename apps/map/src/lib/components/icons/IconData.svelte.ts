@@ -87,7 +87,14 @@ export const getIconData = () => {
 			name: 'lnb-1-3',
 			size: '20',
 			html: /* HTML */ `
-				<path d="M4.28906 1.66699V18.3337" fill="none" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M4.28906 1.66699V18.3337"
+					fill="none"
+					stroke-width="1.25"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 				<path
 					d="M4.28906 3.33301H13.6224C15.8724 3.33301 16.3724 4.58301 14.7891 6.16634L13.7891 7.16634C13.1224 7.83301 13.1224 8.91634 13.7891 9.49967L14.7891 10.4997C16.3724 12.083 15.7891 13.333 13.6224 13.333H4.28906"
 					fill="none"
@@ -154,7 +161,14 @@ export const getIconData = () => {
 			name: 'lnb-2-2',
 			size: '20',
 			html: /* HTML */ `
-				<path d="M1.66797 18.333H18.3346" stroke="none" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M1.66797 18.333H18.3346"
+					stroke="none"
+					stroke-width="1.25"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 				<path
 					d="M8.125 3.33366V18.3337H11.875V3.33366C11.875 2.41699 11.5 1.66699 10.375 1.66699H9.625C8.5 1.66699 8.125 2.41699 8.125 3.33366Z"
 					fill="none"
@@ -186,9 +200,18 @@ export const getIconData = () => {
 					d="M18.3346 18.333H1.66797C1.3263 18.333 1.04297 18.0497 1.04297 17.708C1.04297 17.3663 1.3263 17.083 1.66797 17.083H18.3346C18.6763 17.083 18.9596 17.3663 18.9596 17.708C18.9596 18.0497 18.6763 18.333 18.3346 18.333Z"
 					stroke="none"
 				/>
-				<path d="M8.125 3.33366V18.3337H11.875V3.33366C11.875 2.41699 11.5 1.66699 10.375 1.66699H9.625C8.5 1.66699 8.125 2.41699 8.125 3.33366Z" stroke="none" />
-				<path d="M2.5 8.33366V18.3337H5.83333V8.33366C5.83333 7.41699 5.5 6.66699 4.5 6.66699H3.83333C2.83333 6.66699 2.5 7.41699 2.5 8.33366Z" stroke="none" />
-				<path d="M14.168 12.4997V18.333H17.5013V12.4997C17.5013 11.583 17.168 10.833 16.168 10.833H15.5013C14.5013 10.833 14.168 11.583 14.168 12.4997Z" stroke="none" />
+				<path
+					d="M8.125 3.33366V18.3337H11.875V3.33366C11.875 2.41699 11.5 1.66699 10.375 1.66699H9.625C8.5 1.66699 8.125 2.41699 8.125 3.33366Z"
+					stroke="none"
+				/>
+				<path
+					d="M2.5 8.33366V18.3337H5.83333V8.33366C5.83333 7.41699 5.5 6.66699 4.5 6.66699H3.83333C2.83333 6.66699 2.5 7.41699 2.5 8.33366Z"
+					stroke="none"
+				/>
+				<path
+					d="M14.168 12.4997V18.333H17.5013V12.4997C17.5013 11.583 17.168 10.833 16.168 10.833H15.5013C14.5013 10.833 14.168 11.583 14.168 12.4997Z"
+					stroke="none"
+				/>
 			`,
 		},
 		{
@@ -211,10 +234,32 @@ export const getIconData = () => {
 				/>
 				<path d="M6.00745 3.89941H3.30078" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 				<path d="M4.64453 3.44629V3.89962" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M5.3263 3.89258C5.3263 5.05924 4.41297 6.0059 3.29297 6.0059" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M6.00676 6.00635C5.5201 6.00635 5.0801 5.74634 4.77344 5.33301" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-				<path opacity="0.4" d="M1.33203 10C1.33203 12.58 3.4187 14.6667 5.9987 14.6667L5.2987 13.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-				<path opacity="0.4" d="M14.6667 5.99967C14.6667 3.41967 12.58 1.33301 10 1.33301L10.7 2.49967" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M5.3263 3.89258C5.3263 5.05924 4.41297 6.0059 3.29297 6.0059"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M6.00676 6.00635C5.5201 6.00635 5.0801 5.74634 4.77344 5.33301"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					opacity="0.4"
+					d="M1.33203 10C1.33203 12.58 3.4187 14.6667 5.9987 14.6667L5.2987 13.5"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					opacity="0.4"
+					d="M14.6667 5.99967C14.6667 3.41967 12.58 1.33301 10 1.33301L10.7 2.49967"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
@@ -249,7 +294,12 @@ export const getIconData = () => {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				/>
-				<path d="M10.4739 10.1202L8.40724 8.88684C8.04724 8.6735 7.75391 8.16017 7.75391 7.74017V5.00684" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M10.4739 10.1202L8.40724 8.88684C8.04724 8.6735 7.75391 8.16017 7.75391 7.74017V5.00684"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
@@ -340,7 +390,13 @@ export const getIconData = () => {
 					d="M24.4918 18.9817L22.1388 19.7756C21.4892 19.9922 20.9695 20.4974 20.753 21.1614L19.959 23.5145C19.2805 25.5499 16.4223 25.5066 15.7871 23.4711C15.7871 23.4711 13.6362 16.5854 13.1166 14.882C12.5969 13.1786 14.1704 11.5906 15.8593 12.1248C17.5483 12.6589 24.4629 14.7954 24.4629 14.7954C26.4839 15.4305 26.5128 18.3032 24.4918 18.9817Z"
 					stroke="none"
 				/>
-				<path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22"
+					fill="none"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 
@@ -423,7 +479,14 @@ export const getIconData = () => {
 			size: '16',
 			html: /* HTML */ `
 				<rect width="16" height="16" rx="2.5" stroke="none" />
-				<path d="M4.25 7.42315L7.13462 10.3078L11.75 5.69238" fill="none" stroke="white" stroke-width="1.15385" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M4.25 7.42315L7.13462 10.3078L11.75 5.69238"
+					fill="none"
+					stroke="white"
+					stroke-width="1.15385"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{

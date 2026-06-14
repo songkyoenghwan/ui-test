@@ -48,11 +48,7 @@ declare module '$env/static/private' {
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
 	export const DriverData: string;
-	export const flutter: string;
-	export const flutterbin: string;
 	export const GIT_ASKPASS: string;
-	export const gs: string;
-	export const gsw: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
 	export const LANG: string;
@@ -69,17 +65,12 @@ declare module '$env/static/private' {
 	export const npm_node_execpath: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
-	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
-	export const NVM_HOME: string;
-	export const NVM_SYMLINK: string;
-	export const OLLAMA_MODELS: string;
 	export const OneDrive: string;
-	export const OPENSSL_CONF: string;
 	export const OS: string;
 	export const Path: string;
 	export const PATHEXT: string;
-	export const PNPM_HOME: string;
+	export const POWERSHELL_DISTRIBUTION_CHANNEL: string;
 	export const PROCESSOR_ARCHITECTURE: string;
 	export const PROCESSOR_IDENTIFIER: string;
 	export const PROCESSOR_LEVEL: string;
@@ -91,7 +82,7 @@ declare module '$env/static/private' {
 	export const PSModulePath: string;
 	export const PUBLIC: string;
 	export const PWD: string;
-	export const SCOOP_GIT_PROTOCOL: string;
+	export const SESSIONNAME: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
 	export const TEMP: string;
@@ -111,7 +102,6 @@ declare module '$env/static/private' {
 	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 	export const windir: string;
 	export const _VOLTA_TOOL_RECURSION: string;
-	export const __COMPAT_LAYER: string;
 }
 
 /**
@@ -208,11 +198,7 @@ declare module '$env/dynamic/private' {
 		COMPUTERNAME: string;
 		ComSpec: string;
 		DriverData: string;
-		flutter: string;
-		flutterbin: string;
 		GIT_ASKPASS: string;
-		gs: string;
-		gsw: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
 		LANG: string;
@@ -229,17 +215,12 @@ declare module '$env/dynamic/private' {
 		npm_node_execpath: string;
 		npm_package_json: string;
 		npm_package_name: string;
-		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
-		NVM_HOME: string;
-		NVM_SYMLINK: string;
-		OLLAMA_MODELS: string;
 		OneDrive: string;
-		OPENSSL_CONF: string;
 		OS: string;
 		Path: string;
 		PATHEXT: string;
-		PNPM_HOME: string;
+		POWERSHELL_DISTRIBUTION_CHANNEL: string;
 		PROCESSOR_ARCHITECTURE: string;
 		PROCESSOR_IDENTIFIER: string;
 		PROCESSOR_LEVEL: string;
@@ -251,7 +232,7 @@ declare module '$env/dynamic/private' {
 		PSModulePath: string;
 		PUBLIC: string;
 		PWD: string;
-		SCOOP_GIT_PROTOCOL: string;
+		SESSIONNAME: string;
 		SystemDrive: string;
 		SystemRoot: string;
 		TEMP: string;
@@ -271,7 +252,6 @@ declare module '$env/dynamic/private' {
 		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 		windir: string;
 		_VOLTA_TOOL_RECURSION: string;
-		__COMPAT_LAYER: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

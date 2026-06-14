@@ -38,7 +38,11 @@ export default defineConfig({
 		tailwindcss(),
 		enhancedImages(),
 		sveltekit(),
-		paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide', strategy: ['localStorage', 'cookie', 'preferredLanguage', 'baseLocale'] }),
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			strategy: ['localStorage', 'cookie', 'preferredLanguage', 'baseLocale'],
+		}),
 	],
 	resolve: { alias: aliases },
 	base: isDeployMode ? '/ui-test/apps/homepage' : '',

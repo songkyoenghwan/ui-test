@@ -65,7 +65,12 @@
 
 {#if name === 'logo'}
 	<picture class="flex w-full">
-		<img loading="lazy" src={activeImg} alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations" class="w-41.75 lg:w-full" />
+		<img
+			loading="lazy"
+			src={activeImg}
+			alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations"
+			class="w-41.75 lg:w-full"
+		/>
 	</picture>
 {/if}
 
@@ -73,9 +78,15 @@
 	<figure
 		class={[
 			'text-2sm flex h-22.5 w-full items-center justify-between bg-cover bg-center bg-no-repeat px-5 text-white',
-			name === 'logi' ? 'bg-(image:--bg-head-logi) group-hover/head-logo:bg-(image:--bg-head-logi-on) group-aria-[current=page]/head-logo:bg-(image:--bg-head-logi-on) ' : '',
-			name === 'dao' ? 'bg-(image:--bg-head-dao) group-hover/head-logo:bg-(image:--bg-head-dao-on) group-aria-[current=page]/head-logo:bg-(image:--bg-head-dao-on) ' : '',
-			name === 'dsc' ? 'bg-(image:--bg-head-dsc) group-hover/head-logo:bg-(image:--bg-head-dsc-on) group-aria-[current=page]/head-logo:bg-(image:--bg-head-dsc-on) ' : '',
+			name === 'logi'
+				? 'bg-(image:--bg-head-logi) group-hover/head-logo:bg-(image:--bg-head-logi-on) group-aria-[current=page]/head-logo:bg-(image:--bg-head-logi-on) '
+				: '',
+			name === 'dao'
+				? 'bg-(image:--bg-head-dao) group-hover/head-logo:bg-(image:--bg-head-dao-on) group-aria-[current=page]/head-logo:bg-(image:--bg-head-dao-on) '
+				: '',
+			name === 'dsc'
+				? 'bg-(image:--bg-head-dsc) group-hover/head-logo:bg-(image:--bg-head-dsc-on) group-aria-[current=page]/head-logo:bg-(image:--bg-head-dsc-on) '
+				: '',
 		]}
 		style:--bg-head-logi={`url(${__STATIC_URL__}/imgs/logo/bg-header-logi-off.jpg)`}
 		style:--bg-head-dao={`url(${__STATIC_URL__}/imgs/logo/bg-header-dao-off.jpg)`}
@@ -84,7 +95,12 @@
 		style:--bg-head-dao-on={`url(${__STATIC_URL__}/imgs/logo/bg-header-dao-on.jpg)`}
 		style:--bg-head-dsc-on={`url(${__STATIC_URL__}/imgs/logo/bg-header-dsc-on.jpg)`}
 	>
-		<img loading="lazy" src={activeImg} alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations" class="h-10" />
+		<img
+			loading="lazy"
+			src={activeImg}
+			alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations"
+			class="h-10"
+		/>
 		<figcaption class="text-right whitespace-pre-line">
 			{#if name === 'logi'}
 				{m.header_logo_1()}
@@ -116,9 +132,16 @@
 
 	<div class="relative z-3 flex size-full flex-col items-center justify-center gap-15">
 		<picture class="flex w-full justify-center">
-			<img loading="lazy" src={activeImg} alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations" class="max-w-72.25 lg:w-full" />
+			<img
+				loading="lazy"
+				src={activeImg}
+				alt="DEEP.FINE An AI and spatial intelligence solution company empowering industrial operations"
+				class="max-w-72.25 lg:w-full"
+			/>
 		</picture>
-		<p class="max-w-135 text-center text-2xl text-white">An AI and spatial intelligence solution company empowering industrial operations</p>
+		<p class="max-w-135 text-center text-2xl text-white">
+			An AI and spatial intelligence solution company empowering industrial operations
+		</p>
 	</div>
 {/if}
 

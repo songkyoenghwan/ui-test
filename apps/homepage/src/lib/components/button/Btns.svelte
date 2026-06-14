@@ -146,7 +146,12 @@
 {/snippet}
 
 {#snippet spanText({ variant }: { variant: Variant; variantTextClasses?: string })}
-	<span class={[variant === 'icon-only' ? 'sr-only' : variant === 'tooltip' ? 'group-hover/btn:text-primary' : 'truncate leading-none', 'group-disabled/btn:text-muted-frg']}>
+	<span
+		class={[
+			variant === 'icon-only' ? 'sr-only' : variant === 'tooltip' ? 'group-hover/btn:text-primary' : 'truncate leading-none',
+			'group-disabled/btn:text-muted-frg',
+		]}
+	>
 		{text}
 	</span>
 {/snippet}

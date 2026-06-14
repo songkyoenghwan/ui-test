@@ -11,8 +11,8 @@
 />
 
 <script lang="ts">
-	import type { Props } from '$lib/components/inputs/InputOperatingHours.type.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
+	import type { Props } from '$lib/components/inputs/InputOperatingHours.type.svelte';
 	import SveltyPicker from 'svelty-picker';
 
 	let { itemId = '', selected = $bindable('always'), result = $bindable([]) }: Props = $props();
@@ -127,7 +127,13 @@
 						{/each}
 
 						{#if localResult.length > 1}
-							<UiBtn tag="button" variant="ghost" txt="시간대 삭제" cls="min-w-7 flex-[0_0_75px]" click={() => deleteTime(String(group.id))} />
+							<UiBtn
+								tag="button"
+								variant="ghost"
+								txt="시간대 삭제"
+								cls="min-w-7 flex-[0_0_75px]"
+								click={() => deleteTime(String(group.id))}
+							/>
 						{/if}
 					</div>
 
@@ -135,19 +141,41 @@
 						{#each group.time as hour (hour.id)}
 							<li class={['relative z-1 flex flex-wrap gap-2']}>
 								<div class="inline-flex items-center gap-2">
-									<SveltyPicker mode="time" inputClasses="input-time m w-22" placeholder="시간선택" format="hh:ii" bind:value={hour.timeStart}></SveltyPicker>
+									<SveltyPicker
+										mode="time"
+										inputClasses="input-time m w-22"
+										placeholder="시간선택"
+										format="hh:ii"
+										bind:value={hour.timeStart}
+									></SveltyPicker>
 									<span>~</span>
-									<SveltyPicker mode="time" inputClasses="input-time m w-22" placeholder="시간선택" format="hh:ii" bind:value={hour.timeEnd}></SveltyPicker>
+									<SveltyPicker
+										mode="time"
+										inputClasses="input-time m w-22"
+										placeholder="시간선택"
+										format="hh:ii"
+										bind:value={hour.timeEnd}
+									></SveltyPicker>
 								</div>
 
 								{#if hour.rest}
 									<dl>
 										<dt></dt>
 										<dd class="inline-flex items-center gap-2">
-											<SveltyPicker mode="time" inputClasses="input-time m w-22" placeholder="시간선택" format="hh:ii" bind:value={hour.restStart}
+											<SveltyPicker
+												mode="time"
+												inputClasses="input-time m w-22"
+												placeholder="시간선택"
+												format="hh:ii"
+												bind:value={hour.restStart}
 											></SveltyPicker>
 											<span>~</span>
-											<SveltyPicker mode="time" inputClasses="input-time m w-22" placeholder="시간선택" format="hh:ii" bind:value={hour.restEnd}
+											<SveltyPicker
+												mode="time"
+												inputClasses="input-time m w-22"
+												placeholder="시간선택"
+												format="hh:ii"
+												bind:value={hour.restEnd}
 											></SveltyPicker>
 											<UiBtn
 												tag="button"
@@ -160,7 +188,13 @@
 										</dd>
 									</dl>
 								{:else}
-									<UiBtn tag="button" variant="ghost" txt="휴게 시간 " cls="min-w-7 flex-[0_0_75px]" click={() => toggleRestTime(String(group.id), true)} />
+									<UiBtn
+										tag="button"
+										variant="ghost"
+										txt="휴게 시간 "
+										cls="min-w-7 flex-[0_0_75px]"
+										click={() => toggleRestTime(String(group.id), true)}
+									/>
 								{/if}
 							</li>
 						{/each}
@@ -170,7 +204,15 @@
 		</ul>
 
 		<div>
-			<UiBtn tag="button" variant="secondary" txt="시간대 추가 " arr={list} cls="min-w-20" disabled={localResult.length >= 7 ? true : undefined} click={addTime} />
+			<UiBtn
+				tag="button"
+				variant="secondary"
+				txt="시간대 추가 "
+				arr={list}
+				cls="min-w-20"
+				disabled={localResult.length >= 7 ? true : undefined}
+				click={addTime}
+			/>
 		</div>
 	{/if}
 </div>

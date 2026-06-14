@@ -44,10 +44,14 @@
 {/snippet}
 
 {#snippet imgRender(img = '')}
-	<picture class={`grid place-content-center overflow-clip rounded-xl bg-white transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}>
+	<picture
+		class={`grid place-content-center overflow-clip rounded-xl bg-white transition-all ${layout === 'list' ? 'h-45 lg:h-75 lg:w-133.5' : ''}`}
+	>
 		<img
 			loading="lazy"
-			src={img !== '' && img !== null && img !== undefined && img !== 'undefined' ? img : `${__STATIC_URL__}/imgs/visual/img-none.jpg`}
+			src={img !== '' && img !== null && img !== undefined && img !== 'undefined'
+				? img
+				: `${__STATIC_URL__}/imgs/visual/img-none.jpg`}
 			alt={`${title} image`}
 			class="w-full max-w-300 object-cover"
 		/>
@@ -78,7 +82,9 @@
 		</div>
 
 		{#if url}
-			<div class="border-t-d9d9d9 text-666 text-2md flex gap-2 border-t border-dashed pt-5 max-lg:flex-col lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg">
+			<div
+				class="border-t-d9d9d9 text-666 text-2md flex gap-2 border-t border-dashed pt-5 max-lg:flex-col lg:flex-row lg:items-center lg:gap-7.5 lg:pt-7.5 lg:text-lg"
+			>
 				<p class="font-bold">URL</p>
 				<a href={url} aria-label={title} target="_blank" rel="noopener noreferrer" class="flex-1 break-all underline">{url}</a>
 			</div>
@@ -87,7 +93,10 @@
 {/snippet}
 
 {#if layout === 'list'}
-	<section data-scroll="slide-up" class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15 lg:p-7.5">
+	<section
+		data-scroll="slide-up"
+		class="text-2md grid gap-5 rounded-xl bg-white p-5 transition-all lg:grid lg:grid-cols-[534px_1fr] lg:gap-15 lg:p-7.5"
+	>
 		{@render imgRender(img)}
 
 		{@render newsRender(img, badges, title, text, date, source)}

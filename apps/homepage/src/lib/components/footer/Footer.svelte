@@ -23,13 +23,17 @@
 					</ul>
 				</li>
 				<li class="grid">
-					<h2 class="text-2md text-black lg:text-lg"><a href="/company" class="underline-offset-4 hover:underline">Company</a></h2>
+					<h2 class="text-2md text-black lg:text-lg">
+						<a href="/company" class="underline-offset-4 hover:underline">Company</a>
+					</h2>
 				</li>
 				<li class="grid">
 					<h2 class="text-2md text-black lg:text-lg"><a href="/news/news" class="underline-offset-4 hover:underline">News</a></h2>
 				</li>
 				<li class="grid">
-					<h2 class="text-2md text-black lg:text-lg"><a href="Contact" class="underline-offset-4 hover:underline">Contact Sales</a></h2>
+					<h2 class="text-2md text-black lg:text-lg">
+						<a href="Contact" class="underline-offset-4 hover:underline">Contact Sales</a>
+					</h2>
 				</li>
 			</ul>
 			<footer-sns class="inline-flex w-full items-center justify-center gap-7.5 lg:justify-end"></footer-sns>

@@ -23,7 +23,14 @@
 					class="group flex min-h-12 items-center gap-2 rounded-md border border-white px-5 transition-colors hover:border-black hover:bg-black hover:text-white max-lg:justify-between lg:min-h-13.5 lg:w-auto lg:flex-none"
 				>
 					<div class="flex size-6 stroke-white group-hover:stroke-white">
-						<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="100%" height="100%" viewBox="0 0 24 24" class="rotate-180">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							aria-hidden="true"
+							width="100%"
+							height="100%"
+							viewBox="0 0 24 24"
+							class="rotate-180"
+						>
 							<path
 								d="M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697"
 								fill="none"
@@ -32,7 +39,14 @@
 								stroke-linecap="round"
 								stroke-linejoin="round"
 							></path>
-							<path d="M3.5 12H20.33" fill="none" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+							<path
+								d="M3.5 12H20.33"
+								fill="none"
+								stroke-width="1.5"
+								stroke-miterlimit="10"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							></path>
 						</svg>
 					</div>
 					<span>{m.not_found_btn()}</span>

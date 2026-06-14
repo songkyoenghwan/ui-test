@@ -164,28 +164,36 @@
 					<li class="grid gap-2.5">
 						<strong class="lg:text-2xl">
 							{m.term_privacy_agency_1()} (
-							<a href="https://www.kopico.go.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">www.kopico.go.kr</a>
+							<a href="https://www.kopico.go.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">
+								www.kopico.go.kr
+							</a>
 							)
 						</strong>
 					</li>
 					<li class="grid gap-2.5">
 						<strong class="lg:text-2xl">
 							{m.term_privacy_agency_2()} (
-							<a href="https://privacy.kisa.or.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">privacy.kisa.or.kr</a>
+							<a href="https://privacy.kisa.or.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">
+								privacy.kisa.or.kr
+							</a>
 							)
 						</strong>
 					</li>
 					<li class="grid gap-2.5">
 						<strong class="lg:text-2xl">
 							{m.term_privacy_agency_3()} (
-							<a href="https://www.spo.go.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">www.spo.go.kr</a>
+							<a href="https://www.spo.go.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">
+								www.spo.go.kr
+							</a>
 							)
 						</strong>
 					</li>
 					<li class="grid gap-2.5">
 						<strong class="lg:text-2xl">
 							{m.term_privacy_agency_4()} (
-							<a href="https://ecrm.cyber.go.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">ecrm.cyber.go.kr</a>
+							<a href="https://ecrm.cyber.go.kr" class="text-primary underline" target="_blank" rel="noopener noreferrer">
+								ecrm.cyber.go.kr
+							</a>
 							)
 						</strong>
 					</li>

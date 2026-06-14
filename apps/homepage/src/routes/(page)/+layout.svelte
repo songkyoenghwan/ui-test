@@ -10,7 +10,10 @@
 <header
 	class="header bg-f5f5f5 group/header fixed top-0 left-0 z-5 grid w-full max-w-dvw place-items-center backdrop-blur-[20px] has-checked:bg-white! 2xl:has-checked:grid-cols-2 2xl:has-checked:items-start"
 >
-	<header-imgs name="left" class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex 2xl:group-has-checked/header:h-dvh"></header-imgs>
+	<header-imgs
+		name="left"
+		class="relative z-20 hidden w-full overflow-clip object-cover 2xl:group-has-checked/header:flex 2xl:group-has-checked/header:h-dvh"
+	></header-imgs>
 
 	<div
 		class="flex w-full max-w-490 flex-1 items-center justify-between gap-3 px-5 py-5 transition-discrete group-has-checked/header:bg-white lg:px-10 lg:py-7.5 2xl:items-start 2xl:group-has-checked/header:px-12"
@@ -26,7 +29,10 @@
 			<nav class="relative z-10 hidden items-center gap-5 group-has-checked/header:hidden lg:flex">
 				<ul class="flex text-2xl lg:gap-7.5 2xl:gap-15 2xl:group-has-checked/header:gap-5">
 					<li class="group/products relative" aria-current="false">
-						<button type="button" class="group-aria-[current=page]/products:text-primary flex min-h-12 items-center justify-center gap-2.5 hover:underline">
+						<button
+							type="button"
+							class="group-aria-[current=page]/products:text-primary flex min-h-12 items-center justify-center gap-2.5 hover:underline"
+						>
 							<span class="group-hover/products:text-primary">Products</span>
 							<icon-list
 								name="arrow-down"
@@ -36,15 +42,24 @@
 						<ul
 							class="absolute top-9/10 -left-60 hidden w-132.5 grid-rows-3 gap-2.5 rounded-xl bg-white p-5 shadow-[0_4px_12px_rgba(0,0,0,0.25)] group-hover/products:grid peer-checked:grid"
 						>
-							<li class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
+							<li
+								class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100"
+								aria-current="false"
+							>
 								<a href="/logi" aria-label="logi.fine page">
 									<header-imgs name="logi"></header-imgs>
 								</a>
 							</li>
-							<li class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="page">
+							<li
+								class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100"
+								aria-current="page"
+							>
 								<a href="/dao" aria-label="dao page"><header-imgs name="dao"></header-imgs></a>
 							</li>
-							<li class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100" aria-current="false">
+							<li
+								class="group/head-logo relative transition-all hover:opacity-100 aria-[current=page]:opacity-100"
+								aria-current="false"
+							>
 								<a href="/dsc" aria-label="dsc page"><header-imgs name="dsc"></header-imgs></a>
 							</li>
 						</ul>
@@ -59,7 +74,11 @@
 						</a>
 					</li>
 					<li>
-						<a href="/news" class="hover:text-primary aria-[current=page]:text-primary flex min-h-12 items-center justify-center hover:underline" aria-current="false">
+						<a
+							href="/news"
+							class="hover:text-primary aria-[current=page]:text-primary flex min-h-12 items-center justify-center hover:underline"
+							aria-current="false"
+						>
 							News
 						</a>
 					</li>
@@ -97,16 +116,30 @@
 						<h2 class="text-666 text-lg">Products</h2>
 						<ul class="relative before:absolute before:h-full before:w-px before:bg-black/20">
 							<li class=" flex items-center pl-5">
-								<a href="/logi" class="aria-[current=page]:text-primary pb-2.5 leading-tight underline-offset-4 hover:underline" aria-current="false">LOGI.FINE</a>
+								<a
+									href="/logi"
+									class="aria-[current=page]:text-primary pb-2.5 leading-tight underline-offset-4 hover:underline"
+									aria-current="false"
+								>
+									LOGI.FINE
+								</a>
 							</li>
 							<li class=" flex items-center pl-5">
-								<a href="/dao" class="aria-[current=page]:text-primary py-2.5 leading-tight underline-offset-4 hover:underline" aria-current="false">
+								<a
+									href="/dao"
+									class="aria-[current=page]:text-primary py-2.5 leading-tight underline-offset-4 hover:underline"
+									aria-current="false"
+								>
 									DAO
 									<span class="text-lg font-normal">(DEEP.FINE AR.ON)</span>
 								</a>
 							</li>
 							<li class=" flex items-center pl-5">
-								<a href="/dsc" class="aria-[current=page]:text-primary pt-2.5 leading-tight underline-offset-4 hover:underline" aria-current="false">
+								<a
+									href="/dsc"
+									class="aria-[current=page]:text-primary pt-2.5 leading-tight underline-offset-4 hover:underline"
+									aria-current="false"
+								>
 									DSC
 									<span class="text-lg font-normal">(DEEP.FINE Spatial Crafter)</span>
 								</a>
@@ -115,17 +148,35 @@
 					</li>
 					<li class="flex flex-col">
 						<h2>
-							<a href="/company" class="aria-[current=page]:text-primary underline-offset-4 hover:underline" aria-current="false">Company</a>
+							<a
+								href="/company"
+								class="aria-[current=page]:text-primary underline-offset-4 hover:underline"
+								aria-current="false"
+							>
+								Company
+							</a>
 						</h2>
 					</li>
 					<li class="flex flex-col">
 						<h2>
-							<a href="/news" class="aria-[current=page]:text-primary underline-offset-4 hover:underline" aria-current="false">News</a>
+							<a
+								href="/news"
+								class="aria-[current=page]:text-primary underline-offset-4 hover:underline"
+								aria-current="false"
+							>
+								News
+							</a>
 						</h2>
 					</li>
 					<li class="flex flex-col">
 						<h2>
-							<a href="/contact" class="aria-[current=page]:text-primary underline-offset-4 hover:underline" aria-current="page">Contact Sales</a>
+							<a
+								href="/contact"
+								class="aria-[current=page]:text-primary underline-offset-4 hover:underline"
+								aria-current="page"
+							>
+								Contact Sales
+							</a>
 						</h2>
 					</li>
 				</ul>
@@ -154,7 +205,10 @@
 				<dl class="text-666 flex items-center justify-between gap-5 text-lg">
 					<dt class="font-bold">Language</dt>
 					<dd class="divde-x-black/20 inline-flex items-center divide-x">
-						<button class="hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline aria-current:text-black aria-current:underline" type="button">
+						<button
+							class="hover:bg-light-blue px-5 text-2xl text-black/50 hover:underline aria-current:text-black aria-current:underline"
+							type="button"
+						>
 							<span class="font-bold">EN</span>
 						</button>
 						<button

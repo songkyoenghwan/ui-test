@@ -47,7 +47,9 @@
 						{#if item.labels}
 							<ul class="flex flex-wrap gap-2.5 py-5 lg:pt-5 lg:pb-7.5">
 								{#each item.labels as laebl, i (i)}
-									<li class="bg-ebedff lg:text-2md text-2sm text-3f53ff text-primary flex flex-none items-center rounded-full px-5 py-1 font-bold">
+									<li
+										class="bg-ebedff lg:text-2md text-2sm text-3f53ff text-primary flex flex-none items-center rounded-full px-5 py-1 font-bold"
+									>
 										{laebl}
 									</li>
 								{/each}
@@ -71,7 +73,15 @@
 							<img loading="lazy" src={item.img} alt={item.tit} />
 						</picture>
 					{:else}
-						<video bind:this={videoEl} poster={item.postser} class="aspect-video w-full rounded-2xl object-cover" autoplay muted playsinline loop>
+						<video
+							bind:this={videoEl}
+							poster={item.postser}
+							class="aspect-video w-full rounded-2xl object-cover"
+							autoplay
+							muted
+							playsinline
+							loop
+						>
 							<source src={item.video} type="video/webm" />
 						</video>
 					{/if}

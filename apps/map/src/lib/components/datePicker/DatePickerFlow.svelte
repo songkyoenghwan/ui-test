@@ -14,7 +14,7 @@
 />
 
 <script lang="ts">
-	import { Datepicker, Button } from 'flowbite-svelte';
+	import { Button, Datepicker } from 'flowbite-svelte';
 
 	let {
 		inputId = $bindable(''),
@@ -97,12 +97,12 @@
 </script>
 
 {#snippet foot({ selectedDate, dateType, handleClear, handleApply, close }: any)}
-	<div class="mt-2 border-t border-t-e9e9e9 pt-2 flex flex-col gap-2">
-		<div class="flex gap-2 justify-between">
+	<div class="border-t-e9e9e9 mt-2 flex flex-col gap-2 border-t pt-2">
+		<div class="flex justify-between gap-2">
 			<div>
 				<Button size="sm" color="alternative" onclick={setToday}>오늘</Button>
 			</div>
-			<div class="flex-none flex gap-2">
+			<div class="flex flex-none gap-2">
 				<Button size="sm" color="alternative" onclick={handleClear}>취소</Button>
 				<Button
 					size="sm"

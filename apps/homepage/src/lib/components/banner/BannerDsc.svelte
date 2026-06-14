@@ -5,8 +5,19 @@
 </script>
 
 <section data-scroll="slide-up" class=" gap-5 overflow-clip rounded-xl">
-	<div class="before:bg-primary/50 absolute flex size-full w-full object-cover before:absolute before:z-2 before:size-full" aria-hidden="true">
-		<video class="absoltue z-1 aspect-video h-full w-full object-cover" preload="auto" autoplay loop playsinline muted poster={`${__STATIC_URL__}/video/banner-dsc.jpg`}>
+	<div
+		class="before:bg-primary/50 absolute flex size-full w-full object-cover before:absolute before:z-2 before:size-full"
+		aria-hidden="true"
+	>
+		<video
+			class="absoltue z-1 aspect-video h-full w-full object-cover"
+			preload="auto"
+			autoplay
+			loop
+			playsinline
+			muted
+			poster={`${__STATIC_URL__}/video/banner-dsc.jpg`}
+		>
 			<source src={`${__STATIC_URL__}/video/banner-dsc.webm`} type="video/webm" />
 		</video>
 	</div>

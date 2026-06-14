@@ -13,8 +13,22 @@ export const getIconData = () => {
 			name: 'export',
 			size: '32',
 			html: /* HTML */ `
-				<path d="M12.4297 8.66675L15.843 5.25342L19.2564 8.66675" fill="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M15.8438 18.9067V5.34668" fill="none" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M12.4297 8.66675L15.843 5.25342L19.2564 8.66675"
+					fill="none"
+					stroke-width="2"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M15.8438 18.9067V5.34668"
+					fill="none"
+					stroke-width="2"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 				<path
 					d="M5.33594 16C5.33594 21.8933 9.33594 26.6667 16.0026 26.6667C22.6693 26.6667 26.6693 21.8933 26.6693 16"
 					fill="none"
