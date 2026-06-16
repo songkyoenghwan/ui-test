@@ -1,7 +1,7 @@
 <svelte:options
 	customElement={{
 		tag: 'ui-input-group',
-		shadow: 'open',
+		shadow: 'none',
 		props: {
 			box: { type: 'String' },
 			itemId: { reflect: true, type: 'String', attribute: 'item-id' },
@@ -60,13 +60,11 @@
 			/>
 			<icon-list data-name={value === item.value ? 'checkbox-on' : 'checkbox-off'} class="icon"></icon-list>
 		{/if}
-		<span class="text-2sm text-black">{item.txt}</span>
+		<span class="text-sm text-black">{item.txt}</span>
 	</label>
 {/each}
 
 <style>
-	@import '../../../../src/lib/styles/ui-reset.css';
-
 	.radio-box {
 		display: inline-flex;
 		align-items: center;

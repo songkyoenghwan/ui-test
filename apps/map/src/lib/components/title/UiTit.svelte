@@ -44,7 +44,7 @@
 
 	<slot name="lt" />
 
-	{tit}
+	{@html tit}
 
 	<slot name="rt" />
 

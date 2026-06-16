@@ -2,6 +2,7 @@ export type DayItem = {
 	name: string;
 	txt: string;
 	chk: boolean;
+	error?: false;
 };
 
 export type TimeItem = {
@@ -11,18 +12,26 @@ export type TimeItem = {
 	timeEnd: string;
 	restStart: string;
 	restEnd: string;
+	error?: false;
 };
 
 export type DayGroup = {
 	id?: string;
-	weekDay: DayItem[];
+	dayWeek: DayItem[];
 	time: TimeItem[];
 };
 
+interface HourResult {
+	status: 'always' | 'week';
+	cols: DayGroup[];
+	timeError: boolean;
+	weekError: boolean;
+}
 export interface Props {
 	itemId?: string;
+	result?: HourResult;
 	selected?: string;
+	rest?: string;
 	days?: string[];
-	result?: DayGroup[];
 	cls?: string;
 }

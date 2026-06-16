@@ -20,3 +20,4 @@ import '$lib/components/inputs/InputOperatingPeriod.svelte';
 import '$lib/components/inputs/InputOperatingHours.svelte';
 import '$lib/components/inputs/InputClosingDay.svelte';
 import '$lib/components/inputs/InputText.svelte';
+import '$lib/components/group/GroupCustom.svelte';

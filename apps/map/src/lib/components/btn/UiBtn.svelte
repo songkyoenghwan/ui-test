@@ -1,7 +1,7 @@
 <svelte:options
 	customElement={{
 		tag: 'ui-btn',
-		shadow: 'open',
+		shadow: 'none',
 		props: {
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
 			tag: { type: 'String' },

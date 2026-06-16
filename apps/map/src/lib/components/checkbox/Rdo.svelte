@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'text-radio',
+		tag: 'ui-radio',
 		shadow: 'none',
 		props: {
 			itemId: { reflect: true, type: 'String', attribute: 'item-id' },

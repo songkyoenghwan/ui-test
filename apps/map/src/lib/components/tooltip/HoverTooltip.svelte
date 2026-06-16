@@ -25,7 +25,7 @@
 		bg?: string;
 	}
 
-	let { btn = 'tooltip', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-primary' }: MyTooltipProps = $props();
+	let { btn = 'tooltip', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-cms-3' }: MyTooltipProps = $props();
 
 	let place = $derived(placement as Placement);
 	let activeTransition = $derived(() => {
@@ -37,11 +37,11 @@
 	let formattedTxt = $derived(txt.replace(/\\n/g, '\n'));
 </script>
 
-<Button class="gap-2 p-0 font-normal text-slate-500">
+<Button class="gap-2 bg-transparent p-0 text-left text-[10px] font-normal tracking-tight text-slate-500 hover:bg-transparent">
 	{btn}
-	<icon-list data-name="info-circle" class="icon flex size-3 fill-slate-400"></icon-list>
+	<icon-list data-name="tooltip" class="icon flex size-2.5 fill-slate-400"></icon-list>
 </Button>
 
 <Tooltip class="{bg} whitespace-pre-line" transition={activeTransition()} placement={place} transitionParams={{ duration: 100 }}>
-	{formattedTxt}
+	{@html formattedTxt}
 </Tooltip>

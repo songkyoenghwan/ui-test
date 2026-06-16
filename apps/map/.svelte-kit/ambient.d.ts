@@ -47,6 +47,7 @@ declare module '$env/static/private' {
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
+	export const dp0: string;
 	export const DriverData: string;
 	export const GIT_ASKPASS: string;
 	export const HOMEDRIVE: string;
@@ -98,8 +99,7 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
-	export const VSCODE_INJECTION: string;
-	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
+	export const VSCODE_NONCE: string;
 	export const windir: string;
 	export const _VOLTA_TOOL_RECURSION: string;
 }
@@ -197,6 +197,7 @@ declare module '$env/dynamic/private' {
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
+		dp0: string;
 		DriverData: string;
 		GIT_ASKPASS: string;
 		HOMEDRIVE: string;
@@ -248,8 +249,7 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		VSCODE_GIT_ASKPASS_NODE: string;
 		VSCODE_GIT_IPC_HANDLE: string;
-		VSCODE_INJECTION: string;
-		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
+		VSCODE_NONCE: string;
 		windir: string;
 		_VOLTA_TOOL_RECURSION: string;
 		[key: `PUBLIC_${string}`]: undefined;

@@ -1,12 +1,13 @@
 <svelte:options
 	customElement={{
 		tag: 'ui-checkbox',
-		shadow: 'open',
+		shadow: 'none',
 		props: {
 			itemId: { reflect: true, type: 'String', attribute: 'item-id' },
 			txt: { type: 'String' },
 			checked: { reflect: true, type: 'Boolean' },
 			disabled: { reflect: true, type: 'Boolean' },
+			reverse: { type: 'String' },
 		},
 	}}
 />
@@ -19,23 +20,41 @@
 		txt?: string;
 		checked?: boolean;
 		disabled?: boolean;
+		reverse?: string;
 		cls?: string;
 		change?: (event: Event) => void;
 	}
-	let { itemId = '', txt = '', checked = $bindable(false), disabled = false, change }: Props = $props();
+	let { itemId = '', txt = '', checked = $bindable(false), disabled = false, reverse = '', cls = '', change }: Props = $props();
 
 	$effect(() => {
 		const host = $host()?.shadowRoot;
 		if (host) {
 			applyGlobalReset(host);
 		}
+
+		console.log(checked);
+	});
+
+	$effect(() => {
+		const host = $host();
+		if (host) {
+			Object.defineProperty(host, 'checked', {
+				get() {
+					return checked;
+				},
+				set(val) {
+					checked = !!val;
+				},
+				configurable: true,
+			});
+		}
 	});
 </script>
 
-<label for={itemId} class="check-box">
+<label for={itemId} class="check-box {reverse ? 'flex-row-reverse' : ''} {cls}">
 	<input type="checkbox" id={itemId} class="peer sr-only" {disabled} bind:checked onchange={change} />
 	<icon-list data-name={checked ? 'checkbox-on' : 'checkbox-off'} class="icon"></icon-list>
-	<span class="text-2sm text-black">{txt}</span>
+	<span class="flex-1 text-sm text-black">{txt}</span>
 </label>
 
 <style>
@@ -43,7 +62,11 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		color: var(--color-slate-500);
+		color: var(--color-black);
+
+		&.flex-row-reverse {
+			flex-direction: row-reverse;
+		}
 
 		.icon {
 			display: flex;
