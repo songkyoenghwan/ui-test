@@ -469,6 +469,10 @@
 		&.s {
 			@apply min-h-7 text-xs placeholder:text-xs;
 		}
+
+		&.error {
+			@apply border-error text-error placeholder-shown:text-error!;
+		}
 	}
 
 	textarea {
@@ -622,18 +626,22 @@
 
 		thead {
 			th {
-				@apply place-content-center bg-slate-50 p-3 text-center;
+				@apply place-content-center bg-slate-50 p-3 text-center text-sm;
 			}
 		}
 
 		tbody {
 			& > tr {
-				@apply rounded-sm;
+				@apply rounded-sm border-b border-slate-300;
 			}
 
 			th,
 			td {
-				@apply border-b border-slate-300 px-3 py-4 text-center;
+				@apply place-content-center p-1 text-center text-xs;
+
+				& > div {
+					@apply min-h-12 place-content-center px-1 text-center text-xs;
+				}
 			}
 		}
 	}

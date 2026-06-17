@@ -8,6 +8,7 @@
 			txt: { type: 'String', reflect: true },
 			variant: { type: 'String' },
 			cls: { type: 'String' },
+			iconCls: { type: 'String', attribute: 'icon-cls' },
 			size: { type: 'String' },
 			value: { type: 'String' },
 			arr: { type: 'Array' },
@@ -32,6 +33,7 @@
 		txt?: string;
 		value?: string;
 		cls?: string;
+		iconCls?: string;
 		name?: string;
 		arr?: { id?: string; name?: string; txt?: string }[];
 		selected?: string | string[] | string[][];
@@ -57,6 +59,7 @@
 		itemId,
 		txt,
 		cls,
+		iconCls,
 		name,
 		iconName,
 		iconPos = 'rt',
@@ -118,7 +121,7 @@
 		disabled={disabled === true || disabled === 'true' ? true : undefined}
 	>
 		{#if iconName && iconPos === 'lt'}
-			<icon-list data-name={iconName} class="icon size-4"></icon-list>
+			<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
 		{/if}
 
 		{#if variant === 'icon'}
@@ -129,7 +132,7 @@
 			{txt}
 		{/if}
 		{#if iconName && iconPos === 'rt'}
-			<icon-list data-name={iconName} class="icon size-4"></icon-list>
+			<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
 		{/if}
 	</svelte:element>
 {:else if !isSegmented && tag === 'chk'}

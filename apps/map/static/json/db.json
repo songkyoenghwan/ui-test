@@ -2,61 +2,97 @@
 	"CMS-LOC-001": [
 		{
 			"id": 1,
-			"targetName": "송도센트럴파크",
+			"targetName": {
+				"ko": { "value": "송도센트럴파크1", "error": false },
+				"en": { "value": "송도센트럴파크2", "error": false },
+				"zh": { "value": "송도센트럴파크3", "error": false },
+				"ja": { "value": "송도센트럴파크4", "error": false },
+				"th": { "value": "송도센트럴파크5", "error": false },
+				"vi": { "value": "송도센트럴파크6", "error": false }
+			},
 			"targetColor": "#000000",
-			"language": "ko",
+			"language": {
+				"ko": true,
+				"en": true,
+				"zh": true,
+				"ja": true,
+				"th": true,
+				"vi": true
+			},
 			"operationStatus": "운영중",
 			"operationPeriod": "상시 운영",
 			"operationHours": "요일별 상이",
 			"aiRecommended": true,
 			"facilityCongestion": true,
 			"zoneCongestion": true,
-			"location-basedContent": true,
+			"locationBasedContent": true,
 			"userMap": "",
 			"mapUpdatedAt": "2026-06-12 08:48"
 		},
 		{
 			"id": 2,
-			"targetName": "월미도문화의거리",
+			"targetName": {
+				"ko": { "value": "월미도문화의거리1", "error": false },
+				"en": { "value": "월미도문화의거리2", "error": false }
+			},
 			"targetColor": "#ff0000",
-			"language": "ko,en",
+			"language": {
+				"ko": true,
+				"en": true
+			},
 			"operationStatus": "운영중",
 			"operationPeriod": "상시 운영",
-			"operationHours": "10:00~22:00",
+			"operationHours": "10:00 ~ 22:00",
 			"aiRecommended": true,
 			"facilityCongestion": true,
 			"zoneCongestion": true,
-			"location-basedContent": true,
+			"locationBasedContent": true,
 			"userMap": "",
 			"mapUpdatedAt": "2026-06-12 08:48"
 		},
 		{
 			"id": 3,
-			"targetName": "차이나타운",
+			"targetName": {
+				"ko": { "value": "차이나타운1", "error": false },
+				"en": { "value": "차이나타운2", "error": false },
+				"zh": { "value": "차이나타운3", "error": false }
+			},
 			"targetColor": "#0089ff",
-			"language": "ko,zh,en",
+			"language": {
+				"ko": true,
+				"en": true,
+				"zh": true
+			},
 			"operationStatus": "운영전",
 			"operationPeriod": "상시 운영",
-			"operationHours": "10:00~22:00",
+			"operationHours": "10:00 ~ 22:00",
 			"aiRecommended": true,
 			"facilityCongestion": true,
 			"zoneCongestion": true,
-			"location-basedContent": true,
+			"locationBasedContent": true,
 			"userMap": "",
 			"mapUpdatedAt": "2026-06-12 08:48"
 		},
 		{
 			"id": 5,
-			"targetName": "개항장거리",
+			"targetName": {
+				"ko": { "value": "개항장거리1", "error": false },
+				"en": { "value": "개항장거리2", "error": false },
+				"ja": { "value": "개항장거리3", "error": false }
+			},
 			"targetColor": "#0089ff",
-			"language": "ko,en,ja",
+			"language": {
+				"ko": true,
+				"en": true,
+				"ja": true
+			},
 			"operationStatus": "운영종료",
-			"operationPeriod": "25.04.01(수)~25.04.01(수)",
-			"operationHours": "10:00~22:00",
+			"operationPeriod": "25.04.01(수)\n~25.04.01(수)",
+			"operationHours": "10:00 ~ 22:00",
 			"aiRecommended": true,
 			"facilityCongestion": true,
 			"zoneCongestion": true,
-			"location-basedContent": true,
+			"locationBasedContent": true,
 			"userMap": "",
 			"mapUpdatedAt": "2026-06-12 08:48"
 		}

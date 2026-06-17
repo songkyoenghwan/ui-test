@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'input-operating-period',
+		tag: 'operating-period',
 		shadow: 'none',
 		props: {
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
@@ -10,6 +10,7 @@
 
 <script lang="ts">
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
+	import InputPicker from '$lib/components/datePicker/InputPicker.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	interface OperatingResult {
@@ -64,6 +65,6 @@
 	</div>
 
 	{#if result.status === 'period'}
-		<InputPicker inputId={`${itemId}-picker`} dateType="range" bind:day={result.day}></InputPicker>
+		<InputPicker inputId={`${itemId}-picker`} dateType="range" placeholder={'날짜를 선택해 주세요'} bind:day={result.day}></InputPicker>
 	{/if}
 </div>

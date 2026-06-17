@@ -1,26 +1,22 @@
 <svelte:options
 	customElement={{
-		tag: 'input-closing-day',
+		tag: 'closing-day',
 		shadow: 'none',
 		props: {
 			itemId: { type: 'String', reflect: true },
-			selected: { type: 'String', reflect: true },
-			week: { type: 'Array', reflect: true },
-			allWeek: { type: 'String', reflect: true, attribute: 'all-week' },
-			dayWeek: { type: 'Array', reflect: true },
-			date: { type: 'String', reflect: true },
 			error: { reflect: true, type: 'Boolean', attribute: 'error' },
 		},
 	}}
 />
 
 <script lang="ts">
+	import { v4 as uuidv4 } from 'uuid';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 
 	interface ClosingResult {
 		status: 'none' | 'week' | 'day';
 		week?: string[];
-		allWeek: string;
+		allWeek?: string;
 		dayWeek?: string[];
 		day?: string;
 	}
@@ -28,23 +24,14 @@
 	interface Props {
 		itemId?: string;
 		result?: ClosingResult;
-		selected?: string;
-		week?: string[];
-		allWeek?: string;
-		dayWeek?: string[];
-		day?: string;
 		checked?: boolean;
-		change?: (event: Event) => void;
+		error?: boolean;
 	}
 	let {
-		itemId = '',
-		result = $bindable({ status: 'none', week: [''], allWeek: '', dayWeek: [''], day: '' }),
-		selected = $bindable('none'),
-		week = $bindable(['']),
-		allWeek = $bindable('1'),
-		dayWeek = $bindable(['']),
-		day = $bindable('1'),
+		itemId = uuidv4(),
+		result = $bindable({ status: 'none', week: [''], dayWeek: [''], day: '' }),
 		checked = $bindable(false),
+		error = $bindable(false),
 	}: Props = $props();
 
 	const list = $derived([
@@ -68,18 +55,23 @@
 		{ id: `${itemId}-sat`, name: 'sat', txt: '토' },
 		{ id: `${itemId}-sun`, name: 'sun', txt: '일' },
 	]);
-	let hasWeek = $derived(week.length > 0 || allWeek === 'all-week');
-	let hasDay = $derived(dayWeek.length > 0);
-	let showError = $derived(result.status === 'week' && (!hasWeek || !hasDay));
 	let lastStatus = result.status;
+	let allWeek = $state('');
+	let hasWeek = $derived(allWeek === 'all-week' || (result.week?.length ?? 0) > 0);
+	let hasDay = $derived((result.dayWeek?.length ?? 0) > 0);
+	let showError = $derived(result.status === 'week' && (!hasWeek || !hasDay));
+
+	$effect(() => {
+		error = showError;
+	});
 
 	$effect(() => {
 		const currentStatus = result.status;
 
 		if (currentStatus !== lastStatus) {
-			result.week = [];
-			result.allWeek = '';
-			result.dayWeek = [];
+			result.week = [''];
+			allWeek = '';
+			result.dayWeek = [''];
 
 			if (currentStatus === 'day') {
 				result.day = '1';
@@ -102,7 +94,7 @@
 					if (val) {
 						result.status = val.status ?? 'none';
 						result.week = val.week ?? [''];
-						result.allWeek = val.allWeek ?? '';
+						allWeek = val.allWeek ?? '';
 						result.dayWeek = val.dayWeek ?? [''];
 						result.day = val.day ?? '';
 					}
@@ -111,7 +103,9 @@
 				enumerable: true,
 			});
 		}
-	});
+
+
+});
 </script>
 
 <div class="inline-flex flex-col gap-2">
@@ -140,9 +134,9 @@
 					change={(e: Event) => {
 						const target = e.currentTarget;
 						if (target instanceof HTMLInputElement && target.checked) {
-							result.allWeek = week.length === 5 ? 'all-week' : '';
+							allWeek = result.week?.length === 5 ? 'all-week' : '';
 						} else {
-							result.allWeek = '';
+							allWeek = '';
 						}
 					}}
 				/>
@@ -152,9 +146,9 @@
 					item-id={`${itemId}-all-chk`}
 					txt="매주"
 					class="flex-none"
-					checked={result.allWeek === 'all-week' ? true : false}
+					checked={allWeek === 'all-week' ? true : false}
 					change={(e: Event & { currentTarget: HTMLInputElement }) => {
-						result.allWeek = e.currentTarget.checked ? 'all-week' : '';
+						allWeek = e.currentTarget.checked ? 'all-week' : '';
 						if (e.currentTarget.checked) {
 							result.week = ['1', '2', '3', '4', 'last'];
 						} else {
@@ -164,7 +158,7 @@
 				></ui-checkbox>
 			</dd>
 		</dl>
-		{#if result.allWeek === 'all-week'}
+		{#if allWeek === 'all-week'}
 			<ui-txt
 				size="sm"
 				txt="매주 정기 휴무로 설정된 요일은 운영 시간보다 우선 적용되며, <br /> 해당 요일의 운영 시간이 자동 조정될 수 있습니다."
@@ -180,7 +174,7 @@
 					name={`${itemId}-closing-day`}
 					arr={dayWeekList}
 					cls="min-w-7 flex-[0_0_28px]"
-					bind:selected={result.week}
+					bind:selected={result.dayWeek}
 				/>
 			</dd>
 		</dl>

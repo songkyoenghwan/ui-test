@@ -5,7 +5,9 @@
 		props: {
 			open: { type: 'String', reflect: true },
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
+			maxlength: { type: 'String', attribute: 'data-max-length' },
 			lang: { type: 'Object' },
+			view: { type: 'String', reflect: true },
 		},
 	}}
 />
@@ -26,16 +28,19 @@
 			th: { value: '', error: false },
 			vi: { value: '', error: false },
 		}),
+		maxlength,
+		view = 'reg',
 	} = $props();
+	const langKeys = $state(['ko', 'en', 'zh', 'ja', 'th', 'vi']);
 	let langToggle = $state(false);
 	let enELm: HTMLInputElement | undefined = $state();
 
 	$effect.pre(() => {
 		if (!$host()) return;
 		if (open === 'close') {
-			$host().setAttribute('aria-hidden', 'true');
+			$host().setAttribute('aria-expended', 'false');
 		} else {
-			$host().removeAttribute('aria-hidden');
+			$host().setAttribute('aria-expended', 'true');
 		}
 
 		return () => {
@@ -44,8 +49,7 @@
 			}
 
 			if ($host()) {
-				$host().removeAttribute('inert');
-				$host().removeAttribute('aria-hidden');
+				$host().removeAttribute('aria-expended');
 			}
 		};
 	});
@@ -55,141 +59,91 @@
 	};
 </script>
 
-<section class="group/lang">
-	<ul class="flex flex-col gap-2">
-		<li class="grid grid-cols-[28px_1fr_80px] items-center gap-1">
-			<label for={`${itemId}-ko`} class="label">KO</label>
-			<input
-				type="text"
-				name={`${itemId}-ko`}
-				id={`${itemId}-ko`}
-				class="input-text s {lang.ko.error ? 'border-error text-error' : ''}"
-				autocomplete="off"
-				placeholder="내용을 입력해 주세요."
-				maxlength="25"
-				bind:value={lang.ko.value}
-				onfocusout={async () => {
-					if (lang.ko.value.trim() !== '') {
-						langToggle = !langToggle;
+{#if view === 'detail'}
+	<ul class="flex flex-col gap-2 divide-y divide-slate-200">
+		{#each langKeys as key}
+			{@const item = lang[key]}
 
-						if (langToggle) {
-							await tick();
-							focusEn();
-						}
-					} else {
-						lang.ko.error = lang.ko.value === '' ? true : false;
-					}
-				}}
-			/>
-			<ui-btn
-				variant="secondary"
-				size="md"
-				txt="자동번역"
-				icon-name="translate"
-				class="flex-none"
-				cls="stroke-cms-3"
-				click={() => {
-					langToggle = true;
-				}}
-			></ui-btn>
-		</li>
-
-		<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0">
-			<label for={`${itemId}-en`} class="label">EN</label>
-			<input
-				type="text"
-				name={`${itemId}-en`}
-				id={`${itemId}-en`}
-				autocomplete="off"
-				class="input-text s {lang.ko.error ? 'border-error text-error' : ''}"
-				placeholder="영어로 입력해 주세요."
-				maxlength="25"
-				bind:value={lang.en.value}
-				bind:this={enELm}
-			/>
-		</li>
-
-		{#if $langStore.lang.zh}
-			<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-				<label for={`${itemId}-zh`} class="label">ZH</label>
-				<input
-					type="text"
-					name={`${itemId}-zh`}
-					id={`${itemId}-en`}
-					autocomplete="off"
-					class="input-text s {lang.ko.error ? 'border-error text-error' : ''}"
-					placeholder="중국어로 입력해 주세요."
-					maxlength="25"
-					bind:value={lang.zh.value}
-				/>
-			</li>
-		{/if}
-
-		{#if $langStore.lang.ja}
-			<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-				<label for={`${itemId}-ja`} class="label">JA</label>
-				<input
-					type="text"
-					name={`${itemId}-ja`}
-					id={`${itemId}-ja`}
-					autocomplete="off"
-					class="input-text s {lang.ko.error ? 'border-error text-error' : ''}"
-					placeholder="일본어로 입력해 주세요."
-					maxlength="25"
-					bind:value={lang.ja.value}
-				/>
-			</li>
-		{/if}
-
-		{#if $langStore.lang.th}
-			<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-				<label for={`${itemId}-th`} class="label">TH</label>
-				<input
-					type="text"
-					name={`${itemId}-th`}
-					id={`${itemId}-th`}
-					autocomplete="off"
-					class="input-text s {lang.ko.error ? 'border-error text-error' : ''}"
-					placeholder="태국어로 입력해 주세요."
-					maxlength="25"
-					bind:value={lang.th.value}
-				/>
-			</li>
-		{/if}
-
-		{#if $langStore.lang.vi}
-			<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-				<label for={`${itemId}-vi`} class="label">VI</label>
-				<input
-					type="text"
-					name={`${itemId}-vi`}
-					id={`${itemId}-vi`}
-					autocomplete="off"
-					class="input-text s {lang.ko.error ? 'border-error text-error' : ''}"
-					placeholder="베트남어로 입력해 주세요."
-					maxlength="25"
-					bind:value={lang.vi.value}
-				/>
-			</li>
-		{/if}
+			{#if key === 'ko' || key === 'en' || (key === 'zh' && $langStore.lang.zh) || (key === 'zh' && $langStore.lang.ja) || (key === 'zh' && $langStore.lang.ja) || (key === 'th' && $langStore.lang.th) || (key === 'vi' && $langStore.lang.vi)}
+				<li class="grid min-h-10 grid-cols-[44px_1fr] place-content-center">
+					<ui-txt txt={key.toLocaleUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
+					{item.value}
+				</li>
+			{/if}
+		{/each}
 	</ul>
+{:else}
+	<section class="group/lang">
+		<ul class="flex flex-col gap-2">
+			{#each langKeys as key}
+				{@const item = lang[key]}
 
-	{#if $langStore.lang.zh || $langStore.lang.ja || $langStore.lang.th || $langStore.lang.vi}
-		<div class="mt-2 flex items-center gap-2">
-			<ui-btn
-				variant="secondary"
-				size="md"
-				txt="다국어 입력"
-				icon-name="arrow-down"
-				icon-size="16"
-				class="flex-1"
-				cls="stroke-cms-3"
-				icon-pos="lt"
-				click={(e: Event) => {
-					e.preventDefault();
-					langToggle = !langToggle;
-				}}
-			></ui-btn>
-		</div>
-	{/if}
-</section>
+				{#if key === 'ko' || key === 'en' || (key === 'zh' && $langStore.lang.zh) || (key === 'zh' && $langStore.lang.ja) || (key === 'zh' && $langStore.lang.ja) || (key === 'th' && $langStore.lang.th) || (key === 'vi' && $langStore.lang.vi)}
+					<li
+						class={[
+							'grid grid-cols-[28px_1fr] items-center gap-1 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
+							key === 'ko' ||
+							key === 'en' ||
+							(key === 'zh' && langToggle) ||
+							(key === 'zh' && langToggle) ||
+							(key === 'zh' && langToggle) ||
+							(key === 'th' && langToggle) ||
+							(key === 'vi' && langToggle)
+								? ''
+								: 'hidden',
+						]}
+					>
+						<label for="{itemId}-{key}" class="label">{key.toUpperCase()}</label>
+						<input
+							type="text"
+							id="{itemId}-{key}"
+							class="input-text s {item.error ? 'error' : ''}"
+							placeholder="내용을 입력해 주세요."
+							{maxlength}
+							bind:value={item.value}
+							oninput={() => {
+								item.error = !item.value.trim().length;
+							}}
+							onfocusout={() => {
+								item.error = item.value.trim() === '';
+							}}
+						/>
+						{#if key === 'ko'}
+							<ui-btn
+								variant="secondary"
+								size="md"
+								txt="자동번역"
+								icon-name="translate"
+								class="flex-none"
+								cls="stroke-cms-3"
+								click={() => {
+									langToggle = true;
+								}}
+							></ui-btn>
+						{/if}
+					</li>
+				{/if}
+			{/each}
+		</ul>
+
+		{#if $langStore.lang.zh || $langStore.lang.ja || $langStore.lang.th || $langStore.lang.vi}
+			<div class="mt-2 flex items-center gap-2">
+				<ui-btn
+					variant="secondary"
+					size="md"
+					txt="다국어 입력"
+					icon-name="arrow-down"
+					icon-size="16"
+					class="flex-1"
+					cls="stroke-cms-3"
+					icon-cls={langToggle ? 'rotate-180' : ''}
+					icon-pos="lt"
+					click={(e: Event) => {
+						e.preventDefault();
+						langToggle = !langToggle;
+					}}
+				></ui-btn>
+			</div>
+		{/if}
+	</section>
+{/if}

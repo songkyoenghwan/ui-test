@@ -38,7 +38,7 @@
 <div class="relative z-5" bind:this={timeRef}>
 	<input
 		type="text"
-		class={['input-time m w-22', { cls }]}
+		class={['input-time m', cls ?? 'w-22']}
 		onclick={() => (isExpanded = !isExpanded)}
 		onkeydown={handleKeyDown}
 		bind:value={val}

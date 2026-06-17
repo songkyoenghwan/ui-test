@@ -32,8 +32,11 @@
 
 		<div class="flex flex-wrap items-center justify-between gap-2">
 			<div class="inline-flex items-center gap-2">
-				<select name="" id="" class="select min-w-35">
-					<option value="">매칭 전 + 완료</option>
+				<select name="" id="" class="select min-w-62.5">
+					<option value="전체">전체 (n개)</option>
+					<option value="운영 중">운영 중 (n개)</option>
+					<option value="운영 전">운영 전 (n개)</option>
+					<option value="운영 종료">운영 종료 (n개)</option>
 				</select>
 			</div>
 			<div>
@@ -48,12 +51,12 @@
 		</div>
 	</section>
 
-	<section class="shadow-1 space-y-2 rounded-lg bg-white p-5">
+	<section class="shadow-1 space-y-4 rounded-lg bg-white p-5">
 		<div class="inline-flex items-center gap-2">
-			<select name="" id="" class="select min-w-35">
+			<select name="" id="" class="select min-w-50">
 				<option value="">10개씩 보기</option>
 			</select>
-			<select name="" id="" class="select">
+			<select name="" id="" class="select min-w-35">
 				<option value="">최신순</option>
 				<option value="">가나다순</option>
 			</select>
@@ -61,6 +64,20 @@
 
 		<div role="table" aria-label="운영 현황 테이블" class="table-wrap">
 			<table>
+				<colgroup>
+					<col style="width: 100px;" />
+					<col style="width: *" />
+					<col style="width: 180px;" />
+					<col style="width: 120px;" />
+					<col style="width: 120px;" />
+					<col style="width: 120px;" />
+					<col style="width: 100px;" />
+					<col style="width: 100px;" />
+					<col style="width: 100px;" />
+					<col style="width: 100px;" />
+					<col style="width: 100px;" />
+					<col style="width: 120px;" />
+				</colgroup>
 				<thead>
 					<tr>
 						<th scope="row">NO.</th>
@@ -91,28 +108,60 @@
 				</thead>
 				<tbody>
 					{#each data.list as item (item.id)}
-						<tr
-							onclick={() => {
-								goto(`/CMS-LOC-001/${item.id}`);
-							}}
-						>
+						<tr>
 							<td>99</td>
-							<td class="col-span-4 text-left">{item.targetName}</td>
-							<td class="col-span-4 text-left">{item.language}</td>
-							<td class="col-span-2 text-left">
-								<span class="text-slate-400">{item.operationStatus}</span>
+							<td>
+								<a
+									href="/"
+									class="flex items-center gap-2 text-left"
+									onclick={(e) => {
+										e.preventDefault();
+										goto(`/CMS-LOC-001/${item.id}`);
+									}}
+								>
+									<p style="background-color: {item.targetColor}" class="size-4 rounded-xs"></p>
+									{item?.targetName?.ko?.value}
+								</a>
 							</td>
-							<td class="col-span-3 text-left">
-								{item.operationPeriod}
+							<td>
+								<div class="text-left">
+									<p>
+										{Object.keys(item.language)
+											.filter((key) => item.language[key])
+											.join(', ')}
+									</p>
+								</div>
 							</td>
-							<td class="col-span-3 text-left">{item.operationHours}</td>
-							<td class="col-span-2">사용</td>
-							<td class="col-span-2">사용</td>
-							<td class="col-span-2">사용</td>
-							<td class="col-span-2">사용</td>
-							<td class="col-span-2">
-								<a href="/" class="undertdne">
-									<span>이동</span>
+							<td>
+								<div class="text-left">
+									<p
+										class={item.operationStatus.trim() === '운영중'
+											? 'text-cms-3'
+											: item.operationStatus.trim() === '운영종료'
+												? 'text-error'
+												: 'text-slate-400'}
+									>
+										{item.operationStatus}
+									</p>
+								</div>
+							</td>
+							<td>
+								<div class="text-left whitespace-pre-line">
+									<p>{item.operationPeriod}</p>
+								</div>
+							</td>
+							<td>
+								<div class="text-left">
+									<p>{item.operationHours}</p>
+								</div>
+							</td>
+							<td>{item.aiRecommended ? '사용' : '미사용'}</td>
+							<td>{item.facilityCongestion ? '사용' : '미사용'}</td>
+							<td>{item.zoneCongestion ? '사용' : '미사용'}</td>
+							<td>{item.locationBasedContent ? '사용' : '미사용'}</td>
+							<td>
+								<a href="/" class="underline underline-offset-1">
+									<span>🔗 이동</span>
 								</a>
 							</td>
 							<td class="col-span-3 text-left">{item.mapUpdatedAt}</td>
@@ -121,7 +170,51 @@
 				</tbody>
 			</table>
 		</div>
+	</section>
 
-		<div></div>
+	<section class="inline-flex items-center justify-center gap-3">
+		<button type="button" class="button text" aria-label="이전">
+			<icon-list data-name="arrow-left" class="icon size-4 stroke-black"></icon-list>
+			<span>이전</span>
+		</button>
+		<div class="inline-flex items-center justify-center gap-1.5">
+			<strong class="button primary h-7 min-w-7" aria-label="1 page">
+				<span class="text-white">1</span>
+			</strong>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">2</span>
+			</button>
+			<strong class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">...</span>
+			</strong>
+			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+				<span class="text-slate-500">999</span>
+			</button>
+		</div>
+		<button type="button" class="button text" aria-label="다음">
+			<span>다음</span>
+			<icon-list data-name="arrow-left" class="icon size-4 rotate-180 stroke-black"></icon-list>
+		</button>
 	</section>
 </div>

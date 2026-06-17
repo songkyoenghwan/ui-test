@@ -1,7 +1,7 @@
 <svelte:options
 	customElement={{
 		tag: 'ui-tit',
-		shadow: 'open',
+		shadow: 'none',
 		props: {
 			tag: { type: 'String' },
 			tit: { type: 'String', reflect: true },
@@ -11,6 +11,7 @@
 />
 
 <script lang="ts">
+	import HoverTooltip from '$lib/components/tooltip/HoverTooltip.svelte';
 	import { applyGlobalReset } from '$lib/styles/shadow-theme';
 	import type { Snippet } from 'svelte';
 
@@ -19,12 +20,15 @@
 		tit?: string;
 		sub?: string;
 		size?: 'lg' | 'md' | 'sm';
+		req?: string;
+		tip?: string;
+		tooltip?: string;
 		cls?: string;
 		icon?: Snippet;
 		rt?: Snippet;
 		children?: Snippet;
 	}
-	let { tag = 'h3', tit, sub, size = 'sm', cls, icon, rt, children }: Props = $props();
+	let { tag = 'h3', tit, sub, size = 'sm', req, tip, tooltip, cls, icon, rt, children }: Props = $props();
 
 	$effect(() => {
 		const host = $host()?.shadowRoot;
@@ -37,7 +41,7 @@
 	const s = $derived(size);
 </script>
 
-<svelte:element this={headingTag} class="tit {s} {cls}">
+<svelte:element this={headingTag} class="tit flex items-center gap-1 {s} {cls}">
 	{#if icon}
 		{@render icon()}
 	{/if}
@@ -46,11 +50,11 @@
 
 	{@html tit}
 
-	<slot name="rt" />
-
-	{#if sub}
-		<p class="sub">{sub}</p>
+	{#if req}
+		<span class="text-xs text-slate-500">선택</span>
 	{/if}
+
+	<slot name="rt" />
 
 	{#if rt}
 		{@render rt()}
@@ -60,6 +64,16 @@
 		{@render children()}
 	{/if}
 </svelte:element>
+
+{#if sub}
+	<p class="sub">{sub}</p>
+{/if}
+
+{#if tip && tooltip}
+	<div class="flex items-center pt-1">
+		<HoverTooltip btn={tip} txt={tooltip} />
+	</div>
+{/if}
 
 <style>
 	.tit {
@@ -82,6 +96,6 @@
 	.sub {
 		color: var(--color-slate-500);
 		font-weight: 400;
-		font-size: 0.875rem;
+		font-size: 12px;
 	}
 </style>

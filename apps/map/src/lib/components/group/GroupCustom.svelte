@@ -15,6 +15,7 @@
 	import InputText from '$lib/components/inputs/InputText.svelte';
 	import { type LangAll } from '$lib/stores/langStore';
 	import { v4 as uuidv4 } from 'uuid';
+	import ColorPicker, { ChromeVariant } from 'svelte-awesome-color-picker';
 
 	interface RadioOption {
 		id: string;
@@ -38,8 +39,11 @@
 			btnLink?: BtnLink[];
 		};
 	}
-	let {
-		result = {
+	let { result = $bindable() }: Props = $props();
+	let isPickerOpen = $state(false);
+
+	let stateResult = $state(
+		result || {
 			color: '#08935a',
 			aiRecommend: false,
 			zoneCongestion: false,
@@ -49,7 +53,7 @@
 			facilitySorting: 'y',
 			btnLink: [],
 		},
-	}: Props = $props();
+	);
 
 	const rdoList: RadioOption[] = [
 		{
@@ -80,7 +84,7 @@
 	}
 
 	function handleAddBtnLink() {
-		const currentList = result.btnLink || [];
+		const currentList = result?.btnLink || [];
 		if (currentList.length >= 3) {
 			alert('공공 링크 버튼은 최대 3개까지만 등록 가능합니다.');
 			return;
@@ -92,23 +96,23 @@
 	}
 
 	function handleRemoveBtnLink(id: string) {
-		if (result.btnLink) {
+		if (result?.btnLink) {
 			result = {
 				...result,
-				btnLink: result.btnLink.filter((btn) => btn.id !== id),
+				btnLink: result?.btnLink.filter((btn) => btn.id !== id),
 			};
 		}
 	}
 
 	let snapshot: BtnLink[] = $state([]);
-	let isDndDisabled = $derived((result.btnLink?.length ?? 0) <= 1);
+	let isDndDisabled = $derived((result?.btnLink?.length ?? 0) <= 1);
 	function onDragStart() {
-		snapshot = [...(result.btnLink || [])];
+		snapshot = [...(result?.btnLink || [])];
 	}
 
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragOver(event: any) {
-		if (result.btnLink) {
+		if (result?.btnLink) {
 			result = {
 				...result,
 				btnLink: move(result.btnLink, event),
@@ -122,19 +126,34 @@
 			result = { ...result, btnLink: snapshot };
 		}
 	}
+
+	$effect(() => {
+		result = stateResult;
+	});
 </script>
 
 <ul class="divide-y divide-slate-300">
-	<li>
+	<li class="relative z-2">
 		<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5">
 			<ui-tit tit="색상 코드"></ui-tit>
 			<div class="flex flex-col gap-5">
 				<ui-txt size="sm" txt="지도 메인 색상 코드(HEX)를 입력해 주세요  *권장: 어두운 계열의 진한 색상"></ui-txt>
-				<div class="flex items-center gap-2">
-					<div class="relative flex size-7 items-center justify-center overflow-hidden rounded-sm">
-						<input type="color" bind:value={result.color} aria-label="색상 코드" class="absolute -top-3 -left-3 size-14" />
-					</div>
-					<InputText cls="max-w-50 s" bind:value={result.color} />
+				<div class="flex cursor-pointer items-center gap-2">
+					<ColorPicker
+						bind:isOpen={isPickerOpen}
+						bind:hex={stateResult.color}
+						components={ChromeVariant}
+						sliderDirection="horizontal"
+						isAlpha={false}
+						textInputModes={['hex']}
+						label=""
+					/>
+					<InputText
+						cls="max-w-50 s"
+						bind:value={stateResult.color}
+						readonly={true}
+						onclick={() => (isPickerOpen = !isPickerOpen)}
+					/>
 				</div>
 			</div>
 		</div>
@@ -144,7 +163,13 @@
 			<ui-tit tit="기능 커스텀"></ui-tit>
 			<ul class="inline-grid divide-y divide-slate-200">
 				<li class="flex items-center justify-between gap-2 px-3 pb-3">
-					<Chk itemId="ai-recommend" txt="AI 추천" reverse="true" cls="min-w-32.5 min-h-9" bind:checked={result.aiRecommend} />
+					<Chk
+						itemId="ai-recommend"
+						txt="AI 추천"
+						reverse="true"
+						cls="min-w-32.5 min-h-9"
+						bind:checked={stateResult.aiRecommend}
+					/>
 					<ui-txt
 						size="sm"
 						txt="AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"
@@ -156,7 +181,7 @@
 						txt="구역 혼잡도"
 						reverse="true"
 						cls="min-w-32.5 min-h-9"
-						bind:checked={result.zoneCongestion}
+						bind:checked={stateResult.zoneCongestion}
 					/>
 					<ui-txt
 						size="sm"
@@ -169,7 +194,7 @@
 						txt="시설 혼잡도"
 						reverse="true"
 						cls="min-w-32.5 min-h-9"
-						bind:checked={result.facilityCongestion}
+						bind:checked={stateResult.facilityCongestion}
 					/>
 					<ui-txt
 						size="sm"
@@ -189,7 +214,7 @@
 						txt="위치 기반 콘텐츠"
 						reverse="true"
 						cls="min-w-32.5 min-h-9"
-						bind:checked={result.locationBased}
+						bind:checked={stateResult.locationBased}
 					/>
 					<ui-txt
 						size="sm"
@@ -202,7 +227,7 @@
 						txt="시설 주소 노출"
 						reverse="true"
 						cls="min-w-32.5 min-h-9"
-						bind:checked={result.facilityAddress}
+						bind:checked={stateResult.facilityAddress}
 					/>
 					<ui-txt
 						size="sm"
@@ -212,7 +237,13 @@
 				<li class="flex items-center justify-between gap-2 p-3">
 					<div class="flex items-center gap-3">
 						<ui-txt size="sm" txt="시설 정렬 순서" cls="text-black min-w-25"></ui-txt>
-						<InputGroup itemId="rdo-11" name="rdo" arr={rdoList} cls="inline-flex gap-3" bind:value={result.facilitySorting} />
+						<InputGroup
+							itemId="rdo-11"
+							name="rdo"
+							arr={rdoList}
+							cls="inline-flex gap-3"
+							bind:value={stateResult.facilitySorting}
+						/>
 					</div>
 					<ui-txt
 						size="sm"
@@ -235,16 +266,25 @@
 				txt="추가"
 				cls="min-w-30"
 				click={handleAddBtnLink}
-				disabled={result.btnLink?.length === 3}
+				disabled={result?.btnLink?.length === 3}
 			/>
 		</div>
 
 		<DragDropProvider {onDragStart} {onDragOver} {onDragEnd}>
 			<ul class="flex flex-col gap-3 px-4 pb-4">
-				{#each result.btnLink ?? [] as btn, index (btn.id)}
+				{#each result?.btnLink ?? [] as btn, index (btn.id)}
 					<GroupDnd id={btn.id} {index} {btn} onRemove={handleRemoveBtnLink} {isDndDisabled} />
 				{/each}
 			</ul>
 		</DragDropProvider>
 	</li>
 </ul>
+
+<style>
+	/* 내부 입력 필드 라운드 조절 */
+	:global(.color) {
+		width: 28px;
+		height: 28px;
+		border-radius: 2px !important;
+	}
+</style>

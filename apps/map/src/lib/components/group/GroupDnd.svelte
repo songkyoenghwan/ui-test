@@ -31,37 +31,68 @@
 <li
 	{@attach sortable.attach}
 	data-shadow={sortable.isDragging ? 'true' : undefined}
-	class="grid grid-cols-[130px_348px_120px_40px] items-center gap-4 rounded-sm border border-slate-200 bg-white py-4 transition-all duration-150"
+	class="grid grid-cols-[658px_40px] rounded-sm border border-slate-200 bg-white py-4 transition-all duration-150 has-[.preview]:grid-cols-[658px_1fr_40px]"
 	class:opacity-50={sortable.isDragging}
 	class:scale-[1.01]={sortable.isDragging}
 	class:shadow-md={sortable.isDragging}
 	aria-label={String(index + 1)}
 >
-	<div class="flex h-full flex-col items-start gap-1">
-		{#if isDndDisabled}
-			<ui-tit tag="h4" tit="버튼명" class="pl-12"></ui-tit>
-		{:else}
-			<button type="button" {@attach sortable.attachHandle} class="handle flex items-center gap-4 pl-4" aria-label="Drag handle">
-				<span class="sr-only">드래그</span>
-				<span class="flex w-4 justify-center">
-					<icon-list data-name="dnd" class="icon flex h-2.5 w-1.5 fill-slate-300"></icon-list>
-				</span>
-				<ui-tit tag="h4" tit="버튼명"></ui-tit>
-			</button>
-		{/if}
+	<section class="grid grid-cols-[130px_348px_120px] items-center gap-4">
+		<div class="flex h-full flex-col items-start gap-1">
+			{#if isDndDisabled}
+				<ui-tit tag="h4" tit="버튼명" class="pl-12"></ui-tit>
+			{:else}
+				<button type="button" {@attach sortable.attachHandle} class="handle flex items-center gap-4 pl-4" aria-label="Drag handle">
+					<span class="sr-only">드래그</span>
+					<span class="flex w-4 justify-center">
+						<icon-list data-name="dnd" class="icon flex h-2.5 w-1.5 fill-slate-300"></icon-list>
+					</span>
+					<ui-tit tag="h4" tit="버튼명"></ui-tit>
+				</button>
+			{/if}
 
-		<div class="flex items-center pl-12">
-			<HoverTooltip btn="6자 이내 권장" txt="언어에 따라 표현 길이가 달라질 수 있으므로 \n번역 내용을 확인해주세요. (최대 50자)" />
+			<div class="flex items-center pl-12">
+				<HoverTooltip
+					btn="6자 이내 권장"
+					txt="언어에 따라 표현 길이가 달라질 수 있으므로 \n번역 내용을 확인해주세요. (최대 50자)"
+				/>
+			</div>
 		</div>
-	</div>
 
-	<div class="flex h-full items-start">
-		<lang-translate class="flex-1" lang={btn.lang}></lang-translate>
-	</div>
+		<div class="flex h-full items-start">
+			<lang-translate class="flex-1" lang={btn.lang}></lang-translate>
+		</div>
 
-	<div class="flex flex-col justify-center">
-		<IconUpload />
-	</div>
+		<div class="flex flex-col justify-center">
+			<IconUpload
+				img={btn.img}
+				onUpdate={(newImg) => {
+					btn.img = newImg;
+				}}
+			/>
+		</div>
+	</section>
+
+	{#if btn?.lang?.ko?.value || btn.img}
+		<section class="preview flex flex-col gap-5">
+			<ui-tit tag="h4" tit="미리보기"></ui-tit>
+
+			<button
+				type="button"
+				class="border-cms-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border px-3 shadow-2xs"
+			>
+				{#if btn.img}
+					<picture class="h-4">
+						<img src={btn.img} alt="" class="h-4" />
+					</picture>
+				{/if}
+
+				{#if btn?.lang?.ko?.value}
+					<span>{btn?.lang?.ko?.value}</span>
+				{/if}
+			</button>
+		</section>
+	{/if}
 
 	<div class="flex flex-col items-center justify-center">
 		<UiBtn

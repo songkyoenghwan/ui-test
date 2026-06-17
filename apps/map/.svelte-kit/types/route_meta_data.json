@@ -16,6 +16,7 @@
 		"src/routes/(page)/+layout.ts"
 	],
 	"/(page)/CMS-LOC-001/[...id]": [
+		"src/routes/(page)/CMS-LOC-001/[...id]/+page.ts",
 		"src/routes/(page)/+layout.ts"
 	],
 	"/(page)/CMS-MAP-001": [

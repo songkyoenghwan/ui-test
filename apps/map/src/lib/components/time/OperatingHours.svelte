@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'input-operating-hours',
+		tag: 'operating-hours',
 		shadow: 'none',
 		props: {
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
@@ -15,6 +15,39 @@
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
+	interface DayWeek {
+		name: string; // 'mon', 'tue' 등
+		txt: string; // '월', '화' 등
+		chk: boolean;
+	}
+
+	interface OperatingTime {
+		id: string;
+		timeStart: string;
+		timeEnd: string;
+		rest: boolean;
+		error: boolean;
+		restStart: string;
+		restEnd: string;
+	}
+
+	interface OperatingHourCols {
+		id: string;
+		dayWeek: DayWeek[];
+		time: OperatingTime[];
+	}
+	interface OperatingHourResult {
+		status: 'always' | 'week';
+		cols?: OperatingHourCols[];
+		timeError?: boolean;
+		weekError?: boolean;
+	}
+	interface Props {
+		itemId?: string;
+		result?: OperatingHourResult;
+		rest?: string;
+		error?: boolean;
+	}
 	let {
 		itemId = uuidv4(),
 		result = $bindable({ status: 'always', cols: [], timeError: false, weekError: false }),
@@ -34,7 +67,7 @@
 				result.cols = JSON.parse(JSON.stringify(result.cols));
 				isInitialized = true;
 			}
-		} else if (!result || result.cols.length === 0) {
+		} else if (!result || result.cols?.length === 0) {
 			const uniqueId = uuidv4();
 			result.cols = [
 				{
@@ -48,7 +81,17 @@
 						{ name: 'sat', txt: '토', chk: false },
 						{ name: 'sun', txt: '일', chk: false },
 					],
-					time: [{ timeStart: '', timeEnd: '', rest: false, restStart: '', restEnd: '' }],
+					time: [
+						{
+							id: uniqueId,
+							rest: false,
+							error: false,
+							timeStart: '',
+							timeEnd: '',
+							restStart: '',
+							restEnd: '',
+						},
+					],
 				},
 			];
 			isInitialized = true;
@@ -162,15 +205,15 @@
 					<ul>
 						{#each group.time as hour (hour.id)}
 							<li class={['relative z-1 flex flex-wrap gap-2']}>
-								<div class="inline-flex items-center gap-2">
-									<TimeScrollPicker bind:value={hour.timeStart} cls={hour.error ? 'text-error border-error' : ''} />
+								<div class="inline-flex w-full items-center gap-2">
+									<TimeScrollPicker bind:value={hour.timeStart} cls={hour.error ? 'error' : ''} />
 									<span>~</span>
-									<TimeScrollPicker bind:value={hour.timeEnd} cls={hour.error ? 'text-error border-error' : ''} />
+									<TimeScrollPicker bind:value={hour.timeEnd} cls={hour.error ? 'error' : ''} />
 								</div>
 								{#if rest === 'on'}
 									{#if hour.rest}
 										<dl>
-											<dt></dt>
+											<dt>휴게 시간</dt>
 											<dd class="inline-flex items-center gap-2">
 												<TimeScrollPicker bind:value={hour.restStart} />
 												<span>~</span>
@@ -189,7 +232,7 @@
 										<UiBtn
 											tag="button"
 											variant="ghost"
-											txt="휴게 시간 "
+											txt="휴게 시간"
 											cls="min-w-7 flex-[0_0_75px]"
 											click={() => toggleRestTime(String(group.id), true)}
 										/>

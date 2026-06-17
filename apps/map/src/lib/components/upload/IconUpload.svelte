@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Dropzone } from 'flowbite-svelte';
 	import { v4 as uuidv4 } from 'uuid';
-
+	let { img = $bindable(), onUpdate }: { img: string; onUpdate: (newImg: string) => void } = $props();
 	let filesInDropzone: FileList | null = $state(null);
 	let previewUrl = $state('');
 	let errorMessage = $state('');
@@ -35,6 +35,9 @@
 			// 용량 통과 시
 			errorMessage = '';
 			filesInDropzone = target.files;
+			const url = URL.createObjectURL(file);
+			img = url; // 로컬 미리보기
+			onUpdate(url); // 부모의 btn.img를 업데이트!
 		}
 	}
 
@@ -53,11 +56,14 @@
 			// 용량 통과 시
 			errorMessage = '';
 			filesInDropzone = event.dataTransfer.files;
+			const url = URL.createObjectURL(file);
+			img = url; // 로컬 미리보기
+			onUpdate(url); // 부모의 btn.img를 업데이트!
 		}
 	}
 </script>
 
-<Dropzone id={uuidv4()} bind:files={filesInDropzone} onChange={handleOnChange} onDrop={handleOnDrop} accept=".png" class="size-30">
+<Dropzone id={uuidv4()} bind:files={filesInDropzone} onChange={handleOnChange} onDrop={handleOnDrop} accept=".png" class="relative size-30">
 	{#if !filesInDropzone || filesInDropzone.length === 0}
 		<icon-list data-name="gallery" class="icon size-8 fill-slate-500"></icon-list>
 		<p class="mt-2 text-center text-slate-600">
@@ -74,7 +80,10 @@
 				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto max-h-full min-h-30 object-cover" />
 			</picture>
 
-			<button type="button" class="absolute top-0 right-0" onclick={() => (filesInDropzone = null)}>Clear File</button>
+			<button type="button" class="absolute top-0 right-0 size-7" onclick={() => (filesInDropzone = null)}>
+				<span class="sr-only">Clear File</span>
+				<icon-list data-name="btn-del" class="icon fill-error size-8"></icon-list>
+			</button>
 		</div>
 	{/if}
 </Dropzone>

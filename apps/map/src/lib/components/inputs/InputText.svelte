@@ -19,10 +19,12 @@
 		value?: string;
 		placeholder?: string;
 		error?: string;
+		readonly?: boolean;
 		cls?: string;
 		input?: (event: Event) => void;
+		onclick?: (event: Event) => void;
 	}
-	let { itemId = '', type = 'text', value = $bindable(''), placeholder, error, cls = '', input }: Props = $props();
+	let { itemId = '', type = 'text', value = $bindable(''), placeholder, error, readonly, cls = '', input, onclick }: Props = $props();
 	const urlPattern = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/;
 	$effect(() => {
 		if (type === 'url') {
@@ -45,8 +47,10 @@
 		{type}
 		class={['input-text w-full read-only:border-slate-300 read-only:bg-white', error ? 'error border-error! outline-error' : '', cls]}
 		{placeholder}
+		{readonly}
 		bind:value
 		oninput={input}
+		{onclick}
 	/>
 
 	{#if type === 'url' && error}

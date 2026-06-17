@@ -65,8 +65,12 @@
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="대상지명" sub="15자 이내 권장"></ui-tit>
-					<lang-translate class="flex-1"></lang-translate>
+					<ui-tit
+						tit="대상지명"
+						tip="15자 이내 권장"
+						tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
+					></ui-tit>
+					<lang-translate data-max-length="50" class="flex-1"></lang-translate>
 					<!-- 나노스토어로 언어값 체크 연동 중 -->
 				</div>
 			</li>
@@ -83,33 +87,37 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="운영 기간"></ui-tit>
-
-					<input-operating-period item-id="input-1"></input-operating-period>
+					<operating-period item-id="input-1"></operating-period>
 					<!--  result="" -->
 				</div>
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="정기 휴무"></ui-tit>
-					<input-closing-day item-id="input-2" selected="none" week="" all-week="" day="" date=""></input-closing-day>
+					<closing-day item-id="input-2" selected="none" week="" all-week="" day="" date=""></closing-day>
 				</div>
 			</li>
 			<li>
 				<div class="relative z-2 grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="운영 시간"></ui-tit>
-					<input-operating-hours item-id="input-2" selected="always" rest="off"></input-operating-hours>
+					<operating-hours item-id="input-2" selected="always" rest="off"></operating-hours>
 				</div>
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="운영 안내" sub="30자 이내 권장"></ui-tit>
-					<lang-translate class="flex-1"></lang-translate>
+					<ui-tit
+						tit="운영 안내"
+						req
+						tip="30자 이내 권장"
+						tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
+					></ui-tit>
+					<lang-translate data-max-length="50" class="flex-1"></lang-translate>
 					<!-- 나노스토어로 언어값 체크 연동 중 -->
 				</div>
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="홈페이지 링크" sub="사용자에게 제공할 링크를 작성해 주세요"></ui-tit>
+					<ui-tit tit="홈페이지 링크" req sub="사용자에게 제공할 링크를 작성해 주세요"></ui-tit>
 					<input-text
 						data-type="url"
 						class="flex-1"
@@ -119,7 +127,7 @@
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="사용자 지도 링크" sub="30자 이내 권장"></ui-tit>
+					<ui-tit tit="사용자 지도 링크" req></ui-tit>
 					<input-text
 						data-type="url"
 						class="flex-1"
@@ -134,61 +142,5 @@
 		<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
 		<group-custom></group-custom>
-
-		<!-- <ul>
-			<li>
-				<div class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="색상 코드" sub="지도 메인 색상 코드(HEX)를 입력해 주세요  *권장: 어두운 계열의 진한 색상"></ui-tit>
-				</div>
-			</li>
-			<li>
-				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="기능 커스텀"></ui-tit>
-					<ul class="inline-grid divide-y divide-slate-200">
-						<li class="flex items-center justify-between gap-2 p-3">
-							<ui-checkbox item-id="ai-recoemnd" txt="AI 추천" reverse="true" cls="min-w-32.5 min-h-9" class="flex-none"></ui-checkbox>
-							<ui-txt size="sm" txt="AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"></ui-txt>
-						</li>
-						<li class="flex items-center justify-between gap-2 p-3">
-							<ui-checkbox item-id="zone-congestion" txt="구역 혼잡도" reverse="true" cls="min-w-32.5 min-h-9" class="flex-none"></ui-checkbox>
-							<ui-txt size="sm" txt="구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"></ui-txt>
-						</li>
-						<li class="flex items-center justify-between gap-2 p-3">
-							<ui-checkbox item-id="facility-congestion" txt="시설 혼잡도" reverse="true" cls="min-w-32.5 min-h-9" class="flex-none"></ui-checkbox>
-							<ui-txt size="sm" txt="시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"></ui-txt>
-						</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="기능 커스텀"></ui-tit>
-					<ul class="inline-grid divide-y divide-slate-200">
-						<li class="flex items-center justify-between gap-2 p-3">
-							<ui-checkbox item-id="location-based-content" txt="위치 기반 콘텐츠" reverse="true" cls="min-w-32.5 min-h-9" class="flex-none"></ui-checkbox>
-							<ui-txt size="sm" txt="AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"></ui-txt>
-						</li>
-						<li class="flex items-center justify-between gap-2 p-3">
-							<ui-checkbox item-id="facility-address-exposure" txt="시설 주소 노출" reverse="true" cls="min-w-32.5 min-h-9" class="flex-none"></ui-checkbox>
-							<ui-txt size="sm" txt="구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"></ui-txt>
-						</li>
-						<li class="flex items-center justify-between gap-2 p-3">
-							<div class="flex items-center gap-3">
-								<ui-txt size="sm" txt="시설 정렬 순서" cls="text-black min-w-25"></ui-txt>
-								<ui-input-group item-id="rdo-11" name="rdo" arr={rdoList} class="inline-flex min-h-9 gap-3"></ui-input-group>
-							</div>
-							<ui-txt size="sm" txt="시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"></ui-txt>
-						</li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="grid max-w-375 grid-cols-[100px_1fr_120px] gap-5 px-4 py-4">
-					<ui-tit tit="공통 링크 버튼 <br />미리보기"></ui-tit>
-					<ui-txt size="md" txt="시설 등록 시 설정된 버튼에 대한 링크를 삽입하여 사용자에게 제공할 수 있으며, 최대 3개까지 등록 가능합니다"></ui-txt>
-					<ui-btn variant="secondary" size="lg" txt="추가" class="min-w-30"></ui-btn>
-				</div>
-			</li>
-		</ul> -->
 	</section>
 </div>

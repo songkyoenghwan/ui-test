@@ -31,8 +31,6 @@
 		if (host) {
 			applyGlobalReset(host);
 		}
-
-		console.log(checked);
 	});
 
 	$effect(() => {
