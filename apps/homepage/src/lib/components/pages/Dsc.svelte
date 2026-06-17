@@ -127,7 +127,7 @@
 			logo: [`${__STATIC_URL__}/imgs/case/logo-case-${page}-1.png`],
 			img: `${__STATIC_URL__}/imgs/case/img-case-${page}-1.jpg`,
 			tit: m.dsc_case_tit_1_1(),
-			badge: [m.dsc_case_badge_1_1(), m.dsc_case_badge_1_2(), m.dsc_case_badge_1_3(), m.dsc_case_badge_1_4()],
+			badge: [m.dsc_case_badge_1_2(), m.dsc_case_badge_1_3(), m.dsc_case_badge_1_4()],
 			txt: [m.dsc_case_txt_1_1()],
 			etc: [m.dsc_case_etc_1_1, m.dsc_case_etc_1_2],
 		},

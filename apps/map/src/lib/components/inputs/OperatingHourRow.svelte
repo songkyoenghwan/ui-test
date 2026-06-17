@@ -1,6 +1,6 @@
 <script lang="ts">
-	import TimeScrollPicker from '$lib/components/datePicker/TimeScrollPicker.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
+	import TimeScrollPicker from '$lib/components/datePicker/TimeScrollPicker.svelte';
 
 	// 🎯 수선 핵심 1: 개별 hour 데이터를 $bindable()로 받아 양방향 전선 개통
 	let { hour = $bindable(), rest, groupId, toggleRestTime } = $props();
@@ -54,7 +54,13 @@
 				</dd>
 			</dl>
 		{:else}
-			<UiBtn tag="button" variant="ghost" txt="휴게 시간" cls="min-w-7 flex-[0_0_75px]" onclick={() => toggleRestTime(String(groupId), true)} />
+			<UiBtn
+				tag="button"
+				variant="ghost"
+				txt="휴게 시간"
+				cls="min-w-7 flex-[0_0_75px]"
+				onclick={() => toggleRestTime(String(groupId), true)}
+			/>
 		{/if}
 	{/if}
 </li>

@@ -110,13 +110,21 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="홈페이지 링크" sub="사용자에게 제공할 링크를 작성해 주세요"></ui-tit>
-					<input-text data-type="url" class="flex-1" placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"></input-text>
+					<input-text
+						data-type="url"
+						class="flex-1"
+						placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+					></input-text>
 				</div>
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="사용자 지도 링크" sub="30자 이내 권장"></ui-tit>
-					<input-text data-type="url" class="flex-1" placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"></input-text>
+					<input-text
+						data-type="url"
+						class="flex-1"
+						placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+					></input-text>
 				</div>
 			</li>
 		</ul>

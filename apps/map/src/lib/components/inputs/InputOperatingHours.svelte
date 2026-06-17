@@ -11,8 +11,8 @@
 />
 
 <script lang="ts">
-	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import TimeScrollPicker from '$/lib/components/datePicker/TimeScrollPicker.svelte';
+	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let {

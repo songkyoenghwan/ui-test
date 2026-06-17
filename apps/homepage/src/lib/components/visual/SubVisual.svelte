@@ -16,10 +16,9 @@
 
 	const visualMotion: Attachment<HTMLElement> = (el) => {
 		const animation = animate(el.children, {
-			x: [70, 0],
 			opacity: [0, 1],
-			duration: 600,
-			delay: stagger(200),
+			duration: 100,
+			delay: stagger(100),
 			easing: 'easeOutQuad',
 			autoplay: false,
 		});
@@ -30,7 +29,7 @@
 			enter: 'bottom center',
 			leave: 'top bottom',
 			axis: 'y',
-			onEnter: () => {
+			onEnterForward: () => {
 				if (played) return;
 				played = true;
 				animation.seek(0);
@@ -47,9 +46,8 @@
 </script>
 
 <section
-	{@attach visualMotion}
+	data-scroll="first"
 	class="relative flex max-h-dvh min-h-[70dvh] flex-col justify-between overflow-clip rounded-xl bg-cover bg-center p-5 text-white opacity-100 max-lg:rounded-lg md:min-h-160 lg:p-15 xl:min-h-200 starting:translate-y-0 starting:opacity-0"
-	style={`background-image: url('${bg}')`}
 >
 	{#if videoUrl}
 		<div

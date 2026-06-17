@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { Attachment } from 'svelte/attachments';
 	import Picker from 'pickerjs';
+	import type { Attachment } from 'svelte/attachments';
 	import 'pickerjs/dist/picker.min.css';
 
 	let instance = $state<Picker | null>(null);

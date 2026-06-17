@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { createSortable } from '@dnd-kit/svelte/sortable';
-	import IconUpload from '$lib/components/upload/IconUpload.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import HoverTooltip from '$lib/components/tooltip/HoverTooltip.svelte';
+	import IconUpload from '$lib/components/upload/IconUpload.svelte';
 	import { type LangAll } from '$lib/stores/langStore';
 
 	interface Props {
@@ -64,6 +64,13 @@
 	</div>
 
 	<div class="flex flex-col items-center justify-center">
-		<UiBtn tag="button" variant="icon" txt="삭제" iconName="btn-del" cls="size-7 stroke-error fill-error" click={() => onRemove(btn.id)} />
+		<UiBtn
+			tag="button"
+			variant="icon"
+			txt="삭제"
+			iconName="btn-del"
+			cls="size-7 stroke-error fill-error"
+			click={() => onRemove(btn.id)}
+		/>
 	</div>
 </li>

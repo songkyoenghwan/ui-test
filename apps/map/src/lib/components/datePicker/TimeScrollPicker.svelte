@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 	import { useClickOutside } from '@ariefsn/svelte-use';
+	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 
 	let { value = $bindable('00:00'), cls = '' } = $props();
 
@@ -36,7 +36,13 @@
 </script>
 
 <div class="relative z-5" bind:this={timeRef}>
-	<input type="text" class={['input-time m w-22', { cls }]} onclick={() => (isExpanded = !isExpanded)} onkeydown={handleKeyDown} bind:value={val} />
+	<input
+		type="text"
+		class={['input-time m w-22', { cls }]}
+		onclick={() => (isExpanded = !isExpanded)}
+		onkeydown={handleKeyDown}
+		bind:value={val}
+	/>
 
 	{#if isExpanded}
 		<div

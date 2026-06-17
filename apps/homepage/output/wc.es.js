@@ -4554,7 +4554,7 @@ var fl = !1, Z = () => {
 	typeof window < "u" && window.location?.href && (e = ul(window.location.href));
 	let t = pl(e, typeof window < "u" ? window.location?.href : void 0);
 	if (t) return fl || (fl = !0, hl(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function pl(e, t) {
 	let n;
@@ -6301,7 +6301,7 @@ var JR = !1, YR = () => {
 	typeof window < "u" && window.location?.href && (e = KR(window.location.href));
 	let t = XR(e, typeof window < "u" ? window.location?.href : void 0);
 	if (t) return JR || (JR = !0, QR(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function XR(e, t) {
 	let n;
@@ -6689,7 +6689,7 @@ var wz = Cz(), Tz = () => [
 	{
 		name: "undo",
 		size: "24",
-		html: "\n				<path\n					d=\"M7.13086 18.3101H15.1309C17.8909 18.3101 20.1309 16.0701 20.1309 13.3101C20.1309 10.5501 17.8909 8.31006 15.1309 8.31006H4.13086\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path d=\"M6.42914 10.8099L3.86914 8.24994L6.42914 5.68994\" fill=\"none\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+		html: "\n				<path\n					d=\"M7.13086 18.3101H15.1309C17.8909 18.3101 20.1309 16.0701 20.1309 13.3101C20.1309 10.5501 17.8909 8.31006 15.1309 8.31006H4.13086\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M6.42914 10.8099L3.86914 8.24994L6.42914 5.68994\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
 	},
 	{
 		name: "tick-circle",
@@ -6704,22 +6704,22 @@ var wz = Cz(), Tz = () => [
 	{
 		name: "arrow-right",
 		size: "24",
-		html: "\n				<path d=\"M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M3.5 12H20.33\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+		html: "\n				<path\n					d=\"M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M3.5 12H20.33\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
 	},
 	{
 		name: "arrow-new-link",
 		size: "20",
-		html: "\n				<path d=\"M20.5 22H3.5\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M19 3.5L5 17.5\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M19 13.77V3.5H8.73\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+		html: "\n				<path\n					d=\"M20.5 22H3.5\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M19 3.5L5 17.5\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M19 13.77V3.5H8.73\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
 	},
 	{
 		name: "arrow-as-is",
 		size: "90",
-		html: "\n				<g opacity=\"0.2\">\n					<path d=\"M54.1123 22.2375L76.8748 45L54.1123 67.7625\" fill=\"none\" stroke-width=\"12\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n					<path d=\"M13.125 45H76.2375\" fill=\"none\" stroke-width=\"12\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				</g>\n			"
+		html: "\n				<g opacity=\"0.2\">\n					<path\n						d=\"M54.1123 22.2375L76.8748 45L54.1123 67.7625\"\n						fill=\"none\"\n						stroke-width=\"12\"\n						stroke-miterlimit=\"10\"\n						stroke-linecap=\"round\"\n						stroke-linejoin=\"round\"\n					/>\n					<path\n						d=\"M13.125 45H76.2375\"\n						fill=\"none\"\n						stroke-width=\"12\"\n						stroke-miterlimit=\"10\"\n						stroke-linecap=\"round\"\n						stroke-linejoin=\"round\"\n					/>\n				</g>\n			"
 	},
 	{
 		name: "arrow-link-underline",
 		size: "24",
-		html: "\n				<path d=\"M20.5 22H3.5\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M19 3.5L5 17.5\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M19 13.77V3.5H8.73\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n			"
+		html: "\n				<path\n					d=\"M20.5 22H3.5\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M19 3.5L5 17.5\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M19 13.77V3.5H8.73\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
 	},
 	{
 		name: "menu",
@@ -6729,7 +6729,7 @@ var wz = Cz(), Tz = () => [
 	{
 		name: "import",
 		size: "24",
-		html: "\n				<path d=\"M9.32007 11.6799L11.8801 14.2399L14.4401 11.6799\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path d=\"M11.8799 4V14.17\" fill=\"none\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" />\n				<path\n					d=\"M20 12.1799C20 16.5999 17 20.1799 12 20.1799C7 20.1799 4 16.5999 4 12.1799\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
+		html: "\n				<path\n					d=\"M9.32007 11.6799L11.8801 14.2399L14.4401 11.6799\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M11.8799 4V14.17\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n				<path\n					d=\"M20 12.1799C20 16.5999 17 20.1799 12 20.1799C7 20.1799 4 16.5999 4 12.1799\"\n					fill=\"none\"\n					stroke-width=\"1.5\"\n					stroke-miterlimit=\"10\"\n					stroke-linecap=\"round\"\n					stroke-linejoin=\"round\"\n				/>\n			"
 	},
 	{
 		name: "close",
@@ -6968,7 +6968,7 @@ customElements.define("news-section", Ga(Iz, {
 	url: {}
 }, [], []));
 //#endregion
-//#region ../../node_modules/.bun/lenis@1.3.23/node_modules/lenis/dist/lenis.mjs
+//#region ../../node_modules/.bun/lenis@1.3.23+57ea6ac7810bd904/node_modules/lenis/dist/lenis.mjs
 var Lz = "1.3.23";
 function Rz(e, t, n) {
 	return Math.max(e, Math.min(t, n));
@@ -7604,7 +7604,7 @@ function nB(e, t) {
 }
 customElements.define("sub-company", Ga(nB, {}, [], []));
 //#endregion
-//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+0ee8b858e352d77e/node_modules/@inlang/paraglide-js-svelte/dist/message.js
+//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+a76dc86e39b3c2ec/node_modules/@inlang/paraglide-js-svelte/dist/message.js
 function rB(e) {
 	let { message: t, inputs: n, options: r, ...i } = e, a = n ?? {}, o = i, s = t;
 	if (typeof s.parts != "function") return [s(a, r)];
@@ -7662,7 +7662,7 @@ function rB(e) {
 	return c;
 }
 //#endregion
-//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+0ee8b858e352d77e/node_modules/@inlang/paraglide-js-svelte/dist/Message.svelte
+//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+a76dc86e39b3c2ec/node_modules/@inlang/paraglide-js-svelte/dist/Message.svelte
 var iB = new Set([
 	"$$slots",
 	"$$events",
@@ -16297,12 +16297,12 @@ var dG = (e, t) => {
 	};
 });
 //#endregion
-//#region ../../node_modules/.bun/@selemondev+svelte-marquee@0.1.1+bfb1d42f93738a0a/node_modules/@selemondev/svelte-marquee/dist/utils.js
+//#region ../../node_modules/.bun/@selemondev+svelte-marquee@0.1.1+872307f81fded827/node_modules/@selemondev/svelte-marquee/dist/utils.js
 function LK(...e) {
 	return IK(ra(e));
 }
 //#endregion
-//#region ../../node_modules/.bun/@selemondev+svelte-marquee@0.1.1+bfb1d42f93738a0a/node_modules/@selemondev/svelte-marquee/dist/Marquee.svelte
+//#region ../../node_modules/.bun/@selemondev+svelte-marquee@0.1.1+872307f81fded827/node_modules/@selemondev/svelte-marquee/dist/Marquee.svelte
 var RK = /* @__PURE__ */ H("<div><!></div>"), zK = /* @__PURE__ */ H("<div></div>");
 function BK(e, t) {
 	let n = za(za(t, [

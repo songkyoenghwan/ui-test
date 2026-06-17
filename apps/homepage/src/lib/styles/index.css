@@ -482,7 +482,7 @@
 
 	.main,
 	.sub {
-		@apply flex flex-col gap-7.5 px-5 pt-27 pb-20 has-[form]:overflow-clip lg:gap-15 lg:px-10;
+		@apply flex min-h-dvh flex-col gap-7.5 px-5 pt-27 pb-20 has-[form]:overflow-clip lg:gap-15 lg:px-10;
 	}
 
 	.error {
@@ -506,7 +506,7 @@
 	}
 
 	.label {
-		@apply text-2md inline-flex items-center font-bold lg:text-2xl;
+		@apply text-2md inline-flex items-center font-bold break-all lg:text-2xl;
 	}
 
 	.input-text {

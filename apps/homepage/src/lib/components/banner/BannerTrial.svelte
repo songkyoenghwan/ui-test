@@ -4,7 +4,7 @@
 
 <section
 	data-scroll="slide-up"
-	class="bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat px-7.5 whitespace-pre-line lg:mt-7.5 lg:h-80 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:px-15"
+	class="bg-light-blue relative mt-5 grid min-h-80 grid-cols-1 justify-between overflow-clip rounded-xl bg-(image:--bg-trial) bg-cover bg-center bg-no-repeat px-7.5 whitespace-pre-line lg:mt-7.5 lg:h-81 lg:grid-cols-[1fr_fit-content(640px)] lg:grid-rows-2 lg:px-15"
 	style:--bg-trial={`url(${__STATIC_URL__}/imgs/banner/bg-trial.jpg)`}
 >
 	<picture class="absolute top-0 left-0 z-1 grid place-items-center">
@@ -12,7 +12,7 @@
 	</picture>
 
 	<div data-scroll="slide-up" class="flex flex-1 flex-col justify-between lg:row-span-1">
-		<div class="space-y-2.5 py-7.5 lg:py-15">
+		<div class="space-y-2.5 py-7.5 lg:pt-15">
 			<h4 class="text-lg leading-tight font-bold lg:text-4xl">{m.main_title_trial?.()}</h4>
 			<p>{m.main_subtitle_trial?.()}</p>
 		</div>
@@ -24,7 +24,7 @@
 		</picture>
 	</div>
 
-	<div class="relative z-2 flex w-full pb-5 lg:order-3 lg:row-span-1 lg:inline-flex lg:py-15">
+	<div class="relative z-2 flex w-full pb-5 lg:order-3 lg:row-span-1 lg:inline-flex">
 		<a
 			href="https://logifine.deepfine.com/signup/trial"
 			target="_blank"
