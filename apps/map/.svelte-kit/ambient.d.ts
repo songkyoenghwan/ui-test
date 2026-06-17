@@ -70,6 +70,7 @@ declare module '$env/static/private' {
 	export const npm_node_execpath: string;
 	export const npm_package_json: string;
 	export const npm_package_name: string;
+	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
 	export const NVM_HOME: string;
 	export const NVM_SYMLINK: string;
@@ -229,6 +230,7 @@ declare module '$env/dynamic/private' {
 		npm_node_execpath: string;
 		npm_package_json: string;
 		npm_package_name: string;
+		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
 		NVM_HOME: string;
 		NVM_SYMLINK: string;
