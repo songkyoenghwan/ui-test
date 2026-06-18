@@ -46,7 +46,8 @@
 		"svelte-draggable-plus": "^0.1.1",
 		"svelty-picker": "^6.1.6",
 		"unsortable": "^0.1.9",
-		"uuid": "^14.0.0"
+		"uuid": "^14.0.0",
+		"zod": "^4.4.3"
 	},
 	"devDependencies": {
 		"@floating-ui/utils": "^0.2.11",

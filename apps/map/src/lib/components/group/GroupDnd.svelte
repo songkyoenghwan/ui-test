@@ -3,12 +3,12 @@
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import HoverTooltip from '$lib/components/tooltip/HoverTooltip.svelte';
 	import IconUpload from '$lib/components/upload/IconUpload.svelte';
-	import { type LangAll } from '$lib/stores/langStore';
+	import { type LangTranslateKey } from '$lib/types/lang/langTranslate.type';
 
 	interface Props {
 		id: string;
 		index: number;
-		btn: { id: string; lang: LangAll; img: string };
+		btn: { id: string; lang: LangTranslateKey; img: string };
 		onRemove: (id: string) => void;
 		isDndDisabled: boolean;
 	}

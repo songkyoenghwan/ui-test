@@ -119,8 +119,8 @@
 										goto(`/CMS-LOC-001/${item.id}`);
 									}}
 								>
-									<p style="background-color: {item.targetColor}" class="size-4 rounded-xs"></p>
-									{item?.targetName?.ko?.value}
+									<p style="background-color: {item?.custom?.color || 'transparent'};" class="size-4 rounded-xs"></p>
+									{item?.name?.ko?.value}
 								</a>
 							</td>
 							<td>
@@ -134,37 +134,31 @@
 							</td>
 							<td>
 								<div class="text-left">
-									<p
-										class={item.operationStatus.trim() === '운영중'
-											? 'text-cms-3'
-											: item.operationStatus.trim() === '운영종료'
-												? 'text-error'
-												: 'text-slate-400'}
-									>
-										{item.operationStatus}
+									<p>
+										{item.status}
 									</p>
 								</div>
 							</td>
 							<td>
 								<div class="text-left whitespace-pre-line">
-									<p>{item.operationPeriod}</p>
+									<p>{item.period}</p>
 								</div>
 							</td>
 							<td>
 								<div class="text-left">
-									<p>{item.operationHours}</p>
+									<p>{item.hours}</p>
 								</div>
 							</td>
-							<td>{item.aiRecommended ? '사용' : '미사용'}</td>
-							<td>{item.facilityCongestion ? '사용' : '미사용'}</td>
-							<td>{item.zoneCongestion ? '사용' : '미사용'}</td>
-							<td>{item.locationBasedContent ? '사용' : '미사용'}</td>
+							<td>{item?.custom?.aiRecommended ? '사용' : '미사용'}</td>
+							<td>{item?.custom?.facilityCongestion ? '사용' : '미사용'}</td>
+							<td>{item?.custom?.zoneCongestion ? '사용' : '미사용'}</td>
+							<td>{item?.custom?.locationBasedContent ? '사용' : '미사용'}</td>
 							<td>
-								<a href="/" class="underline underline-offset-1">
+								<a href={item.linkMap} class="underline underline-offset-1" target="_blank" rel="noopener noreferrer">
 									<span>🔗 이동</span>
 								</a>
 							</td>
-							<td class="col-span-3 text-left">{item.mapUpdatedAt}</td>
+							<td class="col-span-3 text-left">{item.editTime}</td>
 						</tr>
 					{/each}
 				</tbody>

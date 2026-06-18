@@ -11,21 +11,15 @@
 <script lang="ts">
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import InputPicker from '$lib/components/datePicker/InputPicker.svelte';
+	import { createDefaultOperatingResult, type Props } from '$lib/types/time/operatingPeriod.type';
 	import { v4 as uuidv4 } from 'uuid';
 
-	interface OperatingResult {
-		status: 'always' | 'period';
-		day?: string;
-	}
-
-	interface Props {
-		itemId?: string;
-		result?: OperatingResult;
-		checked?: boolean;
-		disabled?: boolean;
-		cls?: string;
-	}
-	let { itemId = uuidv4(), result = $bindable({ status: 'always', day: '' }), checked = $bindable(false) }: Props = $props();
+	let {
+		itemId = uuidv4(),
+		result = $bindable(createDefaultOperatingResult()),
+		checked = $bindable(false),
+		disabled = false,
+	}: Props = $props();
 
 	const list = $derived([
 		{ id: `${itemId}-always`, name: 'always', txt: '상시 운영' },

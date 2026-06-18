@@ -14,12 +14,13 @@
 		label: String(i).padStart(2, '0'),
 	}));
 
-	let hour = $state('00');
-	let minute = $state('00');
+	let hour = $derived(value.split(':')[0] || '00');
+	let minute = $derived(value.split(':')[1] || '00');
+
 	let isExpanded = $state(false);
 	let currentVisibleCount = $derived(isExpanded ? 5 : 1);
-	let val = $derived(hour + ':' + minute);
 	let timeRef: HTMLElement | null = $state(null);
+
 	useClickOutside(
 		() => timeRef,
 		() => {
@@ -41,12 +42,12 @@
 		class={['input-time m', cls ?? 'w-22']}
 		onclick={() => (isExpanded = !isExpanded)}
 		onkeydown={handleKeyDown}
-		bind:value={val}
+		bind:value
 	/>
 
 	{#if isExpanded}
 		<div
-			class="absolute top-7.25 z-3 flex cursor-pointer items-center justify-center overflow-clip rounded border bg-white p-5 text-sm transition-all duration-200 {isExpanded
+			class="absolute top-7.25 z-3 flex cursor-pointer items-center justify-center overflow-clip rounded border bg-white p-1 text-sm transition-all duration-200 {isExpanded
 				? 'border-cms-3 h-40'
 				: 'h-7 border-slate-300'}"
 		>
@@ -65,7 +66,7 @@
 						option: 'my-option',
 					}}
 					onValueChange={(v) => {
-						hour = v;
+						value = `${v}:${minute}`;
 					}}
 				/>
 				:
@@ -82,7 +83,7 @@
 						option: 'my-option',
 					}}
 					onValueChange={(v) => {
-						minute = v;
+						value = `${hour}:${v}`;
 					}}
 				/>
 			</WheelPickerWrapper>
@@ -96,6 +97,10 @@
 		flex-direction: row;
 		align-items: center;
 		gap: 4px;
+	}
+
+	:global(.my-option) {
+		min-width: 60px;
 	}
 
 	:global(.my-option[aria-selected='true']) {

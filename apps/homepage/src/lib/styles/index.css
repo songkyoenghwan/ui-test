@@ -455,6 +455,12 @@
 		--webkit-appearance: base-select;
 	}
 
+	.footer {
+		&:has(footer-copy:empty) {
+			display: none;
+		}
+	}
+
 	/* Select button */
 	select {
 		--radius: 100px;

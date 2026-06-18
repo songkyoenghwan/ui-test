@@ -194,10 +194,10 @@ class HeaderTag extends HTMLElement {
 											<a
 												class="hover:bg-primary group flex min-h-10.5 flex-none items-center gap-5 rounded-full border border-black px-5 py-1 font-normal hover:text-white"
 												href="https://deepfine.my.salesforce.com/sfc/p/IR000001ZM92/a/TJ00000djirN/Lc54cHS.pbOehXcpItel0OxkWqb66lW7m.7qOou0CU0"
-												aria-label="LOGI.FINE Brochure"
+												aria-label="Brochure"
 												target="_blank"
 											>
-												LOGI.FINE Brochure
+												Brochure
 												<icon-list class="size-6 stroke-black group-hover:stroke-white" name="import"></icon-list>
 											</a>
 										</li>

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import UiBtn from '$lib/components/btn/UiBtn.svelte';
-
 	interface Props {
 		itemId?: string;
 		week?: string[];

@@ -31,10 +31,10 @@
 				txt="저장"
 				class="w-20"
 				click={() => {
-					//	console.log(document.querySelectorAll('lang-translate')[0]?.lang);
-					// console.log(document?.querySelector('input-operating-period')?.result);
-					// console.log(document?.querySelector('input-closing-day')?.result);
-					//	console.log(document?.querySelector('input-operating-hours')?.result);
+					console.log(document.querySelectorAll('lang-translate')[0]?.lang);
+					console.log(document?.querySelector('operating-period')?.result);
+					console.log(document?.querySelector('closing-day')?.result);
+					console.log(document?.querySelector('operating-hours')?.result);
 					console.log(document?.querySelector('group-custom')?.result);
 					// console.log(c4.result);
 					// console.log(c5.result);
@@ -55,7 +55,7 @@
 	<section class="shadow-1xs rounded-lg bg-white p-5">
 		<ui-tit tag="h2" size="lg" tit="대상지 정보"></ui-tit>
 
-		<ul>
+		<ul class="divide-y divide-slate-300">
 			<li>
 				<div class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
@@ -87,14 +87,14 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="운영 기간"></ui-tit>
-					<operating-period item-id="input-1"></operating-period>
+					<operating-period></operating-period>
 					<!--  result="" -->
 				</div>
 			</li>
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="정기 휴무"></ui-tit>
-					<closing-day item-id="input-2" selected="none" week="" all-week="" day="" date=""></closing-day>
+					<closing-day></closing-day>
 				</div>
 			</li>
 			<li>

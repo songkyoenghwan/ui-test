@@ -74,6 +74,8 @@
 		</li>
 	</ul>
 
+	<txt-none></txt-none>
+
 	<div class="flex justify-center lg:inline-flex">
 		<button
 			type="button"

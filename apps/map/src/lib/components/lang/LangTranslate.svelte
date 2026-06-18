@@ -13,27 +13,23 @@
 />
 
 <script lang="ts">
+	import { createTranslateLang, LANG_KEYS, type Props, type ViewStateRecord } from '$/lib/types/lang/LangTranslate.type';
 	import { langStore } from '$lib/stores/langStore';
-	import { tick } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let {
-		itemId = uuidv4(),
-		open = 'close',
-		lang = $bindable({
-			ko: { value: '', error: false },
-			en: { value: '', error: false },
-			zh: { value: '', error: false },
-			ja: { value: '', error: false },
-			th: { value: '', error: false },
-			vi: { value: '', error: false },
-		}),
-		maxlength,
-		view = 'reg',
-	} = $props();
-	const langKeys = $state(['ko', 'en', 'zh', 'ja', 'th', 'vi']);
+	let { itemId = uuidv4(), open = 'close', lang = $bindable(createTranslateLang()), maxlength, view = 'reg' }: Props = $props();
+	const langKeys = ['ko', 'en', 'zh', 'ja', 'th', 'vi'] as const;
 	let langToggle = $state(false);
-	let enELm: HTMLInputElement | undefined = $state();
+	let viewStates = $derived.by(() => {
+		let states = {} as ViewStateRecord;
+
+		for (const k of LANG_KEYS) {
+			states[k] = ['ko', 'en'].includes(k) || $langStore.lang[k as keyof typeof $langStore.lang];
+		}
+
+		return states;
+	});
+	let btnView = $derived($langStore.lang.zh || $langStore.lang.ja || $langStore.lang.th || $langStore.lang.vi);
 
 	$effect.pre(() => {
 		if (!$host()) return;
@@ -53,10 +49,6 @@
 			}
 		};
 	});
-
-	const focusEn = () => {
-		if (enELm) enELm.focus();
-	};
 </script>
 
 {#if view === 'detail'}
@@ -64,10 +56,10 @@
 		{#each langKeys as key}
 			{@const item = lang[key]}
 
-			{#if key === 'ko' || key === 'en' || (key === 'zh' && $langStore.lang.zh) || (key === 'zh' && $langStore.lang.ja) || (key === 'zh' && $langStore.lang.ja) || (key === 'th' && $langStore.lang.th) || (key === 'vi' && $langStore.lang.vi)}
-				<li class="grid min-h-10 grid-cols-[44px_1fr] place-content-center">
-					<ui-txt txt={key.toLocaleUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
-					{item.value}
+			{#if viewStates[key]}
+				<li class="grid min-h-10 grid-cols-[44px_1fr] place-content-center text-sm">
+					<ui-txt size="sm" txt={key.toLocaleUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
+					<ui-txt size="sm" txt={item.value} cls="text-black"></ui-txt>
 				</li>
 			{/if}
 		{/each}
@@ -77,16 +69,15 @@
 		<ul class="flex flex-col gap-2">
 			{#each langKeys as key}
 				{@const item = lang[key]}
-
-				{#if key === 'ko' || key === 'en' || (key === 'zh' && $langStore.lang.zh) || (key === 'zh' && $langStore.lang.ja) || (key === 'zh' && $langStore.lang.ja) || (key === 'th' && $langStore.lang.th) || (key === 'vi' && $langStore.lang.vi)}
+				{#if viewStates[key]}
 					<li
 						class={[
 							'grid grid-cols-[28px_1fr] items-center gap-1 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
 							key === 'ko' ||
 							key === 'en' ||
 							(key === 'zh' && langToggle) ||
-							(key === 'zh' && langToggle) ||
-							(key === 'zh' && langToggle) ||
+							(key === 'ja' && langToggle) ||
+							(key === 'ja' && langToggle) ||
 							(key === 'th' && langToggle) ||
 							(key === 'vi' && langToggle)
 								? ''
@@ -126,7 +117,7 @@
 			{/each}
 		</ul>
 
-		{#if $langStore.lang.zh || $langStore.lang.ja || $langStore.lang.th || $langStore.lang.vi}
+		{#if btnView}
 			<div class="mt-2 flex items-center gap-2">
 				<ui-btn
 					variant="secondary"

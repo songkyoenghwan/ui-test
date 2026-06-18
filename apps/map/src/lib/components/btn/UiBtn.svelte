@@ -5,6 +5,7 @@
 		props: {
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
 			tag: { type: 'String' },
+			link: { type: 'String' },
 			txt: { type: 'String', reflect: true },
 			variant: { type: 'String' },
 			cls: { type: 'String' },
@@ -31,6 +32,7 @@
 		size?: 'lg' | 'md' | 'sm';
 		itemId?: string;
 		txt?: string;
+		link?: string;
 		value?: string;
 		cls?: string;
 		iconCls?: string;
@@ -58,6 +60,7 @@
 		size = 'md',
 		itemId,
 		txt,
+		link,
 		cls,
 		iconCls,
 		name,
@@ -82,6 +85,10 @@
 		}
 	});
 </script>
+
+{#snippet icon()}
+	<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
+{/snippet}
 
 {#if isSegmented}
 	{#each segmentList as item, i (`seg-${item.name}-${i}`)}
@@ -121,7 +128,7 @@
 		disabled={disabled === true || disabled === 'true' ? true : undefined}
 	>
 		{#if iconName && iconPos === 'lt'}
-			<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
+			{@render icon()}
 		{/if}
 
 		{#if variant === 'icon'}
@@ -132,9 +139,19 @@
 			{txt}
 		{/if}
 		{#if iconName && iconPos === 'rt'}
-			<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
+			{@render icon()}
 		{/if}
 	</svelte:element>
+{:else if !isSegmented && tag === 'a'}
+	<a href={link} class="hover:text-1616ff flex items-center {variant} {size} {cls}" target="_blank">
+		{#if iconName && iconPos === 'lt'}
+			{@render icon()}
+		{/if}
+		{txt}
+		{#if iconName && iconPos === 'rt'}
+			{@render icon()}
+		{/if}
+	</a>
 {:else if !isSegmented && tag === 'chk'}
 	<label for={itemId} class="button segmented {variant} {size} {cls}">
 		<input type="checkbox" id={itemId} {name} {value} bind:checked class="sr-only" onchange={change} />

@@ -273,7 +273,6 @@
 	"dsc_result_txt_4": "복잡한 모델링 작업 없이 영상 촬영만으로 3D Gaussian Splatting 기술을 활용해 {#b}실제 공간에 가까운 3D 공간 모델을 자동 생성.{/b} 몰입감 있는 XR 콘텐츠와 공간 기반 서비스를 빠르게 제작 가능.",
 	"dsc_case_btn_1": "관광·축제",
 	"dsc_case_tit_1_1": "스마트관광 AI 지도 솔루션 도입 (축집사·광집사)",
-	"dsc_case_badge_1_1": "실시간 혼잡도·주차 정보",
 	"dsc_case_badge_1_2": "실시간 혼잡도·주차 정보",
 	"dsc_case_badge_1_3": "QR 간편결제",
 	"dsc_case_badge_1_4": "AI 챗봇",
@@ -580,5 +579,7 @@
 	"floating_btn_2": "트라이얼 신청",
 
 	"not_found_txt": "찾으시는 정보가 이동되었거나 존재하지 않습니다.",
-	"not_found_btn": "메인으로 돌아가기"
+	"not_found_btn": "메인으로 돌아가기",
+
+	"not_news_txt": "등록된 게시글이 없습니다."
 }

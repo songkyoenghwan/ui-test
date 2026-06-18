@@ -16,16 +16,19 @@
 	import type { Placement } from '@floating-ui/utils';
 	import { Button, Tooltip } from 'flowbite-svelte';
 	import { blur, scale, slide } from 'svelte/transition';
+	import * as z from 'zod';
 
-	interface MyTooltipProps {
+	export const TooltipAnimationSchema = z.enum(['blur', 'slide', 'scale', 'none']);
+	type TooltipAnimation = z.infer<typeof TooltipAnimationSchema>;
+	interface Props {
 		btn?: string;
 		txt?: string;
-		animation?: 'blur' | 'slide' | 'scale' | 'none';
+		animation?: TooltipAnimation;
 		placement?: Placement;
 		bg?: string;
 	}
 
-	let { btn = 'tooltip', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-cms-3' }: MyTooltipProps = $props();
+	let { btn = 'tooltip', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-cms-3' }: Props = $props();
 
 	let place = $derived(placement as Placement);
 	let activeTransition = $derived(() => {

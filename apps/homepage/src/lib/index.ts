@@ -17,4 +17,5 @@ import '$lib/components/pages/Term.svelte';
 import '$lib/components/modal/ModalMain.svelte';
 import '$lib/components/banner/BannerFoot.svelte';
 import '$lib/components/pages/NotFound.svelte';
+import '$lib/components/text/TxtNone.svelte';
 import '$lib/styles/index.css';

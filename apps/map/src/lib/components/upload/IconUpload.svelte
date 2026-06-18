@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Dropzone } from 'flowbite-svelte';
 	import { v4 as uuidv4 } from 'uuid';
+
 	let { img = $bindable(), onUpdate }: { img: string; onUpdate: (newImg: string) => void } = $props();
 	let filesInDropzone: FileList | null = $state(null);
 	let previewUrl = $state('');

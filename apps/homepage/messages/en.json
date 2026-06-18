@@ -245,7 +245,6 @@
 
 	"dsc_case_btn_1": "Tourism · Festivals",
 	"dsc_case_tit_1_1": "AI-Powered Smart Tourism Mapping Solution (Chukjipsa & Gwangjipsa)",
-	"dsc_case_badge_1_1": "Real-Time Crowd Density· Parking Info",
 	"dsc_case_badge_1_2": "Real-Time Crowd Density· Parking Info",
 	"dsc_case_badge_1_3": "QR-Based Payments",
 	"dsc_case_badge_1_4": "AI Chatbot",
@@ -623,5 +622,7 @@
 	"floating_btn_2": "Free Trial",
 
 	"not_found_txt": "The information you are looking for has been moved or does not exist.",
-	"not_found_btn": "Return to Main"
+	"not_found_btn": "Return to Main",
+
+	"not_news_txt": "No posts have been registered yet."
 }
