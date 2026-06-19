@@ -27,7 +27,8 @@ export const nodes = [
 	() => import('./nodes/15'),
 	() => import('./nodes/16'),
 	() => import('./nodes/17'),
-	() => import('./nodes/18')
+	() => import('./nodes/18'),
+	() => import('./nodes/19')
 ];
 
 export const server_loads = [];
@@ -37,16 +38,17 @@ export const dictionary = {
 		"/(page)/CMS-CON-001": [6,[3]],
 		"/(page)/CMS-LOC-001": [7,[3]],
 		"/(page)/CMS-LOC-001/reg": [8,[3]],
-		"/(page)/CMS-LOC-001/[...id]": [9,[3]],
-		"/(page)/CMS-MAP-001": [10,[3]],
-		"/(page)/CMS-MAP-002": [11,[3]],
-		"/(page)/CMS-MAP-003": [12,[3]],
-		"/(page)/CMS-MAP-004": [13,[3]],
-		"/(page)/CMS-OBD-001": [14,[3]],
-		"/(page)/CMS-OBD-002": [15,[3]],
-		"/(page)/CMS-STA-001": [16,[3]],
-		"/(page)/CMS-STA-002": [17,[3]],
-		"/(page)/CMS-UI": [18,[3]],
+		"/(page)/CMS-LOC-001/[...id]/detail": [9,[3]],
+		"/(page)/CMS-LOC-001/[...id]/edit": [10,[3]],
+		"/(page)/CMS-MAP-001": [11,[3]],
+		"/(page)/CMS-MAP-002": [12,[3]],
+		"/(page)/CMS-MAP-003": [13,[3]],
+		"/(page)/CMS-MAP-004": [14,[3]],
+		"/(page)/CMS-OBD-001": [15,[3]],
+		"/(page)/CMS-OBD-002": [16,[3]],
+		"/(page)/CMS-STA-001": [17,[3]],
+		"/(page)/CMS-STA-002": [18,[3]],
+		"/(page)/CMS-UI": [19,[3]],
 		"/(menulist)/menulist": [4,[2]]
 	};
 

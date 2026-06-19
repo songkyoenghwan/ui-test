@@ -5,7 +5,6 @@ import { enhancedImages } from '@sveltejs/enhanced-img';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import tailwindcss from '@tailwindcss/vite';
 // import { paraglideVitePlugin } from '@inlang/paraglide-js';
-import UnoCSS from '@unocss/svelte-scoped/vite';
 import { defineConfig } from 'vite';
 
 import { aliases } from './aliases.js';
@@ -21,7 +20,6 @@ export default defineConfig({
 	define: { __STATIC_URL__: JSON.stringify('/output'), 'process.env.NODE_ENV': JSON.stringify('production') },
 	plugins: [
 		enhancedImages(),
-		UnoCSS(),
 		tailwindcss(),
 		svelte(),
 		// paraglideVitePlugin({

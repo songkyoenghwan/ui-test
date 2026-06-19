@@ -7616,7 +7616,7 @@ function nB(e, t) {
 }
 customElements.define("sub-company", Ga(nB, {}, [], []));
 //#endregion
-//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+a76dc86e39b3c2ec/node_modules/@inlang/paraglide-js-svelte/dist/message.js
+//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+fe5321776b50c52c/node_modules/@inlang/paraglide-js-svelte/dist/message.js
 function rB(e) {
 	let { message: t, inputs: n, options: r, ...i } = e, a = n ?? {}, o = i, s = t;
 	if (typeof s.parts != "function") return [s(a, r)];
@@ -7674,7 +7674,7 @@ function rB(e) {
 	return c;
 }
 //#endregion
-//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+a76dc86e39b3c2ec/node_modules/@inlang/paraglide-js-svelte/dist/Message.svelte
+//#region ../../node_modules/.bun/@inlang+paraglide-js-svelte@1.0.3+fe5321776b50c52c/node_modules/@inlang/paraglide-js-svelte/dist/Message.svelte
 var iB = new Set([
 	"$$slots",
 	"$$events",

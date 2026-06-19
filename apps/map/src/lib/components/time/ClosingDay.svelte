@@ -6,6 +6,7 @@
 			itemId: { type: 'String', reflect: true },
 			error: { reflect: true, type: 'Boolean', attribute: 'error' },
 			view: { type: 'String', reflect: true },
+			result: { type: 'Object' },
 		},
 	}}
 />
@@ -15,27 +16,22 @@
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let {
-		itemId = uuidv4(),
-		result = $bindable(createClosingResult()),
-		checked = $bindable(false),
-		error = $bindable(false),
-		view = 'reg',
-	}: Props = $props();
+	let { result = $bindable(createClosingResult()), checked = $bindable(false), error = $bindable(false), view = 'reg' }: Props = $props();
 
-	const list = $derived([
+	let itemId = $state(uuidv4());
+	const list = $state([
 		{ id: `${itemId}-none`, name: 'none', txt: '없음' },
 		{ id: `${itemId}-week`, name: 'week', txt: '요일' },
 		{ id: `${itemId}-day`, name: 'day', txt: '날짜 ' },
 	]);
-	const weekList = $derived([
+	const weekList = $state([
 		{ id: `${itemId}-first`, name: '1', txt: '첫째' },
 		{ id: `${itemId}-second`, name: '2', txt: '둘째' },
 		{ id: `${itemId}-third`, name: '3', txt: '셋째' },
 		{ id: `${itemId}-fourth`, name: '4', txt: '넷째' },
 		{ id: `${itemId}-last`, name: 'last', txt: '마지막' },
 	]);
-	const dayWeekList = $derived([
+	const dayWeekList = $state([
 		{ id: `${itemId}-mon`, name: 'mon', txt: '월' },
 		{ id: `${itemId}-tue`, name: 'tue', txt: '화' },
 		{ id: `${itemId}-wed`, name: 'wed', txt: '수' },
@@ -44,6 +40,7 @@
 		{ id: `${itemId}-sat`, name: 'sat', txt: '토' },
 		{ id: `${itemId}-sun`, name: 'sun', txt: '일' },
 	]);
+
 	let lastStatus = result.status;
 	let allWeek = $state('');
 	let hasWeek = $derived(allWeek === 'all-week' || (result.week?.length ?? 0) > 0);
@@ -69,28 +66,6 @@
 			}
 
 			lastStatus = currentStatus;
-		}
-	});
-
-	$effect(() => {
-		const host = $host();
-		if (host) {
-			Object.defineProperty(host, 'result', {
-				get() {
-					return $state.snapshot(result);
-				},
-				set(val) {
-					if (val) {
-						result.status = val.status ?? 'none';
-						result.week = val.week ?? [''];
-						allWeek = val.allWeek ?? '';
-						result.dayWeek = val.dayWeek ?? [''];
-						result.day = val.day ?? '';
-					}
-				},
-				configurable: true,
-				enumerable: true,
-			});
 		}
 	});
 

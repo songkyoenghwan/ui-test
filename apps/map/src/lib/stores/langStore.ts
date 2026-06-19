@@ -2,15 +2,6 @@ import { type LangChkProps } from '$lib/types/lang/langChk.type';
 import { type LangTranslateKey } from '$lib/types/lang/LangTranslate.type';
 import { map } from 'nanostores';
 
-export interface LangAll {
-	ko: { value: string; error: boolean };
-	en: { value: string; error: boolean };
-	zh?: { value: string; error: boolean };
-	ja?: { value: string; error: boolean };
-	th?: { value: string; error: boolean };
-	vi?: { value: string; error: boolean };
-}
-
 // Nanostores Map 스토어 개통 (Svelte 컴포넌트 구독용으로 관례상 $ 기호 명명)
 export const langStore = map<LangChkProps>({
 	lang: {

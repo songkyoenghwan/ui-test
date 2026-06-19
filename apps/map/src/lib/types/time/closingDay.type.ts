@@ -12,7 +12,6 @@ export const ClosingResultSchema = z.object({
 export type ClosingResult = z.infer<typeof ClosingResultSchema>;
 
 export interface Props {
-	itemId?: string;
 	result?: ClosingResult;
 	checked?: boolean;
 	error?: boolean;

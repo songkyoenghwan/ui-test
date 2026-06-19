@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	function initTmap() {
 		const map = new Tmapv3.Map('map_div', {
 			httpsMode: true,
@@ -27,106 +25,108 @@
 		}
 	}
 
-	onMount(async () => {
-		const mapListEl = document?.querySelector('map-list');
-		const mapRegEl = document?.querySelector('map-reg');
+	$effect(() => {
+		(async () => {
+			const mapListEl = document?.querySelector('map-list');
+			const mapRegEl = document?.querySelector('map-reg');
 
-		if (!mapListEl || !('list' in mapListEl)) return;
+			if (!mapListEl || !('list' in mapListEl)) return;
 
-		// 예: 서버에서 데이터를 가져오거나, 일부러 async 처리
-		const dataPromise = await new Promise((resolve) => {
-			const items = Array.from({ length: 500 }, (_, i) => ({
-				id: `poi_${i}`,
-				tit: i === 0 ? '' : `LS 용산타워 LS 용산타워 LS 용산타워 LS 용산타워 ${i}`,
-				poi: `PoI${(i % 100) + 1}`,
-				ko: 'k',
-				en: 'e',
-				zh: 'z',
-				ja: 'j',
-				th: 't',
-				vi: 'v',
-				lat: '34.9732111',
-				lon: '127.7343111',
-				addr: '전남 순천시 국가정원1호길 90',
-				places:
-					i === 0
-						? 0
-						: i === 1
-							? []
-							: [
-									{
-										id: `place_1_${i}`,
-										tit: `터키 아이스크림_${i}`,
-										top: '식당·카페',
-										bottom: '푸드 트럭',
-										category: 'food',
-									},
-									{
-										id: `place_2_${i}`,
-										tit: '어딘가에 위치한 화장실어딘가에 위치한 화장실',
-										top: '상위',
-										bottom: '하위',
-										category: 'toilet',
-									},
-									{ id: `place_3_${i}`, tit: '안내소', top: '안내', bottom: '안내소', category: 'toilet' },
-								],
-			}));
-			resolve(items);
-		});
+			// 예: 서버에서 데이터를 가져오거나, 일부러 async 처리
+			const dataPromise = await new Promise((resolve) => {
+				const items = Array.from({ length: 500 }, (_, i) => ({
+					id: `poi_${i}`,
+					tit: i === 0 ? '' : `LS 용산타워 LS 용산타워 LS 용산타워 LS 용산타워 ${i}`,
+					poi: `PoI${(i % 100) + 1}`,
+					ko: 'k',
+					en: 'e',
+					zh: 'z',
+					ja: 'j',
+					th: 't',
+					vi: 'v',
+					lat: '34.9732111',
+					lon: '127.7343111',
+					addr: '전남 순천시 국가정원1호길 90',
+					places:
+						i === 0
+							? 0
+							: i === 1
+								? []
+								: [
+										{
+											id: `place_1_${i}`,
+											tit: `터키 아이스크림_${i}`,
+											top: '식당·카페',
+											bottom: '푸드 트럭',
+											category: 'food',
+										},
+										{
+											id: `place_2_${i}`,
+											tit: '어딘가에 위치한 화장실어딘가에 위치한 화장실',
+											top: '상위',
+											bottom: '하위',
+											category: 'toilet',
+										},
+										{ id: `place_3_${i}`, tit: '안내소', top: '안내', bottom: '안내소', category: 'toilet' },
+									],
+				}));
+				resolve(items);
+			});
 
-		mapListEl.list = dataPromise;
+			mapListEl.list = dataPromise;
 
-		mapListEl.addEventListener('poi-click', (e) => {
-			// poi itme 버튼 이벤트
-			console.log(e.detail);
+			mapListEl.addEventListener('poi-click', (e) => {
+				// poi itme 버튼 이벤트
+				console.log(e.detail);
 
-			if (!mapRegEl) return;
-			mapRegEl.open = 'open';
+				if (!mapRegEl) return;
+				mapRegEl.open = 'open';
 
-			const { item } = e.detail;
+				const { item } = e.detail;
 
-			// mapRegEl.id = item.id;
-			// mapRegEl.poi = item.poi;
-			// mapRegEl.ko = item.ko;
-			// mapRegEl.en = item.en;
-			// mapRegEl.zh = item.zh;
-			// mapRegEl.ja = item.ja;
-			// mapRegEl.th = item.th;
-			// mapRegEl.vi = item.vi;
-			// mapRegEl.lat = item.lat;
-			// mapRegEl.lon = item.lon;
-			// mapRegEl.addr = item.addr;
-			// mapRegEl.places = item.places;
+				// mapRegEl.id = item.id;
+				// mapRegEl.poi = item.poi;
+				// mapRegEl.ko = item.ko;
+				// mapRegEl.en = item.en;
+				// mapRegEl.zh = item.zh;
+				// mapRegEl.ja = item.ja;
+				// mapRegEl.th = item.th;
+				// mapRegEl.vi = item.vi;
+				// mapRegEl.lat = item.lat;
+				// mapRegEl.lon = item.lon;
+				// mapRegEl.addr = item.addr;
+				// mapRegEl.places = item.places;
 
-			Object.assign(mapRegEl, item);
-		});
+				Object.assign(mapRegEl, item);
+			});
 
-		mapRegEl.addEventListener('auto-translate', (e) => {
-			// 자동 번역 버튼 이벤트
-			console.log(e);
-		});
+			mapRegEl.addEventListener('auto-translate', (e) => {
+				// 자동 번역 버튼 이벤트
+				console.log(e);
+			});
 
-		document.querySelector('alert-popup')?.addEventListener('alert-cancel', (e) => {
-			// 알림 팝업 취소 이벤트
-			console.log(e);
-		});
-		document.querySelector('alert-popup')?.addEventListener('alert-confirm', (e) => {
-			// 알림 팝업 확인 이벤트
-			console.log(e);
-		});
+			document.querySelector('alert-popup')?.addEventListener('alert-cancel', (e) => {
+				// 알림 팝업 취소 이벤트
+				console.log(e);
+			});
+			document.querySelector('alert-popup')?.addEventListener('alert-confirm', (e) => {
+				// 알림 팝업 확인 이벤트
+				console.log(e);
+			});
 
-		document.querySelector('map-reg')?.addEventListener('pos-del', (e) => {
-			// 알림 팝업 취소 이벤트
-			console.log(e);
-			document.querySelector('alert-popup').open = 'open';
-			document.querySelector('alert-popup').txt = '작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
-		});
-		document.querySelector('map-reg')?.addEventListener('pos-save', (e) => {
-			// 알림 팝업 확인 이벤트
-			console.log(e);
-			document.querySelector('alert-popup').open = 'open';
-			document.querySelector('alert-popup').txt = '저장 시 사용자 지도에 즉시 반영됩니다.<br />저장하시겠습니까?';
-		});
+			document.querySelector('map-reg')?.addEventListener('pos-del', (e) => {
+				// 알림 팝업 취소 이벤트
+				console.log(e);
+				document.querySelector('alert-popup').open = 'open';
+				document.querySelector('alert-popup').txt = '작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
+			});
+			document.querySelector('map-reg')?.addEventListener('pos-save', (e) => {
+				// 알림 팝업 확인 이벤트
+				console.log(e);
+				document.querySelector('alert-popup').open = 'open';
+				document.querySelector('alert-popup').txt = '저장 시 사용자 지도에 즉시 반영됩니다.<br />저장하시겠습니까?';
+			});
+		})();
 	});
 
 	function mapRegElPlaces() {
@@ -135,9 +135,13 @@
 	}
 </script>
 
+<svelte:head>
+	<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ" async></script>
+</svelte:head>
+
 <top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip>
 
-<section id="map_div" {@attach initTmap} class="grid size-full"></section>
+<section id="map_div" class="grid size-full"></section>
 
 <section class="map-list">
 	<header class="map-list__header">

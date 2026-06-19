@@ -9,7 +9,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"doctor": "svelte-doctor check",
 		"dev": "vite --host --port 5184",
-		"mock": "json-server --watch ./static/json/db.json --port 4000",
+		"mock": "json-server --watch ./static/json/db.json --port 5185",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",
 		"fm": "prettier --write . && oxfmt",

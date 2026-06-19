@@ -133,11 +133,7 @@
 		<a
 			class="group/lnb-link shadow-1xs grid size-full place-items-center rounded-lg border border-transparent p-1 transition-colors hover:border-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-2xs"
 			aria-current={displayName === id ? 'page' : undefined}
-			href={link}
-			onclick={(e) => {
-				e.stopPropagation();
-				handleNavClick(id, link);
-			}}
+			href={`/${link}`}
 		>
 			<icon-list
 				data-name={hoveredId === id || displayName === id ? `${icon}-on` : icon}

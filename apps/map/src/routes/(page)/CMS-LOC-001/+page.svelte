@@ -111,14 +111,7 @@
 						<tr>
 							<td>99</td>
 							<td>
-								<a
-									href="/"
-									class="flex items-center gap-2 text-left"
-									onclick={(e) => {
-										e.preventDefault();
-										goto(`/CMS-LOC-001/${item.id}`);
-									}}
-								>
+								<a href={`/CMS-LOC-001/${item.id}`} class="flex items-center gap-2 text-left">
 									<p style="background-color: {item?.custom?.color || 'transparent'};" class="size-4 rounded-xs"></p>
 									{item?.name?.ko?.value}
 								</a>

@@ -1,3 +1,3 @@
-import * as universal from "../../../../src/routes/(page)/CMS-LOC-001/[...id]/+page.ts";
+import * as universal from "../../../../src/routes/(page)/CMS-LOC-001/[...id]/detail/+page.ts";
 export { universal };
-export { default as component } from "../../../../src/routes/(page)/CMS-LOC-001/[...id]/+page.svelte";
+export { default as component } from "../../../../src/routes/(page)/CMS-LOC-001/[...id]/detail/+page.svelte";

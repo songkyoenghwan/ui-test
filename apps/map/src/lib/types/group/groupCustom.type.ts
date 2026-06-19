@@ -50,23 +50,19 @@ export interface Props {
 
 //  무결점 팩토리 함수 (객체 붕괴 방어막)
 export const createDefaultConfigResult = (): ConfigResult => ({
-	color: '#16b17d',
-
-	//  2-Depth 객체가 undefined가 되어 화면이 뻗는 것을 원천 봉쇄합니다.
+	color: '#14b871',
 	features: {
 		ai: false,
 		zone: false,
-		zoneUse: '',
-		facility: false,
-		facilityUse: '',
+		zoneUse: '0',
+		facility: true,
+		facilityUse: '0',
 	},
-
 	information: {
 		location: false,
-		locationUse: '',
+		locationUse: '0',
 		address: false,
-		sorting: 'Y', // 기본 정렬값 세팅
+		sorting: 'MANUAL',
 	},
-
 	btnLink: [],
 });

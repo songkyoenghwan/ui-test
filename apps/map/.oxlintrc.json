@@ -21,7 +21,6 @@
     "**/.astro/",
     "**/.vscode/",
     "examples/",
-    "static/",
     "public/",
     "public/libs/**",
     "src/paraglide/",

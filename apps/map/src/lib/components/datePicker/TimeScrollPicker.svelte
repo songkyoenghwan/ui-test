@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { useClickOutside } from '@ariefsn/svelte-use';
 	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 
 	let { value = $bindable('00:00'), cls = '' } = $props();
@@ -21,13 +20,6 @@
 	let currentVisibleCount = $derived(isExpanded ? 5 : 1);
 	let timeRef: HTMLElement | null = $state(null);
 
-	useClickOutside(
-		() => timeRef,
-		() => {
-			isExpanded = false;
-		},
-	);
-
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
@@ -35,6 +27,8 @@
 		}
 	}
 </script>
+
+<svelte:window onclick={() => (isExpanded = false)} />
 
 <div class="relative z-5" bind:this={timeRef}>
 	<input

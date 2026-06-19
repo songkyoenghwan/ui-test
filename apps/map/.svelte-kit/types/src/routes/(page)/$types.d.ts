@@ -11,12 +11,14 @@ type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
 type PageParentData = Omit<EnsureDefined<import('../$types.js').LayoutData>, keyof LayoutData> & EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/(page)" | "/(page)/CMS-CON-001" | "/(page)/CMS-LOC-001" | "/(page)/CMS-LOC-001/reg" | "/(page)/CMS-LOC-001/[...id]" | "/(page)/CMS-MAP-001" | "/(page)/CMS-MAP-002" | "/(page)/CMS-MAP-003" | "/(page)/CMS-MAP-004" | "/(page)/CMS-OBD-001" | "/(page)/CMS-OBD-002" | "/(page)/CMS-STA-001" | "/(page)/CMS-STA-002" | "/(page)/CMS-UI"
+type LayoutRouteId = RouteId | "/(page)" | "/(page)/CMS-CON-001" | "/(page)/CMS-LOC-001" | "/(page)/CMS-LOC-001/reg" | "/(page)/CMS-LOC-001/[...id]/detail" | "/(page)/CMS-LOC-001/[...id]/edit" | "/(page)/CMS-MAP-001" | "/(page)/CMS-MAP-002" | "/(page)/CMS-MAP-003" | "/(page)/CMS-MAP-004" | "/(page)/CMS-OBD-001" | "/(page)/CMS-OBD-002" | "/(page)/CMS-STA-001" | "/(page)/CMS-STA-002" | "/(page)/CMS-UI"
 type LayoutParams = RouteParams & { id?: string | undefined }
 type LayoutParentData = EnsureDefined<import('../$types.js').LayoutData>;
 
 export type PageServerData = null;
-export type PageData = Expand<PageParentData>;
+export type PageLoad<OutputData extends OutputDataShape<PageParentData> = OutputDataShape<PageParentData>> = Kit.Load<RouteParams, PageServerData, PageParentData, OutputData, RouteId>;
+export type PageLoadEvent = Parameters<PageLoad>[0];
+export type PageData = Expand<Omit<PageParentData, keyof Kit.LoadProperties<Awaited<ReturnType<typeof import('./proxy+page.js').load>>>> & OptionalUnion<EnsureDefined<Kit.LoadProperties<Awaited<ReturnType<typeof import('./proxy+page.js').load>>>>>>;
 export type PageProps = { params: RouteParams; data: PageData }
 export type LayoutServerData = null;
 export type LayoutLoad<OutputData extends OutputDataShape<LayoutParentData> = OutputDataShape<LayoutParentData>> = Kit.Load<LayoutParams, LayoutServerData, LayoutParentData, OutputData, LayoutRouteId>;

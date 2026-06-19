@@ -8,7 +8,6 @@ export const OperatingResultSchema = z.object({
 export type OperatingResult = z.infer<typeof OperatingResultSchema>;
 
 export interface Props {
-	itemId?: string;
 	result?: OperatingResult;
 	checked?: boolean;
 	disabled?: boolean;

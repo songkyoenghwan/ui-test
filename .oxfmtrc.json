@@ -38,7 +38,6 @@
 		".svelte-kit/",
 		".astro/",
 		"public/",
-		"static/",
 		"src/paraglide/",
 		".vscode/",
 		"**/*.ejs",

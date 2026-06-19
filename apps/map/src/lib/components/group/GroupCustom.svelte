@@ -21,31 +21,10 @@
 	import ColorPicker, { ChromeVariant } from 'svelte-awesome-color-picker';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let { result = $bindable(createDefaultConfigResult()), view = 'reg' }: Props = $props();
-
+	let { result = $bindable(), view = 'reg' }: Props = $props();
 	let isPickerOpen = $state(false);
-
-	let stateResult = $state(
-		result || {
-			color: '#14b871',
-			features: {
-				ai: false,
-				zone: false,
-				zoneUse: '0',
-				facility: true,
-				facilityUse: '0',
-			},
-			information: {
-				location: false,
-				locationUse: '0',
-				address: false,
-				sorting: 'MANUAL',
-			},
-			btnLink: [],
-		},
-	);
-
-	const rdoList = [
+	let stateResult = $state(result ?? createDefaultConfigResult());
+	let rdoList = $state([
 		{
 			id: uuidv4(),
 			txt: '직접 지정',
@@ -56,7 +35,7 @@
 			txt: '운영 상태 순',
 			value: 'STATUS',
 		},
-	];
+	]);
 
 	function createNewBtnLink(): BtnLink {
 		return {

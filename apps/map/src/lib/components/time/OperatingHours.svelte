@@ -13,7 +13,7 @@
 <script lang="ts">
 	import TimeScrollPicker from '$/lib/components/datePicker/TimeScrollPicker.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
-	import { createDefaultOperatingHourResult, type Props } from '$lib/types/time/operatingHours.type';
+	import { createDefaultOperatingHourCol, createDefaultOperatingHourResult, type Props } from '$lib/types/time/operatingHours.type';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let {
@@ -23,6 +23,13 @@
 		error = false,
 		view = 'reg',
 	}: Props = $props();
+
+	// $effect(() => {
+	// 	if (!result) {
+	// 		result = createDefaultOperatingHourResult();
+	// 		addTime();
+	// 	}
+	// });
 
 	const list = $derived([
 		{ id: `${itemId}-always`, name: 'always', txt: '매일' },
@@ -38,60 +45,29 @@
 		{ id: `${itemId}-sun`, name: 'sun', txt: '일' },
 	]);
 
-	let localResult = $derived(result.cols || []);
-	let isInitialized = false;
-	$effect(() => {
-		if (localResult && localResult.length > 0) {
-			if (!isInitialized) {
-				result.cols = JSON.parse(JSON.stringify(result.cols));
-				isInitialized = true;
-			}
-		} else if (!result || result.cols?.length === 0) {
-			const uniqueId = uuidv4();
-			result.cols = [
-				{
-					id: uniqueId,
-					dayWeek: [],
-					time: [
-						{
-							rest: false,
-							error: false,
-							timeStart: '',
-							timeEnd: '',
-							restStart: '',
-							restEnd: '',
-						},
-					],
-				},
-			];
-			isInitialized = true;
-		}
-	});
+	let localResult = $state(result?.cols || []);
+	let resStatus = $state(result?.status || 'always');
 
 	$effect(() => {
-		if (result.status !== 'always' && result.status !== 'week') {
-			result.status = localResult.length > 0 ? 'week' : 'always';
+		if (resStatus !== 'always' && resStatus !== 'week') {
+			resStatus = localResult.length > 0 ? 'week' : 'always';
 		}
 	});
 
 	function addTime() {
+		if (!result) return;
 		const uniqueId = uuidv4();
-		result.cols = [
-			...localResult,
-			{
-				id: uniqueId,
-				dayWeek: [],
-				time: [{ rest: false, error: false, timeStart: '', timeEnd: '', restStart: '', restEnd: '' }],
-			},
-		];
+		result.cols?.push(createDefaultOperatingHourCol(uniqueId));
 	}
 
 	function deleteTime(id: string) {
+		if (!result) return;
 		if (localResult.length <= 1) return;
 		result.cols = localResult.filter((item) => item.id !== id);
 	}
 
 	function toggleRestTime(id: string, status: boolean) {
+		if (!result) return;
 		result.cols = localResult.map((item) => {
 			if (item.id === id) {
 				return {
@@ -107,24 +83,6 @@
 			return item;
 		});
 	}
-	$effect(() => {
-		const host = $host();
-		if (host) {
-			Object.defineProperty(host, 'result', {
-				get() {
-					return $state.snapshot(result);
-				},
-				set(val) {
-					if (val) {
-						result.status = val.status ?? 'always';
-						result.cols = val.cols ?? [];
-					}
-				},
-				configurable: true,
-				enumerable: true,
-			});
-		}
-	});
 
 	const getFormattedDayText = (days: string[] = []) => {
 		if (days.length === 0) return '';
@@ -167,14 +125,7 @@
 {:else}
 	<div class="felx-wrap flex flex-col gap-2">
 		<div class="flex w-32 gap-2">
-			<UiBtn
-				tag="label"
-				variant="segmented"
-				name={`${itemId}-operating-hours`}
-				arr={list}
-				cls="flex-1"
-				bind:selected={result.status}
-			/>
+			<UiBtn tag="label" variant="segmented" name={`${itemId}-operating-hours`} arr={list} cls="flex-1" bind:selected={localResult} />
 		</div>
 
 		{#if result.status === 'week'}

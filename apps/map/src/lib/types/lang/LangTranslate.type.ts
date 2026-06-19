@@ -6,7 +6,6 @@ export const LangField = z.object({
 });
 
 export const TranslateSchema = z.object({
-	itemId: z.uuid(),
 	open: z.enum(['open', 'close']).default('close'),
 	lang: z.object({
 		ko: LangField,
@@ -28,6 +27,21 @@ export type ViewStateRecord = Record<LangTranslateKey, boolean>;
 
 export const LANG_KEYS: LangTranslateKey[] = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
 
+export const LangInfoSchema = z.object({
+	key: z.enum([...LANG_KEYS]),
+	label: z.string(),
+});
+export type LangInfo = z.infer<typeof LangInfoSchema>;
+
+export const LANGS: LangInfo[] = [
+	{ key: 'ko', label: '한국어(KO)' },
+	{ key: 'en', label: '영어(EN)' },
+	{ key: 'zh', label: '중국어(ZH)' },
+	{ key: 'ja', label: '일본어(JA)' },
+	{ key: 'th', label: '태국어(TH)' },
+	{ key: 'vi', label: '베트남어(VI)' },
+];
+
 export const createTranslateLang = (): TranslateProps['lang'] => ({
 	ko: { value: '', error: false },
 	en: { value: '', error: false },
@@ -38,7 +52,6 @@ export const createTranslateLang = (): TranslateProps['lang'] => ({
 });
 
 export interface Props {
-	itemId?: string;
 	open?: 'open' | 'close';
 	lang?: TranslateProps['lang'];
 	maxlength?: number;
