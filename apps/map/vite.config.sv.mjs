@@ -29,34 +29,6 @@ export default defineConfig({
 		// 	outdir: './src/paraglide',
 		//	strategy: ['localStorage', 'cookie', 'preferredLanguage', 'baseLocale'],
 		// }),
-		// {
-		// 	name: 'remove-unwanted-public',
-		// 	async writeBundle() {
-		// 		const foldersToRemove = [
-		// 			'wc/lit/api',
-		// 			'wc/lit/html',
-		// 			'wc/lit/css',
-		// 			'wc/lit/dummy',
-		// 			'wc/lit/libs',
-		// 			'wc/vue/api',
-		// 			'wc/vue/html',
-		// 			'wc/vue/css',
-		// 			'wc/vue/dummy',
-		// 			'wc/vue/libs',
-		// 			'wc/vue/images',
-		// 			'wc/svelte/api',
-		// 			'wc/svelte/html',
-		// 			'wc/svelte/css',
-		// 			'wc/svelte/dummy',
-		// 			'wc/svelte/libs',
-		// 			'mockServiceWorker.js',
-		// 		];
-
-		// 		for (const folder of foldersToRemove) {
-		// 			await fs.rm(folder, { recursive: true, force: true });
-		// 		}
-		// 	},
-		// },
 	],
 	build: {
 		outDir: './output',
@@ -69,7 +41,6 @@ export default defineConfig({
 		},
 		rolldownOptions: {
 			//	external: ['svelte'],
-
 			output: {
 				globals: { svelte: 'Svelte' },
 				// ✨ CSS와 기타 자산 파일 이름 지정

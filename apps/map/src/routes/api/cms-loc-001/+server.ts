@@ -1,13 +1,11 @@
-import type { PageServerLoad } from './$types';
-
-export const load: PageServerLoad = async ({ fetch }) => {
-	const res = await fetch('/api/cms-loc-001');
-
+export const GET = async ({ fetch }) => {
+	const res = await fetch('/json/db.json');
 	if (!res.ok) {
-		throw new Error('Failed to load API');
+		return new Response('Failed to load db.json', { status: 500 });
 	}
 
 	const list = await res.json();
-
-	return { list };
+	return new Response(JSON.stringify(list), {
+		headers: { 'content-type': 'application/json' },
+	});
 };

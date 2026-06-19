@@ -125,8 +125,6 @@
 
 	--text-2sm: var(--text-2sm);
 	--text-2md: var(--text-2md);
-
-	--breakpoint-3xl: var(--breakpoint-3xl);
 }
 
 @layer base {
@@ -443,10 +441,6 @@
 			@apply border border-transparent hover:border-slate-100 hover:bg-slate-100 focus:border-slate-300 focus:bg-slate-200 active:border-slate-300 active:bg-slate-200;
 		}
 
-		&[data-btn='input-del'] {
-			@apply absolute top-0 right-0 z-2 hidden;
-		}
-
 		&label {
 			@apply px-0.5;
 		}
@@ -489,10 +483,6 @@
 
 		& > .input-text {
 			@apply bg-[url(/imgs/date/search.svg)] bg-size-[16px_16px] bg-position-[12px_center] bg-no-repeat pl-10 placeholder:text-sm;
-		}
-
-		& > button[data-btn='input-del'] {
-			@apply hidden peer-not-placeholder-shown:flex;
 		}
 	}
 

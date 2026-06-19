@@ -1,7 +1,6 @@
-import { r as hydratable } from "./index-server.js";
-import { _t as stringify_string, dt as get_type, ft as is_plain_object$1, gt as stringify_key, ht as is_valid_array_len, lt as DevalueError, mt as is_valid_array_index, pt as is_primitive, ut as enumerable_symbols, vt as valid_array_indices, yt as MAX_ARRAY_INDEX } from "./dev.js";
+import { a as is_plain_object$1, c as is_valid_array_len, d as valid_array_indices, f as MAX_ARRAY_INDEX, i as get_type, l as stringify_key, n as DevalueError, o as is_primitive, r as enumerable_symbols, s as is_valid_array_index, u as stringify_string } from "./uneval.js";
 import { HttpError, SvelteKitError } from "@sveltejs/kit/internal";
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/functions.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/utils/functions.js
 function noop() {}
 /**
 * @template T
@@ -436,7 +435,7 @@ function stringify_primitive(thing) {
 	return String(thing);
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/utils.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/utils.js
 var text_encoder = new TextEncoder();
 /**
 * Like node's path.relative, but without using node
@@ -480,7 +479,7 @@ function base64_decode(encoded) {
 	return bytes;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/error.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/utils/error.js
 /**
 * @param {unknown} err
 * @return {Error}
@@ -510,7 +509,7 @@ function get_message(error) {
 	return error instanceof SvelteKitError ? error.text : "Internal Error";
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/shared.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/shared.js
 /** @import { Transport } from '@sveltejs/kit' */
 /**
 * @param {string} route_id
@@ -711,16 +710,5 @@ function split_remote_key(key) {
 		payload: key.slice(i + 1)
 	};
 }
-/**
-* @template T
-* @param {string} key
-* @param {() => T} fn
-* @returns {T}
-* @deprecated TODO remove in SvelteKit 3.0
-*/
-function unfriendly_hydratable(key, fn) {
-	if (!hydratable) throw new Error("Remote functions require Svelte 5.44.0 or later");
-	return hydratable(key, fn);
-}
 //#endregion
-export { text_encoder as _, split_remote_key as a, noop as b, unfriendly_hydratable as c, coalesce_to_error as d, get_message as f, get_relative_path as g, base64_encode as h, parse_remote_arg as i, validate_depends as l, normalize_error as m, TRAILING_SLASH_PARAM as n, stringify as o, get_status as p, create_remote_key as r, stringify_remote_arg as s, INVALIDATED_PARAM as t, validate_load_response as u, stringify$1 as v, once as x, parse as y };
+export { stringify$1 as _, split_remote_key as a, once as b, validate_depends as c, get_message as d, get_status as f, text_encoder as g, get_relative_path as h, parse_remote_arg as i, validate_load_response as l, base64_encode as m, TRAILING_SLASH_PARAM as n, stringify as o, normalize_error as p, create_remote_key as r, stringify_remote_arg as s, INVALIDATED_PARAM as t, coalesce_to_error as u, parse as v, noop as y };

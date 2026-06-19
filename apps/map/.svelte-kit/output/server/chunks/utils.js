@@ -1,9 +1,9 @@
-import { d as coalesce_to_error, f as get_message, p as get_status, y as parse } from "./shared.js";
-import { ct as uneval } from "./dev.js";
+import { d as get_message, f as get_status, u as coalesce_to_error, v as parse } from "./shared.js";
+import { t as uneval } from "./uneval.js";
 import { json, text } from "@sveltejs/kit";
 import { HttpError, SvelteKitError } from "@sveltejs/kit/internal";
 import { with_request_store } from "@sveltejs/kit/internal/server";
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/constants.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/constants.js
 /**
 * A fake asset path used in `vite dev` and `vite preview`, so that we can
 * serve local assets while verifying that requests are correctly prefixed
@@ -168,7 +168,7 @@ parseSetCookie.parse = parseSetCookie;
 parseSetCookie.parseString = parseString;
 parseSetCookie.splitCookiesString = splitCookiesString;
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/form-utils.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/form-utils.js
 /** @import { RemoteForm } from '@sveltejs/kit' */
 /** @import { BinaryFormMeta, InternalRemoteFormIssue } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -203,6 +203,7 @@ function convert_formdata(data) {
 		if (is_array) key = key.slice(0, -2);
 		if (values.length > 1 && !is_array) throw new Error(`Form cannot contain duplicated keys — "${key}" has ${values.length} values`);
 		values = values.filter((entry) => typeof entry === "string" || entry.name !== "" || entry.size > 0);
+		if (values.length === 0 && !is_array) continue;
 		if (key.startsWith("n:")) {
 			key = key.slice(2);
 			values = values.map((v) => v === "" ? void 0 : parseFloat(v));
@@ -739,7 +740,7 @@ function throw_on_old_property_access(instance) {
 	} });
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/http.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/utils/http.js
 /**
 * Given an Accept header and a list of possible content types, pick
 * the most suitable one to respond with
@@ -811,10 +812,10 @@ function is_form_content_type(request) {
 	return is_content_type(request, "application/x-www-form-urlencoded", "multipart/form-data", "text/plain", BINARY_FORM_CONTENT_TYPE);
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/misc.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/utils/misc.js
 var s = JSON.stringify;
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/escape.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/utils/escape.js
 /**
 * When inside a double-quoted attribute value, only `&` and `"` hold special meaning.
 * @see https://html.spec.whatwg.org/multipage/parsing.html#attribute-value-(double-quoted)-state
@@ -850,7 +851,7 @@ function escape_html(str, is_attr) {
 	});
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/server/utils.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/server/utils.js
 /** @import { ServerHooks } from 'types' */
 /**
 * @param {Partial<Record<import('types').HttpMethod, any>>} mod

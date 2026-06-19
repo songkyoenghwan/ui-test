@@ -1,3 +1,11 @@
+// in dev, this makes Vite inject its client as this module's first dependency,
+// so that global constant replacements are installed before any other module
+// (including user hooks) evaluates. In build it's inert.
+import.meta.hot;
+
+
+
+
 export { matchers } from './matchers.js';
 
 export const nodes = [
@@ -17,7 +25,9 @@ export const nodes = [
 	() => import('./nodes/13'),
 	() => import('./nodes/14'),
 	() => import('./nodes/15'),
-	() => import('./nodes/16')
+	() => import('./nodes/16'),
+	() => import('./nodes/17'),
+	() => import('./nodes/18')
 ];
 
 export const server_loads = [];
@@ -26,15 +36,17 @@ export const dictionary = {
 		"/(page)": [5,[3]],
 		"/(page)/CMS-CON-001": [6,[3]],
 		"/(page)/CMS-LOC-001": [7,[3]],
-		"/(page)/CMS-MAP-001": [8,[3]],
-		"/(page)/CMS-MAP-002": [9,[3]],
-		"/(page)/CMS-MAP-003": [10,[3]],
-		"/(page)/CMS-MAP-004": [11,[3]],
-		"/(page)/CMS-OBD-001": [12,[3]],
-		"/(page)/CMS-OBD-002": [13,[3]],
-		"/(page)/CMS-STA-001": [14,[3]],
-		"/(page)/CMS-STA-002": [15,[3]],
-		"/(page)/CMS-UI": [16,[3]],
+		"/(page)/CMS-LOC-001/reg": [8,[3]],
+		"/(page)/CMS-LOC-001/[...id]": [9,[3]],
+		"/(page)/CMS-MAP-001": [10,[3]],
+		"/(page)/CMS-MAP-002": [11,[3]],
+		"/(page)/CMS-MAP-003": [12,[3]],
+		"/(page)/CMS-MAP-004": [13,[3]],
+		"/(page)/CMS-OBD-001": [14,[3]],
+		"/(page)/CMS-OBD-002": [15,[3]],
+		"/(page)/CMS-STA-001": [16,[3]],
+		"/(page)/CMS-STA-002": [17,[3]],
+		"/(page)/CMS-UI": [18,[3]],
 		"/(menulist)/menulist": [4,[2]]
 	};
 
@@ -53,3 +65,5 @@ export const hash = false;
 export const decode = (type, value) => decoders[type](value);
 
 export { default as root } from '../root.js';
+
+export const get_error_template = () => import('../shared/error-template.js').then(m => m.default);

@@ -1,0 +1,287 @@
+{
+	"CMS-LOC-001": [
+		{
+			"id": 1,
+			"name": {
+				"ko": { "value": "송도센트럴파크1", "error": false },
+				"en": { "value": "송도센트럴파크2", "error": false },
+				"zh": { "value": "송도센트럴파크3", "error": false },
+				"ja": { "value": "송도센트럴파크4", "error": false },
+				"th": { "value": "송도센트럴파크5", "error": false },
+				"vi": { "value": "송도센트럴파크6", "error": false }
+			},
+			"custom": {
+				"color": "#000000",
+				"features": {
+					"ai": true,
+					"zone": true,
+					"zoneUse": "10",
+					"facility": true,
+					"facilityUse": "10"
+				},
+				"information": {
+					"location": true,
+					"locationUse": "10",
+					"address": false,
+					"sorting": "MANUAL"
+				},
+				"btnLink": [
+					{
+						"ko": { "value": "송도센트럴파크1", "error": false },
+						"en": { "value": "송도센트럴파크2", "error": false },
+						"zh": { "value": "송도센트럴파크3", "error": false },
+						"ja": { "value": "송도센트럴파크4", "error": false },
+						"th": { "value": "송도센트럴파크5", "error": false },
+						"vi": { "value": "송도센트럴파크6", "error": false }
+					}
+				]
+			},
+			"language": {
+				"ko": true,
+				"en": true,
+				"zh": true,
+				"ja": true,
+				"th": true,
+				"vi": true
+			},
+			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
+			"status": "운영중",
+			"period": "상시 운영",
+			"closingDay": { "status": "week", "week": ["2", "3", "4"], "allWeek": "", "dayWeek": ["wed", "fri"], "day": "" },
+			"operatingHours": {
+				"status": "week",
+				"cols": [
+					{
+						"id": "uniqueId2",
+						"dayWeek": ["mon"],
+						"time": {
+							"rest": false,
+							"error": false,
+							"timeStart": "00:00",
+							"timeEnd": "01:00",
+							"restStart": "",
+							"restEnd": ""
+						}
+					},
+					{
+						"id": "uniqueId",
+						"dayWeek": ["wed", "fri"],
+						"time": {
+							"rest": false,
+							"error": false,
+							"timeStart": "00:00",
+							"timeEnd": "01:00",
+							"restStart": "",
+							"restEnd": ""
+						}
+					},
+					{
+						"id": "uniqueId",
+						"dayWeek": ["mon", "tue", "wed", "thu", "fri"],
+						"time": {
+							"rest": false,
+							"error": false,
+							"timeStart": "00:00",
+							"timeEnd": "01:00",
+							"restStart": "",
+							"restEnd": ""
+						}
+					},
+					{
+						"id": "uniqueId",
+						"dayWeek": ["sat", "sun"],
+						"time": {
+							"rest": false,
+							"error": false,
+							"timeStart": "00:00",
+							"timeEnd": "01:00",
+							"restStart": "",
+							"restEnd": ""
+						}
+					}
+				]
+			},
+			"operationGuide": {
+				"ko": { "value": "송도센트럴파크1", "error": false },
+				"en": { "value": "송도센트럴파크2", "error": false },
+				"zh": { "value": "송도센트럴파크3", "error": false },
+				"ja": { "value": "송도센트럴파크4", "error": false },
+				"th": { "value": "송도센트럴파크5", "error": false },
+				"vi": { "value": "송도센트럴파크6", "error": false }
+			},
+			"hours": "요일별 상이",
+			"linkHomepage": "https://naver.com",
+			"linkMap": "https://naver.com",
+			"editTime": "2026-06-12 08:48"
+		},
+		{
+			"id": 2,
+			"name": {
+				"ko": { "value": "월미도문화의거리1", "error": false },
+				"en": { "value": "월미도문화의거리2", "error": false }
+			},
+			"custom": {
+				"color": "#ff0000",
+				"features": {
+					"ai": true,
+					"zone": true,
+					"zoneUse": "10",
+					"facility": true,
+					"facilityUse": "10"
+				},
+				"information": {
+					"location": true,
+					"locationUse": "10",
+					"address": false,
+					"sorting": "STATUS"
+				}
+			},
+			"language": {
+				"ko": true,
+				"en": true
+			},
+			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
+			"status": "운영중",
+			"period": "상시 운영",
+			"hours": "10:00 ~ 22:00",
+			"closingDay": { "status": "none", "week": [], "allWeek": "", "dayWeek": [], "day": "" },
+			"operatingHours": {
+				"status": "always",
+				"cols": [
+					{
+						"id": "uniqueId",
+						"dayWeek": [],
+						"time": {
+							"rest": false,
+							"error": false,
+							"timeStart": "00:00",
+							"timeEnd": "01:00",
+							"restStart": "",
+							"restEnd": ""
+						}
+					}
+				]
+			},
+			"linkHomepage": "https://naver.com",
+			"linkMap": "https://naver.com",
+			"editTime": "2026-06-12 08:48"
+		},
+		{
+			"id": 3,
+			"name": {
+				"ko": { "value": "차이나타운1", "error": false },
+				"en": { "value": "차이나타운2", "error": false },
+				"zh": { "value": "차이나타운3", "error": false }
+			},
+			"custom": {
+				"color": "#ff0000",
+				"features": {
+					"ai": true,
+					"zone": true,
+					"zoneUse": "10",
+					"facility": true,
+					"facilityUse": "10"
+				},
+				"information": {
+					"location": true,
+					"locationUse": "10",
+					"address": false,
+					"sorting": "STATUS"
+				}
+			},
+			"language": {
+				"ko": true,
+				"en": true,
+				"zh": true
+			},
+			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
+			"status": "운영전",
+			"period": "상시 운영",
+			"hours": "10:00 ~ 22:00",
+			"closingDay": { "status": "day", "week": [], "allWeek": "", "dayWeek": [], "day": "10" },
+			"linkHomepage": "https://naver.com",
+			"linkMap": "https://naver.com",
+			"editTime": "2026-06-12 08:48"
+		},
+		{
+			"id": 4,
+			"name": {
+				"ko": { "value": "개항장거리12", "error": false },
+				"en": { "value": "개항장거리22", "error": false },
+				"ja": { "value": "개항장거리32", "error": false }
+			},
+			"custom": {
+				"color": "#ff0000",
+				"features": {
+					"ai": true,
+					"zone": true,
+					"zoneUse": "10",
+					"facility": true,
+					"facilityUse": "10"
+				},
+				"information": {
+					"location": true,
+					"locationUse": "10",
+					"address": false,
+					"sorting": "STATUS"
+				}
+			},
+			"language": {
+				"ko": true,
+				"en": true,
+				"ja": true
+			},
+			"address": "서울특별시 용산구 이태원로 29 (한강로12가)",
+			"status": "운영종료",
+			"period": "25.04.01(수)\n~25.04.01(수)",
+			"hours": "10:00 ~ 22:00",
+			"closingDay": {
+				"status": "week",
+				"week": ["2"],
+				"allWeek": "",
+				"dayWeek": ["mon", "tue", "wed", "thu", "fri"],
+				"day": ""
+			},
+			"linkHomepage": "https://naver.com",
+			"linkMap": "https://naver.com",
+			"editTime": "2026-06-12 08:48"
+		},
+		{
+			"id": 5,
+			"name": {
+				"ko": { "value": "개항장거리1", "error": false },
+				"en": { "value": "개항장거리2", "error": false },
+				"ja": { "value": "개항장거리3", "error": false }
+			},
+			"custom": {
+				"color": "#ff0000",
+				"features": {
+					"ai": true,
+					"zone": true,
+					"zoneUse": "10",
+					"facility": true,
+					"facilityUse": "10"
+				},
+				"information": {
+					"location": true,
+					"locationUse": "10",
+					"address": false,
+					"sorting": "STATUS"
+				}
+			},
+			"language": {
+				"ko": true,
+				"en": true,
+				"ja": true
+			},
+			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
+			"status": "운영종료",
+			"period": "25.04.01(수)\n~25.04.01(수)",
+			"hours": "10:00 ~ 22:00",
+			"closingDay": { "status": "week", "week": ["2", "3", "4"], "allWeek": "", "dayWeek": ["sat", "sun"], "day": "" },
+			"linkHomepage": "https://naver.com",
+			"linkMap": "https://naver.com",
+			"editTime": "2026-06-12 08:48"
+		}
+	]
+}

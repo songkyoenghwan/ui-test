@@ -1,4 +1,4 @@
-import "../../../../chunks/dev.js";
+import "../../../../chunks/server.js";
 //#region src/routes/(page)/CMS-MAP-003/+page.svelte
 function _page($$renderer) {}
 //#endregion

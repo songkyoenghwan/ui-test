@@ -11,29 +11,11 @@ import { aliases } from './aliases';
 
 const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
-const isDeployMode = process.env.IS_DEPLOY === 'true';
 
 export default defineConfig({
-	// publicDir: './static',
 	define: {
 		__STATIC_URL__: JSON.stringify(''),
 	},
-	// optimizeDeps: {
-	// 	exclude: ['flowbite-svelte', 'flowbite-svelte-icons'],
-	// },
-	// ssr: {
-	// 	noExternal: ['flowbite-svelte', 'flowbite-svelte-icons'],
-	// },
-	// server: {
-	// 	host: true,
-	// 	port: 5174,
-	// 	strictPort: true,
-	// },
-	// preview: {
-	// 	// outDir: 'dist',
-	// 	host: true,
-	// 	open: true,
-	// },
 	plugins: [
 		tailwindcss(),
 		enhancedImages(),
@@ -41,14 +23,4 @@ export default defineConfig({
 		//	paraglideVitePlugin({ project: './project.inlang', outdir: './src/lib/paraglide', strategy: ['url', 'cookie', 'baseLocale'] }),
 	],
 	resolve: { alias: aliases },
-	// build: {
-	// 	outDir: './dist',
-	// 	lib: {
-	// 		entry: path.resolve(__dirname, 'src/index.js'),
-	// 		name: 'WebComponents',
-	// 		fileName: (format) => `wc.lit.${format}.js`,
-	// 		formats: ['es', 'cjs'], // ✅ 포맷 추가
-	// 	},
-	// },);
-	base: isDeployMode ? '/ui-test/apps/map' : '',
 });

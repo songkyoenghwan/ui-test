@@ -1,4 +1,4 @@
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/paths/internal/server.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/paths/internal/server.js
 var base = "";
 var assets = base;
 var app_dir = "_app";
@@ -34,8 +34,8 @@ function set_public_env(environment) {
 	public_env = environment;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/env/internal.js
-var version = "1781052138168";
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/env/internal.js
+var version = "1781828262645";
 var prerendering = false;
 function set_building() {}
 function set_prerendering() {

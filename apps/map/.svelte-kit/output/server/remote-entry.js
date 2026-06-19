@@ -1,10 +1,10 @@
-import { b as noop, c as unfriendly_hydratable, i as parse_remote_arg, o as stringify, r as create_remote_key, s as stringify_remote_arg, y as parse } from "./chunks/shared.js";
+import { i as parse_remote_arg, o as stringify, r as create_remote_key, s as stringify_remote_arg, v as parse, y as noop } from "./chunks/shared.js";
 import { c as app_dir, t as prerendering, u as base } from "./chunks/internal.js";
 import { C as normalize_issue, O as MUTATIVE_METHODS, S as flatten_issues, b as deep_set, s as handle_error_and_jsonify, w as set_nested_value, y as create_field_proxy } from "./chunks/utils.js";
 import { error, json } from "@sveltejs/kit";
 import { HttpError, SvelteKitError, ValidationError } from "@sveltejs/kit/internal";
 import { get_request_store, with_request_store } from "@sveltejs/kit/internal/server";
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/shared.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/server/remote/shared.js
 /** @import { RequestEvent } from '@sveltejs/kit' */
 /** @import { ServerHooks, MaybePromise, RequestState, RemoteInternals, RequestStore, RemoteLiveQueryUserFunctionReturnType } from 'types' */
 /**
@@ -45,18 +45,8 @@ function create_validator(validate_or_fn, maybe_fn) {
 async function get_response(internals, payload, state, get_result) {
 	await 0;
 	const cache = get_cache(internals, state);
-	const entry = cache[payload] ??= {
-		serialize: false,
-		data: get_result()
-	};
-	entry.serialize ||= !!state.is_in_universal_load;
-	if (state.is_in_render && internals.id) {
-		const remote_key = create_remote_key(internals.id, payload);
-		Promise.resolve(entry.data).then((value) => {
-			unfriendly_hydratable(remote_key, () => stringify(value, state.transport));
-		}).catch(noop);
-	}
-	return entry.data;
+	if (!state.is_in_remote_query) get_implicit_lookup(internals, state)[payload] = get_result;
+	return cache[payload] ??= get_result();
 }
 /**
 * @param {any} data
@@ -156,10 +146,15 @@ function to_iterator(source, name) {
 	throw new Error(`query.live '${name}' must return an Iterator, Iterable, AsyncIterator or AsyncIterable`);
 }
 /**
+* Note that `state` is deliberately not optional: resources that capture the request
+* state at creation must pass it explicitly, because reading it from the request store
+* at call time is only equivalent on runtimes with `AsyncLocalStorage` support.
+* Callers without a captured state (such as the module-level `form` instance getters)
+* should pass `get_request_store().state` themselves.
 * @param {RemoteInternals} internals
 * @param {RequestState} state
 */
-function get_cache(internals, state = get_request_store().state) {
+function get_cache(internals, state) {
 	let cache = state.remote.data?.get(internals);
 	if (cache === void 0) {
 		cache = {};
@@ -167,8 +162,20 @@ function get_cache(internals, state = get_request_store().state) {
 	}
 	return cache;
 }
+/**
+* @param {RemoteInternals} internals
+* @param {RequestState} state
+*/
+function get_implicit_lookup(internals, state) {
+	let cache = state.remote.implicit?.get(internals);
+	if (cache === void 0) {
+		cache = {};
+		(state.remote.implicit ??= /* @__PURE__ */ new Map()).set(internals, cache);
+	}
+	return cache;
+}
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/command.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/server/remote/command.js
 /** @import { RemoteCommand } from '@sveltejs/kit' */
 /** @import { MaybePromise, RemoteCommandInternals } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -234,8 +241,6 @@ function command(validate_or_fn, maybe_fn) {
 		const { event, state } = get_request_store();
 		if (!MUTATIVE_METHODS.includes(event.request.method)) throw new Error(`Cannot call a command (\`${__.name}(${maybe_fn ? "..." : ""})\`) from a ${event.request.method} handler`);
 		if (state.is_in_render) throw new Error(`Cannot call a command (\`${__.name}(${maybe_fn ? "..." : ""})\`) during server-side rendering`);
-		state.remote.refreshes ??= /* @__PURE__ */ new Map();
-		state.remote.reconnects ??= /* @__PURE__ */ new Map();
 		const promise = Promise.resolve(run_remote_function(event, state, true, () => validate(arg), fn));
 		promise.updates = () => {
 			throw new Error(`Cannot call '${__.name}(...).updates(...)' on the server`);
@@ -247,9 +252,9 @@ function command(validate_or_fn, maybe_fn) {
 	return wrapper;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/form.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/server/remote/form.js
 /** @import { RemoteFormInput, RemoteForm, InvalidField } from '@sveltejs/kit' */
-/** @import { InternalRemoteFormIssue, MaybePromise, RemoteFormInternals } from 'types' */
+/** @import { InternalRemoteFormIssue, MaybePromise, HasNonOptionalBoolean, RemoteFormInternals } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
 /**
 * Creates a form object that can be spread onto a `<form>` element.
@@ -283,7 +288,7 @@ function command(validate_or_fn, maybe_fn) {
 * @template {StandardSchemaV1<RemoteFormInput, Record<string, any>>} Schema
 * @template Output
 * @overload
-* @param {Schema} validate
+* @param {true extends HasNonOptionalBoolean<StandardSchemaV1.InferInput<Schema>> ? 'Error: All booleans in form schemas must be optional (e.g. `v.optional(v.boolean(), false)`) because checkbox inputs do not send a false value when unchecked.' : Schema} validate
 * @param {(data: StandardSchemaV1.InferOutput<Schema>, issue: InvalidField<StandardSchemaV1.InferInput<Schema>>) => MaybePromise<Output>} fn
 * @returns {RemoteForm<StandardSchemaV1.InferInput<Schema>, Output>}
 * @since 2.27
@@ -330,8 +335,6 @@ function form(validate_or_fn, maybe_fn) {
 				if (validated?.issues !== void 0) handle_issues(output, validated.issues, form_data);
 				else {
 					if (validated !== void 0) data = validated.value;
-					state.remote.refreshes ??= /* @__PURE__ */ new Map();
-					state.remote.reconnects ??= /* @__PURE__ */ new Map();
 					const issue = create_issues();
 					try {
 						output.result = await run_remote_function(event, state, true, () => data, (data) => !maybe_fn ? fn() : fn(data, issue));
@@ -340,10 +343,11 @@ function form(validate_or_fn, maybe_fn) {
 						else throw e;
 					}
 				}
-				if (!event.isRemoteRequest) get_cache(__, state)[""] ??= {
-					serialize: true,
-					data: output
-				};
+				if (!event.isRemoteRequest) {
+					const cache = get_cache(__, state);
+					cache[""] ??= output;
+					get_implicit_lookup(__, state)[__.action_id ?? __.id] = () => cache[""];
+				}
 				return output;
 			}
 		};
@@ -353,28 +357,22 @@ function form(validate_or_fn, maybe_fn) {
 			enumerable: true
 		});
 		Object.defineProperty(instance, "fields", { get() {
-			return create_field_proxy({}, () => get_cache(__)?.[""]?.data?.input ?? {}, (path, value) => {
-				const cache = get_cache(__);
+			return create_field_proxy({}, () => get_cache(__, get_request_store().state)?.[""]?.input ?? {}, (path, value) => {
+				const cache = get_cache(__, get_request_store().state);
 				const entry = cache[""];
-				if (entry?.data?.submission) return;
+				if (entry?.submission) return;
 				if (path.length === 0) {
-					(cache[""] ??= {
-						serialize: true,
-						data: {}
-					}).data.input = value;
+					(cache[""] ??= {}).input = value;
 					return;
 				}
-				const input = entry?.data?.input ?? {};
+				const input = entry?.input ?? {};
 				deep_set(input, path.map(String), value);
-				(cache[""] ??= {
-					serialize: true,
-					data: {}
-				}).data.input = input;
-			}, () => flatten_issues(get_cache(__)?.[""]?.data?.issues ?? []));
+				(cache[""] ??= {}).input = input;
+			}, () => flatten_issues(get_cache(__, get_request_store().state)?.[""]?.issues ?? []));
 		} });
 		Object.defineProperty(instance, "result", { get() {
 			try {
-				return get_cache(__)?.[""]?.data?.result;
+				return get_cache(__, get_request_store().state)?.[""]?.result;
 			} catch {
 				return;
 			}
@@ -397,6 +395,7 @@ value: (key) => {
 			if (!instance) {
 				instance = create_instance(key);
 				instance.__.id = `${__.id}/${encodeURIComponent(JSON.stringify(key))}`;
+				instance.__.action_id = `${__.id}/${JSON.stringify(key)}`;
 				instance.__.name = __.name;
 				state.remote.forms.set(cache_key, instance);
 			}
@@ -471,7 +470,7 @@ function create_issues() {
 	}
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/prerender.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/server/remote/prerender.js
 /** @import { RemoteResource, RemotePrerenderFunction } from '@sveltejs/kit' */
 /** @import { RemotePrerenderInputsGenerator, RemotePrerenderInternals, MaybePromise } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
@@ -544,34 +543,26 @@ function prerender(validate_or_fn, fn_or_options, maybe_options) {
 	};
 	/** @type {RemotePrerenderFunction<Input, Output> & { __: RemotePrerenderInternals }} */
 	const wrapper = (arg) => {
+		const { event, state } = get_request_store();
+		const payload = stringify_remote_arg(arg, state.transport);
 		/** @type {Promise<Output> & Partial<RemoteResource<Output>>} */
-		const promise = (async () => {
-			const { event, state } = get_request_store();
-			const payload = stringify_remote_arg(arg, state.transport);
+		const promise = get_response(__, payload, state, async () => {
 			const url = `${base}/${app_dir}/remote/${__.id}${payload ? `/${payload}` : ""}`;
 			if (!state.prerendering && !event.isRemoteRequest) try {
-				return await get_response(__, payload, state, async () => {
-					const cache = get_cache(__, state);
-					const promise = (cache[payload] ??= {
-						serialize: true,
-						data: fetch(new URL(url, event.url.origin).href).then(async (response) => {
-							if (!response.ok) throw new Error("Prerendered response not found");
-							const prerendered = await response.json();
-							if (prerendered.type === "error") error(prerendered.status, prerendered.error);
-							return prerendered.result;
-						})
-					}).data;
-					return parse_remote_response(await promise, state.transport);
-				});
+				const response = await fetch(new URL(url, event.url.origin).href);
+				if (!response.ok) throw new Error("Prerendered response not found");
+				const prerendered = await response.json();
+				if (prerendered.type === "error") error(prerendered.status, prerendered.error);
+				return parse_remote_response(prerendered.data, state.transport)._;
 			} catch {}
 			if (state.prerendering?.remote_responses.has(url)) return state.prerendering.remote_responses.get(url);
-			const promise = get_response(__, payload, state, () => run_remote_function(event, state, false, () => validate(arg), fn));
+			const promise = run_remote_function(event, state, false, () => validate(arg), fn);
 			if (state.prerendering) state.prerendering.remote_responses.set(url, promise);
 			const result = await promise;
 			if (state.prerendering) {
 				const body = {
 					type: "result",
-					result: stringify(result, state.transport)
+					data: stringify({ _: result }, state.transport)
 				};
 				state.prerendering.dependencies.set(url, {
 					body: JSON.stringify(body),
@@ -579,7 +570,7 @@ function prerender(validate_or_fn, fn_or_options, maybe_options) {
 				});
 			}
 			return result;
-		})();
+		});
 		promise.catch(noop);
 		return promise;
 	};
@@ -587,7 +578,7 @@ function prerender(validate_or_fn, fn_or_options, maybe_options) {
 	return wrapper;
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/utils/shared-iterator.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/utils/shared-iterator.js
 /**
 * A pull-style async iterator that fans out a single stream of values to
 * multiple `for await (...)` consumers. Each subscriber gets its own
@@ -636,6 +627,10 @@ var SharedIterator = class {
 	#closed = false;
 	/** @type {unknown} */
 	#terminal_error = void 0;
+	/** Whether `done()` or `fail()` has been broadcast. */
+	get closed() {
+		return this.#closed;
+	}
 	/**
 	* @param {(instance: SharedIterator<T>) => (() => void)} [start]
 	*/
@@ -785,8 +780,8 @@ var SharedIterator = class {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/query.js
-/** @import { RemoteLiveQuery, RemoteLiveQueryFunction, RemoteQuery, RemoteQueryFunction } from '@sveltejs/kit' */
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/server/remote/query.js
+/** @import { RemoteLiveQuery, RemoteLiveQueryFunction, RemoteQuery, RemoteQueryFunction, RequestEvent } from '@sveltejs/kit' */
 /** @import { RemoteInternals, MaybePromise, RequestState, RemoteQueryLiveInternals, RemoteQueryBatchInternals, RemoteQueryInternals, RemoteLiveQueryUserFunctionReturnType } from 'types' */
 /** @import { StandardSchemaV1 } from '@standard-schema/spec' */
 /**
@@ -848,14 +843,20 @@ function query(validate_or_fn, maybe_fn) {
 		validate,
 		bind(payload, validated_arg) {
 			const { event, state } = get_request_store();
-			return create_query_resource(__, payload, state, () => run_remote_function(event, state, false, () => validated_arg, fn));
+			return create_query_resource(__, payload, event, state, () => run_remote_function(event, {
+				...state,
+				is_in_remote_query: true
+			}, false, () => validated_arg, fn));
 		}
 	};
 	/** @type {RemoteQueryFunction<Input, Output> & { __: RemoteQueryInternals }} */
 	const wrapper = (arg) => {
 		if (prerendering) throw new Error(`Cannot call query '${__.name}' while prerendering, as prerendered pages need static data. Use 'prerender' from $app/server instead`);
 		const { event, state } = get_request_store();
-		return create_query_resource(__, stringify_remote_arg(arg, state.transport), state, () => run_remote_function(event, state, false, () => validate(arg), fn));
+		return create_query_resource(__, stringify_remote_arg(arg, state.transport), event, state, () => run_remote_function(event, {
+			...state,
+			is_in_remote_query: true
+		}, false, () => validate(arg), fn));
 	};
 	Object.defineProperty(wrapper, "__", { value: __ });
 	return wrapper;
@@ -904,7 +905,10 @@ function live(validate_or_fn, maybe_fn) {
 	* @param {any} state
 	* @param {any} get_input
 	*/
-	const run = (event, state, get_input) => run_remote_generator(event, state, false, get_input, fn, __.name);
+	const run = (event, state, get_input) => run_remote_generator(event, {
+		...state,
+		is_in_remote_query: true
+	}, false, get_input, fn, __.name);
 	/** @type {RemoteQueryLiveInternals} */
 	const __ = {
 		type: "query_live",
@@ -914,14 +918,14 @@ function live(validate_or_fn, maybe_fn) {
 		validate,
 		bind(payload, validated_arg) {
 			const { event, state } = get_request_store();
-			return create_live_query_resource(__, payload, state, event.request.signal, () => run(event, state, () => validated_arg));
+			return create_live_query_resource(__, payload, event, state, () => run(event, state, () => validated_arg));
 		}
 	};
 	/** @type {RemoteLiveQueryFunction<Input, Output> & { __: RemoteQueryLiveInternals }} */
 	const wrapper = (arg) => {
 		if (prerendering) throw new Error(`Cannot call query.live '${__.name}' while prerendering, as prerendered pages need static data. Use 'prerender' from $app/server instead`);
 		const { event, state } = get_request_store();
-		return create_live_query_resource(__, stringify_remote_arg(arg, state.transport), state, event.request.signal, () => run(event, state, () => validate(arg)));
+		return create_live_query_resource(__, stringify_remote_arg(arg, state.transport), event, state, () => run(event, state, () => validate(arg)));
 	};
 	Object.defineProperty(wrapper, "__", { value: __ });
 	return wrapper;
@@ -1003,7 +1007,10 @@ function batch(validate_or_fn, maybe_fn) {
 				batches.delete(__.id);
 				const entries = Array.from(batched.values());
 				try {
-					return await run_remote_function(event, state, false, async () => Promise.all(entries.map((entry) => entry.get_validated())), async (input) => {
+					return await run_remote_function(event, {
+						...state,
+						is_in_remote_query: true
+					}, false, async () => Promise.all(entries.map((entry) => entry.get_validated())), async (input) => {
 						const get_result = await fn(input);
 						for (let i = 0; i < entries.length; i++) try {
 							const result = get_result(input[i], i);
@@ -1026,13 +1033,16 @@ function batch(validate_or_fn, maybe_fn) {
 		validate,
 		run: async (args, options) => {
 			const { event, state } = get_request_store();
-			return run_remote_function(event, state, false, async () => Promise.all(args.map(validate)), async (input) => {
+			return run_remote_function(event, {
+				...state,
+				is_in_remote_query: true
+			}, false, async () => Promise.all(args.map(validate)), async (input) => {
 				const get_result = await fn(input);
 				return Promise.all(input.map(async (arg, i) => {
 					try {
 						return {
 							type: "result",
-							data: stringify(get_result(arg, i), state.transport)
+							data: get_result(arg, i)
 						};
 					} catch (error) {
 						return {
@@ -1045,35 +1055,55 @@ function batch(validate_or_fn, maybe_fn) {
 			});
 		},
 		bind(payload, validated_arg) {
-			const { state } = get_request_store();
-			return create_query_resource(__, payload, state, () => enqueue(payload, () => validated_arg));
+			const { event, state } = get_request_store();
+			return create_query_resource(__, payload, event, state, () => enqueue(payload, () => validated_arg));
 		}
 	};
 	/** @type {RemoteQueryFunction<Input, Output> & { __: RemoteQueryBatchInternals }} */
 	const wrapper = (arg) => {
 		if (prerendering) throw new Error(`Cannot call query.batch '${__.name}' while prerendering, as prerendered pages need static data. Use 'prerender' from $app/server instead`);
-		const { state } = get_request_store();
+		const { event, state } = get_request_store();
 		const payload = stringify_remote_arg(arg, state.transport);
-		return create_query_resource(__, payload, state, () => enqueue(payload, () => validate(arg)));
+		return create_query_resource(__, payload, event, state, () => enqueue(payload, () => validate(arg)));
 	};
 	Object.defineProperty(wrapper, "__", { value: __ });
 	return wrapper;
 }
 /**
+* Include this value in the returned payload...
+* @param {RequestEvent} event
+* @param {RequestState} state
+* @param {RemoteInternals} internals
+* @param {string} payload
+* @param {() => Promise<any>} fn
+*/
+function refresh(event, state, internals, payload, fn) {
+	if (!internals.id) return;
+	if (!event.isRemoteRequest) return;
+	const key = create_remote_key(internals.id, payload);
+	const promise = fn();
+	promise.catch(() => {});
+	(state.remote.explicit ??= /* @__PURE__ */ new Map()).set(key, {
+		internals,
+		promise
+	});
+}
+/**
 * @param {RemoteInternals} __
 * @param {string} payload — the stringified raw argument (i.e. the cache key the client will use)
+* @param {RequestEvent} event
 * @param {RequestState} state
 * @param {() => Promise<any>} fn
 * @returns {RemoteQuery<any>}
 */
-function create_query_resource(__, payload, state, fn) {
+function create_query_resource(__, payload, event, state, fn) {
 	/** @type {Promise<any> | null} */
 	let promise = null;
 	const get_promise = () => {
 		return promise ??= get_response(__, payload, state, fn);
 	};
 	const populate_hydratable = () => {
-		__.id && state.is_in_render && get_promise();
+		if (__.id && state.is_in_render) get_promise().catch(noop);
 	};
 	return {
 		/** @type {Promise<any>['catch']} */
@@ -1099,15 +1129,16 @@ function create_query_resource(__, payload, state, fn) {
 			return false;
 		},
 		refresh() {
-			const { event } = get_request_store();
-			if (!event.isRemoteRequest) return Promise.resolve();
-			const refresh_context = get_refresh_context(__, "refresh", payload);
-			const is_immediate_refresh = !refresh_context.cache[refresh_context.payload];
-			return update_refresh_value(refresh_context, is_immediate_refresh ? get_promise() : fn(), is_immediate_refresh);
+			promise = null;
+			delete get_cache(__, state)[payload];
+			refresh(event, state, __, payload, get_promise);
+			return Promise.resolve();
 		},
 		/** @param {any} value */
 		set(value) {
-			return update_refresh_value(get_refresh_context(__, "set", payload), value);
+			const p = promise = Promise.resolve(value);
+			get_cache(__, state)[payload] = p;
+			refresh(event, state, __, payload, () => p);
 		},
 		run() {
 			throw new Error(`\`myQuery().run()\` has been removed — please replace it with \`myQuery()\`. See https://github.com/sveltejs/kit/pull/15779 for more details`);
@@ -1127,12 +1158,12 @@ function create_query_resource(__, payload, state, fn) {
 /**
 * @param {RemoteQueryLiveInternals} __
 * @param {string} payload — the stringified raw argument (i.e. the cache key the client will use)
+* @param {RequestEvent} event
 * @param {RequestState} state
-* @param {AbortSignal} signal — the request signal; aborts in-flight iteration when the client disconnects
 * @param {() => AsyncGenerator<any, void, void>} get_generator
 * @returns {RemoteLiveQuery<any>}
 */
-function create_live_query_resource(__, payload, state, signal, get_generator) {
+function create_live_query_resource(__, payload, event, state, get_generator) {
 	/** @type {Promise<any> | null} */
 	let promise = null;
 	const get_first_value = async () => {
@@ -1143,7 +1174,7 @@ function create_live_query_resource(__, payload, state, signal, get_generator) {
 		return promise ??= get_response(__, payload, state, get_first_value);
 	};
 	const populate_hydratable = () => {
-		__.id && state.is_in_render && get_promise();
+		if (__.id && state.is_in_render) get_promise().catch(noop);
 	};
 	return {
 		/** @type {Promise<any>['catch']} */
@@ -1177,9 +1208,9 @@ function create_live_query_resource(__, payload, state, signal, get_generator) {
 			return false;
 		},
 		reconnect() {
-			const reconnects = state.remote.reconnects;
-			if (!reconnects) throw new Error(`Cannot call reconnect on query.live '${__.name}' because it is not executed in the context of a command/form remote function`);
-			reconnects.set(create_remote_key(__.id, payload), get_promise());
+			promise = null;
+			delete get_cache(__, state)[payload];
+			refresh(event, state, __, payload, get_promise);
 			return Promise.resolve();
 		},
 		/** @ts-expect-error This method no longer exists */
@@ -1195,7 +1226,7 @@ function create_live_query_resource(__, payload, state, signal, get_generator) {
 			const cache = state.remote.live_iterators ??= /* @__PURE__ */ new Map();
 			let cached = cache.get(key);
 			if (!cached) {
-				cached = create_shared_live_iterator(signal, get_generator);
+				cached = create_shared_live_iterator(event.request.signal, get_generator);
 				cache.set(key, cached);
 			}
 			return cached.subscribe();
@@ -1260,47 +1291,8 @@ Object.defineProperty(query, "live", {
 	value: live,
 	enumerable: true
 });
-/**
-* @param {RemoteInternals} __
-* @param {'set' | 'refresh'} action
-* @param {string} payload — the stringified raw argument (i.e. the cache key the client will use)
-* @returns {{ __: RemoteInternals; state: any; refreshes: Map<string, Promise<any>>; cache: Record<string, { serialize: boolean; data: any }>; refreshes_key: string; payload: string }}
-*/
-function get_refresh_context(__, action, payload) {
-	const { state } = get_request_store();
-	const { refreshes } = state.remote;
-	if (!refreshes) {
-		const name = __.type === "query_batch" ? `query.batch '${__.name}'` : `query '${__.name}'`;
-		throw new Error(`Cannot call ${action} on ${name} because it is not executed in the context of a command/form remote function`);
-	}
-	const cache = get_cache(__, state);
-	return {
-		__,
-		state,
-		refreshes,
-		refreshes_key: create_remote_key(__.id, payload),
-		cache,
-		payload
-	};
-}
-/**
-* @param {{ __: RemoteInternals; refreshes: Map<string, Promise<any>>; cache: Record<string, { serialize: boolean; data: any }>; refreshes_key: string; payload: string }} context
-* @param {any} value
-* @param {boolean} [is_immediate_refresh=false]
-* @returns {Promise<void>}
-*/
-function update_refresh_value({ __, refreshes, refreshes_key, cache, payload }, value, is_immediate_refresh = false) {
-	const promise = Promise.resolve(value);
-	if (!is_immediate_refresh) cache[payload] = {
-		serialize: true,
-		data: promise
-	};
-	if (__.id) refreshes.set(refreshes_key, promise);
-	promise.catch(noop);
-	return Promise.resolve();
-}
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/server/remote/requested.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/server/remote/requested.js
 /** @import { RemoteLiveQuery, RemoteLiveQueryFunction, RemoteQuery, RemoteQueryFunction, RequestedResult, QueryRequestedResult, LiveQueryRequestedResult } from '@sveltejs/kit' */
 /** @import { MaybePromise, RemoteAnyQueryInternals } from 'types' */
 /**
@@ -1394,27 +1386,27 @@ function update_refresh_value({ __, refreshes, refreshes_key, cache, payload }, 
 * @returns {RequestedResult<Validated, Output>}
 */
 function requested(query, limit) {
-	const { state } = get_request_store();
+	const { event, state } = get_request_store();
 	const internals = query.__;
 	if (internals?.type !== "query" && internals?.type !== "query_batch" && internals?.type !== "query_live") throw new Error("requested(...) expects a query function created with query(...), query.batch(...), or query.live(...)");
 	const __ = internals;
 	const payloads = state.remote.requested?.get(__.id) ?? [];
-	const refreshes = state.remote.refreshes;
-	const reconnects = state.remote.reconnects;
-	const store = __.type === "query_live" ? reconnects : refreshes;
-	if (!store) throw new Error("requested(...) can only be called in the context of a command/form remote function");
+	if (!state.is_in_remote_form_or_command) throw new Error("requested(...) can only be called in the context of a command/form remote function");
 	const [selected, skipped] = split_limit(payloads, limit);
 	/**
+	* Registers the failure exactly like `.set()` registers a value: the error record
+	* is serialized to the client (putting the query there into a failed state), and
+	* subsequent server-side calls of the query with the same argument reject with it.
 	* @param {string} payload
 	* @param {unknown} error
 	*/
 	const record_failure = (payload, error) => {
 		const promise = Promise.reject(error);
 		promise.catch(noop);
-		const key = create_remote_key(__.id, payload);
-		store.set(key, promise);
+		get_cache(__, state)[payload] = promise;
+		refresh(event, state, __, payload, () => promise);
 	};
-	for (const payload of skipped) record_failure(payload, /* @__PURE__ */ new Error(`Requested refresh was rejected because it exceeded requested(${__.name}, ${limit}) limit`));
+	for (const payload of skipped) record_failure(payload, new HttpError(400, `Requested refresh was rejected because it exceeded requested(${__.name}, ${limit}) limit`));
 	const result = {
 		*[Symbol.iterator]() {
 			for (const payload of selected) try {

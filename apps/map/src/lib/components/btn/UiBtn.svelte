@@ -328,14 +328,14 @@
 				background-color: var(--color-slate-200);
 			}
 		}
-
+		/* 
 		&[data-btn='input-del'] {
 			display: none;
 			z-index: 2;
 			position: absolute;
 			top: 0;
 			right: 0;
-		}
+		} */
 
 		&:has(.icon) {
 			gap: 8px;

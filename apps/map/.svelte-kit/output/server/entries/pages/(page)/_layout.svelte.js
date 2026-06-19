@@ -1,8 +1,12 @@
 import "../../../chunks/index-server.js";
-import { C as derived, Q as createContext, T as writable } from "../../../chunks/dev.js";
+import { C as writable, c as createContext, x as derived } from "../../../chunks/server.js";
 import "../../../chunks/index-server2.js";
 import "../../../chunks/legacy-client.js";
+import * as z from "zod";
 import "sortablejs";
+import { map } from "nanostores";
+import "flatpickr";
+import "flatpickr/dist/l10n/ko.js";
 //#region ../../node_modules/.bun/tailwind-merge@3.6.0/node_modules/tailwind-merge/dist/bundle-mjs.mjs
 /**
 * Concatenates two arrays faster than the array spread operator.
@@ -3418,7 +3422,7 @@ var mergeArrayProperties = (baseObject, mergeObject, key) => {
 var extendTailwindMerge = (configExtension, ...createConfig) => typeof configExtension === "function" ? createTailwindMerge(getDefaultConfig, configExtension, ...createConfig) : createTailwindMerge(() => mergeConfigs(getDefaultConfig(), configExtension), ...createConfig);
 var twMerge = /*#__PURE__*/ createTailwindMerge(getDefaultConfig);
 //#endregion
-//#region ../../node_modules/.bun/tailwind-variants@3.2.2+8d1ea3a475e79781/node_modules/tailwind-variants/dist/chunk-LQJYWU4O.js
+//#region ../../node_modules/.bun/tailwind-variants@3.2.2+353585be07126f0c/node_modules/tailwind-variants/dist/chunk-LQJYWU4O.js
 var SPACE_REGEX = /\s+/g;
 var removeExtraSpaces = (str) => {
 	if (typeof str !== "string" || !str) return str;
@@ -3506,7 +3510,7 @@ var mergeObjects = (obj1, obj2) => {
 	return result;
 };
 //#endregion
-//#region ../../node_modules/.bun/tailwind-variants@3.2.2+8d1ea3a475e79781/node_modules/tailwind-variants/dist/chunk-RZF76H2U.js
+//#region ../../node_modules/.bun/tailwind-variants@3.2.2+353585be07126f0c/node_modules/tailwind-variants/dist/chunk-RZF76H2U.js
 var defaultConfig = {
 	twMerge: true,
 	twMergeConfig: {}
@@ -3719,7 +3723,7 @@ var getTailwindVariants = (cn) => {
 	};
 };
 //#endregion
-//#region ../../node_modules/.bun/tailwind-variants@3.2.2+8d1ea3a475e79781/node_modules/tailwind-variants/dist/index.js
+//#region ../../node_modules/.bun/tailwind-variants@3.2.2+353585be07126f0c/node_modules/tailwind-variants/dist/index.js
 var createTwMerge = (cachedTwMergeConfig) => {
 	return isEmptyObject(cachedTwMergeConfig) ? twMerge : extendTailwindMerge({
 		...cachedTwMergeConfig,
@@ -3810,7 +3814,7 @@ tv({
 	]
 });
 //#endregion
-//#region ../../node_modules/.bun/flowbite-svelte@1.33.1+108dff3efcf0d430/node_modules/flowbite-svelte/dist/context.js
+//#region ../../node_modules/.bun/flowbite-svelte@1.33.1+a478a4fbd463aa9c/node_modules/flowbite-svelte/dist/context.js
 /**
 * Helper function to create a context with safe getter that returns undefined instead of throwing
 * when accessed outside of the context provider.
@@ -5469,7 +5473,7 @@ tv({ slots: {
 	right: "h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"
 } });
 //#endregion
-//#region ../../node_modules/.bun/flowbite-svelte@1.33.1+108dff3efcf0d430/node_modules/flowbite-svelte/dist/dialog/theme.js
+//#region ../../node_modules/.bun/flowbite-svelte@1.33.1+a478a4fbd463aa9c/node_modules/flowbite-svelte/dist/dialog/theme.js
 var dialog = tv({
 	slots: {
 		base: "backdrop:bg-gray-900/50 open:flex flex-col bg-white dark:bg-gray-800",
@@ -9180,16 +9184,127 @@ tv({
 var navigationStore = writable({
 	currentId: "CMS-MAP",
 	currentLink: "",
-	lnblist: []
+	list: []
 });
 derived([derived(navigationStore, ($state) => {
 	if (typeof window === "undefined") return void 0;
 	const pathname = window.location.pathname.toLowerCase();
-	return $state.lnblist.flatMap((g) => g.list).find((item) => pathname.includes(item.id.toLowerCase()));
+	return $state.list.flatMap((g) => g.item).find((item) => pathname.includes(item.id.toLowerCase()));
 }), navigationStore], ([$menu]) => {
 	if (!$menu?.sub || typeof window === "undefined") return null;
 	const pathname = window.location.pathname.toLowerCase();
 	return $menu.sub.find((sub) => pathname.includes(sub.link.toLowerCase()));
+});
+//#endregion
+//#region src/lib/types/lang/LangTranslate.type.ts
+var LangField = z.object({
+	value: z.string(),
+	error: z.boolean()
+});
+z.object({
+	itemId: z.uuid(),
+	open: z.enum(["open", "close"]).default("close"),
+	lang: z.object({
+		ko: LangField,
+		en: LangField,
+		zh: LangField,
+		ja: LangField,
+		th: LangField,
+		vi: LangField
+	}),
+	maxlength: z.number().optional(),
+	view: z.enum(["reg", "detail"]).default("reg")
+});
+//#endregion
+//#region src/lib/types/lang/langChk.type.ts
+var LangChkField = z.object({
+	ko: z.literal(true),
+	en: z.literal(true),
+	zh: z.boolean(),
+	ja: z.boolean(),
+	th: z.boolean(),
+	vi: z.boolean()
+});
+z.object({
+	lang: LangChkField,
+	view: z.enum(["reg", "detail"]).default("reg").optional()
+});
+map({ lang: {
+	ko: true,
+	en: true,
+	zh: false,
+	ja: false,
+	th: false,
+	vi: false
+} });
+z.object({
+	status: z.enum(["always", "period"]),
+	day: z.string().optional()
+});
+z.object({
+	name: z.string(),
+	txt: z.string()
+});
+var OperatingTimeSchema = z.object({
+	timeStart: z.string(),
+	timeEnd: z.string(),
+	rest: z.boolean(),
+	error: z.boolean(),
+	restStart: z.string(),
+	restEnd: z.string()
+});
+var OperatingHourColsSchema = z.object({
+	id: z.string(),
+	dayWeek: z.array(z.string()).optional(),
+	time: OperatingTimeSchema
+});
+z.object({
+	status: z.enum(["always", "week"]),
+	cols: z.array(OperatingHourColsSchema).optional(),
+	timeError: z.boolean().optional(),
+	weekError: z.boolean().optional(),
+	view: z.enum(["reg", "detail"]).default("reg")
+});
+z.object({
+	status: z.enum([
+		"none",
+		"week",
+		"day"
+	]),
+	week: z.array(z.string()).optional(),
+	allWeek: z.string().optional(),
+	dayWeek: z.array(z.string()).optional(),
+	day: z.string().optional(),
+	view: z.enum(["reg", "detail"]).default("reg")
+});
+z.object({
+	id: z.string(),
+	txt: z.string(),
+	value: z.enum(["MANUAL", "STATUS"])
+});
+var BtnLinkSchema = z.object({
+	id: z.string(),
+	lang: z.any(),
+	img: z.string()
+});
+var FeaturesSchema = z.object({
+	ai: z.boolean().optional(),
+	zone: z.boolean().optional(),
+	zoneUse: z.string().optional(),
+	facility: z.boolean().optional(),
+	facilityUse: z.string().optional()
+});
+var InformationSchema = z.object({
+	location: z.boolean().optional(),
+	locationUse: z.string().optional(),
+	address: z.boolean().optional(),
+	sorting: z.string().optional()
+});
+z.object({
+	color: z.string().optional(),
+	features: FeaturesSchema.optional(),
+	information: InformationSchema.optional(),
+	btnLink: z.array(BtnLinkSchema).optional()
 });
 //#endregion
 //#region src/routes/(page)/+layout.svelte

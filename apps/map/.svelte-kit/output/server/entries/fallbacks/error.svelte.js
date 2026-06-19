@@ -1,101 +1,14 @@
-import { t as index_server_exports } from "../../chunks/index-server.js";
-import { b as noop } from "../../chunks/shared.js";
-import "../../chunks/internal.js";
-import { T as writable, Y as noop$1, et as getContext, z as escape_html } from "../../chunks/dev.js";
-import "../../chunks/exports.js";
-import "../../chunks/index-server2.js";
-import "../../chunks/internal2.js";
-import "@sveltejs/kit/internal";
-import "@sveltejs/kit/internal/server";
-var PRELOAD_PRIORITIES = {
-	tap: 1,
-	hover: 2,
-	viewport: 3,
-	eager: 4,
-	off: -1,
-	false: -1
-};
-({ ...PRELOAD_PRIORITIES }), PRELOAD_PRIORITIES.hover;
-/** @param {any} value */
-function notifiable_store(value) {
-	const store = writable(value);
-	let ready = true;
-	function notify() {
-		ready = true;
-		store.update((val) => val);
-	}
-	/** @param {any} new_value */
-	function set(new_value) {
-		ready = false;
-		store.set(new_value);
-	}
-	/** @param {(value: any) => void} run */
-	function subscribe(run) {
-		/** @type {any} */
-		let old_value;
-		return store.subscribe((new_value) => {
-			if (old_value === void 0 || ready && new_value !== old_value) run(old_value = new_value);
-		});
-	}
-	return {
-		notify,
-		set,
-		subscribe
-	};
-}
-var updated_listener = { v: noop };
-function create_updated_store() {
-	const { set, subscribe } = writable(false);
-	return {
-		subscribe,
-		check: async () => false
-	};
-}
-var updated$1;
-var is_legacy = noop$1.toString().includes("$$") || /function \w+\(\) \{\}/.test(noop$1.toString());
-var placeholder_url = "a:";
-if (is_legacy) {
-	new URL(placeholder_url);
-	updated$1 = { current: false };
-} else {
-	new class Page {
-		data = {};
-		form = null;
-		error = null;
-		params = {};
-		route = { id: null };
-		state = {};
-		status = -1;
-		url = new URL(placeholder_url);
-	}();
-	new class Navigating {
-		current = null;
-	}();
-	updated$1 = new class Updated {
-		current = false;
-	}();
-	updated_listener.v = () => updated$1.current = true;
-}
+import "../../chunks/index-server.js";
+import { u as getContext, y as escape_html } from "../../chunks/server.js";
+import { t as stores } from "../../chunks/client.js";
+stores.updated.check;
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/client/client.js
-/** @import { ServerNodesResponse, ServerRedirectNode } from 'types' */
-/** @import { CacheEntry } from './remote-functions/cache.svelte.js' */
-/** @import { Query } from './remote-functions/query/instance.svelte.js' */
-/** @import { LiveQuery } from './remote-functions/query-live/instance.svelte.js' */
-var { onMount, tick } = index_server_exports;
-({
-	url: /* @__PURE__ */ notifiable_store({}),
-	page: /* @__PURE__ */ notifiable_store({}),
-	navigating: /* @__PURE__ */ writable(null),
-	updated: /* @__PURE__ */ create_updated_store()
-}).updated.check;
-//#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/state/server.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/state/server.js
 function context() {
 	return getContext("__request__");
 }
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/app/state/index.js
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/app/state/index.js
 /**
 * A read-only reactive object with information about the current page, serving several use cases:
 * - retrieving the combined `data` of all pages/layouts anywhere in your component tree (also see [loading data](https://svelte.dev/docs/kit/load))
@@ -160,7 +73,7 @@ var page = {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@sveltejs+kit@2.64.0+2b2b8ed7db1c1ba6/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte
+//#region ../../node_modules/.bun/@sveltejs+kit@2.66.0+bd8971b7bb8ed6b2/node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte
 function Error$1($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
 		$$renderer.push(`<h1>${escape_html(page.status)}</h1> <p>${escape_html(page.error?.message)}</p>`);

@@ -1,10 +1,7 @@
 import "./index-server.js";
 import "./internal.js";
-import { H as async_mode_flag, n as derived, nt as setContext, r as render } from "./dev.js";
+import { G as async_mode_flag, f as setContext, i as render, n as derived } from "./server.js";
 import { t as asClassComponent$1 } from "./legacy-client.js";
-//#region \0virtual:__sveltekit/env
-function set_env(env) {}
-//#endregion
 //#region \0virtual:__sveltekit/server
 var read_implementation = null;
 function set_read_implementation(fn) {
@@ -174,6 +171,12 @@ function Root($$renderer, $$props) {
 	});
 }
 //#endregion
+//#region .svelte-kit/generated/root.js
+var root_default = asClassComponent(Root);
+//#endregion
+//#region .svelte-kit/generated/shared/error-template.js
+var error_template_default = ({ status, message }) => "<!doctype html>\n<html lang=\"en\">\n	<head>\n		<meta charset=\"utf-8\" />\n		<title>" + message + "</title>\n\n		<style>\n			body {\n				--bg: white;\n				--fg: #222;\n				--divider: #ccc;\n				background: var(--bg);\n				color: var(--fg);\n				font-family:\n					system-ui,\n					-apple-system,\n					BlinkMacSystemFont,\n					'Segoe UI',\n					Roboto,\n					Oxygen,\n					Ubuntu,\n					Cantarell,\n					'Open Sans',\n					'Helvetica Neue',\n					sans-serif;\n				display: flex;\n				align-items: center;\n				justify-content: center;\n				height: 100vh;\n				margin: 0;\n			}\n\n			.error {\n				display: flex;\n				align-items: center;\n				max-width: 32rem;\n				margin: 0 1rem;\n			}\n\n			.status {\n				font-weight: 200;\n				font-size: 3rem;\n				line-height: 1;\n				position: relative;\n				top: -0.05rem;\n			}\n\n			.message {\n				border-left: 1px solid var(--divider);\n				padding: 0 0 0 1rem;\n				margin: 0 0 0 1rem;\n				min-height: 2.5rem;\n				display: flex;\n				align-items: center;\n			}\n\n			.message h1 {\n				font-weight: 400;\n				font-size: 1em;\n				margin: 0;\n			}\n\n			@media (prefers-color-scheme: dark) {\n				body {\n					--bg: #222;\n					--fg: #ddd;\n					--divider: #666;\n				}\n			}\n		</style>\n	</head>\n	<body>\n		<div class=\"error\">\n			<span class=\"status\">" + status + "</span>\n			<div class=\"message\">\n				<h1>" + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n";
+//#endregion
 //#region .svelte-kit/generated/server/internal.js
 var options = {
 	app_template_contains_nonce: false,
@@ -197,15 +200,15 @@ var options = {
 	hash_routing: false,
 	hooks: null,
 	preload_strategy: "modulepreload",
-	root: asClassComponent(Root),
+	root: root_default,
 	service_worker: false,
 	service_worker_options: void 0,
 	server_error_boundaries: false,
 	templates: {
-		app: ({ head, body, assets, nonce, env }) => "<!doctype html>\n\n<html lang=\"ko\">\n	<head>\n		<meta charset=\"utf-8\" />\n\n		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n		<link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\" />\n\n		" + head + "\n		<script src=\"https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ\"><\/script>\n	</head>\n\n	<body data-sveltekit-preload-data=\"hover\">\n		<div style=\"display: contents\">" + body + "</div>\n\n		<script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"><\/script>\n	</body>\n</html>\n",
-		error: ({ status, message }) => "<!doctype html>\n<html lang=\"en\">\n	<head>\n		<meta charset=\"utf-8\" />\n		<title>" + message + "</title>\n\n		<style>\n			body {\n				--bg: white;\n				--fg: #222;\n				--divider: #ccc;\n				background: var(--bg);\n				color: var(--fg);\n				font-family:\n					system-ui,\n					-apple-system,\n					BlinkMacSystemFont,\n					'Segoe UI',\n					Roboto,\n					Oxygen,\n					Ubuntu,\n					Cantarell,\n					'Open Sans',\n					'Helvetica Neue',\n					sans-serif;\n				display: flex;\n				align-items: center;\n				justify-content: center;\n				height: 100vh;\n				margin: 0;\n			}\n\n			.error {\n				display: flex;\n				align-items: center;\n				max-width: 32rem;\n				margin: 0 1rem;\n			}\n\n			.status {\n				font-weight: 200;\n				font-size: 3rem;\n				line-height: 1;\n				position: relative;\n				top: -0.05rem;\n			}\n\n			.message {\n				border-left: 1px solid var(--divider);\n				padding: 0 0 0 1rem;\n				margin: 0 0 0 1rem;\n				min-height: 2.5rem;\n				display: flex;\n				align-items: center;\n			}\n\n			.message h1 {\n				font-weight: 400;\n				font-size: 1em;\n				margin: 0;\n			}\n\n			@media (prefers-color-scheme: dark) {\n				body {\n					--bg: #222;\n					--fg: #ddd;\n					--divider: #666;\n				}\n			}\n		</style>\n	</head>\n	<body>\n		<div class=\"error\">\n			<span class=\"status\">" + status + "</span>\n			<div class=\"message\">\n				<h1>" + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
+		app: ({ head, body, assets, nonce, env }) => "<!doctype html>\n\n<html lang=\"ko\">\n	<head>\n		<meta charset=\"utf-8\" />\n\n		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n		<link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\" />\n\n		" + head + "\n		<!-- <script src=\"https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ\"><\/script> -->\n	</head>\n\n	<body data-sveltekit-preload-data=\"hover\">\n		<div style=\"display: contents\">" + body + "</div>\n\n		<!-- <script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"><\/script> -->\n	</body>\n</html>\n",
+		error: error_template_default
 	},
-	version_hash: "nwauxk"
+	version_hash: "1e31s49"
 };
 async function get_hooks() {
 	let handle;
@@ -226,4 +229,4 @@ async function get_hooks() {
 	};
 }
 //#endregion
-export { set_read_implementation as a, set_manifest as i, options as n, set_env as o, read_implementation as r, get_hooks as t };
+export { set_read_implementation as a, set_manifest as i, options as n, read_implementation as r, get_hooks as t };

@@ -1,4 +1,4 @@
-import "../../../chunks/dev.js";
+import "../../../chunks/server.js";
 //#region src/routes/(menulist)/+layout.svelte
 function _layout($$renderer, $$props) {
 	let { children, data } = $$props;
