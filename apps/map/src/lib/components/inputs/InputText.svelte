@@ -15,6 +15,7 @@
 
 <script lang="ts">
 	import * as z from 'zod';
+
 	interface Props {
 		itemId?: string;
 		type?: string;

@@ -26,7 +26,7 @@ export const options = {
 		app: ({ head, body, assets, nonce, env }) => "<!doctype html>\n\n<html lang=\"ko\">\n\t<head>\n\t\t<meta charset=\"utf-8\" />\n\n\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n\t\t<link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\" />\n\n\t\t" + head + "\n\t\t<!-- <script src=\"https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ\"></script> -->\n\t</head>\n\n\t<body data-sveltekit-preload-data=\"hover\">\n\t\t<div style=\"display: contents\">" + body + "</div>\n\n\t\t<!-- <script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"></script> -->\n\t</body>\n</html>\n",
 		error
 	},
-	version_hash: "1ra4z8z"
+	version_hash: "eb9lmf"
 };
 
 export async function get_hooks() {

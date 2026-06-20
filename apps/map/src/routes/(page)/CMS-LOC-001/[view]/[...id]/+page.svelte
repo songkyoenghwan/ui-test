@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { PageProps } from './$types';
 	import { goto } from '$app/navigation';
+	import type { PageProps } from './$types';
 
 	// 2. 변수 선언들
 	const myTabs = ['1. 대상지 정보', '2. 커스텀 항목'];
@@ -94,132 +94,148 @@
 			<ui-tit tag="h3" size="lg" tit="대상지 정보"></ui-tit>
 
 			<ul class="divide-y divide-slate-300">
-				<li class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					{#if data.view === 'detail'}
-						<ui-tit tit="제공 언어"></ui-tit>
-					{:else}
-						<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
-					{/if}
-					<lang-chk view={data.view} bind:this={elms.col1} lang={data.item.language}></lang-chk>
-				</li>
-				<li class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					{#if data.view === 'detail'}
-						<ui-tit tit="다국어 대상지명"></ui-tit>
-					{:else}
-						<ui-tit
-							tit="대상지명"
-							tip="15자 이내 권장"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
-						></ui-tit>
-					{/if}
-					<lang-translate
-						class="flex-1"
-						data-max-length="50"
-						view={data.view}
-						bind:this={elms.col2}
-						lang={data.item.name}
-					></lang-translate>
-				</li>
-				<li class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					<ui-tit tit="위치"></ui-tit>
-					<div class="flex flex-wrap items-center gap-5">
-						<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
-						<ui-btn variant="ghost" size="md" txt="지도에서 선택하기" class="min-w-30"></ui-btn>
-						<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+				<li>
+					<div class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						{#if data.view === 'detail'}
+							<ui-tit tit="제공 언어"></ui-tit>
+						{:else}
+							<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
+						{/if}
+						<lang-chk view={data.view} bind:this={elms.col1} lang={data.item.language}></lang-chk>
 					</div>
 				</li>
-				<li class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					<ui-tit tit="운영 기간"></ui-tit>
-					<operating-period view={data.view} bind:this={elms.col4} result={data.item.period}></operating-period>
-				</li>
-				<li class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					<ui-tit tit="정기 휴무"></ui-tit>
-					<closing-day view={data.view} bind:this={elms.col5} result={data.item.closingDay}></closing-day>
-				</li>
-				<li class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					<ui-tit tit="운영 시간"></ui-tit>
-					<operating-hours
-						rest="off"
-						view={data.view}
-						bind:this={elms.col6}
-						result={data.item.operatingHours}
-					></operating-hours>
-				</li>
-				<li class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					{#if data.view === 'detail'}
-						<ui-tit tit="운영 안내"></ui-tit>
-					{:else}
-						<ui-tit
-							tit="운영 안내"
-							req
-							tip="30자 이내 권장"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
-						></ui-tit>
-					{/if}
-					<lang-translate
-						data-max-length="50"
-						view={data.view}
-						bind:this={elms.col7}
-						lang={data.item.operationGuide}
-					></lang-translate>
-				</li>
-				<li class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-					{#if data.view === 'detail'}
-						<ui-tit tit="홈페이지 링크"></ui-tit>
-					{:else}
-						<ui-tit tit="홈페이지 링크" req sub="사용자에게 제공할 링크를 작성해 주세요"></ui-tit>
-					{/if}
-					{#if data.view === 'detail'}
-						<ui-btn
-							tag="a"
-							variant="underline"
-							size="md"
-							cls="underline-offset-1 gap-4"
-							icon-name="link"
-							icon-pos="lt"
-							icon-cls="size-3 stroke-black flex"
+				<li>
+					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						{#if data.view === 'detail'}
+							<ui-tit tit="다국어 대상지명"></ui-tit>
+						{:else}
+							<ui-tit
+								tit="대상지명"
+								tip="15자 이내 권장"
+								tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
+							></ui-tit>
+						{/if}
+						<lang-translate
+							class="flex-1"
+							data-max-length="50"
 							view={data.view}
-							bind:this={elms.col8}
-							txt={data.item.linkHomepage}
-							link={data.item.linkHomepage}
-						></ui-btn>
-					{:else}
-						<input-text
-							data-type="url"
-							placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+							bind:this={elms.col2}
+							lang={data.item.name}
+						></lang-translate>
+					</div>
+				</li>
+				<li>
+					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						<ui-tit tit="위치" cls="h-full items-center"></ui-tit>
+						<div class="flex flex-wrap items-center gap-5">
+							<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
+							<ui-btn variant="ghost" size="md" txt="지도에서 선택하기" class="min-w-30"></ui-btn>
+							<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div
+						class="grid max-w-375 grid-cols-[100px_1fr_100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr_122px_1fr]"
+					>
+						<ui-tit tit="운영 기간" cls="pt-1"></ui-tit>
+						<operating-period view={data.view} bind:this={elms.col4} result={data.item.period}></operating-period>
+						<ui-tit tit="정기 휴무" cls="pt-1"></ui-tit>
+						<closing-day view={data.view} bind:this={elms.col5} result={data.item.closingDay}></closing-day>
+					</div>
+				</li>
+				<li>
+					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						<ui-tit tit="운영 시간"></ui-tit>
+						<operating-hours
+							rest="off"
 							view={data.view}
-							bind:this={elms.col9}
-							value={data.item.linkHomepage}
-						></input-text>
-					{/if}
+							bind:this={elms.col6}
+							result={data.item.operatingHours}
+						></operating-hours>
+					</div>
+				</li>
+				<li>
+					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						{#if data.view === 'detail'}
+							<ui-tit tit="운영 안내"></ui-tit>
+						{:else}
+							<ui-tit
+								tit="운영 안내"
+								req
+								tip="30자 이내 권장"
+								tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
+							></ui-tit>
+						{/if}
+						<lang-translate
+							data-max-length="50"
+							view={data.view}
+							bind:this={elms.col7}
+							lang={data.item.operationGuide}
+						></lang-translate>
+					</div>
+				</li>
+				<li>
+					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						{#if data.view === 'detail'}
+							<ui-tit tit="홈페이지 링크"></ui-tit>
+						{:else}
+							<ui-tit tit="홈페이지 링크" req sub="사용자에게 제공할 링크를 작성해 주세요"></ui-tit>
+						{/if}
+						{#if data.view === 'detail'}
+							<ui-btn
+								tag="a"
+								variant="underline"
+								size="md"
+								cls="underline-offset-1 gap-4"
+								icon-name="link"
+								icon-pos="lt"
+								icon-cls="size-3 stroke-black flex"
+								view={data.view}
+								bind:this={elms.col8}
+								txt={data.item.linkHomepage}
+								link={data.item.linkHomepage}
+							></ui-btn>
+						{:else}
+							<input-text
+								data-type="url"
+								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+								view={data.view}
+								bind:this={elms.col9}
+								value={data.item.linkHomepage}
+							></input-text>
+						{/if}
+					</div>
 
-					{#if data.view === 'detail'}
-						<ui-tit tit="사용자 지도 링크"></ui-tit>
-					{:else}
-						<ui-tit tit="사용자 지도 링크" req></ui-tit>
-					{/if}
-					{#if data.view === 'detail'}
-						<ui-btn
-							tag="a"
-							variant="underline"
-							size="md"
-							cls="underline-offset-1 gap-4"
-							icon-name="link"
-							icon-pos="lt"
-							icon-cls="size-3 stroke-black flex"
-							view={data.view}
-							txt={data.item.linkMap}
-							link={data.item.linkMap}
-						></ui-btn>
-					{:else}
-						<input-text
-							data-type="url"
-							placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
-							view={data.view}
-							bind:this={elms.col10}
-							value={data.item.linkMap}
-						></input-text>
-					{/if}
+					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						{#if data.view === 'detail'}
+							<ui-tit tit="사용자 지도 링크"></ui-tit>
+						{:else}
+							<ui-tit tit="사용자 지도 링크" req></ui-tit>
+						{/if}
+						{#if data.view === 'detail'}
+							<ui-btn
+								tag="a"
+								variant="underline"
+								size="md"
+								cls="underline-offset-1 gap-4"
+								icon-name="link"
+								icon-pos="lt"
+								icon-cls="size-3 stroke-black flex"
+								view={data.view}
+								txt={data.item.linkMap}
+								link={data.item.linkMap}
+							></ui-btn>
+						{:else}
+							<input-text
+								data-type="url"
+								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+								view={data.view}
+								bind:this={elms.col10}
+								value={data.item.linkMap}
+							></input-text>
+						{/if}
+					</div>
 				</li>
 			</ul>
 		</section>

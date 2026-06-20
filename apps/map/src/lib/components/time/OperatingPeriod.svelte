@@ -11,10 +11,10 @@
 />
 
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import InputPicker from '$lib/components/datePicker/InputPicker.svelte';
-	import { type Props, createDefaultOperatingResult } from '$lib/types/time/operatingPeriod.type';
+	import { createDefaultOperatingResult, type Props } from '$lib/types/time/operatingPeriod.type';
+	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let { result = $bindable(), checked = $bindable(false), view = 'reg', re = '' }: Props = $props();

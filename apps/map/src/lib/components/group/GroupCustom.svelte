@@ -10,7 +10,6 @@
 />
 
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { move } from '@dnd-kit/helpers';
 	import { DragDropProvider } from '@dnd-kit/svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
@@ -19,6 +18,7 @@
 	import GroupDnd from '$lib/components/group/GroupDnd.svelte';
 	import InputText from '$lib/components/inputs/InputText.svelte';
 	import { createDefaultConfigResult, type BtnLink, type Props } from '$lib/types/group/groupCustom.type';
+	import { untrack } from 'svelte';
 	import ColorPicker, { ChromeVariant } from 'svelte-awesome-color-picker';
 	import { v4 as uuidv4 } from 'uuid';
 
@@ -55,38 +55,38 @@
 	}
 
 	function handleAddBtnLink() {
-		const currentList = result?.btnLink || [];
+		const currentList = stateResult?.btnLink || [];
 		if (currentList.length >= 3) {
 			alert('공공 링크 버튼은 최대 3개까지만 등록 가능합니다.');
 			return;
 		}
-		result = {
-			...result,
+		stateResult = {
+			...stateResult,
 			btnLink: [...currentList, createNewBtnLink()],
 		};
 	}
 
 	function handleRemoveBtnLink(id: string) {
-		if (result?.btnLink) {
-			result = {
-				...result,
-				btnLink: result?.btnLink.filter((btn) => btn.id !== id),
+		if (stateResult?.btnLink) {
+			stateResult = {
+				...stateResult,
+				btnLink: stateResult?.btnLink.filter((btn) => btn.id !== id),
 			};
 		}
 	}
 
 	let snapshot: BtnLink[] = $state([]);
-	let isDndDisabled = $derived((result?.btnLink?.length ?? 0) <= 1);
+	let isDndDisabled = $derived((stateResult?.btnLink?.length ?? 0) <= 1);
 	function onDragStart() {
-		snapshot = [...(result?.btnLink || [])];
+		snapshot = [...(stateResult?.btnLink || [])];
 	}
 
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragOver(event: any) {
-		if (result?.btnLink) {
-			result = {
-				...result,
-				btnLink: move(result.btnLink, event),
+		if (stateResult?.btnLink) {
+			stateResult = {
+				...stateResult,
+				btnLink: move(stateResult.btnLink, event),
 			};
 		}
 	}
@@ -94,7 +94,7 @@
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragEnd(event: any) {
 		if (event.canceled) {
-			result = { ...result, btnLink: snapshot };
+			stateResult = { ...stateResult, btnLink: snapshot };
 		}
 	}
 
@@ -336,7 +336,7 @@
 					txt="추가"
 					cls="min-w-30"
 					click={handleAddBtnLink}
-					disabled={result?.btnLink?.length === 3}
+					disabled={stateResult?.btnLink?.length === 3}
 				/>
 			{/if}
 		</div>
@@ -344,7 +344,7 @@
 		{#if view === 'reg' || view === 'edit'}
 			<DragDropProvider {onDragStart} {onDragOver} {onDragEnd}>
 				<ul class="flex flex-col gap-3 px-4 pb-4">
-					{#each result?.btnLink ?? [] as btn, index (btn.id)}
+					{#each stateResult?.btnLink ?? [] as btn, index (btn.id)}
 						<GroupDnd id={btn.id} {index} {btn} {btnPreview} onRemove={handleRemoveBtnLink} {isDndDisabled} />
 					{/each}
 				</ul>
@@ -353,7 +353,7 @@
 
 		{#if view === 'detail'}
 			<ul class="flex items-center gap-5">
-				{#each result?.btnLink ?? [] as btn, index (btn.id)}
+				{#each stateResult?.btnLink ?? [] as btn, index (btn.id)}
 					<li class="grid grid-cols-5 gap-4 rounded-sm border border-slate-200 px-3 py-4">
 						<div class="col-span-2 flex flex-col items-center justify-center gap-3">
 							{@render btnPreview(btn.lang.ko.value, btn.img)}

@@ -12,9 +12,9 @@
 />
 
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { createClosingResult, type Props } from '$/lib/types/time/closingDay.type';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
+	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let { result = $bindable(), checked = $bindable(false), error = $bindable(false), view = 'reg' }: Props = $props();

@@ -64,7 +64,14 @@
 	}
 </script>
 
-<Dropzone id={uuidv4()} bind:files={filesInDropzone} onChange={handleOnChange} onDrop={handleOnDrop} accept=".png" class="relative size-30">
+<Dropzone
+	id={uuidv4()}
+	bind:files={filesInDropzone}
+	onChange={handleOnChange}
+	onDrop={handleOnDrop}
+	accept=".png"
+	class="relative size-30"
+>
 	{#if !filesInDropzone || filesInDropzone.length === 0}
 		<icon-list data-name="gallery" class="icon size-8 fill-slate-500"></icon-list>
 		<p class="mt-2 text-center text-slate-600">

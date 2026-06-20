@@ -1,1 +1,3 @@
-export { default as component } from "../../../../src/routes/(page)/CMS-MAP-003/+page.svelte";
+import * as universal from "../../../../src/routes/(page)/CMS-LOC-001-1/[...id]/detail/+page.ts";
+export { universal };
+export { default as component } from "../../../../src/routes/(page)/CMS-LOC-001-1/[...id]/detail/+page.svelte";

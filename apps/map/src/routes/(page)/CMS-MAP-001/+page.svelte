@@ -118,7 +118,8 @@
 				// 알림 팝업 취소 이벤트
 				console.log(e);
 				document.querySelector('alert-popup').open = 'open';
-				document.querySelector('alert-popup').txt = '작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
+				document.querySelector('alert-popup').txt =
+					'작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
 			});
 			document.querySelector('map-reg')?.addEventListener('pos-save', (e) => {
 				// 알림 팝업 확인 이벤트
@@ -136,7 +137,10 @@
 </script>
 
 <svelte:head>
-	<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ" async></script>
+	<script
+		src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ"
+		async
+	></script>
 </svelte:head>
 
 <top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip>

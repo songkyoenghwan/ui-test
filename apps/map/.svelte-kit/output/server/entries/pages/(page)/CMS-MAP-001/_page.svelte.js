@@ -1,8 +1,11 @@
-import "../../../../chunks/index-server.js";
-import "../../../../chunks/server.js";
+import { a as head } from "../../../../chunks/server.js";
 //#region src/routes/(page)/CMS-MAP-001/+page.svelte
 function _page($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
+		head("1us5qia", $$renderer, ($$renderer) => {
+			$$renderer.push(`<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&amp;appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ" async=""><\/script>`);
+			$$renderer.push(`<!---->`);
+		});
 		$$renderer.push(`<top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip> <section id="map_div" class="grid size-full"></section> <section class="map-list"><header class="map-list__header"><div class="flex items-end justify-between gap-1"><h3 class="font-bold">위치 목록</h3> <div class="flex-none"><p class="flex-1 text-slate-500"><strong class="font-bold">302</strong> <span>개</span></p></div></div> <div class="grid grid-cols-9 gap-2"><select name="" id="" class="select col-span-5" title="content:">`);
 		$$renderer.option({ value: "" }, ($$renderer) => {
 			$$renderer.push(`전체 카테고리`);

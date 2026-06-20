@@ -1,1 +1,0 @@
-import{Bt as e,Ct as t,H as n,Vt as r,X as i,Z as a,i as o,kt as s,o as c}from"../chunks/C1BRtSEh.js";import"../chunks/xihTtKlq.js";function l(o,l){r(l,!0);let u=c(l,`children`,7);var d={get children(){return u()},set children(e){u(e),s()}},f=a();return n(t(f),u),i(o,f),e(d)}o(l,{children:{}},[],[],{mode:`open`});export{l as component};

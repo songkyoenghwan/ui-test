@@ -1,7 +1,6 @@
-import "./index-server.js";
+import { r as asClassComponent$1 } from "./index-server.js";
 import "./internal.js";
-import { G as async_mode_flag, f as setContext, i as render, n as derived } from "./server.js";
-import { t as asClassComponent$1 } from "./legacy-client.js";
+import { m as setContext, o as render, q as async_mode_flag, r as derived } from "./server.js";
 //#region \0virtual:__sveltekit/server
 var read_implementation = null;
 function set_read_implementation(fn) {
@@ -208,7 +207,7 @@ var options = {
 		app: ({ head, body, assets, nonce, env }) => "<!doctype html>\n\n<html lang=\"ko\">\n	<head>\n		<meta charset=\"utf-8\" />\n\n		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n		<link rel=\"icon\" type=\"image/svg\" href=\"/favicon.svg\" />\n\n		" + head + "\n		<!-- <script src=\"https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ\"><\/script> -->\n	</head>\n\n	<body data-sveltekit-preload-data=\"hover\">\n		<div style=\"display: contents\">" + body + "</div>\n\n		<!-- <script src=\"https://unpkg.com/vue@3/dist/vue.global.js\"><\/script> -->\n	</body>\n</html>\n",
 		error: error_template_default
 	},
-	version_hash: "1e31s49"
+	version_hash: "1sxxe7z"
 };
 async function get_hooks() {
 	let handle;

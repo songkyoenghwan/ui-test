@@ -10,10 +10,10 @@
 />
 
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { createChkLang, type Props } from '$/lib/types/lang/langChk.type';
 	import { LANGS } from '$/lib/types/lang/LangTranslate.type';
 	import { initLangStore, langStore, toggleLang } from '$lib/stores/langStore';
+	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let { lang = $bindable(createChkLang()), view = 'reg' }: Props = $props();

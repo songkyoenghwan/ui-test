@@ -168,7 +168,10 @@
 					}}
 				>
 					<span class="sr-only">삭제</span>
-					<icon-list data-name="input-del" class="icon stroke-f5f5f5 bg-f5f5f5 size-6 rounded-lg fill-slate-600"></icon-list>
+					<icon-list
+						data-name="input-del"
+						class="icon stroke-f5f5f5 bg-f5f5f5 size-6 rounded-lg fill-slate-600"
+					></icon-list>
 				</button>
 			</div>
 		</div>

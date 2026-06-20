@@ -12,9 +12,9 @@
 />
 
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { createTranslateLang, LANGS, type Props } from '$/lib/types/lang/LangTranslate.type';
 	import { langStore } from '$lib/stores/langStore';
+	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let { lang = $bindable(), open = 'close', maxlength, view = 'reg', btnPreview = '' }: Props = $props();

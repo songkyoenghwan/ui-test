@@ -11,7 +11,6 @@
 />
 
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import TimeScrollPicker from '$/lib/components/datePicker/TimeScrollPicker.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import {
@@ -19,6 +18,7 @@
 		createDefaultOperatingHourResult,
 		type Props,
 	} from '$lib/types/time/operatingHours.type';
+	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let {

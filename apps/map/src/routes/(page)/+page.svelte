@@ -52,7 +52,9 @@
 								</p>
 
 								{#if subItem.etc}
-									<span class="shrink-0 rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 group-hover:bg-white">
+									<span
+										class="shrink-0 rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 group-hover:bg-white"
+									>
 										{subItem.etc}
 									</span>
 								{/if}

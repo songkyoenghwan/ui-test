@@ -1,7 +1,6 @@
 import "../../../chunks/index-server.js";
-import { C as writable, c as createContext, x as derived } from "../../../chunks/server.js";
+import { C as derived, T as writable, u as createContext } from "../../../chunks/server.js";
 import "../../../chunks/index-server2.js";
-import "../../../chunks/legacy-client.js";
 import * as z from "zod";
 import "sortablejs";
 import { map } from "nanostores";
@@ -9202,7 +9201,6 @@ var LangField = z.object({
 	error: z.boolean()
 });
 z.object({
-	itemId: z.uuid(),
 	open: z.enum(["open", "close"]).default("close"),
 	lang: z.object({
 		ko: LangField,
@@ -9213,7 +9211,19 @@ z.object({
 		vi: LangField
 	}),
 	maxlength: z.number().optional(),
-	view: z.enum(["reg", "detail"]).default("reg")
+	view: z.enum(["reg", "detail"]).default("reg"),
+	btnPreview: z.string().optional()
+});
+z.object({
+	key: z.enum([...[
+		"ko",
+		"en",
+		"zh",
+		"ja",
+		"th",
+		"vi"
+	]]),
+	label: z.string()
 });
 //#endregion
 //#region src/lib/types/lang/langChk.type.ts
@@ -9239,19 +9249,21 @@ map({ lang: {
 } });
 z.object({
 	status: z.enum(["always", "period"]),
-	day: z.string().optional()
+	day: z.string().optional(),
+	view: z.enum(["reg", "detail"]).default("reg").optional(),
+	re: z.string().optional()
 });
 z.object({
 	name: z.string(),
 	txt: z.string()
 });
 var OperatingTimeSchema = z.object({
-	timeStart: z.string(),
-	timeEnd: z.string(),
-	rest: z.boolean(),
-	error: z.boolean(),
-	restStart: z.string(),
-	restEnd: z.string()
+	timeStart: z.string().default("00:00"),
+	timeEnd: z.string().default("00:00"),
+	rest: z.boolean().optional(),
+	error: z.boolean().optional(),
+	restStart: z.string().optional(),
+	restEnd: z.string().optional()
 });
 var OperatingHourColsSchema = z.object({
 	id: z.string(),
@@ -9310,7 +9322,7 @@ z.object({
 //#region src/routes/(page)/+layout.svelte
 function _layout($$renderer, $$props) {
 	let { children } = $$props;
-	$$renderer.push(`<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]"><aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb> <header-list></header-list> <main class="relative grid size-full overflow-auto has-data-[map=init]:overflow-clip">`);
+	$$renderer.push(`<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]"><aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb> <header-list></header-list> <main id="main-container" class="relative grid size-full overflow-auto scroll-smooth has-data-[map=init]:overflow-clip">`);
 	children($$renderer);
 	$$renderer.push(`<!----></main></section> <alert-popup class="fixed top-0 left-0" txt="작성 중인 내용이 저장되지 않았습니다. &lt;br/>이 페이지를 벗어나시겠습니까?" confirm="확인" cancel="취소" open="close"></alert-popup>`);
 }
