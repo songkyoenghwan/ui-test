@@ -1,1 +1,0 @@
-export { default as component } from "../../../../src/routes/(page)/CMS-MAP-002/+page.svelte";

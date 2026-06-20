@@ -1,1 +1,0 @@
-export { default as component } from "../../../../src/routes/(page)/CMS-LOC-001-1/reg/+page.svelte";
