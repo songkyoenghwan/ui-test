@@ -55,7 +55,7 @@ export const createDefaultConfigResult = (): ConfigResult => ({
 		ai: false,
 		zone: false,
 		zoneUse: '0',
-		facility: true,
+		facility: false,
 		facilityUse: '0',
 	},
 	information: {

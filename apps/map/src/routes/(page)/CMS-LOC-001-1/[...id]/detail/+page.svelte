@@ -43,7 +43,7 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="운영 기간"></ui-tit>
-					<ui-txt size="sm" cls="text-black" txt={data.item.period}></ui-txt>
+					<operating-period view="detail" result={data.item.period}></operating-period>
 				</div>
 				<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="정기 휴무"></ui-tit>

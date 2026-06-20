@@ -3,31 +3,32 @@
 
 	let { data }: PageProps = $props();
 
-	let { language, name, address, period, closingDay, operatingHours, operationGuide, linkHomepage, linkMap, custom } = $state(data.item);
+	let { language, name, address, period, closingDay, operatingHours, operationGuide, linkHomepage, linkMap, custom } = $state(
+		data.item,
+	);
 
-	$inspect(period);
+	let langChkElement = $state<HTMLElement | null>(null);
+	let langTranslateElement = $state<HTMLElement | null>(null);
+	let periodElement = $state<HTMLElement | null>(null);
+	let closingElement = $state<HTMLElement | null>(null);
+	let operatingHoursElement = $state<HTMLElement | null>(null);
+
+	const checkValue = () => {
+		// console.log(langChkElement?.lang);
+		// console.log(langTranslateElement?.lang);
+		console.log(operatingHoursElement?.result);
+
+		operatingHoursElement.timeError = true;
+		// console.log(periodElement?.result);
+		// console.log(closingElement?.result);
+	};
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
 	<section class="static flex items-center justify-between">
 		<ui-tit tit="$한국어 대상지명(최대 50자)$"></ui-tit>
 		<div>
-			<ui-btn
-				variant="primary"
-				size="lg"
-				txt="저장"
-				class="w-20"
-				click={() => {
-					console.log(document.querySelectorAll('lang-translate')[0]?.lang);
-					console.log(document?.querySelector('operating-period')?.result);
-					// console.log(document?.querySelector('closing-day')?.result);
-					// console.log(document?.querySelector('operating-hours')?.result);
-					// console.log(document?.querySelector('group-custom')?.result);
-					// console.log(c4.result);
-					// console.log(c5.result);
-					// console.log(c6.result);
-				}}
-			></ui-btn>
+			<ui-btn variant="primary" size="lg" txt="저장" class="w-20" click={checkValue}></ui-btn>
 		</div>
 	</section>
 
@@ -44,7 +45,12 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
-					<lang-chk class="flex flex-wrap items-center gap-5" view="reg" lang={language}></lang-chk>
+					<lang-chk
+						class="flex flex-wrap items-center gap-5"
+						view="reg"
+						lang={language}
+						bind:this={langChkElement}
+					></lang-chk>
 				</div>
 			</li>
 			<li>
@@ -54,7 +60,7 @@
 						tip="15자 이내 권장"
 						tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
 					></ui-tit>
-					<lang-translate class="flex-1" view="reg" lang={name}></lang-translate>
+					<lang-translate class="flex-1" view="reg" lang={name} bind:this={langTranslateElement}></lang-translate>
 				</div>
 			</li>
 			<li>
@@ -71,20 +77,25 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="운영 기간"></ui-tit>
-					<operating-period result={period}></operating-period>
+					<operating-period result={period} bind:this={periodElement}></operating-period>
 				</div>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="정기 휴무"></ui-tit>
-					<closing-day view="reg" result={closingDay}></closing-day>
-				</div>
-			</li>
-			<!-- <li>
-				<div class="relative z-2 grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
-					<ui-tit tit="운영 시간"></ui-tit>
-					<operating-hours view="reg" rest="off" result={operatingHours}></operating-hours>
+					<closing-day view="reg" result={closingDay} bind:this={closingElement}></closing-day>
 				</div>
 			</li>
 			<li>
+				<div class="relative z-2 grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
+					<ui-tit tit="운영 시간"></ui-tit>
+					<operating-hours
+						view="reg"
+						rest="off"
+						result={operatingHours}
+						bind:this={operatingHoursElement}
+					></operating-hours>
+				</div>
+			</li>
+			<!--<li>
 				<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
 					<ui-tit
 						tit="운영 안내"

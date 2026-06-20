@@ -11,31 +11,43 @@
 />
 
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import TimeScrollPicker from '$/lib/components/datePicker/TimeScrollPicker.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
-	import { createDefaultOperatingHourCol, createDefaultOperatingHourResult, type Props } from '$lib/types/time/operatingHours.type';
+	import {
+		createDefaultOperatingHourCol,
+		createDefaultOperatingHourResult,
+		type Props,
+	} from '$lib/types/time/operatingHours.type';
 	import { v4 as uuidv4 } from 'uuid';
 
 	let {
-		itemId = uuidv4(),
-		result = $bindable(createDefaultOperatingHourResult()),
+		result = $bindable(),
 		rest = 'off',
 		error = false,
+		timeError = false,
+		weekError = false,
 		view = 'reg',
 	}: Props = $props();
+	let local = $state(createDefaultOperatingHourResult());
 
-	// $effect(() => {
-	// 	if (!result) {
-	// 		result = createDefaultOperatingHourResult();
-	// 		addTime();
-	// 	}
-	// });
+	$effect(() => {
+		if (result && typeof result === 'object') {
+			const resultSnap = $state.snapshot(result);
 
-	const list = $derived([
+			untrack(() => {
+				local.status = resultSnap.status || 'always';
+				local.cols = resultSnap.cols || [];
+			});
+		}
+	});
+
+	const itemId = uuidv4();
+	let list = $state([
 		{ id: `${itemId}-always`, name: 'always', txt: '매일' },
 		{ id: `${itemId}-week`, name: 'week', txt: '요일별' },
 	]);
-	const dayWeekList = $derived([
+	let dayWeekList = $state([
 		{ id: `${itemId}-mon`, name: 'mon', txt: '월' },
 		{ id: `${itemId}-tue`, name: 'tue', txt: '화' },
 		{ id: `${itemId}-wed`, name: 'wed', txt: '수' },
@@ -45,30 +57,29 @@
 		{ id: `${itemId}-sun`, name: 'sun', txt: '일' },
 	]);
 
-	let localResult = $state(result?.cols || []);
-	let resStatus = $state(result?.status || 'always');
-
 	$effect(() => {
-		if (resStatus !== 'always' && resStatus !== 'week') {
-			resStatus = localResult.length > 0 ? 'week' : 'always';
+		if (local.status !== 'always' && local.status !== 'week') {
+			untrack(() => {
+				local.status = result.cols.length > 0 ? 'week' : 'always';
+			});
 		}
 	});
 
 	function addTime() {
 		if (!result) return;
 		const uniqueId = uuidv4();
-		result.cols?.push(createDefaultOperatingHourCol(uniqueId));
+		local.cols?.push(createDefaultOperatingHourCol(uniqueId));
 	}
 
 	function deleteTime(id: string) {
 		if (!result) return;
-		if (localResult.length <= 1) return;
-		result.cols = localResult.filter((item) => item.id !== id);
+		if (local.cols.length <= 1) return;
+		local.cols = local.cols.filter((item) => item.id !== id);
 	}
 
 	function toggleRestTime(id: string, status: boolean) {
 		if (!result) return;
-		result.cols = localResult.map((item) => {
+		local.cols = local.cols.map((item) => {
 			if (item.id === id) {
 				return {
 					...item,
@@ -101,10 +112,20 @@
 			.filter(Boolean) // 빈 문자열 제거(안전망)
 			.join(', ');
 	};
+
+	$effect(() => {
+		const localSnap = $state.snapshot(local);
+		untrack(() => {
+			if (result && typeof result === 'object') {
+				result.status = localSnap.status;
+				result.cols = localSnap.cols;
+			}
+		});
+	});
 </script>
 
 {#if view === 'detail'}
-	{#if result.status === 'always'}
+	{#if local.status === 'always'}
 		{@const t = result?.cols?.[0].time}
 		<div class="grid grid-cols-[120px_1fr] items-center">
 			<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
@@ -112,7 +133,7 @@
 		</div>
 	{/if}
 
-	{#if result.status === 'week'}
+	{#if local.status === 'week'}
 		<ul class="space-y-2">
 			{#each result?.cols as item}
 				<li class="grid grid-cols-[120px_1fr] items-center">
@@ -125,15 +146,22 @@
 {:else}
 	<div class="felx-wrap flex flex-col gap-2">
 		<div class="flex w-32 gap-2">
-			<UiBtn tag="label" variant="segmented" name={`${itemId}-operating-hours`} arr={list} cls="flex-1" bind:selected={localResult} />
+			<UiBtn
+				tag="label"
+				variant="segmented"
+				name={`${itemId}-operating-hours`}
+				arr={list}
+				cls="flex-1"
+				bind:selected={local.status}
+			/>
 		</div>
 
-		{#if result.status === 'week'}
+		{#if local.status === 'week'}
 			<ul class="flex flex-col gap-2">
-				{#each localResult as group, i (group.id)}
+				{#each local.cols as group, i (group.id)}
 					<li
 						class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all not-first:border-t not-first:border-t-slate-200 first:pt-0 starting:left-1 starting:opacity-0"
-						style="z-index: {localResult.length - i};"
+						style="z-index: {local.cols.length - i};"
 					>
 						<div class="flex flex-wrap gap-1">
 							<UiBtn
@@ -141,11 +169,11 @@
 								variant="segmented"
 								arr={dayWeekList}
 								bind:selected={group.dayWeek}
-								name={`${itemId}-hour-day`}
+								name={`${itemId}-hour-day-${i}`}
 								cls="min-w-7 flex-[0_0_28px]"
 							/>
 
-							{#if localResult.length > 1}
+							{#if local.cols.length > 1}
 								<UiBtn
 									tag="button"
 									variant="ghost"
@@ -156,67 +184,68 @@
 							{/if}
 						</div>
 
-						<ul>
-							{#each group.time as hour (hour.id)}
-								<li class={['relative z-1 flex flex-wrap gap-2']}>
-									<div class="inline-flex w-full items-center gap-2">
-										<TimeScrollPicker bind:value={hour.timeStart} cls={hour.error ? 'error' : ''} />
-										<span>~</span>
-										<TimeScrollPicker bind:value={hour.timeEnd} cls={hour.error ? 'error' : ''} />
-									</div>
-									{#if rest === 'on'}
-										{#if hour.rest}
-											<dl>
-												<dt>휴게 시간</dt>
-												<dd class="inline-flex items-center gap-2">
-													<TimeScrollPicker bind:value={hour.restStart} />
-													<span>~</span>
-													<TimeScrollPicker bind:value={hour.restEnd} />
-													<UiBtn
-														tag="button"
-														variant="icon"
-														txt="삭제"
-														iconName="btn-del"
-														cls="size-7 flex-[0_0_28px] stroke-error fill-error"
-														click={() => toggleRestTime(String(group.id), false)}
-													/>
-												</dd>
-											</dl>
-										{:else}
+						<div class={['relative z-1 flex flex-wrap gap-2']}>
+							<div class="inline-flex w-full items-center gap-2">
+								<TimeScrollPicker bind:value={group.time.timeStart} cls={group.time.error ? 'error' : ''} />
+								<span>~</span>
+								<TimeScrollPicker bind:value={group.time.timeEnd} cls={group.time.error ? 'error' : ''} />
+							</div>
+							{#if rest === 'on'}
+								{#if group.time.rest}
+									<dl>
+										<dt>휴게 시간</dt>
+										<dd class="inline-flex items-center gap-2">
+											<TimeScrollPicker bind:value={group.time.restStart} />
+											<span>~</span>
+											<TimeScrollPicker bind:value={group.time.restEnd} />
 											<UiBtn
 												tag="button"
-												variant="ghost"
-												txt="휴게 시간"
-												cls="min-w-7 flex-[0_0_75px]"
-												click={() => toggleRestTime(String(group.id), true)}
+												variant="icon"
+												txt="삭제"
+												iconName="btn-del"
+												cls="size-7 flex-[0_0_28px] stroke-error fill-error"
+												click={() => toggleRestTime(String(group.id), false)}
 											/>
-										{/if}
-									{/if}
-								</li>
-							{/each}
-						</ul>
+										</dd>
+									</dl>
+								{:else}
+									<UiBtn
+										tag="button"
+										variant="ghost"
+										txt="휴게 시간"
+										cls="min-w-7 flex-[0_0_75px]"
+										click={() => toggleRestTime(String(group.id), true)}
+									/>
+								{/if}
+							{/if}
+						</div>
 					</li>
 				{/each}
 			</ul>
 
 			<div class="flex items-center gap-2">
-				<UiBtn tag="button" variant="secondary" txt="시간대 추가 " arr={list} cls="w-25 flex-[0_0_100px]" click={addTime} />
+				<UiBtn
+					tag="button"
+					variant="secondary"
+					txt="시간대 추가 "
+					arr={list}
+					cls="w-25 flex-[0_0_100px]"
+					click={addTime}
+				/>
 			</div>
-		{:else if result.cols?.[0]?.time?.[0]}
-			{@const timeSlot = result.cols[0].time[0]}
-
+		{:else if local.status === 'always'}
 			<div class="inline-flex w-full items-center gap-2">
-				<TimeScrollPicker bind:value={timeSlot.timeStart} cls={timeSlot.error ? 'error' : ''} />
+				<TimeScrollPicker bind:value={local.cols[0].time.timeStart} cls={local.cols[0].time.error ? 'error' : ''} />
 				<span>~</span>
-				<TimeScrollPicker bind:value={timeSlot.timeEnd} cls={timeSlot.error ? 'error' : ''} />
+				<TimeScrollPicker bind:value={local.cols[0].time.timeEnd} cls={local.cols[0].time.error ? 'error' : ''} />
 			</div>
 		{/if}
 
-		{#if result.timeError}
+		{#if local.timeError}
 			<ui-txt size="sm" txt="시작 시간이 종료 시간보다 앞서야 합니다." cls="text-error"></ui-txt>
 		{/if}
 
-		{#if result.weekError}
+		{#if local.weekError}
 			<ui-txt size="sm" txt="요일이 선택되지 않은 시간대가 있습니다." cls="text-error"></ui-txt>
 		{/if}
 	</div>

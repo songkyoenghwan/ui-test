@@ -11,7 +11,7 @@
 
 	<header-list></header-list>
 
-	<main class="relative grid size-full overflow-auto has-data-[map=init]:overflow-clip">
+	<main id="main-container" class="relative grid size-full overflow-auto scroll-smooth has-data-[map=init]:overflow-clip">
 		{@render children()}
 	</main>
 </section>

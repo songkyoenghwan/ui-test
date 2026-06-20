@@ -13,7 +13,7 @@
 		isDndDisabled: boolean;
 	}
 
-	let { id, index, btn, onRemove, isDndDisabled }: Props = $props();
+	let { id, index, btn, onRemove, isDndDisabled, btnPreview }: Props = $props();
 
 	const sortable = createSortable({
 		get id() {
@@ -32,7 +32,6 @@
 	{@attach sortable.attach}
 	data-shadow={sortable.isDragging ? 'true' : undefined}
 	class="grid grid-cols-[658px_40px] rounded-sm border border-slate-200 bg-white py-4 transition-all duration-150 has-[.preview]:grid-cols-[658px_1fr_40px]"
-	class:opacity-50={sortable.isDragging}
 	class:scale-[1.01]={sortable.isDragging}
 	class:shadow-md={sortable.isDragging}
 	aria-label={String(index + 1)}
@@ -42,7 +41,12 @@
 			{#if isDndDisabled}
 				<ui-tit tag="h4" tit="버튼명" class="pl-12"></ui-tit>
 			{:else}
-				<button type="button" {@attach sortable.attachHandle} class="handle flex items-center gap-4 pl-4" aria-label="Drag handle">
+				<button
+					type="button"
+					{@attach sortable.attachHandle}
+					class="handle flex items-center gap-4 pl-4"
+					aria-label="Drag handle"
+				>
 					<span class="sr-only">드래그</span>
 					<span class="flex w-4 justify-center">
 						<icon-list data-name="dnd" class="icon flex h-2.5 w-1.5 fill-slate-300"></icon-list>
@@ -72,25 +76,11 @@
 			/>
 		</div>
 	</section>
-
 	{#if btn?.lang?.ko?.value || btn.img}
 		<section class="preview flex flex-col gap-5">
 			<ui-tit tag="h4" tit="미리보기"></ui-tit>
 
-			<button
-				type="button"
-				class="border-cms-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border px-3 shadow-2xs"
-			>
-				{#if btn.img}
-					<picture class="h-4">
-						<img src={btn.img} alt="" class="h-4" />
-					</picture>
-				{/if}
-
-				{#if btn?.lang?.ko?.value}
-					<span>{btn?.lang?.ko?.value}</span>
-				{/if}
-			</button>
+			{@render btnPreview(btn?.lang?.ko?.value, btn.img)}
 		</section>
 	{/if}
 

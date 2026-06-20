@@ -10,63 +10,57 @@
 />
 
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { createChkLang, type Props } from '$/lib/types/lang/langChk.type';
 	import { LANGS } from '$/lib/types/lang/LangTranslate.type';
 	import { initLangStore, langStore, toggleLang } from '$lib/stores/langStore';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let { lang = $bindable(), view = 'reg' }: Props = $props();
-
-	$effect.pre(() => {
-		if (lang == null) {
-			lang = createChkLang();
-		}
-	});
+	let { lang = $bindable(createChkLang()), view = 'reg' }: Props = $props();
 
 	$effect(() => {
-		if (lang) {
+		const snap = $state.snapshot(lang);
+
+		untrack(() => {
 			initLangStore({
-				zh: lang.zh,
-				ja: lang.ja,
-				th: lang.th,
-				vi: lang.vi,
+				zh: snap.zh,
+				ja: snap.ja,
+				th: snap.th,
+				vi: snap.vi,
 			});
-		}
+		});
 	});
 </script>
 
 {#if lang}
 	{#if view === 'detail'}
-		<ui-txt txt="한국어(KO)" size="sm" class="flex-none" cls="text-black"></ui-txt>
-		<ui-txt txt="영어(EN)" size="sm" class="flex-none" cls="text-black"></ui-txt>
-		{#if lang?.zh}
-			<ui-txt txt="중국어(ZH)" size="sm" class="flex-none" cls="text-black"></ui-txt>
-		{/if}
-
-		{#if lang?.ja}
-			<ui-txt txt="일본어(JA)" size="sm" class="flex-none" cls="text-black"></ui-txt>
-		{/if}
-
-		{#if lang?.th}
-			<ui-txt txt="태국어(TH)" size="sm" class="flex-none" cls="text-black"></ui-txt>
-		{/if}
-
-		{#if lang?.vi}
-			<ui-txt txt="베트남어(VI)" size="sm" class="flex-none" cls="text-black"></ui-txt>
-		{/if}
-	{:else if view === 'reg'}
-		{#each LANGS as lang}
-			{#if lang.key === 'ko' || lang.key === 'en'}
-				<ui-txt txt={lang.label} class="flex-none"></ui-txt>
-			{:else}
-				<ui-checkbox
-					item-id={`lang-${uuidv4()}`}
-					txt={lang.label}
-					class="flex-none"
-					checked={$langStore.lang[lang.key]}
-					change={() => toggleLang(lang.key)}
-				></ui-checkbox>
-			{/if}
-		{/each}
+		<div class="flex flex-wrap items-center gap-5">
+			{#each LANGS as item}
+				{#if item.key === 'ko' || item.key === 'en'}
+					<ui-txt txt={item.label} size="sm" class="flex-none" cls="text-black"></ui-txt>
+				{:else if $langStore.lang[item.key]}
+					<ui-txt txt={item.label} size="sm" class="flex-none" cls="text-black"></ui-txt>
+				{/if}
+			{/each}
+		</div>
+	{:else if view === 'reg' || view === 'edit'}
+		<div class="flex flex-wrap items-center justify-end gap-5">
+			{#each LANGS as item}
+				{#if item.key === 'ko' || item.key === 'en'}
+					<ui-txt txt={item.label} class="flex-none"></ui-txt>
+				{:else}
+					<ui-checkbox
+						item-id={`lang-chk-${uuidv4()}`}
+						txt={item.label}
+						class="flex-none"
+						checked={$langStore.lang[item.key]}
+						change={(e) => {
+							lang[item.key] = e.currentTarget.checked;
+							toggleLang(item.key);
+						}}
+					></ui-checkbox>
+				{/if}
+			{/each}
+		</div>
 	{/if}
 {/if}

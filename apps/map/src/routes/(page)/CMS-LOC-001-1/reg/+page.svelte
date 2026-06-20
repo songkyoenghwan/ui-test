@@ -31,7 +31,7 @@
 				txt="저장"
 				class="w-20"
 				click={() => {
-					console.log(document.querySelectorAll('lang-translate')[0]?.lang);
+					console.log(document.querySelectorAll('lang-translate')[0]?.result);
 					console.log(document?.querySelector('operating-period')?.result);
 					console.log(document?.querySelector('closing-day')?.result);
 					console.log(document?.querySelector('operating-hours')?.result);
@@ -59,7 +59,7 @@
 			<li>
 				<div class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-4">
 					<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
-					<lang-chk class="flex flex-wrap items-center justify-end gap-5"></lang-chk>
+					<lang-chk view="reg" class="flex flex-wrap items-center justify-end gap-5"></lang-chk>
 					<!-- 나노스토어로 언어값 체크 연동 중 -->
 				</div>
 			</li>

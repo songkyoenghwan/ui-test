@@ -120,8 +120,8 @@
 	--font-sans: var(--font-sans);
 
 	--shadow-header: var(--shadow-header);
-	--shadow-1xs: var(--shadow-1xs);
-	--shadow-2xs: var(--shadow-2xs);
+	--shadow-1xs: 0 0 2px rgba(0, 0, 0, 0.2);
+	--shadow-2xs: 0 0 0 rgba(0, 0, 0, 0.1);
 
 	--text-2sm: var(--text-2sm);
 	--text-2md: var(--text-2md);
@@ -285,7 +285,7 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		overscroll-behavior: none;
-		background-color: #f5f5f5;
+		background-color: #f8fafc;
 		color: var(--color-121212);
 		color-scheme: light;
 		font-style: normal;
@@ -539,6 +539,10 @@
 
 		&:focus-within::picker(select) {
 			@apply translate-y-0 opacity-100;
+		}
+
+		&.error {
+			@apply text-error border-error;
 		}
 	}
 

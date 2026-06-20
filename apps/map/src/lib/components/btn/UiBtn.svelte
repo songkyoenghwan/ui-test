@@ -34,6 +34,7 @@
 		txt?: string;
 		link?: string;
 		value?: string;
+		scroll?: string;
 		cls?: string;
 		iconCls?: string;
 		name?: string;
@@ -68,6 +69,7 @@
 		iconPos = 'rt',
 		arr,
 		value = '',
+		scroll = '',
 		selected = $bindable(),
 		disabled,
 		checked = $bindable(false),
@@ -78,6 +80,7 @@
 	const role = $derived(tag === 'a' ? 'link' : tag === 'button' ? 'button' : undefined);
 	const isSegmented = $derived(variant === 'segmented' && arr);
 	const segmentList = $derived(Array.isArray(arr) ? arr : []);
+	let scrollAreaRef: HTMLElement | null = $state(null);
 
 	$effect(() => {
 		if (!selected && segmentList.length > 0) {
@@ -112,6 +115,24 @@
 					bind:group={selected}
 					class="sr-only"
 					onchange={change}
+					onclick={(e) => {
+						if (scroll) {
+							const container = document.getElementById('main-container');
+							const targetElement = document.getElementById(`target-scroll-${name}-${i}`);
+
+							if (container && targetElement) {
+								const containerRect = container.getBoundingClientRect();
+								const targetRect = targetElement.getBoundingClientRect();
+								const headerOffset = 120;
+								const offsetPosition = targetRect.top - containerRect.top + container.scrollTop - headerOffset;
+
+								container.scrollTo({
+									top: offsetPosition,
+									behavior: 'smooth',
+								});
+							}
+						}
+					}}
 				/>
 			{/if}
 			{item?.txt ? item?.txt : item}

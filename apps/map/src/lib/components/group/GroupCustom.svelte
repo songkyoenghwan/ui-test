@@ -10,6 +10,7 @@
 />
 
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { move } from '@dnd-kit/helpers';
 	import { DragDropProvider } from '@dnd-kit/svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
@@ -49,6 +50,7 @@
 				vi: { value: '', error: false },
 			},
 			img: '',
+			use: '',
 		};
 	}
 
@@ -103,7 +105,11 @@
 	const textNum2 = '개의 시설에서 사용 중' as const;
 
 	$effect(() => {
-		result = stateResult;
+		const snap = $state.snapshot(stateResult);
+
+		untrack(() => {
+			result = stateResult;
+		});
 	});
 </script>
 
@@ -120,6 +126,23 @@
 	</div>
 {/snippet}
 
+{#snippet btnPreview(txt = '', img = '')}
+	<button
+		type="button"
+		class="border-cms-3 shadow-1xs inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border px-3"
+	>
+		{#if img}
+			<picture class="h-4">
+				<img src={img} alt="" class="h-4" />
+			</picture>
+		{/if}
+
+		{#if txt}
+			<span>{txt}</span>
+		{/if}
+	</button>
+{/snippet}
+
 <ul class="divide-y divide-slate-300">
 	<li class="relative z-2">
 		<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5">
@@ -132,7 +155,7 @@
 				</div>
 			{/if}
 
-			{#if view === 'reg'}
+			{#if view === 'reg' || view === 'edit'}
 				<div class="flex flex-col gap-5">
 					<ui-txt size="sm" txt="지도 메인 색상 코드(HEX)를 입력해 주세요  *권장: 어두운 계열의 진한 색상"></ui-txt>
 					<div class="flex cursor-pointer items-center gap-2">
@@ -165,7 +188,7 @@
 						{@render use('시설 혼잡도', useChk(stateResult?.features?.ai))}
 					{/if}
 
-					{#if view === 'reg'}<Chk
+					{#if view === 'reg' || view === 'edit'}<Chk
 							itemId="ai-recommend"
 							txt="AI 추천"
 							reverse="true"
@@ -180,10 +203,14 @@
 				</li>
 				<li class="flex items-center justify-between gap-2 p-3">
 					{#if view === 'detail'}
-						{@render use('구역 혼잡도', useChk(stateResult?.features?.zone), `${stateResult?.features?.zoneUse}${textNum1}`)}
+						{@render use(
+							'구역 혼잡도',
+							useChk(stateResult?.features?.zone),
+							`${stateResult?.features?.zoneUse}${textNum1}`,
+						)}
 					{/if}
 
-					{#if view === 'reg'}
+					{#if view === 'reg' || view === 'edit'}
 						<Chk
 							itemId="zone-congestion"
 							txt="구역 혼잡도"
@@ -206,7 +233,7 @@
 						)}
 					{/if}
 
-					{#if view === 'reg'}<Chk
+					{#if view === 'reg' || view === 'edit'}<Chk
 							itemId="facility-congestion"
 							txt="시설 혼잡도"
 							reverse="true"
@@ -235,7 +262,7 @@
 						)}
 					{/if}
 
-					{#if view === 'reg'}<Chk
+					{#if view === 'reg' || view === 'edit'}<Chk
 							itemId="location-based-content"
 							txt="위치 기반 콘텐츠"
 							reverse="true"
@@ -253,7 +280,7 @@
 						{@render use('시설 주소 노출', useChk(stateResult?.information?.address))}
 					{/if}
 
-					{#if view === 'reg'}<Chk
+					{#if view === 'reg' || view === 'edit'}<Chk
 							itemId="facility-address-exposure"
 							txt="시설 주소 노출"
 							reverse="true"
@@ -275,7 +302,7 @@
 							)}
 						{/if}
 
-						{#if view === 'reg'}
+						{#if view === 'reg' || view === 'edit'}
 							<ui-txt size="sm" txt="시설 정렬 순서" cls="text-black min-w-25"></ui-txt>
 							<InputGroup
 								itemId="rdo-11"
@@ -302,7 +329,7 @@
 				txt="시설 등록 시 설정된 버튼에 대한 링크를 삽입하여 사용자에게 제공할 수 있으며, 최대 3개까지 등록 가능합니다"
 			></ui-txt>
 
-			{#if view === 'reg'}
+			{#if view === 'reg' || view === 'edit'}
 				<UiBtn
 					variant="secondary"
 					size="lg"
@@ -314,14 +341,34 @@
 			{/if}
 		</div>
 
-		{#if view === 'reg'}
+		{#if view === 'reg' || view === 'edit'}
 			<DragDropProvider {onDragStart} {onDragOver} {onDragEnd}>
 				<ul class="flex flex-col gap-3 px-4 pb-4">
 					{#each result?.btnLink ?? [] as btn, index (btn.id)}
-						<GroupDnd id={btn.id} {index} {btn} onRemove={handleRemoveBtnLink} {isDndDisabled} />
+						<GroupDnd id={btn.id} {index} {btn} {btnPreview} onRemove={handleRemoveBtnLink} {isDndDisabled} />
 					{/each}
 				</ul>
 			</DragDropProvider>
+		{/if}
+
+		{#if view === 'detail'}
+			<ul class="flex items-center gap-5">
+				{#each result?.btnLink ?? [] as btn, index (btn.id)}
+					<li class="grid grid-cols-5 gap-4 rounded-sm border border-slate-200 px-3 py-4">
+						<div class="col-span-2 flex flex-col items-center justify-center gap-3">
+							{@render btnPreview(btn.lang.ko.value, btn.img)}
+
+							{#if btn.use}
+								<ui-txt size="sm" txt={`${btn.use}개의 시설에서 사용 중`}></ui-txt>
+							{/if}
+						</div>
+						<div class="col-span-3">
+							<ui-txt size="sm" cls="text-black" txt="다국어 버튼명"></ui-txt>
+							<lang-translate data-max-length="50" {view} btnPreview="btn-name" lang={btn.lang}></lang-translate>
+						</div>
+					</li>
+				{/each}
+			</ul>
 		{/if}
 	</li>
 </ul>

@@ -17,6 +17,7 @@ export const TranslateSchema = z.object({
 	}),
 	maxlength: z.number().optional(),
 	view: z.enum(['reg', 'detail']).default('reg'),
+	btnPreview: z.string().optional(),
 });
 
 export type TranslateProps = z.infer<typeof TranslateSchema>;
@@ -56,4 +57,5 @@ export interface Props {
 	lang?: TranslateProps['lang'];
 	maxlength?: number;
 	view?: 'reg' | 'detail';
+	btnPreview: string;
 }

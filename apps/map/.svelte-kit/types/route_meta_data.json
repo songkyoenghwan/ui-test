@@ -9,19 +9,30 @@
 	"/(page)/CMS-CON-001": [
 		"src/routes/(page)/+layout.ts"
 	],
+	"/(page)/CMS-LOC-001-1": [
+		"src/routes/(page)/CMS-LOC-001-1/+page.ts",
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-LOC-001-1/reg": [
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-LOC-001-1/[...id]/detail": [
+		"src/routes/(page)/CMS-LOC-001-1/[...id]/detail/+page.ts",
+		"src/routes/(page)/+layout.ts"
+	],
+	"/(page)/CMS-LOC-001-1/[...id]/edit": [
+		"src/routes/(page)/CMS-LOC-001-1/[...id]/edit/+page.ts",
+		"src/routes/(page)/+layout.ts"
+	],
 	"/(page)/CMS-LOC-001": [
 		"src/routes/(page)/CMS-LOC-001/+page.ts",
 		"src/routes/(page)/+layout.ts"
 	],
-	"/(page)/CMS-LOC-001/reg": [
+	"/(page)/CMS-LOC-001/[view]": [
 		"src/routes/(page)/+layout.ts"
 	],
-	"/(page)/CMS-LOC-001/[...id]/detail": [
-		"src/routes/(page)/CMS-LOC-001/[...id]/detail/+page.ts",
-		"src/routes/(page)/+layout.ts"
-	],
-	"/(page)/CMS-LOC-001/[...id]/edit": [
-		"src/routes/(page)/CMS-LOC-001/[...id]/edit/+page.ts",
+	"/(page)/CMS-LOC-001/[view]/[...id]": [
+		"src/routes/(page)/CMS-LOC-001/[view]/[...id]/+page.ts",
 		"src/routes/(page)/+layout.ts"
 	],
 	"/(page)/CMS-MAP-001": [

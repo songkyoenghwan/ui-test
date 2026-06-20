@@ -23,6 +23,6 @@ export const createClosingResult = (): ClosingResult => ({
 	week: [],
 	allWeek: '',
 	dayWeek: [],
-	day: '',
+	day: '1',
 	view: 'reg',
 });

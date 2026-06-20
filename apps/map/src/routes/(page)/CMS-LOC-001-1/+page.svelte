@@ -111,11 +111,8 @@
 						<tr>
 							<td>99</td>
 							<td>
-								<a href={`/CMS-LOC-001/detail/${item.id}`} class="flex items-center gap-2 text-left">
-									<p
-										style="background-color: {item?.custom?.color || 'transparent'};"
-										class="size-4 rounded-xs"
-									></p>
+								<a href={`/CMS-LOC-001/${item.id}`} class="flex items-center gap-2 text-left">
+									<p style="background-color: {item?.custom?.color || 'transparent'};" class="size-4 rounded-xs"></p>
 									{item?.name?.ko?.value}
 								</a>
 							</td>
@@ -150,12 +147,7 @@
 							<td>{item?.custom?.zoneCongestion ? '사용' : '미사용'}</td>
 							<td>{item?.custom?.locationBasedContent ? '사용' : '미사용'}</td>
 							<td>
-								<a
-									href={item.linkMap}
-									class="underline underline-offset-1"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
+								<a href={item.linkMap} class="underline underline-offset-1" target="_blank" rel="noopener noreferrer">
 									<span>🔗 이동</span>
 								</a>
 							</td>

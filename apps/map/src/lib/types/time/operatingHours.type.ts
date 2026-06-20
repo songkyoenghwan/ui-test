@@ -8,16 +8,16 @@ export const DayWeekSchema = z.object({
 export const OperatingTimeSchema = z.object({
 	timeStart: z.string().default('00:00'),
 	timeEnd: z.string().default('00:00'),
-	rest: z.boolean(),
-	error: z.boolean(),
-	restStart: z.string(),
-	restEnd: z.string(),
+	rest: z.boolean().optional(),
+	error: z.boolean().optional(),
+	restStart: z.string().optional(),
+	restEnd: z.string().optional(),
 });
 
 export const OperatingHourColsSchema = z.object({
 	id: z.string(),
 	dayWeek: z.array(z.string()).optional(),
-	time: z.array(OperatingTimeSchema),
+	time: OperatingTimeSchema,
 });
 
 export const OperatingHourResultSchema = z.object({
@@ -53,12 +53,25 @@ export const createDefaultOperatingTime = (): OperatingTime => ({
 export const createDefaultOperatingHourCol = (id: string): OperatingHourCols => ({
 	id,
 	dayWeek: [],
-	time: [createDefaultOperatingTime()], // 위에서 만든 시간 팩토리를 조립합니다.
+	time: createDefaultOperatingTime(),
 });
 
 export const createDefaultOperatingHourResult = (): OperatingHourResult => ({
 	status: 'always',
-	cols: [],
+	cols: [
+		{
+			dayWeek: [],
+			id: '',
+			time: {
+				error: false,
+				rest: false,
+				restEnd: '',
+				restStart: '',
+				timeEnd: '00:00',
+				timeStart: '00:00',
+			},
+		},
+	],
 	timeError: false,
 	weekError: false,
 	view: 'reg',
