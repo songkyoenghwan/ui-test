@@ -1,6 +1,6 @@
 
 deploy_build
-**/.svelte-kit/
+.svelte-kit/
 
 # Logs
 logs
