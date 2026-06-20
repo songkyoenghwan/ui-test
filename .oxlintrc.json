@@ -17,6 +17,8 @@
     "dist/",
     "build/",
     "**/output/",
+     "**/output/**/*",
+    "apps/**/output/**/*",
     "**/.next/*",
     "**/.svelte-kit/",
     "**/.astro/",

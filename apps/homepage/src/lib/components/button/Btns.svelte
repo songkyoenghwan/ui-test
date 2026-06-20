@@ -57,7 +57,6 @@
 	const VARIANT_BG: Record<Variant, string> = {
 		primary: 'bg-primary hover:bg-default active:bg-default',
 		secondary: 'border border-primary hover:bg-primary/5 active:bg-primary/5 bg-white',
-		secondary: 'bg-secondary hover:bg-secondary/10 active:bg-secondary/80',
 		neutral: 'bg-neutral hover:bg-neutral/80 active:bg-neutral/80',
 		'neutral-outline': 'border border-neutral hover:bg-neutral/5 active:bg-neutral/5',
 		ghost: 'bg-transparent hover:bg-gray-100 active:bg-gray-200',
@@ -71,7 +70,6 @@
 	const VARIANT_TEXT: Record<Variant, string> = {
 		primary: 'text-white font-medium',
 		secondary: 'text-primary font-medium',
-		secondary: 'text-gray-900 font-medium',
 		neutral: 'text-white font-medium',
 		'neutral-outline': 'text-neutral font-medium',
 		ghost: 'text-666 font-medium',

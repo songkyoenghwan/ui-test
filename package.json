@@ -19,7 +19,7 @@
 		"fmt:check": "oxfmt --check",
 		"lang": "bun x @inlang/cli machine translate --project ./project.inlang",
 		"lang:val": "bun x @inlang/cli validate --project ./project.inlang",
-		"lint": "oxlint .",
+		"lint": "oxlint . --ignore-pattern \"**/output/**/*\"",
 		"lint:fix": "oxlint --fix",
 		"install:all": "bun install",
 		"sp:fix": "syncpack fix",

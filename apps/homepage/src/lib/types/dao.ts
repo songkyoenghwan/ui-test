@@ -1,6 +1,6 @@
 import { m } from 'motion/react';
 
-const industriesArr = industries.map((ind) => ({
+export const industriesArr = industries.map((ind) => ({
 	txt: m[ind](),
 }));
 

@@ -4,7 +4,7 @@ import type { Attachment } from 'svelte/attachments';
 
 let played = $state(false);
 
-const visualTextMotion: Attachment<HTMLElement> = (elm) => {
+export const visualTextMotion: Attachment<HTMLElement> = (elm) => {
 	const stop = inView(elm, (element) => {
 		[...element.children].forEach((child, i) => {
 			const target = child as HTMLElement;
@@ -24,7 +24,7 @@ const visualTextMotion: Attachment<HTMLElement> = (elm) => {
 	return stop;
 };
 
-const indMotion: Attachment<HTMLElement> = (el) => {
+export const indMotion: Attachment<HTMLElement> = (el) => {
 	const animation = animate(el.children, {
 		y: [10, 0],
 		opacity: [0, 1],
