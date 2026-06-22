@@ -40,7 +40,7 @@
 						size="lg"
 						txt="목록"
 						class="w-20"
-						onclick={() => {
+						click={() => {
 							goto(`/CMS-LOC-001/`);
 						}}
 					></ui-btn>
@@ -50,7 +50,7 @@
 						size="lg"
 						txt="수정"
 						class="w-20"
-						onclick={() => {
+						click={() => {
 							goto(`/CMS-LOC-001/edit/${data.id}`);
 						}}
 					></ui-btn>

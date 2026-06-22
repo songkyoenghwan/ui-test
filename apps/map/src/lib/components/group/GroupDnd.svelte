@@ -3,7 +3,8 @@
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
 	import HoverTooltip from '$lib/components/tooltip/HoverTooltip.svelte';
 	import IconUpload from '$lib/components/upload/IconUpload.svelte';
-	import { type LangTranslateKey } from '$lib/types/lang/langTranslate.type';
+	import type { LangTranslateKey } from '$lib/types/lang/langTranslate.type';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		id: string;
@@ -11,6 +12,7 @@
 		btn: { id: string; lang: LangTranslateKey; img: string };
 		onRemove: (id: string) => void;
 		isDndDisabled: boolean;
+		btnPreview: Snippet;
 	}
 
 	let { id, index, btn, onRemove, isDndDisabled, btnPreview }: Props = $props();

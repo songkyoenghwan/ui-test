@@ -353,7 +353,7 @@
 
 		{#if view === 'detail'}
 			<ul class="flex items-center gap-5">
-				{#each stateResult?.btnLink ?? [] as btn, index (btn.id)}
+				{#each stateResult?.btnLink ?? [] as btn (btn.id)}
 					<li class="grid grid-cols-5 gap-4 rounded-sm border border-slate-200 px-3 py-4">
 						<div class="col-span-2 flex flex-col items-center justify-center gap-3">
 							{@render btnPreview(btn.lang.ko.value, btn.img)}

@@ -12,8 +12,8 @@
 />
 
 <script lang="ts">
-	import { createTranslateLang, LANGS, type Props } from '$/lib/types/lang/LangTranslate.type';
 	import { langStore } from '$lib/stores/langStore';
+	import { createTranslateLang, LANGS, type Props } from '$lib/types/lang/LangTranslate.type';
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 

@@ -10,9 +10,9 @@
 />
 
 <script lang="ts">
-	import { createChkLang, type Props } from '$/lib/types/lang/langChk.type';
-	import { LANGS } from '$/lib/types/lang/LangTranslate.type';
 	import { initLangStore, langStore, toggleLang } from '$lib/stores/langStore';
+	import { createChkLang, type Props } from '$lib/types/lang/langChk.type';
+	import { LANGS } from '$lib/types/lang/LangTranslate.type';
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
@@ -54,7 +54,7 @@
 						txt={item.label}
 						class="flex-none"
 						checked={$langStore.lang[item.key]}
-						change={(e) => {
+						change={(e: Event) => {
 							lang[item.key] = e.currentTarget.checked;
 							toggleLang(item.key);
 						}}

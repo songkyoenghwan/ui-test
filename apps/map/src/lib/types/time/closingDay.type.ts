@@ -1,3 +1,4 @@
+import type { PagePropsInput } from '$lib/types/page/page.type';
 import * as z from 'zod';
 
 export const ClosingResultSchema = z.object({
@@ -15,7 +16,7 @@ export interface Props {
 	result?: ClosingResult;
 	checked?: boolean;
 	error?: boolean;
-	view?: 'reg' | 'detail';
+	view?: PagePropsInput['view'];
 }
 
 export const createClosingResult = (): ClosingResult => ({

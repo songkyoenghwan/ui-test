@@ -12,8 +12,8 @@
 />
 
 <script lang="ts">
-	import { createClosingResult, type Props } from '$/lib/types/time/closingDay.type';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
+	import { createClosingResult, type Props } from '$lib/types/time/closingDay.type';
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 

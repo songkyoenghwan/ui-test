@@ -1,3 +1,4 @@
+import { type PagePropsInput } from '$lib/types/page/page.type';
 import * as z from 'zod';
 
 // ... (RadioOptionSchema, BtnLinkSchema 등은 그대로 유지) ...
@@ -11,6 +12,7 @@ export const BtnLinkSchema = z.object({
 	id: z.string(),
 	lang: z.any(),
 	img: z.string(),
+	use: z.string(),
 });
 
 //  2-Depth 하위 스키마 분리 조립
@@ -45,7 +47,7 @@ export type ConfigResult = z.infer<typeof ConfigResultSchema>;
 
 export interface Props {
 	result?: ConfigResult;
-	view?: 'reg' | 'detail';
+	view?: PagePropsInput['view'];
 }
 
 //  무결점 팩토리 함수 (객체 붕괴 방어막)

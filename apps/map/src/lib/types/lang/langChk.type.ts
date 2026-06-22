@@ -1,3 +1,4 @@
+import { pageSchema, type PagePropsInput } from '$lib/types/page/page.type';
 import * as z from 'zod';
 
 export const LangChkField = z.object({
@@ -11,7 +12,7 @@ export const LangChkField = z.object({
 
 export const LangChkSchema = z.object({
 	lang: LangChkField,
-	view: z.enum(['reg', 'detail']).default('reg').optional(),
+	view: pageSchema,
 });
 
 export type LangChkProps = z.infer<typeof LangChkSchema>;
@@ -27,5 +28,5 @@ export const createChkLang = (): LangChkProps['lang'] => ({
 
 export interface Props {
 	lang?: LangChkProps['lang'];
-	view?: 'reg' | 'detail';
+	view?: PagePropsInput['view'];
 }

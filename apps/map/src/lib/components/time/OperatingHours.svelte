@@ -11,8 +11,8 @@
 />
 
 <script lang="ts">
-	import TimeScrollPicker from '$/lib/components/datePicker/TimeScrollPicker.svelte';
 	import UiBtn from '$lib/components/btn/UiBtn.svelte';
+	import TimeScrollPicker from '$lib/components/datePicker/TimeScrollPicker.svelte';
 	import {
 		createDefaultOperatingHourCol,
 		createDefaultOperatingHourResult,

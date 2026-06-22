@@ -1,3 +1,4 @@
+import type { PagePropsInput } from '$lib/types/page/page.type';
 import * as z from 'zod';
 
 export const LangField = z.object({
@@ -56,6 +57,6 @@ export interface Props {
 	open?: 'open' | 'close';
 	lang?: TranslateProps['lang'];
 	maxlength?: number;
-	view?: 'reg' | 'detail';
+	view?: PagePropsInput['view'];
 	btnPreview: string;
 }
