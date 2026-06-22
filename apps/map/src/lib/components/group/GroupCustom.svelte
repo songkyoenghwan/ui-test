@@ -24,7 +24,6 @@
 
 	let { result = $bindable(), view = 'reg' }: Props = $props();
 	let isPickerOpen = $state(false);
-	let stateResult = $state(result ?? createDefaultConfigResult());
 	let rdoList = $state([
 		{
 			id: uuidv4(),
@@ -37,6 +36,34 @@
 			value: 'STATUS',
 		},
 	]);
+	let local = $state(createDefaultConfigResult());
+
+	$effect(() => {
+		if (result && typeof result === 'object') {
+			const resultSnap = $state.snapshot(result);
+
+			untrack(() => {
+				local.color = resultSnap?.color ?? '#14b871';
+
+				local.features = {
+					ai: resultSnap?.features?.ai ?? false,
+					zone: resultSnap?.features?.zone ?? false,
+					zoneUse: resultSnap?.features?.zoneUse ?? '0',
+					facility: resultSnap?.features?.facility ?? false,
+					facilityUse: resultSnap?.features?.facilityUse ?? '0',
+				};
+
+				local.information = {
+					location: resultSnap?.information?.location ?? false,
+					locationUse: resultSnap?.information?.locationUse ?? '0',
+					address: resultSnap?.information?.address ?? false,
+					sorting: resultSnap?.information?.sorting ?? 'MANUAL',
+				};
+
+				local.btnLink = resultSnap?.btnLink ?? [];
+			});
+		}
+	});
 
 	function createNewBtnLink(): BtnLink {
 		return {
@@ -55,38 +82,38 @@
 	}
 
 	function handleAddBtnLink() {
-		const currentList = stateResult?.btnLink || [];
+		const currentList = local?.btnLink || [];
 		if (currentList.length >= 3) {
 			alert('공공 링크 버튼은 최대 3개까지만 등록 가능합니다.');
 			return;
 		}
-		stateResult = {
-			...stateResult,
+		local = {
+			...local,
 			btnLink: [...currentList, createNewBtnLink()],
 		};
 	}
 
 	function handleRemoveBtnLink(id: string) {
-		if (stateResult?.btnLink) {
-			stateResult = {
-				...stateResult,
-				btnLink: stateResult?.btnLink.filter((btn) => btn.id !== id),
+		if (local?.btnLink) {
+			local = {
+				...local,
+				btnLink: local?.btnLink.filter((btn) => btn.id !== id),
 			};
 		}
 	}
 
 	let snapshot: BtnLink[] = $state([]);
-	let isDndDisabled = $derived((stateResult?.btnLink?.length ?? 0) <= 1);
+	let isDndDisabled = $derived((local?.btnLink?.length ?? 0) <= 1);
 	function onDragStart() {
-		snapshot = [...(stateResult?.btnLink || [])];
+		snapshot = [...(local?.btnLink || [])];
 	}
 
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragOver(event: any) {
-		if (stateResult?.btnLink) {
-			stateResult = {
-				...stateResult,
-				btnLink: move(stateResult.btnLink, event),
+		if (local?.btnLink) {
+			local = {
+				...local,
+				btnLink: move(local.btnLink, event),
 			};
 		}
 	}
@@ -94,7 +121,7 @@
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragEnd(event: any) {
 		if (event.canceled) {
-			stateResult = { ...stateResult, btnLink: snapshot };
+			local = { ...local, btnLink: snapshot };
 		}
 	}
 
@@ -105,11 +132,27 @@
 	const textNum2 = '개의 시설에서 사용 중' as const;
 
 	$effect(() => {
-		const snap = $state.snapshot(stateResult);
+		const resultSnap = $state.snapshot(result);
+		if (result && typeof result === 'object') {
+			untrack(() => {
+				result.color = resultSnap?.color;
+				result.features = {
+					ai: resultSnap?.features?.ai,
+					zone: resultSnap?.features?.zone,
+					zoneUse: resultSnap?.features?.zoneUse,
+					facility: resultSnap?.features?.facility,
+					facilityUse: resultSnap?.features?.facilityUse,
+				};
+				result.information = {
+					location: resultSnap?.information?.location,
+					locationUse: resultSnap?.information?.locationUse,
+					address: resultSnap?.information?.address,
+					sorting: resultSnap?.information?.sorting,
+				};
 
-		untrack(() => {
-			result = stateResult;
-		});
+				result.btnLink = resultSnap?.btnLink ?? [];
+			});
+		}
 	});
 </script>
 
@@ -150,18 +193,16 @@
 
 			{#if view === 'detail'}
 				<div class="flex items-center gap-2">
-					<p class="color cursor-auto" style="background-color: {stateResult.color || 'transparent'};"></p>
-					<ui-txt size="sm" cls="text-black" txt={stateResult.color}></ui-txt>
+					<p class="color cursor-auto" style="background-color: {local.color || 'transparent'};"></p>
+					<ui-txt size="sm" cls="text-black" txt={local.color}></ui-txt>
 				</div>
-			{/if}
-
-			{#if view === 'reg' || view === 'edit'}
+			{:else if view === 'reg' || view === 'edit'}
 				<div class="flex flex-col gap-5">
 					<ui-txt size="sm" txt="지도 메인 색상 코드(HEX)를 입력해 주세요  *권장: 어두운 계열의 진한 색상"></ui-txt>
 					<div class="flex cursor-pointer items-center gap-2">
 						<ColorPicker
 							bind:isOpen={isPickerOpen}
-							bind:hex={stateResult.color}
+							bind:hex={local.color}
 							components={ChromeVariant}
 							sliderDirection="horizontal"
 							isAlpha={false}
@@ -170,7 +211,7 @@
 						/>
 						<InputText
 							cls="max-w-50 s"
-							bind:value={stateResult.color}
+							bind:value={local.color}
 							readonly={true}
 							onclick={() => (isPickerOpen = !isPickerOpen)}
 						/>
@@ -185,15 +226,14 @@
 			<ul class="inline-grid divide-y divide-slate-200">
 				<li class="flex items-center justify-between gap-2 px-3 pb-3">
 					{#if view === 'detail'}
-						{@render use('시설 혼잡도', useChk(stateResult?.features?.ai))}
-					{/if}
-
-					{#if view === 'reg' || view === 'edit'}<Chk
+						{@render use('시설 혼잡도', useChk(local?.features?.ai))}
+					{:else if view === 'reg' || view === 'edit'}
+						<Chk
 							itemId="ai-recommend"
 							txt="AI 추천"
 							reverse="true"
 							cls="min-w-32.5 min-h-9"
-							bind:checked={stateResult.features!.ai}
+							bind:checked={local.features!.ai}
 						/>
 					{/if}
 					<ui-txt
@@ -203,20 +243,14 @@
 				</li>
 				<li class="flex items-center justify-between gap-2 p-3">
 					{#if view === 'detail'}
-						{@render use(
-							'구역 혼잡도',
-							useChk(stateResult?.features?.zone),
-							`${stateResult?.features?.zoneUse}${textNum1}`,
-						)}
-					{/if}
-
-					{#if view === 'reg' || view === 'edit'}
+						{@render use('구역 혼잡도', useChk(local?.features?.zone), `${local?.features?.zoneUse}${textNum1}`)}
+					{:else if view === 'reg' || view === 'edit'}
 						<Chk
 							itemId="zone-congestion"
 							txt="구역 혼잡도"
 							reverse="true"
 							cls="min-w-32.5 min-h-9"
-							bind:checked={stateResult.features!.zone}
+							bind:checked={local.features!.zone}
 						/>
 					{/if}
 					<ui-txt
@@ -228,17 +262,16 @@
 					{#if view === 'detail'}
 						{@render use(
 							'시설 혼잡도',
-							useChk(stateResult?.features?.facility),
-							`${stateResult?.features?.facilityUse}${textNum1}`,
+							useChk(local?.features?.facility),
+							`${local?.features?.facilityUse}${textNum1}`,
 						)}
-					{/if}
-
-					{#if view === 'reg' || view === 'edit'}<Chk
+					{:else if view === 'reg' || view === 'edit'}
+						<Chk
 							itemId="facility-congestion"
 							txt="시설 혼잡도"
 							reverse="true"
 							cls="min-w-32.5 min-h-9"
-							bind:checked={stateResult.features!.facility}
+							bind:checked={local.features!.facility}
 						/>
 					{/if}
 					<ui-txt
@@ -257,17 +290,16 @@
 					{#if view === 'detail'}
 						{@render use(
 							'위치 기반 콘텐츠',
-							useChk(stateResult?.information?.location),
-							`${stateResult?.information?.locationUse}${textNum2}`,
+							useChk(local?.information?.location),
+							`${local?.information?.locationUse}${textNum2}`,
 						)}
-					{/if}
-
-					{#if view === 'reg' || view === 'edit'}<Chk
+					{:else if view === 'reg' || view === 'edit'}
+						<Chk
 							itemId="location-based-content"
 							txt="위치 기반 콘텐츠"
 							reverse="true"
 							cls="min-w-32.5 min-h-9"
-							bind:checked={stateResult.information!.location}
+							bind:checked={local.information!.location}
 						/>
 					{/if}
 					<ui-txt
@@ -277,15 +309,14 @@
 				</li>
 				<li class="flex items-center justify-between gap-2 p-3">
 					{#if view === 'detail'}
-						{@render use('시설 주소 노출', useChk(stateResult?.information?.address))}
-					{/if}
-
-					{#if view === 'reg' || view === 'edit'}<Chk
+						{@render use('시설 주소 노출', useChk(local?.information?.address))}
+					{:else if view === 'reg' || view === 'edit'}
+						<Chk
 							itemId="facility-address-exposure"
 							txt="시설 주소 노출"
 							reverse="true"
 							cls="min-w-32.5 min-h-9"
-							bind:checked={stateResult.information!.address}
+							bind:checked={local.information!.address}
 						/>
 					{/if}
 					<ui-txt
@@ -298,18 +329,16 @@
 						{#if view === 'detail'}
 							{@render use(
 								'시설 정렬 순서',
-								rdoList.find((item) => item.value === stateResult?.information?.sorting)?.txt || '',
+								rdoList.find((item) => item.value === local?.information?.sorting)?.txt || '',
 							)}
-						{/if}
-
-						{#if view === 'reg' || view === 'edit'}
+						{:else if view === 'reg' || view === 'edit'}
 							<ui-txt size="sm" txt="시설 정렬 순서" cls="text-black min-w-25"></ui-txt>
 							<InputGroup
 								itemId="rdo-11"
 								name="rdo"
 								arr={rdoList}
 								cls="inline-flex gap-3"
-								bind:value={stateResult.information!.sorting}
+								bind:value={local.information!.sorting}
 							/>
 						{/if}
 					</div>
@@ -336,24 +365,14 @@
 					txt="추가"
 					cls="min-w-30"
 					click={handleAddBtnLink}
-					disabled={stateResult?.btnLink?.length === 3}
+					disabled={local?.btnLink?.length === 3}
 				/>
 			{/if}
 		</div>
 
-		{#if view === 'reg' || view === 'edit'}
-			<DragDropProvider {onDragStart} {onDragOver} {onDragEnd}>
-				<ul class="flex flex-col gap-3 px-4 pb-4">
-					{#each stateResult?.btnLink ?? [] as btn, index (btn.id)}
-						<GroupDnd id={btn.id} {index} {btn} {btnPreview} onRemove={handleRemoveBtnLink} {isDndDisabled} />
-					{/each}
-				</ul>
-			</DragDropProvider>
-		{/if}
-
 		{#if view === 'detail'}
 			<ul class="flex items-center gap-5">
-				{#each stateResult?.btnLink ?? [] as btn (btn.id)}
+				{#each local?.btnLink ?? [] as btn (btn.id)}
 					<li class="grid grid-cols-5 gap-4 rounded-sm border border-slate-200 px-3 py-4">
 						<div class="col-span-2 flex flex-col items-center justify-center gap-3">
 							{@render btnPreview(btn.lang.ko.value, btn.img)}
@@ -369,6 +388,14 @@
 					</li>
 				{/each}
 			</ul>
+		{:else if view === 'reg' || view === 'edit'}
+			<DragDropProvider {onDragStart} {onDragOver} {onDragEnd}>
+				<ul class="flex flex-col gap-3 px-4 pb-4">
+					{#each local?.btnLink ?? [] as btn, index (btn.id)}
+						<GroupDnd id={btn.id} {index} {btn} {btnPreview} onRemove={handleRemoveBtnLink} {isDndDisabled} />
+					{/each}
+				</ul>
+			</DragDropProvider>
 		{/if}
 	</li>
 </ul>

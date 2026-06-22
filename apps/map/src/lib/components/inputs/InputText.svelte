@@ -41,15 +41,16 @@
 		onclick,
 	}: Props = $props();
 	const urlPattern = /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)$/;
-	const urlSchema = z.string().url({ message: '올바른 형식이 아닙니다. https://(또는 http://)를 포함해 주세요.' });
+	const urlSchema = z.url({ message: '올바른 형식이 아닙니다. https://(또는 http://)를 포함해 주세요.' });
+
 	$effect(() => {
-		if (type === 'url') {
-			if (value.trim().length > 0) {
-				const result = urlSchema.safeParse(value);
-				error = result.success ? '' : result.error.issues[0].message;
-			} else {
-				error = ''; // 비어있으면 에러 리셋
-			}
+		if (type !== 'url') return;
+		const currentValue = value ?? '';
+		if (currentValue.length > 0) {
+			const result = urlSchema.safeParse(currentValue);
+			error = result.success ? '' : result.error.issues[0].message;
+		} else {
+			error = '';
 		}
 	});
 </script>

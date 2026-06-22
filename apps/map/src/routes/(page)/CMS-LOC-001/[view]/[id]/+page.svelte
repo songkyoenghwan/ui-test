@@ -2,9 +2,6 @@
 	import { goto } from '$app/navigation';
 	import type { PageProps } from './$types';
 
-	// 2. 변수 선언들
-	const myTabs = ['1. 대상지 정보', '2. 커스텀 항목'];
-
 	let { data }: PageProps = $props();
 
 	let elms = $state({
@@ -57,17 +54,7 @@
 				{/if}
 
 				{#if data.view === 'edit' || data.view === 'reg'}
-					<ui-btn
-						variant="primary"
-						size="lg"
-						txt="저장"
-						class="w-20"
-						click={() => {
-							// console.log(elms.col5.result);
-							// console.log(elms.col6.result);
-							console.log(elms.col11.result);
-						}}
-					></ui-btn>
+					<ui-btn variant="primary" size="lg" txt="저장" class="w-20"></ui-btn>
 				{/if}
 			</div>
 		</div>
@@ -81,7 +68,7 @@
 					variant="segmented"
 					size="lg"
 					name="tab-section"
-					arr={myTabs}
+					arr={data.myTabs}
 					scroll="tab-section"
 					class="w-60 gap-3"
 				></ui-btn>
@@ -101,7 +88,12 @@
 						{:else}
 							<ui-tit tit="제공 언어" sub="사용자에게 제공할 언어를 선택해 주세요"></ui-tit>
 						{/if}
-						<lang-chk view={data.view} bind:this={elms.col1} lang={data.item.language}></lang-chk>
+
+						{#if data.view === 'reg'}
+							<lang-chk view="reg" class="flex flex-wrap items-center justify-end gap-5"></lang-chk>
+						{:else}
+							<lang-chk view={data.view} bind:this={elms.col1} lang={data.item.language}></lang-chk>
+						{/if}
 					</div>
 				</li>
 				<li>
@@ -115,13 +107,18 @@
 								tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
 							></ui-tit>
 						{/if}
-						<lang-translate
-							class="flex-1"
-							data-max-length="50"
-							view={data.view}
-							bind:this={elms.col2}
-							lang={data.item.name}
-						></lang-translate>
+
+						{#if data.view === 'reg'}
+							<lang-translate data-max-length="50" view={data.view} class="flex-1"></lang-translate>
+						{:else}
+							<lang-translate
+								class="flex-1"
+								data-max-length="50"
+								view={data.view}
+								bind:this={elms.col2}
+								lang={data.item.name}
+							></lang-translate>
+						{/if}
 					</div>
 				</li>
 				<li>
@@ -138,10 +135,17 @@
 					<div
 						class="grid max-w-375 grid-cols-[100px_1fr_100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr_122px_1fr]"
 					>
-						<ui-tit tit="운영 기간" cls="pt-1"></ui-tit>
-						<operating-period view={data.view} bind:this={elms.col4} result={data.item.period}></operating-period>
-						<ui-tit tit="정기 휴무" cls="pt-1"></ui-tit>
-						<closing-day view={data.view} bind:this={elms.col5} result={data.item.closingDay}></closing-day>
+						{#if data.view === 'reg'}
+							<ui-tit tit="운영 기간" cls="pt-1"></ui-tit>
+							<operating-period view={data.view}></operating-period>
+							<ui-tit tit="정기 휴무" cls="pt-1"></ui-tit>
+							<closing-day view={data.view}></closing-day>
+						{:else}
+							<ui-tit tit="운영 기간" cls="pt-1"></ui-tit>
+							<operating-period view={data.view} bind:this={elms.col4} result={data.item.period}></operating-period>
+							<ui-tit tit="정기 휴무" cls="pt-1"></ui-tit>
+							<closing-day view={data.view} bind:this={elms.col5} result={data.item.closingDay}></closing-day>
+						{/if}
 					</div>
 				</li>
 				<li>
@@ -151,7 +155,7 @@
 							rest="off"
 							view={data.view}
 							bind:this={elms.col6}
-							result={data.item.operatingHours}
+							result={data.view !== 'reg' ? data.item.operatingHours : null}
 						></operating-hours>
 					</div>
 				</li>
@@ -171,7 +175,7 @@
 							data-max-length="50"
 							view={data.view}
 							bind:this={elms.col7}
-							lang={data.item.operationGuide}
+							lang={data.view !== 'reg' ? data.item.operationGuide : null}
 						></lang-translate>
 					</div>
 				</li>
@@ -202,7 +206,7 @@
 								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
 								view={data.view}
 								bind:this={elms.col9}
-								value={data.item.linkHomepage}
+								value={data.view !== 'reg' ? data.item.linkHomepage : null}
 							></input-text>
 						{/if}
 					</div>
@@ -232,7 +236,7 @@
 								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
 								view={data.view}
 								bind:this={elms.col10}
-								value={data.item.linkMap}
+								value={data.view !== 'reg' ? data.item.linkMap : null}
 							></input-text>
 						{/if}
 					</div>
@@ -243,7 +247,11 @@
 		<section id="target-scroll-tab-section-1" class="shadow-1xs rounded-lg bg-white p-5">
 			<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
-			<group-custom view={data.view} bind:this={elms.col11} result={data.item.custom}></group-custom>
+			<group-custom
+				view={data.view}
+				bind:this={elms.col11}
+				result={data.view !== 'reg' ? data.item.custom : null}
+			></group-custom>
 		</section>
 	</article>
 </div>

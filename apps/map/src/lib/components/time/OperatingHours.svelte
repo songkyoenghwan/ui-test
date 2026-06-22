@@ -4,8 +4,9 @@
 		shadow: 'none',
 		props: {
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
-			result: { type: 'Array' },
+			result: { type: 'Object' },
 			rest: { type: 'String', reflect: true },
+			view: { type: 'String', reflect: true },
 		},
 	}}
 />
@@ -60,7 +61,7 @@
 	$effect(() => {
 		if (local.status !== 'always' && local.status !== 'week') {
 			untrack(() => {
-				local.status = result.cols.length > 0 ? 'week' : 'always';
+				local.status = (result?.cols?.length ?? 0) > 0 ? 'week' : 'always';
 			});
 		}
 	});
@@ -73,13 +74,12 @@
 
 	function deleteTime(id: string) {
 		if (!result) return;
-		if (local.cols.length <= 1) return;
-		local.cols = local.cols.filter((item) => item.id !== id);
+		local.cols = local.cols?.filter((item) => item.id !== id);
 	}
 
 	function toggleRestTime(id: string, status: boolean) {
 		if (!result) return;
-		local.cols = local.cols.map((item) => {
+		local.cols = local.cols?.map((item) => {
 			if (item.id === id) {
 				return {
 					...item,
@@ -124,129 +124,137 @@
 	});
 </script>
 
-{#if view === 'detail'}
-	{#if local.status === 'always'}
-		{@const t = result?.cols?.[0].time}
-		<div class="grid grid-cols-[120px_1fr] items-center">
-			<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
-			<ui-txt size="sm" cls="text-black" txt={`${t?.timeStart} ~ ${t?.timeEnd}`}></ui-txt>
-		</div>
-	{/if}
-
-	{#if local.status === 'week'}
-		<ul class="space-y-2">
-			{#each result?.cols as item}
-				<li class="grid grid-cols-[120px_1fr] items-center">
-					<ui-txt size="sm" cls="text-black" txt={getFormattedDayText(item.dayWeek)}></ui-txt>
-					<ui-txt size="sm" cls="text-black" txt={`${item?.time?.timeStart} ~ ${item?.time?.timeEnd}`}></ui-txt>
-				</li>
-			{/each}
-		</ul>
-	{/if}
-{:else}
-	<div class="felx-wrap flex flex-col gap-2">
-		<div class="flex w-32 gap-2">
-			<UiBtn
-				tag="label"
-				variant="segmented"
-				name={`${itemId}-operating-hours`}
-				arr={list}
-				cls="flex-1"
-				bind:selected={local.status}
-			/>
-		</div>
+{#if local}
+	{#if view === 'detail'}
+		{#if local.status === 'always'}
+			{@const t = local?.cols?.[0].time}
+			<div class="grid grid-cols-[120px_1fr] items-center">
+				<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
+				<ui-txt size="sm" cls="text-black" txt={`${t?.timeStart} ~ ${t?.timeEnd}`}></ui-txt>
+			</div>
+		{/if}
 
 		{#if local.status === 'week'}
-			<ul class="flex flex-col gap-2">
-				{#each local.cols as group, i (group.id)}
-					<li
-						class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all not-first:border-t not-first:border-t-slate-200 first:pt-0 starting:left-1 starting:opacity-0"
-						style="z-index: {local.cols.length - i};"
-					>
-						<div class="flex flex-wrap gap-1">
-							<UiBtn
-								tag="chk"
-								variant="segmented"
-								arr={dayWeekList}
-								bind:selected={group.dayWeek}
-								name={`${itemId}-hour-day-${i}`}
-								cls="min-w-7 flex-[0_0_28px]"
-							/>
+			<ul class="space-y-2">
+				{#each local?.cols as item}
+					<li class="grid grid-cols-[120px_1fr] items-center">
+						<ui-txt size="sm" cls="text-black" txt={getFormattedDayText(item.dayWeek)}></ui-txt>
+						<ui-txt size="sm" cls="text-black" txt={`${item?.time?.timeStart} ~ ${item?.time?.timeEnd}`}></ui-txt>
+					</li>
+				{/each}
+			</ul>
+		{/if}
+	{:else}
+		<div class="felx-wrap flex flex-col gap-2">
+			<div class="flex w-32 gap-2">
+				<UiBtn
+					tag="label"
+					variant="segmented"
+					name={`${itemId}-operating-hours`}
+					arr={list}
+					cls="flex-1"
+					bind:selected={local.status}
+				/>
+			</div>
 
-							{#if local.cols.length > 1}
+			{#if local.status === 'week'}
+				<ul class="flex flex-col gap-2">
+					{#each local.cols as group, i (group.id)}
+						<li
+							class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all not-first:border-t not-first:border-t-slate-200 first:pt-0 starting:left-1 starting:opacity-0"
+							style="z-index: {(local.cols?.length ?? 0) - i};"
+						>
+							<div class="flex flex-wrap gap-1">
 								<UiBtn
-									tag="button"
-									variant="ghost"
-									txt="시간대 삭제"
-									cls="min-w-7 flex-[0_0_75px]"
-									click={() => deleteTime(String(group.id))}
+									tag="chk"
+									variant="segmented"
+									arr={dayWeekList}
+									bind:selected={group.dayWeek}
+									name={`${itemId}-hour-day-${i}`}
+									cls="min-w-7 flex-[0_0_28px]"
 								/>
-							{/if}
-						</div>
 
-						<div class={['relative z-1 flex flex-wrap gap-2']}>
+								{#if (local.cols?.length ?? 0) > 1}
+									<UiBtn
+										tag="button"
+										variant="ghost"
+										txt="시간대 삭제"
+										cls="min-w-7 flex-[0_0_75px]"
+										click={() => deleteTime(String(group.id))}
+									/>
+								{/if}
+							</div>
+
+							<div class={['relative z-1 flex flex-wrap gap-2']}>
+								<div class="inline-flex w-full items-center gap-2">
+									<TimeScrollPicker bind:value={group.time.timeStart} cls={group?.time?.error ? 'error' : ''} />
+									<span>~</span>
+									<TimeScrollPicker bind:value={group.time.timeEnd} cls={group?.time?.error ? 'error' : ''} />
+								</div>
+								{#if rest === 'on'}
+									{#if group.time.rest}
+										<dl>
+											<dt>휴게 시간</dt>
+											<dd class="inline-flex items-center gap-2">
+												<TimeScrollPicker bind:value={group.time.restStart} />
+												<span>~</span>
+												<TimeScrollPicker bind:value={group.time.restEnd} />
+												<UiBtn
+													tag="button"
+													variant="icon"
+													txt="삭제"
+													iconName="btn-del"
+													cls="size-7 flex-[0_0_28px] stroke-error fill-error"
+													click={() => toggleRestTime(String(group.id), false)}
+												/>
+											</dd>
+										</dl>
+									{:else}
+										<UiBtn
+											tag="button"
+											variant="ghost"
+											txt="휴게 시간"
+											cls="min-w-7 flex-[0_0_75px]"
+											click={() => toggleRestTime(String(group.id), true)}
+										/>
+									{/if}
+								{/if}
+							</div>
+						</li>
+					{/each}
+				</ul>
+
+				<div class="flex items-center gap-2">
+					<UiBtn
+						tag="button"
+						variant="secondary"
+						txt="시간대 추가 "
+						arr={list}
+						cls="w-25 flex-[0_0_100px]"
+						click={addTime}
+					/>
+				</div>
+			{:else if local.status === 'always'}
+				<ul class="flex flex-col gap-2">
+					{#each local.cols as group, i (group.id)}
+						{#if i === 0}
 							<div class="inline-flex w-full items-center gap-2">
 								<TimeScrollPicker bind:value={group.time.timeStart} cls={group.time.error ? 'error' : ''} />
 								<span>~</span>
 								<TimeScrollPicker bind:value={group.time.timeEnd} cls={group.time.error ? 'error' : ''} />
 							</div>
-							{#if rest === 'on'}
-								{#if group.time.rest}
-									<dl>
-										<dt>휴게 시간</dt>
-										<dd class="inline-flex items-center gap-2">
-											<TimeScrollPicker bind:value={group.time.restStart} />
-											<span>~</span>
-											<TimeScrollPicker bind:value={group.time.restEnd} />
-											<UiBtn
-												tag="button"
-												variant="icon"
-												txt="삭제"
-												iconName="btn-del"
-												cls="size-7 flex-[0_0_28px] stroke-error fill-error"
-												click={() => toggleRestTime(String(group.id), false)}
-											/>
-										</dd>
-									</dl>
-								{:else}
-									<UiBtn
-										tag="button"
-										variant="ghost"
-										txt="휴게 시간"
-										cls="min-w-7 flex-[0_0_75px]"
-										click={() => toggleRestTime(String(group.id), true)}
-									/>
-								{/if}
-							{/if}
-						</div>
-					</li>
-				{/each}
-			</ul>
+						{/if}
+					{/each}
+				</ul>
+			{/if}
 
-			<div class="flex items-center gap-2">
-				<UiBtn
-					tag="button"
-					variant="secondary"
-					txt="시간대 추가 "
-					arr={list}
-					cls="w-25 flex-[0_0_100px]"
-					click={addTime}
-				/>
-			</div>
-		{:else if local.status === 'always'}
-			<div class="inline-flex w-full items-center gap-2">
-				<TimeScrollPicker bind:value={local.cols[0].time.timeStart} cls={local.cols[0].time.error ? 'error' : ''} />
-				<span>~</span>
-				<TimeScrollPicker bind:value={local.cols[0].time.timeEnd} cls={local.cols[0].time.error ? 'error' : ''} />
-			</div>
-		{/if}
+			{#if local.timeError}
+				<ui-txt size="sm" txt="시작 시간이 종료 시간보다 앞서야 합니다." cls="text-error"></ui-txt>
+			{/if}
 
-		{#if local.timeError}
-			<ui-txt size="sm" txt="시작 시간이 종료 시간보다 앞서야 합니다." cls="text-error"></ui-txt>
-		{/if}
-
-		{#if local.weekError}
-			<ui-txt size="sm" txt="요일이 선택되지 않은 시간대가 있습니다." cls="text-error"></ui-txt>
-		{/if}
-	</div>
+			{#if local.weekError}
+				<ui-txt size="sm" txt="요일이 선택되지 않은 시간대가 있습니다." cls="text-error"></ui-txt>
+			{/if}
+		</div>
+	{/if}
 {/if}

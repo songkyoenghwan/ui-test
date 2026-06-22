@@ -79,7 +79,7 @@
 					"ai": true,
 					"facility": true,
 					"facilityUse": "10",
-					"zone": true,
+					"zone": false,
 					"zoneUse": "10"
 				},
 				"information": {
@@ -274,16 +274,19 @@
 				],
 				"status": "always"
 			},
-			"period": "상시 운영",
-			"status": "운영중"
+			"period": {
+				"status": "always",
+				"day": ""
+			},
+			"status": "운영종료"
 		},
 		{
 			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
 			"closingDay": {
 				"allWeek": "",
-				"day": "10",
+				"day": "",
 				"dayWeek": [],
-				"status": "day",
+				"status": "none",
 				"week": []
 			},
 			"custom": {
@@ -307,59 +310,6 @@
 			"id": "CMS-LOC-001-detail-03",
 			"language": {
 				"en": true,
-				"ko": true,
-				"zh": true
-			},
-			"linkHomepage": "https://naver.com",
-			"linkMap": "https://naver.com",
-			"name": {
-				"en": {
-					"error": false,
-					"value": "차이나타운2"
-				},
-				"ko": {
-					"error": false,
-					"value": "차이나타운1"
-				},
-				"zh": {
-					"error": false,
-					"value": "차이나타운3"
-				}
-			},
-			"period": "상시 운영",
-			"status": "운영전"
-		},
-		{
-			"address": "서울특별시 용산구 이태원로 29 (한강로12가)",
-			"closingDay": {
-				"allWeek": "",
-				"day": "",
-				"dayWeek": ["mon", "tue", "wed", "thu", "fri"],
-				"status": "week",
-				"week": ["2"]
-			},
-			"custom": {
-				"color": "#ff0000",
-				"features": {
-					"ai": true,
-					"facility": true,
-					"facilityUse": "10",
-					"zone": true,
-					"zoneUse": "10"
-				},
-				"information": {
-					"address": false,
-					"location": true,
-					"locationUse": "10",
-					"sorting": "STATUS"
-				}
-			},
-			"editTime": "2026-06-12 08:48",
-			"hours": "10:00 ~ 22:00",
-			"id": "CMS-LOC-001-detail-04",
-			"language": {
-				"en": true,
-				"ja": true,
 				"ko": true
 			},
 			"linkHomepage": "https://naver.com",
@@ -367,71 +317,35 @@
 			"name": {
 				"en": {
 					"error": false,
-					"value": "개항장거리22"
-				},
-				"ja": {
-					"error": false,
-					"value": "개항장거리32"
+					"value": "월미도문화의거리2"
 				},
 				"ko": {
 					"error": false,
-					"value": "개항장거리12"
+					"value": "월미도문화의거리1"
 				}
 			},
-			"period": "25.04.01(수)\n~25.04.01(수)",
-			"status": "운영종료"
-		},
-		{
-			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
-			"closingDay": {
-				"allWeek": "",
-				"day": "",
-				"dayWeek": ["sat", "sun"],
-				"status": "week",
-				"week": ["2", "3", "4"]
+			"operatingHours": {
+				"cols": [
+					{
+						"dayWeek": [],
+						"id": "uniqueId",
+						"time": {
+							"error": false,
+							"rest": false,
+							"restEnd": "",
+							"restStart": "",
+							"timeEnd": "01:00",
+							"timeStart": "00:00"
+						}
+					}
+				],
+				"status": "always"
 			},
-			"custom": {
-				"color": "#ff0000",
-				"features": {
-					"ai": true,
-					"facility": true,
-					"facilityUse": "10",
-					"zone": true,
-					"zoneUse": "10"
-				},
-				"information": {
-					"address": false,
-					"location": true,
-					"locationUse": "10",
-					"sorting": "STATUS"
-				}
+			"period": {
+				"status": "always",
+				"day": ""
 			},
-			"editTime": "2026-06-12 08:48",
-			"hours": "10:00 ~ 22:00",
-			"id": "CMS-LOC-001-detail-05",
-			"language": {
-				"en": true,
-				"ja": true,
-				"ko": true
-			},
-			"linkHomepage": "https://naver.com",
-			"linkMap": "https://naver.com",
-			"name": {
-				"en": {
-					"error": false,
-					"value": "개항장거리2"
-				},
-				"ja": {
-					"error": false,
-					"value": "개항장거리3"
-				},
-				"ko": {
-					"error": false,
-					"value": "개항장거리1"
-				}
-			},
-			"period": "25.04.01(수)\n~25.04.01(수)",
-			"status": "운영종료"
+			"status": "운영 전"
 		}
 	]
 }

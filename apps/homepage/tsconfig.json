@@ -53,5 +53,5 @@
 		"output"
 	],
 	"extends": "./.svelte-kit/tsconfig.json",
-	"include": ["./src", ".astro/types.d.ts", "**/*.astro", "./src/env.d.ts", "global.d.ts", "./src/wc.ts"]
+	"include": ["./src", ".astro/types.d.ts", "**/*.astro", "./src/env.d.ts", "global.d.ts"]
 }

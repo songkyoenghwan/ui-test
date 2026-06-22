@@ -369,6 +369,10 @@
 		@apply flex;
 	}
 
+	.main-container {
+		@apply relative grid size-full overflow-auto scroll-smooth has-data-[map=init]:overflow-clip;
+	}
+
 	.button {
 		@apply flex min-h-7 items-center justify-center gap-2 rounded-sm px-1.75 text-sm transition-all duration-150;
 

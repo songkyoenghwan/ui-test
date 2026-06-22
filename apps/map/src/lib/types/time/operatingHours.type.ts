@@ -23,7 +23,7 @@ export const OperatingHourColsSchema = z.object({
 
 export const OperatingHourResultSchema = z.object({
 	status: z.enum(['always', 'week']),
-	cols: z.array(OperatingHourColsSchema).optional(),
+	cols: z.array(OperatingHourColsSchema),
 	timeError: z.boolean().optional(),
 	weekError: z.boolean().optional(),
 	view: z.enum(['reg', 'detail']).default('reg'),

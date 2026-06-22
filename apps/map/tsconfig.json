@@ -15,7 +15,6 @@
 		"strict": true,
 		"allowJs": true,
 		"checkJs": true,
-		"types": ["svelte"],
 		"typeRoots": ["./src/types", "./node_modules/@types"],
 		"skipLibCheck": true,
 		"noEmit": true,
@@ -53,5 +52,5 @@
 		"output"
 	],
 	"extends": "./.svelte-kit/tsconfig.json",
-	"include": ["./src", ".astro/types.d.ts", "**/*.astro", "./src/env.d.ts", "global.d.ts", "./src/wc.ts"]
+	"include": ["./src", ".astro/types.d.ts", "**/*.astro", "./src/env.d.ts", "global.d.ts"]
 }

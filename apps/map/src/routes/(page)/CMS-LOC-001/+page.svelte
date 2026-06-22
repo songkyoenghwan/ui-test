@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { v4 as uuidv4 } from 'uuid';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -10,23 +11,21 @@
 		<div class="flex flex-wrap items-center justify-between gap-2">
 			<div class="flex flex-wrap items-center gap-2">
 				<h3>검색 조건</h3>
-				<button type="button" class="button icon" aria-label="refresh">
-					<span class="sr-only">refresh</span>
-					<icon-list data-name="rotate-left" class="icon size-4 stroke-slate-500"></icon-list>
-				</button>
+				<ui-btn variant="icon" icon-name="rotate-left" icon-cls="size-4 stroke-slate-500"></ui-btn>
 			</div>
 			<div>
-				<button
-					type="button"
-					class="button primary l px-4"
-					aria-label="refresh"
-					onclick={() => {
-						goto(`/CMS-LOC-001/reg`);
+				<ui-btn
+					variant="primary"
+					size="lg"
+					cls="min-w-30"
+					icon-name="arrow-up"
+					icon-pos="lt"
+					icon-cls="size-3 stroke-white"
+					txt="대상지 추가"
+					click={() => {
+						goto(`/CMS-LOC-001/reg/${uuidv4()}`);
 					}}
-				>
-					<icon-list data-name="arrow-up" class="icon size-3 stroke-white"></icon-list>
-					<span>대상지 추가</span>
-				</button>
+				></ui-btn>
 			</div>
 		</div>
 
@@ -40,12 +39,18 @@
 				</select>
 			</div>
 			<div>
-				<div class="input-search group/input-search">
-					<input type="text" name="" id="" class="input-text peer" placeholder="대상지명 검색" />
-					<button type="button" class="button icon" data-btn="input-del">
-						<span class="sr-only">del</span>
-						<icon-list data-name="input-del" class="icon size-4 stroke-slate-400"></icon-list>
-					</button>
+				<div class="input-search group/input-search relative">
+					<input class="input-text peer pr-15!" type="text" placeholder="대상지명 검색" />
+
+					<div class="absolute top-1.5 right-2 z-2 bg-white">
+						<ui-btn
+							x-show="focused"
+							x-cloak
+							variant="icon"
+							icon-name="input-del"
+							icon-cls="size-4 stroke-slate-400"
+						></ui-btn>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -116,7 +121,7 @@
 										style="background-color: {item?.custom?.color || 'transparent'};"
 										class="size-4 rounded-xs"
 									></p>
-									{item?.name?.ko?.value}
+									<p>{item?.name?.ko?.value}</p>
 								</a>
 							</td>
 							<td>
@@ -130,25 +135,43 @@
 							</td>
 							<td>
 								<div class="text-left">
-									<p>
+									<p
+										class={item.status.trim() === '운영중'
+											? 'text-cms-3'
+											: item.status.trim() === '운영종료'
+												? 'text-error'
+												: 'text-slate-400'}
+									>
 										{item.status}
 									</p>
 								</div>
 							</td>
 							<td>
 								<div class="text-left whitespace-pre-line">
-									<p>{item.period}</p>
+									<p>{item.period.status === 'always' ? '상시운영' : item.period.day}</p>
 								</div>
 							</td>
 							<td>
 								<div class="text-left">
-									<p>{item.hours}</p>
+									<p>
+										{item.operatingHours.cols.length > 1
+											? '요일별 상이'
+											: `${item.operatingHours.cols[0].time.timeStart} ~ ${item.operatingHours.cols[0].time.timeEnd}`}
+									</p>
 								</div>
 							</td>
-							<td>{item?.custom?.aiRecommended ? '사용' : '미사용'}</td>
-							<td>{item?.custom?.facilityCongestion ? '사용' : '미사용'}</td>
-							<td>{item?.custom?.zoneCongestion ? '사용' : '미사용'}</td>
-							<td>{item?.custom?.locationBasedContent ? '사용' : '미사용'}</td>
+							<td class={item.custom.features.ai ? 'text-cms-3' : ''}>
+								{item.custom.features.ai ? '사용' : '미사용'}
+							</td>
+							<td class={item.custom.features.facility ? 'text-cms-3' : ''}>
+								{item.custom.features.facility ? '사용' : '미사용'}
+							</td>
+							<td class={item.custom.features.zone ? 'text-cms-3' : ''}>
+								{item.custom.features.zone ? '사용' : '미사용'}
+							</td>
+							<td class={item.custom.information.location ? 'text-cms-3' : ''}>
+								{item.custom.information.location ? '사용' : '미사용'}
+							</td>
 							<td>
 								<a
 									href={item.linkMap}
@@ -168,48 +191,42 @@
 	</section>
 
 	<section class="inline-flex items-center justify-center gap-3">
-		<button type="button" class="button text" aria-label="이전">
-			<icon-list data-name="arrow-left" class="icon size-4 stroke-black"></icon-list>
-			<span>이전</span>
-		</button>
+		<ui-btn variant="text" icon-name="arrow-left" icon-pos="lt" icon-cls="size-4 stroke-black" txt="이전"></ui-btn>
 		<div class="inline-flex items-center justify-center gap-1.5">
 			<strong class="button primary h-7 min-w-7" aria-label="1 page">
 				<span class="text-white">1</span>
 			</strong>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">2</span>
 			</button>
 			<strong class="button text h-7 min-w-7" aria-label="2 page">
-				<span class="text-slate-500">...</span>
+				<span class="text-slate-500">..</span>
 			</strong>
-			<button type="button" class="button text h-7 min-w-7" aria-label="2 page">
+			<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
 				<span class="text-slate-500">999</span>
 			</button>
 		</div>
-		<button type="button" class="button text" aria-label="다음">
-			<span>다음</span>
-			<icon-list data-name="arrow-left" class="icon size-4 rotate-180 stroke-black"></icon-list>
-		</button>
+		<ui-btn variant="text" icon-name="arrow-left" icon-pos="rt" icon-cls="size-4 rotate-180 stroke-black" txt="다음"></ui-btn>
 	</section>
 </div>

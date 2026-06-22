@@ -119,14 +119,14 @@
 			async function loadCmsLoc001() {
 				const res = await fetch('http://localhost:5185/CMS-LOC-001');
 				if (!res.ok) {
-					throw new Error('Failed to load db.json');
+					throw new Error('Failed to load json');
 				}
-				const db = await res.json();
-				console.log(db[0]);
-				if (!db || db.length === 0) {
+				const data = await res.json();
+				console.log(data[0]);
+				if (!data || data.length === 0) {
 					throw new Error('Not found');
 				}
-				return db;
+				return data;
 			}
 
 			document.addEventListener('alpine:init', () => {
@@ -314,16 +314,16 @@
 
 				try {
 					if (detail) {
-						const db = await loadCmsLoc001();
-						detail.list = db;
-						detail.language = db?.[0]?.language;
-						detail.name = db?.[0]?.name;
-						detail.address = db?.[0]?.address;
-						detail.period = db?.[0]?.period;
-						detail.closingDay = db?.[0]?.closingDay;
-						detail.operationGuide = db?.[0]?.operationGuide;
-						detail.linkHomepage = db?.[0]?.linkHomepage;
-						detail.linkMap = db?.[0]?.linkMap;
+						const data = await loadCmsLoc001();
+						detail.list = data;
+						detail.language = data?.[0]?.language;
+						detail.name = data?.[0]?.name;
+						detail.address = data?.[0]?.address;
+						detail.period = data?.[0]?.period;
+						detail.closingDay = data?.[0]?.closingDay;
+						detail.operationGuide = data?.[0]?.operationGuide;
+						detail.linkHomepage = data?.[0]?.linkHomepage;
+						detail.linkMap = data?.[0]?.linkMap;
 					}
 				} catch (error) {
 					console.error('초기 데이터 설정 실패:', error);
