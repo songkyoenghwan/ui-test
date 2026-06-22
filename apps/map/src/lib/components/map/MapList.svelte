@@ -1,44 +1,31 @@
 <svelte:options
 	customElement={{
-		tag: 'map-list',
+		tag: 'map-items',
 		shadow: 'none',
 		props: {
-			list: { type: 'Array', reflect: true },
+			items: { type: 'Array', reflect: true },
 			selectedItem: { type: 'Object' },
 		},
 	}}
 />
 
 <script lang="ts">
-	type Place = {
-		tit: string;
-		top: string;
-		bottom: string;
-	};
-	type Item = {
-		id: string;
-		tit: string;
-		poi: string;
-		places: Place[] | number;
-		exposure: boolean;
-	};
-
-	let { list = [] }: { list: Item[] } = $props();
+	let { items = [] } = $props();
 	let containerRef: HTMLElement | null = $state(null);
 	let page = $state(50);
-	let visibleItems = $derived(list.slice(0, page));
+	let visibleItems = $derived(items.slice(0, page));
 
 	function handleScroll() {
 		if (!containerRef) return;
 
 		const { scrollTop, scrollHeight, clientHeight } = containerRef;
 
-		if (scrollTop + clientHeight >= scrollHeight - 100 && page < list.length) {
+		if (scrollTop + clientHeight >= scrollHeight - 100 && page < items.length) {
 			page += 50;
 		}
 	}
 
-	function handleClick(e: Event, item: Item) {
+	function handleClick(e: Event, item) {
 		e.preventDefault();
 
 		const detail = {
@@ -58,9 +45,9 @@
 	}
 </script>
 
-{#if list.length === 0}
+{#if items.length === 0}
 	<div class="flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center">
-		<icon-list data-name="mouse-circle" class="icon stroke-primary fill-primary size-6.5"></icon-list>
+		<icon-items data-name="mouse-circle" class="icon stroke-primary fill-primary size-6.5"></icon-items>
 		<p class="text-xl text-slate-400">
 			지도를 우클릭하면
 			<br />

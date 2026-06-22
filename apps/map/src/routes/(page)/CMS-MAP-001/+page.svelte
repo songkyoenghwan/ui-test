@@ -1,4 +1,10 @@
 <script lang="ts">
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
+
+	console.log(data);
+
 	function initTmap() {
 		const map = new Tmapv3.Map('map_div', {
 			httpsMode: true,
@@ -139,13 +145,13 @@
 <svelte:head>
 	<script
 		src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ"
-		async
+		defer
 	></script>
 </svelte:head>
 
 <top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip>
 
-<section id="map_div" class="grid size-full"></section>
+<section id="map_div" use:initTmap class="grid size-full"></section>
 
 <section class="map-list">
 	<header class="map-list__header">
@@ -190,7 +196,56 @@
 			</div>
 		</div>
 
-		<map-list class="flex min-h-0 flex-1 flex-col"></map-list>
+		<div class="flex min-h-0 flex-1 flex-col">
+			<!-- <div class="flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center">
+				<icon-items data-name="mouse-circle" class="icon stroke-primary fill-primary size-6.5"></icon-items>
+				<p class="text-xl text-slate-400">
+					지도를 우클릭하면
+					<br />
+					새 위치가 생성됩니다
+				</p>
+			</div> -->
+
+			<ul class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5">
+				{#each data.items as item, index (item?.id)}
+					<li data-index={index} class="w-full">
+						<button
+							type="button"
+							aria-label={item.poi}
+							class="grid w-full grid-cols-[1fr_minmax(0,40px)] grid-rows-2 space-y-1 rounded-sm border border-slate-200 bg-white px-4 py-3"
+						>
+							<span class="order-1 col-span-1 row-span-1 truncate text-left text-base">
+								{item.name.ko ?? ''}
+							</span>
+							<strong
+								class="order-3 col-span-1 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal"
+							>
+								<span class="pr-2 text-slate-600">{item.poi}</span>
+								<strong class="flex items-center font-normal">
+									<span class="flex gap-1 pr-2 text-slate-400">등록시설</span>
+									<!-- {#if typeof item.places === 'number'}
+										<span class={item.places === 0 ? 'text-error' : 'text-primary'}>
+											{item.places}
+										</span>
+									{:else}
+										<span class={item.places.length === 0 ? 'text-error' : 'text-primary'}>
+											{item.places.length}
+										</span>
+									{/if} -->
+									<span>개</span>
+								</strong>
+							</strong>
+
+							<strong class="order-2 row-span-2 grid place-items-center">
+								<!-- {#if item.exposure}
+									<span class="text-primary text-sm font-bold">비노출</span>
+								{/if} -->
+							</strong>
+						</button>
+					</li>
+				{/each}
+			</ul>
+		</div>
 	</div>
 </section>
 

@@ -13,7 +13,7 @@
 	class="group/top-tip has-checked:bg-f0fdfa relative inline-flex min-h-12 items-center gap-1 rounded-sm bg-white opacity-100 shadow-2xs starting:opacity-0"
 >
 	<div class="flex items-center gap-2 py-1 pl-4">
-		<icon-list data-name="info-circle" class="icon fill-primary size-5"></icon-list>
+		<icon-list data-name="info-circle" class="icon fill-cms-3 size-5"></icon-list>
 		<h4
 			class="text-121212 hidden text-base font-normal opacity-100 transition-opacity transition-discrete group-has-checked/top-tip:flex starting:opacity-0"
 		>

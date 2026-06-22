@@ -1,4 +1,75 @@
 {
+	"facilities": {
+		"success": true,
+		"data": {
+			"items": [
+				{
+					"name": {
+						"ko": "LS 용산타워 LS 용산타워 LS 용",
+						"en": "LS 용산타워 LS 용산타워 LS 용",
+						"ja": "LS 용산타워 LS 용산타워 LS 용",
+						"zh": "LS 용산타워 LS 용산타워 LS 용",
+						"vi": "LS 용산타워 LS 용산타워 LS 용",
+						"th": "LS 용산타워 LS 용산타워 LS 용"
+					},
+					"supportedLanguages": {
+						"ko": true,
+						"en": true,
+						"ja": true,
+						"zh": true,
+						"vi": true,
+						"th": true
+					},
+					"latitude": 1,
+					"longitude": 1,
+					"startAt": "",
+					"endAt": "",
+					"colorCode": "",
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": true,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"tourDestinationCommonButtons": [
+						{
+							"iconUrl": "",
+							"buttonName": {
+								"ko": "",
+								"en": "",
+								"ja": "",
+								"zh": "",
+								"vi": "",
+								"th": ""
+							},
+							"sortingNumber": 1
+						}
+					],
+					"tourDestinationOperatingSchedules": [
+						{
+							"dayOfWeek": 1,
+							"openingTime": "",
+							"closingTime": ""
+						}
+					],
+					"tourDestinationHolidaySchedules": [
+						{
+							"weekOfMonth": 1,
+							"dayOfWeek": 1,
+							"fixedHoliday": 1,
+							"holidayType": 1
+						}
+					]
+				}
+			],
+			"totalCount": 1,
+			"page": 1,
+			"pageSize": 1,
+			"totalPages": 1
+		}
+	},
 	"CMS-LOC-001": [
 		{
 			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",

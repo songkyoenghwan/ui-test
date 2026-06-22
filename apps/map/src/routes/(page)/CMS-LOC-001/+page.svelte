@@ -4,6 +4,7 @@
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
+	let inputDel = $state(false);
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
@@ -40,15 +41,25 @@
 			</div>
 			<div>
 				<div class="input-search group/input-search relative">
-					<input class="input-text peer pr-15!" type="text" placeholder="대상지명 검색" />
+					<input
+						class="input-text peer pr-15!"
+						type="text"
+						placeholder="대상지명 검색"
+						onfocus={() => {
+							inputDel = true;
+						}}
+					/>
 
-					<div class="absolute top-1.5 right-2 z-2 bg-white">
+					<div class="absolute top-1.5 right-2 z-2 bg-white {inputDel ? '' : 'hidden'}">
 						<ui-btn
 							x-show="focused"
 							x-cloak
 							variant="icon"
 							icon-name="input-del"
 							icon-cls="size-4 stroke-slate-400"
+							click={() => {
+								inputDel = false;
+							}}
 						></ui-btn>
 					</div>
 				</div>
