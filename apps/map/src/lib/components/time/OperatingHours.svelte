@@ -127,11 +127,14 @@
 {#if local}
 	{#if view === 'detail'}
 		{#if local.status === 'always'}
-			{@const t = local?.cols?.[0].time}
-			<div class="grid grid-cols-[120px_1fr] items-center">
-				<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
-				<ui-txt size="sm" cls="text-black" txt={`${t?.timeStart} ~ ${t?.timeEnd}`}></ui-txt>
-			</div>
+			{#each local?.cols as item, i}
+				{#if i === 0}
+					<div class="grid grid-cols-[120px_1fr] items-center">
+						<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
+						<ui-txt size="sm" cls="text-black" txt={`${item.time.timeStart} ~ ${item.time.timeEnd}`}></ui-txt>
+					</div>
+				{/if}
+			{/each}
 		{/if}
 
 		{#if local.status === 'week'}

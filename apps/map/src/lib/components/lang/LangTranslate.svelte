@@ -17,7 +17,7 @@
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let { lang = $bindable(), open = 'close', maxlength, view = 'reg', btnPreview = '' }: Props = $props();
+	let { lang = $bindable(), open = 'close', maxlength, view = 'reg', btnPreview = '', click }: Props = $props();
 
 	let itemId = uuidv4();
 	let langToggle = $state(false);
@@ -60,16 +60,19 @@
 		<ul class={['flex flex-col', btnPreview === 'btn-name' ? 'gap-1.5 pt-1.5' : '']}>
 			{#each LANGS as item}
 				{@const key = typeof item === 'string' ? item : item.key}
-				<li
-					class={[
-						btnPreview === 'btn-name'
-							? 'grid grid-cols-[32px_1fr] '
-							: 'mt-3 grid grid-cols-[44px_1fr] place-content-center border-t border-t-slate-200 pt-3 first:mt-0 first:border-t-0 first:pt-0',
-					]}
-				>
-					<ui-txt size="sm" txt={String(key).toUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
-					<ui-txt size="sm" txt={local[key]?.value} cls="text-black"></ui-txt>
-				</li>
+
+				{#if local[key]?.value !== ''}
+					<li
+						class={[
+							btnPreview === 'btn-name'
+								? 'grid grid-cols-[32px_1fr] '
+								: 'mt-3 grid grid-cols-[44px_1fr] place-content-center border-t border-t-slate-200 pt-3 first:mt-0 first:border-t-0 first:pt-0',
+						]}
+					>
+						<ui-txt size="sm" txt={String(key).toUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
+						<ui-txt size="sm" txt={local[key]?.value} cls="text-black"></ui-txt>
+					</li>
+				{/if}
 			{/each}
 		</ul>
 	{:else}
@@ -105,7 +108,8 @@
 								icon-name="translate"
 								class="flex-none"
 								cls="stroke-cms-3"
-								click={() => {
+								{click}
+								mousedown={() => {
 									langToggle = true;
 								}}
 							></ui-btn>

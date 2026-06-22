@@ -45,6 +45,7 @@
 		disabled?: string | boolean;
 		checked?: boolean;
 		click?: (event: MouseEvent) => void;
+		onmousedown?: (event: MouseEvent) => void;
 		change?: (event: Event) => void;
 	}
 
@@ -74,6 +75,7 @@
 		disabled,
 		checked = $bindable(false),
 		click,
+		onmousedown,
 		change,
 	}: Props = $props();
 
@@ -146,6 +148,7 @@
 		class="button {variant} {size} {cls}"
 		aria-label={txt}
 		onclick={click}
+		{onmousedown}
 		disabled={disabled === true || disabled === 'true' ? true : undefined}
 	>
 		{#if iconName && iconPos === 'lt'}

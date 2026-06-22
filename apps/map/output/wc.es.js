@@ -43502,11 +43502,11 @@ function CV(e, t) {
 		let e = t.$$host?.shadowRoot;
 		e && pV(e);
 	});
-	let i = Q(t, "tag", 7, "button"), a = Q(t, "variant", 7, "primary"), o = Q(t, "size", 7, "md"), s = Q(t, "itemId", 7), c = Q(t, "txt", 7), l = Q(t, "link", 7), u = Q(t, "cls", 7), d = Q(t, "iconCls", 7), f = Q(t, "name", 7), p = Q(t, "iconName", 7), m = Q(t, "iconPos", 7, "rt"), h = Q(t, "arr", 7), g = Q(t, "value", 7, ""), _ = Q(t, "scroll", 7, ""), v = Q(t, "selected", 15), y = Q(t, "disabled", 7), b = Q(t, "checked", 15, !1), x = Q(t, "click", 7), S = Q(t, "change", 7), C = /* @__PURE__ */ N(() => i() === "a" ? "link" : i() === "button" ? "button" : void 0), w = /* @__PURE__ */ N(() => a() === "segmented" && h()), T = /* @__PURE__ */ N(() => Array.isArray(h()) ? h() : []);
+	let i = Q(t, "tag", 7, "button"), a = Q(t, "variant", 7, "primary"), o = Q(t, "size", 7, "md"), s = Q(t, "itemId", 7), c = Q(t, "txt", 7), l = Q(t, "link", 7), u = Q(t, "cls", 7), d = Q(t, "iconCls", 7), f = Q(t, "name", 7), p = Q(t, "iconName", 7), m = Q(t, "iconPos", 7, "rt"), h = Q(t, "arr", 7), g = Q(t, "value", 7, ""), _ = Q(t, "scroll", 7, ""), v = Q(t, "selected", 15), y = Q(t, "disabled", 7), b = Q(t, "checked", 15, !1), x = Q(t, "click", 7), S = Q(t, "onmousedown", 7), C = Q(t, "change", 7), w = /* @__PURE__ */ N(() => i() === "a" ? "link" : i() === "button" ? "button" : void 0), T = /* @__PURE__ */ N(() => a() === "segmented" && h()), E = /* @__PURE__ */ N(() => Array.isArray(h()) ? h() : []);
 	or(() => {
-		!v() && B(T).length > 0 && v(B(T)[0].name);
+		!v() && B(E).length > 0 && v(B(E)[0].name);
 	});
-	var E = {
+	var D = {
 		get tag() {
 			return i();
 		},
@@ -43615,15 +43615,21 @@ function CV(e, t) {
 		set click(e) {
 			x(e), P();
 		},
-		get change() {
+		get onmousedown() {
 			return S();
 		},
-		set change(e) {
+		set onmousedown(e) {
 			S(e), P();
+		},
+		get change() {
+			return C();
+		},
+		set change(e) {
+			C(e), P();
 		}
-	}, D = H(), O = L(D), k = (e) => {
+	}, O = H(), k = L(O), ee = (e) => {
 		var t = H();
-		ra(L(t), 19, () => B(T), (e, t) => `seg-${e.name}-${t}`, (e, t, r) => {
+		ra(L(t), 19, () => B(E), (e, t) => `seg-${e.name}-${t}`, (e, t, r) => {
 			var s = _V(), c = I(s), l = (e) => {
 				var i = hV();
 				Ja(i);
@@ -43631,7 +43637,7 @@ function CV(e, t) {
 				z(() => {
 					X(i, "id", `${f()}-${B(t).name}-${B(r)}`), X(i, "name", f()), a !== (a = B(t).name) && (i.value = (i.__value = B(t).name) ?? "");
 				}), pi("change", i, function(...e) {
-					S()?.apply(this, e);
+					C()?.apply(this, e);
 				}), co(n, [], i, () => (B(t).name, v()), v), U(e, i);
 			}, d = (e) => {
 				var i = gV();
@@ -43640,7 +43646,7 @@ function CV(e, t) {
 				z(() => {
 					X(i, "id", `${f()}-${B(t).name}-${B(r)}`), X(i, "name", f()), a !== (a = B(t).name) && (i.value = (i.__value = B(t).name) ?? "");
 				}), pi("change", i, function(...e) {
-					S()?.apply(this, e);
+					C()?.apply(this, e);
 				}), pi("click", i, (e) => {
 					if (_()) {
 						let e = document.getElementById("main-container"), t = document.getElementById(`target-scroll-${f()}-${B(r)}`);
@@ -43662,15 +43668,16 @@ function CV(e, t) {
 				X(s, "for", `${f()}-${B(t).name}-${B(r)}`), Y(s, 1, `button ${a() ?? ""} ${o() ?? ""} ${u() ?? ""}`, "svelte-1fqc9nd"), W(p, ` ${(B(t)?.txt ? B(t)?.txt : B(t)) ?? ""}`);
 			}), U(e, s);
 		}), U(e, t);
-	}, ee = (e) => {
+	}, te = (e) => {
 		var t = H();
 		Sa(L(t), i, !1, (e, t) => {
 			Z(e, () => ({
 				type: i() === "button" ? "button" : void 0,
-				role: B(C),
+				role: B(w),
 				class: `button ${a() ?? ""} ${o() ?? ""} ${u() ?? ""}`,
 				"aria-label": c(),
 				onclick: x(),
+				onmousedown: S(),
 				disabled: y() === !0 || y() === "true" ? !0 : void 0
 			}), void 0, void 0, void 0, "svelte-1fqc9nd");
 			var n = yV(), s = L(n), l = (e) => {
@@ -43696,7 +43703,7 @@ function CV(e, t) {
 				p() && m() === "rt" && e(_);
 			}), U(t, n);
 		}), U(e, t);
-	}, te = (e) => {
+	}, ne = (e) => {
 		var t = bV(), n = I(t), i = (e) => {
 			r(e);
 		};
@@ -43711,19 +43718,19 @@ function CV(e, t) {
 		}), A(t), z(() => {
 			X(t, "href", l()), Y(t, 1, `hover:text-1616ff flex items-center ${a() ?? ""} ${o() ?? ""} ${u() ?? ""}`, "svelte-1fqc9nd"), W(s, ` ${c() ?? ""} `);
 		}), U(e, t);
-	}, ne = (e) => {
+	}, re = (e) => {
 		var t = xV(), n = I(t);
 		Ja(n);
 		var r, i = R(n);
 		A(t), z(() => {
 			X(t, "for", s()), Y(t, 1, `button segmented ${a() ?? ""} ${o() ?? ""} ${u() ?? ""}`, "svelte-1fqc9nd"), X(n, "id", s()), X(n, "name", f()), r !== (r = g()) && (n.value = (n.__value = g()) ?? ""), W(i, ` ${c() ?? ""}`);
 		}), pi("change", n, function(...e) {
-			S()?.apply(this, e);
+			C()?.apply(this, e);
 		}), lo(n, b), U(e, t);
 	};
-	return K(O, (e) => {
-		B(w) ? e(k) : !B(w) && i() === "button" ? e(ee, 1) : !B(w) && i() === "a" ? e(te, 2) : !B(w) && i() === "chk" && e(ne, 3);
-	}), U(e, D), M(E);
+	return K(k, (e) => {
+		B(T) ? e(ee) : !B(T) && i() === "button" ? e(te, 1) : !B(T) && i() === "a" ? e(ne, 2) : !B(T) && i() === "chk" && e(re, 3);
+	}), U(e, O), M(D);
 }
 mi(["change", "click"]), customElements.define("ui-btn", $(CV, {
 	itemId: {
@@ -43769,6 +43776,7 @@ mi(["change", "click"]), customElements.define("ui-btn", $(CV, {
 	},
 	scroll: {},
 	click: {},
+	onmousedown: {},
 	change: {}
 }, [], []));
 //#endregion
@@ -44378,16 +44386,16 @@ function oH(e, t, n) {
 var sH = /* @__PURE__ */ V("<li><ui-txt></ui-txt> <ui-txt></ui-txt></li>", 2), cH = /* @__PURE__ */ V("<ul></ul>"), lH = /* @__PURE__ */ V("<ui-btn></ui-btn>", 2), uH = /* @__PURE__ */ V("<li><label class=\"label\"> </label> <input type=\"text\" placeholder=\"내용을 입력해 주세요.\"/> <!></li>"), dH = /* @__PURE__ */ V("<div class=\"mt-2 flex items-center gap-2\"><ui-btn></ui-btn></div>", 2), fH = /* @__PURE__ */ V("<section class=\"group/lang\"><ul class=\"flex flex-col gap-3\"></ul> <!></section>");
 function pH(e, t) {
 	j(t, !0);
-	let n = () => Mt(QV, "$langStore", r), [r, i] = Nt(), a = Q(t, "lang", 15), o = Q(t, "open", 7, "close"), s = Q(t, "maxlength", 7), c = Q(t, "view", 7, "reg"), l = Q(t, "btnPreview", 7, ""), u = aH(), d = /* @__PURE__ */ wn(!1), f = /* @__PURE__ */ wn(jn(KV())), p = /* @__PURE__ */ N(() => n().lang.zh || n().lang.ja || n().lang.th || n().lang.vi);
+	let n = () => Mt(QV, "$langStore", r), [r, i] = Nt(), a = Q(t, "lang", 15), o = Q(t, "open", 7, "close"), s = Q(t, "maxlength", 7), c = Q(t, "view", 7, "reg"), l = Q(t, "btnPreview", 7, ""), u = Q(t, "click", 7), d = aH(), f = /* @__PURE__ */ wn(!1), p = /* @__PURE__ */ wn(jn(KV())), m = /* @__PURE__ */ N(() => n().lang.zh || n().lang.ja || n().lang.th || n().lang.vi);
 	or(() => {
 		if (a() && typeof a() == "object") {
 			let e = tt(a());
 			ri(() => {
-				B(f).ko.value = e.ko?.value || "", B(f).en.value = e.en?.value || "", B(f).zh.value = e.zh?.value || "", B(f).ja.value = e.ja?.value || "", B(f).th.value = e.th?.value || "", B(f).vi.value = e.vi?.value || "";
+				B(p).ko.value = e.ko?.value || "", B(p).en.value = e.en?.value || "", B(p).zh.value = e.zh?.value || "", B(p).ja.value = e.ja?.value || "", B(p).th.value = e.th?.value || "", B(p).vi.value = e.vi?.value || "";
 			});
 		}
 	}), or(() => {
-		let e = tt(B(f));
+		let e = tt(B(p));
 		ri(() => {
 			a() && typeof a() == "object" && GV.forEach((t) => {
 				let n = typeof t == "string" ? t : t.key;
@@ -44395,7 +44403,7 @@ function pH(e, t) {
 			});
 		});
 	});
-	var m = {
+	var h = {
 		get lang() {
 			return a();
 		},
@@ -44425,59 +44433,70 @@ function pH(e, t) {
 		},
 		set btnPreview(e = "") {
 			l(e), P();
+		},
+		get click() {
+			return u();
+		},
+		set click(e) {
+			u(e), P();
 		}
-	}, h = H(), g = L(h), _ = (e) => {
+	}, g = H(), _ = L(g), v = (e) => {
 		var t = H(), r = L(t), i = (e) => {
 			var t = cH();
 			ra(t, 21, () => GV, $i, (e, t) => {
 				let n = /* @__PURE__ */ N(() => typeof B(t) == "string" ? B(t) : B(t).key);
-				var r = sH(), i = I(r);
-				Za(i, "size", "sm"), z(() => Za(i, "txt", String(B(n)).toUpperCase())), Za(i, "cls", "text-cms-3 font-semibold text-center");
-				var a = R(i, 2);
-				Za(a, "size", "sm"), z(() => Za(a, "txt", B(f)[B(n)]?.value)), Za(a, "cls", "text-black"), A(r), z(() => Y(r, 1, J([l() === "btn-name" ? "grid grid-cols-[32px_1fr] " : "mt-3 grid grid-cols-[44px_1fr] place-content-center border-t border-t-slate-200 pt-3 first:mt-0 first:border-t-0 first:pt-0"]))), U(e, r);
+				var r = H(), i = L(r), a = (e) => {
+					var t = sH(), r = I(t);
+					Za(r, "size", "sm"), z(() => Za(r, "txt", String(B(n)).toUpperCase())), Za(r, "cls", "text-cms-3 font-semibold text-center");
+					var i = R(r, 2);
+					Za(i, "size", "sm"), z(() => Za(i, "txt", B(p)[B(n)]?.value)), Za(i, "cls", "text-black"), A(t), z(() => Y(t, 1, J([l() === "btn-name" ? "grid grid-cols-[32px_1fr] " : "mt-3 grid grid-cols-[44px_1fr] place-content-center border-t border-t-slate-200 pt-3 first:mt-0 first:border-t-0 first:pt-0"]))), U(e, t);
+				};
+				K(i, (e) => {
+					B(p)[B(n)]?.value !== "" && e(a);
+				}), U(e, r);
 			}), A(t), z(() => Y(t, 1, J(["flex flex-col", l() === "btn-name" ? "gap-1.5 pt-1.5" : ""]))), U(e, t);
 		}, a = (e) => {
 			var t = fH(), r = I(t);
-			ra(r, 23, () => GV, (e, t) => `${u}-${t}`, (e, t) => {
+			ra(r, 23, () => GV, (e, t) => `${d}-${t}`, (e, t) => {
 				var r = uH(), i = I(r), a = I(i, !0);
 				A(i);
 				var o = R(i, 2);
 				Ja(o);
 				var c = R(o, 2), l = (e) => {
 					var t = lH();
-					Za(t, "variant", "secondary"), Za(t, "size", "md"), Za(t, "txt", "자동번역"), Za(t, "icon-name", "translate"), Y(t, 1, "flex-none"), Za(t, "cls", "stroke-cms-3"), Za(t, "click", () => {
-						F(d, !0);
+					Za(t, "variant", "secondary"), Za(t, "size", "md"), Za(t, "txt", "자동번역"), Za(t, "icon-name", "translate"), Y(t, 1, "flex-none"), Za(t, "cls", "stroke-cms-3"), z(() => Za(t, "click", u())), Za(t, "mousedown", () => {
+						F(f, !0);
 					}), U(e, t);
 				};
 				K(c, (e) => {
 					B(t).key === "ko" && e(l);
 				}), A(r), z((e) => {
-					Y(r, 1, J(["grid grid-cols-[28px_1fr] items-center gap-1 has-[ui-btn]:grid-cols-[28px_1fr_80px]", B(t).key === "ko" || B(t).key === "en" || B(d) && n().lang[B(t).key] ? "" : "hidden"])), X(i, "for", `${u ?? ""}-${B(t).key ?? ""}`), W(a, e), X(o, "id", `${u ?? ""}-${B(t).key ?? ""}`), Y(o, 1, `input-text s ${B(f)[B(t).key].error ? "error" : ""}`), X(o, "maxlength", s());
+					Y(r, 1, J(["grid grid-cols-[28px_1fr] items-center gap-1 has-[ui-btn]:grid-cols-[28px_1fr_80px]", B(t).key === "ko" || B(t).key === "en" || B(f) && n().lang[B(t).key] ? "" : "hidden"])), X(i, "for", `${d ?? ""}-${B(t).key ?? ""}`), W(a, e), X(o, "id", `${d ?? ""}-${B(t).key ?? ""}`), Y(o, 1, `input-text s ${B(p)[B(t).key].error ? "error" : ""}`), X(o, "maxlength", s());
 				}, [() => String(B(t).key).toUpperCase()]), pi("input", o, () => {
-					B(f)[B(t).key].error = !B(f)[B(t).key].value.trim().length;
+					B(p)[B(t).key].error = !B(p)[B(t).key].value.trim().length;
 				}), pi("focusout", o, () => {
-					B(f)[B(t).key].error = B(f)[B(t).key].value.trim() === "";
-				}), oo(o, () => B(f)[B(t).key].value, (e) => B(f)[B(t).key].value = e), U(e, r);
+					B(p)[B(t).key].error = B(p)[B(t).key].value.trim() === "";
+				}), oo(o, () => B(p)[B(t).key].value, (e) => B(p)[B(t).key].value = e), U(e, r);
 			}), A(r);
 			var i = R(r, 2), a = (e) => {
 				var t = dH(), n = I(t);
-				Za(n, "variant", "secondary"), Za(n, "size", "md"), Za(n, "txt", "다국어 입력"), Za(n, "icon-name", "arrow-down"), Za(n, "icon-size", "16"), Y(n, 1, "flex-1"), Za(n, "cls", "stroke-cms-3"), z(() => Za(n, "icon-cls", B(d) ? "rotate-180" : "")), Za(n, "icon-pos", "lt"), z(() => Za(n, "aria-expanded", o() === "close" ? "false" : "true")), Za(n, "click", (e) => {
-					e.preventDefault(), F(d, !B(d));
+				Za(n, "variant", "secondary"), Za(n, "size", "md"), Za(n, "txt", "다국어 입력"), Za(n, "icon-name", "arrow-down"), Za(n, "icon-size", "16"), Y(n, 1, "flex-1"), Za(n, "cls", "stroke-cms-3"), z(() => Za(n, "icon-cls", B(f) ? "rotate-180" : "")), Za(n, "icon-pos", "lt"), z(() => Za(n, "aria-expanded", o() === "close" ? "false" : "true")), Za(n, "click", (e) => {
+					e.preventDefault(), F(f, !B(f));
 				}), A(t), U(e, t);
 			};
 			K(i, (e) => {
-				B(p) && e(a);
+				B(m) && e(a);
 			}), A(t), U(e, t);
 		};
 		K(r, (e) => {
 			c() === "detail" ? e(i) : e(a, -1);
 		}), U(e, t);
 	};
-	K(g, (e) => {
-		B(f) && e(_);
-	}), U(e, h);
-	var v = M(m);
-	return i(), v;
+	K(_, (e) => {
+		B(p) && e(v);
+	}), U(e, g);
+	var y = M(h);
+	return i(), y;
 }
 mi(["input", "focusout"]), customElements.define("lang-translate", $(pH, {
 	open: {
@@ -44493,7 +44512,8 @@ mi(["input", "focusout"]), customElements.define("lang-translate", $(pH, {
 		reflect: !0,
 		type: "String"
 	},
-	btnPreview: {}
+	btnPreview: {},
+	click: {}
 }, [], []));
 //#endregion
 //#region src/lib/components/lang/LangChk.svelte
@@ -47064,11 +47084,18 @@ function JU(e, t) {
 	}, _ = H(), v = L(_), y = (e) => {
 		var t = H(), n = L(t), i = (e) => {
 			var t = BU(), n = L(t), r = (e) => {
-				let t = /* @__PURE__ */ N(() => B(c)?.cols?.[0].time);
-				var n = LU(), r = I(n);
-				Za(r, "size", "sm"), Za(r, "cls", "text-black"), Za(r, "txt", "매일");
-				var i = R(r, 2);
-				Za(i, "size", "sm"), Za(i, "cls", "text-black"), z(() => Za(i, "txt", `${B(t)?.timeStart} ~ ${B(t)?.timeEnd}`)), A(n), U(e, n);
+				var t = H();
+				ra(L(t), 17, () => B(c)?.cols, $i, (e, t, n) => {
+					var r = H(), i = L(r), a = (e) => {
+						var n = LU(), r = I(n);
+						Za(r, "size", "sm"), Za(r, "cls", "text-black"), Za(r, "txt", "매일");
+						var i = R(r, 2);
+						Za(i, "size", "sm"), Za(i, "cls", "text-black"), z(() => Za(i, "txt", `${B(t).time.timeStart} ~ ${B(t).time.timeEnd}`)), A(n), U(e, n);
+					};
+					K(i, (e) => {
+						n === 0 && e(a);
+					}), U(e, r);
+				}), U(e, t);
 			};
 			K(n, (e) => {
 				B(c).status === "always" && e(r);
@@ -54139,274 +54166,279 @@ function T4(e, t) {
 		set view(e = "reg") {
 			r(e), P();
 		}
-	}, v = C4(), y = I(v), b = I(y), x = I(b);
-	Za(x, "tit", "색상 코드");
-	var S = R(x, 2), C = (e) => {
-		var t = _4(), n = I(t), r = R(n, 2);
-		Za(r, "size", "sm"), Za(r, "cls", "text-black"), z(() => Za(r, "txt", B(o).color)), A(t), z(() => Pa(n, `background-color: ${(B(o).color || "transparent") ?? ""};`)), U(e, t);
-	}, w = (e) => {
-		var t = v4(), n = I(t);
-		Za(n, "size", "sm"), Za(n, "txt", "지도 메인 색상 코드(HEX)를 입력해 주세요  *권장: 어두운 계열의 진한 색상");
-		var r = R(n, 2), a = I(r);
-		c4(a, {
-			get components() {
-				return l4;
-			},
-			sliderDirection: "horizontal",
-			isAlpha: !1,
-			textInputModes: ["hex"],
-			label: "",
-			get isOpen() {
-				return B(i);
-			},
-			set isOpen(e) {
-				F(i, e, !0);
-			},
-			get hex() {
-				return B(o).color;
-			},
-			set hex(e) {
-				B(o).color = e;
+	}, v = H(), y = L(v), b = (e) => {
+		var t = C4(), n = I(t), s = I(n), u = I(s);
+		Za(u, "tit", "색상 코드");
+		var _ = R(u, 2), v = (e) => {
+			var t = _4(), n = I(t), r = R(n, 2);
+			Za(r, "size", "sm"), Za(r, "cls", "text-black"), z(() => Za(r, "txt", B(o).color)), A(t), z(() => Pa(n, `background-color: ${(B(o).color || "transparent") ?? ""};`)), U(e, t);
+		}, y = (e) => {
+			var t = v4(), n = I(t);
+			Za(n, "size", "sm"), Za(n, "txt", "지도 메인 색상 코드(HEX)를 입력해 주세요  *권장: 어두운 계열의 진한 색상");
+			var r = R(n, 2), a = I(r);
+			c4(a, {
+				get components() {
+					return l4;
+				},
+				sliderDirection: "horizontal",
+				isAlpha: !1,
+				textInputModes: ["hex"],
+				label: "",
+				get isOpen() {
+					return B(i);
+				},
+				set isOpen(e) {
+					F(i, e, !0);
+				},
+				get hex() {
+					return B(o).color;
+				},
+				set hex(e) {
+					B(o).color = e;
+				}
+			}), oW(R(a, 2), {
+				cls: "max-w-50 s",
+				readonly: !0,
+				onclick: () => F(i, !B(i)),
+				get value() {
+					return B(o).color;
+				},
+				set value(e) {
+					B(o).color = e;
+				}
+			}), A(r), A(t), U(e, t);
+		};
+		K(_, (e) => {
+			r() === "detail" ? e(v) : (r() === "reg" || r() === "edit") && e(y, 1);
+		}), A(s), A(n);
+		var b = R(n, 2), x = I(b), S = I(x);
+		Za(S, "tit", "기능 커스텀");
+		var C = R(S, 2), w = I(C), T = I(w), E = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => h(B(o)?.features?.ai));
+				u4(e, () => "시설 혼잡도", () => B(t));
 			}
-		}), oW(R(a, 2), {
-			cls: "max-w-50 s",
-			readonly: !0,
-			onclick: () => F(i, !B(i)),
-			get value() {
-				return B(o).color;
-			},
-			set value(e) {
-				B(o).color = e;
-			}
-		}), A(r), A(t), U(e, t);
-	};
-	K(S, (e) => {
-		r() === "detail" ? e(C) : (r() === "reg" || r() === "edit") && e(w, 1);
-	}), A(b), A(y);
-	var T = R(y, 2), E = I(T), D = I(E);
-	Za(D, "tit", "기능 커스텀");
-	var O = R(D, 2), k = I(O), ee = I(k), te = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => h(B(o)?.features?.ai));
-			u4(e, () => "시설 혼잡도", () => B(t));
-		}
-	}, ne = (e) => {
-		IV(e, {
-			itemId: "ai-recommend",
-			txt: "AI 추천",
-			reverse: "true",
-			cls: "min-w-32.5 min-h-9",
-			get checked() {
-				return B(o).features.ai;
-			},
-			set checked(e) {
-				B(o).features.ai = e;
-			}
-		});
-	};
-	K(ee, (e) => {
-		r() === "detail" ? e(te) : (r() === "reg" || r() === "edit") && e(ne, 1);
-	});
-	var re = R(ee, 2);
-	Za(re, "size", "sm"), Za(re, "txt", "AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"), A(k);
-	var ie = R(k, 2), ae = I(ie), oe = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => h(B(o)?.features?.zone));
-			u4(e, () => "구역 혼잡도", () => B(t), () => `${B(o)?.features?.zoneUse}${g}`);
-		}
-	}, se = (e) => {
-		IV(e, {
-			itemId: "zone-congestion",
-			txt: "구역 혼잡도",
-			reverse: "true",
-			cls: "min-w-32.5 min-h-9",
-			get checked() {
-				return B(o).features.zone;
-			},
-			set checked(e) {
-				B(o).features.zone = e;
-			}
-		});
-	};
-	K(ae, (e) => {
-		r() === "detail" ? e(oe) : (r() === "reg" || r() === "edit") && e(se, 1);
-	});
-	var ce = R(ae, 2);
-	Za(ce, "size", "sm"), Za(ce, "txt", "구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"), A(ie);
-	var le = R(ie, 2), ue = I(le), de = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => h(B(o)?.features?.facility));
-			u4(e, () => "시설 혼잡도", () => B(t), () => `${B(o)?.features?.facilityUse}${g}`);
-		}
-	}, fe = (e) => {
-		IV(e, {
-			itemId: "facility-congestion",
-			txt: "시설 혼잡도",
-			reverse: "true",
-			cls: "min-w-32.5 min-h-9",
-			get checked() {
-				return B(o).features.facility;
-			},
-			set checked(e) {
-				B(o).features.facility = e;
-			}
-		});
-	};
-	K(ue, (e) => {
-		r() === "detail" ? e(de) : (r() === "reg" || r() === "edit") && e(fe, 1);
-	});
-	var pe = R(ue, 2);
-	Za(pe, "size", "sm"), Za(pe, "txt", "시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"), A(le), A(O), A(E), A(T);
-	var me = R(T, 2), he = I(me), ge = I(he);
-	Za(ge, "tit", "시설 정보 커스텀");
-	var _e = R(ge, 2), ve = I(_e), ye = I(ve), be = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => h(B(o)?.information?.location));
-			u4(e, () => "위치 기반 콘텐츠", () => B(t), () => `${B(o)?.information?.locationUse}개의 시설에서 사용 중`);
-		}
-	}, xe = (e) => {
-		IV(e, {
-			itemId: "location-based-content",
-			txt: "위치 기반 콘텐츠",
-			reverse: "true",
-			cls: "min-w-32.5 min-h-9",
-			get checked() {
-				return B(o).information.location;
-			},
-			set checked(e) {
-				B(o).information.location = e;
-			}
-		});
-	};
-	K(ye, (e) => {
-		r() === "detail" ? e(be) : (r() === "reg" || r() === "edit") && e(xe, 1);
-	});
-	var Se = R(ye, 2);
-	Za(Se, "size", "sm"), Za(Se, "txt", "AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"), A(ve);
-	var Ce = R(ve, 2), we = I(Ce), Te = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => h(B(o)?.information?.address));
-			u4(e, () => "시설 주소 노출", () => B(t));
-		}
-	}, Ee = (e) => {
-		IV(e, {
-			itemId: "facility-address-exposure",
-			txt: "시설 주소 노출",
-			reverse: "true",
-			cls: "min-w-32.5 min-h-9",
-			get checked() {
-				return B(o).information.address;
-			},
-			set checked(e) {
-				B(o).information.address = e;
-			}
-		});
-	};
-	K(we, (e) => {
-		r() === "detail" ? e(Te) : (r() === "reg" || r() === "edit") && e(Ee, 1);
-	});
-	var De = R(we, 2);
-	Za(De, "size", "sm"), Za(De, "txt", "구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"), A(Ce);
-	var Oe = R(Ce, 2), ke = I(Oe), Ae = I(ke), je = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => B(a).find((e) => e.value === B(o)?.information?.sorting)?.txt || "");
-			u4(e, () => "시설 정렬 순서", () => B(t));
-		}
-	}, Me = (e) => {
-		var t = y4(), n = L(t);
-		Za(n, "size", "sm"), Za(n, "txt", "시설 정렬 순서"), Za(n, "cls", "text-black min-w-25"), VV(R(n, 2), {
-			itemId: "rdo-11",
-			name: "rdo",
-			get arr() {
-				return B(a);
-			},
-			cls: "inline-flex gap-3",
-			get value() {
-				return B(o).information.sorting;
-			},
-			set value(e) {
-				B(o).information.sorting = e;
-			}
-		}), U(e, t);
-	};
-	K(Ae, (e) => {
-		r() === "detail" ? e(je) : (r() === "reg" || r() === "edit") && e(Me, 1);
-	}), A(ke);
-	var Ne = R(ke, 2);
-	Za(Ne, "size", "sm"), Za(Ne, "txt", "시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"), A(Oe), A(_e), A(he), A(me);
-	var Pe = R(me, 2), Fe = I(Pe), Ie = I(Fe);
-	Za(Ie, "tit", "공통 링크 버튼 <br />미리보기");
-	var Le = R(Ie, 2);
-	Za(Le, "size", "sm"), Za(Le, "txt", "시설 등록 시 설정된 버튼에 대한 링크를 삽입하여 사용자에게 제공할 수 있으며, 최대 3개까지 등록 가능합니다");
-	var Re = R(Le, 2), ze = (e) => {
-		{
-			let t = /* @__PURE__ */ N(() => B(o)?.btnLink?.length === 3);
-			CV(e, {
-				variant: "secondary",
-				size: "lg",
-				txt: "추가",
-				cls: "min-w-30",
-				click: c,
-				get disabled() {
-					return B(t);
+		}, D = (e) => {
+			IV(e, {
+				itemId: "ai-recommend",
+				txt: "AI 추천",
+				reverse: "true",
+				cls: "min-w-32.5 min-h-9",
+				get checked() {
+					return B(o).features.ai;
+				},
+				set checked(e) {
+					B(o).features.ai = e;
 				}
 			});
-		}
-	};
-	K(Re, (e) => {
-		(r() === "reg" || r() === "edit") && e(ze);
-	}), A(Fe);
-	var Be = R(Fe, 2), Ve = (e) => {
-		var t = x4();
-		ra(t, 21, () => B(o)?.btnLink ?? [], (e) => e.id, (e, t) => {
-			var n = b4(), i = I(n), a = I(i);
-			d4(a, () => B(t).lang.ko.value, () => B(t).img);
-			var o = R(a, 2), s = (e) => {
-				var n = f4();
-				Za(n, "size", "sm"), z(() => Za(n, "txt", `${B(t).use}개의 시설에서 사용 중`)), U(e, n);
-			};
-			K(o, (e) => {
-				B(t).use && e(s);
-			}), A(i);
-			var c = R(i, 2), l = I(c);
-			Za(l, "size", "sm"), Za(l, "cls", "text-black"), Za(l, "txt", "다국어 버튼명");
-			var u = R(l, 2);
-			Za(u, "data-max-length", "50"), z(() => Za(u, "view", r())), Za(u, "btnPreview", "btn-name"), z(() => Za(u, "lang", B(t).lang)), A(c), A(n), U(e, n);
-		}), A(t), U(e, t);
-	}, He = (e) => {
-		m1(e, {
-			onDragStart: f,
-			onDragOver: p,
-			onDragEnd: m,
-			children: (e, t) => {
-				var n = S4();
-				ra(n, 23, () => B(o)?.btnLink ?? [], (e) => e.id, (e, t, n) => {
-					z0(e, {
-						get id() {
-							return B(t).id;
-						},
-						get index() {
-							return B(n);
-						},
-						get btn() {
-							return B(t);
-						},
-						get btnPreview() {
-							return d4;
-						},
-						onRemove: l,
-						get isDndDisabled() {
-							return B(d);
-						}
-					});
-				}), A(n), U(e, n);
-			},
-			$$slots: { default: !0 }
+		};
+		K(T, (e) => {
+			r() === "detail" ? e(E) : (r() === "reg" || r() === "edit") && e(D, 1);
 		});
+		var O = R(T, 2);
+		Za(O, "size", "sm"), Za(O, "txt", "AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"), A(w);
+		var k = R(w, 2), ee = I(k), te = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => h(B(o)?.features?.zone));
+				u4(e, () => "구역 혼잡도", () => B(t), () => `${B(o)?.features?.zoneUse}${g}`);
+			}
+		}, ne = (e) => {
+			IV(e, {
+				itemId: "zone-congestion",
+				txt: "구역 혼잡도",
+				reverse: "true",
+				cls: "min-w-32.5 min-h-9",
+				get checked() {
+					return B(o).features.zone;
+				},
+				set checked(e) {
+					B(o).features.zone = e;
+				}
+			});
+		};
+		K(ee, (e) => {
+			r() === "detail" ? e(te) : (r() === "reg" || r() === "edit") && e(ne, 1);
+		});
+		var re = R(ee, 2);
+		Za(re, "size", "sm"), Za(re, "txt", "구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"), A(k);
+		var ie = R(k, 2), ae = I(ie), oe = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => h(B(o)?.features?.facility));
+				u4(e, () => "시설 혼잡도", () => B(t), () => `${B(o)?.features?.facilityUse}${g}`);
+			}
+		}, se = (e) => {
+			IV(e, {
+				itemId: "facility-congestion",
+				txt: "시설 혼잡도",
+				reverse: "true",
+				cls: "min-w-32.5 min-h-9",
+				get checked() {
+					return B(o).features.facility;
+				},
+				set checked(e) {
+					B(o).features.facility = e;
+				}
+			});
+		};
+		K(ae, (e) => {
+			r() === "detail" ? e(oe) : (r() === "reg" || r() === "edit") && e(se, 1);
+		});
+		var ce = R(ae, 2);
+		Za(ce, "size", "sm"), Za(ce, "txt", "시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"), A(ie), A(C), A(x), A(b);
+		var le = R(b, 2), ue = I(le), de = I(ue);
+		Za(de, "tit", "시설 정보 커스텀");
+		var fe = R(de, 2), pe = I(fe), me = I(pe), he = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => h(B(o)?.information?.location));
+				u4(e, () => "위치 기반 콘텐츠", () => B(t), () => `${B(o)?.information?.locationUse}개의 시설에서 사용 중`);
+			}
+		}, ge = (e) => {
+			IV(e, {
+				itemId: "location-based-content",
+				txt: "위치 기반 콘텐츠",
+				reverse: "true",
+				cls: "min-w-32.5 min-h-9",
+				get checked() {
+					return B(o).information.location;
+				},
+				set checked(e) {
+					B(o).information.location = e;
+				}
+			});
+		};
+		K(me, (e) => {
+			r() === "detail" ? e(he) : (r() === "reg" || r() === "edit") && e(ge, 1);
+		});
+		var _e = R(me, 2);
+		Za(_e, "size", "sm"), Za(_e, "txt", "AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"), A(pe);
+		var ve = R(pe, 2), ye = I(ve), be = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => h(B(o)?.information?.address));
+				u4(e, () => "시설 주소 노출", () => B(t));
+			}
+		}, xe = (e) => {
+			IV(e, {
+				itemId: "facility-address-exposure",
+				txt: "시설 주소 노출",
+				reverse: "true",
+				cls: "min-w-32.5 min-h-9",
+				get checked() {
+					return B(o).information.address;
+				},
+				set checked(e) {
+					B(o).information.address = e;
+				}
+			});
+		};
+		K(ye, (e) => {
+			r() === "detail" ? e(be) : (r() === "reg" || r() === "edit") && e(xe, 1);
+		});
+		var Se = R(ye, 2);
+		Za(Se, "size", "sm"), Za(Se, "txt", "구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"), A(ve);
+		var Ce = R(ve, 2), we = I(Ce), Te = I(we), Ee = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => B(a).find((e) => e.value === B(o)?.information?.sorting)?.txt || "");
+				u4(e, () => "시설 정렬 순서", () => B(t));
+			}
+		}, De = (e) => {
+			var t = y4(), n = L(t);
+			Za(n, "size", "sm"), Za(n, "txt", "시설 정렬 순서"), Za(n, "cls", "text-black min-w-25"), VV(R(n, 2), {
+				itemId: "rdo-11",
+				name: "rdo",
+				get arr() {
+					return B(a);
+				},
+				cls: "inline-flex gap-3",
+				get value() {
+					return B(o).information.sorting;
+				},
+				set value(e) {
+					B(o).information.sorting = e;
+				}
+			}), U(e, t);
+		};
+		K(Te, (e) => {
+			r() === "detail" ? e(Ee) : (r() === "reg" || r() === "edit") && e(De, 1);
+		}), A(we);
+		var Oe = R(we, 2);
+		Za(Oe, "size", "sm"), Za(Oe, "txt", "시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"), A(Ce), A(fe), A(ue), A(le);
+		var ke = R(le, 2), Ae = I(ke), je = I(Ae);
+		Za(je, "tit", "공통 링크 버튼 <br />미리보기");
+		var Me = R(je, 2);
+		Za(Me, "size", "sm"), Za(Me, "txt", "시설 등록 시 설정된 버튼에 대한 링크를 삽입하여 사용자에게 제공할 수 있으며, 최대 3개까지 등록 가능합니다");
+		var Ne = R(Me, 2), Pe = (e) => {
+			{
+				let t = /* @__PURE__ */ N(() => B(o)?.btnLink?.length === 3);
+				CV(e, {
+					variant: "secondary",
+					size: "lg",
+					txt: "추가",
+					cls: "min-w-30",
+					click: c,
+					get disabled() {
+						return B(t);
+					}
+				});
+			}
+		};
+		K(Ne, (e) => {
+			(r() === "reg" || r() === "edit") && e(Pe);
+		}), A(Ae);
+		var Fe = R(Ae, 2), Ie = (e) => {
+			var t = x4();
+			ra(t, 21, () => B(o)?.btnLink ?? [], (e) => e.id, (e, t) => {
+				var n = b4(), i = I(n), a = I(i);
+				d4(a, () => B(t).lang.ko.value, () => B(t).img);
+				var o = R(a, 2), s = (e) => {
+					var n = f4();
+					Za(n, "size", "sm"), z(() => Za(n, "txt", `${B(t).use}개의 시설에서 사용 중`)), U(e, n);
+				};
+				K(o, (e) => {
+					B(t).use && e(s);
+				}), A(i);
+				var c = R(i, 2), l = I(c);
+				Za(l, "size", "sm"), Za(l, "cls", "text-black"), Za(l, "txt", "다국어 버튼명");
+				var u = R(l, 2);
+				Za(u, "data-max-length", "50"), z(() => Za(u, "view", r())), Za(u, "btnPreview", "btn-name"), z(() => Za(u, "lang", B(t).lang)), A(c), A(n), U(e, n);
+			}), A(t), U(e, t);
+		}, Le = (e) => {
+			m1(e, {
+				onDragStart: f,
+				onDragOver: p,
+				onDragEnd: m,
+				children: (e, t) => {
+					var n = S4();
+					ra(n, 23, () => B(o)?.btnLink ?? [], (e) => e.id, (e, t, n) => {
+						z0(e, {
+							get id() {
+								return B(t).id;
+							},
+							get index() {
+								return B(n);
+							},
+							get btn() {
+								return B(t);
+							},
+							get btnPreview() {
+								return d4;
+							},
+							onRemove: l,
+							get isDndDisabled() {
+								return B(d);
+							}
+						});
+					}), A(n), U(e, n);
+				},
+				$$slots: { default: !0 }
+			});
+		};
+		K(Fe, (e) => {
+			r() === "detail" ? e(Ie) : (r() === "reg" || r() === "edit") && e(Le, 1);
+		}), A(ke), A(t), U(e, t);
 	};
-	return K(Be, (e) => {
-		r() === "detail" ? e(Ve) : (r() === "reg" || r() === "edit") && e(He, 1);
-	}), A(Pe), A(v), U(e, v), M(_);
+	return K(y, (e) => {
+		B(o) && e(b);
+	}), U(e, v), M(_);
 }
 customElements.define("group-custom", $(T4, {
 	result: { type: "Array" },

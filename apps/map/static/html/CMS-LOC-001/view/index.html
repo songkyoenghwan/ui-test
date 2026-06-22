@@ -7,7 +7,7 @@
 		<title>ui</title>
 		<link rel="stylesheet" href="/output/main-bundle.es.css" />
 	</head>
-	<body x-data="{ pageView: $persist('reg').as('cms-loc-page-view').using(sessionStorage) }">
+	<body x-data>
 		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
 			<aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb>
 			<!-- authority : D - user || administrator -->
@@ -35,17 +35,16 @@
 							<div class="itmes-center flex gap-3">
 								<template x-if="$store.list.view === 'detail'">
 									<div class="flex gap-3">
-										<ui-btn class="w-20" tag="a" variant="ghost" size="lg" txt="목록" :link="/CMS-LOC-001/"></ui-btn>
+										<ui-btn class="w-20" variant="ghost" size="lg" txt="목록"></ui-btn>
 
 										<ui-btn class="w-20" variant="ghost" size="lg" txt="삭제"></ui-btn>
 
 										<ui-btn
 											class="w-20"
-											tag="a"
 											variant="primary"
 											size="lg"
 											txt="수정"
-											:link="`/CMS-LOC-001/edit/${$store.list.item?.id ?? ''}`"
+											@click.prevent="$store.list.setView('edit')"
 										></ui-btn>
 									</div>
 								</template>
@@ -145,7 +144,11 @@
 										<div class="flex flex-wrap items-center gap-5">
 											<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
 											<ui-btn class="min-w-30" variant="ghost" size="md" txt="지도에서 선택하기"></ui-btn>
-											<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+											<ui-txt
+												size="sm"
+												txt="서울특별시 용산구 이태원로 29 (한강로1가)"
+												cls="text-black"
+											></ui-txt>
 										</div>
 									</div>
 								</li>
@@ -193,6 +196,9 @@
 												:result="JSON.stringify($store.list.item?.operatingHours ?? {})"
 											></operating-hours>
 										</template>
+										<template x-if="$store.list.view === 'reg'">
+											<operating-hours rest="off" :view="$store.list.view"></operating-hours>
+										</template>
 									</div>
 								</li>
 
@@ -218,6 +224,9 @@
 												:view="$store.list.view"
 												:lang="JSON.stringify($store.list.item?.operationGuide ?? {})"
 											></lang-translate>
+										</template>
+										<template x-if="$store.list.view === 'reg'">
+											<lang-translate data-max-length="50" :view="$store.list.view"></lang-translate>
 										</template>
 									</div>
 								</li>
@@ -297,7 +306,10 @@
 						<section class="shadow-1xs rounded-lg bg-white p-5" id="target-scroll-tab-section-1">
 							<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
-							<group-custom :view="$store.list.view" :result="JSON.stringify($store.list.item?.custom ?? {})"></group-custom>
+							<group-custom
+								:view="$store.list.view"
+								:result="JSON.stringify($store.list.item?.custom ?? {})"
+							></group-custom>
 						</section>
 					</article>
 				</div>
@@ -307,6 +319,7 @@
 		<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
 
 		<script async type="module" src="/output/wc.es.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 		<script defer>
@@ -315,11 +328,23 @@
 				Alpine.store('list', {
 					items: [],
 					item: null,
-					view: 'edit',
 					pageId: '',
 					itemsToShow: 10,
 					loading: false,
 					error: null,
+					itemId: '',
+					getItemId() {
+					return	sessionStorage.getItem('cms-loc-page-view-id');
+					},
+					setItemId(id = '') {
+						this.itemId = id;
+						sessionStorage.setItem('cms-loc-page-view-id', id);
+					},
+					view: sessionStorage.getItem('cms-loc-page-view') ?? 'reg',
+					setView(view) {
+						this.view = view;
+						sessionStorage.setItem('cms-loc-page-view', view);
+					},
 					async init() {
 						this.loading = true;
 						this.error = null;
@@ -340,9 +365,8 @@
 							this.items = data;
 
 							if (this.view === 'detail' || this.view === 'edit') {
-								await this.findInit('CMS-LOC-001-detail-01');
+								await this.findInit(this.getItemId());
 
-								console.log(this.item);
 							}
 						} catch (error) {
 							this.error = error.message ?? 'Unknown error';
