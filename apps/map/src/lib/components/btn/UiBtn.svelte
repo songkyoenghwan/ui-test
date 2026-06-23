@@ -24,8 +24,6 @@
 />
 
 <script lang="ts">
-	import { applyGlobalReset } from '$lib/styles/shadow-theme';
-
 	interface Props {
 		tag?: 'button' | 'a' | 'label' | 'chk' | 'rdo';
 		variant?: 'primary' | 'secondary' | 'ghost' | 'segmented' | 'text' | 'icon';
@@ -48,13 +46,6 @@
 		onmousedown?: (event: MouseEvent) => void;
 		change?: (event: Event) => void;
 	}
-
-	$effect(() => {
-		const host = $host()?.shadowRoot;
-		if (host) {
-			applyGlobalReset(host);
-		}
-	});
 
 	let {
 		tag = 'button',
@@ -83,6 +74,16 @@
 	const isSegmented = $derived(variant === 'segmented' && arr);
 	const segmentList = $derived(Array.isArray(arr) ? arr : []);
 	let scrollAreaRef: HTMLElement | null = $state(null);
+
+	function dispatch(type: string, detail?: unknown) {
+		$host()?.dispatchEvent(
+			new CustomEvent(type, {
+				detail,
+				bubbles: true,
+				composed: true,
+			}),
+		);
+	}
 
 	$effect(() => {
 		if (!selected && segmentList.length > 0) {
@@ -147,9 +148,12 @@
 		{role}
 		class="button {variant} {size} {cls}"
 		aria-label={txt}
-		onclick={click}
 		{onmousedown}
 		disabled={disabled === true || disabled === 'true' ? true : undefined}
+		onclick={(e) => {
+			click?.(e);
+			dispatch('btn-click', e);
+		}}
 	>
 		{#if iconName && iconPos === 'lt'}
 			{@render icon()}

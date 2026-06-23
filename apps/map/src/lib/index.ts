@@ -22,3 +22,4 @@ import '$lib/components/time/ClosingDay.svelte';
 import '$lib/components/inputs/InputText.svelte';
 import '$lib/components/group/GroupCustom.svelte';
 import '$lib/components/tooltip/HoverTooltip.svelte';
+import '$lib/components/inputs/InputSearchDel.svelte';

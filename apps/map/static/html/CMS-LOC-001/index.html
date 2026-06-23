@@ -53,12 +53,7 @@
 									@focusin="focused = true"
 									@focusout="focused = false"
 								>
-									<input
-										class="input-text peer pr-15!"
-										x-model="keyword"
-										type="text"
-										placeholder="대상지명 검색"
-									/>
+									<input class="input-text peer pr-15!" x-model="keyword" type="text" placeholder="대상지명 검색" />
 
 									<div class="absolute top-1.5 right-2 z-2 bg-white">
 										<ui-btn
@@ -171,9 +166,7 @@
 											</td>
 											<td>
 												<div class="text-left whitespace-pre-line">
-													<p
-														x-html="item.period.status === 'always' ? '상시운영' : item.period.day"
-													></p>
+													<p x-html="item.period.status === 'always' ? '상시운영' : item.period.day"></p>
 												</div>
 											</td>
 											<td>
@@ -220,13 +213,7 @@
 					</section>
 
 					<section class="inline-flex items-center justify-center gap-3">
-						<ui-btn
-							variant="text"
-							icon-name="arrow-left"
-							icon-pos="lt"
-							icon-cls="size-4 stroke-black"
-							txt="이전"
-						></ui-btn>
+						<ui-btn variant="text" icon-name="arrow-left" icon-pos="lt" icon-cls="size-4 stroke-black" txt="이전"></ui-btn>
 						<div class="inline-flex items-center justify-center gap-1.5">
 							<strong class="button primary h-7 min-w-7" aria-label="1 page">
 								<span class="text-white">1</span>

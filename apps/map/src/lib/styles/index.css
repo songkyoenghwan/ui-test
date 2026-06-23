@@ -214,7 +214,6 @@
 		border: 0;
 		font-size: 100%;
 		line-height: 1.3;
-		font-family: var(--font-sans);
 		vertical-align: baseline;
 	}
 	/* HTML5 display-role reset for older browsers */
@@ -290,22 +289,7 @@
 		color-scheme: light;
 		font-style: normal;
 		font-weight: 400;
-		font-family:
-			'Noto Sans KR',
-			'Inter',
-			system-ui,
-			-apple-system,
-			Apple SD Gothic Neo,
-			BlinkMacSystemFont,
-			'Segoe UI',
-			Roboto,
-			Helvetica,
-			Arial,
-			sans-serif,
-			'Apple Color Emoji',
-			'Segoe UI Emoji',
-			'Segoe UI Symbol',
-			'Noto Color Emoji';
+		font-family: var(--font-sans);
 		font-optical-sizing: auto;
 	}
 
@@ -316,17 +300,8 @@
 
 	/* Select button */
 	select {
-		--radius: 6.25rem;
-		--option-size: 3.125rem;
 		appearance: none;
 		anchor-name: --anchor-el;
-		height: var(--option-size);
-		height: 2.5rem;
-		padding: 0;
-		border: 0.0625rem solid #ccc;
-		border-radius: 0.5rem;
-
-		background: white;
 		cursor: pointer;
 
 		&::picker-icon {
@@ -359,10 +334,6 @@
 		&.input-date::-webkit-datetime-edit-year-field {
 			display: none;
 		}
-	}
-
-	select {
-		@apply disabled:text-999 invalid:text-error invalid:border-error focus-within:outline-cms-2 disabled:cursor-no-drop disabled:border-slate-200 disabled:bg-slate-100;
 	}
 
 	ui-btn {
@@ -527,18 +498,26 @@
 	}
 
 	.select {
-		@apply focus-within:border-cms-2 hover:outline-cms-2 flex min-h-10 w-full min-w-0 [appearance:base-select] items-center gap-0 truncate rounded-sm border border-slate-300 bg-white bg-[url(/src/lib/images/arr/arrow-down.svg)] bg-size-[20px] bg-position-[calc(100%-10px)_center] bg-no-repeat pr-10 pl-2 text-sm tracking-tighter placeholder:text-slate-500 focus-within:outline hover:outline disabled:border-transparent disabled:text-slate-300;
+		@apply focus-within:border-cms-2 hover:outline-cms-2 flex min-h-10 w-full min-w-0 [appearance:base-select] items-center gap-0 truncate rounded-sm border border-slate-300 bg-white bg-[url(/src/lib/images/arr/arrow-down.svg)] bg-size-[20px] bg-position-[calc(100%-10px)_center] bg-no-repeat pr-10 pl-2 text-xs tracking-tighter placeholder:text-slate-500 focus-within:outline hover:outline disabled:border-slate-300 disabled:bg-slate-100 disabled:text-slate-500;
+
+		&.s {
+			@apply min-h-7.5;
+		}
 
 		option {
-			@apply focus-within:text-cms-2 focus-within:hover:bg-cms-2/10 focus-within:outline-cms-2 block min-h-7.5 truncate rounded-sm p-2 hover:bg-white hover:outline hover:outline-slate-200;
+			@apply my-1.5 flex min-h-7.5 items-center truncate rounded-sm px-2 hover:bg-white hover:outline hover:outline-slate-300;
+
+			&:checked {
+				@apply bg-secondary text-cms-3 outline-secondary;
+			}
 		}
 
 		&::picker(select) {
-			@apply border-d9d9d9 my-2 max-h-70 w-full max-w-fit translate-y-1 [appearance:base-select] rounded-sm border bg-white p-2 text-sm opacity-100 shadow-2xs transition-all starting:translate-y-0 starting:opacity-0;
+			@apply border-d9d9d9 max-h-70 w-full max-w-fit translate-y-1 [appearance:base-select] rounded-sm border bg-white px-2 py-0.5 text-xs opacity-100 shadow-2xs transition-all starting:translate-y-0 starting:opacity-0;
 		}
 
 		::checkmark {
-			@apply mr-1;
+			@apply hidden;
 		}
 
 		&:focus-within::picker(select) {
@@ -668,14 +647,14 @@
 	}
 
 	.map-list {
-		@apply fixed inset-e-5 top-(--header-top) mt-5 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip rounded-xl bg-white opacity-100 shadow-2xs transition-all transition-discrete starting:translate-x-20 starting:opacity-0;
+		@apply flex h-(--main-height) w-80 flex-col overflow-clip bg-white opacity-100 shadow-2xs transition-all transition-discrete starting:translate-x-20 starting:opacity-0;
 
 		.map-list__header {
-			@apply flex flex-col gap-3 rounded-t-xl bg-white p-5;
+			@apply flex flex-col gap-3 rounded-t-xl p-5;
 		}
 
 		.map-list-body {
-			@apply flex min-h-0 flex-1 flex-col gap-3 bg-slate-50 py-5;
+			@apply flex min-h-0 flex-1 flex-col gap-3 py-3;
 		}
 	}
 

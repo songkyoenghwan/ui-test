@@ -37,12 +37,12 @@
 						{
 							"iconUrl": "",
 							"buttonName": {
-								"ko": "",
-								"en": "",
-								"ja": "",
-								"zh": "",
-								"vi": "",
-								"th": ""
+								"ko": "ko-bth",
+								"en": "en-bth",
+								"ja": "ja-bth",
+								"zh": "zh-bth",
+								"vi": "vi-bth",
+								"th": "th-bth"
 							},
 							"sortingNumber": 1
 						}
@@ -50,8 +50,8 @@
 					"tourDestinationOperatingSchedules": [
 						{
 							"dayOfWeek": 1,
-							"openingTime": "",
-							"closingTime": ""
+							"openingTime": "00:00",
+							"closingTime": "00:00"
 						}
 					],
 					"tourDestinationHolidaySchedules": [

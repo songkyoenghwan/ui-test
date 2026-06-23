@@ -4,200 +4,45 @@
 	let { data }: PageProps = $props();
 
 	console.log(data);
-
-	function initTmap() {
-		const map = new Tmapv3.Map('map_div', {
-			httpsMode: true,
-			mapType: 'PUBLIC',
-			center: new Tmapv3.LatLng(37.52762856785255, 126.96883232235822), // 지도 초기 좌표
-			width: '100%',
-			height: '100%',
-			zoom: 18,
-			zoomControl: true,
-			scrollwheel: true,
-			draggable: true,
-		});
-	}
-
-	function MapType(type) {
-		if ('HYBRID' == type) {
-			map.setMapType('HYBRID');
-		} else if ('ROAD' == type) {
-			map.setMapType('ROAD');
-		} else if ('PUBLIC' == type) {
-			map.setMapType('PUBLIC');
-		} else if ('NIGHT' == type) {
-			map.setMapType('NIGHT');
-		}
-	}
-
-	$effect(() => {
-		(async () => {
-			const mapListEl = document?.querySelector('map-list');
-			const mapRegEl = document?.querySelector('map-reg');
-
-			if (!mapListEl || !('list' in mapListEl)) return;
-
-			// 예: 서버에서 데이터를 가져오거나, 일부러 async 처리
-			const dataPromise = await new Promise((resolve) => {
-				const items = Array.from({ length: 500 }, (_, i) => ({
-					id: `poi_${i}`,
-					tit: i === 0 ? '' : `LS 용산타워 LS 용산타워 LS 용산타워 LS 용산타워 ${i}`,
-					poi: `PoI${(i % 100) + 1}`,
-					ko: 'k',
-					en: 'e',
-					zh: 'z',
-					ja: 'j',
-					th: 't',
-					vi: 'v',
-					lat: '34.9732111',
-					lon: '127.7343111',
-					addr: '전남 순천시 국가정원1호길 90',
-					places:
-						i === 0
-							? 0
-							: i === 1
-								? []
-								: [
-										{
-											id: `place_1_${i}`,
-											tit: `터키 아이스크림_${i}`,
-											top: '식당·카페',
-											bottom: '푸드 트럭',
-											category: 'food',
-										},
-										{
-											id: `place_2_${i}`,
-											tit: '어딘가에 위치한 화장실어딘가에 위치한 화장실',
-											top: '상위',
-											bottom: '하위',
-											category: 'toilet',
-										},
-										{ id: `place_3_${i}`, tit: '안내소', top: '안내', bottom: '안내소', category: 'toilet' },
-									],
-				}));
-				resolve(items);
-			});
-
-			mapListEl.list = dataPromise;
-
-			mapListEl.addEventListener('poi-click', (e) => {
-				// poi itme 버튼 이벤트
-				console.log(e.detail);
-
-				if (!mapRegEl) return;
-				mapRegEl.open = 'open';
-
-				const { item } = e.detail;
-
-				// mapRegEl.id = item.id;
-				// mapRegEl.poi = item.poi;
-				// mapRegEl.ko = item.ko;
-				// mapRegEl.en = item.en;
-				// mapRegEl.zh = item.zh;
-				// mapRegEl.ja = item.ja;
-				// mapRegEl.th = item.th;
-				// mapRegEl.vi = item.vi;
-				// mapRegEl.lat = item.lat;
-				// mapRegEl.lon = item.lon;
-				// mapRegEl.addr = item.addr;
-				// mapRegEl.places = item.places;
-
-				Object.assign(mapRegEl, item);
-			});
-
-			mapRegEl.addEventListener('auto-translate', (e) => {
-				// 자동 번역 버튼 이벤트
-				console.log(e);
-			});
-
-			document.querySelector('alert-popup')?.addEventListener('alert-cancel', (e) => {
-				// 알림 팝업 취소 이벤트
-				console.log(e);
-			});
-			document.querySelector('alert-popup')?.addEventListener('alert-confirm', (e) => {
-				// 알림 팝업 확인 이벤트
-				console.log(e);
-			});
-
-			document.querySelector('map-reg')?.addEventListener('pos-del', (e) => {
-				// 알림 팝업 취소 이벤트
-				console.log(e);
-				document.querySelector('alert-popup').open = 'open';
-				document.querySelector('alert-popup').txt =
-					'작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
-			});
-			document.querySelector('map-reg')?.addEventListener('pos-save', (e) => {
-				// 알림 팝업 확인 이벤트
-				console.log(e);
-				document.querySelector('alert-popup').open = 'open';
-				document.querySelector('alert-popup').txt = '저장 시 사용자 지도에 즉시 반영됩니다.<br />저장하시겠습니까?';
-			});
-		})();
-	});
-
-	function mapRegElPlaces() {
-		const mapRegE = document?.querySelector('map-reg');
-		console.log(mapRegE.places);
-	}
+	let inputDel = $state(false);
 </script>
-
-<svelte:head>
-	<script
-		src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ"
-		defer
-	></script>
-</svelte:head>
 
 <top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip>
 
-<section id="map_div" use:initTmap class="grid size-full"></section>
+<div class="grid grid-cols-[1fr_20rem]">
+	<section id="map_div" class="grid size-full"></section>
 
-<section class="map-list">
-	<header class="map-list__header">
-		<div class="flex items-end justify-between gap-1">
-			<h3 class="font-bold">위치 목록</h3>
-			<div class="flex-none">
-				<p class="flex-1 text-slate-500">
-					<strong class="font-bold">302</strong>
-					<span>개</span>
-				</p>
+	<section class="map-list divide-y divide-slate-200">
+		<header class="grid grid-cols-2 gap-x-2 gap-y-3 p-5">
+			<ui-tit size="lg" tit="위치 목록"></ui-tit>
+			<div class="flex items-center justify-end gap-0.5">
+				<ui-txt size="sm" cls="font-bold text-slate-500" txt="302"></ui-txt>
+				<ui-txt size="sm" txt="개"></ui-txt>
 			</div>
-		</div>
-		<div class="grid grid-cols-9 gap-2">
-			<select name="" id="" class="select col-span-5" title="content:">
+			<select name="" id="" class="select" title="">
 				<option value="">전체 카테고리</option>
 				<option value="">옵션</option>
 			</select>
-			<select name="" id="" class="select col-span-4">
+			<select name="" id="" class="select">
 				<option value="">노출 + 비노출</option>
 				<option value="">옵션</option>
 			</select>
-		</div>
-		<div class="input-search group/input-search">
-			<input type="text" name="" id="" class="input-text peer" placeholder="위치 검색" />
-			<button type="button" class="button icon" data-btn="input-del">
-				<span class="sr-only">del</span>
-				<icon-list data-name="input-del" class="icon size-4 stroke-slate-400"></icon-list>
-			</button>
-		</div>
-	</header>
-	<div class="map-list-body">
-		<div class="flex items-end justify-between gap-1 px-5">
-			<select name="" id="" class="select w-30">
-				<option value="">최신순</option>
-				<option value="">가나다순</option>
-			</select>
-			<div class="flex-none">
-				<p class="flex-1 text-slate-500">
+			<input-search-del placeholder="위치 검색" class="col-span-2"></input-search-del>
+		</header>
+		<div class="map-list-body">
+			<div class="flex items-end justify-between gap-1 px-5">
+				<select name="" id="" class="select w-30">
+					<option value="">최신순</option>
+					<option value="">가나다순</option>
+				</select>
+				<p class="flex-none text-slate-500">
 					<span>검색결과</span>
 					<strong class="text-primary font-bold">300</strong>
 				</p>
 			</div>
-		</div>
 
-		<div class="flex min-h-0 flex-1 flex-col">
-			<!-- <div class="flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center">
+			<div class="flex min-h-0 flex-1 flex-col">
+				<!-- <div class="flex flex-1 flex-col items-center justify-center gap-3 p-5 text-center">
 				<icon-items data-name="mouse-circle" class="icon stroke-primary fill-primary size-6.5"></icon-items>
 				<p class="text-xl text-slate-400">
 					지도를 우클릭하면
@@ -206,24 +51,24 @@
 				</p>
 			</div> -->
 
-			<ul class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5">
-				{#each data.items as item, index (item?.id)}
-					<li data-index={index} class="w-full">
-						<button
-							type="button"
-							aria-label={item.poi}
-							class="grid w-full grid-cols-[1fr_minmax(0,40px)] grid-rows-2 space-y-1 rounded-sm border border-slate-200 bg-white px-4 py-3"
-						>
-							<span class="order-1 col-span-1 row-span-1 truncate text-left text-base">
-								{item.name.ko ?? ''}
-							</span>
-							<strong
-								class="order-3 col-span-1 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal"
+				<ul class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5">
+					{#each data.items as item, index (item?.id)}
+						<li data-index={index} class="w-full">
+							<button
+								type="button"
+								aria-label={item.poi}
+								class="grid w-full grid-cols-[1fr_minmax(0,40px)] grid-rows-2 space-y-1 rounded-sm border border-slate-200 bg-white px-4 py-3"
 							>
-								<span class="pr-2 text-slate-600">{item.poi}</span>
-								<strong class="flex items-center font-normal">
-									<span class="flex gap-1 pr-2 text-slate-400">등록시설</span>
-									<!-- {#if typeof item.places === 'number'}
+								<span class="order-1 col-span-1 row-span-1 truncate text-left text-base">
+									{item.name.ko ?? ''}
+								</span>
+								<strong
+									class="order-3 col-span-1 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal"
+								>
+									<span class="pr-2 text-slate-600">{item.poi}</span>
+									<strong class="flex items-center font-normal">
+										<span class="flex gap-1 pr-2 text-slate-400">등록시설</span>
+										<!-- {#if typeof item.places === 'number'}
 										<span class={item.places === 0 ? 'text-error' : 'text-primary'}>
 											{item.places}
 										</span>
@@ -232,21 +77,22 @@
 											{item.places.length}
 										</span>
 									{/if} -->
-									<span>개</span>
+										<span>개</span>
+									</strong>
 								</strong>
-							</strong>
 
-							<strong class="order-2 row-span-2 grid place-items-center">
-								<!-- {#if item.exposure}
+								<strong class="order-2 row-span-2 grid place-items-center">
+									<!-- {#if item.exposure}
 									<span class="text-primary text-sm font-bold">비노출</span>
 								{/if} -->
-							</strong>
-						</button>
-					</li>
-				{/each}
-			</ul>
+								</strong>
+							</button>
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>
 
 <map-reg class="map-reg" open="close" id="" poi="" ko="" en="" zh="" ja="" th="" vi="" lat="" lon="" addr=""></map-reg>

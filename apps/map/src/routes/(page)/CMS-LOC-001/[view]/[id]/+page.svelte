@@ -76,7 +76,7 @@
 		</div>
 	</section>
 
-	<article class="px-5 pb-5">
+	<article class="space-y-3 px-5 pb-5">
 		<section id="target-scroll-tab-section-0" class="shadow-1xs space-y-3 rounded-lg bg-white p-5">
 			<ui-tit tag="h3" size="lg" tit="대상지 정보"></ui-tit>
 
@@ -137,12 +137,17 @@
 					>
 						{#if data.view === 'reg'}
 							<ui-tit tit="운영 기간" cls="pt-1"></ui-tit>
-							<operating-period view={data.view}></operating-period>
+							<operating-period class="border-r border-r-slate-200" view={data.view}></operating-period>
 							<ui-tit tit="정기 휴무" cls="pt-1"></ui-tit>
 							<closing-day view={data.view}></closing-day>
 						{:else}
 							<ui-tit tit="운영 기간" cls="pt-1"></ui-tit>
-							<operating-period view={data.view} bind:this={elms.col4} result={data.item.period}></operating-period>
+							<operating-period
+								class="border-r border-r-slate-200"
+								view={data.view}
+								bind:this={elms.col4}
+								result={data.item.period}
+							></operating-period>
 							<ui-tit tit="정기 휴무" cls="pt-1"></ui-tit>
 							<closing-day view={data.view} bind:this={elms.col5} result={data.item.closingDay}></closing-day>
 						{/if}

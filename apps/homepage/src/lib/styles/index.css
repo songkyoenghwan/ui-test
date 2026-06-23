@@ -593,6 +593,18 @@
 			@apply inline-block;
 		}
 	}
+
+	body:has(sub-company) {
+		.sub {
+			& > section {
+				ol {
+					p {
+						@apply break-all lg:max-w-9/10;
+					}
+				}
+			}
+		}
+	}
 }
 
 .swiper-button-prev,

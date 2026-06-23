@@ -118,6 +118,6 @@
 	--input-height: 3.25rem;
 	--y-padding: 40px;
 	--header-height: 60px;
-	--main-height: calc(100dvh - var(--header-height) - var(--y-padding));
+	--main-height: calc(100dvh - var(--header-height));
 	--lnb-width: 75px;
 }

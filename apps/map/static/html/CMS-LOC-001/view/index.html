@@ -144,11 +144,7 @@
 										<div class="flex flex-wrap items-center gap-5">
 											<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
 											<ui-btn class="min-w-30" variant="ghost" size="md" txt="지도에서 선택하기"></ui-btn>
-											<ui-txt
-												size="sm"
-												txt="서울특별시 용산구 이태원로 29 (한강로1가)"
-												cls="text-black"
-											></ui-txt>
+											<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
 										</div>
 									</div>
 								</li>
@@ -306,10 +302,7 @@
 						<section class="shadow-1xs rounded-lg bg-white p-5" id="target-scroll-tab-section-1">
 							<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
-							<group-custom
-								:view="$store.list.view"
-								:result="JSON.stringify($store.list.item?.custom ?? {})"
-							></group-custom>
+							<group-custom :view="$store.list.view" :result="JSON.stringify($store.list.item?.custom ?? {})"></group-custom>
 						</section>
 					</article>
 				</div>
@@ -334,7 +327,7 @@
 					error: null,
 					itemId: '',
 					getItemId() {
-					return	sessionStorage.getItem('cms-loc-page-view-id');
+						return sessionStorage.getItem('cms-loc-page-view-id');
 					},
 					setItemId(id = '') {
 						this.itemId = id;
@@ -366,7 +359,6 @@
 
 							if (this.view === 'detail' || this.view === 'edit') {
 								await this.findInit(this.getItemId());
-
 							}
 						} catch (error) {
 							this.error = error.message ?? 'Unknown error';
