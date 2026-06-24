@@ -173,27 +173,18 @@
 	</section>
 
 	<section class="flex min-h-0 flex-1 flex-col border-t border-t-slate-200 py-4">
-		<header class="gap-1 px-5">
-			<div class="flex items-end justify-between gap-1">
-				<h4 class="text-lg font-semibold">매칭된 시설</h4>
-				<div class="flex-none">
-					<p class="flex-1 text-slate-500">
-						<strong class="font-bold">{data.items[0].facilityPoiMappings.length}</strong>
-						<span>개</span>
-					</p>
-				</div>
-			</div>
+		<header class="grid grid-cols-2 items-center gap-2.5 px-5">
+			<h4 class="text-lg font-semibold">매칭된 시설</h4>
+			<p class="flex-1 text-right text-slate-500">
+				<strong class="text-cms-5 font-bold">{data.items[0].facilityPoiMappings.length}</strong>
+				<span>개</span>
+			</p>
 
-			<div class="flex w-full items-center gap-2 py-3">
-				<button type="button" class="button s secondary flex-1">
-					<span>새 시설 등록</span>
-				</button>
-				<button type="button" class="button s primary flex-1">
-					<span>등록된 시설 매칭</span>
-				</button>
+			<div class="col-span-2 grid grid-cols-2 gap-2.5">
+				<ui-btn variant="ghost" size="md" txt="새 시설 등록"></ui-btn>
+				<ui-btn variant="primary" size="md" txt="저장"></ui-btn>
 			</div>
 		</header>
-
 		<ul class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5"></ul>
 	</section>
 
