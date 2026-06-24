@@ -1,11 +1,94 @@
 {
 	"facilities": {
+		"data": {
+			"items": [
+				{
+					"id": 5,
+					"name": {
+						"ko": "시설3",
+						"en": "store3",
+						"ja": "",
+						"zh": "",
+						"vi": "",
+						"th": ""
+					},
+					"startAt": "2026-06-03T00:00:00.000Z",
+					"endAt": "2026-06-04T00:00:00.000Z",
+					"description": {
+						"ko": "",
+						"en": "",
+						"ja": "",
+						"zh": "",
+						"vi": "",
+						"th": ""
+					},
+					"overwriteCongestionStatus": null,
+					"linkButton": null,
+					"createdAt": "2026-06-01T17:13:38.079Z",
+					"updatedAt": null,
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "카페",
+							"en": "cafe"
+						},
+						"categoryColorCodes": {
+							"colorCode": "#289130"
+						}
+					},
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": null
+				},
+				{
+					"id": 1,
+					"name": {
+						"ko": "시설테스트1",
+						"en": "facility1"
+					},
+					"startAt": "2026-05-28T00:00:00.000Z",
+					"endAt": "2026-05-30T00:00:00.000Z",
+					"description": {
+						"ko": "시설"
+					},
+					"overwriteCongestionStatus": null,
+					"linkButton": null,
+					"createdAt": "2026-05-28T16:49:30.110Z",
+					"updatedAt": null,
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "카페",
+							"en": "cafe"
+						},
+						"categoryColorCodes": {
+							"colorCode": "#289130"
+						}
+					},
+					"isUsingCongestion": false,
+					"hasVpsPopup": true,
+					"matchingPoiName": {
+						"ko": "1번 위치",
+						"en": "First POI"
+					}
+				}
+			],
+			"totalCount": 2,
+			"page": 1,
+			"pageSize": 10,
+			"totalPages": 1,
+			"matchingStatus": {
+				"totalCount": 2,
+				"matched": 1,
+				"unmatched": 1
+			}
+		},
 		"success": true,
 		"data": {
 			"items": [
 				{
 					"name": {
-						"ko": "LS 용산타워 LS 용산타워 LS 용",
+						"ko": "LS 용산타워 LS 용산타워 LS 용워 LS 용산타워 LS 용",
 						"en": "LS 용산타워 LS 용산타워 LS 용",
 						"ja": "LS 용산타워 LS 용산타워 LS 용",
 						"zh": "LS 용산타워 LS 용산타워 LS 용",
@@ -33,6 +116,27 @@
 					"isSectionCongestionYn": true,
 					"isFacilityAddressYn": true,
 					"isCustomSortingYn": true,
+					"tourDestinationId": 1,
+					"categoryId": 1,
+					"description": {
+						"ko": "LS 용산타워 LS 용산타워 LS 용워 LS 용산타워 LS 용",
+						"en": "LS 용산타워 LS 용산타워 LS 용",
+						"ja": "LS 용산타워 LS 용산타워 LS 용",
+						"zh": "LS 용산타워 LS 용산타워 LS 용",
+						"vi": "LS 용산타워 LS 용산타워 LS 용",
+						"th": "LS 용산타워 LS 용산타워 LS 용"
+					},
+					"matchingPoiName": "POI 1",
+					"overwriteCongestionStatus": "",
+					"isOperationInfoSynced": true,
+					"facilityFiles": {
+						"fileOriginalName": "",
+						"fileUrl": "",
+						"fileUploadPath": "",
+						"fileUploadName": "",
+						"fileSize": 1,
+						"fileMimeType": ""
+					},
 					"tourDestinationCommonButtons": [
 						{
 							"iconUrl": "",
@@ -47,19 +151,23 @@
 							"sortingNumber": 1
 						}
 					],
-					"tourDestinationOperatingSchedules": [
-						{
-							"dayOfWeek": 1,
-							"openingTime": "00:00",
-							"closingTime": "00:00"
-						}
-					],
-					"tourDestinationHolidaySchedules": [
+					"facilityHolidaySchedules": [
 						{
 							"weekOfMonth": 1,
 							"dayOfWeek": 1,
 							"fixedHoliday": 1,
 							"holidayType": 1
+						}
+					],
+					"facilityOperatingSchedules": [
+						{
+							"dayOfWeek": 1,
+							"openingTime": "",
+							"closingTime": "",
+							"facilityBreakSchedules": {
+								"breakStartTime": "",
+								"breakEndTime": ""
+							}
 						}
 					]
 				}

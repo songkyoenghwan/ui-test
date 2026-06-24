@@ -2,7 +2,9 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		interface Locals {}
+		interface Locals {
+			api_token: string | null;
+		}
 
 		// interface Error {}
 		// interface PageData {}

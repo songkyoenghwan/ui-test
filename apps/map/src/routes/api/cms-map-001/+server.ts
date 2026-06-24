@@ -1,5 +1,5 @@
 export const GET = async ({ fetch }) => {
-	const res = await fetch('/json/db.json');
+	const res = await fetch('/json/facilities.json');
 	if (!res.ok) {
 		return new Response('Failed to load db.json', { status: 500 });
 	}

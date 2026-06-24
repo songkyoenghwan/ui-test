@@ -4,17 +4,7 @@
 		shadow: 'none',
 		props: {
 			open: { type: 'String', reflect: true },
-			poi: { type: 'String', reflect: true },
-			ko: { type: 'String', reflect: true },
-			en: { type: 'String', reflect: true },
-			zh: { type: 'String', reflect: true },
-			ja: { type: 'String', reflect: true },
-			th: { type: 'String', reflect: true },
-			vi: { type: 'String', reflect: true },
-			lat: { type: 'String', reflect: true },
-			lon: { type: 'String', reflect: true },
-			addr: { type: 'String', reflect: true },
-			places: { type: 'Array' },
+			result: { type: 'Object' },
 		},
 	}}
 />
@@ -25,21 +15,7 @@
 	import Sortable from 'sortablejs';
 	import type { Attachment } from 'svelte/attachments';
 
-	let {
-		id = '',
-		open = 'close',
-		poi = '',
-		ko = $bindable(''),
-		en = $bindable(''),
-		zh = $bindable(''),
-		ja = $bindable(''),
-		th = $bindable(''),
-		vi = $bindable(''),
-		lat = $bindable(''),
-		lon = $bindable(''),
-		addr = '',
-		places = $bindable([]),
-	} = $props();
+	let { id = '', open = 'close', result = {} } = $props();
 
 	const handleSortable: Attachment<HTMLElement> = (el) => {
 		const animation = new Sortable(el, {
@@ -69,43 +45,6 @@
 
 	let posToggle = $state(false);
 	let langToggle = $state(true);
-
-	$effect.pre(() => {
-		if (open === 'close') {
-			$host().setAttribute('inert', '');
-			$host().setAttribute('aria-hidden', 'true');
-		} else {
-			$host().removeAttribute('inert');
-			$host().removeAttribute('aria-hidden');
-		}
-
-		return () => {
-			if ($host() && !$host().isConnected) {
-				return;
-			}
-
-			if ($host()) {
-				$host().removeAttribute('inert');
-				$host().removeAttribute('aria-hidden');
-			}
-		};
-	});
-
-	function autoTranlate(e: Event) {
-		e.preventDefault();
-
-		const detail = {
-			type: 'auto-translate',
-		};
-
-		$host().dispatchEvent(
-			new CustomEvent('auto-translate', {
-				detail,
-				bubbles: true,
-				composed: true,
-			}),
-		);
-	}
 
 	function dispatch(type: string) {
 		$host().dispatchEvent(new CustomEvent(type));
@@ -145,7 +84,7 @@
 			class="button icon px-1"
 			aria-label="시설 삭제"
 			onclick={() => {
-				places = removePlaceById(places, place.id);
+				result.places = removePlaceById(result.places, place.id);
 			}}
 		>
 			<span class="sr-only">삭제</span>
@@ -179,117 +118,19 @@
 
 	<section class="map-reg__top group/map-lang border-t border-t-slate-200">
 		<div class="flex items-end justify-between gap-1">
-			<div class="flex flex-1 items-center gap-1">
-				<h4 class="text-base font-semibold">위치명</h4>
+			<div class="">
+				<ui-tit tit="위치명"></ui-tit>
 				<hover-tooltip
 					class="inline-flex gap-2"
 					btn="15자 이내 권장"
 					txt="언어에 따라 표현 길이가 달라질 수 있으므로 \n번역 내용을 확인해주세요. (최대 25자)"
 				></hover-tooltip>
 			</div>
-			<div class="flex-none">
-				<p class="flex-1 text-slate-600">{poi ?? '이름없음'}</p>
-			</div>
+			<p class="flex-none text-slate-600">{result.id ?? '이름없음'}</p>
 		</div>
-		<div class="hidden flex-col space-y-2 group-has-checked/map-lang:flex" aria-expanded={posToggle ? 'true' : 'false'}>
-			<ul class="flex flex-col gap-2">
-				<li class="grid grid-cols-[28px_1fr_80px] items-center gap-1">
-					<label for="map-reg-ko" class="label text-primary">KO</label>
-					<input
-						type="text"
-						name="map-reg-ko"
-						id="map-reg-ko"
-						class="input-text s {!ko ? 'border-error outline-error' : 'border-primary'}"
-						placeholder="내용을 입력하세요."
-						maxlength="25"
-						required
-						bind:value={ko}
-					/>
-					<button type="button" class="button secondary s flex-none" onclick={(e) => autoTranlate(e)}>
-						<span>자동번역</span>
-						<icon-list data-name="translate" class="icon stroke-primary size-4"></icon-list>
-					</button>
-					{#if !ko}
-						<p class="col-span-3 text-xs text-red-500">한국어는 필수 입력 항목입니다.</p>
-					{/if}
-				</li>
-				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-					<label for="map-reg-en" class="label">EN</label>
-					<input
-						type="text"
-						name="map-reg-en"
-						id="map-reg-en"
-						class="input-text s"
-						placeholder="영어로 입력해 주세요."
-						maxlength="25"
-						bind:value={en}
-					/>
-				</li>
-				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-					<label for="map-reg-zh" class="label">ZH</label>
-					<input
-						type="text"
-						name="map-reg-zh"
-						id="map-reg-zh"
-						class="input-text s"
-						placeholder="중국어로 입력해 주세요."
-						maxlength="25"
-						bind:value={zh}
-					/>
-				</li>
-				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-					<label for="map-reg-ja" class="label">jA</label>
-					<input
-						type="text"
-						name="map-reg-ja"
-						id="map-reg-ja"
-						class="input-text s"
-						placeholder="일본어로 입력해 주세요."
-						maxlength="25"
-						bind:value={ja}
-					/>
-				</li>
-				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-					<label for="map-reg-th" class="label">TH</label>
-					<input
-						type="text"
-						name="map-reg-th"
-						id="map-reg-th"
-						class="input-text s"
-						placeholder="태국어로 입력해 주세요."
-						maxlength="25"
-						bind:value={th}
-					/>
-				</li>
-				<li class="grid grid-cols-[28px_1fr] items-center gap-0.5 starting:opacity-0 {langToggle ? '' : 'hidden'}">
-					<label for="map-reg-vi" class="label">VI</label>
-					<input
-						type="text"
-						name="map-reg-vi"
-						id="map-reg-vi"
-						class="input-text s"
-						placeholder="베트남어로 입력해 주세요."
-						maxlength="25"
-						bind:value={vi}
-					/>
-				</li>
-			</ul>
-			<div class="flex items-center gap-2">
-				<button
-					type="button"
-					class="button secondary s flex-1"
-					onclick={(e) => {
-						e.preventDefault();
-						langToggle = !langToggle;
-					}}
-				>
-					<icon-list
-						data-name="arrow-down"
-						class="icon stroke-primary relative size-4 transition-transform {langToggle ? 'rotate-180' : 'rotate-0'}"
-					></icon-list>
-					<span>다국어 입력</span>
-				</button>
-			</div>
+		<div class=" flex-col space-y-2 group-has-checked/map-lang:flex">
+			<lang-translate data-max-length="25" view="reg"></lang-translate>
+
 			<ul class="flex flex-col gap-2 pt-2">
 				<li class="grid grid-cols-[22px_1fr_22px_1fr] items-center gap-2">
 					<label for="map-reg-lat" class="label flex-none">위도</label>
@@ -299,7 +140,7 @@
 						id="map-reg-lat"
 						class="input-text s"
 						placeholder="위도"
-						bind:value={lat}
+						bind:value={result.lat}
 						maxlength="9"
 						oninput={(e) => {
 							onlyNumber(e);
@@ -312,7 +153,7 @@
 						id="map-reg-lon"
 						class="input-text s"
 						placeholder="경도"
-						bind:value={lon}
+						bind:value={result.lon}
 						maxlength="9"
 						oninput={(e) => {
 							onlyNumber(e);
@@ -328,7 +169,7 @@
 						class="input-text s"
 						placeholder="주소"
 						readonly
-						bind:value={addr}
+						bind:value={result.addr}
 					/>
 				</li>
 			</ul>
@@ -348,18 +189,17 @@
 		</label>
 	</section>
 
-	<section class="flex min-h-0 flex-1 flex-col border-t border-t-slate-200 bg-slate-50 py-4">
+	<section class="flex min-h-0 flex-1 flex-col border-t border-t-slate-200 py-4">
 		<header class="gap-1 px-5">
 			<div class="flex items-end justify-between gap-1">
 				<h4 class="text-lg font-semibold">매칭된 시설</h4>
 				<div class="flex-none">
 					<p class="flex-1 text-slate-500">
-						<strong class="font-bold">{places.length}</strong>
+						<strong class="font-bold">{result.facilityPoiMappings.length}</strong>
 						<span>개</span>
 					</p>
 				</div>
 			</div>
-			<p class="text-xs text-slate-400">* 다중 등록할 경우, 운영 상태 순으로 우선 정렬되어 노출됩니다</p>
 
 			<div class="flex w-full items-center gap-2 py-3">
 				<button type="button" class="button s secondary flex-1">
@@ -375,7 +215,7 @@
 			{@attach handleSortable}
 			class="flex flex-1 scrollbar-gutter-stable flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth pl-5"
 		>
-			{#each places as place (place.id)}
+			{#each result.places as place (place.id)}
 				{@render placeItem(place)}
 			{/each}
 		</ul>

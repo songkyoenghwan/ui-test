@@ -17,7 +17,7 @@
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let { lang = $bindable(), open = 'close', maxlength, view = 'reg', btnPreview = '', click }: Props = $props();
+	let { lang = $bindable(), error, open = 'close', maxlength, view = 'reg', btnPreview = '', click }: Props = $props();
 
 	let itemId = uuidv4();
 	let langToggle = $state(false);
@@ -29,12 +29,12 @@
 			const langSnap = $state.snapshot(lang);
 
 			untrack(() => {
-				local.ko.value = langSnap.ko?.value || '';
-				local.en.value = langSnap.en?.value || '';
-				local.zh.value = langSnap.zh?.value || '';
-				local.ja.value = langSnap.ja?.value || '';
-				local.th.value = langSnap.th?.value || '';
-				local.vi.value = langSnap.vi?.value || '';
+				local.ko = langSnap.ko || '';
+				local.en = langSnap.en || '';
+				local.zh = langSnap.zh || '';
+				local.ja = langSnap.ja || '';
+				local.th = langSnap.th || '';
+				local.vi = langSnap.vi || '';
 			});
 		}
 	});
@@ -47,7 +47,7 @@
 				LANGS.forEach((item) => {
 					const key = typeof item === 'string' ? item : item.key;
 					if (lang[key] && snap[key]) {
-						lang[key].value = snap[key].value;
+						lang[key] = snap[key];
 					}
 				});
 			}
@@ -61,7 +61,7 @@
 			{#each LANGS as item}
 				{@const key = typeof item === 'string' ? item : item.key}
 
-				{#if local[key]?.value !== ''}
+				{#if local[key] !== ''}
 					<li
 						class={[
 							btnPreview === 'btn-name'
@@ -70,18 +70,18 @@
 						]}
 					>
 						<ui-txt size="sm" txt={String(key).toUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
-						<ui-txt size="sm" txt={local[key]?.value} cls="text-black"></ui-txt>
+						<ui-txt size="sm" txt={local[key]} cls="text-black"></ui-txt>
 					</li>
 				{/if}
 			{/each}
 		</ul>
 	{:else}
 		<section class="group/lang">
-			<ul class="flex flex-col gap-3">
+			<ul class="flex flex-col gap-0.5">
 				{#each LANGS as item, i (`${itemId}-${i}`)}
 					<li
 						class={[
-							'grid grid-cols-[28px_1fr] items-center gap-1 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
+							'grid grid-cols-[28px_1fr] items-center gap-0.5 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
 							item.key === 'ko' || item.key === 'en' || (langToggle && $langStore.lang[item.key]) ? '' : 'hidden',
 						]}
 					>
@@ -89,16 +89,10 @@
 						<input
 							type="text"
 							id="{itemId}-{item.key}"
-							class="input-text s {local[item.key].error ? 'error' : ''}"
+							class="input-text s {String(local[item.key]).trim() === '' ? 'error' : ''}"
 							placeholder="내용을 입력해 주세요."
 							{maxlength}
-							bind:value={local[item.key].value}
-							oninput={() => {
-								local[item.key].error = !local[item.key].value.trim().length;
-							}}
-							onfocusout={() => {
-								local[item.key].error = local[item.key].value.trim() === '';
-							}}
+							bind:value={local[item.key]}
 						/>
 						{#if item.key === 'ko'}
 							<ui-btn

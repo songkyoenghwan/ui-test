@@ -12,6 +12,7 @@ export const load: PageLoad = async ({ fetch }) => {
 	const db = await res.json();
 
 	return {
+		data: db.facilities?.data ?? [],
 		items: db.facilities?.data?.items ?? [],
 	};
 };

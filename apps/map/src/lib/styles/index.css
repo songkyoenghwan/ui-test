@@ -430,7 +430,7 @@
 	}
 
 	.input-text {
-		@apply focus-within:border-cms-2 focus-within:outline-cms-2 min-h-10 w-full rounded-sm border border-slate-300 bg-white px-3 placeholder:text-sm placeholder:text-slate-500;
+		@apply focus-within:border-cms-2 focus-within:outline-cms-2 min-h-10 w-full rounded-sm border border-slate-300 bg-white px-3 placeholder:text-sm placeholder:text-slate-500 read-only:border-slate-100 read-only:bg-slate-200;
 
 		&.m {
 			@apply min-h-10 text-sm placeholder:text-sm;
@@ -659,7 +659,7 @@
 	}
 
 	.map-reg {
-		@apply fixed inset-e-5 top-(--header-top) z-20 mt-5 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip rounded-xl bg-white opacity-100 shadow-2xs transition-all transition-discrete aria-hidden:hidden aria-hidden:opacity-0 starting:translate-x-20 starting:opacity-0;
+		@apply fixed inset-e-100 top-(--header-top) z-20 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip bg-white opacity-100 shadow-2xs transition-all transition-discrete aria-hidden:hidden aria-hidden:opacity-0 starting:translate-x-20 starting:opacity-0;
 
 		.map-reg__header {
 			@apply flex flex-none flex-col gap-3 rounded-t-xl px-5 pt-5 pb-3;

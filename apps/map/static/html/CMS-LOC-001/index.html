@@ -20,7 +20,6 @@
 						<div class="flex flex-wrap items-center justify-between gap-2">
 							<div class="flex flex-wrap items-center gap-2">
 								<h3>검색 조건</h3>
-
 								<ui-btn variant="icon" icon-name="rotate-left" icon-cls="size-4 stroke-slate-500"></ui-btn>
 							</div>
 							<div>
@@ -137,10 +136,10 @@
 												<a
 													class="flex items-center gap-2 text-left"
 													@click.prevent="
-  $store.list.setView('detail');
-  $store.list.setItemId(`${item.id}`);
-  window.location.href = './view/';
-"
+														$store.list.setView('detail');
+														$store.list.setItemId(`${item.id}`);
+														window.location.href = './view/';
+													"
 												>
 													<p
 														class="size-4 rounded-xs"

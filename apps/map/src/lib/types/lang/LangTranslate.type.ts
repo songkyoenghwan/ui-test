@@ -2,8 +2,20 @@ import type { PagePropsInput } from '$lib/types/page/page.type';
 import * as z from 'zod';
 
 export const LangField = z.object({
-	value: z.string(),
-	error: z.boolean(),
+	ko: z.string(),
+	en: z.string(),
+	zh: z.string().optional(),
+	ja: z.string().optional(),
+	th: z.string().optional(),
+	vi: z.string().optional(),
+});
+export const langError = z.object({
+	ko: z.boolean().optional(),
+	en: z.boolean().optional(),
+	zh: z.boolean().optional(),
+	ja: z.boolean().optional(),
+	th: z.boolean().optional(),
+	vi: z.boolean().optional(),
 });
 
 export const TranslateSchema = z.object({
@@ -22,6 +34,7 @@ export const TranslateSchema = z.object({
 });
 
 export type TranslateProps = z.infer<typeof TranslateSchema>;
+export type TranslateErrorProps = z.infer<typeof langError>;
 
 export type LangTranslateKey = keyof TranslateProps['lang'];
 
@@ -34,6 +47,7 @@ export const LangInfoSchema = z.object({
 	label: z.string(),
 });
 export type LangInfo = z.infer<typeof LangInfoSchema>;
+export type TranslateLang = z.infer<typeof LangField>;
 
 export const LANGS: LangInfo[] = [
 	{ key: 'ko', label: '한국어(KO)' },
@@ -44,18 +58,19 @@ export const LANGS: LangInfo[] = [
 	{ key: 'vi', label: '베트남어(VI)' },
 ];
 
-export const createTranslateLang = (): TranslateProps['lang'] => ({
-	ko: { value: '', error: false },
-	en: { value: '', error: false },
-	zh: { value: '', error: false },
-	ja: { value: '', error: false },
-	th: { value: '', error: false },
-	vi: { value: '', error: false },
+export const createTranslateLang = (): TranslateLang => ({
+	ko: '',
+	en: '',
+	zh: '',
+	ja: '',
+	th: '',
+	vi: '',
 });
 
 export interface Props {
 	open?: 'open' | 'close';
-	lang?: TranslateProps['lang'];
+	lang?: TranslateLang;
+	TranslateErrorProps?: TranslateErrorProps;
 	maxlength?: number;
 	view?: PagePropsInput['view'];
 	btnPreview: string;
