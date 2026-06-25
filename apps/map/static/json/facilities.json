@@ -1,391 +1,152 @@
 {
-	"facilities": {
-		"data": {
-			"items": [
-				{
-					"id": 1,
+	"data": {
+		"items": [
+			{
+				"id": 1,
+				"name": {
+					"ko": "시설테스트1",
+					"en": "facility1"
+				},
+				"startAt": "2026-05-28T00:00:00.000Z",
+				"endAt": "2026-05-30T00:00:00.000Z",
+				"description": {
+					"ko": "시설"
+				},
+				"overwriteCongestionStatus": null,
+				"linkButton": null,
+				"createdAt": "2026-05-28T16:49:30.110Z",
+				"updatedAt": null,
+				"isOperationInfoSynced": false,
+				"isVisible": true,
+				"isDeleted": false,
+				"createdBy": 1,
+				"updatedBy": null,
+				"facilityFiles": [
+					{
+						"id": 2,
+						"fileOriginalName": "ìë´ì.png",
+						"fileUrl": "/uploads/images/categories/2026/06/02/ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+						"fileUploadPath": "images/categories/2026/06/02",
+						"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+						"fileSize": 3527,
+						"fileMimeType": "image/png"
+					}
+				],
+				"facilityHolidaySchedules": [],
+				"facilityOperatingSchedules": [
+					{
+						"id": 4,
+						"dayOfWeek": 5,
+						"openingTime": "0900",
+						"closingTime": "1800",
+						"facilityBreakSchedules": [
+							{
+								"id": 2,
+								"breakStartTime": "1300",
+								"breakEndTime": "1400"
+							}
+						]
+					},
+					{
+						"id": 5,
+						"dayOfWeek": 6,
+						"openingTime": "0900",
+						"closingTime": "1800",
+						"facilityBreakSchedules": []
+					},
+					{
+						"id": 6,
+						"dayOfWeek": 1,
+						"openingTime": "1100",
+						"closingTime": "1730",
+						"facilityBreakSchedules": []
+					}
+				],
+				"facilityVpsPopups": [
+					{
+						"id": 1,
+						"name": {
+							"ko": "XR 콘텐츠",
+							"en": "XR Contents"
+						},
+						"description": null,
+						"url": "https://xxx.cmo",
+						"fileOriginalName": null,
+						"fileUploadName": null,
+						"fileUploadPath": null,
+						"fileSize": null,
+						"fileMimeType": null,
+						"fileUrl": null
+					}
+				],
+				"category": {
 					"name": {
-						"ko": "시설테스트1",
-						"en": "facility1"
+						"ko": "일본풍 카페",
+						"en": "Japaneese Cafe",
+						"ja": "",
+						"zh": "",
+						"vi": "",
+						"th": ""
 					},
-					"startAt": "2026-05-28T00:00:00.000Z",
-					"endAt": "2026-05-30T00:00:00.000Z",
-					"description": {
-						"ko": "시설"
-					},
-					"overwriteCongestionStatus": null,
-					"linkButton": null,
-					"createdAt": "2026-05-28T16:49:30.110Z",
-					"updatedAt": null,
-					"isOperationInfoSynced": false,
-					"isVisible": true,
-					"isDeleted": false,
-					"createdBy": 1,
-					"updatedBy": null,
-					"facilityFiles": [],
-					"facilityHolidaySchedules": [],
-					"facilityOperatingSchedules": [],
-					"facilityVpsPopups": [
-						{
-							"id": 1,
-							"name": {
-								"ko": "XR 콘텐츠",
-								"en": "XR Contents"
-							},
-							"description": null,
-							"url": "https://xxx.cmo",
-							"fileOriginalName": null,
-							"fileUploadName": null,
-							"fileUploadPath": null,
-							"fileSize": null,
-							"fileMimeType": null,
-							"fileUrl": null
-						}
-					],
-					"category": {
+					"parent": {
 						"name": {
 							"ko": "카페",
-							"en": "cafe"
+							"en": "cafe",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
 						}
-					},
-					"facilityPoiMappings": [
-						{
-							"poi": {
-								"name": {
-									"ko": "1번 위치",
-									"en": "First POI"
-								}
+					}
+				},
+				"facilityPoiMappings": [
+					{
+						"poi": {
+							"name": {
+								"ko": "1번 위치",
+								"en": "First POI"
 							}
 						}
-					],
-					"facilityButtons": []
-				},
-				{
-					"id": 2,
-					"name": {
-						"ko": "시설2",
-						"en": "Faciltiy2",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"startAt": "2026-05-29T00:00:00.000Z",
-					"endAt": "2026-05-30T00:00:00.000Z",
-					"description": {
-						"ko": "투표를 하는 시설입니다.",
-						"en": "A facility where voting takes place.",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"overwriteCongestionStatus": "",
-					"linkButton": {},
-					"createdAt": "2026-05-29T15:30:27.856Z",
-					"updatedAt": "2026-06-01T16:22:02.994Z",
-					"isOperationInfoSynced": true,
-					"isVisible": true,
-					"isDeleted": false,
-					"createdBy": 1,
-					"updatedBy": 1,
-					"facilityFiles": [],
-					"facilityHolidaySchedules": [
-						{
-							"id": 13,
-							"weekOfMonth": 1,
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1
+					}
+				],
+				"facilityButtons": [
+					{
+						"id": 11,
+						"buttonName": {
+							"ko": "버튼1",
+							"en": "button1",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
 						},
-						{
-							"id": 14,
-							"weekOfMonth": 2,
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1
-						},
-						{
-							"id": 15,
-							"weekOfMonth": 3,
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1
-						},
-						{
-							"id": 16,
-							"weekOfMonth": 4,
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1
-						},
-						{
-							"id": 17,
-							"weekOfMonth": 5,
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1
-						}
-					],
-					"facilityOperatingSchedules": [
-						{
-							"id": 6,
-							"dayOfWeek": 0,
-							"openingTime": "09:00",
-							"closingTime": "18:00",
-							"facilityBreakSchedules": []
-						},
-						{
-							"id": 7,
-							"dayOfWeek": 2,
-							"openingTime": "09:00",
-							"closingTime": "18:00",
-							"facilityBreakSchedules": []
-						},
-						{
-							"id": 8,
-							"dayOfWeek": 3,
-							"openingTime": "09:00",
-							"closingTime": "18:00",
-							"facilityBreakSchedules": []
-						},
-						{
-							"id": 9,
-							"dayOfWeek": 4,
-							"openingTime": "09:00",
-							"closingTime": "18:00",
-							"facilityBreakSchedules": []
-						},
-						{
-							"id": 10,
-							"dayOfWeek": 5,
-							"openingTime": "09:00",
-							"closingTime": "18:00",
-							"facilityBreakSchedules": []
-						},
-						{
-							"id": 11,
-							"dayOfWeek": 6,
-							"openingTime": "09:00",
-							"closingTime": "18:00",
-							"facilityBreakSchedules": []
-						}
-					],
-					"facilityVpsPopups": [],
-					"category": {
-						"name": {
-							"ko": "화장실",
-							"en": "restroom"
-						}
+						"buttonUrl": "http://localshot:3002/123",
+						"tourDestinationCommonButtonId": 7
 					},
-					"facilityPoiMappings": [],
-					"facilityButtons": [
-						{
-							"id": 8,
-							"buttonName": null,
-							"buttonUrl": "http://localhost:3001/docs",
-							"tourDestinationCommonButtonId": 1
+					{
+						"id": 13,
+						"buttonName": {
+							"ko": "시설버튼1",
+							"en": "facility button1",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
 						},
-						{
-							"id": 9,
-							"buttonName": {
-								"ko": "버튼3",
-								"en": "button1",
-								"ja": "",
-								"zh": "",
-								"vi": "",
-								"th": ""
-							},
-							"buttonUrl": "http://localshot:3002/123",
-							"tourDestinationCommonButtonId": null
-						},
-						{
-							"id": 10,
-							"buttonName": {
-								"ko": "버튼4",
-								"en": "button2",
-								"ja": "",
-								"zh": "",
-								"vi": "",
-								"th": ""
-							},
-							"buttonUrl": "http://localshot:3002/1234",
-							"tourDestinationCommonButtonId": null
-						}
-					]
-				},
-				{
-					"id": 4,
-					"name": {
-						"ko": "시설 A",
-						"en": "FC A",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"startAt": "2026-06-01T00:00:00.000Z",
-					"endAt": "2026-06-02T00:00:00.000Z",
-					"description": {
-						"ko": "화장실일걸요 ?",
-						"en": "",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"overwriteCongestionStatus": null,
-					"linkButton": null,
-					"createdAt": "2026-06-01T17:10:36.477Z",
-					"updatedAt": null,
-					"isOperationInfoSynced": false,
-					"isVisible": true,
-					"isDeleted": false,
-					"createdBy": 1,
-					"updatedBy": null,
-					"facilityFiles": [],
-					"facilityHolidaySchedules": [],
-					"facilityOperatingSchedules": [],
-					"facilityVpsPopups": [],
-					"category": {
-						"name": {
-							"ko": "주차장",
-							"en": "Parking",
-							"zh": "停车场",
-							"ja": "駐車場",
-							"th": "ที่จอดรถ",
-							"vi": "Bãi đỗ xe"
-						}
-					},
-					"facilityPoiMappings": [],
-					"facilityButtons": []
-				},
-				{
-					"id": 5,
-					"name": {
-						"ko": "시설3",
-						"en": "store3",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"startAt": "2026-06-03T00:00:00.000Z",
-					"endAt": "2026-06-04T00:00:00.000Z",
-					"description": {
-						"ko": "",
-						"en": "",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"overwriteCongestionStatus": null,
-					"linkButton": null,
-					"createdAt": "2026-06-01T17:13:38.079Z",
-					"updatedAt": null,
-					"isOperationInfoSynced": false,
-					"isVisible": true,
-					"isDeleted": false,
-					"createdBy": 1,
-					"updatedBy": null,
-					"facilityFiles": [],
-					"facilityHolidaySchedules": [],
-					"facilityOperatingSchedules": [],
-					"facilityVpsPopups": [],
-					"category": {
-						"name": {
-							"ko": "카페",
-							"en": "cafe"
-						}
-					},
-					"facilityPoiMappings": [],
-					"facilityButtons": []
-				},
-				{
-					"id": 6,
-					"name": {
-						"ko": "시설A-1",
-						"en": "FCA-1",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"startAt": "2026-06-01T00:00:00.000Z",
-					"endAt": "2026-06-27T00:00:00.000Z",
-					"description": {
-						"ko": "시설A-1입니다.",
-						"en": "I'm not fine",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
-					"overwriteCongestionStatus": null,
-					"linkButton": null,
-					"createdAt": "2026-06-02T11:12:47.428Z",
-					"updatedAt": null,
-					"isOperationInfoSynced": false,
-					"isVisible": true,
-					"isDeleted": false,
-					"createdBy": 1,
-					"updatedBy": null,
-					"facilityFiles": [
-						{
-							"id": 1,
-							"fileOriginalName": "ìë´ì.png",
-							"fileUrl": "/uploads/images/categories/2026/06/02/ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileSize": 3527,
-							"fileMimeType": "image/png"
-						}
-					],
-					"facilityHolidaySchedules": [
-						{
-							"id": 1,
-							"weekOfMonth": 1,
-							"dayOfWeek": 1,
-							"fixedHoliday": 1,
-							"holidayType": 1
-						}
-					],
-					"facilityOperatingSchedules": [
-						{
-							"id": 3,
-							"dayOfWeek": 1,
-							"openingTime": "1100",
-							"closingTime": "1730",
-							"facilityBreakSchedules": [
-								{
-									"id": 1,
-									"breakStartTime": "",
-									"breakEndTime": ""
-								}
-							]
-						}
-					],
-					"facilityVpsPopups": [],
-					"category": {
-						"name": {
-							"ko": "카페",
-							"en": "cafe"
-						}
-					},
-					"facilityPoiMappings": [],
-					"facilityButtons": []
-				}
-			],
-			"totalCount": 2,
-			"page": 1,
-			"pageSize": 10,
-			"totalPages": 1,
-			"matchingStatus": {
-				"totalCount": 2,
-				"matched": 0,
-				"unmatched": 2
+						"buttonUrl": "http://localshot:3002/123",
+						"tourDestinationCommonButtonId": null
+					}
+				]
 			}
+		],
+		"totalCount": 2,
+		"page": 1,
+		"pageSize": 30,
+		"totalPages": 1,
+		"matchingStatus": {
+			"totalCount": 2,
+			"matched": 1,
+			"unmatched": 1
 		}
 	}
 }

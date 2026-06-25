@@ -17,7 +17,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-1-1',
+			name: 'poi-off',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -32,7 +32,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-1-1-on',
+			name: 'poi-on',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -50,7 +50,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-1-2',
+			name: 'onboarding-off',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -70,7 +70,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-1-2-on',
+			name: 'onboarding-on',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -84,7 +84,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-1-3',
+			name: 'tour-destination-off',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -106,7 +106,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-1-3-on',
+			name: 'tour-destination-on',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -116,7 +116,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-2-1',
+			name: 'congestion-off',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -140,7 +140,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-2-1-on',
+			name: 'congestion-on',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -158,7 +158,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-2-2',
+			name: 'stats-off',
 			size: '20',
 			html: /* HTML */ `
 				<path
@@ -193,7 +193,7 @@ export const getIconData = () => {
 			`,
 		},
 		{
-			name: 'lnb-2-2-on',
+			name: 'stats-on',
 			size: '20',
 			html: /* HTML */ `
 				<path

@@ -4,8 +4,8 @@ export const GET = async ({ fetch }) => {
 		return new Response('Failed to load db.json', { status: 500 });
 	}
 
-	const list = await res.json();
-	return new Response(JSON.stringify(list), {
+	const data = await res.json();
+	return new Response(JSON.stringify(data), {
 		headers: { 'content-type': 'application/json' },
 	});
 };
