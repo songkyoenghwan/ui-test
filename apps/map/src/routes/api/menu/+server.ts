@@ -14,7 +14,7 @@ const menuList = [
 		subList: [
 			{
 				text: '대상지 관리(List)',
-				url: '/CMS-LOC-001/',
+				url: '/tour-destinations',
 			},
 			{
 				text: '대상지 상세',

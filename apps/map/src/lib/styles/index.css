@@ -208,7 +208,8 @@
 	time,
 	mark,
 	audio,
-	video {
+	video,
+	text-date {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -266,6 +267,10 @@
 	}
 	strong {
 		font-weight: 600;
+	}
+
+	text-date {
+		display: flex;
 	}
 
 	html {
@@ -615,10 +620,10 @@
 
 			th,
 			td {
-				@apply place-content-center p-1 text-center text-xs;
+				@apply place-content-center p-1 text-center text-sm;
 
 				& > div {
-					@apply min-h-12 place-content-center px-1 text-center text-xs;
+					@apply min-h-12 place-content-center px-1 text-center text-sm;
 				}
 			}
 		}

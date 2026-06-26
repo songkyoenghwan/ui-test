@@ -10,6 +10,6 @@ export const load: PageLoad = async ({ fetch }) => {
 	const db = await res.json();
 
 	return {
-		list: db ?? [],
+		data: db.data ?? [],
 	};
 };

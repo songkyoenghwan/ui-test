@@ -62,13 +62,21 @@
 					<li>
 						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
 							<ui-tit tit="운영 시간"></ui-tit>
-							<operating-hours view="reg" rest="off" :result="JSON.stringify($store.detail.operatingHours)"></operating-hours>
+							<operating-hours
+								view="reg"
+								rest="off"
+								:result="JSON.stringify($store.detail.operatingHours)"
+							></operating-hours>
 						</div>
 					</li>
 					<li>
 						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
 							<ui-tit tit="운영 안내"></ui-tit>
-							<lang-translate class="flex-1" view="reg" :lang="JSON.stringify($store.detail.operationGuide)"></lang-translate>
+							<lang-translate
+								class="flex-1"
+								view="reg"
+								:lang="JSON.stringify($store.detail.operationGuide)"
+							></lang-translate>
 						</div>
 					</li>
 					<li>

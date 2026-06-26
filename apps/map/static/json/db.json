@@ -1,4 +1,414 @@
 {
+	"auth": {
+		"success": true,
+		"data": {
+			"csrfToken": "48c25bd1b45f671fda7405fcb622996586079f56e7a8a8f9b78d5c9b566a79e5",
+			"user": {
+				"id": 1,
+				"name": "딥파인 관리자 계정",
+				"email": "deepfine@deepfine.com",
+				"loginAccount": "deepfine",
+				"tourDestinations": [
+					{
+						"id": 1,
+						"name": {
+							"ko": "부산락페스티벌",
+							"en": "Busan Rock Festival",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
+						"sortingNumber": null,
+						"sectionCongestion": true
+					},
+					{
+						"id": 2,
+						"name": {
+							"ko": "대상지명1",
+							"en": "tour_destination_1",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
+						"sortingNumber": null,
+						"sectionCongestion": true
+					},
+					{
+						"id": 3,
+						"name": {
+							"ko": "대구 치맥 축제",
+							"en": "Deagu Chicken and Beer Festival",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
+						"sortingNumber": null,
+						"sectionCongestion": true
+					},
+					{
+						"id": 17,
+						"name": {
+							"ko": "6월15일의 축제2",
+							"en": "June's 15th Festival2",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
+						"sortingNumber": null,
+						"sectionCongestion": true
+					}
+				],
+				"menus": [
+					{
+						"id": 1,
+						"code": null,
+						"name": "지도",
+						"url": "/poi",
+						"iconUrl": null,
+						"sortingNumber": 1,
+						"requiredFeature": null,
+						"permissions": {
+							"read": true,
+							"create": true,
+							"update": true,
+							"delete": true
+						},
+						"children": [
+							{
+								"id": 12,
+								"code": null,
+								"name": "위치",
+								"url": "/poi/map",
+								"iconUrl": null,
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							},
+							{
+								"id": 13,
+								"code": null,
+								"name": "시설",
+								"url": "/poi/facility",
+								"iconUrl": null,
+								"sortingNumber": 2,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							},
+							{
+								"id": 14,
+								"code": null,
+								"name": "카테고리",
+								"url": "/poi/category",
+								"iconUrl": null,
+								"sortingNumber": 3,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							}
+						]
+					},
+					{
+						"id": 3,
+						"code": null,
+						"name": "온보딩",
+						"url": "/onboarding",
+						"iconUrl": null,
+						"sortingNumber": 2,
+						"requiredFeature": null,
+						"permissions": {
+							"read": true,
+							"create": true,
+							"update": true,
+							"delete": true
+						},
+						"children": [
+							{
+								"id": 10,
+								"code": null,
+								"name": "온보딩",
+								"url": "/onboarding/popup",
+								"iconUrl": null,
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							},
+							{
+								"id": 11,
+								"code": null,
+								"name": "기초설문",
+								"url": "/onboarding/survey",
+								"iconUrl": null,
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							}
+						]
+					},
+					{
+						"id": 4,
+						"code": null,
+						"name": "대상지",
+						"url": "/tour-destination",
+						"iconUrl": null,
+						"sortingNumber": 3,
+						"requiredFeature": null,
+						"permissions": {
+							"read": true,
+							"create": true,
+							"update": true,
+							"delete": true
+						},
+						"children": []
+					},
+					{
+						"id": 5,
+						"code": null,
+						"name": "혼잡도",
+						"url": "/congestion",
+						"iconUrl": null,
+						"sortingNumber": 4,
+						"requiredFeature": "sectionCongestion",
+						"permissions": {
+							"read": true,
+							"create": true,
+							"update": true,
+							"delete": true
+						},
+						"children": []
+					},
+					{
+						"id": 6,
+						"code": null,
+						"name": "통계",
+						"url": "/stats",
+						"iconUrl": null,
+						"sortingNumber": 5,
+						"requiredFeature": null,
+						"permissions": {
+							"read": true,
+							"create": true,
+							"update": true,
+							"delete": true
+						},
+						"children": [
+							{
+								"id": 15,
+								"code": null,
+								"name": "방문자",
+								"url": "/stats/visitors",
+								"iconUrl": null,
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							},
+							{
+								"id": 16,
+								"code": null,
+								"name": "이용",
+								"url": "/stats/use",
+								"iconUrl": null,
+								"sortingNumber": 2,
+								"requiredFeature": null,
+								"permissions": {
+									"read": true,
+									"create": true,
+									"update": true,
+									"delete": true
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+	"tour-destinations": {
+		"success": true,
+		"data": {
+			"items": [
+				{
+					"id": 1,
+					"name": { "ko": "부산락페스티벌", "en": "Busan Rock Festival", "ja": "", "zh": "", "vi": "", "th": "" },
+					"startAt": "2026-06-01T00:00:00.000Z",
+					"endAt": "2026-06-30T00:00:00.000Z",
+					"homepageUrl": "https://naver.com",
+					"mapUrl": "https://www.google.com/maps/place/%EA%B3%A0%ED%88%AC%EB%AA%B0(%EA%B3%A0%EC%86%8D%ED%84%B0%EB%AF%B8%EB%84%90+%EC%A7%80%ED%95%98%EC%83%81%EA%B0%80)/data=!4m6!3m5!1s0x357ca1918e5c4145:0x7b8307b609846119!8m2!3d37.506163!4d127.0049887!16s%2Fg%2F11fghvsc1g?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D",
+					"isAlways": true,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": true,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"updatedAt": "2026-05-20T09:03:27.342Z",
+					"createdAt": "2026-05-20T18:03:27.302Z",
+					"colorCode": "#ddf223",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 35, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 36, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 37, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 38, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 39, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "06:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 20, "weekOfMonth": 3, "dayOfWeek": 5, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 21, "weekOfMonth": 4, "dayOfWeek": 5, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 18, "weekOfMonth": 1, "dayOfWeek": 5, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 22, "weekOfMonth": 5, "dayOfWeek": 5, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 19, "weekOfMonth": 2, "dayOfWeek": 5, "fixedHoliday": null, "holidayType": 1 }
+					],
+					"operationStatus": "operating",
+					"lastUpdatedAt": "2026-05-20T09:03:27.342Z"
+				},
+				{
+					"id": 2,
+					"name": { "ko": "대상지명1", "en": "tour_destination_1", "ja": "", "zh": "", "vi": "", "th": "" },
+					"startAt": null,
+					"endAt": null,
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": true,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"updatedAt": "2026-05-22T14:00:00.460Z",
+					"createdAt": "2026-05-21T11:34:09.013Z",
+					"colorCode": "",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 1, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 2, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 3, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 4, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 5, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "06:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 1, "weekOfMonth": 1, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 3, "weekOfMonth": 2, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 4, "weekOfMonth": 3, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 5, "weekOfMonth": 4, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 6, "weekOfMonth": 5, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 8, "weekOfMonth": 1, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 9, "weekOfMonth": 2, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 10, "weekOfMonth": 3, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 11, "weekOfMonth": 4, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 12, "weekOfMonth": 5, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 }
+					],
+					"operationStatus": "operating",
+					"lastUpdatedAt": "2026-05-22T14:00:00.460Z"
+				},
+				{
+					"id": 3,
+					"name": {
+						"ko": "대구 치맥 축제",
+						"en": "Deagu Chicken and Beer Festival",
+						"ja": "",
+						"zh": "",
+						"vi": "",
+						"th": ""
+					},
+					"startAt": "2026-07-01T00:00:00.000Z",
+					"endAt": "2026-07-04T00:00:00.000Z",
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"updatedAt": "2026-05-22T05:17:29.941Z",
+					"createdAt": "2026-05-22T14:17:29.901Z",
+					"colorCode": "#43543d",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 6, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "18:00" },
+						{ "id": 7, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "18:00" },
+						{ "id": 8, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "18:00" },
+						{ "id": 9, "dayOfWeek": 4, "openingTime": "09:00", "closingTime": "18:00" },
+						{ "id": 10, "dayOfWeek": 5, "openingTime": "09:00", "closingTime": "18:00" },
+						{ "id": 11, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "18:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 13, "weekOfMonth": 1, "dayOfWeek": 1, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 14, "weekOfMonth": 2, "dayOfWeek": 1, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 15, "weekOfMonth": 3, "dayOfWeek": 1, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 16, "weekOfMonth": 4, "dayOfWeek": 1, "fixedHoliday": null, "holidayType": 1 },
+						{ "id": 17, "weekOfMonth": 5, "dayOfWeek": 1, "fixedHoliday": null, "holidayType": 1 }
+					],
+					"operationStatus": "scheduled",
+					"lastUpdatedAt": "2026-05-22T05:17:29.941Z"
+				},
+				{
+					"id": 17,
+					"name": { "ko": "6월15일의 축제2", "en": "June's 15th Festival2", "ja": "", "zh": "", "vi": "", "th": "" },
+					"startAt": "2026-06-15T00:00:00.000Z",
+					"endAt": "2026-06-15T00:00:00.000Z",
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": true, "vi": true, "zh": true },
+					"updatedAt": null,
+					"createdAt": "2026-06-15T16:17:25.396Z",
+					"colorCode": "#00dd22",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 34, "dayOfWeek": 1, "openingTime": "0800", "closingTime": "2000" }
+					],
+					"tourDestinationHolidaySchedules": [],
+					"operationStatus": "closed",
+					"lastUpdatedAt": "2026-06-15T16:17:25.396Z"
+				}
+			],
+			"totalCount": 4,
+			"page": 1,
+			"pageSize": 10,
+			"totalPages": 1
+		}
+	},
 	"facilities": {
 		"data": {
 			"items": [

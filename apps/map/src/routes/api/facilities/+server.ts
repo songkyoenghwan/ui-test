@@ -1,6 +1,6 @@
-import { externalFetch } from '$lib/server/external-api';
 // src/routes/api/facilities/+server.ts
 import { json } from '@sveltejs/kit';
+import { externalFetch } from '$lib/server/external-api';
 
 export const GET = async ({ url }) => {
 	const apiUrl = new URL('http://dummy');

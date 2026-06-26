@@ -3,8 +3,6 @@
 		tag: 'aside-lnb',
 		shadow: 'none',
 		props: {
-			admin: { type: 'String', reflect: true },
-			current: { type: 'String', reflect: true },
 			menus: { type: 'Array' },
 		},
 	}}
@@ -17,7 +15,7 @@
 
 	let hoveredId = $state('');
 	let displayName = $derived(window.location.pathname.split('/').filter(Boolean)[0] ?? '');
-	$inspect(displayName);
+	$inspect(menus);
 </script>
 
 {#snippet li(id = '', link = '', h3 = '')}
@@ -39,14 +37,15 @@
 		</a>
 	</li>
 {/snippet}
-{#if menus}
+
+{#if menus?.length}
 	<aside class="from-002e1e to-2e5345 flex h-full flex-col space-y-3 bg-linear-to-t px-2 py-6">
-		<picture class="flex h-10 justify-center">
+		<div class="flex h-10 justify-center">
 			<enhanced:img class="h-10 w-auto" src={logo} alt="logo" />
-		</picture>
+		</div>
 		<nav class="text-base text-slate-50">
 			<ul class="flex flex-col gap-3 text-center leading-tight break-keep">
-				{#each JSON.parse(menus) as lnb, i (i)}
+				{#each menus as lnb (lnb.id)}
 					<li class="grid gap-4">
 						{#if lnb.id === 1 || lnb.id === 5}
 							<h2 class={['font-semibold text-white', lnb.id === 5 ? 'mt-2 border-t border-t-white/50 pt-5' : '']}>

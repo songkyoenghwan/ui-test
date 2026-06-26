@@ -1,12 +1,10 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import tailwindcss from '@tailwindcss/vite';
 // import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { defineConfig } from 'vite';
-
 import { aliases } from './aliases.js';
 
 const __filename = fileURLToPath(import.meta.url);

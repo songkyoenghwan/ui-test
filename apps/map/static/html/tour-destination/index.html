@@ -9,7 +9,7 @@
 	</head>
 	<body x-data>
 		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
-			<aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb>
+			<aside-lnb class="row-span-2 h-full"></aside-lnb>
 			<!-- authority : D - user || administrator -->
 
 			<header-list></header-list>
@@ -134,9 +134,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									<template x-for="(item, idx) in $store.list.data" :key="item.id">
+									<template x-for="(item, idx) in $store.list.items" :key="item.id">
 										<tr>
-											<td>99</td>
+											<td x-text="idx + 1"></td>
 											<td>
 												<a
 													class="flex items-center gap-2 text-left"
@@ -148,61 +148,71 @@
 												>
 													<p
 														class="size-4 rounded-xs"
-														:style="`background-color: ${item.custom.color || 'transparent'}`"
+														:style="`background-color: ${item.colorCode || 'transparent'}`"
 													></p>
-													<p x-html="item.name.ko.value"></p>
+													<p x-html="item?.name?.ko"></p>
 												</a>
 											</td>
 											<td>
 												<div class="text-left">
 													<p
-														x-html="Object.keys(item.language).filter((key) => item.language[key]).join(', ')"
+														x-html="Object.keys(item.supportedLanguages).filter((key) => item.supportedLanguages[key]).join(', ')"
 													></p>
 												</div>
 											</td>
 											<td>
 												<div class="text-left">
 													<p
-														:class="item.status.trim() === '운영중' ?'text-cms-3' : item.status.trim() === '운영종료' ?'text-error' : 'text-slate-400'"
-														x-html="item.status"
+														:class="item.operationStatus === 'operating' ?'text-cms-3' : item.operationStatus === 'closed' ?'text-error' : 'text-slate-400'"
+														x-html="item.operationStatus === 'operating' ?'운영 중' : item.operationStatus === 'closed' ?'운영 종료' : '운영 전'"
 													></p>
 												</div>
 											</td>
 											<td>
-												<div class="text-left whitespace-pre-line">
-													<p
-														x-html="item.period.status === 'always' ? '상시운영' : item.period.day"
-													></p>
-												</div>
+												<template x-if="!item.startAt">
+													<p class="text-left">상시운영</p>
+												</template>
+												<template x-if="item.startAt">
+													<text-date :dateTime="item.startAt"></text-date>
+												</template>
+												<template x-if="item.endAt">
+													<text-date :dateTime="item.endAt"></text-date>
+												</template>
 											</td>
 											<td>
 												<div class="text-left">
-													<p
-														x-html="item.operatingHours.cols.length > 1 ? '요일별 상이' : `${item.operatingHours.cols[0].time.timeStart} ~ ${item.operatingHours.cols[0].time.timeEnd}`"
-													></p>
+													<template x-if="item.tourDestinationOperatingSchedules.length > 1">
+														<p>요일별 상이</p>
+													</template>
+
+													<template x-if="item.tourDestinationOperatingSchedules.length === 0">
+														<p
+															x-html="`${item.tourDestinationOperatingSchedules[0].openingTime} ~ ${item.tourDestinationOperatingSchedules[0].closingTime}`"
+														></p>
+													</template>
 												</div>
 											</td>
 											<td
-												:class="item.custom.features.ai ? 'text-cms-3': ''"
-												x-text="item.custom.features.ai ? '사용' : '미사용'"
+												:class="item.isAiRecommendYn ? 'text-cms-3': ''"
+												x-text="item.isAiRecommendYn ? '사용' : '미사용'"
 											></td>
 											<td
-												:class="item.custom.features.facility ? 'text-cms-3': ''"
-												x-text="item.custom.features.facility ? '사용' : '미사용'"
+												:class="item.isFacilityCongestionYn ? 'text-cms-3': ''"
+												x-text="item.isFacilityCongestionYn ? '사용' : '미사용'"
 											></td>
 											<td
-												:class="item.custom.features.zone ? 'text-cms-3': ''"
-												x-text="item.custom.features.zone ? '사용' : '미사용'"
+												:class="item.isSectionCongestionYn ? 'text-cms-3': ''"
+												x-text="item.isSectionCongestionYn ? '사용' : '미사용'"
 											></td>
 											<td
-												:class="item.custom.information.location ? 'text-cms-3': ''"
-												x-text="item.custom.information.location ? '사용' : '미사용'"
+												:class="item.isFacilityAddressYn ? 'text-cms-3': ''"
+												x-text="item.isFacilityAddressYn ? '사용' : '미사용'"
 											></td>
 
 											<td>
 												<a
 													class="underline underline-offset-1"
-													:href="item.linkMap"
+													:href="item.mapUrl"
 													target="_blank"
 													rel="noopener noreferrer"
 												>
@@ -210,7 +220,9 @@
 												</a>
 											</td>
 
-											<td class="col-span-3 text-left" x-text="item.editTime"></td>
+											<td class="col-span-3 text-left">
+												<text-date data-time-view="time" :dateTime="item.lastUpdatedAt"></text-date>
+											</td>
 										</tr>
 									</template>
 								</tbody>
@@ -276,6 +288,7 @@
 		<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
 
 		<script async type="module" src="/output/wc.es.js"></script>
+		<script defer src="/static/store/layout-store.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -283,7 +296,7 @@
 			document.addEventListener('alpine:init', () => {
 				const listStore = Alpine.store('list');
 				Alpine.store('list', {
-					data: [],
+					items: [],
 					itemsToShow: 10,
 					loading: false,
 					error: null,
@@ -299,10 +312,8 @@
 					},
 					async init() {
 						this.loading = true;
-						this.error = null;
-
 						try {
-							const res = await fetch('http://localhost:5185/CMS-LOC-001');
+							const res = await fetch('http://localhost:5185/tour-destinations');
 
 							if (!res.ok) {
 								throw new Error('Failed to load json');
@@ -310,11 +321,7 @@
 
 							const data = await res.json();
 
-							if (!data || data.length === 0) {
-								throw new Error('Not found');
-							}
-
-							this.data = data;
+							this.items = data.data.items;
 						} catch (error) {
 							this.error = error.message ?? 'Unknown error';
 							console.error('초기 데이터 설정 실패:', error);
@@ -323,19 +330,6 @@
 						}
 					},
 				});
-			});
-
-			document.addEventListener('DOMContentLoaded', async () => {
-				const listStore = Alpine.store('list');
-				const pageId = 'CMS_01_1';
-
-				try {
-					if (listStore) {
-						listStore.init();
-					}
-				} catch (error) {
-					console.error('초기 데이터 설정 실패:', error);
-				}
 			});
 		</script>
 	</body>

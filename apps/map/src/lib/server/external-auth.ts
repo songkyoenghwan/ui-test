@@ -1,5 +1,5 @@
 // src/lib/server/external-auth.ts
-import { API_BASE, API_BASIC_USER, API_BASIC_PASSWORD } from '$env/static/private';
+import { API_BASE, API_BASIC_PASSWORD, API_BASIC_USER } from '$env/static/private';
 
 let cachedCookie = '';
 let cachedCsrfToken = '';

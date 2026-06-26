@@ -5,6 +5,8 @@
 
 	let { data }: PageProps = $props();
 	let inputDel = $state(false);
+
+	$inspect(data.data.items);
 </script>
 
 <div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
@@ -123,23 +125,23 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each data.list as item (item.id)}
+					{#each data.data.items as item (item.id)}
 						<tr>
 							<td>99</td>
 							<td>
 								<a href={`/CMS-LOC-001/detail/${item.id}`} class="flex items-center gap-2 text-left">
 									<p
-										style="background-color: {item?.custom?.color || 'transparent'};"
+										style="background-color: {item?.colorCode || 'transparent'};"
 										class="size-4 rounded-xs"
 									></p>
-									<p>{item?.name?.ko?.value}</p>
+									<p>{item?.name?.ko}</p>
 								</a>
 							</td>
 							<td>
 								<div class="text-left">
 									<p>
-										{Object.keys(item.language)
-											.filter((key) => item.language[key])
+										{Object.keys(item.supportedLanguages)
+											.filter((key) => item.supportedLanguages[key])
 											.join(', ')}
 									</p>
 								</div>
@@ -147,45 +149,50 @@
 							<td>
 								<div class="text-left">
 									<p
-										class={item.status.trim() === '운영중'
+										class={item.operationStatus === 'operating'
 											? 'text-cms-3'
-											: item.status.trim() === '운영종료'
+											: item.operationStatus === 'closed'
 												? 'text-error'
 												: 'text-slate-400'}
 									>
-										{item.status}
+										{item.operationStatus}
 									</p>
 								</div>
 							</td>
 							<td>
 								<div class="text-left whitespace-pre-line">
-									<p>{item.period.status === 'always' ? '상시운영' : item.period.day}</p>
+									{#if item.startAt === null}
+										상시운영
+									{:else}
+										<text-date dateTime={item.startAt}></text-date>
+										<text-date dateTime={item.endAt}></text-date>
+									{/if}
 								</div>
 							</td>
 							<td>
 								<div class="text-left">
 									<p>
-										{item.operatingHours.cols.length > 1
+										{item.tourDestinationOperatingSchedules.length > 1
 											? '요일별 상이'
-											: `${item.operatingHours.cols[0].time.timeStart} ~ ${item.operatingHours.cols[0].time.timeEnd}`}
+											: `${item.tourDestinationOperatingSchedules[0].openingTime} ~ ${item.tourDestinationOperatingSchedules[0].closingTime}`}
 									</p>
 								</div>
 							</td>
-							<td class={item.custom.features.ai ? 'text-cms-3' : ''}>
-								{item.custom.features.ai ? '사용' : '미사용'}
+							<td class={item.isAiRecommendYn ? 'text-cms-3' : ''}>
+								{item.isAiRecommendYn ? '사용' : '미사용'}
 							</td>
-							<td class={item.custom.features.facility ? 'text-cms-3' : ''}>
-								{item.custom.features.facility ? '사용' : '미사용'}
+							<td class={item.isFacilityCongestionYn ? 'text-cms-3' : ''}>
+								{item.isFacilityCongestionYn ? '사용' : '미사용'}
 							</td>
-							<td class={item.custom.features.zone ? 'text-cms-3' : ''}>
-								{item.custom.features.zone ? '사용' : '미사용'}
+							<td class={item.isSectionCongestionYn ? 'text-cms-3' : ''}>
+								{item.isSectionCongestionYn ? '사용' : '미사용'}
 							</td>
-							<td class={item.custom.information.location ? 'text-cms-3' : ''}>
-								{item.custom.information.location ? '사용' : '미사용'}
+							<td class={item.isFacilityAddressYn ? 'text-cms-3' : ''}>
+								{item.isFacilityAddressYn ? '사용' : '미사용'}
 							</td>
 							<td>
 								<a
-									href={item.linkMap}
+									href={item.mapUrl}
 									class="underline underline-offset-1"
 									target="_blank"
 									rel="noopener noreferrer"
@@ -193,7 +200,9 @@
 									<span>🔗 이동</span>
 								</a>
 							</td>
-							<td class="col-span-3 text-left">{item.editTime}</td>
+							<td class="col-span-3 text-left">
+								<text-date data-time-view="time" dateTime="2026-05-20T09:03:27.342Z"></text-date>
+							</td>
 						</tr>
 					{/each}
 				</tbody>

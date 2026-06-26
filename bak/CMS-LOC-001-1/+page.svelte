@@ -5,7 +5,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
+<div class="min-w-5xl flex max-w-[calc(100dvw-80px)] flex-col gap-3 p-5">
 	<section class="shadow-1 space-y-2 rounded-lg bg-white p-5">
 		<div class="flex flex-wrap items-center justify-between gap-2">
 			<div class="flex flex-wrap items-center gap-2">
@@ -112,10 +112,7 @@
 							<td>99</td>
 							<td>
 								<a href={`/CMS-LOC-001/${item.id}`} class="flex items-center gap-2 text-left">
-									<p
-										style="background-color: {item?.custom?.color || 'transparent'};"
-										class="size-4 rounded-xs"
-									></p>
+									<p style="background-color: {item?.custom?.color || 'transparent'};" class="rounded-xs size-4"></p>
 									{item?.name?.ko?.value}
 								</a>
 							</td>
@@ -136,7 +133,7 @@
 								</div>
 							</td>
 							<td>
-								<div class="text-left whitespace-pre-line">
+								<div class="whitespace-pre-line text-left">
 									<p>{item.period}</p>
 								</div>
 							</td>
@@ -150,12 +147,7 @@
 							<td>{item?.custom?.zoneCongestion ? '사용' : '미사용'}</td>
 							<td>{item?.custom?.locationBasedContent ? '사용' : '미사용'}</td>
 							<td>
-								<a
-									href={item.linkMap}
-									class="underline underline-offset-1"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
+								<a href={item.linkMap} class="underline underline-offset-1" target="_blank" rel="noopener noreferrer">
 									<span>🔗 이동</span>
 								</a>
 							</td>

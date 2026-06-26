@@ -27,8 +27,20 @@ export const getIconData = () => {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				/>
-				<path d="M7.5 1.66699L11.625 18.3337" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M9.60966 10.1826L1.66797 12.4993" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M7.5 1.66699L11.625 18.3337"
+					fill="none"
+					stroke-width="1.25"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M9.60966 10.1826L1.66797 12.4993"
+					fill="none"
+					stroke-width="1.25"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{
@@ -218,7 +230,12 @@ export const getIconData = () => {
 			name: 'translate',
 			size: '16',
 			html: /* HTML */ `
-				<path d="M12.7049 12.4462L11.2782 9.59961L9.85156 12.4462" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M12.7049 12.4462L11.2782 9.59961L9.85156 12.4462"
+					fill="none"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 				<path d="M10.1133 11.9404H12.46" fill="none" stroke-linecap="round" stroke-linejoin="round" />
 				<path
 					d="M11.2812 14.6669C9.41453 14.6669 7.89453 13.1535 7.89453 11.2802C7.89453 9.41353 9.40787 7.89355 11.2812 7.89355C13.1479 7.89355 14.6679 9.40686 14.6679 11.2802C14.6679 13.1535 13.1545 14.6669 11.2812 14.6669Z"
@@ -266,9 +283,27 @@ export const getIconData = () => {
 			name: 'calendar',
 			size: '16',
 			html: /* HTML */ `
-				<path d="M5.33203 1.33301V3.33301" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M10.668 1.33301V3.33301" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M2.33203 6.05957H13.6654" fill="none" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M5.33203 1.33301V3.33301"
+					fill="none"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M10.668 1.33301V3.33301"
+					fill="none"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M2.33203 6.05957H13.6654"
+					fill="none"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 				<path
 					d="M14 5.66634V11.333C14 13.333 13 14.6663 10.6667 14.6663H5.33333C3 14.6663 2 13.333 2 11.333V5.66634C2 3.66634 3 2.33301 5.33333 2.33301H10.6667C13 2.33301 14 3.66634 14 5.66634Z"
 					fill="none"
@@ -276,12 +311,48 @@ export const getIconData = () => {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				/>
-				<path d="M10.4625 9.13314H10.4685" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M10.4625 11.1331H10.4685" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M7.99764 9.13314H8.00363" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M7.99764 11.1331H8.00363" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M5.52889 9.13314H5.53488" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-				<path d="M5.52889 11.1331H5.53488" fill="none" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+				<path
+					d="M10.4625 9.13314H10.4685"
+					fill="none"
+					stroke-width="1.33333"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M10.4625 11.1331H10.4685"
+					fill="none"
+					stroke-width="1.33333"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M7.99764 9.13314H8.00363"
+					fill="none"
+					stroke-width="1.33333"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M7.99764 11.1331H8.00363"
+					fill="none"
+					stroke-width="1.33333"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M5.52889 9.13314H5.53488"
+					fill="none"
+					stroke-width="1.33333"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M5.52889 11.1331H5.53488"
+					fill="none"
+					stroke-width="1.33333"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
 			`,
 		},
 		{

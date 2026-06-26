@@ -1002,7 +1002,15 @@
 						"$ref": "#/components/schemas/OnboardingFileType"
 					}
 				},
-				"required": ["fileOriginalName", "fileUrl", "fileUploadPath", "fileUploadName", "fileSize", "fileMimeType", "fileType"],
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"fileType"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -2384,7 +2392,16 @@
 						"type": "string"
 					}
 				},
-				"required": ["fileOriginalName", "fileUrl", "fileUploadPath", "fileUploadName", "fileSize", "fileMimeType", "name", "url"],
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"name",
+					"url"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -2948,7 +2965,17 @@
 						"type": "array"
 					}
 				},
-				"required": ["id", "code", "name", "url", "iconUrl", "sortingNumber", "requiredFeature", "permissions", "children"],
+				"required": [
+					"id",
+					"code",
+					"name",
+					"url",
+					"iconUrl",
+					"sortingNumber",
+					"requiredFeature",
+					"permissions",
+					"children"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},

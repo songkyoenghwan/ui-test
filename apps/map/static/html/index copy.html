@@ -68,7 +68,21 @@
 					</div>
 				</section>
 
-				<map-reg class="map-reg" id="" open="close" poi="" ko="" en="" zh="" ja="" th="" vi="" lat="" lon="" addr=""></map-reg>
+				<map-reg
+					class="map-reg"
+					id=""
+					open="close"
+					poi=""
+					ko=""
+					en=""
+					zh=""
+					ja=""
+					th=""
+					vi=""
+					lat=""
+					lon=""
+					addr=""
+				></map-reg>
 			</main>
 		</section>
 
@@ -212,7 +226,8 @@
 					// 알림 팝업 취소 이벤트
 					console.log(e);
 					document.querySelector('alert-popup').open = 'open';
-					document.querySelector('alert-popup').txt = '작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
+					document.querySelector('alert-popup').txt =
+						'작성 중인 내용이 저장되지 않았습니다.<br />이 페이지를 벗어나시겠습니까?';
 				});
 				document.querySelector('map-reg')?.addEventListener('pos-save', (e) => {
 					// 알림 팝업 확인 이벤트
