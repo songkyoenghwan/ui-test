@@ -395,9 +395,7 @@
 					"updatedAt": null,
 					"createdAt": "2026-06-15T16:17:25.396Z",
 					"colorCode": "#00dd22",
-					"tourDestinationOperatingSchedules": [
-						{ "id": 34, "dayOfWeek": 1, "openingTime": "0800", "closingTime": "2000" }
-					],
+					"tourDestinationOperatingSchedules": [{ "id": 34, "dayOfWeek": 1, "openingTime": "0800", "closingTime": "2000" }],
 					"tourDestinationHolidaySchedules": [],
 					"operationStatus": "closed",
 					"lastUpdatedAt": "2026-06-15T16:17:25.396Z"

@@ -336,7 +336,14 @@
 				},
 				{
 					"id": 3,
-					"name": { "ko": "대구 치맥 축제", "en": "Deagu Chicken and Beer Festival", "ja": "", "zh": "", "vi": "", "th": "" },
+					"name": {
+						"ko": "대구 치맥 축제",
+						"en": "Deagu Chicken and Beer Festival",
+						"ja": "",
+						"zh": "",
+						"vi": "",
+						"th": ""
+					},
 					"startAt": "2026-07-01T00:00:00.000Z",
 					"endAt": "2026-07-04T00:00:00.000Z",
 					"homepageUrl": "",

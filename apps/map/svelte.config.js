@@ -1,4 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
+
 import { aliases } from './aliases.js';
 
 const isDeployMode = process.env.IS_DEPLOY === 'true';

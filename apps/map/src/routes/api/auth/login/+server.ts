@@ -1,6 +1,6 @@
+import { authenticate } from '$lib/server/external-auth';
 // src/routes/api/auth/login/+server.ts
 import { json } from '@sveltejs/kit';
-import { authenticate } from '$lib/server/external-auth';
 
 export const POST = async () => {
 	try {

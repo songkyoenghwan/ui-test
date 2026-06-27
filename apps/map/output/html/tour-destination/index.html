@@ -9,7 +9,7 @@
 	</head>
 	<body x-data>
 		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
-			<aside-lnb class="row-span-2 h-full" :menus="$store.layout.menus"></aside-lnb>
+			<aside-lnb class="row-span-2 h-full"></aside-lnb>
 			<!-- authority : D - user || administrator -->
 
 			<header-list></header-list>
@@ -277,47 +277,12 @@
 		<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
 
 		<script async type="module" src="/output/wc.es.js"></script>
+		<script defer src="/static/store/layout-store.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 		<script defer>
 			document.addEventListener('alpine:init', () => {
-				const layoutStore = Alpine.store('layout');
-				Alpine.store('layout', {
-					csrfToken: '',
-					user: {},
-					tourDestinations: [],
-					menus: [],
-					raw: '',
-					loading: false,
-					error: null,
-					async init() {
-						this.loading = true;
-						this.error = null;
-
-						try {
-							const res = await fetch('http://localhost:5185/auth');
-
-							if (!res.ok) {
-								throw new Error('Failed to load json');
-							}
-
-							const data = await res.json();
-
-							this.menus = data.data.menus;
-
-							console.log(this.menus);
-
-							alert();
-						} catch (error) {
-							this.error = error.message ?? 'Unknown error';
-							console.error('초기 데이터 설정 실패:', error);
-						} finally {
-							this.loading = false;
-						}
-					},
-				});
-
 				const listStore = Alpine.store('list');
 				Alpine.store('list', {
 					items: [],
@@ -336,10 +301,8 @@
 					},
 					async init() {
 						this.loading = true;
-						this.error = null;
-
 						try {
-							const res = await fetch('http://192.168.1.155:5184/api/tour-destinations');
+							const res = await fetch('http://localhost:5185/tour-destinations');
 
 							if (!res.ok) {
 								throw new Error('Failed to load json');

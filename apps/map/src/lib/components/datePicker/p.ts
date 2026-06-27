@@ -9,16 +9,9 @@ const WHEEL_ITEM_RADIUS = CIRCLE_DEGREES / WHEEL_ITEM_COUNT;
 const IN_VIEW_DEGREES = WHEEL_ITEM_RADIUS * WHEEL_ITEMS_IN_VIEW;
 const WHEEL_RADIUS = Math.round(WHEEL_ITEM_SIZE / 2 / Math.tan(Math.PI / WHEEL_ITEM_COUNT));
 
-const slideIsInView = (wheelLocation: number, slidePosition: number): boolean =>
-	Math.abs(wheelLocation - slidePosition) < IN_VIEW_DEGREES;
+const slideIsInView = (wheelLocation: number, slidePosition: number): boolean => Math.abs(wheelLocation - slidePosition) < IN_VIEW_DEGREES;
 
-const rotateSlide = (
-	emblaApi: EmblaCarouselType,
-	index: number,
-	loop: boolean,
-	slideCount: number,
-	totalRadius: number,
-): void => {
+const rotateSlide = (emblaApi: EmblaCarouselType, index: number, loop: boolean, slideCount: number, totalRadius: number): void => {
 	const slideNode = emblaApi.slideNodes()[index];
 	const wheelLocation = emblaApi.scrollProgress() * totalRadius;
 	const positionDefault = emblaApi.snapList()[index] * totalRadius;
