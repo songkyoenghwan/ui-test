@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ui</title>
+		<link rel="stylesheet" href="/output/main-bundle.es.css" />
+		<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=3ashZLfRgx7lSmm7BRP1C4ZcSq5RuPq45hA16RXZ"></script>
+	</head>
+	<body x-data>
+		<div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
+			<section class="static flex items-center justify-between">
+				<ui-tit tit="$한국어 대상지명(최대 50자)$"></ui-tit>
+				<div>
+					<ui-btn class="w-20" variant="primary" size="lg" txt="저장"></ui-btn>
+				</div>
+			</section>
+
+			<section class="flex items-center">
+				<ui-tit class="px-4.5" tit="섹션"></ui-tit>
+			</section>
+
+			<section class="shadow-1xs rounded-lg bg-white px-5 py-4">
+				<header>
+					<h4 class="tit lg sr-only px-4.5">대상지 정보</h4>
+				</header>
+
+				<ul class="divide-y divide-slate-300">
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="제공 언어"></ui-tit>
+							<lang-chk
+								class="flex flex-wrap items-center gap-5"
+								view="reg"
+								:lang="JSON.stringify($store.detail.language)"
+							></lang-chk>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="다국어 대상지명"></ui-tit>
+							<lang-translate class="flex-1" view="reg" :lang="JSON.stringify($store.detail.name)"></lang-translate>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="위치"></ui-tit>
+							<ui-txt size="sm" cls="text-black" :txt="JSON.stringify($store.detail.address)"></ui-txt>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="운영 기간"></ui-tit>
+							<operating-period view="reg" :result="JSON.stringify($store.detail.period)"></operating-period>
+						</div>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="정기 휴무"></ui-tit>
+							<closing-day view="reg" :result="JSON.stringify($store.detail.closingDay)"></closing-day>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="운영 시간"></ui-tit>
+							<operating-hours
+								view="reg"
+								rest="off"
+								:result="JSON.stringify($store.detail.operatingHours)"
+							></operating-hours>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="운영 안내"></ui-tit>
+							<lang-translate
+								class="flex-1"
+								view="reg"
+								:lang="JSON.stringify($store.detail.operationGuide)"
+							></lang-translate>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="홈페이지 링크"></ui-tit>
+							<ui-btn
+								tag="a"
+								variant="underline"
+								size="md"
+								cls="underline-offset-1 gap-4"
+								icon-name="link"
+								icon-pos="lt"
+								icon-cls="size-3 stroke-black flex"
+								:txt="$store.detail.linkHomepage"
+								:link="$store.detail.linkHomepage"
+							></ui-btn>
+						</div>
+					</li>
+					<li>
+						<div class="grid max-w-375 grid-cols-[120px_1fr] gap-5 px-4 py-4">
+							<ui-tit tit="사용자 지도 링크"></ui-tit>
+							<ui-btn
+								tag="a"
+								variant="underline"
+								size="md"
+								cls="underline-offset-1 gap-4"
+								icon-name="link"
+								icon-pos="lt"
+								icon-cls="size-3 stroke-black flex"
+								:txt="$store.detail.linkMap"
+								:link="$store.detail.linkMap"
+							></ui-btn>
+						</div>
+					</li>
+				</ul>
+			</section>
+
+			<!-- <section class="shadow-1xs rounded-lg bg-white p-5">
+				<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
+
+				<group-custom view="reg" result="JSON.stringify($store.detail.custom"></group-custom>
+			</section> -->
+		</div>
+
+		<script async type="module" src="/output/wc.es.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		<script defer>
+			async function loadCmsLoc001() {
+				const res = await fetch('http://localhost:5185/CMS-LOC-001');
+				if (!res.ok) {
+					throw new Error('Failed to load json');
+				}
+				const data = await res.json();
+				console.log(data[0]);
+				if (!data || data.length === 0) {
+					throw new Error('Not found');
+				}
+				return data;
+			}
+
+			document.addEventListener('alpine:init', () => {
+				const detail = Alpine.store('detail');
+				Alpine.store('detail', {
+					list: [],
+					address: '서울특별시 용산구 이태원로 29 (한강로1가)',
+					closingDay: {
+						allWeek: '',
+						day: '',
+						dayWeek: ['wed', 'fri'],
+						status: 'week',
+						week: ['2', '3', '4'],
+					},
+					custom: {
+						btnLink: [
+							{
+								en: {
+									error: false,
+									value: '송도센트럴파크2',
+								},
+								ja: {
+									error: false,
+									value: '송도센트럴파크4',
+								},
+								ko: {
+									error: false,
+									value: '송도센트럴파크1',
+								},
+								th: {
+									error: false,
+									value: '송도센트럴파크5',
+								},
+								vi: {
+									error: false,
+									value: '송도센트럴파크6',
+								},
+								zh: {
+									error: false,
+									value: '송도센트럴파크3',
+								},
+							},
+						],
+						color: '#000000',
+						features: {
+							ai: true,
+							facility: true,
+							facilityUse: '10',
+							zone: true,
+							zoneUse: '10',
+						},
+						information: {
+							address: false,
+							location: true,
+							locationUse: '10',
+							sorting: 'MANUAL',
+						},
+					},
+					editTime: '2026-06-12 08:48',
+					hours: '요일별 상이',
+					id: 'CMS-LOC-001-detail-01',
+					language: {
+						en: true,
+						ja: true,
+						ko: true,
+						th: true,
+						vi: true,
+						zh: true,
+					},
+					linkHomepage: 'https://naver.com',
+					linkMap: 'https://naver.com',
+					name: {
+						en: {
+							error: false,
+							value: '송도센트럴파크2',
+						},
+						ja: {
+							error: false,
+							value: '송도센트럴파크4',
+						},
+						ko: {
+							error: false,
+							value: '송도센트럴파크1',
+						},
+						th: {
+							error: false,
+							value: '송도센트럴파크5',
+						},
+						vi: {
+							error: false,
+							value: '송도센트럴파크6',
+						},
+						zh: {
+							error: false,
+							value: '송도센트럴파크3',
+						},
+					},
+					operatingHours: {
+						cols: [
+							{
+								dayWeek: ['mon'],
+								id: 'uniqueId2',
+								time: {
+									error: false,
+									rest: false,
+									restEnd: '',
+									restStart: '',
+									timeEnd: '01:00',
+									timeStart: '00:00',
+								},
+							},
+							{
+								dayWeek: ['wed', 'fri'],
+								id: 'uniqueId',
+								time: {
+									error: false,
+									rest: false,
+									restEnd: '',
+									restStart: '',
+									timeEnd: '01:00',
+									timeStart: '00:00',
+								},
+							},
+							{
+								dayWeek: ['mon', 'tue', 'wed', 'thu', 'fri'],
+								id: 'uniqueId',
+								time: {
+									error: false,
+									rest: false,
+									restEnd: '',
+									restStart: '',
+									timeEnd: '01:00',
+									timeStart: '00:00',
+								},
+							},
+							{
+								dayWeek: ['sat', 'sun'],
+								id: 'uniqueId',
+								time: {
+									error: false,
+									rest: false,
+									restEnd: '',
+									restStart: '',
+									timeEnd: '01:00',
+									timeStart: '00:00',
+								},
+							},
+						],
+						status: 'week',
+					},
+					operationGuide: {
+						en: {
+							error: false,
+							value: '송도센트럴파크2',
+						},
+						ja: {
+							error: false,
+							value: '송도센트럴파크4',
+						},
+						ko: {
+							error: false,
+							value: '송도센트럴파크1',
+						},
+						th: {
+							error: false,
+							value: '송도센트럴파크5',
+						},
+						vi: {
+							error: false,
+							value: '송도센트럴파크6',
+						},
+						zh: {
+							error: false,
+							value: '송도센트럴파크3',
+						},
+					},
+					period: '상시 운영',
+					status: '운영중',
+				});
+			});
+
+			document.addEventListener('DOMContentLoaded', async () => {
+				const detail = Alpine.store('detail');
+				const pageId = 'CMS_01_2';
+
+				try {
+					if (detail) {
+						const data = await loadCmsLoc001();
+						detail.list = data;
+						detail.language = data?.[0]?.language;
+						detail.name = data?.[0]?.name;
+						detail.address = data?.[0]?.address;
+						detail.period = data?.[0]?.period;
+						detail.closingDay = data?.[0]?.closingDay;
+						detail.operationGuide = data?.[0]?.operationGuide;
+						detail.linkHomepage = data?.[0]?.linkHomepage;
+						detail.linkMap = data?.[0]?.linkMap;
+					}
+				} catch (error) {
+					console.error('초기 데이터 설정 실패:', error);
+				}
+			});
+		</script>
+	</body>
+</html>

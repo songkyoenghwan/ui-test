@@ -1,0 +1,191 @@
+<svelte:options
+	customElement={{
+		tag: 'lang-translate',
+		shadow: 'none',
+		props: {
+			open: { type: 'String', reflect: true },
+			maxlength: { type: 'String', attribute: 'data-max-length' },
+			lang: { type: 'Object' },
+			view: { type: 'String' },
+			hidden: { type: 'String', attribute: 'data-text-hidden' },
+		},
+	}}
+/>
+
+<script lang="ts">
+	import { langStore } from '@/stores/langStore';
+	import type { LocalizedText } from '@/types/common/locale';
+	import type { PagePropsInput } from '@/types/page/page.type';
+	import { untrack } from 'svelte';
+	import { v4 as uuidv4 } from 'uuid';
+
+	type LocalizedKey = keyof LocalizedText;
+
+	export interface Props {
+		open?: 'open' | 'close';
+		lang?: LocalizedText;
+		maxlength?: number;
+		view?: PagePropsInput['view'];
+		hidden: string;
+		btnPreview: string;
+	}
+
+	let {
+		lang = $bindable(),
+		error,
+		open = 'close',
+		maxlength,
+		view = 'reg',
+		hidden = '',
+		btnPreview = '',
+		click,
+	}: Props = $props();
+
+	export const LANGS: { key: LocalizedKey; label: string }[] = [
+		{ key: 'ko', label: '한국어(KO)' },
+		{ key: 'en', label: '영어(EN)' },
+		{ key: 'zh', label: '중국어(ZH)' },
+		{ key: 'ja', label: '일본어(JA)' },
+		{ key: 'th', label: '태국어(TH)' },
+		{ key: 'vi', label: '베트남어(VI)' },
+	];
+
+	export const createTranslateLang = () => ({
+		ko: '',
+		en: '',
+		zh: '',
+		ja: '',
+		th: '',
+		vi: '',
+	});
+
+	let itemId = uuidv4();
+	let langToggle = $state(false);
+	let local = $state(createTranslateLang());
+	let btnView = $derived($langStore.zh || $langStore.ja || $langStore.th || $langStore.vi);
+
+	$effect(() => {
+		if (lang && typeof lang === 'object') {
+			const langSnap = $state.snapshot(lang);
+
+			untrack(() => {
+				local.ko = langSnap.ko || '';
+				local.en = langSnap.en || '';
+				local.zh = langSnap.zh || '';
+				local.ja = langSnap.ja || '';
+				local.th = langSnap.th || '';
+				local.vi = langSnap.vi || '';
+			});
+		}
+	});
+
+	$effect(() => {
+		const snap = $state.snapshot(local);
+
+		untrack(() => {
+			if (lang && typeof lang === 'object') {
+				LANGS.forEach((item) => {
+					const key = item.key;
+
+					if (lang[key] && snap[key]) {
+						lang[key] = snap[key];
+					}
+				});
+			}
+		});
+	});
+</script>
+
+{#if local}
+	{#if view === 'detail' || view === 'side'}
+		<ul class={['flex flex-col', btnPreview === 'btn-name' ? 'gap-1.5 pt-1.5' : view === 'side' ? 'gap-1.5' : '']}>
+			{#each LANGS as item}
+				{@const key = item.key}
+
+				{#if view === 'side'}
+					{#if String(hidden).toUpperCase() !== String(key).toUpperCase()}
+						<li class="flex items-center gap-1.5">
+							<p class="min-w-5 text-center text-xs text-slate-600">{String(key).toUpperCase()}</p>
+
+							{#if String(local[key]) === ''}
+								<p class="text-xs text-slate-500">없음</p>
+							{:else}
+								<p class="text-xs text-black">{String(local[key])}</p>
+							{/if}
+						</li>
+					{/if}
+				{:else if local[key] !== ''}
+					<li
+						class={[
+							btnPreview === 'btn-name'
+								? 'grid grid-cols-[32px_1fr] '
+								: 'mt-3 grid grid-cols-[44px_1fr] place-content-center border-t border-t-slate-200 pt-3 first:mt-0 first:border-t-0 first:pt-0',
+						]}
+					>
+						<ui-txt size="sm" txt={String(key).toUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
+						<ui-txt size="sm" txt={local[key]} cls="text-black"></ui-txt>
+					</li>
+				{/if}
+			{/each}
+		</ul>
+	{:else}
+		<section class="group/lang">
+			<ul class="flex flex-col gap-0.5">
+				{#each LANGS as item, i (`${itemId}-${i}`)}
+					{@const key = item.key}
+					<li
+						class={[
+							'grid grid-cols-[28px_1fr] items-center gap-0.5 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
+							item.key === 'ko' || item.key === 'en' || (langToggle && $langStore.lang[item.key]) ? '' : 'hidden',
+						]}
+					>
+						<label for="{itemId}-{item.key}" class="label">{String(item.key).toUpperCase()}</label>
+						<input
+							type="text"
+							id="{itemId}-{item.key}"
+							class="input-text s {String(key).trim() === '' ? 'error' : ''}"
+							placeholder="내용을 입력해 주세요."
+							{maxlength}
+							bind:value={local[item.key]}
+						/>
+						{#if item.key === 'ko'}
+							<ui-btn
+								variant="secondary"
+								size="md"
+								txt="자동번역"
+								icon-name="translate"
+								class="flex-none"
+								cls="stroke-cms-3"
+								{click}
+								mousedown={() => {
+									langToggle = true;
+								}}
+							></ui-btn>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+
+			{#if btnView}
+				<div class="mt-2 flex items-center gap-2">
+					<ui-btn
+						variant="secondary"
+						size="md"
+						txt="다국어 입력"
+						icon-name="arrow-down"
+						icon-size="16"
+						class="flex-1"
+						cls="stroke-cms-3"
+						icon-cls={langToggle ? 'rotate-180' : ''}
+						icon-pos="lt"
+						aria-expanded={open === 'close' ? 'false' : 'true'}
+						click={(e: Event) => {
+							e.preventDefault();
+							langToggle = !langToggle;
+						}}
+					></ui-btn>
+				</div>
+			{/if}
+		</section>
+	{/if}
+{/if}

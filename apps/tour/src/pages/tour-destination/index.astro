@@ -1,0 +1,306 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+---
+
+<LayoutBasic>
+	<div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
+		<section class="shadow-1 shadow-1xs space-y-2 rounded-lg bg-white p-5">
+			<div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-wrap items-center gap-2">
+					<h3>검색 조건</h3>
+					<ui-btn variant="icon" icon-name="rotate-left" icon-cls="size-4 stroke-slate-500"></ui-btn>
+				</div>
+				<div>
+					<ui-btn
+						variant="primary"
+						size="lg"
+						cls="min-w-30"
+						icon-name="arrow-up"
+						icon-pos="lt"
+						icon-cls="size-3 stroke-white"
+						txt="대상지 추가"
+						@click.prevent="$store.data.setView('reg'); window.location = '/tour-destination/reg/'"></ui-btn>
+				</div>
+			</div>
+
+			<div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="inline-flex items-center gap-2">
+					<select class="select min-w-62.5" id="" name="">
+						<option value="전체">전체 (n개)</option>
+						<option value="운영 중">운영 중 (n개)</option>
+						<option value="운영 전">운영 전 (n개)</option>
+						<option value="운영 종료">운영 종료 (n개)</option>
+					</select>
+				</div>
+				<div>
+					<div
+						class="input-search group/input-search relative"
+						x-data="{ focused: false, keyword: '' }"
+						@focusin="focused = true"
+						@focusout="focused = false"
+					>
+						<input class="input-text peer pr-15!" x-model="keyword" type="text" placeholder="대상지명 검색" />
+
+						<div class="absolute top-1.5 right-2 z-2 bg-white">
+							<ui-btn
+								x-show="focused"
+								x-cloak
+								variant="icon"
+								icon-name="input-del"
+								icon-cls="size-4 stroke-slate-400"
+								x-on:click="keyword = ''"></ui-btn>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="shadow-1 shadow-1xs space-y-4 rounded-lg bg-white p-5">
+			<div class="inline-flex items-center gap-2">
+				<select class="select min-w-50" id="" name="">
+					<option value="">10개씩 보기</option>
+				</select>
+				<select class="select min-w-35" id="" name="">
+					<option value="">최신순</option>
+					<option value="">가나다순</option>
+				</select>
+			</div>
+
+			<div class="table-wrap" role="table" aria-label="운영 현황 테이블">
+				<table>
+					<colgroup>
+						<col style="width: 100px" />
+						<col style="width: *" />
+						<col style="width: 180px" />
+						<col style="width: 120px" />
+						<col style="width: 120px" />
+						<col style="width: 120px" />
+						<col style="width: 100px" />
+						<col style="width: 100px" />
+						<col style="width: 100px" />
+						<col style="width: 100px" />
+						<col style="width: 100px" />
+						<col style="width: 120px" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="row">NO.</th>
+							<th class="col-span-4 text-left" scope="row">대상지명</th>
+							<th class="col-span-4 text-left" scope="row">사용 언어</th>
+							<th class="col-span-2 text-left" scope="row">운영상태</th>
+							<th class="col-span-3 text-left" scope="row">운영기간</th>
+							<th class="col-span-3 text-left" scope="row">운영시간</th>
+							<th class="col-span-2" scope="row">AI 추천</th>
+							<th class="col-span-2" scope="row">
+								시설
+								<br />
+								혼잡도
+							</th>
+							<th class="col-span-2" scope="row">
+								구역
+								<br />
+								혼잡도
+							</th>
+							<th class="col-span-2" scope="row">
+								위치기반
+								<br />
+								콘텐츠
+							</th>
+							<th class="col-span-2" scope="row">
+								사용자
+								<br />
+								지도
+							</th>
+							<th class="col-span-3 text-left" scope="row">수정일시</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template x-for="(item, idx) in $store.data.items" :key="item.id">
+							<tr>
+								<td x-text="idx + 1"></td>
+								<td>
+									<a
+										class="flex items-center gap-2 text-left"
+										@click.prevent="
+											$store.data.setView('detail');
+											$store.data.setItemId(`${item.id}`);
+											window.location.href = `/tour-destination/detail/${item.id}`;
+										"
+									>
+										<p
+											class="size-4 rounded-xs"
+											:style="`background-color: ${item.colorCode || 'transparent'}`"
+										>
+										</p>
+										<p x-html="item?.name?.ko"></p>
+									</a>
+								</td>
+								<td>
+									<div class="text-left">
+										<p
+											x-html="Object.keys(item.supportedLanguages).filter((key) => item.supportedLanguages[key]).join(', ')"
+										>
+										</p>
+									</div>
+								</td>
+								<td>
+									<div class="text-left">
+										<p
+											:class="item.operationStatus === 'operating' ?'text-cms-3' : item.operationStatus === 'closed' ?'text-error' : 'text-slate-400'"
+											x-html="item.operationStatus === 'operating' ?'운영 중' : item.operationStatus === 'closed' ?'운영 종료' : '운영 전'"
+										>
+										</p>
+									</div>
+								</td>
+								<td>
+									<template x-if="item.isAlways">
+										<p class="text-left">상시운영</p>
+									</template>
+									<template x-if="!item.isAlways">
+										<text-date :dateTime="item.startAt"></text-date>
+									</template>
+									<template x-if="!item.isAlways">
+										<text-date :dateTime="item.endAt"></text-date>
+									</template>
+								</td>
+								<td>
+									<div class="text-left">
+										<template x-if="item.tourDestinationOperatingSchedules.length > 1">
+											<p>요일별 상이</p>
+										</template>
+
+										<template x-if="item.tourDestinationOperatingSchedules.length === 0">
+											<p
+												x-html="`${item.tourDestinationOperatingSchedules[0].openingTime} ~ ${item.tourDestinationOperatingSchedules[0].closingTime}`"
+											>
+											</p>
+										</template>
+									</div>
+								</td>
+								<td
+									:class="item.isAiRecommendYn ? 'text-cms-3': ''"
+									x-text="item.isAiRecommendYn ? '사용' : '미사용'"
+								>
+								</td>
+								<td
+									:class="item.isFacilityCongestionYn ? 'text-cms-3': ''"
+									x-text="item.isFacilityCongestionYn ? '사용' : '미사용'"
+								>
+								</td>
+								<td
+									:class="item.isSectionCongestionYn ? 'text-cms-3': ''"
+									x-text="item.isSectionCongestionYn ? '사용' : '미사용'"
+								>
+								</td>
+								<td
+									:class="item.isFacilityAddressYn ? 'text-cms-3': ''"
+									x-text="item.isFacilityAddressYn ? '사용' : '미사용'"
+								>
+								</td>
+
+								<td>
+									<a
+										class="underline underline-offset-1"
+										:href="item.mapUrl"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<span>🔗 이동</span>
+									</a>
+								</td>
+
+								<td class="col-span-3 text-left">
+									<text-date data-time-view="time" :dateTime="item.lastUpdatedAt"></text-date>
+								</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section class="inline-flex items-center justify-center gap-3">
+			<ui-btn variant="text" icon-name="arrow-left" icon-pos="lt" icon-cls="size-4 stroke-black" txt="이전"></ui-btn>
+			<div class="inline-flex items-center justify-center gap-1.5">
+				<strong class="button primary h-7 min-w-7" aria-label="1 page">
+					<span class="text-white">1</span>
+				</strong>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">2</span>
+				</button>
+				<strong class="button text h-7 min-w-7" aria-label="2 page">
+					<span class="text-slate-500">..</span>
+				</strong>
+				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
+					<span class="text-slate-500">999</span>
+				</button>
+			</div>
+			<ui-btn variant="text" icon-name="arrow-left" icon-pos="rt" icon-cls="size-4 rotate-180 stroke-black" txt="다음"
+			></ui-btn>
+		</section>
+	</div>
+</LayoutBasic>
+
+<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
+
+<script defer>
+	document.addEventListener('alpine:init', () => {
+		const listStore = Alpine.store('data');
+		Alpine.store('data', {
+			items: [],
+			itemsToShow: 10,
+			loading: false,
+			error: null,
+			itemId: '',
+			setItemId(id = '') {
+				this.itemId = id;
+				sessionStorage.setItem('cms-loc-page-view-id', id);
+			},
+			view: sessionStorage.getItem('cms-loc-page-view') ?? 'reg',
+			setView(view = 'reg') {
+				this.view = view;
+				sessionStorage.setItem('cms-loc-page-view', view);
+			},
+			async init() {
+				this.loading = true;
+				try {
+					const res = await fetch('http://localhost:5185/tour-destinations');
+
+					if (!res.ok) {
+						throw new Error('Failed to load json');
+					}
+
+					const data = await res.json();
+
+					this.items = data.data.items;
+				} catch (error) {
+					this.error = error.message ?? 'Unknown error';
+					console.error('초기 데이터 설정 실패:', error);
+				} finally {
+					this.loading = false;
+				}
+			},
+		});
+	});
+</script>

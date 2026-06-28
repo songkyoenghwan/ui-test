@@ -1,0 +1,40 @@
+---
+import ScriptInline from '@/layouts/ScriptInline.astro';
+import '@/styles/index.css';
+
+interface Props {
+	Title?: string;
+}
+const { Title: title } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+		<meta name="view-transition" content="same-origin" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pathname} |</title>
+	</head>
+	<body x-data>
+		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
+			<aside-lnb class="row-span-2 h-full"></aside-lnb>
+
+			<header-list></header-list>
+
+			<main class="main-container" id="main-container">
+				<slot />
+			</main>
+		</section>
+
+		<script>
+			import '@/src/index.ts';
+		</script>
+
+		<script defer src="/store/layout-store.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	</body>
+</html>

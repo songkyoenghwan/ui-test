@@ -1,0 +1,74 @@
+<svelte:options
+	customElement={{
+		tag: 'header-list',
+		shadow: 'none',
+		props: {
+			current: { type: 'String', reflect: true },
+			list: { type: 'Array' },
+		},
+	}}
+/>
+
+<script lang="ts">
+	import { currentItemFromPath, currentSubItem, setCurrentId } from '@/stores/navigation';
+	import type { LnbSubItem } from '@/types/Lnb';
+
+	let displayH3 = $derived($currentItemFromPath?.h3 ?? '');
+	let displayId = $derived($currentItemFromPath?.id ?? '');
+	let displaySub = $derived(($currentItemFromPath?.sub as LnbSubItem[]) ?? []);
+	let currentSub = $derived($currentSubItem?.link || '');
+
+	function handleNavClick(displayId: string) {
+		setCurrentId(displayId);
+	}
+</script>
+
+{#snippet name({ link = '', text = '' })}
+	<li class="flex h-full">
+		<a
+			class="aria-[current=page]:text-3d5f52 aria-[current=page]:border-b-3d5f52 grid place-content-center px-4 text-slate-600 hover:bg-slate-100 aria-[current=page]:border-b-3 aria-[current=page]:font-bold"
+			href={link}
+			aria-current={currentSub === link ? 'page' : undefined}
+			onclick={(e) => {
+				e.stopPropagation();
+				handleNavClick(list.id);
+			}}
+		>
+			<p>{text}</p>
+		</a>
+	</li>
+{/snippet}
+
+<header
+	class="border-t-3d5f52 box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-3d5f52 shadow-header flex h-(--header-height) items-center justify-between border-t-8"
+>
+	<section class="grid h-full flex-1 grid-cols-[90px_1fr] items-center rounded-tl-md bg-white px-2 text-slate-300">
+		<div class="flex h-full min-w-21.5 flex-1 items-center justify-center border-r border-r-slate-100">
+			<h2 class="text-121212 text-center text-xl font-semibold">
+				{displayH3 || ''}
+			</h2>
+		</div>
+		{#if displaySub && displayId !== 'CMS-LOC' && displayId !== 'CMS-CON'}
+			<ul class="text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0">
+				{#each displaySub as sub (sub.link)}
+					{@render name({ link: sub.link, text: sub.h4 })}
+				{/each}
+			</ul>
+		{/if}
+	</section>
+
+	<div class="grid flex-[0_0_300px] items-center bg-white px-2 py-1.5">
+		<select name="" id="" class="select h-10">
+			<button type="button">
+				<selectedcontent class="truncate"></selectedcontent>
+			</button>
+			<option class="max-w-66" value="">최대20자 최대20자 최대20자최대20자</option>
+			<option class="max-w-66" value="">2025 용산어린이축제 4회</option>
+			<option class="max-w-66" value="">2025 용산어린이축제 4회</option>
+			<option class="max-w-66" value="">2025 용산어린이축제 4회</option>
+			<option class="max-w-66" value="">
+				2025 1용산어린이축제 4회2025 2용산어린이축제 4회2025 3용산어린이축제 4회2025 4용산어린이축제 4회
+			</option>
+		</select>
+	</div>
+</header>

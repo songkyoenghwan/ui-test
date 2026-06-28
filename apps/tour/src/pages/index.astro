@@ -1,0 +1,97 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import './src/styles/index.css';
+
+const { data } = Astro.props as Props;
+
+const list = [
+	{
+		page: '관광솔루션',
+		title: '지도',
+		subList: [
+			{
+				text: '지도',
+				url: '/CMS-MAP-001/',
+			},
+		],
+	},
+	{
+		title: '대상지',
+		subList: [
+			{
+				text: '대상지 관리(List)',
+				url: '/tour-destinations',
+			},
+			{
+				text: '대상지 상세',
+				url: '/CMS-LOC-001/1',
+			},
+			{
+				text: '대상지 등록',
+				url: '/CMS-LOC-001/ref',
+			},
+		],
+	},
+];
+
+const getStatusClass = (check?: string) => {
+	switch (check) {
+		case '완료':
+			return 'text-[--222]';
+		case '수정':
+			return 'text-red-600';
+		case '삭제':
+			return 'text-gray-300 line-through';
+		case '신규':
+			return 'text-2070fb';
+		case '확인 필요':
+			return 'text-green-600';
+		default:
+			return 'text-gray-600';
+	}
+};
+---
+
+<LayoutBasic>
+	<section>
+		{
+			list.map((item) => (
+				<div class="p-2">
+					{item.page && <h1 class="text-2070fb m-2 pb-2 text-2xl font-bold">{item.page}</h1>}
+
+					{item.title && <h2 class="text-2d3648 m-2 text-xl font-bold">{item.title}</h2>}
+
+					<div class="grid gap-1 sm:grid-cols-1">
+						{item.subList.map((subItem, subIndex) => (
+							<div
+								class={`border-b border-gray-300 transition-shadow hover:shadow-md ${getStatusClass(subItem.check)}`}
+							>
+								{subItem.subtitle && <p class="py-2 text-blue-400">&middot; {subItem.subtitle}</p>}
+
+								<a
+									href={subItem.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group flex h-full flex-col gap-2 p-2 hover:bg-slate-50"
+								>
+									<div class="flex items-start justify-between gap-2">
+										<p class="space-x-1 font-medium">
+											{subIndex + 1}. {subItem.text}
+											<span class="text-xs">{subItem.url}</span>
+										</p>
+
+										{subItem.etc && (
+											<span class="shrink-0 rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 group-hover:bg-white">
+												{subItem.etc}
+											</span>
+										)}
+									</div>
+								</a>
+							</div>
+						))}
+					</div>
+				</div>
+			))
+		}
+	</section>
+</LayoutBasic>

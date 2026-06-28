@@ -1,0 +1,4677 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"OperationStatus": {
+				"type": "string",
+				"enum": ["operating", "scheduled", "closed"]
+			},
+			"TourDestinationListResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"homepageUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"mapUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"isAlways": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isAiRecommendYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isFacilityCongestionYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isSectionCongestionYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isFacilityAddressYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isCustomSortingYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"supportedLanguages": {},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"lastUpdatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"operationStatus": {
+						"$ref": "#/components/schemas/OperationStatus"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"startAt",
+					"endAt",
+					"homepageUrl",
+					"mapUrl",
+					"isAlways",
+					"isAiRecommendYn",
+					"isFacilityCongestionYn",
+					"isSectionCongestionYn",
+					"isFacilityAddressYn",
+					"isCustomSortingYn",
+					"supportedLanguages",
+					"updatedAt",
+					"lastUpdatedAt",
+					"operationStatus"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginatedResponse_TourDestinationListResponse_": {
+				"properties": {
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/TourDestinationListResponse"
+						},
+						"type": "array"
+					},
+					"totalCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalPages": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["items", "totalCount", "page", "pageSize", "totalPages"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_PaginatedResponse_TourDestinationListResponse__": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/PaginatedResponse_TourDestinationListResponse_"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TourDestinationListQuery": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double",
+						"default": 1,
+						"minimum": 1
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double",
+						"default": 10,
+						"minimum": 1,
+						"maximum": 100
+					},
+					"operationStatus": {
+						"$ref": "#/components/schemas/OperationStatus"
+					},
+					"keyword": {
+						"type": "string",
+						"description": "대상지명 검색어(한국어만 지원)"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OperatingScheduleResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"dayOfWeek": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"openingTime": {
+						"type": "string",
+						"nullable": true
+					},
+					"closingTime": {
+						"type": "string",
+						"nullable": true
+					},
+					"isVisible": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": ["id", "dayOfWeek", "openingTime", "closingTime"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"HolidayScheduleResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"weekOfMonth": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"dayOfWeek": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"fixedHoliday": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"holidayType": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"required": ["id", "weekOfMonth", "dayOfWeek", "fixedHoliday", "holidayType"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TourDestinationOperatingInfoResponse": {
+				"properties": {
+					"tourDestinationOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/OperatingScheduleResponse"
+						},
+						"type": "array"
+					},
+					"tourDestinationHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/HolidayScheduleResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["tourDestinationOperatingSchedules", "tourDestinationHolidaySchedules"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_TourDestinationOperatingInfoResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/TourDestinationOperatingInfoResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CommonButtonResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"iconUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"buttonName": {},
+					"buttonUrl": {},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"isVisible": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": ["id", "iconUrl", "buttonName", "buttonUrl", "sortingNumber"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TourDestinationOverlayFileResponse": {
+				"properties": {
+					"fileOriginalName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"fileMimeType": {
+						"type": "string",
+						"nullable": true
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"coordinateData": {},
+					"overlayType": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"id",
+					"coordinateData",
+					"overlayType",
+					"sortingNumber"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TourDestinationDetailResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"homepageUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"mapUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"isAlways": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isAiRecommendYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isFacilityCongestionYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isSectionCongestionYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isFacilityAddressYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isCustomSortingYn": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"supportedLanguages": {},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"tourDestinationCommonButtons": {
+						"items": {
+							"$ref": "#/components/schemas/CommonButtonResponse"
+						},
+						"type": "array"
+					},
+					"tourDestinationOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/OperatingScheduleResponse"
+						},
+						"type": "array"
+					},
+					"tourDestinationHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/HolidayScheduleResponse"
+						},
+						"type": "array"
+					},
+					"tourDestinationOverlayFiles": {
+						"items": {
+							"$ref": "#/components/schemas/TourDestinationOverlayFileResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"startAt",
+					"endAt",
+					"homepageUrl",
+					"mapUrl",
+					"isAlways",
+					"isAiRecommendYn",
+					"isFacilityCongestionYn",
+					"isSectionCongestionYn",
+					"isFacilityAddressYn",
+					"isCustomSortingYn",
+					"supportedLanguages",
+					"updatedAt",
+					"tourDestinationCommonButtons",
+					"tourDestinationOperatingSchedules",
+					"tourDestinationHolidaySchedules",
+					"tourDestinationOverlayFiles"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_TourDestinationDetailResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/TourDestinationDetailResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_RequiredLang.string_": {
+				"properties": {
+					"ko": {
+						"type": "string"
+					},
+					"en": {
+						"type": "string"
+					}
+				},
+				"required": ["ko", "en"],
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"Partial_Record_OptionalLang.string__": {
+				"properties": {
+					"ja": {
+						"type": "string"
+					},
+					"zh": {
+						"type": "string"
+					},
+					"vi": {
+						"type": "string"
+					},
+					"th": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"LocalizedText": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/Record_RequiredLang.string_"
+					},
+					{
+						"$ref": "#/components/schemas/Partial_Record_OptionalLang.string__"
+					}
+				],
+				"description": "다국어 텍스트 — ko·en 필수, 나머지 선택"
+			},
+			"Record_SupportedLang.boolean_": {
+				"properties": {
+					"ko": {
+						"type": "boolean"
+					},
+					"en": {
+						"type": "boolean"
+					},
+					"ja": {
+						"type": "boolean"
+					},
+					"zh": {
+						"type": "boolean"
+					},
+					"vi": {
+						"type": "boolean"
+					},
+					"th": {
+						"type": "boolean"
+					}
+				},
+				"required": ["ko", "en", "ja", "zh", "vi", "th"],
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"SupportedLanguages": {
+				"$ref": "#/components/schemas/Record_SupportedLang.boolean_",
+				"description": "지원 언어별 활성화 여부"
+			},
+			"CreateCommonButtonBody": {
+				"properties": {
+					"iconUrl": {
+						"type": "string"
+					},
+					"buttonName": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 버튼명"
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OperatingScheduleBody": {
+				"properties": {
+					"dayOfWeek": {
+						"type": "number",
+						"format": "double"
+					},
+					"openingTime": {
+						"type": "string"
+					},
+					"closingTime": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateOperatingScheduleBody": {
+				"$ref": "#/components/schemas/OperatingScheduleBody"
+			},
+			"HolidayScheduleBody": {
+				"properties": {
+					"weekOfMonth": {
+						"type": "number",
+						"format": "double"
+					},
+					"dayOfWeek": {
+						"type": "number",
+						"format": "double"
+					},
+					"fixedHoliday": {
+						"type": "number",
+						"format": "double"
+					},
+					"holidayType": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateHolidayScheduleBody": {
+				"$ref": "#/components/schemas/HolidayScheduleBody"
+			},
+			"CreateTourDestinationBody": {
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 대상지명",
+						"example": {
+							"ko": "서울 여의도 불꽃축제",
+							"en": "Seoul Yeouido Fireworks Festival"
+						}
+					},
+					"supportedLanguages": {
+						"$ref": "#/components/schemas/SupportedLanguages",
+						"description": "지원 언어별 활성화 여부"
+					},
+					"latitude": {
+						"type": "number",
+						"format": "float"
+					},
+					"longitude": {
+						"type": "number",
+						"format": "float"
+					},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "운영 시작일(미입력 시 상시 운영으로 간주)"
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"description": "운영 종료일(미입력 시 상시 운영으로 간주)"
+					},
+					"colorCode": {
+						"type": "string"
+					},
+					"homepageUrl": {
+						"type": "string"
+					},
+					"mapUrl": {
+						"type": "string"
+					},
+					"isAlways": {
+						"type": "boolean",
+						"description": "상시 운영 여부 (startAt과 endAt이 모두 null인 경우 true)"
+					},
+					"isAiRecommendYn": {
+						"type": "boolean"
+					},
+					"isFacilityCongestionYn": {
+						"type": "boolean"
+					},
+					"isSectionCongestionYn": {
+						"type": "boolean"
+					},
+					"isFacilityAddressYn": {
+						"type": "boolean"
+					},
+					"isCustomSortingYn": {
+						"type": "boolean"
+					},
+					"tourDestinationCommonButtons": {
+						"items": {
+							"$ref": "#/components/schemas/CreateCommonButtonBody"
+						},
+						"type": "array",
+						"description": "공통 링크 버튼 정보. 최대 3개까지 생성 가능"
+					},
+					"tourDestinationOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateOperatingScheduleBody"
+						},
+						"type": "array",
+						"description": "운영 스케줄 정보. dayOfWeek가 있는 경우 매주 해당 요일에 운영"
+					},
+					"tourDestinationHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateHolidayScheduleBody"
+						},
+						"type": "array",
+						"description": "정기휴무 스케줄 정보. weekOfMonth, dayOfWeek, fixedHoliday 중 하나 이상이 있어야 함"
+					}
+				},
+				"required": ["name", "latitude", "longitude", "colorCode"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateTourDestinationBody": {
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 대상지명",
+						"example": {
+							"ko": "서울 여의도 불꽃축제",
+							"en": "Seoul Yeouido Fireworks Festival"
+						}
+					},
+					"latitude": {
+						"type": "number",
+						"format": "float"
+					},
+					"longitude": {
+						"type": "number",
+						"format": "float"
+					},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"colorCode": {
+						"type": "string"
+					},
+					"homepageUrl": {
+						"type": "string"
+					},
+					"mapUrl": {
+						"type": "string"
+					},
+					"isAlways": {
+						"type": "boolean"
+					},
+					"isVisible": {
+						"type": "boolean"
+					},
+					"isAiRecommendYn": {
+						"type": "boolean"
+					},
+					"isFacilityCongestionYn": {
+						"type": "boolean"
+					},
+					"isSectionCongestionYn": {
+						"type": "boolean"
+					},
+					"isFacilityAddressYn": {
+						"type": "boolean"
+					},
+					"isCustomSortingYn": {
+						"type": "boolean"
+					},
+					"supportedLanguages": {
+						"$ref": "#/components/schemas/SupportedLanguages"
+					},
+					"tourDestinationCommonButtons": {
+						"items": {
+							"$ref": "#/components/schemas/CreateCommonButtonBody"
+						},
+						"type": "array",
+						"description": "전체 교체 — 전달 시 기존 항목 soft-delete 후 재삽입"
+					},
+					"tourDestinationOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateOperatingScheduleBody"
+						},
+						"type": "array",
+						"description": "전체 교체 — 전달 시 기존 항목 soft-delete 후 재삽입"
+					},
+					"tourDestinationHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateHolidayScheduleBody"
+						},
+						"type": "array",
+						"description": "전체 교체 — 전달 시 기존 항목 soft-delete 후 재삽입"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_null_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"type": "number",
+						"enum": [null],
+						"nullable": true
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingDeploymentStatus": {
+				"type": "string",
+				"enum": ["DRAFT", "DEPLOYING"]
+			},
+			"OnboardingListResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"title": {},
+					"description": {},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"deploymentStatus": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OnboardingDeploymentStatus"
+							}
+						],
+						"nullable": true
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"tourDestinationId",
+					"title",
+					"description",
+					"sortingNumber",
+					"deploymentStatus",
+					"createdAt",
+					"updatedAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_OnboardingListResponse-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingListResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingListQuery": {
+				"properties": {
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["tourDestinationId"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingFileType": {
+				"type": "string",
+				"enum": ["MAIN", "MAIN_GLOBAL", "THUMBNAIL", "THUMBNAIL_GLOBAL"]
+			},
+			"OnboardingFileItem": {
+				"properties": {
+					"fileOriginalName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"fileMimeType": {
+						"type": "string",
+						"nullable": true
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"fileType": {
+						"$ref": "#/components/schemas/OnboardingFileType"
+					}
+				},
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"id",
+					"fileType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingDetailResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"title": {},
+					"description": {},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"deploymentStatus": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OnboardingDeploymentStatus"
+							}
+						],
+						"nullable": true
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"onboardingFiles": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingFileItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"tourDestinationId",
+					"title",
+					"description",
+					"sortingNumber",
+					"deploymentStatus",
+					"createdAt",
+					"updatedAt",
+					"onboardingFiles"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_OnboardingDetailResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/OnboardingDetailResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingFileItemInput": {
+				"properties": {
+					"fileOriginalName": {
+						"type": "string"
+					},
+					"fileUrl": {
+						"type": "string"
+					},
+					"fileUploadPath": {
+						"type": "string"
+					},
+					"fileUploadName": {
+						"type": "string"
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"fileMimeType": {
+						"type": "string"
+					},
+					"fileType": {
+						"$ref": "#/components/schemas/OnboardingFileType"
+					}
+				},
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"fileType"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateOnboardingBody": {
+				"properties": {
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 제목",
+						"example": {
+							"ko": "온보딩 1",
+							"en": "Onboarding 1"
+						}
+					},
+					"description": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 설명",
+						"example": {
+							"ko": "설명",
+							"en": "Description"
+						}
+					},
+					"onboardingFiles": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingFileItemInput"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["tourDestinationId", "title"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOnboardingDeploymentResponse": {
+				"properties": {
+					"updatedCount": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["updatedCount"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_UpdateOnboardingDeploymentResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/UpdateOnboardingDeploymentResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DeployOnboardingsBody": {
+				"properties": {
+					"ids": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array",
+						"description": "배포할 온보딩 ID 목록입니다. 요청 순서를 배포 순서로 사용합니다.",
+						"example": [3, 7]
+					}
+				},
+				"required": ["ids"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UndeployOnboardingsBody": {
+				"properties": {
+					"ids": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array",
+						"description": "배포 해제할 온보딩 ID 목록입니다.",
+						"example": [1, 2, 3]
+					}
+				},
+				"required": ["ids"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOnboardingDeploymentOrderBody": {
+				"properties": {
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double",
+						"description": "대상지 ID입니다.",
+						"example": 1
+					},
+					"deploymentStatus": {
+						"$ref": "#/components/schemas/OnboardingDeploymentStatus",
+						"description": "순서를 변경할 목록 상태입니다. 배포 전/배포 중 목록만 순서를 변경할 수 있습니다.",
+						"example": "DRAFT"
+					},
+					"ids": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array",
+						"description": "배포 중 목록의 전체 ID 순서입니다.",
+						"example": [7, 3, 10]
+					}
+				},
+				"required": ["tourDestinationId", "deploymentStatus", "ids"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOnboardingBody": {
+				"properties": {
+					"title": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 제목",
+						"example": {
+							"ko": "온보딩 1",
+							"en": "Onboarding 1"
+						}
+					},
+					"description": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 설명",
+						"example": {
+							"ko": "설명",
+							"en": "Description"
+						}
+					},
+					"onboardingFiles": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingFileItemInput"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveyQuestionType": {
+				"type": "string",
+				"enum": ["SINGLE", "MULTI"]
+			},
+			"OnboardingSurveyDeploymentStatus": {
+				"type": "string",
+				"enum": ["DRAFT", "DEPLOYING", "ENDED"]
+			},
+			"OnboardingSurveyBaseResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"title": {
+						"type": "string",
+						"nullable": true
+					},
+					"questionType": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OnboardingSurveyQuestionType"
+							}
+						],
+						"nullable": true
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"deploymentStatus": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OnboardingSurveyDeploymentStatus"
+							}
+						],
+						"nullable": true
+					},
+					"deployedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"deploymentEndedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"tourDestinationId",
+					"title",
+					"questionType",
+					"isAiRecommendationEnabled",
+					"deploymentStatus",
+					"deployedAt",
+					"deploymentEndedAt",
+					"createdAt"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveyListResponse": {
+				"$ref": "#/components/schemas/OnboardingSurveyBaseResponse"
+			},
+			"ApiSuccessResponse_OnboardingSurveyListResponse-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingSurveyListResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveyListQuery": {
+				"properties": {
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["tourDestinationId"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveyOptionResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"optionItem": {},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"isActive": {
+						"type": "boolean",
+						"nullable": true
+					}
+				},
+				"required": ["id", "optionItem", "sortingNumber", "isActive"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveyDetailResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"title": {
+						"type": "string",
+						"nullable": true
+					},
+					"questionType": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OnboardingSurveyQuestionType"
+							}
+						],
+						"nullable": true
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"deploymentStatus": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/OnboardingSurveyDeploymentStatus"
+							}
+						],
+						"nullable": true
+					},
+					"deployedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"deploymentEndedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"options": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingSurveyOptionResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"tourDestinationId",
+					"title",
+					"questionType",
+					"isAiRecommendationEnabled",
+					"deploymentStatus",
+					"deployedAt",
+					"deploymentEndedAt",
+					"createdAt",
+					"options"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_OnboardingSurveyDetailResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/OnboardingSurveyDetailResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveyOptionInput": {
+				"properties": {
+					"optionItem": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 답변 항목",
+						"example": {
+							"ko": "10대",
+							"en": "Teens"
+						}
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"required": ["optionItem"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateOnboardingSurveyBody": {
+				"properties": {
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					},
+					"title": {
+						"type": "string",
+						"description": "설문 키워드",
+						"example": "연령대"
+					},
+					"questionType": {
+						"$ref": "#/components/schemas/OnboardingSurveyQuestionType"
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean"
+					},
+					"options": {
+						"items": {
+							"$ref": "#/components/schemas/OnboardingSurveyOptionInput"
+						},
+						"type": "array",
+						"description": "최소 2개, 최대 8개"
+					}
+				},
+				"required": ["tourDestinationId", "title", "questionType", "options"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOnboardingSurveyDeploymentResponse": {
+				"properties": {
+					"updatedCount": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["updatedCount"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_UpdateOnboardingSurveyDeploymentResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/UpdateOnboardingSurveyDeploymentResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DeployOnboardingSurveysBody": {
+				"properties": {
+					"ids": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array",
+						"description": "배포할 기초 설문 ID 목록입니다.",
+						"example": [1, 2]
+					}
+				},
+				"required": ["ids"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EndOnboardingSurveysBody": {
+				"properties": {
+					"ids": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array",
+						"description": "배포 종료할 기초 설문 ID 목록입니다.",
+						"example": [3]
+					}
+				},
+				"required": ["ids"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"OnboardingSurveySortableStatus": {
+				"type": "string",
+				"enum": ["DRAFT", "DEPLOYING"]
+			},
+			"UpdateOnboardingSurveyOrderBody": {
+				"properties": {
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double",
+						"description": "대상지 ID입니다.",
+						"example": 1
+					},
+					"deploymentStatus": {
+						"$ref": "#/components/schemas/OnboardingSurveySortableStatus",
+						"description": "순서를 변경할 목록 상태입니다. 배포 전/배포 중 목록만 순서를 변경할 수 있습니다.",
+						"example": "DRAFT"
+					},
+					"ids": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array",
+						"description": "해당 상태 목록의 전체 ID 순서입니다.",
+						"example": [3, 1, 2]
+					}
+				},
+				"required": ["tourDestinationId", "deploymentStatus", "ids"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOnboardingSurveyOptionInput": {
+				"properties": {
+					"optionItem": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 답변 항목",
+						"example": {
+							"ko": "10대",
+							"en": "Teens"
+						}
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"id": {
+						"type": "number",
+						"format": "double",
+						"description": "기존 답변 항목 ID입니다. 배포 중 기존 항목 수정 시 필수이며, 신규 항목 추가 시 생략합니다.",
+						"example": 1
+					}
+				},
+				"required": ["optionItem"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateOnboardingSurveyBody": {
+				"properties": {
+					"title": {
+						"type": "string",
+						"description": "설문 키워드",
+						"example": "연령대"
+					},
+					"questionType": {
+						"$ref": "#/components/schemas/OnboardingSurveyQuestionType"
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"options": {
+						"items": {
+							"$ref": "#/components/schemas/UpdateOnboardingSurveyOptionInput"
+						},
+						"type": "array",
+						"description": "배포 전에는 전체 교체, 배포 중에는 기존 항목 ID 유지 수정 및 신규 항목 추가만 허용합니다."
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"HealthData": {
+				"properties": {
+					"status": {
+						"type": "string"
+					},
+					"timestamp": {
+						"type": "string"
+					}
+				},
+				"required": ["status", "timestamp"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_HealthData_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/HealthData"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TranslateResponse": {
+				"properties": {
+					"translatedText": {
+						"type": "string"
+					},
+					"source": {
+						"type": "string"
+					},
+					"target": {
+						"type": "string"
+					}
+				},
+				"required": ["translatedText", "source", "target"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_TranslateResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/TranslateResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SupportedLang": {
+				"type": "string",
+				"enum": ["ko", "en", "ja", "zh", "vi", "th"]
+			},
+			"TranslateLang": {
+				"$ref": "#/components/schemas/SupportedLang"
+			},
+			"TranslateBody": {
+				"properties": {
+					"text": {
+						"type": "string",
+						"description": "번역할 원본 텍스트"
+					},
+					"target": {
+						"$ref": "#/components/schemas/TranslateLang",
+						"description": "번역 대상 언어 코드"
+					},
+					"source": {
+						"$ref": "#/components/schemas/TranslateLang",
+						"description": "원본 언어 코드 (생략 시 자동 감지)"
+					}
+				},
+				"required": ["text", "target"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Partial_Record_TranslateLang.string__": {
+				"properties": {
+					"ko": {
+						"type": "string"
+					},
+					"en": {
+						"type": "string"
+					},
+					"ja": {
+						"type": "string"
+					},
+					"zh": {
+						"type": "string"
+					},
+					"vi": {
+						"type": "string"
+					},
+					"th": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"description": "Make all properties in T optional"
+			},
+			"TranslateManyResponse": {
+				"properties": {
+					"translations": {
+						"$ref": "#/components/schemas/Partial_Record_TranslateLang.string__"
+					},
+					"source": {
+						"type": "string"
+					}
+				},
+				"required": ["translations", "source"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_TranslateManyResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/TranslateManyResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TranslateManyBody": {
+				"properties": {
+					"text": {
+						"type": "string",
+						"description": "번역할 원본 텍스트"
+					},
+					"targets": {
+						"items": {
+							"$ref": "#/components/schemas/TranslateLang"
+						},
+						"type": "array",
+						"description": "번역 대상 언어 코드 목록"
+					},
+					"source": {
+						"$ref": "#/components/schemas/TranslateLang",
+						"description": "원본 언어 코드 (생략 시 자동 감지)"
+					}
+				},
+				"required": ["text", "targets"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AddressComponent": {
+				"properties": {
+					"longName": {
+						"type": "string"
+					},
+					"shortName": {
+						"type": "string"
+					},
+					"types": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["longName", "shortName", "types"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReverseGeocodeResponse": {
+				"properties": {
+					"language": {
+						"type": "string"
+					},
+					"formattedAddress": {
+						"type": "string"
+					},
+					"placeId": {
+						"type": "string"
+					},
+					"addressComponents": {
+						"items": {
+							"$ref": "#/components/schemas/AddressComponent"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["language", "formattedAddress", "placeId", "addressComponents"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_ReverseGeocodeResponse-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/ReverseGeocodeResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ReverseGeocodeQuery": {
+				"properties": {
+					"lat": {
+						"type": "number",
+						"format": "double",
+						"description": "위도 (예: 37.5665)"
+					},
+					"lng": {
+						"type": "number",
+						"format": "double",
+						"description": "경도 (예: 126.9780)"
+					},
+					"languages": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array",
+						"description": "응답 언어 코드 목록 — 기본값: ['ko', 'en'] / 예: ?languages=ko&languages=en"
+					}
+				},
+				"required": ["lat", "lng"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FileItemInput": {
+				"description": "파일 업로드 입력값",
+				"properties": {
+					"fileOriginalName": {
+						"type": "string"
+					},
+					"fileUrl": {
+						"type": "string"
+					},
+					"fileUploadPath": {
+						"type": "string"
+					},
+					"fileUploadName": {
+						"type": "string"
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"fileMimeType": {
+						"type": "string"
+					}
+				},
+				"required": ["fileOriginalName", "fileUrl", "fileUploadPath", "fileUploadName", "fileSize", "fileMimeType"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_FileItemInput_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/FileItemInput"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FileUploadType": {
+				"type": "string",
+				"enum": ["category", "facility", "tourDestinationOverlay", "facilityVpsPopup", "onboarding"]
+			},
+			"FacilityListResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"description": {},
+					"overwriteCongestionStatus": {
+						"type": "string",
+						"nullable": true
+					},
+					"linkButton": {},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"isUsingCongestion": {
+						"type": "boolean"
+					},
+					"hasVpsPopup": {
+						"type": "boolean"
+					},
+					"category": {
+						"properties": {
+							"categoryColorCodes": {
+								"properties": {
+									"colorCode": {
+										"type": "string",
+										"nullable": true
+									}
+								},
+								"required": ["colorCode"],
+								"type": "object",
+								"nullable": true
+							},
+							"name": {}
+						},
+						"required": ["categoryColorCodes", "name"],
+						"type": "object",
+						"nullable": true
+					},
+					"matchingPoiName": {}
+				},
+				"required": [
+					"id",
+					"name",
+					"startAt",
+					"endAt",
+					"description",
+					"overwriteCongestionStatus",
+					"linkButton",
+					"createdAt",
+					"updatedAt",
+					"isUsingCongestion",
+					"hasVpsPopup",
+					"category",
+					"matchingPoiName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PaginatedResponse_FacilityListResponse_": {
+				"properties": {
+					"items": {
+						"items": {
+							"$ref": "#/components/schemas/FacilityListResponse"
+						},
+						"type": "array"
+					},
+					"totalCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalPages": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["items", "totalCount", "page", "pageSize", "totalPages"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_PaginatedResponse_FacilityListResponse__": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/PaginatedResponse_FacilityListResponse_"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"matchingStatus": {
+				"type": "string",
+				"enum": ["before", "complete"]
+			},
+			"FacilityListQuery": {
+				"properties": {
+					"page": {
+						"type": "number",
+						"format": "double",
+						"default": 1,
+						"minimum": 1
+					},
+					"pageSize": {
+						"type": "number",
+						"format": "double",
+						"default": 10,
+						"minimum": 1,
+						"maximum": 100
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					},
+					"categoryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"keyword": {
+						"type": "string",
+						"description": "시설명 검색어(한국어만 지원)"
+					},
+					"matchingStatus": {
+						"$ref": "#/components/schemas/matchingStatus",
+						"description": "매칭상태 필터 (매칭전, 매칭완료)"
+					},
+					"hasThumbnail": {
+						"type": "boolean",
+						"description": "썸네일 없음"
+					},
+					"isUsingCongestion": {
+						"type": "boolean",
+						"description": "혼잡도 사용"
+					},
+					"hasUsingVpsPopup": {
+						"type": "boolean",
+						"description": "위치 기반 콘텐츠 사용"
+					}
+				},
+				"required": ["tourDestinationId"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TourDestinationCommonLinkButton": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"buttonName": {},
+					"buttonUrl": {}
+				},
+				"required": ["id", "buttonName", "buttonUrl"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_TourDestinationCommonLinkButton-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/TourDestinationCommonLinkButton"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FileItem": {
+				"description": "파일 전용 테이블 응답 (자체 id 보유)",
+				"properties": {
+					"fileOriginalName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"fileMimeType": {
+						"type": "string",
+						"nullable": true
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": ["fileOriginalName", "fileUrl", "fileUploadPath", "fileUploadName", "fileSize", "fileMimeType", "id"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FacilityFileResponse": {
+				"$ref": "#/components/schemas/FileItem"
+			},
+			"FacilityHolidayScheduleResponse": {
+				"$ref": "#/components/schemas/HolidayScheduleResponse"
+			},
+			"FacilityBreakScheduleResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"breakStartTime": {
+						"type": "string",
+						"nullable": true
+					},
+					"breakEndTime": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": ["id", "breakStartTime", "breakEndTime"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FacilityOperatingScheduleResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"dayOfWeek": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"openingTime": {
+						"type": "string",
+						"nullable": true
+					},
+					"closingTime": {
+						"type": "string",
+						"nullable": true
+					},
+					"facilityBreakSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/FacilityBreakScheduleResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["id", "dayOfWeek", "openingTime", "closingTime", "facilityBreakSchedules"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FacilityVpsPopupResponse": {
+				"properties": {
+					"fileOriginalName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadPath": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileUploadName": {
+						"type": "string",
+						"nullable": true
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"fileMimeType": {
+						"type": "string",
+						"nullable": true
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"description": {},
+					"url": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"id",
+					"name",
+					"description",
+					"url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FacilityDetailResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"description": {},
+					"overwriteCongestionStatus": {
+						"type": "string",
+						"nullable": true
+					},
+					"linkButton": {},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"facilityFiles": {
+						"items": {
+							"$ref": "#/components/schemas/FacilityFileResponse"
+						},
+						"type": "array"
+					},
+					"facilityHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/FacilityHolidayScheduleResponse"
+						},
+						"type": "array"
+					},
+					"facilityOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/FacilityOperatingScheduleResponse"
+						},
+						"type": "array"
+					},
+					"facilityVpsPopups": {
+						"items": {
+							"$ref": "#/components/schemas/FacilityVpsPopupResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"startAt",
+					"endAt",
+					"description",
+					"overwriteCongestionStatus",
+					"linkButton",
+					"createdAt",
+					"updatedAt",
+					"facilityFiles",
+					"facilityHolidaySchedules",
+					"facilityOperatingSchedules",
+					"facilityVpsPopups"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_FacilityDetailResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/FacilityDetailResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateFacilityFileBody": {
+				"$ref": "#/components/schemas/FileItemInput"
+			},
+			"CreateFacilityHolidayScheduleBody": {
+				"$ref": "#/components/schemas/HolidayScheduleBody"
+			},
+			"CreateFacilityBreakScheduleBody": {
+				"properties": {
+					"breakStartTime": {
+						"type": "string"
+					},
+					"breakEndTime": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateFacilityOperatingScheduleBody": {
+				"properties": {
+					"dayOfWeek": {
+						"type": "number",
+						"format": "double"
+					},
+					"openingTime": {
+						"type": "string"
+					},
+					"closingTime": {
+						"type": "string"
+					},
+					"facilityBreakSchedules": {
+						"$ref": "#/components/schemas/CreateFacilityBreakScheduleBody"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateFacilityBody": {
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 시설명"
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					},
+					"categoryId": {
+						"type": "number",
+						"format": "double"
+					},
+					"description": {
+						"$ref": "#/components/schemas/LocalizedText"
+					},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"overwriteCongestionStatus": {
+						"type": "string"
+					},
+					"isOperationInfoSynced": {
+						"type": "boolean"
+					},
+					"facilityFiles": {
+						"$ref": "#/components/schemas/CreateFacilityFileBody"
+					},
+					"facilityHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateFacilityHolidayScheduleBody"
+						},
+						"type": "array"
+					},
+					"facilityOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateFacilityOperatingScheduleBody"
+						},
+						"type": "array",
+						"description": "운영 스케줄. facilityBreakSchedules 포함 가능"
+					}
+				},
+				"required": ["name", "tourDestinationId", "categoryId"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FacilityVpsPopupInput": {
+				"properties": {
+					"fileOriginalName": {
+						"type": "string"
+					},
+					"fileUrl": {
+						"type": "string"
+					},
+					"fileUploadPath": {
+						"type": "string"
+					},
+					"fileUploadName": {
+						"type": "string"
+					},
+					"fileSize": {
+						"type": "number",
+						"format": "double"
+					},
+					"fileMimeType": {
+						"type": "string"
+					},
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText"
+					},
+					"description": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/LocalizedText"
+							}
+						],
+						"nullable": true
+					},
+					"url": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"fileOriginalName",
+					"fileUrl",
+					"fileUploadPath",
+					"fileUploadName",
+					"fileSize",
+					"fileMimeType",
+					"name",
+					"url"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateFacilityBody": {
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText"
+					},
+					"categoryId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"description": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/LocalizedText"
+							}
+						],
+						"nullable": true
+					},
+					"startAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"endAt": {
+						"type": "string",
+						"format": "date-time",
+						"nullable": true
+					},
+					"overwriteCongestionStatus": {
+						"type": "string",
+						"nullable": true
+					},
+					"isOperationInfoSynced": {
+						"type": "boolean"
+					},
+					"facilityFiles": {
+						"items": {
+							"$ref": "#/components/schemas/CreateFacilityFileBody"
+						},
+						"type": "array",
+						"description": "전체 교체 —  전달 시 기존 항목 soft-delete 후 재삽입"
+					},
+					"facilityHolidaySchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateFacilityHolidayScheduleBody"
+						},
+						"type": "array"
+					},
+					"facilityOperatingSchedules": {
+						"items": {
+							"$ref": "#/components/schemas/CreateFacilityOperatingScheduleBody"
+						},
+						"type": "array"
+					},
+					"facilityVpsPopupImage": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/FacilityVpsPopupInput"
+							}
+						],
+						"nullable": true
+					},
+					"facilityButtons": {
+						"items": {
+							"properties": {
+								"tourDestinationCommonLinkButtonId": {
+									"type": "number",
+									"format": "double",
+									"nullable": true
+								},
+								"url": {
+									"type": "string",
+									"nullable": true
+								},
+								"name": {
+									"allOf": [
+										{
+											"$ref": "#/components/schemas/LocalizedText"
+										}
+									],
+									"nullable": true
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CategoryResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"iconUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"parentId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"isEventCategory": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"categoryColorCodes": {
+						"properties": {
+							"colorCode": {
+								"type": "string",
+								"nullable": true
+							}
+						},
+						"required": ["colorCode"],
+						"type": "object",
+						"nullable": true
+					},
+					"_count": {
+						"properties": {
+							"facilities": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": ["facilities"],
+						"type": "object",
+						"nullable": true
+					}
+				},
+				"required": ["id", "name", "isEventCategory"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_CategoryResponse-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/CategoryResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CategoryDetailResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"iconUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"parentId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"isEventCategory": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"categoryColorCodes": {
+						"properties": {
+							"colorCode": {
+								"type": "string",
+								"nullable": true
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": ["colorCode", "id"],
+						"type": "object",
+						"nullable": true,
+						"description": "이 카테고리에 현재 연결된 색상"
+					},
+					"allColorCodes": {
+						"items": {
+							"properties": {
+								"colorCode": {
+									"type": "string",
+									"nullable": true
+								},
+								"id": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": ["colorCode", "id"],
+							"type": "object"
+						},
+						"type": "array",
+						"description": "대상지에 등록된 전체 색상 목록 (색상 선택 UI용)"
+					},
+					"_count": {
+						"properties": {
+							"facilities": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": ["facilities"],
+						"type": "object",
+						"description": "현재 카테고리에 연결된 시설 수"
+					},
+					"categoryFiles": {
+						"items": {
+							"$ref": "#/components/schemas/FileItem"
+						},
+						"type": "array",
+						"description": "카테고리 썸네일 파일"
+					},
+					"children": {
+						"items": {
+							"properties": {
+								"_count": {
+									"properties": {
+										"facilities": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": ["facilities"],
+									"type": "object"
+								},
+								"sortingNumber": {
+									"type": "number",
+									"format": "double",
+									"nullable": true
+								},
+								"iconUrl": {
+									"type": "string",
+									"nullable": true
+								},
+								"name": {},
+								"id": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": ["_count", "name", "id"],
+							"type": "object"
+						},
+						"type": "array",
+						"description": "하위 카테고리 목록"
+					}
+				},
+				"required": ["id", "name", "isEventCategory", "allColorCodes", "_count", "categoryFiles", "children"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_CategoryDetailResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/CategoryDetailResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_CategoryResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/CategoryResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateCategoryBody": {
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 카테고리명",
+						"example": {
+							"ko": "음식",
+							"en": "Food"
+						}
+					},
+					"tourDestinationId": {
+						"type": "number",
+						"format": "double"
+					},
+					"categoryColorCodeId": {
+						"type": "number",
+						"format": "double"
+					},
+					"parentId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true,
+						"description": "상위 카테고리 ID. 최상위 카테고리인 경우 null 또는 미전송"
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double"
+					},
+					"isEventCategory": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean"
+					},
+					"isNavigationProvided": {
+						"type": "boolean"
+					},
+					"categoryFiles": {
+						"items": {
+							"$ref": "#/components/schemas/FileItemInput"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["name", "tourDestinationId"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateCategoryBody": {
+				"properties": {
+					"name": {
+						"$ref": "#/components/schemas/LocalizedText",
+						"description": "다국어 카테고리명",
+						"example": {
+							"ko": "음식",
+							"en": "Food"
+						}
+					},
+					"categoryColorCodeId": {
+						"type": "number",
+						"format": "double"
+					},
+					"parentId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true,
+						"description": "상위 카테고리 ID. 최상위 카테고리인 경우 null 또는 미전송"
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double"
+					},
+					"isEventCategory": {
+						"type": "boolean",
+						"nullable": true
+					},
+					"isAiRecommendationEnabled": {
+						"type": "boolean"
+					},
+					"isNavigationProvided": {
+						"type": "boolean"
+					},
+					"categoryFiles": {
+						"items": {
+							"$ref": "#/components/schemas/FileItemInput"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CsrfTokenResponse": {
+				"properties": {
+					"csrfToken": {
+						"type": "string"
+					}
+				},
+				"required": ["csrfToken"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_CsrfTokenResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/CsrfTokenResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AuthTourDestinationResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"sectionCongestion": {
+						"type": "boolean"
+					}
+				},
+				"required": ["id", "name", "sortingNumber", "sectionCongestion"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AuthMenuRequiredFeature": {
+				"type": "string",
+				"enum": ["sectionCongestion"],
+				"nullable": false
+			},
+			"AuthMenuPermissionsResponse": {
+				"properties": {
+					"read": {
+						"type": "boolean"
+					},
+					"create": {
+						"type": "boolean"
+					},
+					"update": {
+						"type": "boolean"
+					},
+					"delete": {
+						"type": "boolean"
+					}
+				},
+				"required": ["read", "create", "update", "delete"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AuthMenuBaseResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"code": {
+						"type": "string",
+						"nullable": true
+					},
+					"name": {
+						"type": "string",
+						"nullable": true
+					},
+					"url": {
+						"type": "string",
+						"nullable": true
+					},
+					"iconUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"requiredFeature": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/AuthMenuRequiredFeature"
+							}
+						],
+						"nullable": true
+					},
+					"permissions": {
+						"$ref": "#/components/schemas/AuthMenuPermissionsResponse"
+					}
+				},
+				"required": ["id", "code", "name", "url", "iconUrl", "sortingNumber", "requiredFeature", "permissions"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AuthMenuChildResponse": {
+				"$ref": "#/components/schemas/AuthMenuBaseResponse"
+			},
+			"AuthMenuResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"code": {
+						"type": "string",
+						"nullable": true
+					},
+					"name": {
+						"type": "string",
+						"nullable": true
+					},
+					"url": {
+						"type": "string",
+						"nullable": true
+					},
+					"iconUrl": {
+						"type": "string",
+						"nullable": true
+					},
+					"sortingNumber": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					},
+					"requiredFeature": {
+						"allOf": [
+							{
+								"$ref": "#/components/schemas/AuthMenuRequiredFeature"
+							}
+						],
+						"nullable": true
+					},
+					"permissions": {
+						"$ref": "#/components/schemas/AuthMenuPermissionsResponse"
+					},
+					"children": {
+						"items": {
+							"$ref": "#/components/schemas/AuthMenuChildResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"code",
+					"name",
+					"url",
+					"iconUrl",
+					"sortingNumber",
+					"requiredFeature",
+					"permissions",
+					"children"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AuthUserResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string",
+						"nullable": true
+					},
+					"email": {
+						"type": "string",
+						"nullable": true
+					},
+					"loginAccount": {
+						"type": "string",
+						"nullable": true
+					},
+					"tourDestinations": {
+						"items": {
+							"$ref": "#/components/schemas/AuthTourDestinationResponse"
+						},
+						"type": "array"
+					},
+					"menus": {
+						"items": {
+							"$ref": "#/components/schemas/AuthMenuResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["id", "name", "email", "loginAccount", "tourDestinations", "menus"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_AuthUserResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/AuthUserResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateSampleUserBody": {
+				"properties": {
+					"loginAccount": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": ["loginAccount", "password"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_AuthTourDestinationResponse-Array_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"items": {
+							"$ref": "#/components/schemas/AuthTourDestinationResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginResponse": {
+				"properties": {
+					"csrfToken": {
+						"type": "string"
+					},
+					"user": {
+						"$ref": "#/components/schemas/AuthUserResponse"
+					}
+				},
+				"required": ["user"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ApiSuccessResponse_LoginResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/LoginResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginBody": {
+				"properties": {
+					"loginAccount": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": ["loginAccount", "password"],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RefreshTokenResponse": {
+				"$ref": "#/components/schemas/LoginResponse"
+			},
+			"ApiSuccessResponse_RefreshTokenResponse_": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"$ref": "#/components/schemas/RefreshTokenResponse"
+					}
+				},
+				"required": ["success", "data"],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "visit_servant_cms",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	],
+	"paths": {
+		"/tour-destinations": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_PaginatedResponse_TourDestinationListResponse__"
+								}
+							}
+						}
+					}
+				},
+				"description": "삭제되지 않은 전체 대상지 목록을 반환합니다.",
+				"tags": ["TourDestinations"],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number",
+							"minimum": 1
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 10,
+							"format": "double",
+							"type": "number",
+							"minimum": 1,
+							"maximum": 100
+						}
+					},
+					{
+						"in": "query",
+						"name": "operationStatus",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/OperationStatus"
+						}
+					},
+					{
+						"description": "대상지명 검색어(한국어만 지원)",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TourDestinationDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "새 대상지를 생성합니다.",
+				"tags": ["TourDestinations"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateTourDestinationBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/tour-destinations/{id}/operating-info": {
+			"get": {
+				"operationId": "GetOperatingInfo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TourDestinationOperatingInfoResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지 운영/휴일 정보를 조회합니다.",
+				"tags": ["TourDestinations"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "대상지 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/tour-destinations/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TourDestinationDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "ID로 단일 대상지를 조회합니다. 삭제된 대상지는 반환하지 않습니다.",
+				"tags": ["TourDestinations"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "대상지 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TourDestinationDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지 정보를 부분 수정합니다. 전달된 필드만 업데이트됩니다.",
+				"tags": ["TourDestinations"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "수정할 대상지 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateTourDestinationBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지를 소프트 삭제합니다. 실제 데이터는 유지되며 isDeleted가 true로 변경됩니다.",
+				"tags": ["TourDestinations"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "삭제할 대상지 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/onboardings": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingListResponse-Array_"
+								}
+							}
+						}
+					}
+				},
+				"description": "삭제되지 않은 온보딩 목록을 반환합니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tourDestinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "새 온보딩을 생성합니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateOnboardingBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboardings/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "ID로 단일 온보딩을 조회합니다. 삭제된 온보딩은 반환하지 않습니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "온보딩 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "온보딩 정보를 부분 수정합니다. 전달된 필드만 업데이트됩니다.\r\nonboardingFiles를 전달하면 기존 파일은 소프트 삭제 후 새 파일로 교체됩니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "수정할 온보딩 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateOnboardingBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "온보딩을 소프트 삭제합니다. 실제 데이터는 유지되며 isDeleted가 true로 변경됩니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "삭제할 온보딩 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/onboardings/deploy": {
+			"patch": {
+				"operationId": "Deploy",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_UpdateOnboardingDeploymentResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "선택한 배포 전 온보딩을 현재 배포 중 목록 끝에 순서대로 추가합니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DeployOnboardingsBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboardings/undeploy": {
+			"patch": {
+				"operationId": "Undeploy",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_UpdateOnboardingDeploymentResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "선택한 배포 중 온보딩을 배포 전으로 이동하고 정렬 순서를 초기화합니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UndeployOnboardingsBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboardings/order": {
+			"patch": {
+				"operationId": "UpdateDeploymentOrder",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_UpdateOnboardingDeploymentResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지별 배포전 또는 배포 중 온보딩 전체 순서를 전달받아 정렬 순서를 다시 계산합니다.",
+				"tags": ["Onboardings"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateOnboardingDeploymentOrderBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboarding-surveys": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingSurveyListResponse-Array_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지별 기초 설문 목록을 반환합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "tourDestinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingSurveyDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "새 기초 설문을 생성합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateOnboardingSurveyBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboarding-surveys/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingSurveyDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "ID로 단일 기초 설문을 조회합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "기초 설문 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_OnboardingSurveyDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "기초 설문을 부분 수정합니다.\r\n배포 전에는 모든 항목을 수정할 수 있고, options를 전달하면 기존 항목은 soft-delete 후 새 항목으로 교체됩니다.\r\n배포 중에는 설문명, AI 추천 활용 여부, 답변 항목명/활성화 여부 수정 및 답변 항목 추가만 가능합니다.\r\n배포 종료 후에는 수정할 수 없습니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "수정할 기초 설문 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateOnboardingSurveyBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "기초 설문을 소프트 삭제합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "삭제할 기초 설문 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/onboarding-surveys/deploy": {
+			"patch": {
+				"operationId": "Deploy",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_UpdateOnboardingSurveyDeploymentResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "선택한 기초 설문을 배포합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/DeployOnboardingSurveysBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboarding-surveys/end": {
+			"patch": {
+				"operationId": "End",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_UpdateOnboardingSurveyDeploymentResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "선택한 기초 설문의 배포를 종료합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EndOnboardingSurveysBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/onboarding-surveys/order": {
+			"patch": {
+				"operationId": "UpdateOrder",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_UpdateOnboardingSurveyDeploymentResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지별 배포 전 또는 배포 중 기초 설문 전체 순서를 전달받아 정렬 순서를 다시 계산합니다.",
+				"tags": ["Onboarding Surveys"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateOnboardingSurveyOrderBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/health": {
+			"get": {
+				"operationId": "Check",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_HealthData_"
+								}
+							}
+						}
+					}
+				},
+				"tags": ["Health"],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/google/translate": {
+			"post": {
+				"operationId": "Translate",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TranslateResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "[샘플] Google Translate API를 이용해 텍스트를 번역합니다.",
+				"tags": ["Google"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TranslateBody"
+							},
+							"example": {
+								"text": "서울 여의도 불꽃축제",
+								"target": "en",
+								"source": "ko"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/google/translate-many": {
+			"post": {
+				"operationId": "TranslateMany",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TranslateManyResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "[샘플] 단일 텍스트를 여러 언어로 일괄 번역합니다.",
+				"tags": ["Google"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TranslateManyBody"
+							},
+							"example": {
+								"text": "서울 여의도 불꽃축제",
+								"targets": ["en", "ja", "zh", "th", "vi"],
+								"source": "ko"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/google/reverse-geocode": {
+			"get": {
+				"operationId": "ReverseGeocode",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_ReverseGeocodeResponse-Array_"
+								}
+							}
+						}
+					}
+				},
+				"description": "[샘플] 위경도로 주소를 조회합니다 (역지오코딩).\r\n예시: GET /google/reverse-geocode?lat=37.5665&lng=126.9780",
+				"tags": ["Google"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "위도 (예: 37.5665)",
+						"in": "query",
+						"name": "lat",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "경도 (예: 126.9780)",
+						"in": "query",
+						"name": "lng",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "응답 언어 코드 목록 — 기본값: ['ko', 'en'] / 예: ?languages=ko&languages=en",
+						"in": "query",
+						"name": "languages",
+						"required": false,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					}
+				]
+			}
+		},
+		"/facilities": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_PaginatedResponse_FacilityListResponse__"
+								}
+							}
+						}
+					}
+				},
+				"description": "삭제되지 않은 전체 시설 목록을 반환합니다.",
+				"tags": ["Facilities"],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "page",
+						"required": false,
+						"schema": {
+							"default": 1,
+							"format": "double",
+							"type": "number",
+							"minimum": 1
+						}
+					},
+					{
+						"in": "query",
+						"name": "pageSize",
+						"required": false,
+						"schema": {
+							"default": 10,
+							"format": "double",
+							"type": "number",
+							"minimum": 1,
+							"maximum": 100
+						}
+					},
+					{
+						"in": "query",
+						"name": "tourDestinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"in": "query",
+						"name": "categoryId",
+						"required": false,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "시설명 검색어(한국어만 지원)",
+						"in": "query",
+						"name": "keyword",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"description": "매칭상태 필터 (매칭전, 매칭완료)",
+						"in": "query",
+						"name": "matchingStatus",
+						"required": false,
+						"schema": {
+							"$ref": "#/components/schemas/matchingStatus"
+						}
+					},
+					{
+						"description": "썸네일 없음",
+						"in": "query",
+						"name": "hasThumbnail",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"description": "혼잡도 사용",
+						"in": "query",
+						"name": "isUsingCongestion",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					},
+					{
+						"description": "위치 기반 콘텐츠 사용",
+						"in": "query",
+						"name": "hasUsingVpsPopup",
+						"required": false,
+						"schema": {
+							"type": "boolean"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_FacilityDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "새 시설을 생성합니다.",
+				"tags": ["Facilities"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateFacilityBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/facilities/common-buttons": {
+			"get": {
+				"operationId": "GetCommonButtons",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_TourDestinationCommonLinkButton-Array_"
+								}
+							}
+						}
+					}
+				},
+				"description": "대상지 공통 버튼 조회",
+				"tags": ["Facilities"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "조회할 대상지 ID",
+						"in": "query",
+						"name": "tourDestinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/facilities/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_FacilityDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "ID로 단일 시설을 조회합니다. 삭제된 시설은 반환하지 않습니다.",
+				"tags": ["Facilities"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "시설 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_FacilityDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "시설 정보를 부분 수정합니다. 전달된 필드만 업데이트됩니다.",
+				"tags": ["Facilities"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "수정할 시설 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateFacilityBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "시설을 소프트 삭제합니다. 실제 데이터는 유지되며 isDeleted가 true로 변경됩니다.",
+				"tags": ["Facilities"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "삭제할 시설 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/categories": {
+			"get": {
+				"operationId": "GetAll",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_CategoryResponse-Array_"
+								}
+							}
+						}
+					}
+				},
+				"description": "삭제되지 않은 전체 카테고리 목록을 정렬 순서(sortingNumber)대로 반환합니다.",
+				"tags": ["Categories"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "투어 목적지 ID로 필터링 (필수 사항)",
+						"in": "query",
+						"name": "tourDestinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "Create",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_CategoryResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "새 카테고리를 생성합니다.\r\nparentId를 지정하면 하위 카테고리로 등록됩니다.",
+				"tags": ["Categories"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateCategoryBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/categories/{id}": {
+			"get": {
+				"operationId": "GetById",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_CategoryDetailResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "ID로 단일 카테고리를 조회합니다. 삭제된 카테고리는 반환하지 않습니다.",
+				"tags": ["Categories"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "카테고리 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					},
+					{
+						"description": "투어 목적지 ID (카테고리가 속한 대상지의 ID, 필수 사항)",
+						"in": "query",
+						"name": "tourDestinationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "Update",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_CategoryResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "카테고리 정보를 부분 수정합니다. 전달된 필드만 업데이트됩니다.",
+				"tags": ["Categories"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "수정할 카테고리 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateCategoryBody"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remove",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "카테고리를 소프트 삭제합니다. 실제 데이터는 유지되며 isDeleted가 true로 변경됩니다.",
+				"tags": ["Categories"],
+				"security": [],
+				"parameters": [
+					{
+						"description": "삭제할 카테고리 ID",
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/auth/csrf-token": {
+			"get": {
+				"operationId": "CsrfToken",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_CsrfTokenResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "상태 변경 요청에 사용할 CSRF token을 발급합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/sample-users": {
+			"post": {
+				"operationId": "CreateSampleUser",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_AuthUserResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "develop 환경에서 로그인 테스트용 샘플 계정을 생성합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateSampleUserBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/me": {
+			"get": {
+				"operationId": "Me",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_AuthUserResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "현재 로그인한 사용자, 할당된 대상지 목록, 메뉴 권한 트리를 반환합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/me/tour-destinations": {
+			"get": {
+				"operationId": "GetTourDestinations",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_AuthTourDestinationResponse-Array_"
+								}
+							}
+						}
+					}
+				},
+				"description": "현재 로그인한 사용자의 할당된 대상지 목록을 반환합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_LoginResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "로그인 후 JWT access token과 refresh token을 발급합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginBody"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/refresh": {
+			"post": {
+				"operationId": "Refresh",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_RefreshTokenResponse_"
+								}
+							}
+						}
+					}
+				},
+				"description": "HttpOnly refresh token cookie로 새 JWT token 쌍을 발급합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/auth/logout": {
+			"post": {
+				"operationId": "Logout",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_null_"
+								}
+							}
+						}
+					}
+				},
+				"description": "HttpOnly access/refresh token cookie를 삭제하고 refresh token을 폐기합니다.",
+				"tags": ["Auth"],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/files/images": {
+			"post": {
+				"operationId": "UploadImage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiSuccessResponse_FileItemInput_"
+								}
+							}
+						}
+					}
+				},
+				"description": "이미지 파일을 업로드하고 기존 생성/수정 API에 전달할 파일 메타데이터를 반환합니다.",
+				"tags": ["Files"],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "fileType",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/FileUploadType"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"required": ["file"],
+								"properties": {
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

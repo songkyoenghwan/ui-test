@@ -1,0 +1,259 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+---
+
+<LayoutBasic>
+	<div class="border-b-ddd border-b pb-3">
+		<heading-title title="사용자 계정 관리"></heading-title>
+	</div>
+
+	<form id="hs-scroll-nav-tabs-centered" class="relative overflow-hidden">
+		<section class="mt-6">
+			<div class="grid grid-cols-[1fr_6.875rem] gap-6 rounded-lg bg-white p-6">
+				<ul class="grid grid-cols-5 items-center gap-6">
+					<li class="grid gap-y-2.5">
+						<input-label input-id="col-search-2" input-text="유형 선택"></input-label>
+						<select id="col-search-4" name="col-search-2" class="select">
+							<option value="sel">전체</option>
+							<option value="sel">고객사</option>
+							<option value="sel">운영자</option>
+						</select>
+					</li>
+					<li class="grid gap-y-2.5">
+						<input-label input-id="inputType" input-text="회사명"></input-label>
+						<combo-box data-combo-box="client"> </combo-box>
+					</li>
+					<li class="grid gap-y-2.5">
+						<input-label input-id="inputType" input-text="이메일주소 (ID)"></input-label>
+						<combo-box data-combo-box="client"> </combo-box>
+					</li>
+					<li class="grid gap-y-2.5">
+						<input-label input-id="inputType" input-text="이름"></input-label>
+						<combo-box data-combo-box="client"> </combo-box>
+					</li>
+					<li class="grid gap-y-2.5">
+						<input-label input-id="col-search-2" input-text="유형 선택"></input-label>
+						<select id="col-search-4" name="col-search-2" class="select">
+							<option value="sel">전체</option>
+							<option value="sel">활성</option>
+							<option value="sel">차단</option>
+							<option value="sel">휴면</option>
+						</select>
+					</li>
+				</ul>
+
+				<ui-button
+					text="조회"
+					variant="primary"
+					size="md"
+					cls="size-full flex items-center justify-between"
+					icon="filter-search"
+					icon-size="size-6"
+					icon-color="stroke-white"></ui-button>
+			</div>
+		</section>
+
+		<div class="mt-6">
+			<div>
+				<div class="gpa-5 flex items-center justify-between">
+					<p class="text-2sm">
+						총 <strong class="text-primary" x-text="$store?.table?.list.length"></strong>개
+					</p>
+
+					<div>
+						<table-paging></table-paging>
+					</div>
+				</div>
+
+				<div class="border-t-ddd flex items-center justify-between border-t py-3">
+					<div class="flex items-center gap-2.5">
+						<ui-button item-href="/CMS_02_1/reg" text="활성" variant="primary" size="md"> </ui-button>
+						<ui-button item-href="#" text="차단" variant="primary-outline" size="md"> </ui-button>
+						<ui-button
+							text="삭제"
+							btn-id=""
+							variant="destructive-outline"
+							size="md"
+							icon="trash"
+							icon-size="size-6"
+							icon-color="stroke-ff0000"></ui-button>
+					</div>
+
+					<div class="flex items-center gap-2.5">
+						<ui-button
+							item-href="/CMS_04_1/reg"
+							text="신규 등록"
+							variant="primary"
+							size="md"
+							icon="add"
+							icon-size="size-6"
+							icon-color="stroke-white"></ui-button>
+					</div>
+				</div>
+
+				<div class="relative overflow-x-auto">
+					<table class="text-666 text-2sm min-h-75 w-full min-w-5xl overflow-clip rounded-lg bg-white">
+						<thead class="bg-primary text-2sm font-normal text-white not-has-[tr]:grid not-has-[tr]:min-h-13.5">
+							<!-- 실제 테이블 헤더가 준비됐을 때 -->
+							<template x-if="$store?.table && $store.table.list.length > 0">
+								<tr>
+									<th scope="col" class="p-3">
+										<only-checkbox
+											chk-id="chkAllTbl"
+											x-bind:checked="$store.table.chkAll"
+											@checked-changed="(e) => $store.table.chkAllToggle(e.detail)"></only-checkbox>
+									</th>
+									<th scope="col" class="p-3">No.</th>
+									<template x-for="item in $store.table.th">
+										<th scope="col" class="p-3" x-show="item.checked" x-html="item.text"></th>
+									</template>
+									<th scope="col" class="p-3">상세</th>
+								</tr>
+							</template>
+						</thead>
+
+						<tbody class="not-has-[tr]:grid not-has-[tr]:min-h-100">
+							<template x-if="$store.table.list.length === 0">
+								<tr class="border-e9e9e9 border-b bg-white">
+									<td :colspan="$store.table.th.length + 1" class="px-3 py-2 text-center">
+										<p class="min-h-100 place-content-center px-3 py-2 text-center">
+											조회된 내용이 없습니다.
+										</p>
+									</td>
+								</tr>
+							</template>
+							<template x-for="(colum, idx) in $store.table.currentViewPages" :key="colum.id">
+								<tr class="border-e9e9e9 border-b bg-white">
+									<td class="px-3 py-2 text-center">
+										<only-checkbox
+											:chk-id="colum.id+'Chk'"
+											x-bind:checked="colum.chk"
+											@checked-changed="(e) => $store.table.toggleChk(colum)"></only-checkbox>
+									</td>
+									<td class="p-3 text-center" x-text="idx + 1"></td>
+									<template x-for="header in $store.table.th" :key="header.id">
+										<td class="px-2 text-center" x-show="header.checked">
+											<template x-if="header.id !== 'situation'">
+												<span
+													x-html="colum?.[header.id]?.text ?? colum?.[header.id]"
+													:class="colum?.[header.id]?.class"
+												>
+												</span>
+											</template>
+
+											<template x-if="header.id === 'situation'">
+												<badge-text
+													:text="colum?.[header.id]?.text ?? colum?.[header.id]"
+													:variant="colum?.[header.id]?.state"></badge-text>
+											</template>
+										</td>
+									</template>
+									<td class="px-3 py-2 text-center">
+										<ui-button
+											:item-href="'/CMS_05_1/detail/' + colum.id"
+											text="상세"
+											variant="icon-only"
+											size="sm"
+											icon="new-page"
+											icon-size="size-5 "
+											icon-color="stroke-primary"></ui-button>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
+				<table-nav></table-nav>
+			</div>
+		</div>
+
+		<div class="border-t-ddd flex items-center justify-between border-t py-3">
+			<div class="flex items-center gap-2.5">
+				<ui-button item-href="/CMS_02_1/reg" text="활성" variant="primary" size="md"> </ui-button>
+				<ui-button item-href="#" text="차단" variant="primary-outline" size="md"> </ui-button>
+				<ui-button
+					text="삭제"
+					btn-id=""
+					variant="destructive-outline"
+					size="md"
+					size="md"
+					icon="trash"
+					icon-size="size-6"
+					icon-color="stroke-ff0000"></ui-button>
+			</div>
+
+			<div class="flex items-center gap-2.5">
+				<ui-button
+					item-href="/CMS_04_1/reg"
+					text="신규 등록"
+					variant="primary"
+					size="md"
+					icon="add"
+					icon-size="size-6"
+					icon-color="stroke-primary"></ui-button>
+			</div>
+		</div>
+	</form>
+</LayoutBasic>
+
+<script defer>
+	document.addEventListener('alpine:initialized', () => {
+		const tableStore = Alpine.store('table');
+		if (tableStore) {
+			tableStore.th = [
+				{
+					id: 'type',
+					default: true,
+					text: '유형',
+					checked: true,
+				},
+				{
+					id: 'client',
+					default: false,
+					text: '회사명',
+					checked: true,
+				},
+				{
+					id: 'email',
+					default: false,
+					text: '이메일 주소 (ID)',
+					checked: true,
+				},
+				{
+					id: 'name',
+					default: false,
+					text: '이름',
+					checked: true,
+				},
+				{
+					id: 'situation',
+					default: false,
+					text: '상태',
+					checked: true,
+				},
+			];
+		}
+	});
+
+	document.addEventListener('DOMContentLoaded', async () => {
+		const pageId = 'CMS_05_1';
+		const tableStore = Alpine.store('table');
+		const layoutStore = Alpine.store('layout');
+
+		try {
+			layoutStore.loading = true;
+			const response = await fetch(`/api/${pageId}`);
+			const { client, getList } = await response.json();
+
+			await tableStore.setupCombo('combo-box[data-combo-box="client"]', client);
+
+			if (tableStore) {
+				tableStore.listSet(getList);
+			}
+
+			layoutStore.loading = false;
+		} catch (error) {
+			console.error('초기 데이터 설정 실패:', error);
+		}
+	});
+</script>

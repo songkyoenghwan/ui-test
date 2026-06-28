@@ -1,0 +1,115 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+---
+
+<LayoutBasic>
+	<div class="pb-6">
+		<heading-title title="사용자 계정 등록"></heading-title>
+	</div>
+
+	<form class="relative flex flex-col gap-y-6 overflow-hidden">
+		<section class="divide-e9e9e9 divide-y overflow-clip rounded-lg bg-white">
+			<ul class="divide-e9e9e9 divide-y" x-data="{
+					view: 'client',
+				}">
+				<li class="divide-e9e9e9 grid grid-cols-[minmax(9.375rem,16.25rem)_1fr] divide-x">
+					<input-label input-id="col-1" input-text="사용자 유형" input-required class="grid px-6 py-3"></input-label>
+					<div class="flex items-center gap-10 px-6">
+						<text-radio
+							item-id="rdoClient"
+							item-name="rdoReg"
+							text="고객사"
+							value="client"
+							:checked="view === $el.value"
+							@checked-changed="(e) => view = e.detail.value"></text-radio>
+
+						<text-radio
+							item-id="rdoAdmin"
+							item-name="rdoReg"
+							text="운영자"
+							value="admin"
+							:checked="view === $el.value"
+							@checked-changed="(e) => view = e.detail.value"></text-radio>
+					</div>
+				</li>
+				<li
+					class="divide-e9e9e9 grid grid-cols-[minmax(9.375rem,16.25rem)_1fr] divide-x"
+					x-cloak
+					x-show="view === 'client'"
+				>
+					<input-label input-id="col-2" input-text="소속 회사" input-required class="grid px-6 py-3"></input-label>
+
+					<div class="grid px-6 py-3">
+						<combo-box data-combo-box="client"> </combo-box>
+					</div>
+				</li>
+				<li class="divide-e9e9e9 grid grid-cols-[minmax(9.375rem,16.25rem)_1fr] divide-x">
+					<input-label input-id="col-3" input-text="이름" input-required class="grid px-6 py-3"></input-label>
+
+					<div class="grid px-6 py-3" x-data="{col3: ''}">
+						<input
+							type="text"
+							name="col-3"
+							id="col-3"
+							class="input-text"
+							placeholder="입력"
+							x-model="col3"
+							maxlength="20"
+							@input="col3 = col3.slice(0, 30)"
+						/>
+						<text-msg role="alert" class="text-msg" text="한글·영문·숫자 및 괄호·띄어쓰기만 입력 가능 (최대 20자)"
+						></text-msg>
+					</div>
+				</li>
+				<li class="divide-e9e9e9 grid grid-cols-[minmax(9.375rem,16.25rem)_1fr] divide-x">
+					<input-label input-id="col-4" input-text="휴대폰번호" input-required class="grid px-6 py-3"></input-label>
+
+					<div class="grid px-6 py-3">
+						<input type="tel" name="col-4" id="col-4" class="input-text" placeholder="입력" />
+					</div>
+				</li>
+				<li class="divide-e9e9e9 grid grid-cols-[minmax(9.375rem,16.25rem)_1fr] divide-x">
+					<input-label input-id="col-5" input-text="이메일" input-required class="grid px-6 py-3"></input-label>
+
+					<div class="grid px-6 py-3">
+						<input type="email" name="col-5" id="col-5" class="input-text" placeholder="입력" />
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<div class="flex items-center justify-center gap-3">
+			<ui-button
+				btn-type="button"
+				text="등록"
+				variant="primary"
+				size="xl"
+				cls="min-w-45"
+				icon="tick-circle"
+				icon-size="size-6"
+				icon-color="stroke-white"
+			>
+			</ui-button>
+		</div>
+	</form>
+</LayoutBasic>
+
+<script defer>
+	document.addEventListener('DOMContentLoaded', async () => {
+		const pageId = 'CMS_05_1';
+		const tableStore = Alpine.store('table');
+		const layoutStore = Alpine.store('layout');
+
+		try {
+			layoutStore.loading = true;
+			const response = await fetch(`/api/${pageId}`);
+			const { client } = await response.json();
+
+			await tableStore.setupCombo('combo-box[data-combo-box="client"]', client);
+
+			layoutStore.loading = false;
+		} catch (error) {
+			console.error('초기 데이터 설정 실패:', error);
+		}
+	});
+</script>

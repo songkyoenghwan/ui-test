@@ -4,6 +4,7 @@
 rm -rf deploy_build
 mkdir -p deploy_build/apps/homepage
 mkdir -p deploy_build/apps/map
+mkdir -p deploy_build/apps/tour
 
 echo "🚀 하위 폴더 멀티 앱 교차 빌드 시작..."
 
@@ -17,6 +18,12 @@ cd ../..
 cd apps/map
 bun vite build
 cp -r build/* ../../deploy_build/apps/map/
+cd ../..
+
+# 📦 3. apps/map 빌드 및 수집
+cd apps/tour
+bun vite build
+cp -r build/* ../../deploy_build/apps/tour/
 cd ../..
 
 # 🎯 4. GitHub Pages 전용 오지랖 차단선 자동 생성

@@ -1,0 +1,38 @@
+{
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"endOfLine": "auto",
+	"htmlWhitespaceSensitivity": "ignore",
+	"printWidth": 130,
+	"singleQuote": true,
+	"tabWidth": 4,
+	"useTabs": true,
+	"trailingComma": "all",
+	"plugins": [
+		"@prettier/plugin-oxc",
+		"prettier-plugin-astro",
+		"prettier-plugin-svelte",
+		"@ianvs/prettier-plugin-sort-imports",
+		"prettier-plugin-organize-attributes",
+		"prettier-plugin-css-order",
+		"prettier-plugin-tailwindcss"
+	],
+	"cssDeclarationSorterOrder": "smacss",
+	"tailwindPreserveDuplicates": false,
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		},
+		{
+			"files": "*.ts",
+			"options": {
+				"parser": "typescript",
+				"plugins": ["@ianvs/prettier-plugin-sort-imports"],
+				"importOrderParserPlugins": ["typescript", "decorators-legacy"]
+			}
+		}
+	]
+}
