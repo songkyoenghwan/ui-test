@@ -4,7 +4,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<div class="min-w-5xl flex max-w-[calc(100dvw-80px)] flex-col gap-3 p-5">
+<div class="flex max-w-[calc(100dvw-80px)] min-w-5xl flex-col gap-3 p-5">
 	<section class="static flex items-center justify-between">
 		<ui-tit tit="$한국어 대상지명(최대 50자)$"></ui-tit>
 		<div>
@@ -18,7 +18,7 @@
 
 	<section class="shadow-1xs rounded-lg bg-white px-5 py-4">
 		<header>
-			<h4 class="tit lg px-4.5 sr-only">대상지 정보</h4>
+			<h4 class="tit lg sr-only px-4.5">대상지 정보</h4>
 		</header>
 
 		<ul class="divide-y divide-slate-300">

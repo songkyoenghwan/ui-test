@@ -4,7 +4,8 @@
 	"homepage": "songkyoenghwan.github.io/ui-test/",
 	"workspaces": [
 		"apps/homepage",
-		"apps/map"
+		"apps/map",
+		"apps/tour"
 	],
 	"scripts": {
 		"build:all": "bash deploy.sh",
