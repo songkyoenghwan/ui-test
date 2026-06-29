@@ -135,11 +135,21 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 										return item.operationStatus === 'operating' ?'운영 중' : item.operationStatus === 'closed' ?'운영 종료' : '운영 전'
 									},
 									get supportedLanguages() {
-										if (!this.item || !this.item.supportedLanguages) {
-											return '';
-										}
+										if (!item?.supportedLanguages) return '';
+
 										const langOrder = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
-										return langOrder.filter((key) => this.item.supportedLanguages[key]).join(', ');
+										return langOrder
+											.filter((key) => item.supportedLanguages[key])
+											.join(', ');
+									},
+
+									get supportedLanguageList() {
+										if (!item?.supportedLanguages) return '[]';
+
+										const langOrder = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
+										return JSON.stringify(
+											langOrder.filter((key) => item.supportedLanguages[key])
+										);
 									},
 									get tourDestinationOperatingSchedules() {
 										if (!item.tourDestinationOperatingSchedules || item.tourDestinationOperatingSchedules.length === 0) {
@@ -170,7 +180,6 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 								</td>
 								<td>
 									<ui-txt cls="text-black text-left" size="sm" x-bind:txt="supportedLanguages"></ui-txt>
-									<lang-chk view="detail" :lang="supportedLanguages"></lang-chk>
 								</td>
 								<td>
 									<ui-txt

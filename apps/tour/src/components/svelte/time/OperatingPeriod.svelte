@@ -27,11 +27,6 @@
 
 	let { isAlways = $bindable(true), startAt = $bindable(), endAt = $bindable(), view = 'reg' }: Props = $props();
 
-	const createLocalResult = () => ({
-		isAlways: true,
-		startAt: '',
-		endAt: '',
-	});
 	let itemId = uuidv4();
 	const list = $state([
 		{ id: `${itemId}-always`, name: 'always', txt: '상시 운영' },

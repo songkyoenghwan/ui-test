@@ -86,10 +86,11 @@
 			}),
 		);
 	}
-
 	$effect(() => {
-		if (!selected && segmentList.length > 0) {
-			selected = segmentList[0].name;
+		const isEmpty = selected == null || selected === '';
+		if (isEmpty && segmentList.length > 0) {
+			const first = segmentList[0];
+			selected = first?.name ?? first?.txt ?? '';
 		}
 	});
 </script>
@@ -100,13 +101,13 @@
 
 {#if isSegmented}
 	{#each segmentList as item, i (`seg-${item.name}-${i}`)}
-		<label for={`${name}-${item.name}-${i}`} class="button {variant} {size} {cls}">
+		<label for={`${name}-${item.name ?? item.txt}-${i}`} class="button {variant} {size} {cls}">
 			{#if tag === 'chk'}
 				<input
 					type="checkbox"
-					id={`${name}-${item.name}-${i}`}
+					id={`${name}-${item.name ?? item.txt}-${i}`}
 					{name}
-					value={item.name}
+					value={item.name ?? item.txt}
 					bind:group={selected}
 					class="sr-only"
 					onchange={change}
@@ -114,9 +115,10 @@
 			{:else}
 				<input
 					type="radio"
-					id={`${name}-${item.name}-${i}`}
+					id={`${name}-${item.name ?? item.txt}-${i}`}
 					{name}
-					value={item.name}
+					value={item.name ?? item.txt}
+					checked={selected === (item.name ?? item.txt)}
 					bind:group={selected}
 					class="sr-only"
 					onchange={change}

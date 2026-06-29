@@ -1,10 +1,22 @@
----
-import LayoutBasic from '@/layouts/LayoutBasic.astro';
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ui</title>
+		<link rel="stylesheet" href="/output/main-bundle.es.css" />
+	</head>
+	<body x-data>
+		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
+			<aside-lnb class="row-span-2 h-full" authority="administrator"></aside-lnb>
+			<!-- authority : D - user || administrator -->
 
-const { view, id } = Astro.params;
----
+			<header-list></header-list>
 
-<LayoutBasic>
+			<main class="main-container " id="main-container">
+				
+	
 	<div class="sticky top-0 z-5 grid w-full min-w-5xl bg-slate-50 pb-5">
 		<section class="w-full space-y-2 bg-slate-50 p-5 transition-all">
 			<div class="flex items-center justify-between">
@@ -224,7 +236,16 @@ const { view, id } = Astro.params;
 			<group-custom :view="$store.data.view" :result="JSON.stringify($store.data.data) ?? '{}'"></group-custom>
 		</section>
 	</article>
-</LayoutBasic>
+			</main>
+		</section>
+
+		<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
+
+		<script async type="module" src="/output/wc.es.js"></script>
+		<script defer src="/output/store/layout-store.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+		
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
@@ -238,7 +259,7 @@ const { view, id } = Astro.params;
 			loading: false,
 			error: null,
 			itemId: '',
-			view: 'detail',
+			view: 'reg',
 
 			setItemId(id = '') {
 				this.itemId = id;
@@ -252,8 +273,8 @@ const { view, id } = Astro.params;
 				const segments = window.location.pathname.split('/').filter(Boolean);
 				return {
 					resource: segments[0] ?? '',
-					view: segments[1] ?? 'reg',
-					id: segments[2] ?? '',
+					view:   'reg',
+					id:  '123123',
 				};
 			},
 
@@ -262,7 +283,7 @@ const { view, id } = Astro.params;
 				this.error = null;
 
 				try {
-					const res = await fetch(`/api/tour-destinations`);
+					const res = await fetch(`http://192.168.1.155:5195/tour-destinations`);
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
@@ -297,3 +318,5 @@ const { view, id } = Astro.params;
 		});
 	});
 </script>
+	</body>
+</html>

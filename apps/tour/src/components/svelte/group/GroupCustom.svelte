@@ -69,9 +69,9 @@
 
 	let { result = $bindable<GroupCustomResult>(createDefaultConfigResult()), view = 'reg' } = $props();
 
-	$inspect(result);
+	const textNum1 = '개의 데이터 매칭 가능' as const;
+	const textNum2 = '개의 시설에서 사용 중' as const;
 
-	let initialized = false;
 	let isPickerOpen = $state(false);
 	let rdoList = $state([
 		{
@@ -85,6 +85,8 @@
 			value: 'STATUS',
 		},
 	]);
+
+	let snapshot = $state([]);
 
 	function createNewBtnLink() {
 		return {
@@ -133,7 +135,6 @@
 		}
 	}
 
-	let snapshot = $state([]);
 	let isDndDisabled = $derived((result?.tourDestinationCommonButtons?.length ?? 0) <= 1);
 	function onDragStart() {
 		snapshot = [...(result?.tourDestinationCommonButtons || [])];
@@ -168,29 +169,6 @@
 	const useChk = (chk?: boolean): string => {
 		return chk ? '사용' : '미사용';
 	};
-	const textNum1 = '개의 데이터 매칭 가능' as const;
-	const textNum2 = '개의 시설에서 사용 중' as const;
-
-	// $effect(() => {
-	// 	if (!result || typeof result !== 'object') return;
-
-	// 	const localSnap = $state.snapshot(result);
-
-	// 	untrack(() => {
-	// 		result.colorCode = localSnap.colorCode;
-	// 		result.isAiRecommendYn = localSnap.isAiRecommendYn;
-	// 		result.isSectionCongestionYn = localSnap.isSectionCongestionYn;
-	// 		result.isSectionCongestionUse = localSnap.isSectionCongestionUse;
-	// 		result.isFacilityCongestionYn = localSnap.isFacilityCongestionYn;
-	// 		result.isFacilityCongestionUse = localSnap.isFacilityCongestionUse;
-	// 		result.isVpsContentsYn = localSnap.isVpsContentsYn;
-	// 		result.isVpsContentsYnUse = localSnap.isVpsContentsYnUse;
-	// 		result.isFacilityAddressYn = localSnap.isFacilityAddressYn;
-	// 		result.isFacilityAddressYnUse = localSnap.isFacilityAddressYnUse;
-	// 		result.isCustomSortingYn = localSnap.isCustomSortingYn;
-	// 		result.tourDestinationCommonButtons = localSnap.tourDestinationCommonButtons ?? [];
-	// 	});
-	// });
 </script>
 
 {#snippet use(txt = '', sub = '', matching = '')}
@@ -240,17 +218,19 @@
 						<div class="flex cursor-pointer items-center gap-2">
 							<ColorPicker
 								bind:isOpen={isPickerOpen}
-								bind:hex={result.colorCode}
+								hex={result.colorCode ?? '#14b871'}
 								components={ChromeVariant}
 								sliderDirection="horizontal"
 								isAlpha={false}
 								textInputModes={['hex']}
 								label=""
 							/>
-							<InputText
-								cls="max-w-50 s"
-								bind:value={result.colorCode}
-								readonly={true}
+
+							<input
+								type="text"
+								class="input-text s max-w-50"
+								readonly
+								value={result.colorCode ?? '#14b871'}
 								onclick={() => (isPickerOpen = !isPickerOpen)}
 							/>
 						</div>
@@ -271,7 +251,7 @@
 								txt="AI 추천"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={result.isAiRecommendYn}
+								checked={result.isAiRecommendYn}
 							/>
 						{/if}
 						<ui-txt
@@ -292,7 +272,11 @@
 								txt="구역 혼잡도"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={result.isSectionCongestionYn}
+								checked={result.isSectionCongestionYn}
+								change={(e: Event) => {
+									const input = e.currentTarget as HTMLInputElement;
+									result = { ...result, isSectionCongestionYn: input.checked };
+								}}
 							/>
 						{/if}
 						<ui-txt
@@ -313,7 +297,11 @@
 								txt="시설 혼잡도"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={result.isFacilityCongestionYn}
+								checked={result.isFacilityCongestionYn}
+								change={(e: Event) => {
+									const input = e.currentTarget as HTMLInputElement;
+									result = { ...result, isFacilityCongestionYn: input.checked };
+								}}
 							/>
 						{/if}
 						<ui-txt
@@ -341,7 +329,11 @@
 								txt="위치 기반 콘텐츠"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={result.isVpsContentsYn}
+								checked={result.isVpsContentsYn}
+								change={(e: Event) => {
+									const input = e.currentTarget as HTMLInputElement;
+									result = { ...result, isVpsContentsYn: input.checked };
+								}}
 							/>
 						{/if}
 						<ui-txt
@@ -358,7 +350,11 @@
 								txt="시설 주소 노출"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={result.isFacilityAddressYn}
+								checked={result.isFacilityAddressYn}
+								change={(e: Event) => {
+									const input = e.currentTarget as HTMLInputElement;
+									result = { ...result, isFacilityAddressYn: input.checked };
+								}}
 							/>
 						{/if}
 						<ui-txt
@@ -377,11 +373,14 @@
 									name="rdo"
 									arr={rdoList}
 									cls="inline-flex gap-3"
-									value={result.isCustomSortingYn ? 'MANUAL' : 'STATUS'}
+									value={!result.isCustomSortingYn ? 'MANUAL' : 'STATUS'}
 									change={(e: Event) => {
 										const input = e.currentTarget as HTMLInputElement;
 
-										result.isCustomSortingYn = input.value === 'MANUAL';
+										result = {
+											...result,
+											isCustomSortingYn: input.value === 'MANUAL',
+										};
 									}}
 								/>
 							{/if}
