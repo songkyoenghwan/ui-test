@@ -437,24 +437,16 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				loading: false,
 				error: null,
 				itemId: '',
-				setItemId(id = '') {
-					this.itemId = id;
-					sessionStorage.setItem('facilities-view-id', id);
-				},
-				view: sessionStorage.getItem('facilities-view') ?? 'reg',
-				setView(view = 'reg') {
-					this.view = view;
-					sessionStorage.setItem('facilities-view', view);
-				},
 				async init() {
 					this.loading = true;
 					try {
-						const res = await fetch('http://localhost:5185/facilities');
+						const res = await fetch(`/api/facilities`);
 
 						const data = await res.json();
+						const payload = data.data.data ?? {};
 
-						this.items = data.data.items;
-						this.data = data.data.items[0];
+						this.items = payload.items;
+						this.data = payload.items[0];
 
 						console.log(this.data);
 					} catch (error) {

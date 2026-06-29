@@ -1046,7 +1046,7 @@
 					"endAt": "2026-06-30T00:00:00.000Z",
 					"homepageUrl": "https://naver.com",
 					"id": 1,
-					"isAiRecommendYn": true,
+					"isAiRecommendYn": false,
 					"isAlways": false,
 					"isCustomSortingYn": true,
 					"isFacilityAddressYn": true,
@@ -1056,6 +1056,14 @@
 					"lastUpdatedAt": "2026-05-20T09:03:27.342Z",
 					"mapUrl": "https://www.google.com/maps/place/%EA%B3%A0%ED%88%AC%EB%AA%B0(%EA%B3%A0%EC%86%8D%ED%84%B0%EB%AF%B8%EB%84%90+%EC%A7%80%ED%95%98%EC%83%81%EA%B0%80)/data=!4m6!3m5!1s0x357ca1918e5c4145:0x7b8307b609846119!8m2!3d37.506163!4d127.0049887!16s%2Fg%2F11fghvsc1g?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D",
 					"name": {
+						"en": "Busan Rock Festival",
+						"ja": "",
+						"ko": "부산락페스티벌",
+						"th": "",
+						"vi": "",
+						"zh": ""
+					},
+					"operationGuide": {
 						"en": "Busan Rock Festival",
 						"ja": "",
 						"ko": "부산락페스티벌",
@@ -1457,10 +1465,10 @@
 					"tourDestinationHolidaySchedules": [],
 					"tourDestinationOperatingSchedules": [
 						{
-							"closingTime": "2000",
+							"closingTime": "20:00",
 							"dayOfWeek": 1,
 							"id": 34,
-							"openingTime": "0800"
+							"openingTime": "08:00"
 						}
 					],
 					"updatedAt": null
@@ -1468,8 +1476,8 @@
 			],
 			"page": 1,
 			"pageSize": 10,
-			"totalCount": 4,
-			"totalPages": 1
+			"totalCount": 40,
+			"totalPages": 40
 		},
 		"success": true
 	}

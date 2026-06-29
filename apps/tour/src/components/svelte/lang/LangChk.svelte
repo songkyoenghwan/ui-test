@@ -48,10 +48,12 @@
 
 		untrack(() => {
 			initLangStore({
-				zh: snap.zh,
-				ja: snap.ja,
-				th: snap.th,
-				vi: snap.vi,
+				ko: snap?.ko ?? true,
+				en: snap?.en ?? true,
+				zh: snap?.zh ?? false,
+				ja: snap?.ja ?? false,
+				th: snap?.th ?? false,
+				vi: snap?.vi ?? false,
 			});
 		});
 	});
@@ -72,7 +74,7 @@
 		<div class="flex flex-wrap items-center justify-end gap-5">
 			{#each LANGS as item}
 				{#if item.key === 'ko' || item.key === 'en'}
-					<ui-txt txt={item.label} class="flex-none"></ui-txt>
+					<ui-txt size="sm" txt={item.label} class="flex-none"></ui-txt>
 				{:else}
 					<ui-checkbox
 						item-id={`lang-chk-${uuidv4()}`}

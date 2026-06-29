@@ -69,6 +69,8 @@
 
 	let { result = $bindable<GroupCustomResult>(createDefaultConfigResult()), view = 'reg' } = $props();
 
+	$inspect(result);
+
 	let initialized = false;
 	let isPickerOpen = $state(false);
 	let rdoList = $state([
@@ -83,31 +85,6 @@
 			value: 'STATUS',
 		},
 	]);
-	let local = $state(createDefaultConfigResult());
-
-	$effect(() => {
-		if (initialized) return;
-
-		if (result && typeof result === 'object') {
-			const resultSnap = $state.snapshot(result);
-
-			untrack(() => {
-				local.colorCode = resultSnap.colorCode ?? '#14b871';
-				local.isAiRecommendYn = resultSnap.isAiRecommendYn ?? true;
-				local.isSectionCongestionYn = resultSnap.isSectionCongestionYn ?? false;
-				local.isSectionCongestionUse = resultSnap.isSectionCongestionUse ?? '0';
-				local.isFacilityCongestionYn = resultSnap.isFacilityCongestionYn ?? false;
-				local.isFacilityCongestionUse = resultSnap.isFacilityCongestionUse ?? '0';
-				local.isVpsContentsYn = resultSnap.isVpsContentsYn ?? false;
-				local.isVpsContentsYnUse = resultSnap.isVpsContentsYnUse ?? '0';
-				local.isFacilityAddressYn = resultSnap.isFacilityAddressYn ?? false;
-				local.isFacilityAddressYnUse = resultSnap.isFacilityAddressYnUse ?? '0';
-				local.isCustomSortingYn = resultSnap.isCustomSortingYn ?? false;
-				local.tourDestinationCommonButtons = resultSnap.tourDestinationCommonButtons ?? [];
-				initialized = true;
-			});
-		}
-	});
 
 	function createNewBtnLink() {
 		return {
@@ -121,7 +98,7 @@
 				vi: '',
 			},
 			iconUrl: '',
-			sortingNumber: local?.tourDestinationCommonButtons?.length || 0,
+			sortingNumber: result?.tourDestinationCommonButtons?.length || 0,
 			use: '',
 		};
 	}
@@ -136,38 +113,38 @@
 	}
 
 	function handleAddBtnLink() {
-		const currentList = local?.tourDestinationCommonButtons || [];
+		const currentList = result?.tourDestinationCommonButtons || [];
 		if (currentList.length >= 3) {
 			alert('공공 링크 버튼은 최대 3개까지만 등록 가능합니다.');
 			return;
 		}
-		local = {
-			...local,
+		result = {
+			...result,
 			tourDestinationCommonButtons: [...currentList, createNewBtnLink()],
 		};
 	}
 
 	function handleRemoveBtnLink(id: string) {
-		if (local?.tourDestinationCommonButtons) {
-			local = {
-				...local,
-				tourDestinationCommonButtons: local.tourDestinationCommonButtons.filter((btn) => String(btn.id) !== String(id)),
+		if (result?.tourDestinationCommonButtons) {
+			result = {
+				...result,
+				tourDestinationCommonButtons: result.tourDestinationCommonButtons.filter((btn) => String(btn.id) !== String(id)),
 			};
 		}
 	}
 
 	let snapshot = $state([]);
-	let isDndDisabled = $derived((local?.tourDestinationCommonButtons?.length ?? 0) <= 1);
+	let isDndDisabled = $derived((result?.tourDestinationCommonButtons?.length ?? 0) <= 1);
 	function onDragStart() {
-		snapshot = [...(local?.tourDestinationCommonButtons || [])];
+		snapshot = [...(result?.tourDestinationCommonButtons || [])];
 	}
 
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragOver(event: any) {
-		if (local?.tourDestinationCommonButtons) {
-			local = {
-				...local,
-				tourDestinationCommonButtons: move(local.tourDestinationCommonButtons, event),
+		if (result?.tourDestinationCommonButtons) {
+			result = {
+				...result,
+				tourDestinationCommonButtons: move(result.tourDestinationCommonButtons, event),
 			};
 		}
 	}
@@ -175,14 +152,14 @@
 	// oxlint-disable-next-line typescript/no-explicit-any
 	function onDragEnd(event: any) {
 		if (event.canceled) {
-			local = { ...local, tourDestinationCommonButtons: snapshot };
+			result = { ...result, tourDestinationCommonButtons: snapshot };
 		}
 	}
 
 	function handleUpdateBtnIcon(id: string, iconUrl: string) {
-		local = {
-			...local,
-			tourDestinationCommonButtons: local.tourDestinationCommonButtons.map((item) =>
+		result = {
+			...result,
+			tourDestinationCommonButtons: result.tourDestinationCommonButtons.map((item) =>
 				String(item.id) === String(id) ? { ...item, iconUrl } : item,
 			),
 		};
@@ -197,7 +174,7 @@
 	// $effect(() => {
 	// 	if (!result || typeof result !== 'object') return;
 
-	// 	const localSnap = $state.snapshot(local);
+	// 	const localSnap = $state.snapshot(result);
 
 	// 	untrack(() => {
 	// 		result.colorCode = localSnap.colorCode;
@@ -246,7 +223,7 @@
 	</button>
 {/snippet}
 
-{#if local}
+{#if result}
 	<ul class="divide-y divide-slate-300">
 		<li class="relative z-2">
 			<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5">
@@ -254,8 +231,8 @@
 
 				{#if view === 'detail'}
 					<div class="flex items-center gap-2">
-						<p class="color cursor-auto" style="background-color: {local.colorCode || 'transparent'};"></p>
-						<ui-txt size="sm" cls="text-black" txt={local.colorCode}></ui-txt>
+						<p class="color cursor-auto" style="background-color: {result.colorCode || 'transparent'};"></p>
+						<ui-txt size="sm" cls="text-black" txt={result.colorCode}></ui-txt>
 					</div>
 				{:else if view === 'reg' || view === 'edit'}
 					<div class="flex flex-col gap-5">
@@ -263,7 +240,7 @@
 						<div class="flex cursor-pointer items-center gap-2">
 							<ColorPicker
 								bind:isOpen={isPickerOpen}
-								bind:hex={local.colorCode}
+								bind:hex={result.colorCode}
 								components={ChromeVariant}
 								sliderDirection="horizontal"
 								isAlpha={false}
@@ -272,7 +249,7 @@
 							/>
 							<InputText
 								cls="max-w-50 s"
-								bind:value={local.colorCode}
+								bind:value={result.colorCode}
 								readonly={true}
 								onclick={() => (isPickerOpen = !isPickerOpen)}
 							/>
@@ -287,14 +264,14 @@
 				<ul class="inline-grid divide-y divide-slate-200">
 					<li class="flex items-center justify-between gap-2 px-3 pb-3">
 						{#if view === 'detail'}
-							{@render use('AI 추천', useChk(local?.isAiRecommendYn))}
+							{@render use('AI 추천', useChk(result?.isAiRecommendYn))}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
 								itemId="ai-recommend"
 								txt="AI 추천"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={local.isAiRecommendYn}
+								bind:checked={result.isAiRecommendYn}
 							/>
 						{/if}
 						<ui-txt
@@ -306,8 +283,8 @@
 						{#if view === 'detail'}
 							{@render use(
 								'구역 혼잡도',
-								useChk(local?.isSectionCongestionYn),
-								`${local?.isSectionCongestionUse}${textNum1}`,
+								useChk(result?.isSectionCongestionYn),
+								`${result?.isSectionCongestionUse ?? 0}${textNum1}`,
 							)}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
@@ -315,7 +292,7 @@
 								txt="구역 혼잡도"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={local.isSectionCongestionYn}
+								bind:checked={result.isSectionCongestionYn}
 							/>
 						{/if}
 						<ui-txt
@@ -327,8 +304,8 @@
 						{#if view === 'detail'}
 							{@render use(
 								'시설 혼잡도',
-								useChk(local?.isFacilityCongestionYn),
-								`${local?.isFacilityCongestionUse}${textNum1}`,
+								useChk(result?.isFacilityCongestionYn),
+								`${result?.isFacilityCongestionUse ?? 0}${textNum1}`,
 							)}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
@@ -336,7 +313,7 @@
 								txt="시설 혼잡도"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={local.isFacilityCongestionYn}
+								bind:checked={result.isFacilityCongestionYn}
 							/>
 						{/if}
 						<ui-txt
@@ -355,8 +332,8 @@
 						{#if view === 'detail'}
 							{@render use(
 								'위치 기반 콘텐츠',
-								useChk(local?.isVpsContentsYn),
-								`${local?.isVpsContentsYnUse}${textNum2}`,
+								useChk(result?.isVpsContentsYn),
+								`${result?.isVpsContentsYnUse}${textNum2}`,
 							)}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
@@ -364,7 +341,7 @@
 								txt="위치 기반 콘텐츠"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={local.isVpsContentsYn}
+								bind:checked={result.isVpsContentsYn}
 							/>
 						{/if}
 						<ui-txt
@@ -374,14 +351,14 @@
 					</li>
 					<li class="flex items-center justify-between gap-2 p-3">
 						{#if view === 'detail'}
-							{@render use('시설 주소 노출', useChk(local?.isVpsContentsYn))}
+							{@render use('시설 주소 노출', useChk(result?.isFacilityAddressYn))}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
 								itemId="facility-address-exposure"
 								txt="시설 주소 노출"
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
-								bind:checked={local.isVpsContentsYn}
+								bind:checked={result.isFacilityAddressYn}
 							/>
 						{/if}
 						<ui-txt
@@ -392,7 +369,7 @@
 					<li class="flex items-center justify-between gap-2 p-3">
 						<div class="flex items-center gap-3">
 							{#if view === 'detail'}
-								{@render use('시설 정렬 순서', local.isCustomSortingYn ? '직접 지정' : '운영 상태 순')}
+								{@render use('시설 정렬 순서', result.isCustomSortingYn ? '직접 지정' : '운영 상태 순')}
 							{:else if view === 'reg' || view === 'edit'}
 								<ui-txt size="sm" txt="시설 정렬 순서" cls="text-black min-w-25"></ui-txt>
 								<InputGroup
@@ -400,11 +377,11 @@
 									name="rdo"
 									arr={rdoList}
 									cls="inline-flex gap-3"
-									value={local.isCustomSortingYn ? 'MANUAL' : 'STATUS'}
+									value={result.isCustomSortingYn ? 'MANUAL' : 'STATUS'}
 									change={(e: Event) => {
 										const input = e.currentTarget as HTMLInputElement;
 
-										local.isCustomSortingYn = input.value === 'MANUAL';
+										result.isCustomSortingYn = input.value === 'MANUAL';
 									}}
 								/>
 							{/if}
@@ -432,14 +409,14 @@
 						txt="추가"
 						cls="min-w-30"
 						click={handleAddBtnLink}
-						disabled={local?.tourDestinationCommonButtons?.length === 3}
+						disabled={result?.tourDestinationCommonButtons?.length === 3}
 					/>
 				{/if}
 			</div>
 
 			{#if view === 'detail'}
 				<ul class="flex items-center gap-5">
-					{#each local?.tourDestinationCommonButtons ?? [] as btn (btn.id)}
+					{#each result?.tourDestinationCommonButtons ?? [] as btn (btn.id)}
 						<li class="grid grid-cols-5 gap-4 rounded-sm border border-slate-200 px-3 py-4">
 							<div class="col-span-2 flex flex-col items-center justify-center gap-3">
 								{@render btnPreview(btn.buttonName.ko, btn.iconUrl)}
@@ -463,7 +440,7 @@
 			{:else if view === 'reg' || view === 'edit'}
 				<DragDropProvider {onDragStart} {onDragOver} {onDragEnd}>
 					<ul class="flex flex-col gap-3 px-4 pb-4">
-						{#each local?.tourDestinationCommonButtons ?? [] as btn, index (btn.id)}
+						{#each result?.tourDestinationCommonButtons ?? [] as btn, index (btn.id)}
 							<GroupDnd
 								id={String(btn.id)}
 								{index}

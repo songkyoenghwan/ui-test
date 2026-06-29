@@ -1,10 +1,23 @@
 import type { APIRoute } from 'astro';
 
-import { cmsPageData } from '@/data/cmsData';
-
+import cmsPageData from './src/json/db.json';
 export const GET: APIRoute = async ({ params }) => {
-	const { pageId } = params ?? {};
-	const pageConfig = cmsPageData[pageId as string];
+	const pageId = params.pageId;
+
+	if (!pageId) {
+		return new Response(
+			JSON.stringify({
+				error: 'pageId is required',
+				available: Object.keys(cmsPageData),
+			}),
+			{
+				status: 400,
+				headers: { 'Content-Type': 'application/json' },
+			},
+		);
+	}
+
+	const pageConfig = cmsPageData[pageId as keyof typeof cmsPageData];
 
 	if (!pageConfig) {
 		return new Response(
@@ -13,18 +26,29 @@ export const GET: APIRoute = async ({ params }) => {
 				requested: pageId,
 				available: Object.keys(cmsPageData),
 			}),
-			{ status: 404, headers: { 'Content-Type': 'application/json' } },
+			{
+				status: 404,
+				headers: { 'Content-Type': 'application/json' },
+			},
 		);
 	}
 
-	const lists = typeof pageConfig.getList === 'function' ? pageConfig.getList() : pageConfig.getList;
+	let getList: unknown = null;
+
+	if (typeof pageConfig === 'object' && pageConfig !== null && 'getList' in pageConfig) {
+		const value = pageConfig.getList;
+		getList = typeof value === 'function' ? value() : value;
+	}
 
 	return new Response(
 		JSON.stringify({
-			...pageConfig,
-			getList: lists,
+			pageId,
+			data: pageConfig,
 		}),
-		{ status: 200, headers: { 'Content-Type': 'application/json' } },
+		{
+			status: 200,
+			headers: { 'Content-Type': 'application/json' },
+		},
 	);
 };
 
@@ -52,7 +76,7 @@ export const PATCH: APIRoute = async ({ params, request }) => {
 export const POST: APIRoute = async ({ request, params }) => {
 	const { pageId } = params;
 	const body = await request.json();
-	const page = cmsPageData[pageId as string];
+	const page = cmsPageData;
 
 	if (!page || !page.addData) return new Response(null, { status: 404 });
 

@@ -63,18 +63,27 @@
 	let langToggle = $state(false);
 	let local = $state(createTranslateLang());
 	let btnView = $derived($langStore.zh || $langStore.ja || $langStore.th || $langStore.vi);
+	const LANG_ORDER: LocalizedKey[] = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
+	function sortLangObject(value?: Partial<LocalizedText> | null): LocalizedText {
+		const source = value ?? {};
+
+		return LANG_ORDER.reduce((acc, key) => {
+			acc[key] = source[key] ?? '';
+			return acc;
+		}, createTranslateLang());
+	}
 
 	$effect(() => {
 		if (lang && typeof lang === 'object') {
-			const langSnap = $state.snapshot(lang);
+			const langSnap = sortLangObject($state.snapshot(lang));
 
 			untrack(() => {
-				local.ko = langSnap.ko || '';
-				local.en = langSnap.en || '';
-				local.zh = langSnap.zh || '';
-				local.ja = langSnap.ja || '';
-				local.th = langSnap.th || '';
-				local.vi = langSnap.vi || '';
+				local.ko = langSnap.ko ?? '';
+				local.en = langSnap.en ?? '';
+				local.zh = langSnap.zh ?? '';
+				local.ja = langSnap.ja ?? '';
+				local.th = langSnap.th ?? '';
+				local.vi = langSnap.vi ?? '';
 			});
 		}
 	});
@@ -84,13 +93,7 @@
 
 		untrack(() => {
 			if (lang && typeof lang === 'object') {
-				LANGS.forEach((item) => {
-					const key = item.key;
-
-					if (lang[key] && snap[key]) {
-						lang[key] = snap[key];
-					}
-				});
+				lang = sortLangObject(snap);
 			}
 		});
 	});
@@ -136,7 +139,7 @@
 					<li
 						class={[
 							'grid grid-cols-[28px_1fr] items-center gap-0.5 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
-							item.key === 'ko' || item.key === 'en' || (langToggle && $langStore.lang[item.key]) ? '' : 'hidden',
+							item.key === 'ko' || item.key === 'en' || (langToggle && $langStore[item.key]) ? '' : 'hidden',
 						]}
 					>
 						<label for="{itemId}-{item.key}" class="label">{String(item.key).toUpperCase()}</label>

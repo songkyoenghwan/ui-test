@@ -68,11 +68,21 @@
 </script>
 
 {#if view === 'detail'}
-	<ui-txt size="sm" cls="text-black" txt={localIsAlways ? '상시운영' : `${localStartAt} ~ ${localEndAt}`}></ui-txt>
+	{#if localIsAlways}
+		<ui-txt size="sm" cls="text-black" txt="상시운영"></ui-txt>
+	{:else}
+		<div class="flex">
+			<text-date dateTime={localStartAt}></text-date>
+			<div class="flex">
+				~
+				<text-date dateTime={localEndAt}></text-date>
+			</div>
+		</div>
+	{/if}
 {/if}
 
 {#if view === 'reg' || view === 'edit'}
-	<div class="felx-wrap flex gap-2">
+	<div class="flex flex-wrap gap-2">
 		<div class="flex w-32 gap-2">
 			<UiBtn
 				tag="label"

@@ -32,6 +32,7 @@
 		txt?: string;
 		link?: string;
 		value?: string;
+		blank?: string;
 		scroll?: string;
 		cls?: string;
 		iconCls?: string;
@@ -61,6 +62,7 @@
 		iconPos = 'rt',
 		arr,
 		value = '',
+		blank = '_self',
 		scroll = '',
 		selected = $bindable(),
 		disabled,
@@ -171,7 +173,7 @@
 		{/if}
 	</svelte:element>
 {:else if !isSegmented && tag === 'a'}
-	<a href={link} class=" {variant} {size} {cls ? cls : 'hover:text-1616ff flex items-center'}" target="_blank">
+	<a href={link} class={[size, cls, variant ? `button ${variant}` : 'hover:text-1616ff flex items-center']} target={blank}>
 		{#if iconName && iconPos === 'lt'}
 			{@render icon()}
 		{/if}

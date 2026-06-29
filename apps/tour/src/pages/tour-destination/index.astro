@@ -1,5 +1,8 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
+
+const apiMockUrl = import.meta.env.PUBLIC_API_MOCK_URL;
+const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 ---
 
 <LayoutBasic>
@@ -12,6 +15,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				</div>
 				<div>
 					<ui-btn
+						tag="a"
 						variant="primary"
 						size="lg"
 						cls="min-w-30"
@@ -19,7 +23,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						icon-pos="lt"
 						icon-cls="size-3 stroke-white"
 						txt="대상지 추가"
-						@click.prevent="$store.data.setView('reg'); window.location = '/tour-destination/reg/'"></ui-btn>
+						x-bind:link="`/tour-destination/reg/${Date.now()}`"></ui-btn>
 				</div>
 			</div>
 
@@ -73,7 +77,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						<col style="width: *" />
 						<col style="width: 180px" />
 						<col style="width: 120px" />
-						<col style="width: 120px" />
+						<col style="width: 140px" />
 						<col style="width: 120px" />
 						<col style="width: 100px" />
 						<col style="width: 100px" />
@@ -115,92 +119,108 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						</tr>
 					</thead>
 					<tbody>
-						<template x-for="(item, idx) in $store.data.items" :key="item.id">
-							<tr>
+						<template
+							x-for="(item, idx) in $store.data.items.slice(($store.data.page - 1) * $store.data.pageSize, $store.data.page * $store.data.pageSize)"
+							:key="item.id"
+						>
+							<tr
+								x-data="{
+									get link() {
+										return `/tour-destination/detail/${item.id}`
+									},
+									get operationStatusColor() {
+										return item.operationStatus === 'operating' ?'text-cms-3' : item.operationStatus === 'closed' ?'text-error' : 'text-slate-400'
+									},
+									get operationStatus() {
+										return item.operationStatus === 'operating' ?'운영 중' : item.operationStatus === 'closed' ?'운영 종료' : '운영 전'
+									},
+									get supportedLanguages() {
+										if (!this.item || !this.item.supportedLanguages) {
+											return '';
+										}
+										const langOrder = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
+										return langOrder.filter((key) => this.item.supportedLanguages[key]).join(', ');
+									},
+									get tourDestinationOperatingSchedules() {
+										if (!item.tourDestinationOperatingSchedules || item.tourDestinationOperatingSchedules.length === 0) {
+											return '정보 없음';
+										}
+										return item.tourDestinationOperatingSchedules.length > 1 
+											? '요일별 상이' 
+											: `${item.tourDestinationOperatingSchedules[0].openingTime} <br /> ~ ${item.tourDestinationOperatingSchedules[0].closingTime}`;
+									},
+									get useText() {
+										return (_v) => _v  ? '사용' : '미사용';
+									},
+									get useTextColor() {
+										return (_v) => _v  ? 'text-cms-3' : '';
+									}								
+								}"
+							>
 								<td x-text="idx + 1"></td>
 								<td>
-									<a
-										class="flex items-center gap-2 text-left"
-										@click.prevent="
-											$store.data.setView('detail');
-											$store.data.setItemId(`${item.id}`);
-											window.location.href = `/tour-destination/detail/${item.id}`;
-										"
-									>
+									<a class="flex items-center gap-2 text-left" :href="link">
 										<p
 											class="size-4 rounded-xs"
 											:style="`background-color: ${item.colorCode || 'transparent'}`"
 										>
 										</p>
-										<p x-html="item?.name?.ko"></p>
+										<ui-txt cls="text-black text-left" size="sm" x-bind:txt="item?.name?.ko"></ui-txt>
 									</a>
 								</td>
 								<td>
-									<div class="text-left">
-										<p
-											x-html="Object.keys(item.supportedLanguages).filter((key) => item.supportedLanguages[key]).join(', ')"
-										>
-										</p>
-									</div>
+									<ui-txt cls="text-black text-left" size="sm" x-bind:txt="supportedLanguages"></ui-txt>
+									<lang-chk view="detail" :lang="supportedLanguages"></lang-chk>
 								</td>
 								<td>
-									<div class="text-left">
-										<p
-											:class="item.operationStatus === 'operating' ?'text-cms-3' : item.operationStatus === 'closed' ?'text-error' : 'text-slate-400'"
-											x-html="item.operationStatus === 'operating' ?'운영 중' : item.operationStatus === 'closed' ?'운영 종료' : '운영 전'"
-										>
-										</p>
-									</div>
+									<ui-txt
+										class="text-left text-black"
+										x-bind:cls="operationStatusColor"
+										size="sm"
+										x-bind:txt="operationStatus"></ui-txt>
 								</td>
 								<td>
 									<template x-if="item.isAlways">
 										<p class="text-left">상시운영</p>
 									</template>
 									<template x-if="!item.isAlways">
-										<text-date :dateTime="item.startAt"></text-date>
-									</template>
-									<template x-if="!item.isAlways">
-										<text-date :dateTime="item.endAt"></text-date>
+										<div>
+											<text-date :dateTime="item.startAt"></text-date>
+											<div class="flex">~<text-date :dateTime="item.endAt"></text-date></div>
+										</div>
 									</template>
 								</td>
 								<td>
-									<div class="text-left">
-										<template x-if="item.tourDestinationOperatingSchedules.length > 1">
-											<p>요일별 상이</p>
-										</template>
-
-										<template x-if="item.tourDestinationOperatingSchedules.length === 0">
-											<p
-												x-html="`${item.tourDestinationOperatingSchedules[0].openingTime} ~ ${item.tourDestinationOperatingSchedules[0].closingTime}`"
-											>
-											</p>
-										</template>
-									</div>
+									<ui-txt cls="text-left text-black" size="sm" x-bind:txt="tourDestinationOperatingSchedules"
+									></ui-txt>
 								</td>
-								<td
-									:class="item.isAiRecommendYn ? 'text-cms-3': ''"
-									x-text="item.isAiRecommendYn ? '사용' : '미사용'"
-								>
+								<td>
+									<ui-txt
+										x-bind:cls="useTextColor(item.isAiRecommendYn)"
+										size="sm"
+										x-bind:txt="useText(item.isAiRecommendYn)"></ui-txt>
 								</td>
-								<td
-									:class="item.isFacilityCongestionYn ? 'text-cms-3': ''"
-									x-text="item.isFacilityCongestionYn ? '사용' : '미사용'"
-								>
+								<td>
+									<ui-txt
+										x-bind:cls="useTextColor(item.isFacilityCongestionYn)"
+										size="sm"
+										x-bind:txt="useText(item.isFacilityCongestionYn)"></ui-txt>
 								</td>
-								<td
-									:class="item.isSectionCongestionYn ? 'text-cms-3': ''"
-									x-text="item.isSectionCongestionYn ? '사용' : '미사용'"
-								>
+								<td>
+									<ui-txt
+										x-bind:cls="useTextColor(item.isSectionCongestionYn)"
+										size="sm"
+										x-bind:txt="useText(item.isSectionCongestionYn)"></ui-txt>
 								</td>
-								<td
-									:class="item.isFacilityAddressYn ? 'text-cms-3': ''"
-									x-text="item.isFacilityAddressYn ? '사용' : '미사용'"
-								>
+								<td>
+									<ui-txt
+										x-bind:cls="useTextColor(item.isFacilityAddressYn)"
+										size="sm"
+										x-bind:txt="useText(item.isFacilityAddressYn)"></ui-txt>
 								</td>
-
 								<td>
 									<a
-										class="underline underline-offset-1"
+										class="underline-offset-2 hover:underline"
 										:href="item.mapUrl"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -219,46 +239,18 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 			</div>
 		</section>
 
-		<section class="inline-flex items-center justify-center gap-3">
-			<ui-btn variant="text" icon-name="arrow-left" icon-pos="lt" icon-cls="size-4 stroke-black" txt="이전"></ui-btn>
-			<div class="inline-flex items-center justify-center gap-1.5">
-				<strong class="button primary h-7 min-w-7" aria-label="1 page">
-					<span class="text-white">1</span>
-				</strong>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">2</span>
-				</button>
-				<strong class="button text h-7 min-w-7" aria-label="2 page">
-					<span class="text-slate-500">..</span>
-				</strong>
-				<button class="button text h-7 min-w-7" type="button" aria-label="2 page">
-					<span class="text-slate-500">999</span>
-				</button>
-			</div>
-			<ui-btn variant="text" icon-name="arrow-left" icon-pos="rt" icon-cls="size-4 rotate-180 stroke-black" txt="다음"
-			></ui-btn>
-		</section>
+		<div>
+			<paging-table
+				x-bind:data-page="$store.data.page"
+				x-bind:data-page-size="$store.data.pageSize"
+				x-bind:data-total-count="$store.data.totalCount"
+				x-bind:data-total-pages="$store.data.totalPages"
+				@btn-prev="console.log('prev', $event.detail); $store.data.prevView($event.detail)"
+				@btn-next="console.log('next', $event.detail); $store.data.nextView($event.detail)"
+				@btn-current="console.log('current', $event.detail); $store.data.currentView($event.detail.page)"
+			>
+			</paging-table>
+		</div>
 	</div>
 </LayoutBasic>
 
@@ -266,40 +258,55 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
-		const listStore = Alpine.store('data');
+		if (Alpine.store('data')) return;
 		Alpine.store('data', {
 			items: [],
-			itemsToShow: 10,
+			page: 1,
+			pageSize: 10,
+			totalCount: 1,
+			totalPages: 1,
 			loading: false,
 			error: null,
 			itemId: '',
-			setItemId(id = '') {
-				this.itemId = id;
-				sessionStorage.setItem('cms-loc-page-view-id', id);
-			},
-			view: sessionStorage.getItem('cms-loc-page-view') ?? 'reg',
-			setView(view = 'reg') {
-				this.view = view;
-				sessionStorage.setItem('cms-loc-page-view', view);
-			},
-			async init() {
+			async fetchData(page) {
 				this.loading = true;
 				try {
-					const res = await fetch('http://localhost:5185/tour-destinations');
+					const res = await fetch(`/api/tour-destinations`);
 
 					if (!res.ok) {
-						throw new Error('Failed to load json');
+						const text = await res.text();
+						throw new Error(`Failed to load json: ${res.status} ${text}`);
 					}
 
 					const data = await res.json();
+					const payload = data.data.data ?? {};
 
-					this.items = data.data.items;
+					this.items = payload.items ?? [];
+					this.page = payload.page;
+					this.pageSize = payload.pageSize;
+					this.totalCount = payload.totalCount;
+					this.totalPages = payload.totalPages;
 				} catch (error) {
-					this.error = error.message ?? 'Unknown error';
-					console.error('초기 데이터 설정 실패:', error);
+					this.error = error.message;
+					console.error('데이터 로드 실패:', error);
 				} finally {
 					this.loading = false;
 				}
+			},
+			prevView(detail) {
+				const nextPage = Math.max(1, Number(detail.page) - 8);
+				this.page = nextPage;
+			},
+			nextView(detail) {
+				const nextPage = Math.min(Math.max(1, Number(detail.totalPages) || 1), Number(detail.page) + 8);
+				this.page = nextPage;
+			},
+			currentView(page) {
+				const nextPage = Math.max(1, Number(page) || 1);
+				this.page = nextPage;
+			},
+			async init() {
+				await this.fetchData(1);
 			},
 		});
 	});

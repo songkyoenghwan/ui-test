@@ -17,7 +17,11 @@ export default defineConfig({
 	// publicDir: './static',
 	base: '/output/',
 	resolve: { alias: aliases },
-	define: { __STATIC_URL__: JSON.stringify('/output'), 'process.env.NODE_ENV': JSON.stringify('production') },
+	define: {
+		__STATIC_URL__: JSON.stringify('/output'),
+		__API_MOCK_URL__: JSON.stringify(process.env.PUBLIC_API_BASE_URL ?? 'http://localhost:5195'),
+		'process.env.NODE_ENV': JSON.stringify('production'),
+	},
 	plugins: [
 		enhancedImages(),
 		tailwindcss(),

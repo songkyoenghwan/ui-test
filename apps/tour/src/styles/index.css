@@ -608,7 +608,7 @@
 		@apply inline-grid w-full max-w-[calc(100dvw-130px)] overflow-auto;
 
 		table {
-			@apply table-fixed whitespace-nowrap;
+			@apply table-fixed leading-tight whitespace-nowrap;
 		}
 
 		thead {
@@ -617,7 +617,7 @@
 
 		thead {
 			th {
-				@apply place-content-center bg-slate-50 p-3 text-center text-sm;
+				@apply h-12 place-content-center bg-slate-50 px-3 text-center text-sm;
 			}
 		}
 
@@ -628,7 +628,7 @@
 
 			th,
 			td {
-				@apply place-content-center p-3 text-center text-sm;
+				@apply h-12 place-content-center px-3 text-center text-sm;
 
 				& > div {
 					@apply min-h-12 place-content-center text-center text-sm;

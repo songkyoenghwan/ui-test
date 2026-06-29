@@ -14,7 +14,7 @@ document.addEventListener('alpine:init', () => {
 			this.error = null;
 
 			try {
-				const res = await fetch('http://localhost:5185/auth');
+				const res = await fetch(`http://192.168.1.155:5195/auth`);
 
 				if (!res.ok) {
 					throw new Error('Failed to load json');

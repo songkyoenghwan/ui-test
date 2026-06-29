@@ -30,7 +30,7 @@ export function toggleLang(key: LangTranslateKey) {
 	langStore.setKey(key, next);
 }
 
-export function initLangStore(lang: { zh: boolean; ja: boolean; th: boolean; vi: boolean }) {
+export function initLangStore(lang: { ko: boolean; en: boolean; zh: boolean; ja: boolean; th: boolean; vi: boolean }) {
 	langStore.set({
 		ko: true,
 		en: true,
