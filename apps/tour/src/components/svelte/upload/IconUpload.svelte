@@ -16,7 +16,7 @@
 
 			return () => URL.revokeObjectURL(url);
 		} else {
-			previewUrl = '';
+			previewUrl = img ?? '';
 		}
 	});
 
@@ -72,26 +72,57 @@
 	accept=".png"
 	class="relative size-30"
 >
-	{#if !filesInDropzone || filesInDropzone.length === 0}
+	{#if filesInDropzone && filesInDropzone.length > 0}
+		<div class="flex flex-col items-center gap-2">
+			<picture
+				class="flex size-30 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
+				aria-label={filesInDropzone[0].name}
+			>
+				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
+			</picture>
+
+			<button
+				type="button"
+				class="bg-f5f5f5 absolute top-2 right-2 size-5 rounded-sm transition-all hover:scale-105"
+				onclick={() => {
+					filesInDropzone = null;
+					previewUrl = '';
+					onUpdate(previewUrl);
+				}}
+			>
+				<span class="sr-only">Clear File</span>
+				<icon-list data-name="btn-del" class="icon size-8 fill-slate-500"></icon-list>
+			</button>
+		</div>
+	{:else if previewUrl}
+		<div class="flex flex-col items-center gap-2">
+			<picture
+				class="flex size-30 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
+				aria-label="기존 이미지"
+			>
+				<img src={previewUrl} alt="기존 PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
+			</picture>
+
+			<button
+				type="button"
+				class="bg-f5f5f5 absolute top-2 right-2 size-5 rounded-sm transition-all hover:scale-105"
+				onclick={() => {
+					filesInDropzone = null;
+					previewUrl = '';
+					img = '';
+					onUpdate(previewUrl);
+				}}
+			>
+				<span class="sr-only">Clear File</span>
+				<icon-list data-name="btn-del" class="icon size-8 fill-slate-500"></icon-list>
+			</button>
+		</div>
+	{:else}
 		<icon-list data-name="gallery" class="icon size-8 fill-slate-500"></icon-list>
 		<p class="mt-2 text-center text-slate-600">
 			16×16px
 			<br />
 			PNG 아이콘
 		</p>
-	{:else}
-		<div class="flex flex-col items-center gap-2">
-			<picture
-				class="flex size-30 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
-				aria-label={filesInDropzone[0].name}
-			>
-				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto max-h-full min-h-30 object-cover" />
-			</picture>
-
-			<button type="button" class="absolute top-0 right-0 size-7" onclick={() => (filesInDropzone = null)}>
-				<span class="sr-only">Clear File</span>
-				<icon-list data-name="btn-del" class="icon fill-error size-8"></icon-list>
-			</button>
-		</div>
 	{/if}
 </Dropzone>

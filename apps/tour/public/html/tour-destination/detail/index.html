@@ -309,7 +309,7 @@
 					loading: false,
 					error: null,
 					itemId: '',
-					view: 'reg',
+					view: 'detail',
 
 					setItemId(id = '') {
 						this.itemId = id;
@@ -323,8 +323,8 @@
 						const segments = window.location.pathname.split('/').filter(Boolean);
 						return {
 							resource: segments[0] ?? '',
-							view: 'reg',
-							id: '123123',
+							view: 'detail',
+							id: '1',
 						};
 					},
 
@@ -333,12 +333,14 @@
 						this.error = null;
 
 						try {
-							const res = await fetch(`http://localhost:5195/tour-destinations`);
-							if (!res.ok) throw new Error('Failed to load json');
+							
+				const module = await import('../../../json/db.json', {
+					with: { type: 'json' },
+				});
 
-							const data = await res.json();
-							const payload = data.data.data ?? {};
-							this.items = payload.items ?? [];
+				const data = module.default;
+							const payload = data?.['tour-destinations']?.data ?? {};
+							this.items = payload?.items ?? [];
 
 							const { view, id } = this.getRouteInfo();
 							this.view = view;

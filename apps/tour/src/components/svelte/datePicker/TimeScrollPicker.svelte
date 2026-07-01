@@ -32,10 +32,10 @@
 		if (timeRef.contains(event.target as Node)) return;
 		if (!isExpanded) return;
 
-		// 즉시 실행 대신 100ms 지연 (너무 민감한 반응을 살짝 완화)
+		// 즉시 실행 대신 10ms 지연 (너무 민감한 반응을 살짝 완화)
 		setTimeout(() => {
 			isExpanded = false;
-		}, 1500);
+		}, 10);
 	};
 </script>
 

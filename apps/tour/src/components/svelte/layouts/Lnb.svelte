@@ -13,6 +13,7 @@
 
 	let hoveredId = $state('');
 	let displayName = $derived(window.location.pathname.split('/').filter(Boolean)[0] ?? '');
+	const logoSrc = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 </script>
 
 {#snippet li(id = '', link = '', h3 = '')}
@@ -38,7 +39,7 @@
 {#if menus?.length}
 	<aside class="from-002e1e to-2e5345 flex h-full flex-col space-y-3 bg-linear-to-t px-2 py-6">
 		<div class="flex h-10 justify-center">
-			<img class="h-10 w-auto" src="/public/images/logo/lnb-logo.svg" alt="logo" />
+			<img class="h-10 w-auto" src={`${logoSrc}/images/logo/lnb-logo.svg`} alt="logo" />
 		</div>
 		<nav class="text-base text-slate-50">
 			<ul class="flex flex-col gap-3 text-center leading-tight break-keep">

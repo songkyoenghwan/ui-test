@@ -14,11 +14,9 @@
 	import Chk from '@/svelte/checkbox/Chk.svelte';
 	import InputGroup from '@/svelte/checkbox/InputGroup.svelte';
 	import GroupDnd from '@/svelte/group/GroupDnd.svelte';
-	import InputText from '@/svelte/inputs/InputText.svelte';
+	import type { LocalizedText } from '@/types/common/locale';
 	import { move } from '@dnd-kit/helpers';
 	import { DragDropProvider } from '@dnd-kit/svelte';
-	// import { createDefaultConfigResult, type BtnLink, type Props } from '@/types/group/groupCustom.type';
-	import { untrack } from 'svelte';
 	import ColorPicker, { ChromeVariant } from 'svelte-awesome-color-picker';
 	import { v4 as uuidv4 } from 'uuid';
 
@@ -72,6 +70,7 @@
 	const textNum1 = '개의 데이터 매칭 가능' as const;
 	const textNum2 = '개의 시설에서 사용 중' as const;
 
+	let colorHex = $state(result.colorCode ?? '#14b871');
 	let isPickerOpen = $state(false);
 	let rdoList = $state([
 		{
@@ -85,7 +84,9 @@
 			value: 'STATUS',
 		},
 	]);
-
+	$effect(() => {
+		colorHex = result.colorCode ?? '#14b871';
+	});
 	let snapshot = $state([]);
 
 	function createNewBtnLink() {
@@ -169,6 +170,29 @@
 	const useChk = (chk?: boolean): string => {
 		return chk ? '사용' : '미사용';
 	};
+
+	function handleUpdateBtnText(id: string, key: keyof LocalizedText, txt: string) {
+		result = {
+			...result,
+			tourDestinationCommonButtons: result.tourDestinationCommonButtons.map((item) =>
+				String(item.id) === String(id)
+					? {
+							...item,
+							buttonName: {
+								...item.buttonName,
+								[key]: txt,
+							},
+						}
+					: item,
+			),
+		};
+	}
+
+	$effect(() => {
+		if (result.colorCode !== colorHex) {
+			result = { ...result, colorCode: colorHex };
+		}
+	});
 </script>
 
 {#snippet use(txt = '', sub = '', matching = '')}
@@ -196,7 +220,7 @@
 		{/if}
 
 		{#if txt}
-			<span>{txt}</span>
+			<span class="max-w-40 truncate">{txt}</span>
 		{/if}
 	</button>
 {/snippet}
@@ -218,7 +242,7 @@
 						<div class="flex cursor-pointer items-center gap-2">
 							<ColorPicker
 								bind:isOpen={isPickerOpen}
-								hex={result.colorCode ?? '#14b871'}
+								hex={colorHex}
 								components={ChromeVariant}
 								sliderDirection="horizontal"
 								isAlpha={false}
@@ -228,7 +252,7 @@
 
 							<input
 								type="text"
-								class="input-text s max-w-50"
+								class="input-text s max-w-50 read-only:bg-white"
 								readonly
 								value={result.colorCode ?? '#14b871'}
 								onclick={() => (isPickerOpen = !isPickerOpen)}
@@ -252,6 +276,10 @@
 								reverse="true"
 								cls="min-w-32.5 min-h-9"
 								checked={result.isAiRecommendYn}
+								change={(e: Event) => {
+									const input = e.currentTarget as HTMLInputElement;
+									result = { ...result, isAiRecommendYn: input.checked };
+								}}
 							/>
 						{/if}
 						<ui-txt
@@ -284,7 +312,7 @@
 							txt="구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"
 						></ui-txt>
 					</li>
-					<li class="flex items-center justify-between gap-2 p-3">
+					<li class="flex items-center justify-between gap-2 px-3 pt-3">
 						{#if view === 'detail'}
 							{@render use(
 								'시설 혼잡도',
@@ -336,10 +364,7 @@
 								}}
 							/>
 						{/if}
-						<ui-txt
-							size="sm"
-							txt="AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"
-						></ui-txt>
+						<ui-txt size="sm" txt="사용자가 시설 반경 5m 이내에 접근했을 때, 콘텐츠 링크 진입을 유도합니다"></ui-txt>
 					</li>
 					<li class="flex items-center justify-between gap-2 p-3">
 						{#if view === 'detail'}
@@ -357,17 +382,18 @@
 								}}
 							/>
 						{/if}
-						<ui-txt
-							size="sm"
-							txt="구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"
-						></ui-txt>
+						<ui-txt size="sm" txt="사용자 화면에서 시설의 상세 주소를 함께 안내합니다"></ui-txt>
 					</li>
-					<li class="flex items-center justify-between gap-2 p-3">
+					<li class="flex items-center justify-between gap-2 px-3 pt-3">
 						<div class="flex items-center gap-3">
 							{#if view === 'detail'}
 								{@render use('시설 정렬 순서', result.isCustomSortingYn ? '직접 지정' : '운영 상태 순')}
 							{:else if view === 'reg' || view === 'edit'}
-								<ui-txt size="sm" txt="시설 정렬 순서" cls="text-black min-w-25"></ui-txt>
+								<ui-txt
+									size="sm"
+									txt="시설 정렬 순서"
+									cls="text-black min-w-25 min-h-9 place-content-center"
+								></ui-txt>
 								<InputGroup
 									itemId="rdo-11"
 									name="rdo"
@@ -387,7 +413,7 @@
 						</div>
 						<ui-txt
 							size="sm"
-							txt="시설에 대한 혼잡도 정보를 안내하며, 시설 등록 시 실제 혼잡도 데이터를 불러올 수 있습니다"
+							txt="한 위치에 여러 시설이 등록된 경우, 사용자 화면에서 선택한 정렬 기준으로 노출됩니다"
 						></ui-txt>
 					</li>
 				</ul>
@@ -451,6 +477,7 @@
 								}}
 								{btnPreview}
 								onRemove={handleRemoveBtnLink}
+								onUpdateTxt={handleUpdateBtnText}
 								onUpdateIcon={handleUpdateBtnIcon}
 								{isDndDisabled}
 							/>

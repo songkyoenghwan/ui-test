@@ -14,15 +14,14 @@ document.addEventListener('alpine:init', () => {
 			this.error = null;
 
 			try {
-				const res = await fetch(`http://192.168.1.155:5195/auth`);
+				const module = await import('../json/db.json', {
+					with: { type: 'json' },
+				});
 
-				if (!res.ok) {
-					throw new Error('Failed to load json');
-				}
+				const data = module.default;
 
-				const data = await res.json();
-
-				this.menus = data?.data?.user?.menus ?? [];
+				this.raw = data.auth.data;
+				this.menus = data?.auth?.data?.user?.menus ?? [];
 
 				const asideLnb = document.querySelector('aside-lnb');
 				if (asideLnb) {

@@ -28,6 +28,7 @@
 		view?: PagePropsInput['view'];
 		hidden: string;
 		btnPreview: string;
+		onUpdate?: (key: LocalizedKey, txt: string) => void;
 	}
 
 	let {
@@ -39,6 +40,7 @@
 		hidden = '',
 		btnPreview = '',
 		click,
+		onUpdate,
 	}: Props = $props();
 
 	export const LANGS: { key: LocalizedKey; label: string }[] = [
@@ -71,6 +73,28 @@
 			acc[key] = source[key] ?? '';
 			return acc;
 		}, createTranslateLang());
+	}
+
+	function dispatchUpdate(key: LocalizedKey, txt: string) {
+		$host().dispatchEvent(
+			new CustomEvent('update', {
+				detail: { key, txt },
+				bubbles: true,
+				composed: true,
+			}),
+		);
+	}
+
+	function dispatchTranslate() {
+		$host().dispatchEvent(
+			new CustomEvent('translate', {
+				detail: {
+					lang: $state.snapshot(local),
+				},
+				bubbles: true,
+				composed: true,
+			}),
+		);
 	}
 
 	$effect(() => {
@@ -142,14 +166,20 @@
 							item.key === 'ko' || item.key === 'en' || (langToggle && $langStore[item.key]) ? '' : 'hidden',
 						]}
 					>
-						<label for="{itemId}-{item.key}" class="label">{String(item.key).toUpperCase()}</label>
+						<label for={`${itemId}-${item.key}`} class="label">
+							{String(item.key).toUpperCase()}
+						</label>
 						<input
 							type="text"
-							id="{itemId}-{item.key}"
+							id={`${itemId}-${item.key}`}
 							class="input-text s {String(key).trim() === '' ? 'error' : ''}"
 							placeholder="내용을 입력해 주세요."
 							{maxlength}
 							bind:value={local[item.key]}
+							oninput={(e) => {
+								const input = e.currentTarget as HTMLInputElement;
+								dispatchUpdate(item.key, input.value);
+							}}
 						/>
 						{#if item.key === 'ko'}
 							<ui-btn
@@ -159,7 +189,7 @@
 								icon-name="translate"
 								class="flex-none"
 								cls="stroke-cms-3"
-								{click}
+								click={dispatchTranslate}
 								mousedown={() => {
 									langToggle = true;
 								}}

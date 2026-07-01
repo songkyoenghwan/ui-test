@@ -9,6 +9,22 @@ import { defineConfig, envField } from 'astro/config';
 export default defineConfig({
 	integrations: [svelte(), alpinejs()],
 
+	env: {
+		schema: {
+			PUBLIC_STATIC_URL: envField.string({
+				context: 'client',
+				access: 'public',
+				default: '/output',
+			}),
+			PUBLIC_API_MOCK_URL: envField.string({
+				context: 'client',
+				access: 'public',
+				default: 'http://localhost:5195',
+				url: true,
+			}),
+		},
+	},
+
 	vite: {
 		plugins: [tailwindcss()],
 	},

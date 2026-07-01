@@ -133,7 +133,7 @@
 				class="flex size-22.5 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
 				aria-label={filesInDropzone[0].name}
 			>
-				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto max-h-full min-h-30 object-cover" />
+				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
 			</picture>
 
 			<button
@@ -156,7 +156,7 @@
 				class="flex size-22.5 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
 				aria-label="기존 이미지"
 			>
-				<img src={previewUrl} alt="기존 PNG 미리보기" class="max-w-auto max-h-full min-h-30 object-cover" />
+				<img src={previewUrl} alt="기존 PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
 			</picture>
 
 			<button

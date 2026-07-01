@@ -232,9 +232,6 @@
 	{@attach flatpickrAttachment({ dateType, inline })}
 	id={inputId}
 	bind:this={datepickerRef}
-	class={[
-		'input-date m w-78.5 read-only:border-slate-300 read-only:bg-white',
-		error ? 'error border-error! outline-error' : '',
-	]}
+	class={['input-date m w-55 read-only:border-slate-300 read-only:bg-white', error ? 'error border-error! outline-error' : '']}
 	{placeholder}
 />

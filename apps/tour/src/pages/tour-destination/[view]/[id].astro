@@ -74,9 +74,9 @@ const { view, id } = Astro.params;
 						get supportedLanguages() {
 							return JSON.stringify($store.data.data?.supportedLanguages)
 						},
-						get firstName() {
-							return JSON.stringify($store.data.data?.name) ?? '{}'
-						},
+						// get firstName() {
+						// 	return JSON.stringify($store.data.data?.name) ?? '{}'
+						// },
 						get tourDestinationOperatingSchedules() {
 							return JSON.stringify($store.data.data?.tourDestinationOperatingSchedules) ?? '{}'
 						},
@@ -111,8 +111,12 @@ const { view, id } = Astro.params;
 							:tip="$store.data.view !== 'detail'? '15자 이내 권장' : ''"
 							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
 						></ui-tit>
-						<lang-translate class="flex-1" data-max-length="50" :view="$store.data.view" x-bind:lang="firstName"
-						></lang-translate>
+						<lang-translate
+							data-max-length="50"
+							:view="$store.data.view"
+							@translate="$store.data.t($event.detail.lang)"
+						>
+						</lang-translate>
 					</div>
 				</li>
 
@@ -128,27 +132,37 @@ const { view, id } = Astro.params;
 				</li>
 
 				<li>
-					<div
-						class="grid max-w-375 grid-cols-[100px_1fr_100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr_122px_1fr]"
-					>
-						<ui-tit class="place-content-center" tit="운영 기간"></ui-tit>
-						<operating-period
-							:view="$store.data.view"
-							:is-always="$store.data.view !== 'reg' ? $store.data.data?.isAlways : true"
-							:start-at="$store.data.data?.startAt"
-							:end-at="$store.data.data?.endAt"></operating-period>
+					<div class="grid max-w-375 grid-cols-2 gap-5 divide-x divide-slate-200 px-4 py-5">
+						<div class="group grid grid-cols-[100px_1fr] gap-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+							<ui-tit
+								class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+								tit="운영 기간"></ui-tit>
+							<operating-period
+								:view="$store.data.view"
+								:is-always="$store.data.view !== 'reg' ? $store.data.data?.isAlways : true"
+								:start-at="$store.data.data?.startAt"
+								:end-at="$store.data.data?.endAt"></operating-period>
+						</div>
 
-						<ui-tit class="place-content-center" tit="정기 휴무"></ui-tit>
-						<closing-day
-							:view="$store.data.view"
-							:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : []"
-						></closing-day>
+						<div class="group grid grid-cols-[100px_1fr] gap-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+							<ui-tit
+								class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+								tit="정기 휴무"></ui-tit>
+							<closing-day
+								:view="$store.data.view"
+								:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : []"
+							></closing-day>
+						</div>
 					</div>
 				</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit tit="운영 시간"></ui-tit>
+				<li class="relative z-3">
+					<div
+						class="group grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+					>
+						<ui-tit
+							class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+							tit="운영 시간"></ui-tit>
 
 						<operating-hours rest="off" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
 						></operating-hours>
@@ -164,13 +178,13 @@ const { view, id } = Astro.params;
 							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
 						></ui-tit>
 
-						<lang-translate data-max-length="30" :view="$store.data.view" :lang="operationGuide ?? '{}'"
+						<lang-translate data-max-length="60" :view="$store.data.view" :lang="operationGuide ?? '{}'"
 						></lang-translate>
 					</div>
 				</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+				<li class="space-y-2">
+					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 pt-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
 						<ui-tit
 							tit="홈페이지 링크"
 							x-bind:req="$store.data.view !== 'detail'"
@@ -194,7 +208,7 @@ const { view, id } = Astro.params;
 						</template>
 					</div>
 
-					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 has-[[view=detail]]:grid-cols-[122px_1fr]">
 						<ui-tit tit="사용자 지도 링크" x-bind:req="$store.data.view !== 'detail'"></ui-tit>
 
 						<template x-if="$store.data.view === 'detail'">
@@ -234,6 +248,7 @@ const { view, id } = Astro.params;
 			items: [],
 			data: {},
 			item: null,
+			name: {},
 			pageId: '',
 			loading: false,
 			error: null,
@@ -275,8 +290,6 @@ const { view, id } = Astro.params;
 					if ((view === 'detail' || view === 'edit' || view === 'reg') && id) {
 						this.setItemId(id);
 						await this.findInit(id);
-
-						console.dir();
 					}
 				} catch (error) {
 					this.error = error instanceof Error ? error.message : 'Unknown error';
@@ -293,6 +306,26 @@ const { view, id } = Astro.params;
 			async findInit(id = '') {
 				if (!id) return;
 				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
+
+				this.name = JSON.stringify(this.data.name) ?? '{}';
+
+				document.querySelector('lang-translate').lang = this.data.name;
+			},
+
+			t(lang) {
+				this.data.name = {
+					ko: '',
+					en: '',
+					zh: '',
+					ja: '',
+					th: '',
+					vi: '',
+				};
+
+				const el = document.querySelector('lang-translate');
+				if (el) {
+					el.lang = this.data.name;
+				}
 			},
 		});
 	});

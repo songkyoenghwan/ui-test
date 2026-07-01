@@ -14,81 +14,87 @@
 
 			<header-list></header-list>
 
-			<main class="main-container " id="main-container">
-				
-	
-	<div class="sticky top-0 z-5 grid w-full min-w-5xl bg-slate-50 pb-5">
-		<section class="w-full space-y-2 bg-slate-50 p-5 transition-all">
-			<div class="flex items-center justify-between">
-				<div>
-					<template x-if="$store.data.view === 'reg'">
-						<ui-tit tag="h2" size="lg" tit="대상지 등록"></ui-tit>
-					</template>
+			<main class="main-container" id="main-container">
+				<div class="sticky top-0 z-5 grid w-full min-w-5xl bg-slate-50 pb-5">
+					<section class="w-full space-y-2 bg-slate-50 p-5 transition-all">
+						<div class="flex items-center justify-between">
+							<div>
+								<template x-if="$store.data.view === 'reg'">
+									<ui-tit tag="h2" size="lg" tit="대상지 등록"></ui-tit>
+								</template>
 
-					<template x-if="$store.data.view === 'edit'">
-						<ui-tit tag="h2" size="lg" tit="대상지 수정"></ui-tit>
-					</template>
+								<template x-if="$store.data.view === 'edit'">
+									<ui-tit tag="h2" size="lg" tit="대상지 수정"></ui-tit>
+								</template>
 
-					<template x-if="$store.data.view === 'detail'">
-						<ui-tit tag="h2" size="lg" :tit="$store.data.data?.name?.ko ?? ''"></ui-tit>
-					</template>
-				</div>
+								<template x-if="$store.data.view === 'detail'">
+									<ui-tit tag="h2" size="lg" :tit="$store.data.data?.name?.ko ?? ''"></ui-tit>
+								</template>
+							</div>
 
-				<div class="flex items-center gap-3">
-					<template x-if="$store.data.view === 'detail'">
-						<div class="flex gap-3">
-							<ui-btn class="w-20" variant="ghost" size="lg" txt="목록"></ui-btn>
+							<div class="flex items-center gap-3">
+								<template x-if="$store.data.view === 'detail'">
+									<div class="flex gap-3">
+										<ui-btn class="w-20" variant="ghost" size="lg" txt="목록"></ui-btn>
 
-							<ui-btn class="w-20" variant="ghost" size="lg" txt="삭제"></ui-btn>
+										<ui-btn class="w-20" variant="ghost" size="lg" txt="삭제"></ui-btn>
 
-							<ui-btn tag="a" variant="primary" size="lg" class="w-20" txt="수정" link="/tour-destination/edit/1"
-							></ui-btn>
+										<ui-btn
+											class="w-20"
+											tag="a"
+											variant="primary"
+											size="lg"
+											txt="수정"
+											link="/tour-destination/edit/1"
+										></ui-btn>
+									</div>
+								</template>
+							</div>
+
+							<template x-if="$store.data.view === 'edit' || $store.data.view === 'reg'">
+								<ui-btn
+									class="w-20"
+									variant="primary"
+									size="lg"
+									txt="저장"
+									@click="console.log(document.querySelector('operating-period').isAlways)"
+								></ui-btn>
+							</template>
+						</div>
+					</section>
+
+					<template x-if="$store.data.view !== 'detail'">
+						<div class="flex items-center">
+							<ui-tit class="px-4.5" tit="섹션"></ui-tit>
+
+							<div class="flex items-center gap-3">
+								<ui-btn
+									class="w-60 gap-3"
+									tag="label"
+									variant="segmented"
+									size="lg"
+									name="tab-section"
+									:arr="JSON.stringify([{ name: '대상지 정보', txt: '대상지 정보' }, { name: '커스텀 항목', txt: '커스텀 항목' }])"
+									scroll="tab-section"
+								></ui-btn>
+							</div>
 						</div>
 					</template>
 				</div>
 
-				<template x-if="$store.data.view === 'edit' || $store.data.view === 'reg'">
-					<ui-btn
-						class="w-20"
-						variant="primary"
-						size="lg"
-						txt="저장"
-						@click="console.log(document.querySelector('operating-period').isAlways)"></ui-btn>
-				</template>
-			</div>
-		</section>
+				<article class="space-y-5 px-5 pb-5">
+					<section class="shadow-1xs space-y-3 rounded-lg bg-white p-5 text-sm" id="target-scroll-tab-section-0">
+						<ui-tit tag="h3" size="lg" tit="대상지 정보"></ui-tit>
 
-		<template x-if="$store.data.view !== 'detail'">
-			<div class="flex items-center">
-				<ui-tit class="px-4.5" tit="섹션"></ui-tit>
-
-				<div class="flex items-center gap-3">
-					<ui-btn
-						class="w-60 gap-3"
-						tag="label"
-						variant="segmented"
-						size="lg"
-						name="tab-section"
-						:arr="JSON.stringify([{ name: '대상지 정보', txt: '대상지 정보' }, { name: '커스텀 항목', txt: '커스텀 항목' }])"
-						scroll="tab-section"></ui-btn>
-				</div>
-			</div>
-		</template>
-	</div>
-
-	<article class="space-y-5 px-5 pb-5">
-		<section class="shadow-1xs space-y-3 rounded-lg bg-white p-5 text-sm" id="target-scroll-tab-section-0">
-			<ui-tit tag="h3" size="lg" tit="대상지 정보"></ui-tit>
-
-			<ul
-				class="divide-y divide-slate-300"
-				x-data="{
+						<ul
+							class="divide-y divide-slate-300"
+							x-data="{
 						get supportedLanguages() {
 							return JSON.stringify($store.data.data?.supportedLanguages)
 						},
-						get firstName() {
-							return JSON.stringify($store.data.data?.name) ?? '{}'
-						},
+						// get firstName() {
+						// 	return JSON.stringify($store.data.data?.name) ?? '{}'
+						// },
 						get tourDestinationOperatingSchedules() {
 							return JSON.stringify($store.data.data?.tourDestinationOperatingSchedules) ?? '{}'
 						},
@@ -103,139 +109,185 @@
 						}
 						
 					}"
-			>
-				<li>
-					<div class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit
-							tit="제공 언어"
-							:sub="$store.data.view !== 'detail' ? '사용자에게 제공할 언어를 선택해 주세요' : ''"></ui-tit>
-						<lang-chk
-							class="flex flex-wrap items-center gap-5"
-							:class="$store.data.view !== 'detail' ? 'justify-end' : ''"
-							:view="$store.data.view"
-							:lang="supportedLanguages"></lang-chk>
-					</div>
-				</li>
-				<li>
-					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit
-							tit="대상지명"
-							:tip="$store.data.view !== 'detail'? '15자 이내 권장' : ''"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
-						></ui-tit>
-						<lang-translate class="flex-1" data-max-length="50" :view="$store.data.view" x-bind:lang="firstName"
-						></lang-translate>
-					</div>
-				</li>
+						>
+							<li>
+								<div
+									class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit
+										tit="제공 언어"
+										:sub="$store.data.view !== 'detail' ? '사용자에게 제공할 언어를 선택해 주세요' : ''"
+									></ui-tit>
+									<lang-chk
+										class="flex flex-wrap items-center gap-5"
+										:class="$store.data.view !== 'detail' ? 'justify-end' : ''"
+										:view="$store.data.view"
+										:lang="supportedLanguages"
+									></lang-chk>
+								</div>
+							</li>
+							<li>
+								<div
+									class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit
+										tit="대상지명"
+										:tip="$store.data.view !== 'detail'? '15자 이내 권장' : ''"
+										tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
+									></ui-tit>
+									<lang-translate
+										data-max-length="50"
+										:view="$store.data.view"
+										@translate="$store.data.t($event.detail.lang)"
+									></lang-translate>
+								</div>
+							</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit tit="위치" cls="h-full items-center"></ui-tit>
-						<div class="flex flex-wrap items-center gap-5">
-							<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
-							<ui-btn class="min-w-30" variant="ghost" size="md" txt="지도에서 선택하기"></ui-btn>
-							<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
-						</div>
-					</div>
-				</li>
+							<li>
+								<div
+									class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit tit="위치" cls="h-full items-center"></ui-tit>
+									<div class="flex flex-wrap items-center gap-5">
+										<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
+										<ui-btn class="min-w-30" variant="ghost" size="md" txt="지도에서 선택하기"></ui-btn>
+										<ui-txt
+											size="sm"
+											txt="서울특별시 용산구 이태원로 29 (한강로1가)"
+											cls="text-black"
+										></ui-txt>
+									</div>
+								</div>
+							</li>
 
-				<li>
-					<div
-						class="grid max-w-375 grid-cols-[100px_1fr_100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr_122px_1fr]"
-					>
-						<ui-tit class="place-content-center" tit="운영 기간"></ui-tit>
-						<operating-period
-							:view="$store.data.view"
-							:is-always="$store.data.view !== 'reg' ? $store.data.data?.isAlways : true"
-							:start-at="$store.data.data?.startAt"
-							:end-at="$store.data.data?.endAt"></operating-period>
+							<li>
+								<div class="grid max-w-375 grid-cols-2 gap-5 divide-x divide-slate-200 px-4 py-5">
+									<div class="group grid grid-cols-[100px_1fr] gap-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+										<ui-tit
+											class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+											tit="운영 기간"
+										></ui-tit>
+										<operating-period
+											:view="$store.data.view"
+											:is-always="$store.data.view !== 'reg' ? $store.data.data?.isAlways : true"
+											:start-at="$store.data.data?.startAt"
+											:end-at="$store.data.data?.endAt"
+										></operating-period>
+									</div>
 
-						<ui-tit class="place-content-center" tit="정기 휴무"></ui-tit>
-						<closing-day
-							:view="$store.data.view"
-							:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : []"
-						></closing-day>
-					</div>
-				</li>
+									<div class="group grid grid-cols-[100px_1fr] gap-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+										<ui-tit
+											class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+											tit="정기 휴무"
+										></ui-tit>
+										<closing-day
+											:view="$store.data.view"
+											:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : []"
+										></closing-day>
+									</div>
+								</div>
+							</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit tit="운영 시간"></ui-tit>
+							<li class="relative z-3">
+								<div
+									class="group grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit
+										class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+										tit="운영 시간"
+									></ui-tit>
 
-						<operating-hours rest="off" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
-						></operating-hours>
-					</div>
-				</li>
+									<operating-hours
+										rest="off"
+										:view="$store.data.view"
+										:result="tourDestinationOperatingSchedules"
+									></operating-hours>
+								</div>
+							</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit
-							tit="운영 안내"
-							x-bind:req="$store.data.view !== 'detail'"
-							x-bind:tip="$store.data.view !== 'detail' ? '30자 이내 권장' : ''"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
-						></ui-tit>
+							<li>
+								<div
+									class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit
+										tit="운영 안내"
+										x-bind:req="$store.data.view !== 'detail'"
+										x-bind:tip="$store.data.view !== 'detail' ? '30자 이내 권장' : ''"
+										tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
+									></ui-tit>
 
-						<lang-translate data-max-length="30" :view="$store.data.view" :lang="operationGuide ?? '{}'"
-						></lang-translate>
-					</div>
-				</li>
+									<lang-translate
+										data-max-length="60"
+										:view="$store.data.view"
+										:lang="operationGuide ?? '{}'"
+									></lang-translate>
+								</div>
+							</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit
-							tit="홈페이지 링크"
-							x-bind:req="$store.data.view !== 'detail'"
-							:sub="$store.data.view !== 'detail'? '사용자에게 제공할 링크를 작성해 주세요' : ''"></ui-tit>
+							<li class="space-y-2">
+								<div
+									class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 pt-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit
+										tit="홈페이지 링크"
+										x-bind:req="$store.data.view !== 'detail'"
+										:sub="$store.data.view !== 'detail'? '사용자에게 제공할 링크를 작성해 주세요' : ''"
+									></ui-tit>
 
-						<template x-if="$store.data.view === 'detail'">
-							<ui-link
-								icon-name="link"
-								icon-pos="lt"
-								icon-cls="size-3 stroke-black flex"
-								:view="$store.data.view"
-								:txt="$store.data.data?.homepageUrl ?? ''"
-								:link="$store.data.data?.homepageUrl ?? ''"></ui-link>
-						</template>
-						<template x-if="$store.data.view !== 'detail'">
-							<input-text
-								data-type="url"
-								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
-								:view="$store.data.view"
-								:value="$store.data.data?.homepageUrl ?? ''"></input-text>
-						</template>
-					</div>
+									<template x-if="$store.data.view === 'detail'">
+										<ui-link
+											icon-name="link"
+											icon-pos="lt"
+											icon-cls="size-3 stroke-black flex"
+											:view="$store.data.view"
+											:txt="$store.data.data?.homepageUrl ?? ''"
+											:link="$store.data.data?.homepageUrl ?? ''"
+										></ui-link>
+									</template>
+									<template x-if="$store.data.view !== 'detail'">
+										<input-text
+											data-type="url"
+											placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+											:view="$store.data.view"
+											:value="$store.data.data?.homepageUrl ?? ''"
+										></input-text>
+									</template>
+								</div>
 
-					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit tit="사용자 지도 링크" x-bind:req="$store.data.view !== 'detail'"></ui-tit>
+								<div
+									class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 has-[[view=detail]]:grid-cols-[122px_1fr]"
+								>
+									<ui-tit tit="사용자 지도 링크" x-bind:req="$store.data.view !== 'detail'"></ui-tit>
 
-						<template x-if="$store.data.view === 'detail'">
-							<ui-link
-								icon-name="link"
-								icon-pos="lt"
-								icon-cls="size-3 stroke-black flex"
-								:view="$store.data.view"
-								:txt="$store.data.data?.mapUrl ?? ''"
-								:link="$store.data.data?.mapUrl ?? ''"></ui-link>
-						</template>
-						<template x-if="$store.data.view !== 'detail'">
-							<input-text
-								data-type="url"
-								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
-								:view="$store.data.view"
-								:value="$store.data.data?.mapUrl ?? ''"></input-text>
-						</template>
-					</div>
-				</li>
-			</ul>
-		</section>
+									<template x-if="$store.data.view === 'detail'">
+										<ui-link
+											icon-name="link"
+											icon-pos="lt"
+											icon-cls="size-3 stroke-black flex"
+											:view="$store.data.view"
+											:txt="$store.data.data?.mapUrl ?? ''"
+											:link="$store.data.data?.mapUrl ?? ''"
+										></ui-link>
+									</template>
+									<template x-if="$store.data.view !== 'detail'">
+										<input-text
+											data-type="url"
+											placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
+											:view="$store.data.view"
+											:value="$store.data.data?.mapUrl ?? ''"
+										></input-text>
+									</template>
+								</div>
+							</li>
+						</ul>
+					</section>
 
-		<section class="shadow-1xs rounded-lg bg-white p-5" id="target-scroll-tab-section-1">
-			<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
+					<section class="shadow-1xs rounded-lg bg-white p-5" id="target-scroll-tab-section-1">
+						<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
-			<group-custom :view="$store.data.view" :result="JSON.stringify($store.data.data) ?? '{}'"></group-custom>
-		</section>
-	</article>
+						<group-custom :view="$store.data.view" :result="JSON.stringify($store.data.data) ?? '{}'"></group-custom>
+					</section>
+				</article>
 			</main>
 		</section>
 
@@ -245,78 +297,94 @@
 		<script defer src="/output/store/layout-store.js"></script>
 		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-		
+		<script defer>
+			document.addEventListener('alpine:init', () => {
+				if (Alpine.store('data')) return;
 
-<script defer>
-	document.addEventListener('alpine:init', () => {
-		if (Alpine.store('data')) return;
+				Alpine.store('data', {
+					items: [],
+					data: {},
+					item: null,
+					pageId: '',
+					loading: false,
+					error: null,
+					itemId: '',
+					view: 'reg',
 
-		Alpine.store('data', {
-			items: [],
-			data: {},
-			item: null,
-			pageId: '',
-			loading: false,
-			error: null,
-			itemId: '',
-			view: 'reg',
+					setItemId(id = '') {
+						this.itemId = id;
+					},
 
-			setItemId(id = '') {
-				this.itemId = id;
-			},
+					getItemId() {
+						return this.itemId;
+					},
 
-			getItemId() {
-				return this.itemId;
-			},
+					getRouteInfo() {
+						const segments = window.location.pathname.split('/').filter(Boolean);
+						return {
+							resource: segments[0] ?? '',
+							view: 'reg',
+							id: '123123',
+						};
+					},
 
-			getRouteInfo() {
-				const segments = window.location.pathname.split('/').filter(Boolean);
-				return {
-					resource: segments[0] ?? '',
-					view:   'reg',
-					id:  '123123',
-				};
-			},
+					async fetchData(page = 1) {
+						this.loading = true;
+						this.error = null;
 
-			async fetchData(page = 1) {
-				this.loading = true;
-				this.error = null;
+						try {
+							const res = await fetch(`http://localhost:5195/tour-destinations`);
+							if (!res.ok) throw new Error('Failed to load json');
 
-				try {
-					const res = await fetch(`http://192.168.1.155:5195/tour-destinations`);
-					if (!res.ok) throw new Error('Failed to load json');
+							const data = await res.json();
+							const payload = data.data.data ?? {};
+							this.items = payload.items ?? [];
 
-					const data = await res.json();
-					const payload = data.data.data ?? {};
-					this.items = payload.items ?? [];
+							const { view, id } = this.getRouteInfo();
+							this.view = view;
 
-					const { view, id } = this.getRouteInfo();
-					this.view = view;
+							if ((view === 'detail' || view === 'edit' || view === 'reg') && id) {
+								this.setItemId(id);
+								await this.findInit(id);
+							}
+						} catch (error) {
+							this.error = error instanceof Error ? error.message : 'Unknown error';
+							console.error('데이터 로드 실패:', error);
+						} finally {
+							this.loading = false;
+						}
+					},
 
-					if ((view === 'detail' || view === 'edit' || view === 'reg') && id) {
-						this.setItemId(id);
-						await this.findInit(id);
+					async init() {
+						await this.fetchData(1);
+					},
 
-						console.dir();
-					}
-				} catch (error) {
-					this.error = error instanceof Error ? error.message : 'Unknown error';
-					console.error('데이터 로드 실패:', error);
-				} finally {
-					this.loading = false;
-				}
-			},
+					async findInit(id = '') {
+						if (!id) return;
+						this.data = this.items.find((v) => v.id === Number(id)) ?? {};
 
-			async init() {
-				await this.fetchData(1);
-			},
+						this.name = JSON.stringify(this.data.name) ?? '{}';
 
-			async findInit(id = '') {
-				if (!id) return;
-				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
-			},
-		});
-	});
-</script>
+						document.querySelector('lang-translate').lang = this.data.name;
+					},
+
+					t(lang) {
+						this.data.name = {
+							ko: '',
+							en: '',
+							zh: '',
+							ja: '',
+							th: '',
+							vi: '',
+						};
+
+						const el = document.querySelector('lang-translate');
+						if (el) {
+							el.lang = this.data.name;
+						}
+					},
+				});
+			});
+		</script>
 	</body>
 </html>

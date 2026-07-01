@@ -13,11 +13,12 @@
 		btn: { id: string; buttonName: LocalizedText; iconUrl: string };
 		onRemove: (id: string) => void;
 		onUpdateIcon: (id: string, iconUrl: string) => void;
+		onUpdateTxt: (id: string, key: keyof LocalizedText, txt: string) => void;
 		isDndDisabled: boolean;
 		btnPreview: Snippet<[string, string]>;
 	}
 
-	let { id, index, btn, onRemove, onUpdateIcon, isDndDisabled, btnPreview }: Props = $props();
+	let { id, index, btn, onRemove, onUpdateIcon, onUpdateTxt, isDndDisabled, btnPreview }: Props = $props();
 
 	const sortable = createSortable({
 		get id() {
@@ -68,7 +69,14 @@
 		</div>
 
 		<div class="flex h-full items-start">
-			<lang-translate class="flex-1" lang={btn.buttonName}></lang-translate>
+			<lang-translate
+				class="flex-1"
+				lang={btn.buttonName}
+				onupdate={(e: Event) => {
+					const { key, txt } = e.detail;
+					onUpdateTxt(btn.id, key, txt);
+				}}
+			></lang-translate>
 		</div>
 
 		<div class="flex flex-col justify-center">
