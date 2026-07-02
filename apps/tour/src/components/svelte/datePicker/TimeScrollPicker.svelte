@@ -8,10 +8,15 @@
 		label: String(i).padStart(2, '0'),
 	}));
 
-	const minuteOptions = Array.from({ length: 60 }, (_, i) => ({
-		value: String(i).padStart(2, '0'),
-		label: String(i).padStart(2, '0'),
-	}));
+	const minuteOptions = Array.from({ length: 6 }, (_, i) => {
+		const minute = i * 10;
+		const value = String(minute).padStart(2, '0');
+
+		return {
+			value,
+			label: value,
+		};
+	});
 
 	let hour = $derived(value.split(':')[0] || '00');
 	let minute = $derived(value.split(':')[1] || '00');
@@ -78,8 +83,8 @@
 				<WheelPicker
 					options={minuteOptions}
 					infinite={true}
-					dragSensitivity={2}
-					scrollSensitivity={3}
+					dragSensitivity={1}
+					scrollSensitivity={2}
 					value={minute}
 					visibleCount={currentVisibleCount}
 					classNames={{

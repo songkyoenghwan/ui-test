@@ -41,27 +41,26 @@ const { view, id } = Astro.params;
 						variant="primary"
 						size="lg"
 						txt="저장"
-						@click="console.log(document.querySelector('operating-period').isAlways)"></ui-btn>
+						@click="console.log(document.querySelector('operating-period').isAlways); console.log(document.querySelector('closing-day').result)"
+					></ui-btn>
 				</template>
 			</div>
 		</section>
 
-		<template x-if="$store.data.view !== 'detail'">
-			<div class="flex items-center">
-				<ui-tit class="px-4.5" tit="섹션"></ui-tit>
+		<div class="flex items-center">
+			<ui-tit class="px-4.5" tit="섹션"></ui-tit>
 
-				<div class="flex items-center gap-3">
-					<ui-btn
-						class="w-60 gap-3"
-						tag="label"
-						variant="segmented"
-						size="lg"
-						name="tab-section"
-						:arr="JSON.stringify([{ name: '대상지 정보', txt: '대상지 정보' }, { name: '커스텀 항목', txt: '커스텀 항목' }])"
-						scroll="tab-section"></ui-btn>
-				</div>
+			<div class="flex items-center gap-3">
+				<ui-btn
+					class="w-60 gap-3"
+					tag="label"
+					variant="segmented"
+					size="lg"
+					name="tab-section"
+					:arr="JSON.stringify([{ name: '대상지 정보', txt: '대상지 정보' }, { name: '커스텀 항목', txt: '커스텀 항목' }])"
+					scroll="tab-section"></ui-btn>
 			</div>
-		</template>
+		</div>
 	</div>
 
 	<article class="space-y-5 px-5 pb-5">
@@ -72,7 +71,16 @@ const { view, id } = Astro.params;
 				class="divide-y divide-slate-300"
 				x-data="{
 						get supportedLanguages() {
-							return JSON.stringify($store.data.data?.supportedLanguages)
+							return JSON.stringify(
+								$store.data.data?.supportedLanguages ?? {
+									ko: true,
+									en: true,
+									ja: false,
+									th: false,
+									vi: false,
+									zh: false,
+								}
+							)
 						},
 						// get firstName() {
 						// 	return JSON.stringify($store.data.data?.name) ?? '{}'
@@ -135,7 +143,7 @@ const { view, id } = Astro.params;
 					<div class="grid max-w-375 grid-cols-2 gap-5 divide-x divide-slate-200 px-4 py-5">
 						<div class="group grid grid-cols-[100px_1fr] gap-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
 							<ui-tit
-								class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+								class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
 								tit="운영 기간"></ui-tit>
 							<operating-period
 								:view="$store.data.view"
@@ -146,7 +154,7 @@ const { view, id } = Astro.params;
 
 						<div class="group grid grid-cols-[100px_1fr] gap-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
 							<ui-tit
-								class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+								class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
 								tit="정기 휴무"></ui-tit>
 							<closing-day
 								:view="$store.data.view"
@@ -161,7 +169,7 @@ const { view, id } = Astro.params;
 						class="group grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
 					>
 						<ui-tit
-							class="group-not-[[view=detail]]:pt-1 group-has-[[view=detail]]:place-content-center"
+							class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
 							tit="운영 시간"></ui-tit>
 
 						<operating-hours rest="off" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
@@ -272,7 +280,7 @@ const { view, id } = Astro.params;
 				};
 			},
 
-			async fetchData(page = 1) {
+			async fetchData() {
 				this.loading = true;
 				this.error = null;
 
@@ -300,7 +308,7 @@ const { view, id } = Astro.params;
 			},
 
 			async init() {
-				await this.fetchData(1);
+				await this.fetchData();
 			},
 
 			async findInit(id = '') {

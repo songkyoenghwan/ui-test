@@ -14,250 +14,353 @@
 <script lang="ts">
 	import UiBtn from '@/svelte/btn/UiBtn.svelte';
 	import TimeScrollPicker from '@/svelte/datePicker/TimeScrollPicker.svelte';
-	import {
-		createDefaultOperatingHourCol,
-		createDefaultOperatingHourResult,
-		type Props,
-	} from '@/types/time/operatingHours.type';
-	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
+	type ApiSchedule = {
+		id: number | string;
+		dayOfWeek: number;
+		openingTime: string;
+		closingTime: string;
+	};
+
+	type EditSchedule = {
+		id: string;
+		dayWeek: number[];
+		openingTime: string;
+		closingTime: string;
+		time: {
+			error: boolean;
+			rest: boolean;
+		};
+		restStart: string;
+		restEnd: string;
+	};
+
+	type ResultType = {
+		tourDestinationOperatingSchedules?: ApiSchedule[];
+	};
+
 	let {
-		result = $bindable(),
+		result = $bindable<ResultType>(),
 		rest = 'off',
 		error = false,
 		timeError = false,
 		weekError = false,
 		view = 'reg',
-	}: Props = $props();
-	let local = $state(createDefaultOperatingHourResult());
+	} = $props();
 
-	$effect(() => {
-		if (result && typeof result === 'object') {
-			const resultSnap = $state.snapshot(result);
+	const componentId = uuidv4();
 
-			untrack(() => {
-				local.status = resultSnap.status || 'always';
-				local.cols = resultSnap.cols || [];
-			});
-		}
-	});
-
-	const itemId = uuidv4();
 	let list = $state([
-		{ id: `${itemId}-always`, name: 'always', txt: '매일' },
-		{ id: `${itemId}-week`, name: 'week', txt: '요일별' },
+		{ id: `${componentId}-always`, name: 'always', txt: '매일' },
+		{ id: `${componentId}-week`, name: 'week', txt: '요일별' },
 	]);
+
 	let dayWeekList = $state([
-		{ id: `${itemId}-mon`, name: 'mon', txt: '월' },
-		{ id: `${itemId}-tue`, name: 'tue', txt: '화' },
-		{ id: `${itemId}-wed`, name: 'wed', txt: '수' },
-		{ id: `${itemId}-thu`, name: 'thu', txt: '목' },
-		{ id: `${itemId}-fri`, name: 'fri', txt: '금' },
-		{ id: `${itemId}-sat`, name: 'sat', txt: '토' },
-		{ id: `${itemId}-sun`, name: 'sun', txt: '일' },
+		{ id: `${componentId}-sun`, name: 0, txt: '일' },
+		{ id: `${componentId}-mon`, name: 1, txt: '월' },
+		{ id: `${componentId}-tue`, name: 2, txt: '화' },
+		{ id: `${componentId}-wed`, name: 3, txt: '수' },
+		{ id: `${componentId}-thu`, name: 4, txt: '목' },
+		{ id: `${componentId}-fri`, name: 5, txt: '금' },
+		{ id: `${componentId}-sat`, name: 6, txt: '토' },
 	]);
 
-	$effect(() => {
-		if (local.status !== 'always' && local.status !== 'week') {
-			untrack(() => {
-				local.status = (result?.cols?.length ?? 0) > 0 ? 'week' : 'always';
-			});
-		}
-	});
-
-	function addTime() {
-		if (!result) return;
-		const uniqueId = uuidv4();
-		local.cols?.push(createDefaultOperatingHourCol(uniqueId));
+	function createEmptyGroup(): EditSchedule {
+		return {
+			id: uuidv4(),
+			dayWeek: [],
+			openingTime: '00:00',
+			closingTime: '00:00',
+			time: {
+				error: false,
+				rest: false,
+			},
+			restStart: '00:00',
+			restEnd: '00:00',
+		};
 	}
 
-	function deleteTime(id: string) {
-		if (!result) return;
-		local.cols = local.cols?.filter((item) => item.id !== id);
+	function getFormattedDayText(days: number[]) {
+		const order = [1, 2, 3, 4, 5, 6, 0];
+
+		return [...days]
+			.sort((a, b) => order.indexOf(a) - order.indexOf(b))
+			.map((day) => dayWeekList.find((d) => d.name === day)?.txt)
+			.filter(Boolean)
+			.map((txt) => `${txt}요일`)
+			.join(', ');
 	}
 
-	function toggleRestTime(id: string, status: boolean) {
-		if (!result) return;
-		local.cols = local.cols?.map((item) => {
-			if (item.id === id) {
-				return {
-					...item,
-					time: item.time.map((t) => ({
-						...t,
-						rest: status,
-						restStart: status ? t.restStart : '',
-						restEnd: status ? t.restEnd : '',
-					})),
+	function groupSchedules(source: ApiSchedule[]): EditSchedule[] {
+		const grouped = source.reduce<Record<string, EditSchedule>>((acc, item) => {
+			const key = `${item.openingTime}-${item.closingTime}`;
+
+			if (!acc[key]) {
+				acc[key] = {
+					id: uuidv4(),
+					dayWeek: [],
+					openingTime: item.openingTime,
+					closingTime: item.closingTime,
+					time: {
+						error: false,
+						rest: false,
+					},
+					restStart: '00:00',
+					restEnd: '00:00',
 				};
 			}
-			return item;
-		});
+
+			acc[key].dayWeek = [...acc[key].dayWeek, item.dayOfWeek];
+			return acc;
+		}, {});
+
+		return Object.values(grouped);
 	}
 
-	const getFormattedDayText = (days: string[] = []) => {
-		if (days.length === 0) return '';
+	function flattenSchedules(groups: EditSchedule[]): ApiSchedule[] {
+		return groups.flatMap((group) =>
+			group.dayWeek.map((day) => ({
+				id: uuidv4(),
+				dayOfWeek: day,
+				openingTime: group.openingTime,
+				closingTime: group.closingTime,
+			})),
+		);
+	}
 
-		const isMatch = (targetDays: string[]) => days.length === targetDays.length && targetDays.every((d) => days.includes(d));
+	function isAlwaysSchedule(source: ApiSchedule[]) {
+		if (source.length !== 7) return false;
 
-		// 주중 판별
-		if (isMatch(['mon', 'tue', 'wed', 'thu', 'fri'])) return '주중';
+		const days = [...source].map((item) => item.dayOfWeek).sort((a, b) => a - b);
+		return JSON.stringify(days) === JSON.stringify([0, 1, 2, 3, 4, 5, 6]);
+	}
 
-		// 주말 판별 (기획에 맞게 'sat', 'sun'으로 수정됨)
-		if (isMatch(['sat', 'sun'])) return '주말';
-
-		// 그 외의 경우 (요일 이름 매핑)
-		return days
-			.map((item) => dayWeekList.find((w) => w.name === item)?.txt || '')
-			.filter(Boolean) // 빈 문자열 제거(안전망)
-			.join(', ');
-	};
+	let status = $state<'always' | 'week'>('always');
+	let cols = $state<EditSchedule[]>([]);
+	let initialized = $state(false);
 
 	$effect(() => {
-		const localSnap = $state.snapshot(local);
-		untrack(() => {
-			if (result && typeof result === 'object') {
-				result.status = localSnap.status;
-				result.cols = localSnap.cols;
-			}
-		});
+		if (initialized) return;
+
+		const source = result?.tourDestinationOperatingSchedules ?? [];
+
+		status = isAlwaysSchedule(source) ? 'always' : 'week';
+		cols = source.length ? groupSchedules(source) : [createEmptyGroup()];
+		initialized = true;
 	});
+
+	function syncResult(nextCols = cols, nextStatus = status) {
+		if (!result) return;
+
+		result = {
+			...result,
+			tourDestinationOperatingSchedules:
+				nextStatus === 'always'
+					? [0, 1, 2, 3, 4, 5, 6].map((day) => ({
+							id: uuidv4(),
+							dayOfWeek: day,
+							openingTime: nextCols[0]?.openingTime ?? '00:00',
+							closingTime: nextCols[0]?.closingTime ?? '00:00',
+						}))
+					: flattenSchedules(nextCols.filter((group) => group.dayWeek.length > 0)),
+		};
+
+		console.log(result);
+	}
+
+	function changeStatus(nextStatus: 'always' | 'week') {
+		status = nextStatus;
+
+		if (nextStatus === 'always' && cols.length === 0) {
+			cols = [createEmptyGroup()];
+		}
+
+		syncResult(cols, nextStatus);
+	}
+
+	function addGroup() {
+		const nextCols = [...cols, createEmptyGroup()];
+		cols = nextCols;
+		syncResult(nextCols, status);
+	}
+
+	function removeGroup(id: string) {
+		const nextCols = cols.filter((group) => group.id !== id);
+		cols = nextCols.length ? nextCols : [createEmptyGroup()];
+		syncResult(cols, status);
+	}
+
+	function updateWeekDays(groupId: string, value: number[]) {
+		const nextCols = cols.map((group) => (group.id === groupId ? { ...group, dayWeek: value } : group));
+		cols = nextCols;
+		syncResult(nextCols, status);
+	}
+
+	function updateOpeningTime(groupId: string, value: string) {
+		const nextCols = cols.map((group) => (group.id === groupId ? { ...group, openingTime: value } : group));
+		cols = nextCols;
+		syncResult(nextCols, status);
+	}
+
+	function updateClosingTime(groupId: string, value: string) {
+		const nextCols = cols.map((group) => (group.id === groupId ? { ...group, closingTime: value } : group));
+		cols = nextCols;
+		syncResult(nextCols, status);
+	}
+
+	function getUsedDaysExcept(groupId: string): number[] {
+		return cols.filter((group) => group.id !== groupId).flatMap((group) => group.dayWeek);
+	}
+
+	function getSelectableDayWeekList(groupId: string) {
+		const usedDays = new Set(getUsedDaysExcept(groupId));
+
+		return dayWeekList.map((day) => ({
+			...day,
+			disabled: usedDays.has(day.name),
+		}));
+	}
+
+	$inspect(cols);
 </script>
 
-{#if local}
-	{#if view === 'detail'}
-		{#if local.status === 'always'}
-			{#each local?.cols as item, i}
-				{#if i === 0}
-					<div class="grid grid-cols-[120px_1fr] items-center">
-						<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
-						<ui-txt size="sm" cls="text-black" txt={`${item.time.timeStart} ~ ${item.time.timeEnd}`}></ui-txt>
-					</div>
-				{/if}
-			{/each}
+{#if view === 'detail'}
+	{#if status === 'always'}
+		{#if (result?.tourDestinationOperatingSchedules?.length ?? 0) > 0}
+			<div class="grid grid-cols-[120px_1fr] items-center">
+				<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
+				<ui-txt
+					size="sm"
+					cls="text-black"
+					txt={`${result?.tourDestinationOperatingSchedules?.[0]?.openingTime} ~ ${result?.tourDestinationOperatingSchedules?.[0]?.closingTime}`}
+				></ui-txt>
+			</div>
 		{/if}
+	{:else}
+		<ul class="space-y-2">
+			{#each cols as item (item.id)}
+				<li class="grid grid-cols-[120px_1fr] items-center">
+					<ui-txt size="sm" cls="text-black" txt={getFormattedDayText(item.dayWeek)}></ui-txt>
+					<ui-txt size="sm" cls="text-black" txt={`${item.openingTime} ~ ${item.closingTime}`}></ui-txt>
+				</li>
+			{/each}
+		</ul>
+	{/if}
+{:else}
+	<div class="felx-wrap flex flex-col gap-2">
+		<div class="flex w-32 gap-2">
+			<UiBtn
+				tag="label"
+				variant="segmented"
+				name={`${componentId}-operating-hours`}
+				arr={list}
+				cls="flex-1"
+				bind:selected={status}
+			/>
+		</div>
 
-		{#if local.status === 'week'}
-			<ul class="space-y-2">
-				{#each local?.cols as item}
-					<li class="grid grid-cols-[120px_1fr] items-center">
-						<ui-txt size="sm" cls="text-black" txt={getFormattedDayText(item.dayWeek)}></ui-txt>
-						<ui-txt size="sm" cls="text-black" txt={`${item?.time?.timeStart} ~ ${item?.time?.timeEnd}`}></ui-txt>
+		{#if status === 'week'}
+			<ul class="flex flex-col gap-2">
+				{#each cols as group, i (group.id)}
+					<li
+						class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all not-first:border-t not-first:border-t-slate-200 first:pt-0"
+					>
+						<div class="flex flex-wrap gap-1">
+							<UiBtn
+								tag="chk"
+								variant="segmented"
+								arr={dayWeekList}
+								selected={group.dayWeek}
+								name={`${componentId}-hour-day-${i}`}
+								cls="min-w-7 flex-[0_0_28px]"
+								change={() => {
+									syncResult();
+								}}
+							/>
+
+							{#if (cols?.length ?? 0) > 1}
+								<UiBtn
+									tag="button"
+									variant="ghost"
+									txt="시간대 삭제"
+									cls="min-w-7 flex-[0_0_75px]"
+									click={() => removeGroup(group.id)}
+								/>
+							{/if}
+						</div>
+
+						<div class="relative z-1 flex flex-wrap gap-2">
+							<div class="inline-flex w-full items-center gap-2">
+								<TimeScrollPicker
+									value={group.openingTime}
+									cls={group.time.error ? 'error' : ''}
+									onValueChange={(value: string) => updateOpeningTime(group.id, value)}
+								/>
+								<span>~</span>
+								<TimeScrollPicker
+									value={group.closingTime}
+									cls={group.time.error ? 'error' : ''}
+									onValueChange={(value: string) => updateClosingTime(group.id, value)}
+								/>
+							</div>
+
+							{#if rest === 'on'}
+								{#if group.time.rest}
+									<dl>
+										<dt>휴게 시간</dt>
+										<dd class="inline-flex items-center gap-2">
+											<TimeScrollPicker value={group.restStart} />
+											<span>~</span>
+											<TimeScrollPicker value={group.restEnd} />
+											<UiBtn
+												tag="button"
+												variant="icon"
+												txt="삭제"
+												iconName="btn-del"
+												cls="size-7 flex-[0_0_28px] stroke-error fill-error"
+											/>
+										</dd>
+									</dl>
+								{:else}
+									<UiBtn tag="button" variant="ghost" txt="휴게 시간" cls="min-w-7 flex-[0_0_75px]" />
+								{/if}
+							{/if}
+						</div>
 					</li>
 				{/each}
 			</ul>
-		{/if}
-	{:else}
-		<div class="felx-wrap flex flex-col gap-2">
-			<div class="flex w-32 gap-2">
+
+			<div class="flex items-center gap-2">
 				<UiBtn
-					tag="label"
-					variant="segmented"
-					name={`${itemId}-operating-hours`}
+					tag="button"
+					variant="secondary"
+					txt="시간대 추가"
 					arr={list}
-					cls="flex-1"
-					bind:selected={local.status}
+					cls="w-25 flex-[0_0_100px]"
+					click={addGroup}
 				/>
 			</div>
-
-			{#if local.status === 'week'}
-				<ul class="flex flex-col gap-2">
-					{#each local.cols as group, i (group.id)}
-						<li
-							class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all not-first:border-t not-first:border-t-slate-200 first:pt-0 starting:left-1 starting:opacity-0"
-							style="z-index: {(local.cols?.length ?? 0) - i};"
-						>
-							<div class="flex flex-wrap gap-1">
-								<UiBtn
-									tag="chk"
-									variant="segmented"
-									arr={dayWeekList}
-									bind:selected={group.dayWeek}
-									name={`${itemId}-hour-day-${i}`}
-									cls="min-w-7 flex-[0_0_28px]"
-								/>
-
-								{#if (local.cols?.length ?? 0) > 1}
-									<UiBtn
-										tag="button"
-										variant="ghost"
-										txt="시간대 삭제"
-										cls="min-w-7 flex-[0_0_75px]"
-										click={() => deleteTime(String(group.id))}
-									/>
-								{/if}
-							</div>
-
-							<div class={['relative z-1 flex flex-wrap gap-2']}>
-								<div class="inline-flex w-full items-center gap-2">
-									<TimeScrollPicker bind:value={group.time.timeStart} cls={group?.time?.error ? 'error' : ''} />
-									<span>~</span>
-									<TimeScrollPicker bind:value={group.time.timeEnd} cls={group?.time?.error ? 'error' : ''} />
-								</div>
-								{#if rest === 'on'}
-									{#if group.time.rest}
-										<dl>
-											<dt>휴게 시간</dt>
-											<dd class="inline-flex items-center gap-2">
-												<TimeScrollPicker bind:value={group.time.restStart} />
-												<span>~</span>
-												<TimeScrollPicker bind:value={group.time.restEnd} />
-												<UiBtn
-													tag="button"
-													variant="icon"
-													txt="삭제"
-													iconName="btn-del"
-													cls="size-7 flex-[0_0_28px] stroke-error fill-error"
-													click={() => toggleRestTime(String(group.id), false)}
-												/>
-											</dd>
-										</dl>
-									{:else}
-										<UiBtn
-											tag="button"
-											variant="ghost"
-											txt="휴게 시간"
-											cls="min-w-7 flex-[0_0_75px]"
-											click={() => toggleRestTime(String(group.id), true)}
-										/>
-									{/if}
-								{/if}
-							</div>
+		{:else if status === 'always'}
+			<ul class="flex flex-col gap-2">
+				{#each cols as group, i (group.id)}
+					{#if i === 0}
+						<li class="inline-flex w-full items-center gap-2">
+							<TimeScrollPicker value={group.openingTime} cls={group.time.error ? 'error' : ''} />
+							<span>~</span>
+							<TimeScrollPicker value={group.closingTime} cls={group.time.error ? 'error' : ''} />
 						</li>
-					{/each}
-				</ul>
+					{/if}
+				{/each}
+			</ul>
+		{/if}
 
-				<div class="flex items-center gap-2">
-					<UiBtn
-						tag="button"
-						variant="secondary"
-						txt="시간대 추가 "
-						arr={list}
-						cls="w-25 flex-[0_0_100px]"
-						click={addTime}
-					/>
-				</div>
-			{:else if local.status === 'always'}
-				<ul class="flex flex-col gap-2">
-					{#each local.cols as group, i (group.id)}
-						{#if i === 0}
-							<div class="inline-flex w-full items-center gap-2">
-								<TimeScrollPicker bind:value={group.time.timeStart} cls={group.time.error ? 'error' : ''} />
-								<span>~</span>
-								<TimeScrollPicker bind:value={group.time.timeEnd} cls={group.time.error ? 'error' : ''} />
-							</div>
-						{/if}
-					{/each}
-				</ul>
-			{/if}
+		{#if timeError}
+			<ui-txt size="sm" txt="시작 시간이 종료 시간보다 앞서야 합니다." cls="text-error"></ui-txt>
+		{/if}
 
-			{#if local.timeError}
-				<ui-txt size="sm" txt="시작 시간이 종료 시간보다 앞서야 합니다." cls="text-error"></ui-txt>
-			{/if}
-
-			{#if local.weekError}
-				<ui-txt size="sm" txt="요일이 선택되지 않은 시간대가 있습니다." cls="text-error"></ui-txt>
-			{/if}
-		</div>
-	{/if}
+		{#if weekError}
+			<ui-txt size="sm" txt="요일이 선택되지 않은 시간대가 있습니다." cls="text-error"></ui-txt>
+		{/if}
+	</div>
 {/if}

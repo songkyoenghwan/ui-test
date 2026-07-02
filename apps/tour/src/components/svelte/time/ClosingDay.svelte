@@ -6,82 +6,171 @@
 			itemId: { type: 'String', reflect: true },
 			error: { reflect: true, type: 'Boolean', attribute: 'error' },
 			view: { type: 'String', reflect: true },
-			result: { type: 'Object' },
+			result: { type: 'Array' },
 		},
 	}}
 />
 
 <script lang="ts">
 	import UiBtn from '@/svelte/btn/UiBtn.svelte';
-	import { createClosingResult, type Props } from '@/types/time/closingDay.type';
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let { result = $bindable(), checked = $bindable(false), error = $bindable(false), view = 'reg' }: Props = $props();
+	type HolidayItem = {
+		dayOfWeek: number | null;
+		fixedHoliday: number | null;
+		holidayType: number | null;
+		id: string;
+		weekOfMonth: number | null;
+	};
 
-	let local = $state(createClosingResult());
-
-	$effect(() => {
-		if (result && typeof result === 'object') {
-			const resultSnap = $state.snapshot(result);
-
-			untrack(() => {
-				local.status = resultSnap.status || 'none';
-				local.week = resultSnap.week || [];
-				local.allWeek = resultSnap.allWeek || '';
-				local.dayWeek = resultSnap.dayWeek || [];
-				local.day = resultSnap.day || '1';
-			});
-		}
-	});
+	let { result = $bindable(), checked = $bindable(false), error = $bindable(false), view = 'reg' } = $props();
 
 	let itemId = uuidv4();
-
 	let list = $state([
 		{ id: `${itemId}-none`, name: 'none', txt: '없음' },
 		{ id: `${itemId}-week`, val: 0, name: 'week', txt: '요일' },
 		{ id: `${itemId}-day`, val: 1, name: 'day', txt: '날짜 ' },
 	]);
 	let weekList = $state([
-		{ id: `${itemId}-first`, val: 1, name: '1', txt: '첫째' },
-		{ id: `${itemId}-second`, val: 2, name: '2', txt: '둘째' },
-		{ id: `${itemId}-third`, val: 3, name: '3', txt: '셋째' },
-		{ id: `${itemId}-fourth`, val: 4, name: '4', txt: '넷째' },
-		{ id: `${itemId}-last`, val: 5, name: 'last', txt: '마지막' },
+		{ id: `${itemId}-first`, name: 1, txt: '첫째' },
+		{ id: `${itemId}-second`, name: 2, txt: '둘째' },
+		{ id: `${itemId}-third`, name: 3, txt: '셋째' },
+		{ id: `${itemId}-fourth`, name: 4, txt: '넷째' },
+		{ id: `${itemId}-last`, name: 5, txt: '마지막' },
 	]);
 	let dayWeekList = $state([
-		{ id: `${itemId}-mon`, val: 0, name: 'mon', txt: '월' },
-		{ id: `${itemId}-tue`, val: 1, name: 'tue', txt: '화' },
-		{ id: `${itemId}-wed`, val: 2, name: 'wed', txt: '수' },
-		{ id: `${itemId}-thu`, val: 3, name: 'thu', txt: '목' },
-		{ id: `${itemId}-fri`, val: 4, name: 'fri', txt: '금' },
-		{ id: `${itemId}-sat`, val: 5, name: 'sat', txt: '토' },
-		{ id: `${itemId}-sun`, val: 6, name: 'sun', txt: '일' },
+		{ id: `${itemId}-mon`, name: 1, txt: '월' },
+		{ id: `${itemId}-tue`, name: 2, txt: '화' },
+		{ id: `${itemId}-wed`, name: 3, txt: '수' },
+		{ id: `${itemId}-thu`, name: 4, txt: '목' },
+		{ id: `${itemId}-fri`, name: 5, txt: '금' },
+		{ id: `${itemId}-sat`, name: 6, txt: '토' },
+		{ id: `${itemId}-sun`, name: 0, txt: '일' },
 	]);
 
-	let hasWeek = $derived(local.allWeek === 'all-week' || (local.week?.length ?? 0) > 0);
-	let hasDay = $derived((local.dayWeek?.length ?? 0) > 0);
-	let showError = $derived(local.status === 'week' && (!hasWeek || !hasDay));
+	let status = $state<'none' | 'week' | 'day'>('none');
+	let weekArr = $state<number[]>([]);
+	let weekDayArr = $state<number[]>([]);
+	let day = $state<number | null>(1);
+	let allWeek = $state<boolean>(false);
+
+	function createEmptyItem(): HolidayItem {
+		return {
+			dayOfWeek: null,
+			fixedHoliday: null,
+			holidayType: null,
+			id: uuidv4(),
+			weekOfMonth: null,
+		};
+	}
+
+	let total = $state<HolidayItem[]>([createEmptyItem()]);
+
+	function rebuildTotal() {
+		if (status === 'none') {
+			total = [createEmptyItem()];
+			if (result) result = total;
+			return;
+		}
+
+		if (status === 'week') {
+			if (weekArr.length === 0 || weekDayArr.length === 0) {
+				total = [];
+				if (result) result = total;
+				return;
+			}
+
+			total = weekArr.flatMap((weekOfMonth) =>
+				weekDayArr.map((dayOfWeek) => ({
+					dayOfWeek,
+					fixedHoliday: null,
+					holidayType: 0,
+					id: uuidv4(),
+					weekOfMonth,
+				})),
+			);
+
+			if (result) result = total;
+			return;
+		}
+
+		if (status === 'day') {
+			total = [
+				{
+					dayOfWeek: null,
+					fixedHoliday: day,
+					holidayType: 1,
+					id: uuidv4(),
+					weekOfMonth: null,
+				},
+			];
+
+			if (result) result = total;
+		}
+	}
+
+	function syncAllWeek() {
+		allWeek = weekArr.length === 5;
+	}
+
+	function handleStatusChange() {
+		if (status === 'none') {
+			weekArr = [];
+			weekDayArr = [];
+			day = 1;
+			allWeek = false;
+		}
+
+		if (status === 'week') {
+			day = 1;
+		}
+
+		if (status === 'day') {
+			weekArr = [];
+			weekDayArr = [];
+			allWeek = false;
+			if (day == null) day = 1;
+		}
+
+		rebuildTotal();
+	}
+
+	function handleWeekChange() {
+		syncAllWeek();
+		rebuildTotal();
+	}
+
+	function handleWeekDayChange() {
+		rebuildTotal();
+	}
+
+	function handleAllWeekChange(e: Event & { currentTarget: HTMLInputElement }) {
+		allWeek = e.currentTarget.checked;
+
+		if (allWeek) {
+			weekArr = [1, 2, 3, 4, 5];
+		} else {
+			weekArr = [];
+		}
+
+		rebuildTotal();
+	}
+
+	function handleDayChange() {
+		rebuildTotal();
+	}
 
 	let formattedDayText = $derived.by(() => {
-		const days = local.dayWeek || [];
-		if (days.length === 0) return '';
+		if (weekDayArr.length === 0) return '';
 
-		// 배열의 순서가 뒤섞여 있어도 완벽히 감식할 수 있도록 정렬 및 비교 함수를 씁니다.
-		const isMatch = (targetDays: string[]) => days.length === targetDays.length && targetDays.every((d) => days.includes(d));
+		const isMatch = (targetDays: number[]) =>
+			weekDayArr.length === targetDays.length && targetDays.every((d) => weekDayArr.includes(d));
 
-		// 주중 판별 (월, 화, 수, 목, 금)
-		if (isMatch(['mon', 'tue', 'wed', 'thu', 'fri'])) {
-			return '주중';
-		}
+		if (isMatch([1, 2, 3, 4, 5])) return '주중';
+		if (isMatch([6, 0])) return '주말';
 
-		//  주말 판별
-		if (isMatch(['sat', 'sun'])) {
-			return '주말';
-		}
-
-		//  그 외의 경우 (월요일, 수요일 등)
-		return days
+		return weekDayArr
 			.map((item) => {
 				const txt = dayWeekList.find((w) => w.name === item)?.txt || '';
 				return `${txt}요일`;
@@ -89,156 +178,208 @@
 			.join(', ');
 	});
 
+	let weekText = $derived.by(() => {
+		if (weekArr.length === 0) return '';
+
+		return weekArr.map((item) => weekList.find((w) => w.name === item)?.txt || '').join(', ');
+	});
+	let dayText = $derived.by(() => {
+		return weekDayArr
+			.map((item) => dayWeekList.find((d) => d.val === item)?.txt)
+			.filter(Boolean)
+			.map((txt) => `${txt}요일`)
+			.join(', ');
+	});
+	let isWeekValid = $derived.by(() => {
+		if (status !== 'week') return true;
+
+		return weekArr.length > 0 && weekDayArr.length > 0;
+	});
+	let showError = $derived(!isWeekValid);
+
+	function initFromResult(data: typeof result) {
+		if (!data || !Array.isArray(data) || data.length === 0) {
+			status = 'none';
+			weekArr = [];
+			weekDayArr = [];
+			day = 1;
+			allWeek = false;
+			return;
+		}
+
+		const first = data[0];
+
+		if (data.length === 1 && first.weekOfMonth == null && first.dayOfWeek == null && first.fixedHoliday == null) {
+			status = 'none';
+			weekArr = [];
+			weekDayArr = [];
+			day = 1;
+			allWeek = false;
+			return;
+		}
+
+		if (data.some((item) => item.fixedHoliday != null)) {
+			status = 'day';
+			day = data[0].fixedHoliday ?? 1;
+			weekArr = [];
+			weekDayArr = [];
+			allWeek = false;
+			return;
+		}
+
+		status = 'week';
+
+		weekArr = [...new Set(data.map((item) => item.weekOfMonth).filter((v): v is number => v != null))];
+		weekDayArr = [...new Set(data.map((item) => item.dayOfWeek).filter((v): v is number => v != null))];
+		allWeek = weekArr.length === 5;
+		day = 1;
+	}
+
+	let closingText = $derived.by(() => {
+		const sortedWeeks = [...weekArr].sort((a, b) => a - b);
+		const sortedDays = [...weekDayArr].sort((a, b) => a - b);
+
+		const weekText = sortedWeeks
+			.map((item) => weekList.find((w) => w.name === item)?.txt)
+			.filter(Boolean)
+			.map((txt) => `${txt}주`)
+			.join(', ');
+
+		const dayText = sortedDays
+			.map((item) => dayWeekList.find((d) => d.name === item)?.txt)
+			.filter(Boolean)
+			.map((txt) => `${txt}요일`)
+			.join(', ');
+
+		if (!weekText && !dayText) return '';
+		if (!weekText) return dayText;
+		if (!dayText) return weekText;
+
+		return `<span>${weekText}</span> <span>${dayText}</span>`;
+	});
+
 	$effect(() => {
-		const localSnap = $state.snapshot(local);
+		if (!result) return;
+
+		const resultSnap = $state.snapshot(result);
 		untrack(() => {
-			if (result && typeof result === 'object') {
-				result.status = localSnap.status;
-				result.week = localSnap.week;
-				result.allWeek = localSnap.allWeek;
-				result.dayWeek = localSnap.dayWeek;
-				result.day = localSnap.day;
-			}
+			initFromResult(resultSnap);
+		});
+	});
+
+	$effect(() => {
+		const totalSnap = $state.snapshot(total);
+		untrack(() => {
+			result = totalSnap;
 		});
 	});
 </script>
 
-{#if local}
-	{#if view === 'detail'}
-		{#if local.status === 'none'}
-			<ui-txt size="sm" txt="없음" cls="text-black"></ui-txt>
-		{/if}
-
-		{#if local.status === 'week'}
-			{#if local.week}
-				<div class="flex flex-wrap gap-2">
-					<div class="flex gap-1">
-						{#each local.week as item, index}
-							<ui-txt
-								size="sm"
-								txt={`${weekList.find((w) => w.name === item)?.txt || ''}${index < local.week.length - 1 ? '주, ' : '주'}`}
-								cls="text-black"
-							></ui-txt>
-						{/each}
-					</div>
-					<div class="flex gap-1">
-						<ui-txt size="sm" txt={formattedDayText} cls="text-black"></ui-txt>
-					</div>
-				</div>
-			{/if}
-		{/if}
-
-		{#if local.status === 'day'}
-			<ui-txt size="sm" txt="없음" cls="text-black"></ui-txt>
-		{/if}
-	{:else}
-		<div class="inline-flex flex-col gap-2">
-			<div class="inline-flex items-center gap-2">
-				<UiBtn
-					tag="label"
-					variant="segmented"
-					name={`${itemId}-closing-day`}
-					arr={list}
-					cls="w-15 flex-[0_0_60px]"
-					bind:selected={local.status}
-					change={() => {
-						if (local.status === 'day' && local.day === '') {
-							local.day = '1';
-						}
-					}}
-				/>
-			</div>
-
-			{#if local.status === 'week'}
-				<dl class="inline-flex items-center gap-2.5">
-					<dt class="label">주차</dt>
-					<dd class="flex flex-wrap gap-1">
-						<UiBtn
-							tag="chk"
-							variant="segmented"
-							name={`${itemId}-closing-week`}
-							arr={weekList}
-							cls="min-w-12.5 flex-[0_0_50px]"
-							bind:selected={local.week}
-							change={(e: Event) => {
-								const target = e.currentTarget;
-								if (target instanceof HTMLInputElement && target.checked) {
-									local.allWeek = local.week?.length === 5 ? 'all-week' : '';
-								} else {
-									local.allWeek = '';
-								}
-							}}
-						/>
-					</dd>
-					<dd class="flex flex-wrap gap-1">
-						<ui-checkbox
-							item-id={`${itemId}-all-chk`}
-							txt="매주"
-							class="flex-none"
-							checked={local.allWeek === 'all-week' ? true : false}
-							change={(e: Event & { currentTarget: HTMLInputElement }) => {
-								local.allWeek = e.currentTarget.checked ? 'all-week' : '';
-								if (e.currentTarget.checked) {
-									local.week = ['1', '2', '3', '4', 'last'];
-								} else {
-									local.week = [];
-								}
-							}}
-						></ui-checkbox>
-					</dd>
-				</dl>
-
-				{#if local.allWeek === 'all-week'}
-					<ui-txt
-						size="sm"
-						txt="매주 정기 휴무로 설정된 요일은 운영 시간보다 우선 적용되며, <br /> 해당 요일의 운영 시간이 자동 조정될 수 있습니다."
-						class="relative left-0 opacity-100 transition-all starting:left-1 starting:opacity-0"
-					></ui-txt>
-				{/if}
-
-				<dl class="inline-flex items-center gap-2.5">
-					<dt class="label">요일</dt>
-					<dd class="flex flex-wrap gap-1">
-						<UiBtn
-							tag="chk"
-							variant="segmented"
-							name={`${itemId}-closing-day`}
-							arr={dayWeekList}
-							cls="min-w-7 flex-[0_0_28px]"
-							bind:selected={local.dayWeek}
-						/>
-					</dd>
-				</dl>
-
-				{#if showError}
-					<ui-txt
-						size="sm"
-						txt="주차와 요일을 각각 1개 이상 선택해 주세요."
-						class="text-error relative left-0 opacity-100 transition-all starting:left-1 starting:opacity-0"
-						cls="text-error"
-					></ui-txt>
-				{/if}
-			{/if}
-
-			{#if local.status === 'day'}
-				<dl class="inline-flex items-center gap-1">
-					<dt class="label">매달</dt>
-					<dd>
-						<div class="grid flex-[0_0_300px] items-center bg-white px-2 py-1.5">
-							<select
-								name={`${itemId}-closing-date`}
-								id={`${itemId}-closing-date`}
-								class="select h-7 min-h-7 min-w-50 {local.day === '' ? 'error' : ''}"
-								bind:value={local.day}
-							>
-								{#each Array(31) as _, i (`sel-date-${i}`)}
-									<option class="max-w-66" value={String(i + 1)}>{i + 1}일</option>
-								{/each}
-							</select>
-						</div>
-					</dd>
-				</dl>
-			{/if}
-		</div>
+{#if view === 'detail'}
+	{#if status === 'none'}
+		<ui-txt size="sm" txt="없음" cls="text-black"></ui-txt>
 	{/if}
+
+	{#if status === 'week'}
+		{#if weekArr.length > 0}
+			<p class="flex items-center gap-2">{@html closingText}</p>
+		{/if}
+	{/if}
+
+	{#if status === 'day'}
+		<ui-txt size="sm" txt={`매달 ${day}일`} cls="text-black"></ui-txt>
+	{/if}
+{:else}
+	<div class="inline-flex flex-col gap-2">
+		<div class="inline-flex items-center gap-2">
+			<UiBtn
+				tag="label"
+				variant="segmented"
+				name={`${itemId}-closing-day`}
+				arr={list}
+				cls="w-15 flex-[0_0_60px]"
+				bind:selected={status}
+				change={handleStatusChange}
+			/>
+		</div>
+
+		{#if status === 'week'}
+			<dl class="inline-flex items-center gap-2.5">
+				<dt class="label">주차</dt>
+				<dd class="flex flex-wrap gap-1">
+					<UiBtn
+						tag="chk"
+						variant="segmented"
+						name={`${itemId}-closing-week`}
+						arr={weekList}
+						cls="min-w-12.5 flex-[0_0_50px]"
+						bind:selected={weekArr}
+						change={handleWeekChange}
+					/>
+				</dd>
+				<dd class="flex flex-wrap gap-1">
+					<ui-checkbox
+						item-id={`${itemId}-all-chk`}
+						txt="매주"
+						class="flex-none"
+						checked={allWeek}
+						change={handleAllWeekChange}
+					></ui-checkbox>
+				</dd>
+			</dl>
+
+			{#if allWeek}
+				<ui-txt
+					size="sm"
+					txt="매주 정기 휴무로 설정된 요일은 운영 시간보다 우선 적용되며, <br /> 해당 요일의 운영 시간이 자동 조정될 수 있습니다."
+					class="relative left-0 opacity-100 transition-all starting:left-1 starting:opacity-0"
+				></ui-txt>
+			{/if}
+
+			<dl class="inline-flex items-center gap-2.5">
+				<dt class="label">요일</dt>
+				<dd class="flex flex-wrap gap-1">
+					<UiBtn
+						tag="chk"
+						variant="segmented"
+						name={`${itemId}-closing-weekday`}
+						arr={dayWeekList}
+						cls="min-w-7 flex-[0_0_28px]"
+						bind:selected={weekDayArr}
+						change={handleWeekDayChange}
+					/>
+				</dd>
+			</dl>
+
+			{#if showError}
+				<ui-txt
+					size="sm"
+					txt="주차와 요일을 각각 1개 이상 선택해 주세요."
+					class="text-error relative left-0 opacity-100 transition-all starting:left-1 starting:opacity-0"
+					cls="text-error"
+				></ui-txt>
+			{/if}
+		{/if}
+
+		{#if status === 'day'}
+			<dl class="inline-flex items-center gap-1">
+				<dt class="label">매달</dt>
+				<dd>
+					<div class="grid flex-[0_0_300px] items-center bg-white px-2 py-1.5">
+						<select
+							name={`${itemId}-closing-date`}
+							id={`${itemId}-closing-date`}
+							class="select h-7 min-h-7 min-w-50"
+							bind:value={day}
+							onchange={handleDayChange}
+						>
+							{#each Array(31) as _, i (`sel-date-${i}`)}
+								<option class="max-w-66" value={i + 1}>{i + 1}일</option>
+							{/each}
+						</select>
+					</div>
+				</dd>
+			</dl>
+		{/if}
+	</div>
 {/if}

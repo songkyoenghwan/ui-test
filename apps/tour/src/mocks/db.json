@@ -1215,74 +1215,11 @@
 					},
 					"tourDestinationHolidaySchedules": [
 						{
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0,
+							"dayOfWeek": null,
+							"fixedHoliday": 11,
+							"holidayType": 1,
 							"id": 1,
-							"weekOfMonth": 1
-						},
-						{
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 3,
-							"weekOfMonth": 2
-						},
-						{
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 4,
-							"weekOfMonth": 3
-						},
-						{
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 5,
-							"weekOfMonth": 4
-						},
-						{
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 6,
-							"weekOfMonth": 5
-						},
-						{
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 8,
-							"weekOfMonth": 1
-						},
-						{
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 9,
-							"weekOfMonth": 2
-						},
-						{
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 10,
-							"weekOfMonth": 3
-						},
-						{
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 11,
-							"weekOfMonth": 4
-						},
-						{
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0,
-							"id": 12,
-							"weekOfMonth": 5
+							"weekOfMonth": null
 						}
 					],
 					"tourDestinationOperatingSchedules": [
@@ -1378,11 +1315,32 @@
 							"dayOfWeek": 1,
 							"fixedHoliday": null,
 							"holidayType": 1,
-							"id": 16,
-							"weekOfMonth": 4
+							"id": 17,
+							"weekOfMonth": 5
 						},
 						{
-							"dayOfWeek": 1,
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 13,
+							"weekOfMonth": 1
+						},
+						{
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 14,
+							"weekOfMonth": 2
+						},
+						{
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 15,
+							"weekOfMonth": 3
+						},
+						{
+							"dayOfWeek": 2,
 							"fixedHoliday": null,
 							"holidayType": 1,
 							"id": 17,

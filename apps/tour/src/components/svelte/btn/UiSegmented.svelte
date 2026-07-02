@@ -37,8 +37,8 @@
 		cls?: string;
 		iconCls?: string;
 		name?: string;
-		arr?: { id?: string; name?: string | number; txt?: string }[];
-		selected?: number | string | null | number[] | string[];
+		arr?: { id?: string; name?: string; txt?: string }[];
+		selected?: string | string[] | string[][];
 		iconName?: string;
 		iconPos?: string;
 		disabled?: string | boolean;
@@ -145,50 +145,6 @@
 			{item?.txt ? item?.txt : item}
 		</label>
 	{/each}
-{:else if !isSegmented && tag === 'button'}
-	<svelte:element
-		this={tag}
-		type={tag === 'button' ? 'button' : undefined}
-		{role}
-		class="button {variant} {size} {cls}"
-		aria-label={txt}
-		{onmousedown}
-		disabled={disabled === true || disabled === 'true' ? true : undefined}
-		onclick={(e) => {
-			click?.(e);
-			dispatch('btn-click', e);
-		}}
-	>
-		{#if iconName && iconPos === 'lt'}
-			{@render icon()}
-		{/if}
-
-		{#if variant === 'icon'}
-			<span class="sr-only">
-				{txt}
-			</span>
-		{:else}
-			{txt}
-		{/if}
-		{#if iconName && iconPos === 'rt'}
-			{@render icon()}
-		{/if}
-	</svelte:element>
-{:else if !isSegmented && tag === 'a'}
-	<a href={link} class={[size, cls, variant ? `button ${variant}` : 'hover:text-1616ff flex items-center']} target={blank}>
-		{#if iconName && iconPos === 'lt'}
-			{@render icon()}
-		{/if}
-		{txt}
-		{#if iconName && iconPos === 'rt'}
-			{@render icon()}
-		{/if}
-	</a>
-{:else if !isSegmented && tag === 'chk'}
-	<label for={itemId} class="button segmented {variant} {size} {cls}">
-		<input type="checkbox" id={itemId} {name} {value} bind:checked class="sr-only" onchange={change} />
-		{txt}
-	</label>
 {/if}
 
 <style>

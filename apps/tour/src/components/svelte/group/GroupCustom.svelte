@@ -196,13 +196,13 @@
 </script>
 
 {#snippet use(txt = '', sub = '', matching = '')}
-	<div class="grid grid-cols-[120px_1fr] items-center">
+	<div class="grid min-h-9 grid-cols-[120px_1fr] items-center">
 		<ui-txt size="sm" cls="text-black" {txt}></ui-txt>
 		<div>
 			<ui-txt size="sm" cls="text-cms-3 font-bold" txt={sub}></ui-txt>
 
 			{#if matching}
-				<ui-txt size="sm" txt={matching}></ui-txt>
+				<ui-txt size="sm" txt={matching} class="text-right"></ui-txt>
 			{/if}
 		</div>
 	</div>
@@ -263,10 +263,10 @@
 			</div>
 		</li>
 		<li>
-			<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5">
-				<ui-tit tit="기능 커스텀"></ui-tit>
-				<ul class="inline-grid divide-y divide-slate-200">
-					<li class="flex items-center justify-between gap-2 px-3 pb-3">
+			<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4">
+				<ui-tit tit="기능 커스텀" class="py-5"></ui-tit>
+				<ul class="inline-grid divide-y divide-slate-200 py-2">
+					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use('AI 추천', useChk(result?.isAiRecommendYn))}
 						{:else if view === 'reg' || view === 'edit'}
@@ -287,7 +287,7 @@
 							txt="AI 기반으로 사용자 맞춤 시설을 추천하며, 카테고리별 추천 노출 여부를 설정할 수 있습니다"
 						></ui-txt>
 					</li>
-					<li class="flex items-center justify-between gap-2 p-3">
+					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use(
 								'구역 혼잡도',
@@ -312,7 +312,7 @@
 							txt="구역에 대한 혼잡도 정보를 안내하며, 지도 관리 메뉴에서 구역을 설정 후 실제 혼잡도 데이터를 불러올 수 있습니다"
 						></ui-txt>
 					</li>
-					<li class="flex items-center justify-between gap-2 px-3 pt-3">
+					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use(
 								'시설 혼잡도',
@@ -341,15 +341,15 @@
 			</div>
 		</li>
 		<li>
-			<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-4">
-				<ui-tit tit="시설 정보 커스텀"></ui-tit>
-				<ul class="inline-grid divide-y divide-slate-200">
-					<li class="flex items-center justify-between gap-2 px-3 pb-3">
+			<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4">
+				<ui-tit tit="시설 정보 커스텀" class="py-5"></ui-tit>
+				<ul class="inline-grid divide-y divide-slate-200 py-2">
+					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use(
 								'위치 기반 콘텐츠',
 								useChk(result?.isVpsContentsYn),
-								`${result?.isVpsContentsYnUse}${textNum2}`,
+								`${result?.isVpsContentsYnUse ?? 0}${textNum2}`,
 							)}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
@@ -366,7 +366,7 @@
 						{/if}
 						<ui-txt size="sm" txt="사용자가 시설 반경 5m 이내에 접근했을 때, 콘텐츠 링크 진입을 유도합니다"></ui-txt>
 					</li>
-					<li class="flex items-center justify-between gap-2 p-3">
+					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use('시설 주소 노출', useChk(result?.isFacilityAddressYn))}
 						{:else if view === 'reg' || view === 'edit'}
@@ -384,7 +384,7 @@
 						{/if}
 						<ui-txt size="sm" txt="사용자 화면에서 시설의 상세 주소를 함께 안내합니다"></ui-txt>
 					</li>
-					<li class="flex items-center justify-between gap-2 px-3 pt-3">
+					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						<div class="flex items-center gap-3">
 							{#if view === 'detail'}
 								{@render use('시설 정렬 순서', result.isCustomSortingYn ? '직접 지정' : '운영 상태 순')}

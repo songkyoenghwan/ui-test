@@ -14,6 +14,7 @@
 
 <script lang="ts">
 	import { langStore } from '@/stores/langStore';
+	import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 	import type { LocalizedText } from '@/types/common/locale';
 	import type { PagePropsInput } from '@/types/page/page.type';
 	import { untrack } from 'svelte';
@@ -112,6 +113,22 @@
 		}
 	});
 
+	let hasExtraLang = $derived(!!($langStore.ja || $langStore.zh || $langStore.th || $langStore.vi));
+
+	function isHidden(key: LangTranslateKey) {
+		if (key === 'ko') return false;
+
+		if (!hasExtraLang) {
+			return key !== 'en';
+		}
+
+		if (key === 'en') {
+			return langToggle;
+		}
+
+		return $langStore[key] ? langToggle : true;
+	}
+
 	$effect(() => {
 		const snap = $state.snapshot(local);
 
@@ -163,7 +180,7 @@
 					<li
 						class={[
 							'grid grid-cols-[28px_1fr] items-center gap-0.5 has-[ui-btn]:grid-cols-[28px_1fr_80px]',
-							item.key === 'ko' || item.key === 'en' || (langToggle && $langStore[item.key]) ? '' : 'hidden',
+							isHidden(item.key) && 'hidden',
 						]}
 					>
 						<label for={`${itemId}-${item.key}`} class="label">
@@ -209,7 +226,7 @@
 						icon-size="16"
 						class="flex-1"
 						cls="stroke-cms-3"
-						icon-cls={langToggle ? 'rotate-180' : ''}
+						icon-cls={langToggle ? '' : 'rotate-180'}
 						icon-pos="lt"
 						aria-expanded={open === 'close' ? 'false' : 'true'}
 						click={(e: Event) => {
