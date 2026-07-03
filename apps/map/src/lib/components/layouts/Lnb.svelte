@@ -15,7 +15,6 @@
 
 	let hoveredId = $state('');
 	let displayName = $derived(window.location.pathname.split('/').filter(Boolean)[0] ?? '');
-	$inspect(menus);
 </script>
 
 {#snippet li(id = '', link = '', h3 = '')}

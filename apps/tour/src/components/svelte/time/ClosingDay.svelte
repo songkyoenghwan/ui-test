@@ -299,23 +299,21 @@
 			result = totalSnap;
 		});
 	});
-
-	$inspect(result);
 </script>
 
-{#if view === 'detail'}
+{#if view === 'detail' || view === 'side'}
 	{#if status === 'none'}
-		<ui-txt size="sm" txt="없음" cls="text-black"></ui-txt>
+		<ui-txt size={view === 'side' ? 'xs' : 'sm'} txt="없음" cls="text-black"></ui-txt>
 	{/if}
 
 	{#if status === 'week'}
 		{#if weekArr.length > 0}
-			<p class="flex items-center gap-2">{@html closingText}</p>
+			<p class={['inline-flex items-center gap-2', view === 'side' ? 'text-xs' : 'text-sm']}>{@html closingText}</p>
 		{/if}
 	{/if}
 
 	{#if status === 'day'}
-		<ui-txt size="sm" txt={`매달 ${day}일`} cls="text-black"></ui-txt>
+		<ui-txt size={view === 'side' ? 'xs' : 'sm'} txt={`매달 ${day}일`} cls="text-black"></ui-txt>
 	{/if}
 {:else}
 	<div class="inline-flex flex-col gap-2">
@@ -358,7 +356,7 @@
 
 			{#if allWeek}
 				<ui-txt
-					size="sm"
+					size={view === 'side' ? 'xs' : 'sm'}
 					txt="매주 정기 휴무로 설정된 요일은 운영 시간보다 우선 적용되며, <br /> 해당 요일의 운영 시간이 자동 조정될 수 있습니다."
 					class="relative left-0 opacity-100 transition-all starting:left-1 starting:opacity-0"
 				></ui-txt>
@@ -381,7 +379,7 @@
 
 			{#if showError}
 				<ui-txt
-					size="sm"
+					size={view === 'side' ? 'xs' : 'sm'}
 					txt="주차와 요일을 각각 1개 이상 선택해 주세요."
 					class="text-error relative left-0 opacity-100 transition-all starting:left-1 starting:opacity-0"
 					cls="text-error"

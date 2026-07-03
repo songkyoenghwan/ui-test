@@ -19,13 +19,18 @@
 	import TimeScrollPicker from '@/svelte/datePicker/TimeScrollPicker.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
+	type FacilityBreakSchedule = {
+		id?: number | string;
+		breakStartTime: string;
+		breakEndTime: string;
+	};
+
 	type ApiSchedule = {
 		id?: number | string;
 		dayOfWeek: number | null;
 		openingTime: string;
 		closingTime: string;
-		breakStartTime?: string;
-		breakEndTime?: string;
+		facilityBreakSchedules: FacilityBreakSchedule[];
 	};
 
 	type UiScheduleGroup = {
@@ -90,8 +95,8 @@
 			dayOfWeeks: [],
 			openingTime: '00:00',
 			closingTime: '01:00',
-			breakStartTime: '00:00',
-			breakEndTime: '01:00',
+			breakStartTime: '',
+			breakEndTime: '',
 			...partial,
 		};
 	}
@@ -101,13 +106,14 @@
 
 		return items.map((raw) => {
 			const item = raw as ApiSchedule;
+			const firstBreak = item.facilityBreakSchedules?.[0];
 
 			return {
 				dayOfWeek: item.dayOfWeek ?? null,
 				openingTime: item.openingTime ?? '00:00',
 				closingTime: item.closingTime ?? '01:00',
-				breakStartTime: item.breakStartTime ?? '00:00',
-				breakEndTime: item.breakEndTime ?? '01:00',
+				breakStartTime: firstBreak?.breakStartTime ?? '',
+				breakEndTime: firstBreak?.breakEndTime ?? '',
 			};
 		});
 	}
@@ -135,18 +141,18 @@
 
 		for (const raw of items) {
 			const item = raw as ApiSchedule;
+			const firstBreak = item.facilityBreakSchedules?.[0];
+			const breakStartTime = firstBreak?.breakStartTime ?? '';
+			const breakEndTime = firstBreak?.breakEndTime ?? '';
 
-			const breakStartTime = item.breakStartTime ?? '00:00';
-			const breakEndTime = item.breakEndTime ?? '01:00';
-
-			const key = [item.openingTime ?? '00:00', item.closingTime ?? '00:00', breakStartTime, breakEndTime].join('|');
+			const key = [item.openingTime ?? '00:00', item.closingTime ?? '01:00', breakStartTime, breakEndTime].join('|');
 
 			if (!grouped.has(key)) {
 				grouped.set(
 					key,
 					createGroup({
 						openingTime: item.openingTime ?? '00:00',
-						closingTime: item.closingTime ?? '01',
+						closingTime: item.closingTime ?? '01:00',
 						breakStartTime,
 						breakEndTime,
 					}),
@@ -163,14 +169,24 @@
 		return Array.from(grouped.values());
 	}
 
+	function toBreakSchedules(group: UiScheduleGroup): FacilityBreakSchedule[] {
+		if (!group.breakStartTime || !group.breakEndTime) return [];
+
+		return [
+			{
+				breakStartTime: group.breakStartTime,
+				breakEndTime: group.breakEndTime,
+			},
+		];
+	}
+
 	function flattenGroups(): ApiSchedule[] {
 		if (status === 'always') {
 			return ALL_DAYS.map((dayOfWeek) => ({
 				dayOfWeek,
 				openingTime: alwaysGroup.openingTime,
 				closingTime: alwaysGroup.closingTime,
-				breakStartTime: alwaysGroup.breakStartTime ? alwaysGroup.breakStartTime : '',
-				breakEndTime: alwaysGroup.breakEndTime ? alwaysGroup.breakEndTime : '',
+				facilityBreakSchedules: toBreakSchedules(alwaysGroup),
 			}));
 		}
 
@@ -181,8 +197,7 @@
 					dayOfWeek,
 					openingTime: group.openingTime,
 					closingTime: group.closingTime,
-					breakStartTime: group.breakStartTime ? group.breakStartTime : '',
-					breakEndTime: group.breakEndTime ? group.breakEndTime : '',
+					facilityBreakSchedules: toBreakSchedules(group),
 				})),
 		);
 	}
@@ -208,7 +223,7 @@
 	}
 
 	function emitResult() {
-		const next = flattenGroups(cols);
+		const next = flattenGroups();
 		const sig = makeSignature(next);
 
 		lastOutputSig = sig;
@@ -251,7 +266,7 @@
 	}
 
 	function removeGroup(index: number) {
-		const next = cols.filter((_, i) => i !== index);
+		const next = weekCols.filter((_, i) => i !== index);
 		weekCols = next.length > 0 ? next : [createGroup()];
 		emitResult();
 	}
@@ -392,20 +407,44 @@
 	});
 </script>
 
-{#if view === 'detail'}
+{#if view === 'detail' || view === 'side'}
 	{#if status === 'always'}
 		{#if cols[0]}
-			<div class="grid grid-cols-[120px_1fr] items-center">
-				<ui-txt size="sm" cls="text-black" txt="매일"></ui-txt>
-				<ui-txt size="sm" cls="text-black" txt={`${cols[0].openingTime} ~ ${cols[0].closingTime}`}></ui-txt>
+			<div class={['grid items-center', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[120px_1fr]']}>
+				<ui-txt size={view === 'side' ? 'xs text-cms-3' : 'sm'} cls="text-black" txt="매일"></ui-txt>
+				<ui-txt
+					size={view === 'side' ? 'xs' : 'sm'}
+					cls="text-black"
+					txt={`${cols[0].openingTime} ~ ${cols[0].closingTime}`}
+				></ui-txt>
 			</div>
 		{/if}
 	{:else}
 		<ul class="space-y-2">
 			{#each cols as item (item.id)}
-				<li class="grid grid-cols-[120px_1fr] items-center">
-					<ui-txt size="sm" cls="text-black" txt={getFormattedDayText(item.dayOfWeeks)}></ui-txt>
-					<ui-txt size="sm" cls="text-black" txt={`${item.openingTime} ~ ${item.closingTime}`}></ui-txt>
+				<li class={['grid items-center', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[120px_1fr]']}>
+					<ui-txt
+						size={view === 'side' ? 'xs text-cms-3' : 'sm'}
+						cls="text-black"
+						txt={getFormattedDayText(item.dayOfWeeks)}
+					></ui-txt>
+
+					<div>
+						<ui-txt
+							size={view === 'side' ? 'xs' : 'sm'}
+							cls="text-black"
+							txt={`${item.openingTime} ~ ${item.closingTime}`}
+						></ui-txt>
+
+						{#if item.breakStartTime && item.breakEndTime}
+							<ui-txt
+								class="w-full"
+								size={view === 'side' ? 'xs' : 'sm'}
+								cls="text-3e61ff flex items-center"
+								txt={`${item.breakStartTime} ~ ${item.breakEndTime} 휴게시간`}
+							></ui-txt>
+						{/if}
+					</div>
 				</li>
 			{/each}
 		</ul>

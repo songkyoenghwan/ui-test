@@ -368,29 +368,19 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 							</div>
 
 							<div class="flex gap-2">
-								<ui-txt size="xs" txt="운영 기간"></ui-txt>
-
-								<!-- <ui-txt size="xs" txt="없음"></ui-txt>
-								<ul>
-									<li class="grid grid-cols-[40px_1fr] gap-2">
-										<ui-txt size="xs" cls="text-cms-3" txt="월"></ui-txt>
-										<div>
-											<ui-txt size="xs" cls="text-black" txt="없음"></ui-txt>
-											<ui-txt size="xs" cls="text-3e61ff" txt="14:00 ~ 15:00 휴게시간"></ui-txt>
-										</div>
-									</li>
-								</ul> -->
+								<ui-txt size="xs" txt="운영 시간" class="flex-none"></ui-txt>
 
 								<operating-hours
 									rest="off"
-									view="detail"
-									:result="JSON.stringify($store.data?.data.facilityOperatingSchedules?? [])"></operating-hours>
+									view="side"
+									:result="JSON.stringify($store.data?.data.facilityOperatingSchedules?? [])"
+									class="text-xs"></operating-hours>
 							</div>
 
 							<div class="flex items-center gap-2">
-								<ui-txt size="xs" txt="정기 휴무"></ui-txt>
+								<ui-txt size="xs" txt="정기 휴무" class="flex-none"></ui-txt>
 								<closing-day
-									view="detail"
+									view="side"
 									x-bind:result="JSON.stringify($store.data?.data.facilityHolidaySchedules ?? [])"
 								></closing-day>
 							</div>
