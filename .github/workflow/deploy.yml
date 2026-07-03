@@ -1,11 +1,9 @@
+# .github/workflows/deploy.yml
 name: Deploy tour to GitHub Pages
 
 on:
     push:
         branches: [main]
-        paths:
-            - 'apps/tour/**'
-            - '.github/workflows/deploy.yml'
     workflow_dispatch:
 
 permissions:
@@ -17,15 +15,13 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout repository
+            - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Install, build, and upload Astro site
-              uses: withastro/action@v6
+            - name: Install, build, and upload
+              uses: withastro/action@v2
               with:
                   path: ./apps/tour
-                  node-version: 24
-                  package-manager: bun
 
     deploy:
         needs: build
@@ -34,6 +30,6 @@ jobs:
             name: github-pages
             url: ${{ steps.deployment.outputs.page_url }}
         steps:
-            - name: Deploy to GitHub Pages
+            - name: Deploy
               id: deployment
-              uses: actions/deploy-pages@v5
+              uses: actions/deploy-pages@v4
