@@ -5,6 +5,7 @@
 		props: {
 			itemId: { type: 'String', reflect: true, attribute: 'item-id' },
 			tag: { type: 'String' },
+			btnType: { type: 'String', attribute: 'btn-type' },
 			link: { type: 'String' },
 			txt: { type: 'String', reflect: true },
 			variant: { type: 'String' },
@@ -28,6 +29,7 @@
 		tag?: 'button' | 'a' | 'label' | 'chk' | 'rdo';
 		variant?: 'primary' | 'secondary' | 'ghost' | 'segmented' | 'text' | 'icon';
 		size?: 'lg' | 'md' | 'sm';
+		btnType?: 'button' | 'reset' | 'submit';
 		itemId?: string;
 		txt?: string;
 		link?: string;
@@ -52,6 +54,7 @@
 		tag = 'button',
 		variant = 'primary',
 		size = 'md',
+		btnType,
 		itemId,
 		txt,
 		link,
@@ -148,7 +151,7 @@
 {:else if !isSegmented && tag === 'button'}
 	<svelte:element
 		this={tag}
-		type={tag === 'button' ? 'button' : undefined}
+		type={tag === 'button' ? (btnType ?? 'button') : undefined}
 		{role}
 		class="button {variant} {size} {cls}"
 		aria-label={txt}

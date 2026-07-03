@@ -1148,34 +1148,34 @@
 					],
 					"tourDestinationOperatingSchedules": [
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 0,
 							"id": 35,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 1,
 							"id": 36,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 2,
 							"id": 37,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 3,
 							"id": 38,
-							"openingTime": "09:00"
+							"openingTime": "07:10"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 6,
 							"id": 39,
-							"openingTime": "09:00"
+							"openingTime": "08:00"
 						}
 					],
 					"updatedAt": "2026-05-20T09:03:27.342Z"
@@ -1224,31 +1224,31 @@
 					],
 					"tourDestinationOperatingSchedules": [
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 0,
 							"id": 1,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 1,
 							"id": 2,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 2,
 							"id": 3,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 3,
 							"id": 4,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "06:00",
+							"closingTime": "09:10",
 							"dayOfWeek": 6,
 							"id": 5,
 							"openingTime": "09:00"

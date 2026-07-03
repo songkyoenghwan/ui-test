@@ -354,7 +354,7 @@
 	}
 
 	.main-container {
-		@apply relative grid size-full overflow-auto scroll-smooth has-data-[map=init]:overflow-clip;
+		@apply relative flex size-full flex-col overflow-auto scroll-smooth has-data-[map=init]:overflow-clip;
 	}
 
 	.button {
@@ -414,8 +414,9 @@
 			&:active:not(:disabled) {
 				@apply border-cms-3 bg-secondary;
 			}
-			&:disabled {
-				@apply bg-cms-3 cursor-not-allowed border-slate-300;
+			&:disabled,
+			&:has(:disabled) {
+				@apply cursor-not-allowed border-slate-100 bg-slate-100 text-slate-500;
 			}
 			&:has(:checked) {
 				@apply border-cms-3 bg-cms-3 text-white;
@@ -460,6 +461,10 @@
 
 	textarea {
 		@apply py-3;
+
+		&.error {
+			@apply border-error text-error placeholder-shown:text-error!;
+		}
 	}
 
 	div {
@@ -471,6 +476,10 @@
 
 		& > .input-text {
 			@apply bg-[url(/imgs/date/search.svg)] bg-size-[16px_16px] bg-position-[12px_center] bg-no-repeat pl-10 placeholder:text-sm;
+		}
+
+		&.error {
+			@apply border-error text-error placeholder-shown:text-error!;
 		}
 	}
 
@@ -507,6 +516,10 @@
 
 		&.s {
 			@apply min-h-5 text-xs placeholder:text-xs;
+		}
+
+		&.error {
+			@apply border-error text-error placeholder-shown:text-error!;
 		}
 	}
 

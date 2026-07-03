@@ -41,7 +41,8 @@ const { view, id } = Astro.params;
 						variant="primary"
 						size="lg"
 						txt="저장"
-						@click="console.log(document.querySelector('operating-hours').result)"></ui-btn>
+						@click="console.log(document.querySelector('operating-period').isAlways); console.log(document.querySelector('closing-day').result)"
+					></ui-btn>
 				</template>
 			</div>
 		</section>

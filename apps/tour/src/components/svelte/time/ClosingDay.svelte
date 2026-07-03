@@ -54,6 +54,7 @@
 	let weekDayArr = $state<number[]>([]);
 	let day = $state<number | null>(1);
 	let allWeek = $state<boolean>(false);
+	let initialized = $state(false);
 
 	function createEmptyItem(): HolidayItem {
 		return {
@@ -70,15 +71,14 @@
 	function rebuildTotal() {
 		if (status === 'none') {
 			total = [createEmptyItem()];
-			if (result) result = total;
+			result = total;
 			return;
 		}
 
 		if (status === 'week') {
 			if (weekArr.length === 0 || weekDayArr.length === 0) {
 				total = [];
-				if (result) result = total;
-				return;
+				return; // result에 반영하지 않음
 			}
 
 			total = weekArr.flatMap((weekOfMonth) =>
@@ -91,7 +91,7 @@
 				})),
 			);
 
-			if (result) result = total;
+			result = total;
 			return;
 		}
 
@@ -106,7 +106,7 @@
 				},
 			];
 
-			if (result) result = total;
+			result = total;
 		}
 	}
 
@@ -197,42 +197,70 @@
 	});
 	let showError = $derived(!isWeekValid);
 
-	function initFromResult(data: typeof result) {
-		if (!data || !Array.isArray(data) || data.length === 0) {
-			status = 'none';
-			weekArr = [];
-			weekDayArr = [];
-			day = 1;
-			allWeek = false;
-			return;
-		}
+	function resetToNone() {
+		status = 'none';
+		weekArr = [];
+		weekDayArr = [];
+		day = 1;
+		allWeek = false;
+	}
 
-		const first = data[0];
+	function uniqueNumbers(values: Array<number | null | undefined>) {
+		return [...new Set(values.filter((v): v is number => v != null))].sort((a, b) => a - b);
+	}
 
-		if (data.length === 1 && first.weekOfMonth == null && first.dayOfWeek == null && first.fixedHoliday == null) {
-			status = 'none';
-			weekArr = [];
-			weekDayArr = [];
-			day = 1;
-			allWeek = false;
-			return;
-		}
+	function isNoneItem(item: HolidayItem | undefined) {
+		return !!item && item.weekOfMonth == null && item.dayOfWeek == null && item.fixedHoliday == null;
+	}
 
-		if (data.some((item) => item.fixedHoliday != null)) {
-			status = 'day';
-			day = data[0].fixedHoliday ?? 1;
-			weekArr = [];
-			weekDayArr = [];
-			allWeek = false;
-			return;
-		}
+	function isNoneData(data: HolidayItem[]) {
+		return data.length === 1 && isNoneItem(data[0]);
+	}
+
+	function hasFixedHoliday(data: HolidayItem[]) {
+		return data.some((item) => item.fixedHoliday != null);
+	}
+
+	function applyDayMode(data: HolidayItem[]) {
+		status = 'day';
+		day = data.find((item) => item.fixedHoliday != null)?.fixedHoliday ?? 1;
+		weekArr = [];
+		weekDayArr = [];
+		allWeek = false;
+	}
+
+	function applyWeekMode(data: HolidayItem[]) {
+		const weeks = uniqueNumbers(data.map((item) => item.weekOfMonth));
+		const days = uniqueNumbers(data.map((item) => item.dayOfWeek));
 
 		status = 'week';
-
-		weekArr = [...new Set(data.map((item) => item.weekOfMonth).filter((v): v is number => v != null))];
-		weekDayArr = [...new Set(data.map((item) => item.dayOfWeek).filter((v): v is number => v != null))];
-		allWeek = weekArr.length === 5;
+		weekArr = weeks;
+		weekDayArr = days;
+		allWeek = weeks.length === 5;
 		day = 1;
+	}
+
+	function initFromResult(data: typeof result) {
+		if (!Array.isArray(data)) {
+			resetToNone();
+			return;
+		}
+
+		if (data.length === 0) {
+			return;
+		}
+
+		if (isNoneData(data)) {
+			resetToNone();
+			return;
+		}
+
+		if (hasFixedHoliday(data)) {
+			applyDayMode(data);
+			return;
+		}
+
+		applyWeekMode(data);
 	}
 
 	let closingText = $derived.by(() => {
@@ -259,8 +287,6 @@
 	});
 
 	$effect(() => {
-		if (!result) return;
-
 		const resultSnap = $state.snapshot(result);
 		untrack(() => {
 			initFromResult(resultSnap);

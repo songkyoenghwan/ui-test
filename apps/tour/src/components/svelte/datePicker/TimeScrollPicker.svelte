@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 
-	let { value = $bindable('00:00'), cls = '' } = $props();
+	let { value = $bindable('00:00'), cls = '', onValueChange = $bindable() } = $props();
 
 	const hourOptions = Array.from({ length: 24 }, (_, i) => ({
 		value: String(i).padStart(2, '0'),

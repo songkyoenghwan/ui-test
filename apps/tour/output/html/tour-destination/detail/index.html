@@ -63,21 +63,21 @@
 						</div>
 					</section>
 
-						<div class="flex items-center">
-			<ui-tit class="px-4.5" tit="섹션"></ui-tit>
+					<div class="flex items-center">
+						<ui-tit class="px-4.5" tit="섹션"></ui-tit>
 
-			<div class="flex items-center gap-3">
-				<ui-btn
-					class="w-60 gap-3"
-					tag="label"
-					variant="segmented"
-					size="lg"
-					name="tab-section"
-					:arr="JSON.stringify([{ name: '대상지 정보', txt: '대상지 정보' }, { name: '커스텀 항목', txt: '커스텀 항목' }])"
-					scroll="tab-section"></ui-btn>
-			</div>
-		</div>
-
+						<div class="flex items-center gap-3">
+							<ui-btn
+								class="w-60 gap-3"
+								tag="label"
+								variant="segmented"
+								size="lg"
+								name="tab-section"
+								:arr="JSON.stringify([{ name: '대상지 정보', txt: '대상지 정보' }, { name: '커스텀 항목', txt: '커스텀 항목' }])"
+								scroll="tab-section"
+							></ui-btn>
+						</div>
+					</div>
 				</div>
 
 				<article class="space-y-5 px-5 pb-5">
@@ -85,8 +85,8 @@
 						<ui-tit tag="h3" size="lg" tit="대상지 정보"></ui-tit>
 
 						<ul
-				class="divide-y divide-slate-300"
-				x-data="{
+							class="divide-y divide-slate-300"
+							x-data="{
 						get supportedLanguages() {
 							return JSON.stringify(
 								$store.data.data?.supportedLanguages ?? {
@@ -116,7 +116,7 @@
 						}
 						
 					}"
-			>
+						>
 							<li>
 								<div
 									class="grid max-w-375 grid-cols-[240px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
@@ -340,12 +340,11 @@
 						this.error = null;
 
 						try {
-							
-				const module = await import('../../../json/db.json', {
-					with: { type: 'json' },
-				});
+							const module = await import('../../../json/db.json', {
+								with: { type: 'json' },
+							});
 
-				const data = module.default;
+							const data = module.default;
 							const payload = data?.['tour-destinations']?.data ?? {};
 							this.items = payload?.items ?? [];
 

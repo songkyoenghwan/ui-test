@@ -35,5 +35,4 @@ export default defineConfig({
 
 	output: 'server',
 	site: 'https://songkyoenghwan.github.io/',
-	base: '/ui-test',
 });
