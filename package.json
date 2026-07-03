@@ -7,7 +7,6 @@
 		"apps/tour"
 	],
 	"scripts": {
-		"build:all": "bash deploy.sh",
 		"build": "bun run --filter \"*\" build",
 		"dev": "bun run --filter \"*\" dev",
 		"wc": "bun run fm && bun run --filter \"*\" wc",

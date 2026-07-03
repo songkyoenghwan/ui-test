@@ -14,8 +14,8 @@
 
 <script lang="ts">
 	import { langStore } from '@/stores/langStore';
-	import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 	import type { LocalizedText } from '@/types/common/locale';
+	import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 	import type { PagePropsInput } from '@/types/page/page.type';
 	import { untrack } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
