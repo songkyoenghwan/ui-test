@@ -24,8 +24,8 @@
 		dayOfWeek: number | null;
 		openingTime: string;
 		closingTime: string;
-		restStart?: string;
-		restEnd?: string;
+		breakStartTime?: string;
+		breakEndTime?: string;
 	};
 
 	type UiScheduleGroup = {
@@ -33,8 +33,8 @@
 		dayOfWeeks: number[];
 		openingTime: string;
 		closingTime: string;
-		restStart: string;
-		restEnd: string;
+		breakStartTime: string;
+		breakEndTime: string;
 	};
 
 	type Status = 'always' | 'week';
@@ -89,9 +89,9 @@
 			id: uuidv4(),
 			dayOfWeeks: [],
 			openingTime: '00:00',
-			closingTime: '24:00',
-			restStart: '00:00',
-			restEnd: '24',
+			closingTime: '01:00',
+			breakStartTime: '00:00',
+			breakEndTime: '01:00',
 			...partial,
 		};
 	}
@@ -105,9 +105,9 @@
 			return {
 				dayOfWeek: item.dayOfWeek ?? null,
 				openingTime: item.openingTime ?? '00:00',
-				closingTime: item.closingTime ?? '24:00',
-				restStart: item.restStart ?? '00:00',
-				restEnd: item.restEnd ?? '24:00',
+				closingTime: item.closingTime ?? '01:00',
+				breakStartTime: item.breakStartTime ?? '00:00',
+				breakEndTime: item.breakEndTime ?? '01:00',
 			};
 		});
 	}
@@ -119,8 +119,8 @@
 					return (a.dayOfWeek ?? -1) - (b.dayOfWeek ?? -1);
 				}
 
-				const aKey = `${a.openingTime}|${a.closingTime}|${a.restStart}|${a.restEnd}`;
-				const bKey = `${b.openingTime}|${b.closingTime}|${b.restStart}|${b.restEnd}`;
+				const aKey = `${a.openingTime}|${a.closingTime}|${a.breakStartTime}|${a.breakEndTime}`;
+				const bKey = `${b.openingTime}|${b.closingTime}|${b.breakStartTime}|${b.breakEndTime}`;
 				return aKey.localeCompare(bKey);
 			}),
 		);
@@ -136,21 +136,19 @@
 		for (const raw of items) {
 			const item = raw as ApiSchedule;
 
-			const key = [
-				item.openingTime ?? '00:00',
-				item.closingTime ?? '24',
-				item.restStart ?? '00:00',
-				item.restEnd ?? '24:00',
-			].join('|');
+			const breakStartTime = item.breakStartTime ?? '00:00';
+			const breakEndTime = item.breakEndTime ?? '01:00';
+
+			const key = [item.openingTime ?? '00:00', item.closingTime ?? '00:00', breakStartTime, breakEndTime].join('|');
 
 			if (!grouped.has(key)) {
 				grouped.set(
 					key,
 					createGroup({
 						openingTime: item.openingTime ?? '00:00',
-						closingTime: item.closingTime ?? '24:00',
-						restStart: item.restStart ?? '00:00',
-						restEnd: item.restEnd ?? '24:00',
+						closingTime: item.closingTime ?? '01',
+						breakStartTime,
+						breakEndTime,
 					}),
 				);
 			}
@@ -171,8 +169,8 @@
 				dayOfWeek,
 				openingTime: alwaysGroup.openingTime,
 				closingTime: alwaysGroup.closingTime,
-				restStart: alwaysGroup.restStart,
-				restEnd: alwaysGroup.restEnd,
+				breakStartTime: alwaysGroup.breakStartTime ? alwaysGroup.breakStartTime : '',
+				breakEndTime: alwaysGroup.breakEndTime ? alwaysGroup.breakEndTime : '',
 			}));
 		}
 
@@ -183,8 +181,8 @@
 					dayOfWeek,
 					openingTime: group.openingTime,
 					closingTime: group.closingTime,
-					restStart: group.restStart,
-					restEnd: group.restEnd,
+					breakStartTime: group.breakStartTime ? group.breakStartTime : '',
+					breakEndTime: group.breakEndTime ? group.breakEndTime : '',
 				})),
 		);
 	}
@@ -242,8 +240,8 @@
 		const remainingDays = dayWeekList.map((item) => item.name).filter((day) => !usedDays.has(day));
 		if (remainingDays.length === 0) return;
 
-		cols = [
-			...cols,
+		weekCols = [
+			...weekCols,
 			createGroup({
 				dayOfWeeks: [remainingDays[0]],
 			}),
@@ -254,7 +252,7 @@
 
 	function removeGroup(index: number) {
 		const next = cols.filter((_, i) => i !== index);
-		cols = next.length > 0 ? next : [createGroup()];
+		weekCols = next.length > 0 ? next : [createGroup()];
 		emitResult();
 	}
 
@@ -312,6 +310,62 @@
 		const group = cols[index];
 		if (!group) return false;
 		return hasInvalidTime(group);
+	}
+
+	function toggleRestTime(id: string, enabled: boolean) {
+		if (status === 'always') {
+			if (alwaysGroup.id !== id) return;
+
+			alwaysGroup = {
+				...alwaysGroup,
+				breakStartTime: enabled ? alwaysGroup.breakStartTime || '00:00' : '',
+				breakEndTime: enabled ? alwaysGroup.breakEndTime || '01:00' : '',
+			};
+		} else {
+			weekCols = weekCols.map((group) =>
+				group.id === id
+					? {
+							...group,
+							breakStartTime: enabled ? group.breakStartTime || '00:00' : '',
+							breakEndTime: enabled ? group.breakEndTime || '01:00' : '',
+						}
+					: group,
+			);
+		}
+
+		emitResult();
+	}
+
+	function handleRestTimeChange(index: number, key: 'breakStartTime' | 'breakEndTime', value: string) {
+		if (status === 'always') {
+			alwaysGroup = {
+				...alwaysGroup,
+				[key]: value,
+			};
+		} else {
+			const current = weekCols[index];
+			if (!current) return;
+
+			weekCols[index] = {
+				...current,
+				[key]: value,
+			};
+
+			weekCols = [...weekCols];
+		}
+
+		emitResult();
+	}
+
+	function hasInvalidRestTime(group: UiScheduleGroup) {
+		if (!group.breakStartTime) return false;
+		return timeToMinutes(group.breakStartTime) >= timeToMinutes(group.breakEndTime);
+	}
+
+	function hasRowRestTimeError(index: number) {
+		const group = cols[index];
+		if (!group) return false;
+		return hasInvalidRestTime(group);
 	}
 
 	$effect(() => {
@@ -380,17 +434,17 @@
 				{#if status === 'always'}
 					{#if i === 0}
 						<li class="relative left-0 flex flex-col gap-2 pt-2 opacity-100 transition-all first:pt-0">
-							<div class="inline-flex w-full items-center gap-2">
+							<div class="inline-flex w-full items-center gap-0.5">
 								<TimeScrollPicker
 									bind:value={cols[i].openingTime}
 									onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
-									cls={hasRowTimeError(i) ? 'error' : ''}
+									cls={hasRowTimeError(i) ? 'error w-25' : 'w-25'}
 								/>
 								<span>~</span>
 								<TimeScrollPicker
 									bind:value={cols[i].closingTime}
 									onValueChange={(value: string) => handleTimeChange(0, 'closingTime', value)}
-									cls={hasRowTimeError(i) ? 'error' : ''}
+									cls={hasRowTimeError(i) ? 'error w-25' : 'w-25'}
 								/>
 							</div>
 
@@ -435,21 +489,61 @@
 							{/if}
 						</div>
 
-						<div class="relative z-5 inline-flex w-full items-center gap-2">
-							<TimeScrollPicker
-								bind:value={cols[i].openingTime}
-								onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
-								cls={hasRowTimeError(i) ? 'error' : ''}
-							/>
-							<span>~</span>
-							<TimeScrollPicker
-								bind:value={cols[i].closingTime}
-								onValueChange={(value: string) => handleTimeChange(i, 'closingTime', value)}
-								cls={hasRowTimeError(i) ? 'error' : ''}
-							/>
+						<div class="relative z-5 inline-flex w-full items-center gap-4">
+							<div class="flex items-center gap-0.5">
+								<TimeScrollPicker
+									bind:value={cols[i].openingTime}
+									onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
+									cls={hasRowTimeError(i) ? 'error w-22' : ' w-22'}
+								/>
+								<span>~</span>
+								<TimeScrollPicker
+									bind:value={cols[i].closingTime}
+									onValueChange={(value: string) => handleTimeChange(i, 'closingTime', value)}
+									cls={hasRowTimeError(i) ? 'error w-22' : ' w-22'}
+								/>
+							</div>
+
+							{#if rest === 'on'}
+								{#if group.breakStartTime}
+									<dl class="flex items-center gap-0.5">
+										<dt class="pr-1.5 text-xs text-slate-600">휴게 시간</dt>
+										<dd class="inline-flex items-center gap-2">
+											<TimeScrollPicker
+												bind:value={group.breakStartTime}
+												onValueChange={(value: string) =>
+													handleRestTimeChange(i, 'breakStartTime', value)}
+												cls={hasRowRestTimeError(i) ? 'error w-22' : ' w-22'}
+											/>
+											<span>~</span>
+											<TimeScrollPicker
+												bind:value={group.breakEndTime}
+												onValueChange={(value: string) => handleRestTimeChange(i, 'breakEndTime', value)}
+												cls={hasRowRestTimeError(i) ? 'error w-22' : ' w-22'}
+											/>
+											<UiBtn
+												tag="button"
+												variant="icon"
+												txt="삭제"
+												iconName="btn-del"
+												cls="size-7 flex-[0_0_28px] stroke-error fill-error"
+												click={() => toggleRestTime(String(group.id), false)}
+											/>
+										</dd>
+									</dl>
+								{:else}
+									<UiBtn
+										tag="button"
+										variant="ghost"
+										txt="휴게 시간"
+										cls="min-w-7 flex-[0_0_75px]"
+										click={() => toggleRestTime(String(group.id), true)}
+									/>
+								{/if}
+							{/if}
 						</div>
 
-						{#if timeError || hasRowTimeError(i)}
+						{#if timeError || hasRowTimeError(i) || hasRowRestTimeError(i)}
 							<ui-txt size="sm" txt="시작 시간이 종료 시간보다 앞서야 합니다." cls="text-error"></ui-txt>
 						{/if}
 					</li>
