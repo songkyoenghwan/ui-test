@@ -674,7 +674,64 @@
 							"id": 2
 						}
 					],
-					"facilityHolidaySchedules": [],
+					"facilityHolidaySchedules": [
+						{
+							"dayOfWeek": 1,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 13,
+							"weekOfMonth": 1
+						},
+						{
+							"dayOfWeek": 1,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 14,
+							"weekOfMonth": 2
+						},
+						{
+							"dayOfWeek": 1,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 15,
+							"weekOfMonth": 3
+						},
+						{
+							"dayOfWeek": 1,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 17,
+							"weekOfMonth": 5
+						},
+						{
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 13,
+							"weekOfMonth": 1
+						},
+						{
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 14,
+							"weekOfMonth": 2
+						},
+						{
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 15,
+							"weekOfMonth": 3
+						},
+						{
+							"dayOfWeek": 2,
+							"fixedHoliday": null,
+							"holidayType": 1,
+							"id": 17,
+							"weekOfMonth": 5
+						}
+					],
 					"facilityOperatingSchedules": [
 						{
 							"closingTime": "1800",

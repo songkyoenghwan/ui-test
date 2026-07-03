@@ -367,15 +367,10 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 								</div>
 							</div>
 
-							<div class="flex items-center gap-2">
-								<ui-txt size="xs" txt="정기 휴무"></ui-txt>
-								<ui-txt size="xs" txt="없음"></ui-txt>
-							</div>
-
 							<div class="flex gap-2">
 								<ui-txt size="xs" txt="운영 기간"></ui-txt>
 
-								<ui-txt size="xs" txt="없음"></ui-txt>
+								<!-- <ui-txt size="xs" txt="없음"></ui-txt>
 								<ul>
 									<li class="grid grid-cols-[40px_1fr] gap-2">
 										<ui-txt size="xs" cls="text-cms-3" txt="월"></ui-txt>
@@ -384,7 +379,20 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 											<ui-txt size="xs" cls="text-3e61ff" txt="14:00 ~ 15:00 휴게시간"></ui-txt>
 										</div>
 									</li>
-								</ul>
+								</ul> -->
+
+								<operating-hours
+									rest="off"
+									view="detail"
+									:result="JSON.stringify($store.data?.data.facilityOperatingSchedules?? [])"></operating-hours>
+							</div>
+
+							<div class="flex items-center gap-2">
+								<ui-txt size="xs" txt="정기 휴무"></ui-txt>
+								<closing-day
+									view="detail"
+									x-bind:result="JSON.stringify($store.data?.data.facilityHolidaySchedules ?? [])"
+								></closing-day>
 							</div>
 						</li>
 						<li class="space-y-2 px-5 py-3">
@@ -448,7 +456,8 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						this.items = payload.items;
 						this.data = payload.items[0];
 
-						console.log(this.data);
+						console.log(this.data?.facilityOperatingSchedules);
+						console.log(this.data?.facilityHolidaySchedules);
 					} catch (error) {
 						this.error = error.message ?? 'Unknown error';
 						console.error('초기 데이터 설정 실패:', error);

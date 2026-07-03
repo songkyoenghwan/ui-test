@@ -299,6 +299,8 @@
 			result = totalSnap;
 		});
 	});
+
+	$inspect(result);
 </script>
 
 {#if view === 'detail'}
