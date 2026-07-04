@@ -773,13 +773,13 @@
 					],
 					"facilityVpsPopups": [
 						{
-							"description": null,
-							"fileMimeType": null,
-							"fileOriginalName": null,
-							"fileSize": null,
-							"fileUploadName": null,
-							"fileUploadPath": null,
-							"fileUrl": null,
+							"description": "XR ContentsContents Contents",
+							"fileMimeType": "image/png",
+							"fileOriginalName": "ìë´ì.png",
+							"fileSize": 3527,
+							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+							"fileUploadPath": "images/categories/2026/06/02",
+							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
 							"id": 1,
 							"name": {
 								"en": "XR Contents",
@@ -907,7 +907,7 @@
 							"dayOfWeek": 2,
 							"facilityBreakSchedules": [],
 							"id": 7,
-							"openingTime": "09:00"
+							"openingTime": "09:30"
 						},
 						{
 							"closingTime": "18:00",
@@ -918,20 +918,13 @@
 						},
 						{
 							"closingTime": "18:00",
-							"dayOfWeek": 4,
-							"facilityBreakSchedules": [],
-							"id": 9,
-							"openingTime": "09:00"
-						},
-						{
-							"closingTime": "18:00",
 							"dayOfWeek": 5,
 							"facilityBreakSchedules": [],
 							"id": 10,
 							"openingTime": "09:00"
 						},
 						{
-							"closingTime": "18:00",
+							"closingTime": "18:50",
 							"dayOfWeek": 6,
 							"facilityBreakSchedules": [],
 							"id": 11,
@@ -1023,7 +1016,7 @@
 							"dayOfWeek": 0,
 							"facilityBreakSchedules": [],
 							"id": 6,
-							"openingTime": "09:00"
+							"openingTime": "09:10"
 						},
 						{
 							"closingTime": "18:00",
@@ -1041,13 +1034,6 @@
 						},
 						{
 							"closingTime": "18:00",
-							"dayOfWeek": 4,
-							"facilityBreakSchedules": [],
-							"id": 9,
-							"openingTime": "09:00"
-						},
-						{
-							"closingTime": "18:00",
 							"dayOfWeek": 5,
 							"facilityBreakSchedules": [],
 							"id": 10,
@@ -1058,7 +1044,7 @@
 							"dayOfWeek": 6,
 							"facilityBreakSchedules": [],
 							"id": 11,
-							"openingTime": "09:00"
+							"openingTime": "09:30"
 						}
 					],
 					"facilityPoiMappings": [
@@ -1090,7 +1076,11 @@
 					"updatedAt": "2026-06-01T16:22:02.994Z",
 					"updatedBy": 1
 				}
-			]
+			],
+			"page": 1,
+			"pageSize": 10,
+			"totalCount": 40,
+			"totalPages": 40
 		},
 		"success": true
 	},
@@ -1409,7 +1399,7 @@
 							"closingTime": "18:00",
 							"dayOfWeek": 0,
 							"id": 6,
-							"openingTime": "09:00"
+							"openingTime": "10:00"
 						},
 						{
 							"closingTime": "18:00",
@@ -1439,7 +1429,7 @@
 							"closingTime": "18:00",
 							"dayOfWeek": 6,
 							"id": 11,
-							"openingTime": "09:00"
+							"openingTime": "09:10"
 						}
 					],
 					"updatedAt": "2026-05-22T05:17:29.941Z"

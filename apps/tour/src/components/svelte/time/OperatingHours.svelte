@@ -420,9 +420,9 @@
 			</div>
 		{/if}
 	{:else}
-		<ul class="space-y-2">
+		<ul class="space-y-1">
 			{#each cols as item (item.id)}
-				<li class={['grid items-center', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[120px_1fr]']}>
+				<li class={['grid', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[120px_1fr] items-center']}>
 					<ui-txt
 						size={view === 'side' ? 'xs text-cms-3' : 'sm'}
 						cls="text-black"

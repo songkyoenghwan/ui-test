@@ -5,7 +5,8 @@
 		props: {
 			img: { type: 'String' },
 			thumbFiles: { type: 'Array' },
-			thumbFilesValue: { type: 'Array' },
+			size: { type: 'String' },
+			cls: { type: 'String' },
 		},
 	}}
 />
@@ -27,24 +28,24 @@
 	let {
 		img = $bindable(),
 		thumbFiles = $bindable(),
-		thumbFilesValue = $bindable(),
-	}: { img: string; thumbFiles: FacilityFile[]; thumbFilesValue: FacilityFile[] } = $props();
+		size = '',
+		cls = '',
+	}: { img: string; thumbFiles: FacilityFile[]; size: string; cls: string } = $props();
 	let filesInDropzone: FileList | null = $state(null);
-	let previewUrl = $state('');
 	let errorMessage = $state('');
 	const MAX_FILE_SIZE = 2 * 1024 * 1024;
+	let localPreviewUrl = $state('');
 
-	$effect(() => {
-		if (filesInDropzone && filesInDropzone.length > 0) {
-			const file = filesInDropzone[0];
-			const url = URL.createObjectURL(file);
-			previewUrl = url;
+	const previewUrl = $derived(localPreviewUrl || img || thumbFiles?.[0]?.fileUrl || '');
 
-			return () => URL.revokeObjectURL(url);
-		} else {
-			previewUrl = thumbFiles?.[0]?.fileUrl ?? img ?? '';
-		}
-	});
+	function clearFile(input?: HTMLInputElement) {
+		filesInDropzone = null;
+		localPreviewUrl = '';
+		thumbFiles = [];
+		img = '';
+		errorMessage = '';
+		if (input) input.value = '';
+	}
 
 	function handleOnChange(event: Event) {
 		const target = event.target as HTMLInputElement;
@@ -54,16 +55,15 @@
 
 			if (file.size > MAX_FILE_SIZE) {
 				errorMessage = '파일 크기가 2MB를 초과했습니다.';
-				filesInDropzone = null;
-				target.value = ''; // 브라우저 자체 인풋 캐시 초기화
+				clearFile(target);
 				return;
 			}
 
-			// 용량 통과 시
 			errorMessage = '';
 			filesInDropzone = target.files;
 			const url = URL.createObjectURL(file);
-			img = url; // 로컬 미리보기
+			localPreviewUrl = url;
+			img = url;
 
 			thumbFiles = [
 				{
@@ -87,15 +87,15 @@
 
 			if (file.size > MAX_FILE_SIZE) {
 				errorMessage = '파일 크기가 2MB를 초과했습니다.';
-				filesInDropzone = null;
+				clearFile();
 				return;
 			}
 
-			// 용량 통과 시
 			errorMessage = '';
 			filesInDropzone = event.dataTransfer.files;
 			const url = URL.createObjectURL(file);
-			img = url; // 로컬 미리보기
+			localPreviewUrl = url;
+			img = url;
 
 			thumbFiles = [
 				{
@@ -112,10 +112,10 @@
 	}
 
 	$effect(() => {
-		const payload = $state.snapshot(thumbFiles);
+		const url = localPreviewUrl;
+		if (!url) return;
 
-		if (!Array.isArray(payload)) return;
-		thumbFilesValue = payload;
+		return () => URL.revokeObjectURL(url);
 	});
 </script>
 
@@ -125,62 +125,38 @@
 	onChange={handleOnChange}
 	onDrop={handleOnDrop}
 	accept=".png"
-	class="relative size-22.5"
+	class="relative {cls ? cls : 'size-22.5'}"
 >
-	{#if filesInDropzone && filesInDropzone.length > 0}
+	{#if (filesInDropzone && filesInDropzone.length > 0) || previewUrl}
 		<div class="flex flex-col items-center gap-2">
 			<picture
 				class="flex size-22.5 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
-				aria-label={filesInDropzone[0].name}
+				aria-label={previewUrl}
 			>
 				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
 			</picture>
 
 			<button
 				type="button"
-				class="bg-f5f5f5 absolute top-2 right-2 size-5 rounded-sm transition-all hover:scale-105"
-				onclick={() => {
-					filesInDropzone = null;
-					previewUrl = '';
-					thumbFiles = [];
-					thumbFilesValue = [];
-				}}
+				class="border-error absolute top-2 right-2 size-5 rounded-sm border bg-white transition-all hover:scale-105"
+				onclick={() => clearFile()}
 			>
 				<span class="sr-only">Clear File</span>
-				<icon-list data-name="btn-del" class="icon size-8 fill-slate-500"></icon-list>
-			</button>
-		</div>
-	{:else if previewUrl}
-		<div class="flex flex-col items-center gap-2">
-			<picture
-				class="flex size-22.5 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
-				aria-label="기존 이미지"
-			>
-				<img src={previewUrl} alt="기존 PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
-			</picture>
-
-			<button
-				type="button"
-				class="bg-f5f5f5 absolute top-2 right-2 size-5 rounded-sm transition-all hover:scale-105"
-				onclick={() => {
-					filesInDropzone = null;
-					previewUrl = '';
-					thumbFiles = [];
-					thumbFilesValue = [];
-					img = '';
-				}}
-			>
-				<span class="sr-only">Clear File</span>
-				<icon-list data-name="btn-del" class="icon size-8 fill-slate-500"></icon-list>
+				<icon-list data-name="btn-del" class="icon fill-error size-4"></icon-list>
 			</button>
 		</div>
 	{:else}
 		<icon-list data-name="gallery" class="icon size-5 fill-slate-500"></icon-list>
-		<p class="mt-1 text-center text-xs text-slate-600">드래그 혹은 클릭</p>
-		<p class="mt-0.5 text-center text-[10px] text-slate-500">
-			JPG, PNG
-			<br />
-			최대 2MB 1:1 비율
-		</p>
+		{#if size === 'full'}
+			<p class="mt-1 text-center text-xs text-slate-600">이미지를 드래그하거나 클릭하여 업로드</p>
+			<p class="mt-0.5 text-center text-[10px] text-slate-500">JPG, PNG / 최대 2MB / 1:1 비율 권장</p>
+		{:else}
+			<p class="mt-1 text-center text-xs text-slate-600">드래그 혹은 클릭</p>
+			<p class="mt-0.5 text-center text-[10px] text-slate-500">
+				JPG, PNG
+				<br />
+				최대 2MB 1:1 비율
+			</p>
+		{/if}
 	{/if}
 </Dropzone>

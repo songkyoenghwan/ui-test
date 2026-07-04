@@ -1,6 +1,6 @@
 <svelte:options
 	customElement={{
-		tag: 'hover-tooltip',
+		tag: 'content-tooltip',
 		shadow: 'none',
 		props: {
 			btn: { type: 'String', reflect: true },
@@ -17,7 +17,6 @@
 	import { Button, Tooltip } from 'flowbite-svelte';
 	import { blur, scale, slide } from 'svelte/transition';
 	import * as z from 'zod';
-	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
 
 	export const TooltipAnimationSchema = z.enum(['blur', 'slide', 'scale', 'none']);
 	type TooltipAnimation = z.infer<typeof TooltipAnimationSchema>;
@@ -47,9 +46,11 @@
 	let formattedTxt = $derived(txt.replace(/\\n/g, '\n'));
 </script>
 
-<Button class="gap-2 bg-transparent p-0 text-left text-[10px] font-normal tracking-tight text-slate-500 hover:bg-transparent">
-	{btn}
-	<icon-list data-name="tooltip" class="icon flex size-2.5 fill-slate-400"></icon-list>
-</Button>
-
-<ContentTooltip {bg} placement={place} txt={formattedTxt} />
+<Tooltip
+	class="{bg} rounded-sm px-3 py-2 text-xs whitespace-pre-line"
+	transition={activeTransition()}
+	placement={place}
+	transitionParams={{ duration: 100 }}
+>
+	{@html formattedTxt}
+</Tooltip>

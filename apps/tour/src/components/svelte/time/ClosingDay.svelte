@@ -303,17 +303,19 @@
 
 {#if view === 'detail' || view === 'side'}
 	{#if status === 'none'}
-		<ui-txt size={view === 'side' ? 'xs' : 'sm'} txt="없음" cls="text-black"></ui-txt>
+		<ui-txt size={view === 'side' ? 'xs' : 'sm'} txt="없음" cls="text-black leading-tight"></ui-txt>
 	{/if}
 
 	{#if status === 'week'}
 		{#if weekArr.length > 0}
-			<p class={['inline-flex items-center gap-2', view === 'side' ? 'text-xs' : 'text-sm']}>{@html closingText}</p>
+			<p class={['inline-flex flex-wrap items-center gap-x-2 leading-tight', view === 'side' ? 'text-xs' : 'text-sm']}>
+				{@html closingText}
+			</p>
 		{/if}
 	{/if}
 
 	{#if status === 'day'}
-		<ui-txt size={view === 'side' ? 'xs' : 'sm'} txt={`매달 ${day}일`} cls="text-black"></ui-txt>
+		<ui-txt size={view === 'side' ? 'xs' : 'sm'} txt={`매달 ${day}일`} cls="text-black leading-tight"></ui-txt>
 	{/if}
 {:else}
 	<div class="inline-flex flex-col gap-2">

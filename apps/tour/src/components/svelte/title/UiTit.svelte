@@ -69,9 +69,9 @@
 	<p class="sub">{sub}</p>
 {/if}
 
-{#if tip && tooltip}
-	<div class="flex items-center pt-1">
-		<HoverTooltip btn={tip} txt={tooltip} />
+{#if tooltip}
+	<div class="flex items-center">
+		<HoverTooltip btn={tip ?? ''} txt={tooltip} />
 	</div>
 {/if}
 

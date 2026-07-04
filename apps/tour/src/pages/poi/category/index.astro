@@ -1,0 +1,162 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import CategorySide from '@/pages/poi/category/CategorySide.astro';
+---
+
+<LayoutBasic>
+	<div class="flex w-[calc(100dvw-80px)] flex-1 gap-5 p-5">
+		<CategorySide />
+		<section class="inline-flex min-w-xl flex-1 flex-col gap-3">
+			<div class="shadow-1xs inline-grid grid-cols-2 gap-5 rounded-lg bg-white px-5 py-4">
+				<div class="col-span-2 grid grid-cols-[90px_1fr] gap-4">
+					<ui-tit
+						tag="h4"
+						tit="카테고리명"
+						tip="6 자 이내 권장"
+						tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 15자)"></ui-tit>
+					<lang-translate data-max-length="15"> </lang-translate>
+				</div>
+
+				<div class="col-span-1 grid grid-cols-[60px_1fr] gap-4">
+					<ui-tit cls="justify-end" tag="h4" tit="아이콘"></ui-tit>
+					<ul class="flex flex-wrap gap-2">
+						<template x-for="icon in $store.data.icons" :key="icon">
+							<li>
+								<label
+									class="has-checked:border-cms-3 has-checked:bg-secondary grid size-8 cursor-pointer place-content-center gap-2 rounded-sm border border-slate-200 bg-slate-50 has-checked:border"
+								>
+									<input type="checkbox" :value="icon" x-model="$store.data.icon" class="peer sr-only" />
+									<icon-list
+										x-bind:data-name="icon"
+										class="icon peer-checked:fill-cms-3 peer-checked:stroke-cms-3 size-7 fill-slate-500 stroke-slate-500 transition-all"
+									></icon-list>
+								</label>
+							</li>
+						</template>
+					</ul>
+				</div>
+
+				<div class="col-span-1 inline-grid grid-cols-[60px_1fr] gap-4">
+					<ui-tit cls="justify-end" tag="h4" tit="색상"></ui-tit>
+					<ul class="flex flex-wrap gap-2">
+						<template x-for="color in $store.data.colors" :key="color">
+							<li>
+								<label
+									class="has-checked:border-cms-3! has-checked:bg-secondary grid size-8 cursor-pointer place-items-center rounded-full border-2 border-transparent"
+									:style="`border-color: var(--color-poi-outline-${color});`"
+								>
+									<input type="checkbox" :value="color" x-model="$store.data.color" class="peer sr-only" />
+									<span class="size-full rounded-full" :style="`background-color: var(--color-poi-${color});`">
+									</span>
+								</label>
+							</li>
+						</template>
+					</ul>
+				</div>
+			</div>
+
+			<div class="shadow-1xs inline-grid grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
+				<div>
+					<ui-tit
+						class="flex items-center gap-2"
+						tag="h4"
+						tit="이벤트 카테고리"
+						tooltip="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-tit>
+					<ui-txt size="xs" txt="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-txt>
+				</div>
+				<label for="toggle-chk-1" class="toggle-chk">
+					<input type="checkbox" id="toggle-chk-1" class="peer sr-only" aria-label="toggle checkbox" />
+				</label>
+			</div>
+
+			<div class="flex items-center gap-3">
+				<div class="shadow-1xs inline-grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
+					<div>
+						<ui-tit class="flex items-center gap-2" tag="h4" tit="AI 추천 설정"></ui-tit>
+						<ui-txt size="xs" txt="AI 시설 추천 결과에 이 카테고리 시설을 포함합니다"></ui-txt>
+					</div>
+					<label for="toggle-chk-2" class="toggle-chk">
+						<input type="checkbox" id="toggle-chk-2" class="peer sr-only" aria-label="toggle checkbox" />
+					</label>
+				</div>
+
+				<div class="shadow-1xs inline-grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
+					<div>
+						<ui-tit class="flex items-center gap-2" tag="h4" tit="차량 내비게이션 제공"></ui-tit>
+						<ui-txt size="xs" txt="외부 내비게이션 앱과 연동하여 이 카테고리 시설까지 길안내를 제공합니다."></ui-txt>
+					</div>
+					<label for="toggle-chk-3" class="toggle-chk">
+						<input type="checkbox" id="toggle-chk-3" class="peer sr-only" aria-label="toggle checkbox" />
+					</label>
+				</div>
+			</div>
+
+			<div class="shadow-1xs inline-grid grid-cols-1 items-center gap-5 rounded-lg bg-white px-5 py-4">
+				<div>
+					<ui-tit class="flex items-center gap-2" tag="h4" tit="썸네일 이미지" req></ui-tit>
+					<ui-txt size="xs" txt="이 카테고리 시설에 썸네일이 없을 때 표시되는 기본 이미지입니다."></ui-txt>
+				</div>
+				<thumbnail-upload cls="flex w-full h-20 has-[img]:size-20" size="full"></thumbnail-upload>
+			</div>
+		</section>
+	</div>
+</LayoutBasic>
+
+<script defer>
+	document.addEventListener('alpine:init', () => {
+		if (Alpine.store('data')) return;
+
+		Alpine.store('data', {
+			loading: false,
+			error: null,
+			itemId: '',
+			icons: [
+				'location',
+				'binoculars',
+				'ticket',
+				'information',
+				'coffee',
+				'food',
+				'meat',
+				'fish',
+				'apple',
+				'shopping',
+				'three',
+				'flag',
+				'smoking',
+				'stroller',
+				'medical',
+				'toilet',
+				'wheelchair',
+				'parking',
+				'etc',
+			],
+			icon: ['location'],
+			colors: Array.from({ length: 12 }, (_, i) => i + 1),
+			color: [1],
+
+			init() {
+				console.log('store init', this.icon);
+
+				Alpine.effect(() => {
+					console.log('icon:', [...this.icon], 'color:', [...this.color]);
+				});
+			},
+
+			setIcon(list) {
+				this.icon = list;
+			},
+
+			setColor(list) {
+				this.color = list;
+			},
+		});
+	});
+
+	document.addEventListener('DOMContentLoaded', () => {
+		Alpine.effect(() => {
+			const { icon, color } = Alpine.store('data');
+			console.log('icon:', [...icon], 'color:', [...color]);
+		});
+	});
+</script>

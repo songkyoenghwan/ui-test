@@ -8,6 +8,8 @@
 	"tabWidth": 4,
 	"useTabs": true,
 	"trailingComma": "all",
+	"embeddedLanguageFormatting": "auto",
+	"singleAttributePerLine": false,
 	"plugins": [
 		"@prettier/plugin-oxc",
 		"prettier-plugin-astro",

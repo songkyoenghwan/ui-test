@@ -91,7 +91,7 @@
 				}}
 			>
 				<span class="sr-only">Clear File</span>
-				<icon-list data-name="btn-del" class="icon size-8 fill-slate-500"></icon-list>
+				<icon-list data-name="btn-del" class="icon size-5 fill-slate-500"></icon-list>
 			</button>
 		</div>
 	{:else if previewUrl}
@@ -114,11 +114,11 @@
 				}}
 			>
 				<span class="sr-only">Clear File</span>
-				<icon-list data-name="btn-del" class="icon size-8 fill-slate-500"></icon-list>
+				<icon-list data-name="btn-del" class="icon size-5 fill-slate-500"></icon-list>
 			</button>
 		</div>
 	{:else}
-		<icon-list data-name="gallery" class="icon size-8 fill-slate-500"></icon-list>
+		<icon-list data-name="gallery" class="icon size-5 fill-slate-500"></icon-list>
 		<p class="mt-2 text-center text-slate-600">
 			16×16px
 			<br />

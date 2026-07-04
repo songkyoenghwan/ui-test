@@ -119,6 +119,32 @@
 	--color-slate-900: #0f172b;
 	--color-slate-950: #020618;
 
+	--color-ff5151: #ff5151;
+	--color-ff983d: #ff983d;
+	--color-ffe345: #ffe345;
+	--color-5de251: #5de251;
+	--color-23b63c: #23b63c;
+	--color-72d4ea: #72d4ea;
+	--color-267cd1: #267cd1;
+	--color-7562ee: #7562ee;
+	--color-ba66ef: #ba66ef;
+	--color-f29ad5: #f29ad5;
+	--color-965829: #965829;
+	--color-676767: #676767;
+
+	--color-poi-1: #ff5151;
+	--color-poi-2: #ff983d;
+	--color-poi-3: #ffe345;
+	--color-poi-4: #5de251;
+	--color-poi-5: #23b63c;
+	--color-poi-6: #72d4ea;
+	--color-poi-7: #267cd1;
+	--color-poi-8: #7562ee;
+	--color-poi-9: #ba66ef;
+	--color-poi-10: #f29ad5;
+	--color-poi-11: #965829;
+	--color-poi-12: #676767;
+
 	--spacing-input: var(--spacing-input);
 
 	--font-sans: var(--font-sans);
@@ -354,7 +380,7 @@
 	}
 
 	.main-container {
-		@apply relative flex size-full flex-col overflow-auto scroll-smooth has-data-[map=init]:overflow-clip;
+		@apply relative flex size-full h-full flex-col overflow-auto scroll-smooth has-data-[map=init]:overflow-clip;
 	}
 
 	.button {
@@ -436,7 +462,7 @@
 	}
 
 	.icon {
-		@apply flex-none;
+		@apply inline-flex flex-none;
 	}
 
 	.label {
@@ -583,6 +609,10 @@
 		}
 	} */
 
+	.toggle-chk {
+		@apply has-checked:bg-cms-3 flex h-5 w-9 items-center rounded-full bg-slate-200 p-0.75 transition-all before:size-3.5 before:rounded-full before:bg-white before:transition-transform before:duration-200 before:content-[''] has-checked:before:translate-x-4 has-disabled:before:bg-slate-400/50;
+	}
+
 	.tab {
 		.tab-list {
 			@apply flex items-end text-sm text-slate-500;
@@ -593,7 +623,7 @@
 		}
 
 		.tab-button {
-			@apply has-checked:before:bg-cms-2 has-checked:text-cms-2 relative isolate flex min-h-7.5 flex-1 items-center justify-center border-b border-b-slate-300 px-1.75 transition-all duration-150 before:w-0 before:origin-left before:transition-all before:transition-discrete has-checked:before:absolute has-checked:before:bottom-0 has-checked:before:h-0.75 has-checked:before:w-full before:starting:w-0;
+			@apply has-checked:before:bg-cms-2 has-checked:text-cms-2 relative isolate flex min-h-7.5 flex-1 items-center justify-center border-b border-b-slate-300 px-1.75 duration-150 before:w-0 before:origin-left has-checked:before:absolute has-checked:before:bottom-0 has-checked:before:h-0.75 has-checked:before:w-full before:starting:w-0;
 		}
 
 		.tab-content {
@@ -621,7 +651,7 @@
 		@apply inline-grid w-full max-w-[calc(100dvw-130px)] overflow-auto;
 
 		table {
-			@apply table-fixed leading-tight whitespace-nowrap;
+			@apply table-fixed border-b border-slate-300 leading-tight whitespace-nowrap;
 		}
 
 		thead {
@@ -635,8 +665,12 @@
 		}
 
 		tbody {
-			& > tr {
-				@apply rounded-sm border-b border-slate-300;
+			& > tr + tr {
+				@apply aria-selected:border-cms-3 rounded-sm border-t border-slate-300 first:border-t-0;
+
+				&:first-child {
+					@apply border-t-0;
+				}
 			}
 
 			th,

@@ -12,6 +12,7 @@
 		"@prettier/plugin-oxc",
 		"prettier-plugin-astro",
 		"prettier-plugin-svelte",
+		"prettier-plugin-django-alpine",
 		"@ianvs/prettier-plugin-sort-imports",
 		"prettier-plugin-organize-attributes",
 		"prettier-plugin-css-order",

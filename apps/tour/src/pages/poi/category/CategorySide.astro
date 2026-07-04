@@ -1,0 +1,49 @@
+<section class="shadow-1xs flex h-full flex-[0_0_320px] flex-col rounded-sm bg-white" data-dom="sidebar">
+	<header class="grid flex-none grid-cols-[1fr_60px] items-center gap-3 px-5 pt-5 pb-3">
+		<ui-tit
+			class="col-span-1 flex items-center gap-2"
+			size="lg"
+			tit="카테고리"
+			tooltip="카테고리에 노출 설정된 시설이 있을 경우에만 <br/>사용자 화면에 표시됩니다."></ui-tit>
+		<div>
+			<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="primary" size="md" txt="추가"></ui-btn>
+		</div>
+		<text-badge
+			class="col-span-2"
+			variant="bg-secondary"
+			cls="text-[10px] w-full text-center"
+			icon="info-circle-outline"
+			txt="드래그로 항목 순서를 변경할 수 있으며, 즉시 적용됩니다."></text-badge>
+	</header>
+
+	<div class="flex-1 border-t border-t-slate-200">
+		<div class="grid grid-cols-2 items-center justify-between gap-3 px-5 pt-4 pb-2">
+			<ui-tit class="col-span-1 flex items-center gap-2" size="lg" tit="일반 카테고리"></ui-tit>
+			<div class="flex items-center justify-end gap-2">
+				<ui-txt cls="text-cms-5 font-bold" size="xs" txt="N"></ui-txt>
+				<ui-txt size="xs" txt="개"></ui-txt>
+			</div>
+		</div>
+		<ul class="space-y space-slate-200 flex h-full min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
+			<li class="flex items-center gap-2 px-5 py-3">
+				<button type="button" class="handle" aria-label="Drag handle">
+					<span class="sr-only">드래그</span>
+					<span class="flex w-4 justify-center">
+						<icon-list data-name="dnd" class="icon flex h-2.5 w-1.5 fill-slate-300"></icon-list>
+					</span>
+				</button>
+
+				<div class="flex flex-1 items-center justify-between">
+					<div>
+						<ui-txt cls="text-black" size="sm" txt="버튼명"></ui-txt>
+					</div>
+					<text-badge variant="primary" size="md" txt="Ai"></text-badge>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<footer class="flex-none p-5 text-center">
+		<ui-txt size="xs" txt="최대 12개까지 등록 가능합니다."></ui-txt>
+	</footer>
+</section>

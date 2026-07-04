@@ -11,7 +11,7 @@
 />
 
 <script lang="ts">
-	type Variant = 'primary' | 'success' | 'danger' | 'warning' | 'wating';
+	type Variant = 'primary' | 'success' | 'danger' | 'warning' | 'waiting';
 	interface Props {
 		variant?: Variant;
 		text?: string;
@@ -20,11 +20,11 @@
 	let { variant = 'success' as Variant, size = 'md' as Props['size'], text = '' } = $props();
 
 	const VARIANT_BG: Record<Variant, string> = {
-		primary: 'bg-primary text-white',
+		primary: 'bg-cms-3 text-white',
 		success: 'bg-edf6ee text-2f8b4c',
 		danger: 'bg-fcebeb text-eb4321',
 		warning: 'bg-fbf1d8 text-c58400',
-		wating: 'bg-gray-200 text-black',
+		waiting: 'bg-gray-200 text-black',
 	};
 	let variantBgClasses = $derived(VARIANT_BG[variant]);
 	let sizeClasses = $derived(

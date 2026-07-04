@@ -248,18 +248,16 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 			</div>
 		</section>
 
-		<div>
-			<paging-table
-				x-bind:data-page="$store.data.page"
-				x-bind:data-page-size="$store.data.pageSize"
-				x-bind:data-total-count="$store.data.totalCount"
-				x-bind:data-total-pages="$store.data.totalPages"
-				@btn-prev="console.log('prev', $event.detail); $store.data.prevView($event.detail)"
-				@btn-next="console.log('next', $event.detail); $store.data.nextView($event.detail)"
-				@btn-current="console.log('current', $event.detail); $store.data.currentView($event.detail.page)"
-			>
-			</paging-table>
-		</div>
+		<paging-table
+			x-bind:data-page="$store.data.page"
+			x-bind:data-page-size="$store.data.pageSize"
+			x-bind:data-total-count="$store.data.totalCount"
+			x-bind:data-total-pages="$store.data.totalPages"
+			@btn-prev="console.log('prev', $event.detail); $store.data.prevView($event.detail)"
+			@btn-next="console.log('next', $event.detail); $store.data.nextView($event.detail)"
+			@btn-current="console.log('current', $event.detail); $store.data.currentView($event.detail.page)"
+		>
+		</paging-table>
 	</div>
 </LayoutBasic>
 

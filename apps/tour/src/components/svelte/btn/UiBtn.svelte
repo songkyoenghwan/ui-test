@@ -99,7 +99,7 @@
 </script>
 
 {#snippet icon()}
-	<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
+	<icon-list data-name={iconName} class={['icon relative  transition-all', iconCls ? iconCls : 'size-4']}></icon-list>
 {/snippet}
 
 {#if isSegmented}

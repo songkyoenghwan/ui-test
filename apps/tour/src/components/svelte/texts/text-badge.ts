@@ -7,8 +7,10 @@ export class TestBadge extends LitElement {
 		return this;
 	}
 
-	@property({ reflect: true }) txt?: string = '';
-	@property({ reflect: true }) variant?: string = '';
+	@property() txt?: string = '';
+	@property() variant?: string = '';
+	@property({ attribute: 'date-ellipsis' }) ellipsis?: string = '';
+	@property() cls?: string = '';
 
 	protected render(): TemplateResult {
 		const toneClass =
@@ -17,13 +19,18 @@ export class TestBadge extends LitElement {
 				: this.variant === 'bg-danger'
 					? 'text-white bg-danger'
 					: this.variant === 'bg-primary'
-						? 'text-white bg-primary'
+						? 'text-white bg-cms-3'
 						: this.variant === 'bg-alert'
 							? 'text-ff0000 bg-ff0000/8'
-							: 'text-line-primary bg-white border-line-primary border';
+							: 'text-cms-3 bg-white border-cms-3 border';
 
 		return html`
-			<p class="${this.variant} ${toneClass} inline-flex rounded-sm px-2 text-sm">${this.txt}</p>
+			<p
+				class="${this.variant} ${toneClass} ${this.cls} ${this.ellipsis ? 'block truncate' : 'inline-flex'} rounded-sm px-2 text-sm"
+				title="${this.txt}"
+			>
+				${this.txt}
+			</p>
 		`;
 	}
 }

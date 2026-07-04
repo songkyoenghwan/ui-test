@@ -30,7 +30,7 @@
 					tag="a"
 					variant="ghost"
 					size="md"
-					cls="w-full button ghost"
+					cls="w-full button ghost text-sm font-bold"
 					txt={button?.buttonName?.ko}
 					link={String(button?.buttonUrl)}
 				/>
