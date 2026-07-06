@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
 
 import cmsPageData from '@/mocks/db.json';
+import { isProxyPath, proxyApi } from '@/server/api-proxy';
 
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params, request }) => {
 	const pageId = params.pageId;
 
 	if (!pageId) {
@@ -16,6 +17,10 @@ export const GET: APIRoute = async ({ params }) => {
 				headers: { 'Content-Type': 'application/json' },
 			},
 		);
+	}
+
+	if (isProxyPath(pageId)) {
+		return proxyApi(request, pageId);
 	}
 
 	const pageConfig = cmsPageData[pageId as keyof typeof cmsPageData];
@@ -34,13 +39,6 @@ export const GET: APIRoute = async ({ params }) => {
 		);
 	}
 
-	let getList: unknown = null;
-
-	if (typeof pageConfig === 'object' && pageConfig !== null && 'getList' in pageConfig) {
-		const value = pageConfig.getList;
-		getList = typeof value === 'function' ? value() : value;
-	}
-
 	return new Response(
 		JSON.stringify({
 			pageId,
@@ -55,6 +53,11 @@ export const GET: APIRoute = async ({ params }) => {
 
 // PATCH: 데이터 일부 수정 (예: 비고 수정, 보관방법 변경)
 export const PATCH: APIRoute = async ({ params, request }) => {
+	const pageId = params.pageId;
+	if (pageId && isProxyPath(pageId)) {
+		return proxyApi(request, pageId);
+	}
+
 	const routeId = params.id; // URL의 [id] 부분 (예: CMS_04_3)
 	const body = await request.json();
 	const { id, updateData } = body;
@@ -75,7 +78,11 @@ export const PATCH: APIRoute = async ({ params, request }) => {
 
 // POST: 신규 데이터 생성
 export const POST: APIRoute = async ({ request, params }) => {
-	const { pageId } = params;
+	const pageId = params.pageId;
+	if (pageId && isProxyPath(pageId)) {
+		return proxyApi(request, pageId);
+	}
+
 	const body = await request.json();
 	const page = cmsPageData;
 
@@ -99,7 +106,12 @@ export const POST: APIRoute = async ({ request, params }) => {
 };
 
 // DELETE: 데이터 삭제
-export const DELETE: APIRoute = async ({ request }) => {
+export const DELETE: APIRoute = async ({ params, request }) => {
+	const pageId = params.pageId;
+	if (pageId && isProxyPath(pageId)) {
+		return proxyApi(request, pageId);
+	}
+
 	const url = new URL(request.url);
 	const id = url.searchParams.get('id');
 

@@ -4,101 +4,172 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 ---
 
 <LayoutBasic>
-	<div class="flex w-[calc(100dvw-80px)] flex-1 gap-5 p-5">
+	<div class="grid h-full w-[calc(100dvw-80px)] flex-1 grid-cols-[320px_1fr] gap-5 py-5 pl-5">
 		<CategorySide />
-		<section class="inline-flex min-w-xl flex-1 flex-col gap-3">
-			<div class="shadow-1xs inline-grid grid-cols-2 gap-5 rounded-lg bg-white px-5 py-4">
-				<div class="col-span-2 grid grid-cols-[90px_1fr] gap-4">
-					<ui-tit
-						tag="h4"
-						tit="카테고리명"
-						tip="6 자 이내 권장"
-						tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 15자)"></ui-tit>
-					<lang-translate data-max-length="15"> </lang-translate>
-				</div>
+		<div class="flex h-full flex-col gap-3 overflow-x-clip overflow-y-auto pr-5">
+			<header class="flex items-center justify-between">
+				<ui-tit size="lg" tit="카테고리 수정"></ui-tit>
 
-				<div class="col-span-1 grid grid-cols-[60px_1fr] gap-4">
-					<ui-tit cls="justify-end" tag="h4" tit="아이콘"></ui-tit>
-					<ul class="flex flex-wrap gap-2">
-						<template x-for="icon in $store.data.icons" :key="icon">
-							<li>
-								<label
-									class="has-checked:border-cms-3 has-checked:bg-secondary grid size-8 cursor-pointer place-content-center gap-2 rounded-sm border border-slate-200 bg-slate-50 has-checked:border"
+				<div class="grid grid-cols-[60px_150px] gap-2 px-5 py-3">
+					<ui-btn
+						variant="icon"
+						icon-name="trash"
+						icon-cls="size-4 stroke-slate-400"
+						class="rounded-sm border border-slate-200 bg-white"
+						txt="삭제"></ui-btn>
+					<ui-btn variant="primary" cls="font-bold" txt="저장"></ui-btn>
+				</div>
+			</header>
+
+			<ul class="inline-flex min-w-xl flex-1 flex-col gap-3">
+				<li class="shadow-1xs grid grid-cols-2 gap-5 rounded-lg bg-white px-5 py-4">
+					<section class="col-span-2 grid grid-cols-[90px_1fr] gap-4">
+						<ui-tit
+							tag="h4"
+							tit="카테고리명"
+							tip="6 자 이내 권장"
+							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 15자)"
+						></ui-tit>
+						<lang-translate data-max-length="15"> </lang-translate>
+					</section>
+
+					<section class="col-span-1 grid grid-cols-[60px_1fr] gap-4">
+						<ui-tit cls="justify-end" tag="h4" tit="아이콘"></ui-tit>
+						<ul class="flex flex-wrap gap-2">
+							<template x-for="icon in $store.data.icons" :key="icon">
+								<li>
+									<label
+										class="has-checked:border-cms-3 has-checked:bg-secondary grid size-8 cursor-pointer place-content-center gap-2 rounded-sm border border-slate-200 bg-slate-50 select-none has-checked:border"
+									>
+										<input type="radio" :value="icon" x-model="$store.data.icon" class="peer sr-only" />
+										<icon-list
+											x-bind:data-name="icon"
+											class="icon peer-checked:fill-cms-3 peer-checked:stroke-cms-3 size-7 fill-slate-500 stroke-slate-500 transition-all"
+										></icon-list>
+									</label>
+								</li>
+							</template>
+						</ul>
+					</section>
+
+					<section class="col-span-1 grid grid-cols-[60px_1fr] gap-4">
+						<ui-tit cls="justify-end" tag="h4" tit="색상"></ui-tit>
+						<ul class="flex flex-wrap gap-2">
+							<template x-for="color in $store.data.colors" :key="color">
+								<li>
+									<label
+										class="has-checked:border-cms-3! has-checked:bg-secondary grid size-8 cursor-pointer place-items-center rounded-full border-2 border-transparent select-none"
+										:style="`border-color: var(--color-poi-outline-${color});`"
+									>
+										<input type="radio" :value="color" x-model="$store.data.color" class="peer sr-only" />
+										<span
+											class="size-full rounded-full"
+											:style="`background-color: var(--color-poi-${color});`"
+										>
+										</span>
+									</label>
+								</li>
+							</template>
+						</ul>
+					</section>
+				</li>
+
+				<li class="shadow-1xs grid gap-5 rounded-lg bg-white px-5 py-4">
+					<section class="grid grid-cols-[1fr_33px] gap-5">
+						<div>
+							<ui-tit
+								class="flex items-center gap-2"
+								tag="h4"
+								tit="이벤트 카테고리"
+								tooltip="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-tit>
+							<ui-txt size="xs" txt="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-txt>
+						</div>
+						<ui-checkbox
+							variant="toggle"
+							:checked="$store.data.isEventCategory"
+							@checked-change="$store.data.isEventCategory = $event.detail.checked"></ui-checkbox>
+					</section>
+				</li>
+
+				<li class="grid grid-cols-2 gap-3">
+					<section class="shadow-1xs grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
+						<div>
+							<ui-tit class="flex items-center gap-2" tag="h4" tit="AI 추천 설정"></ui-tit>
+							<ui-txt size="xs" txt="AI 시설 추천 결과에 이 카테고리 시설을 포함합니다"></ui-txt>
+						</div>
+						<ui-checkbox
+							variant="toggle"
+							:checked="$store.data.isAiRecommendationEnabled"
+							@checked-change="$store.data.isAiRecommendationEnabled = $event.detail.checked"></ui-checkbox>
+					</section>
+
+					<section class="shadow-1xs grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
+						<div>
+							<ui-tit class="flex items-center gap-2" tag="h4" tit="차량 내비게이션 제공"></ui-tit>
+							<ui-txt size="xs" txt="외부 내비게이션 앱과 연동하여 이 카테고리 시설까지 길안내를 제공합니다."
+							></ui-txt>
+						</div>
+						<ui-checkbox
+							variant="toggle"
+							:checked="$store.data.isNavigationProvided"
+							@checked-change="$store.data.isNavigationProvided = $event.detail.checked"></ui-checkbox>
+					</section>
+				</li>
+
+				<li class="shadow-1xs rounded-lg bg-white px-5 py-4">
+					<section class="grid gap-3">
+						<div>
+							<ui-tit class="flex items-center gap-2" tag="h4" tit="썸네일 이미지" req></ui-tit>
+							<ui-txt size="xs" txt="이 카테고리 시설에 썸네일이 없을 때 표시되는 기본 이미지입니다."></ui-txt>
+						</div>
+						<thumbnail-upload cls="flex w-full h-20 has-[img]:size-20" size="full"></thumbnail-upload>
+					</section>
+				</li>
+
+				<li class="shadow-1xs grid grid-cols-1 items-center gap-5 rounded-lg bg-white py-4">
+					<section class="grid grid-cols-[1fr_60px] place-content-between gap-3 px-5">
+						<ui-tit class="flex items-center gap-2" req tag="h4" tit="하위 카테고리"></ui-tit>
+						<div>
+							<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="primary" size="md" txt="추가"></ui-btn>
+						</div>
+					</section>
+					<ul
+						class="flex h-full min-h-0 flex-1 flex-col divide-y divide-slate-200 overflow-x-hidden overflow-y-auto"
+						x-sort
+					>
+						<template x-if="$store.data.subCategory.length === 0">
+							<li class="grid place-content-center gap-3 py-10">
+								<ui-txt
+									class="flex items-center gap-2 text-center"
+									txt="하위 카테고리를 추가하고 <br />시설을 세분화하여 관리해 보세요"></ui-txt>
+								<div class="inline-grid place-content-center">
+									<ui-btn cls="min-w-30" variant="ghost" txt="카테고리 추가하기"></ui-btn>
+								</div>
+							</li>
+						</template>
+						<template x-for="(item, idx) in $store.data.subCategory" :key="idx">
+							<li class="grid grid-cols-[1fr_124px] gap-2 px-5 py-3">
+								<button
+									type="button"
+									class="handle grid grid-cols-[16px_1fr] items-center gap-2"
+									aria-label="Drag handle"
+									:x-sort:item="`dnd-general-${idx}`"
 								>
-									<input type="checkbox" :value="icon" x-model="$store.data.icon" class="peer sr-only" />
-									<icon-list
-										x-bind:data-name="icon"
-										class="icon peer-checked:fill-cms-3 peer-checked:stroke-cms-3 size-7 fill-slate-500 stroke-slate-500 transition-all"
-									></icon-list>
-								</label>
+									<icon-list data-name="dnd" class="size-4 fill-slate-300"></icon-list>
+									<ui-tit class="text-left" cls="font-normal" tag="p" tit="하위 카테고리" sub="등록된 시설 N개"
+									></ui-tit>
+								</button>
+
+								<div class="grid grid-cols-[repeat(2,60px)] gap-2">
+									<ui-btn variant="secondary" txt="수정"></ui-btn>
+									<ui-btn variant="ghost" txt="삭제"></ui-btn>
+								</div>
 							</li>
 						</template>
 					</ul>
-				</div>
-
-				<div class="col-span-1 inline-grid grid-cols-[60px_1fr] gap-4">
-					<ui-tit cls="justify-end" tag="h4" tit="색상"></ui-tit>
-					<ul class="flex flex-wrap gap-2">
-						<template x-for="color in $store.data.colors" :key="color">
-							<li>
-								<label
-									class="has-checked:border-cms-3! has-checked:bg-secondary grid size-8 cursor-pointer place-items-center rounded-full border-2 border-transparent"
-									:style="`border-color: var(--color-poi-outline-${color});`"
-								>
-									<input type="checkbox" :value="color" x-model="$store.data.color" class="peer sr-only" />
-									<span class="size-full rounded-full" :style="`background-color: var(--color-poi-${color});`">
-									</span>
-								</label>
-							</li>
-						</template>
-					</ul>
-				</div>
-			</div>
-
-			<div class="shadow-1xs inline-grid grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
-				<div>
-					<ui-tit
-						class="flex items-center gap-2"
-						tag="h4"
-						tit="이벤트 카테고리"
-						tooltip="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-tit>
-					<ui-txt size="xs" txt="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-txt>
-				</div>
-				<label for="toggle-chk-1" class="toggle-chk">
-					<input type="checkbox" id="toggle-chk-1" class="peer sr-only" aria-label="toggle checkbox" />
-				</label>
-			</div>
-
-			<div class="flex items-center gap-3">
-				<div class="shadow-1xs inline-grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
-					<div>
-						<ui-tit class="flex items-center gap-2" tag="h4" tit="AI 추천 설정"></ui-tit>
-						<ui-txt size="xs" txt="AI 시설 추천 결과에 이 카테고리 시설을 포함합니다"></ui-txt>
-					</div>
-					<label for="toggle-chk-2" class="toggle-chk">
-						<input type="checkbox" id="toggle-chk-2" class="peer sr-only" aria-label="toggle checkbox" />
-					</label>
-				</div>
-
-				<div class="shadow-1xs inline-grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
-					<div>
-						<ui-tit class="flex items-center gap-2" tag="h4" tit="차량 내비게이션 제공"></ui-tit>
-						<ui-txt size="xs" txt="외부 내비게이션 앱과 연동하여 이 카테고리 시설까지 길안내를 제공합니다."></ui-txt>
-					</div>
-					<label for="toggle-chk-3" class="toggle-chk">
-						<input type="checkbox" id="toggle-chk-3" class="peer sr-only" aria-label="toggle checkbox" />
-					</label>
-				</div>
-			</div>
-
-			<div class="shadow-1xs inline-grid grid-cols-1 items-center gap-5 rounded-lg bg-white px-5 py-4">
-				<div>
-					<ui-tit class="flex items-center gap-2" tag="h4" tit="썸네일 이미지" req></ui-tit>
-					<ui-txt size="xs" txt="이 카테고리 시설에 썸네일이 없을 때 표시되는 기본 이미지입니다."></ui-txt>
-				</div>
-				<thumbnail-upload cls="flex w-full h-20 has-[img]:size-20" size="full"></thumbnail-upload>
-			</div>
-		</section>
+				</li>
+			</ul>
+		</div>
 	</div>
 </LayoutBasic>
 
@@ -110,6 +181,39 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			loading: false,
 			error: null,
 			itemId: '',
+			generalCategory: Array.from({ length: 12 }, (_, idx) => ({
+				name: {
+					ko: `대상지명${idx + 1}`,
+					en: `tour_destination_${idx + 1}`,
+					zh: '',
+					ja: '',
+					th: '',
+					vi: '',
+				},
+				categoryColorCodeId: `poi-${idx + 1}`,
+				icon: 'location',
+				_count: {
+					facilities: 10,
+				},
+				id: idx + 1,
+				sortingNumber: idx + 1,
+				isAiRecommendationEnabled: idx === 0 ? true : false,
+			})),
+			subCategory: Array.from({ length: 12 }, (_, idx) => ({
+				name: {
+					ko: `대상지명${idx + 1}`,
+					en: `tour_destination_${idx + 1}`,
+					zh: '',
+					ja: '',
+					th: '',
+					vi: '',
+				},
+				_count: {
+					facilities: 10,
+				},
+				id: idx + 1,
+				sortingNumber: idx + 1,
+			})),
 			icons: [
 				'location',
 				'binoculars',
@@ -134,14 +238,9 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			icon: ['location'],
 			colors: Array.from({ length: 12 }, (_, i) => i + 1),
 			color: [1],
-
-			init() {
-				console.log('store init', this.icon);
-
-				Alpine.effect(() => {
-					console.log('icon:', [...this.icon], 'color:', [...this.color]);
-				});
-			},
+			isEventCategory: false,
+			isAiRecommendationEnabled: false,
+			isNavigationProvided: false,
 
 			setIcon(list) {
 				this.icon = list;
@@ -150,13 +249,13 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			setColor(list) {
 				this.color = list;
 			},
-		});
-	});
 
-	document.addEventListener('DOMContentLoaded', () => {
-		Alpine.effect(() => {
-			const { icon, color } = Alpine.store('data');
-			console.log('icon:', [...icon], 'color:', [...color]);
+			init() {
+				Alpine.effect(() => {
+					console.log('store init', this.icon);
+					console.log(this.isEventCategory, this.isAiRecommendationEnabled, this.isNavigationProvided);
+				});
+			},
 		});
 	});
 </script>

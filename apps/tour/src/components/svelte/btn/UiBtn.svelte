@@ -221,7 +221,7 @@
 
 		&.md {
 			min-height: 1.75rem;
-			font-size: 0.625rem;
+			font-size: 0.75rem;
 			line-height: 1.25rem;
 
 			&.segmented {
@@ -231,7 +231,7 @@
 
 		&.sm {
 			min-height: 1.25rem;
-			font-size: 0.625rem;
+			font-size: 0.75rem;
 			line-height: 1.25;
 
 			&.segmented {

@@ -149,10 +149,10 @@
 		<icon-list data-name="gallery" class="icon size-5 fill-slate-500"></icon-list>
 		{#if size === 'full'}
 			<p class="mt-1 text-center text-xs text-slate-600">이미지를 드래그하거나 클릭하여 업로드</p>
-			<p class="mt-0.5 text-center text-[10px] text-slate-500">JPG, PNG / 최대 2MB / 1:1 비율 권장</p>
+			<p class="mt-px text-center text-[10px] text-slate-500">JPG, PNG / 최대 2MB / 1:1 비율 권장</p>
 		{:else}
 			<p class="mt-1 text-center text-xs text-slate-600">드래그 혹은 클릭</p>
-			<p class="mt-0.5 text-center text-[10px] text-slate-500">
+			<p class="mt-px text-center text-[10px] text-slate-500">
 				JPG, PNG
 				<br />
 				최대 2MB 1:1 비율

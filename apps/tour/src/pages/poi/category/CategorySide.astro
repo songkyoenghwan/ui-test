@@ -1,4 +1,7 @@
-<section class="shadow-1xs flex h-full flex-[0_0_320px] flex-col rounded-sm bg-white" data-dom="sidebar">
+<section
+	class="shadow-1xs flex h-full max-h-[calc(100dvh-100px)] flex-[0_0_320px] flex-col rounded-sm bg-white"
+	data-dom="sidebar"
+>
 	<header class="grid flex-none grid-cols-[1fr_60px] items-center gap-3 px-5 pt-5 pb-3">
 		<ui-tit
 			class="col-span-1 flex items-center gap-2"
@@ -16,30 +19,43 @@
 			txt="드래그로 항목 순서를 변경할 수 있으며, 즉시 적용됩니다."></text-badge>
 	</header>
 
-	<div class="flex-1 border-t border-t-slate-200">
-		<div class="grid grid-cols-2 items-center justify-between gap-3 px-5 pt-4 pb-2">
-			<ui-tit class="col-span-1 flex items-center gap-2" size="lg" tit="일반 카테고리"></ui-tit>
-			<div class="flex items-center justify-end gap-2">
-				<ui-txt cls="text-cms-5 font-bold" size="xs" txt="N"></ui-txt>
-				<ui-txt size="xs" txt="개"></ui-txt>
-			</div>
+	<div class="grid flex-none grid-cols-2 items-center justify-between gap-3 px-5 pt-4 pb-2">
+		<ui-tit class="col-span-1 flex items-center gap-2" size="lg" tit="일반 카테고리"></ui-tit>
+		<div class="flex items-center justify-end gap-2">
+			<ui-txt cls="text-cms-5 font-bold" size="xs" :txt="$store.data.generalCategory.length ?? 0"></ui-txt>
+			<ui-txt size="xs" txt="개"></ui-txt>
 		</div>
-		<ul class="space-y space-slate-200 flex h-full min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
-			<li class="flex items-center gap-2 px-5 py-3">
-				<button type="button" class="handle" aria-label="Drag handle">
-					<span class="sr-only">드래그</span>
-					<span class="flex w-4 justify-center">
-						<icon-list data-name="dnd" class="icon flex h-2.5 w-1.5 fill-slate-300"></icon-list>
-					</span>
-				</button>
+	</div>
 
-				<div class="flex flex-1 items-center justify-between">
-					<div>
-						<ui-txt cls="text-black" size="sm" txt="버튼명"></ui-txt>
-					</div>
-					<text-badge variant="primary" size="md" txt="Ai"></text-badge>
-				</div>
-			</li>
+	<div class="flex h-full min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
+		<ul class="flex h-full flex-1 flex-col divide-y divide-slate-200" x-sort>
+			<template x-for="(item, idx) in $store.data.generalCategory" :key="idx">
+				<li class="grid grid-cols-[1fr_28px] items-center gap-2 px-5 py-3 transition-all" x-transition>
+					<button
+						type="button"
+						class="grid grid-cols-[16px_32px_1fr] items-center gap-2"
+						aria-label="Drag handle"
+						:x-sort:item="`dnd-general-${idx}`"
+					>
+						<icon-list data-name="dnd" class="size-4 fill-slate-300"></icon-list>
+						<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
+							<icon-list
+								:data-name="item?.icon"
+								class="size-7"
+								:style="`fill: var(--color-${item?.categoryColorCodeId}); stroke: var(--color-${item?.categoryColorCodeId})`"
+							></icon-list>
+						</span>
+						<ui-tit
+							class="text-left"
+							tag="span"
+							:tit="item?.name?.ko"
+							:sub="`등록된 시설 ${item?._count?.facilities ?? 0}개`"></ui-tit>
+					</button>
+					<template x-if="item?.isAiRecommendationEnabled">
+						<text-badge variant="primary" size="md" txt="Ai"></text-badge>
+					</template>
+				</li>
+			</template>
 		</ul>
 	</div>
 

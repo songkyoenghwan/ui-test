@@ -186,3 +186,7 @@ aside-lnb {
 header-list {
 	background-color: var(--color-white);
 }
+
+icon-list {
+	display: inline-flex;
+}

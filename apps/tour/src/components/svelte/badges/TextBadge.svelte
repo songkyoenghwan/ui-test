@@ -16,6 +16,7 @@
 
 <script lang="ts">
 	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
+
 	type Props = {
 		txt?: string;
 		variant?: string;

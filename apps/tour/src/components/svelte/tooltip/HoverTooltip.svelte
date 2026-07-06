@@ -13,11 +13,11 @@
 />
 
 <script lang="ts">
+	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
 	import type { Placement } from '@floating-ui/utils';
 	import { Button, Tooltip } from 'flowbite-svelte';
 	import { blur, scale, slide } from 'svelte/transition';
 	import * as z from 'zod';
-	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
 
 	export const TooltipAnimationSchema = z.enum(['blur', 'slide', 'scale', 'none']);
 	type TooltipAnimation = z.infer<typeof TooltipAnimationSchema>;

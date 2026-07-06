@@ -3,6 +3,7 @@
 		tag: 'ui-checkbox',
 		shadow: 'none',
 		props: {
+			variant: { type: 'String' },
 			itemId: { reflect: true, type: 'String', attribute: 'item-id' },
 			txt: { type: 'String' },
 			checked: { reflect: true, type: 'Boolean' },
@@ -13,9 +14,8 @@
 />
 
 <script lang="ts">
-	import { applyGlobalReset } from '@/styles/shadow-theme';
-
 	interface Props {
+		variant?: 'default' | 'toggle';
 		itemId?: string;
 		txt?: string;
 		checked?: boolean;
@@ -24,39 +24,52 @@
 		cls?: string;
 		change?: (event: Event) => void;
 	}
-	let { itemId = '', txt = '', checked = $bindable(false), disabled = false, reverse = '', cls = '', change }: Props = $props();
+	import { v4 as uuidv4 } from 'uuid';
+	let {
+		variant = 'default',
+		itemId = uuidv4() || '',
+		txt = '',
+		checked = $bindable(false),
+		disabled = false,
+		reverse = '',
+		cls = '',
+		change,
+	}: Props = $props();
 
-	$effect(() => {
-		const host = $host()?.shadowRoot;
-		if (host) {
-			applyGlobalReset(host);
-		}
-	});
+	function handleChange(event: Event) {
+		const target = event.currentTarget as HTMLInputElement;
+		checked = target.checked;
 
-	$effect(() => {
-		const host = $host();
-		if (host) {
-			Object.defineProperty(host, 'checked', {
-				get() {
-					return checked;
-				},
-				set(val) {
-					checked = !!val;
-				},
-				configurable: true,
-			});
-		}
-	});
+		$host()?.dispatchEvent(
+			new CustomEvent('checked-change', {
+				detail: { checked },
+				bubbles: true,
+			}),
+		);
+	}
 </script>
 
-<label for={itemId} class="check-box {reverse ? 'flex-row-reverse' : ''} {cls}">
-	<input type="checkbox" id={itemId} class="peer sr-only" {disabled} bind:checked onchange={change} />
-	<icon-list data-name={checked ? 'checkbox-on' : 'checkbox-off'} class="icon"></icon-list>
+{#if variant === 'toggle'}
+	<label for={itemId} class="toggle-chk">
+		<input
+			type="checkbox"
+			id={itemId}
+			class="peer sr-only"
+			aria-label="toggle checkbox"
+			bind:checked
+			onchange={handleChange}
+		/>
+	</label>
+{:else}
+	<label for={itemId} class="check-box {reverse ? 'flex-row-reverse' : ''} {cls}">
+		<input type="checkbox" id={itemId} class="peer sr-only" {disabled} bind:checked onchange={handleChange} />
+		<icon-list data-name={checked ? 'checkbox-on' : 'checkbox-off'} class="icon"></icon-list>
 
-	{#if txt}
-		<span class="flex-1 text-sm text-black">{txt}</span>
-	{/if}
-</label>
+		{#if txt}
+			<span class="flex-1 text-sm text-black">{txt}</span>
+		{/if}
+	</label>
+{/if}
 
 <style>
 	.check-box {

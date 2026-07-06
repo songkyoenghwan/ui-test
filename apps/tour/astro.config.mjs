@@ -7,7 +7,7 @@ import { defineConfig, envField } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [svelte(), alpinejs()],
+	integrations: [svelte({ extensions: ['.svelte'] }), alpinejs({ entrypoint: '/src/entrypoint' })],
 
 	env: {
 		schema: {

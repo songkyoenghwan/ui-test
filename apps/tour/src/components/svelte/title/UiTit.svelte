@@ -16,7 +16,7 @@
 	import type { Snippet } from 'svelte';
 
 	interface Props {
-		tag?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+		tag?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'strong';
 		tit?: string;
 		sub?: string;
 		size?: 'lg' | 'md' | 'sm';
