@@ -14,6 +14,8 @@
 />
 
 <script lang="ts">
+	import { v4 as uuidv4 } from 'uuid';
+
 	interface Props {
 		variant?: 'default' | 'toggle';
 		itemId?: string;
@@ -24,7 +26,7 @@
 		cls?: string;
 		change?: (event: Event) => void;
 	}
-	import { v4 as uuidv4 } from 'uuid';
+
 	let {
 		variant = 'default',
 		itemId = uuidv4() || '',

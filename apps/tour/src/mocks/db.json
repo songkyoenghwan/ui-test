@@ -1,259 +1,159 @@
 {
 	"auth": {
+		"success": true,
 		"data": {
-			"csrfToken": "48c25bd1b45f671fda7405fcb622996586079f56e7a8a8f9b78d5c9b566a79e5",
+			"csrfToken": "1af9bfba3d88277fef51c25eb479079d097192b498011e5f084b292fc9350148",
 			"user": {
-				"email": "deepfine@deepfine.com",
 				"id": 1,
-				"loginAccount": "deepfine",
-				"menus": [
-					{
-						"children": [
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 12,
-								"name": "위치",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 1,
-								"url": "/poi/map"
-							},
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 13,
-								"name": "시설",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 2,
-								"url": "/poi/facility"
-							},
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 14,
-								"name": "카테고리",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 3,
-								"url": "/poi/category"
-							}
-						],
-						"code": null,
-						"iconUrl": null,
-						"id": 1,
-						"name": "지도",
-						"permissions": {
-							"create": true,
-							"delete": true,
-							"read": true,
-							"update": true
-						},
-						"requiredFeature": null,
-						"sortingNumber": 1,
-						"url": "/poi"
-					},
-					{
-						"children": [
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 10,
-								"name": "온보딩",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 1,
-								"url": "/onboarding/popup"
-							},
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 11,
-								"name": "기초설문",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 1,
-								"url": "/onboarding/survey"
-							}
-						],
-						"code": null,
-						"iconUrl": null,
-						"id": 3,
-						"name": "온보딩",
-						"permissions": {
-							"create": true,
-							"delete": true,
-							"read": true,
-							"update": true
-						},
-						"requiredFeature": null,
-						"sortingNumber": 2,
-						"url": "/onboarding"
-					},
-					{
-						"children": [],
-						"code": null,
-						"iconUrl": null,
-						"id": 4,
-						"name": "대상지",
-						"permissions": {
-							"create": true,
-							"delete": true,
-							"read": true,
-							"update": true
-						},
-						"requiredFeature": null,
-						"sortingNumber": 3,
-						"url": "/tour-destination"
-					},
-					{
-						"children": [],
-						"code": null,
-						"iconUrl": null,
-						"id": 5,
-						"name": "혼잡도",
-						"permissions": {
-							"create": true,
-							"delete": true,
-							"read": true,
-							"update": true
-						},
-						"requiredFeature": "sectionCongestion",
-						"sortingNumber": 4,
-						"url": "/congestion"
-					},
-					{
-						"children": [
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 15,
-								"name": "방문자",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 1,
-								"url": "/stats/visitors"
-							},
-							{
-								"code": null,
-								"iconUrl": null,
-								"id": 16,
-								"name": "이용",
-								"permissions": {
-									"create": true,
-									"delete": true,
-									"read": true,
-									"update": true
-								},
-								"requiredFeature": null,
-								"sortingNumber": 2,
-								"url": "/stats/use"
-							}
-						],
-						"code": null,
-						"iconUrl": null,
-						"id": 6,
-						"name": "통계",
-						"permissions": {
-							"create": true,
-							"delete": true,
-							"read": true,
-							"update": true
-						},
-						"requiredFeature": null,
-						"sortingNumber": 5,
-						"url": "/stats"
-					}
-				],
 				"name": "딥파인 관리자 계정",
+				"email": "deepfine@deepfine.com",
+				"loginAccount": "deepfine",
 				"tourDestinations": [
 					{
 						"id": 1,
-						"name": {
-							"en": "Busan Rock Festival",
-							"ja": "",
-							"ko": "부산락페스티벌",
-							"th": "",
-							"vi": "",
-							"zh": ""
-						},
-						"sectionCongestion": true,
-						"sortingNumber": null
+						"name": { "ko": "부산락페스티벌222", "en": "Busan Rock Festival", "ja": "", "zh": "", "vi": "", "th": "" },
+						"sortingNumber": null,
+						"sectionCongestion": true
 					},
 					{
 						"id": 2,
-						"name": {
-							"en": "tour_destination_1",
-							"ja": "",
-							"ko": "대상지명1",
-							"th": "",
-							"vi": "",
-							"zh": ""
-						},
-						"sectionCongestion": true,
-						"sortingNumber": null
+						"name": { "ko": "대상지명1", "en": "tour_destination_1", "ja": "", "zh": "", "vi": "", "th": "" },
+						"sortingNumber": null,
+						"sectionCongestion": true
 					},
 					{
 						"id": 3,
-						"name": {
-							"en": "Deagu Chicken and Beer Festival",
-							"ja": "",
-							"ko": "대구 치맥 축제",
-							"th": "",
-							"vi": "",
-							"zh": ""
-						},
-						"sectionCongestion": true,
-						"sortingNumber": null
+						"name": { "ko": "대구 치맥 축제", "en": "Deagu Chicken and Beer Festival", "ja": "", "zh": "", "vi": "", "th": "" },
+						"sortingNumber": null,
+						"sectionCongestion": true
 					},
 					{
 						"id": 17,
-						"name": {
-							"en": "June's 15th Festival2",
-							"ja": "",
-							"ko": "6월15일의 축제2",
-							"th": "",
-							"vi": "",
-							"zh": ""
-						},
-						"sectionCongestion": true,
-						"sortingNumber": null
+						"name": { "ko": "6월15일의 축제2", "en": "June's 15th Festival2", "ja": "", "zh": "", "vi": "", "th": "" },
+						"sortingNumber": null,
+						"sectionCongestion": true
+					}
+				],
+				"menus": [
+					{
+						"id": 1,
+						"code": null,
+						"name": "지도",
+						"url": "/poi",
+						"sortingNumber": 1,
+						"requiredFeature": null,
+						"permissions": { "read": true, "create": true, "update": true, "delete": true },
+						"children": [
+							{
+								"id": 12,
+								"code": null,
+								"name": "위치",
+								"url": "/poi/map",
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							},
+							{
+								"id": 13,
+								"code": null,
+								"name": "시설",
+								"url": "/poi/facility",
+								"sortingNumber": 2,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							},
+							{
+								"id": 14,
+								"code": null,
+								"name": "카테고리",
+								"url": "/poi/category",
+								"sortingNumber": 3,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							}
+						]
+					},
+					{
+						"id": 3,
+						"code": null,
+						"name": "온보딩",
+						"url": "/onboarding",
+						"sortingNumber": 2,
+						"requiredFeature": null,
+						"permissions": { "read": true, "create": true, "update": true, "delete": true },
+						"children": [
+							{
+								"id": 10,
+								"code": null,
+								"name": "온보딩",
+								"url": "/onboarding/popup",
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							},
+							{
+								"id": 11,
+								"code": null,
+								"name": "기초설문",
+								"url": "/onboarding/survey",
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							}
+						]
+					},
+					{
+						"id": 4,
+						"code": null,
+						"name": "대상지",
+						"url": "/tour-destination",
+						"sortingNumber": 3,
+						"requiredFeature": null,
+						"permissions": { "read": true, "create": true, "update": true, "delete": true },
+						"children": []
+					},
+					{
+						"id": 5,
+						"code": null,
+						"name": "혼잡도",
+						"url": "/congestion",
+						"sortingNumber": 4,
+						"requiredFeature": "sectionCongestion",
+						"permissions": { "read": true, "create": true, "update": true, "delete": true },
+						"children": []
+					},
+					{
+						"id": 6,
+						"code": null,
+						"name": "통계",
+						"url": "/stats",
+						"sortingNumber": 5,
+						"requiredFeature": null,
+						"permissions": { "read": true, "create": true, "update": true, "delete": true },
+						"children": [
+							{
+								"id": 15,
+								"code": null,
+								"name": "방문자",
+								"url": "/stats/visitors",
+								"sortingNumber": 1,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							},
+							{
+								"id": 16,
+								"code": null,
+								"name": "이용",
+								"url": "/stats/use",
+								"sortingNumber": 2,
+								"requiredFeature": null,
+								"permissions": { "read": true, "create": true, "update": true, "delete": true }
+							}
+						]
 					}
 				]
 			}
-		},
-		"success": true
+		}
 	},
 	"CMS-LOC-001": [
 		{

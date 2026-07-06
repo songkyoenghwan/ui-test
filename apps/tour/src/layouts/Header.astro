@@ -1,0 +1,89 @@
+---
+const res = await fetch(new URL('/api/auth', Astro.url), {
+	headers: {
+		accept: 'application/json',
+		cookie: Astro.request.headers.get('cookie') ?? '',
+	},
+});
+
+if (!res.ok) {
+	throw new Error(`Failed to fetch auth data: ${res.status}`);
+}
+
+const json = await res.json();
+
+console.log(json);
+
+const authData = json?.data.data ?? {};
+const user = authData?.user ?? {};
+const menus = user?.menus ?? [];
+const tourDestinations = user?.tourDestinations ?? [];
+
+const pathname = Astro.url.pathname;
+const currentSub = pathname;
+
+const hasSectionCongestion = tourDestinations.some((destination) => destination?.sectionCongestion === true);
+
+const visibleMenus = menus.filter((menu) => {
+	const canRead = menu?.permissions?.read === true;
+	const isCongestion = menu?.requiredFeature === 'sectionCongestion';
+	return canRead && (isCongestion ? hasSectionCongestion : true);
+});
+
+const currentParentMenu =
+	visibleMenus.find((menu) => {
+		if (menu?.url === pathname) return true;
+		return menu?.children?.some((child) => child?.url === pathname);
+	}) ?? null;
+
+const visibleSubMenus = (currentParentMenu?.children ?? []).filter((sub) => sub?.permissions?.read === true);
+
+const currentSubMenu = visibleSubMenus.find((sub) => sub?.url === pathname) ?? null;
+
+const displayH3 = currentParentMenu?.name ?? '';
+const displaySub = visibleSubMenus;
+const displayId = currentParentMenu?.code ?? currentParentMenu?.url ?? '';
+---
+
+<header
+	class="border-t-3d5f52 box-shadow-[0_6px_10px_rgba(0,0,0,0.5)] bg-3d5f52 shadow-header flex h-(--header-height) items-center justify-between border-t-8"
+>
+	<section class="grid h-full flex-1 grid-cols-[90px_1fr] items-center rounded-tl-md bg-white px-2 text-slate-300">
+		<div class="flex h-full min-w-21.5 flex-1 items-center justify-center border-r border-r-slate-100">
+			<h2 class="text-121212 text-center text-xl font-semibold">
+				{displayH3}
+			</h2>
+		</div>
+
+		{
+			displaySub.length > 0 && displayId !== 'CMS-LOC' && displayId !== 'CMS-CON' && (
+				<ul class="text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0">
+					{displaySub.map((sub) => {
+						const link = sub.url ?? sub.link ?? '#';
+						const text = sub.text ?? sub.name ?? '';
+						const itemId = sub.id ?? '';
+
+						return (
+							<li class="flex h-full">
+								<a
+									class="aria-[current=page]:text-3d5f52 aria-[current=page]:border-b-3d5f52 grid place-content-center px-4 text-slate-600 hover:bg-slate-100 aria-[current=page]:border-b-3 aria-[current=page]:font-bold"
+									href={link}
+									aria-current={currentSub === link ? 'page' : undefined}
+									data-id={itemId}
+								>
+									<p>{text}</p>
+								</a>
+							</li>
+						);
+					})}
+				</ul>
+			)
+		}
+	</section>
+
+	<div class="grid flex-[0_0_300px] items-center bg-white px-2 py-1.5">
+		<select class="select h-10">
+			{tourDestinations.map((destination) => <option value={destination.id}>{destination?.name?.ko ?? ''}</option>)}
+		</select>
+	</div>
+</header>

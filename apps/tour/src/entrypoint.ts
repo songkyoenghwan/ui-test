@@ -1,6 +1,3 @@
-import alpinejs from '@astrojs/alpinejs';
-import { defineConfig } from 'astro/config';
+import type { Alpine } from 'alpinejs';
 
-export default defineConfig({
-	integrations: [alpinejs({ entrypoint: '/src/entrypoint' })],
-});
+export default (Alpine: Alpine) => {};

@@ -1,0 +1,83 @@
+---
+const res = await fetch(new URL('/json/db.json', Astro.url));
+
+if (!res.ok) {
+	throw new Error(`Failed to fetch menu data: ${res.status}`);
+}
+
+const json = await res.json();
+
+const authData = json?.auth?.data ?? {};
+const user = authData?.user ?? {};
+const menus = user?.menus ?? [];
+const tourDestinations = user?.tourDestinations ?? [];
+
+const displayName = Astro.url.pathname.replace(/^\//, '') || '';
+const logoSrc = '';
+
+const hasSectionCongestion = tourDestinations.some((destination) => destination?.sectionCongestion === true);
+---
+
+<aside class="from-002e1e to-2e5345 row-span-2 flex h-full flex-col space-y-3 bg-linear-to-t px-2 py-6">
+	<div class="flex h-10 justify-center">
+		<img class="h-10 w-auto" src="/images/logo/lnb-logo.svg" alt="logo" />
+	</div>
+
+	<nav class="text-base text-slate-50">
+		<ul class="flex flex-col gap-3 text-center leading-tight break-keep">
+			{
+				menus.map((lnb) => {
+					const isSectionTitle = lnb.id === 1 || lnb.id === 5;
+					const sectionTitle = lnb.id === 1 ? '관리' : lnb.id === 5 ? '현황' : '';
+					const link = lnb.url ?? lnb.link ?? '#';
+					const currentName = link.replace(/^\//, '');
+					const isCurrent = displayName === currentName;
+
+					const canRead = lnb?.permissions?.read === true;
+					const isTourDestination = lnb.id === 4 || lnb.url === '/tour-destination';
+					const isCongestion = lnb.requiredFeature === 'sectionCongestion';
+
+					const hasSectionCongestion =
+						tourDestinations?.some((destination) => destination.sectionCongestion === true) ?? false;
+
+					const canShow = canRead && (isTourDestination ? true : true) && (isCongestion ? hasSectionCongestion : true);
+
+					if (!canShow) return null;
+
+					return (
+						<>
+							{isSectionTitle && (
+								<li>
+									<h2
+										class:list={[
+											'font-semibold text-white',
+											lnb.id === 5 && 'mt-2 border-t border-t-white/50 pt-5',
+										]}
+									>
+										{sectionTitle}
+									</h2>
+								</li>
+							)}
+
+							<li class="grid min-h-15">
+								<a
+									class="group/lnb-link shadow-1xs grid size-full place-items-center rounded-lg border border-transparent p-1 transition-colors hover:border-white/10 aria-[current=page]:bg-white/10 aria-[current=page]:text-white aria-[current=page]:shadow-2xs"
+									aria-current={isCurrent ? 'page' : undefined}
+									href={link}
+									data-link={currentName}
+									data-current={isCurrent ? 'true' : 'false'}
+								>
+									<icon-list
+										data-name={isCurrent ? `${currentName}-on` : `${currentName}-off`}
+										class="size-5 fill-white stroke-slate-50 transition-all delay-0 group-aria-[current=page]/lnb-link:fill-white group-aria-[current=page]/lnb-link:text-white"
+									/>
+									<p class="group-aria-[current=page]/lnb-link:font-semibold">{lnb.h3 ?? lnb.name}</p>
+								</a>
+							</li>
+						</>
+					);
+				})
+			}
+		</ul>
+	</nav>
+</aside>

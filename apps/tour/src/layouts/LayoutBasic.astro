@@ -1,5 +1,7 @@
 ---
 import ScriptInline from '@/layouts/ScriptInline.astro';
+import Lnb from '@/layouts/Lnb.astro';
+import Header from '@/layouts/Header.astro';
 import '@/styles/index.css';
 
 interface Props {
@@ -21,9 +23,9 @@ const pathname = Astro.url.pathname;
 	</head>
 	<body x-data>
 		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
-			<aside-lnb class="row-span-2 h-full"></aside-lnb>
+			<Lnb />
 
-			<header-list></header-list>
+			<Header />
 
 			<main class="main-container" id="main-container">
 				<slot />
