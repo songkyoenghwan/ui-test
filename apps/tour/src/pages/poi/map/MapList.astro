@@ -1,0 +1,89 @@
+<section class="map-list">
+	<header class="grid grid-cols-2 gap-x-2 gap-y-3 border-b border-b-slate-200 p-5">
+		<ui-tit size="lg" tit="위치 목록"></ui-tit>
+		<div class="flex items-center justify-end gap-0.5">
+			<ui-txt size="sm" cls="font-bold text-slate-500" :txt="String($store.data.totalCount ?? '0')"></ui-txt>
+			<ui-txt size="sm" txt="개"></ui-txt>
+		</div>
+		<select name="" id="" class="select" title="">
+			<option value="">전체 카테고리</option>
+			<option value="">옵션</option>
+		</select>
+		<select name="" id="" class="select">
+			<option value="">노출 + 비노출</option>
+			<option value="">옵션</option>
+		</select>
+		<input-search-del placeholder="위치 검색" class="col-span-2"></input-search-del>
+	</header>
+
+	<div class="flex items-center justify-between gap-1 px-5 py-3">
+		<select name="" id="" class="select w-30">
+			<option value="">최신순</option>
+			<option value="">가나다순</option>
+		</select>
+		<p class="flex items-center gap-1">
+			<ui-txt size="sm" txt="검색결과"></ui-txt>
+			<ui-txt size="sm" cls="text-cms-3 font-bold" :txt="String($store.data.totalCount ?? '0')"></ui-txt>
+		</p>
+	</div>
+
+	<div class="flex h-full min-h-0 flex-1 flex-col overflow-x-clip overflow-y-auto scroll-smooth">
+		<template x-if="$store.data.items?.length === 0">
+			<div class="flex flex-1 flex-col items-center justify-center gap-3 p-5">
+				<icon-items data-name="mouse-circle" class="icon stroke-primary fill-primary size-6.5"></icon-items>
+				<p class="text-xl text-slate-400">
+					지도를 우클릭하면
+					<br />
+					새 위치가 생성됩니다
+				</p>
+			</div>
+		</template>
+
+		<template x-if="$store.data.items?.length > 0">
+			<ul class="flex flex-1 flex-col">
+				<template x-for="(item, index) in $store.data.items" :key="item.id">
+					<li :data-index="index" class="w-full border-b border-b-slate-200">
+						<button
+							type="button"
+							:aria-label="item.name?.ko ?? ''"
+							class="grid w-full grid-rows-2 gap-x-2 gap-y-1 bg-white px-6 py-4 text-left text-sm transition-colors hover:bg-slate-50 has-[text-badge]:grid-cols-[1fr_minmax(0,40px)]"
+							@click="$store.data.facilitiesCurrent = item"
+						>
+							<span
+								class="order-1 row-span-1 truncate"
+								:class="{ 'text-slate-500': !item.name?.ko }"
+								x-text="item.name?.ko === '' || item.name?.ko === undefined ?'이름없음' : item.name?.ko"
+							>
+							</span>
+
+							<span class="order-3 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal">
+								<span class="pr-2 text-black" x-show="item?.id" x-text="`POI${String(item.id)}`"></span>
+
+								<span class="flex items-center gap-1 text-slate-500">
+									등록시설
+									<strong class="flex items-center">
+										<span
+											:class="(item.facilityPoiMappings?.length ?? 0) === 0 ? 'text-error' : 'text-cms-3'"
+											x-text="item.facilityPoiMappings?.length ?? 0"
+										>
+										</span>
+										<span class="font-normal">개</span>
+									</strong>
+								</span>
+							</span>
+
+							<template x-if="item.isOperationInfoSynced">
+								<text-badge
+									class="order-2 row-span-2 grid place-items-center"
+									size="md"
+									tooltip
+									variant="bg-cms-4"
+									txt="비노출"></text-badge>
+							</template>
+						</button>
+					</li>
+				</template>
+			</ul>
+		</template>
+	</div>
+</section>

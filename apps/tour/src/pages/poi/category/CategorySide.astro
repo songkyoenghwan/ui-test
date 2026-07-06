@@ -30,12 +30,16 @@
 	<div class="flex h-full min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
 		<ul class="flex h-full flex-1 flex-col divide-y divide-slate-200" x-sort>
 			<template x-for="(item, idx) in $store.data.generalCategory" :key="idx">
-				<li class="grid grid-cols-[1fr_28px] items-center gap-2 px-5 py-3 transition-all" x-transition>
+				<li
+					class="aria-current:bg-secondary aria-current:border-cms-3 grid items-center gap-2 border-t border-t-white px-5 py-3 has-[text-badge]:grid-cols-[1fr_28px] aria-current:border"
+					:aria-current="$store.data.itemId === idx"
+					@click.prevent="$store.data.currentItem(idx)"
+				>
 					<button
 						type="button"
 						class="grid grid-cols-[16px_32px_1fr] items-center gap-2"
 						aria-label="Drag handle"
-						:x-sort:item="`dnd-general-${idx}`"
+						x-sort:item
 					>
 						<icon-list data-name="dnd" class="size-4 fill-slate-300"></icon-list>
 						<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
@@ -48,6 +52,8 @@
 						<ui-tit
 							class="text-left"
 							tag="span"
+							class="flex min-w-0 flex-col text-left"
+							cls="truncate w-full inline-block"
 							:tit="item?.name?.ko"
 							:sub="`등록된 시설 ${item?._count?.facilities ?? 0}개`"></ui-tit>
 					</button>

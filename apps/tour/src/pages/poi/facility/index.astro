@@ -1,6 +1,6 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
-import FacilitiesSide from '@/pages/poi/facilities/FacilitiesSide.astro';
+import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 ---
 
 <LayoutBasic>
@@ -235,67 +235,67 @@ import FacilitiesSide from '@/pages/poi/facilities/FacilitiesSide.astro';
 	</div>
 
 	<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
-
-	<script defer>
-		document.addEventListener('alpine:init', () => {
-			if (Alpine.store('data')) return;
-			Alpine.store('data', {
-				items: [],
-				data: {},
-				pageSize: 10,
-				totalCount: 1,
-				totalPages: 1,
-				loading: false,
-				error: null,
-				itemId: 0,
-				sidebar: false,
-				async fetchData() {
-					this.loading = true;
-					try {
-						const res = await fetch(`/api/facilities`);
-
-						const data = await res.json();
-						const payload = data.data.data ?? {};
-
-						this.items = payload.items;
-						this.data = payload.items[0];
-						this.page = payload.page;
-						this.pageSize = payload.pageSize;
-						this.totalCount = payload.totalCount;
-						this.totalPages = payload.totalPages;
-					} catch (error) {
-						this.error = error.message;
-						console.error('데이터 로드 실패:', error);
-					} finally {
-						this.loading = false;
-					}
-				},
-				prevView(detail) {
-					const nextPage = Math.max(1, Number(detail.page) - 8);
-					this.page = nextPage;
-				},
-				nextView(detail) {
-					const nextPage = Math.min(Math.max(1, Number(detail.totalPages) || 1), Number(detail.page) + 8);
-					this.page = nextPage;
-				},
-				currentView(page) {
-					const nextPage = Math.max(1, Number(page) || 1);
-					this.page = nextPage;
-				},
-
-				async findInit(id = 0) {
-					if (!id) return;
-					this.data = this.items.find((v) => v.id === Number(id)) ?? {};
-				},
-				sideView(id = 0) {
-					this.sidebar = true;
-					this.itemId = id;
-					this.findInit(id);
-				},
-				async init() {
-					await this.fetchData(1);
-				},
-			});
-		});
-	</script>
 </LayoutBasic>
+
+<script defer>
+	document.addEventListener('alpine:init', () => {
+		if (Alpine.store('data')) return;
+		Alpine.store('data', {
+			items: [],
+			data: {},
+			pageSize: 10,
+			totalCount: 1,
+			totalPages: 1,
+			loading: false,
+			error: null,
+			itemId: 0,
+			sidebar: false,
+			async fetchData() {
+				this.loading = true;
+				try {
+					const res = await fetch(`/api/facility`);
+
+					const data = await res.json();
+					const payload = data.data.data ?? {};
+
+					this.items = payload.items;
+					this.data = payload.items[0];
+					this.page = payload.page;
+					this.pageSize = payload.pageSize;
+					this.totalCount = payload.totalCount;
+					this.totalPages = payload.totalPages;
+				} catch (error) {
+					this.error = error.message;
+					console.error('데이터 로드 실패:', error);
+				} finally {
+					this.loading = false;
+				}
+			},
+			prevView(detail) {
+				const nextPage = Math.max(1, Number(detail.page) - 8);
+				this.page = nextPage;
+			},
+			nextView(detail) {
+				const nextPage = Math.min(Math.max(1, Number(detail.totalPages) || 1), Number(detail.page) + 8);
+				this.page = nextPage;
+			},
+			currentView(page) {
+				const nextPage = Math.max(1, Number(page) || 1);
+				this.page = nextPage;
+			},
+
+			async findInit(id = 0) {
+				if (!id) return;
+				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
+			},
+			sideView(id = 0) {
+				this.sidebar = true;
+				this.itemId = id;
+				this.findInit(id);
+			},
+			async init() {
+				await this.fetchData(1);
+			},
+		});
+	});
+</script>

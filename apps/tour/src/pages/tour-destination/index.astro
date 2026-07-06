@@ -278,7 +278,7 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 			async fetchData(page) {
 				this.loading = true;
 				try {
-					const res = await fetch(`/api/tour-destinations`);
+					const res = await fetch(`/api/tour-destination`);
 
 					if (!res.ok) {
 						const text = await res.text();

@@ -12,8 +12,8 @@ const user = authData?.user ?? {};
 const menus = user?.menus ?? [];
 const tourDestinations = user?.tourDestinations ?? [];
 
-const displayName = Astro.url.pathname.replace(/^\//, '') || '';
-const logoSrc = '';
+const pathname = Astro.url.pathname ?? '/';
+const displayName = pathname.replace(/^\/+/, '').split('/')[0] ?? '';
 
 const hasSectionCongestion = tourDestinations.some((destination) => destination?.sectionCongestion === true);
 ---
@@ -29,8 +29,8 @@ const hasSectionCongestion = tourDestinations.some((destination) => destination?
 				menus.map((lnb) => {
 					const isSectionTitle = lnb.id === 1 || lnb.id === 5;
 					const sectionTitle = lnb.id === 1 ? '관리' : lnb.id === 5 ? '현황' : '';
-					const link = lnb.url ?? lnb.link ?? '#';
-					const currentName = link.replace(/^\//, '');
+					const link = lnb.children.length ? lnb.children[0].url : lnb.url;
+					const currentName = (link ?? '').replace(/^\/+/, '').split('/')[0] ?? '';
 					const isCurrent = displayName === currentName;
 
 					const canRead = lnb?.permissions?.read === true;

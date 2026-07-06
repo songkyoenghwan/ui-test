@@ -513,6 +513,19 @@ export const getIconData = () => {
 			`,
 		},
 		{
+			name: 'check',
+			size: '13 9',
+			html: /* HTML */ `
+				<path
+					d="M0.867188 3.46139L5.19411 7.78831L12.1172 0.865234"
+					fill="none"
+					stroke-width="1.73077"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
 			name: 'btn-del',
 			size: '20',
 			html: /* HTML */ `

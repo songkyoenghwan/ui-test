@@ -35,11 +35,13 @@
 				? 'text-white bg-error'
 				: variant === 'bg-primary'
 					? 'text-white bg-cms-3'
-					: variant === 'bg-slate'
-						? 'text-slate-500 bg-slate-200'
-						: variant === 'bg-secondary'
-							? 'text-cms-3 bg-secondary border border-cms-3'
-							: 'text-cms-3 bg-white border-cms-3 border',
+					: variant === 'bg-cms-4'
+						? 'text-white bg-cms-4'
+						: variant === 'bg-slate'
+							? 'text-slate-500 bg-slate-200'
+							: variant === 'bg-secondary'
+								? 'text-cms-3 bg-secondary border border-cms-3'
+								: 'text-cms-3 bg-white border-cms-3 border',
 	);
 </script>
 

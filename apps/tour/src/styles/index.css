@@ -706,6 +706,10 @@
 		}
 	}
 
+	.sortable-chosen {
+		@apply bg-secondary border-cms-3 border;
+	}
+
 	.map-list {
 		@apply flex h-(--main-height) w-80 flex-col overflow-clip bg-white opacity-100 shadow-2xs transition-all transition-discrete starting:translate-x-20 starting:opacity-0;
 

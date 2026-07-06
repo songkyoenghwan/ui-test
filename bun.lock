@@ -93,6 +93,7 @@
       "name": "tour",
       "version": "0.0.1",
       "dependencies": {
+        "@alpinejs/sort": "^3.15.12",
         "@ariefsn/svelte-use": "^1.1.0",
         "@astrojs/alpinejs": "^1.0.0",
         "@astrojs/node": "^11.0.0",
@@ -168,6 +169,8 @@
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@alpinejs/sort": ["@alpinejs/sort@3.15.12", "", { "dependencies": { "sortablejs": "^1.15.2" } }, "sha512-DNIS7SQFg4H4o5faluRgqYEPi1Q7Hf+HMDgoCcIHXbXWH0g66WPEzz9OMk1zsUYib0KxMms4xXOqk+xh2tHZzg=="],
 
     "@ariefsn/svelte-use": ["@ariefsn/svelte-use@1.1.0", "", { "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-WQR+nJ4EjgeMa2Jtoyda/CSVuvek2GUqG0mmWl+5sZ8vB4pWNZltxkBrTlriLBT98cbSivpp74gwrxIA3jCCsg=="],
 
