@@ -6,21 +6,23 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 <LayoutBasic>
 	<div class="grid h-full w-[calc(100dvw-80px)] flex-1 grid-cols-[320px_1fr] gap-5 py-5 pl-5">
 		<CategorySide />
-		<div class="flex h-full flex-col gap-3 overflow-x-clip overflow-y-auto pr-5">
-			<header class="flex items-center justify-between">
-				<ui-tit size="lg" tit="카테고리 수정"></ui-tit>
+		<header class="flex items-center justify-between">
+			<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '카테고리 수정' : '카테고리 등록'"></ui-tit>
 
-				<div class="grid grid-cols-[60px_150px] gap-2 px-5 py-3">
+			<div class="grid grid-cols-[60px_150px] gap-2 px-5 py-3">
+				<template x-if="$store.data.view === 'edit'">
 					<ui-btn
 						variant="icon"
 						icon-name="trash"
 						icon-cls="size-4 stroke-slate-400"
 						class="rounded-sm border border-slate-200 bg-white"
 						txt="삭제"></ui-btn>
-					<ui-btn variant="primary" cls="font-bold" txt="저장"></ui-btn>
-				</div>
-			</header>
+				</template>
+				<ui-btn variant="primary" cls="font-bold" txt="저장"></ui-btn>
+			</div>
+		</header>
 
+		<div class="flex h-full flex-col gap-3 overflow-x-clip overflow-y-auto pr-5">
 			<ul class="inline-flex min-w-xl flex-1 flex-col gap-3">
 				<li class="shadow-1xs grid grid-cols-2 gap-5 rounded-lg bg-white px-5 py-4">
 					<section class="col-span-2 grid grid-cols-[90px_1fr] gap-4">
@@ -160,14 +162,15 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 							</li>
 						</template>
 						<template x-for="(item, idx) in $store.data.subCategory" :key="idx">
-							<li class="grid grid-cols-[1fr_124px] gap-2 px-5 py-3">
+							<li class="group/dnd grid grid-cols-[1fr_124px] gap-2 px-5 py-3">
 								<button
 									type="button"
 									class="handle grid grid-cols-[16px_1fr] items-center gap-2"
 									aria-label="Drag handle"
 									:x-sort:item="`dnd-general-${idx}`"
 								>
-									<icon-list data-name="dnd" class="size-4 fill-slate-300"></icon-list>
+									<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
+									></icon-list>
 									<ui-tit class="text-left" cls="font-normal" tag="p" tit="하위 카테고리" sub="등록된 시설 N개"
 									></ui-tit>
 								</button>
@@ -190,9 +193,10 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 		if (Alpine.store('data')) return;
 
 		Alpine.store('data', {
+			view: 'edit',
 			loading: false,
 			error: null,
-			itemId: 0,
+			itemId: 1,
 			generalCategory: Array.from({ length: 12 }, (_, idx) => ({
 				name: {
 					ko: `대상지명대상지명대상지명대상지명대상지명${idx + 1}`,
@@ -209,6 +213,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 				},
 				id: idx + 1,
 				sortingNumber: idx + 1,
+				isEventCategory: idx < 2 ? true : false,
 				isAiRecommendationEnabled: idx === 0 ? true : false,
 			})),
 			subCategory: Array.from({ length: 12 }, (_, idx) => ({
@@ -250,7 +255,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			icon: 'location',
 			colors: Array.from({ length: 12 }, (_, i) => i + 1),
 			color: 1,
-			isEventCategory: false,
+			isEventCategory: true,
 			isAiRecommendationEnabled: false,
 			isNavigationProvided: false,
 
@@ -262,8 +267,8 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 				this.color = list;
 			},
 
-			currentItem(_num = 0) {
-				this.itemId = _num;
+			currentItem(_id = '') {
+				this.itemId = _id;
 			},
 
 			init() {

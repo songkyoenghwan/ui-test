@@ -380,7 +380,7 @@
 	}
 
 	.main-container {
-		@apply relative flex size-full h-full flex-col overflow-auto scroll-smooth has-data-[map=init]:overflow-clip;
+		@apply relative flex size-full h-full flex-col overflow-auto scroll-smooth has-data-[map=init]:overflow-clip has-[.vsm-canvas]:overflow-hidden;
 	}
 
 	.button {

@@ -14,7 +14,7 @@ document.addEventListener('alpine:init', () => {
 			this.error = null;
 
 			try {
-				const module = await import('../json/db.json', {
+				const module = await import('/src/mocks/db.json', {
 					with: { type: 'json' },
 				});
 

@@ -7,6 +7,10 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 <LayoutBasic>
 	<top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip>
 
+	<div class="absolute top-5 right-85 z-5">
+		<ui-btn class="min-w-37.5" variant="ghost" size="lg" txt="오버레이 설정"></ui-btn>
+	</div>
+
 	<div class="grid h-full grid-cols-[1fr_20rem]">
 		<section id="map_div" class="grid size-full"></section>
 		<div class="absolute right-85 bottom-5 z-5 space-y-3">
@@ -33,6 +37,7 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 			error: null,
 			itemId: 0,
 			sidebar: false,
+			toast: [],
 			async fetchData() {
 				this.loading = true;
 				try {

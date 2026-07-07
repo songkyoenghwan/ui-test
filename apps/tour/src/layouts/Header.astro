@@ -12,12 +12,10 @@ if (!res.ok) {
 
 const json = await res.json();
 
-console.log(json);
-
-const authData = json?.data.data ?? {};
-const user = json?.data ?? {};
+const authData = json?.data ?? {};
+const user = json?.user ?? {};
 const menus = user?.menus ?? [];
-const tourDestinations = user?.tourDestinations ?? [];
+const tourDestinations = authData?.tourDestinations ?? [];
 
 const pathname = Astro.url.pathname;
 const currentSub = pathname;
