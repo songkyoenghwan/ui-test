@@ -66,6 +66,12 @@
 					<span class="text-">연계 정보</span>
 				</label>
 			</li>
+			<li class="tab-item group/tab-item">
+				<label for="tab-3" class="tab-button">
+					<input type="radio" id="tab-3" name="tab-1" class="peer sr-only" />
+					<span class="text-">상품 정보</span>
+				</label>
+			</li>
 		</ul>
 
 		<div class="flex h-full max-h-[calc(100dvh-295px)] min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
@@ -76,7 +82,7 @@
 						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
 					</div>
 
-					<div class="grid grid-cols-[90px_1fr] gap-2.5">
+					<div class="grid grid-cols-[100px_1fr] gap-2.5">
 						<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
 						></thumbnail-upload>
 
@@ -211,7 +217,7 @@
 					</div>
 
 					<template x-for="item in facilityVpsPopups" :key="item.id">
-						<div class="grid grid-cols-[90px_1fr] items-center gap-2.5">
+						<div class="grid grid-cols-[100px_1fr] items-center gap-2.5">
 							<thumbnail-view :thumb-files="item.fileUrl"></thumbnail-view>
 
 							<div class="space-y-1">
@@ -242,6 +248,117 @@
 								></lang-translate>
 							</div>
 						</div>
+					</template>
+				</li>
+			</ul>
+
+			<ul class="hidden flex-1 flex-col divide-y divide-slate-200 group-has-[#tab-3:checked]/tab:flex">
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex flex-col">
+						<ui-tit tag="h5" size="md" tit="상품·이용 안내 "></ui-tit>
+						<ui-txt class="flex-none" size="xs" txt="이미지는 최대 5개까지 등록 가능합니다."></ui-txt>
+					</div>
+
+					<swiper-container
+						slides-per-view="auto"
+						space-between="10"
+						free-mode="true"
+						scrollbar="true"
+						class="inline-flex max-w-75"
+					>
+						<swiper-slide class="w-25">
+							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
+							></thumbnail-upload>
+						</swiper-slide>
+						<swiper-slide class="w-25">
+							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
+							></thumbnail-upload>
+						</swiper-slide>
+						<swiper-slide class="w-25">
+							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
+							></thumbnail-upload>
+						</swiper-slide>
+						<swiper-slide class="w-25">
+							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
+							></thumbnail-upload>
+						</swiper-slide>
+						<swiper-slide class="w-25">
+							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
+							></thumbnail-upload>
+						</swiper-slide>
+					</swiper-container>
+				</li>
+				<li class="grid grid-rows-[24px_1fr_20px] space-y-2 py-3">
+					<div class="flex items-center justify-between px-5">
+						<div class="flex items-center gap-1">
+							<ui-tit class="flex items-center gap-2" tag="h5" size="md" tit="상품"></ui-tit>
+							<ui-txt
+								size="xs"
+								:cls="$store.data.data?.overwriteCongestionStatus ? 'text-cms-3' : 'text-slate-500'"
+								:txt="!$store.data.data?.overwriteCongestionStatus ? '0개' : `${$store.data.data?.overwriteCongestionStatus}개`"
+							></ui-txt>
+						</div>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="상품 추가"></ui-btn>
+					</div>
+					<ul class="flex h-full flex-1 flex-col divide-y divide-slate-200" x-sort>
+						<template x-for="(item, idx) in $store.data.data.product" :key="idx">
+							<li
+								class="aria-current:bg-secondary aria-current:border-cms-3 grid grid-cols-[1fr_30px] items-center gap-2 border-t border-t-white px-5 py-3 aria-current:border"
+							>
+								<button
+									type="button"
+									class="grid grid-cols-[16px_1fr_90px] items-center gap-2"
+									aria-label="Drag handle"
+									x-sort:item
+								>
+									<icon-list data-name="dnd" class="size-4 fill-slate-300"></icon-list>
+
+									<div class="w-full space-y-1">
+										<ui-txt
+											class="text-left"
+											tag="span"
+											class="grid min-w-0 text-left"
+											cls="truncate w-full inline-block"
+											:title="item?.name?.ko"
+											:txt="item?.name?.ko"></ui-txt>
+										<ui-txt size="xs" cls="text-left " :txt="`${item?.price.toLocaleString('ko-KR') ?? 0}원`"
+										></ui-txt>
+										<ui-txt
+											size="xs"
+											cls="text-left line-clamp-2"
+											:title="`${item?.description.ko ?? ''}`"
+											:txt="`${item?.description.ko ?? ''}`"></ui-txt>
+									</div>
+
+									<thumbnail-view :thumb-files="item.fileUrl"></thumbnail-view>
+								</button>
+
+								<div
+									x-data="{ menuBarOpen: false }"
+									class="relative inline-block"
+									@click.outside="menuBarOpen = false"
+								>
+									<ui-btn
+										variant="icon"
+										icon-name="more"
+										icon-cls="size-4 stroke-slate-400"
+										txt="삭제1"
+										@btn-click="menuBarOpen = !menuBarOpen"></ui-btn>
+
+									<div
+										x-show="menuBarOpen"
+										x-cloak
+										class="shadow-1xs absolute top-full -right-5 z-10 mt-1 min-w-15 rounded-sm border border-slate-200 bg-white p-1"
+									>
+										<ui-btn variant="text" txt="수정" @btn-click="menuBarOpen = false"></ui-btn>
+										<ui-btn variant="text" txt="삭제" @btn-click="menuBarOpen = false"></ui-btn>
+									</div>
+								</div>
+							</li>
+						</template>
+					</ul>
+					<template x-if="$store.data.data?.product && $store.data.data.product.length > 0">
+						<ui-txt size="xs" cls="text-center" txt="최대 50개까지 등록 가능합니다."></ui-txt>
 					</template>
 				</li>
 			</ul>
@@ -280,3 +397,8 @@
 		</div>
 	</footer>
 </section>
+
+<script>
+	import { register } from 'swiper/element/bundle';
+	register();
+</script>

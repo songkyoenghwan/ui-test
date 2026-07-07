@@ -125,12 +125,12 @@
 	onChange={handleOnChange}
 	onDrop={handleOnDrop}
 	accept=".png"
-	class="relative {cls ? cls : 'size-22.5'}"
+	class="relative {cls ? cls : 'size-25'}"
 >
 	{#if (filesInDropzone && filesInDropzone.length > 0) || previewUrl}
 		<div class="flex flex-col items-center gap-2">
 			<picture
-				class="flex size-22.5 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
+				class="flex size-25 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
 				aria-label={previewUrl}
 			>
 				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto min-h-30 object-cover" />

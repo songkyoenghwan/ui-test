@@ -11,13 +11,17 @@
 />
 
 <script lang="ts">
+	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
+	import type { Placement } from '@floating-ui/utils';
 	interface Props {
 		tag: 'p' | 'strong' | 'span' | 'div';
 		txt?: string;
 		size?: 'md' | 'sm' | 'xs';
+		tooltip?: string;
+		placement?: Placement;
 		cls?: string;
 	}
-	let { tag = 'p', txt = '', cls = '', size = 'md' }: Props = $props();
+	let { tag = 'p', txt = '', cls = '', size = 'md', tooltip, placement = 'top' }: Props = $props();
 
 	const s = $derived(size);
 </script>
@@ -29,6 +33,10 @@
 
 	<slot name="rt" />
 </svelte:element>
+
+{#if tooltip}
+	<ContentTooltip {placement} {txt} />
+{/if}
 
 <style>
 	* {

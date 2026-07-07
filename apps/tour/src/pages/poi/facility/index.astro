@@ -109,6 +109,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 							<col style="width: 140px" />
 							<col style="width: 140px" />
 							<col style="width: 100px" />
+							<col style="width: 80px" />
 							<col style="width: 120px" />
 							<col style="width: 120px" />
 						</colgroup>
@@ -122,6 +123,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 								<th class="text-left" scope="row">카테고리</th>
 								<th class="text-left" scope="row">운영기간</th>
 								<th class="text-left" scope="row">공통 링크</th>
+								<th class="text-left" scope="row">상품</th>
 								<th class="text-left" scope="row">매칭 위치</th>
 								<th class="text-left" scope="row">수정일시</th>
 							</tr>
@@ -188,6 +190,10 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 											></ui-txt>
 										</template>
 									</td>
+									<td>
+										<ui-txt size="sm" cls="text-left text-slate-500" txt="0개"></ui-txt>
+										<ui-txt size="sm" cls="text-cms-4 text-left" txt="1개"></ui-txt>
+									</td>
 									<td class="text-left">
 										<template x-if="item.facilityPoiMappings.length === 0">
 											<text-badge tooltip variant="error" txt="매칭전"></text-badge>
@@ -214,6 +220,10 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 									</td>
 								</tr>
 							</template>
+
+							<tr>
+								<td colspan="9"></td>
+							</tr>
 						</tbody>
 					</table>
 				</div>

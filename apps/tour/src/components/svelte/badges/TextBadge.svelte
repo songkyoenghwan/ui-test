@@ -23,6 +23,7 @@
 		size?: string;
 		ellipsis?: string;
 		icon?: string;
+		tooltip?: string;
 		cls?: string;
 	};
 

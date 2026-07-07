@@ -11,7 +11,14 @@
 				"tourDestinations": [
 					{
 						"id": 1,
-						"name": { "ko": "부산락페스티벌222", "en": "Busan Rock Festival", "ja": "", "zh": "", "vi": "", "th": "" },
+						"name": {
+							"ko": "부산락페스티벌222",
+							"en": "Busan Rock Festival",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
 						"sortingNumber": null,
 						"sectionCongestion": true
 					},
@@ -23,13 +30,27 @@
 					},
 					{
 						"id": 3,
-						"name": { "ko": "대구 치맥 축제", "en": "Deagu Chicken and Beer Festival", "ja": "", "zh": "", "vi": "", "th": "" },
+						"name": {
+							"ko": "대구 치맥 축제",
+							"en": "Deagu Chicken and Beer Festival",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
 						"sortingNumber": null,
 						"sectionCongestion": true
 					},
 					{
 						"id": 17,
-						"name": { "ko": "6월15일의 축제2", "en": "June's 15th Festival2", "ja": "", "zh": "", "vi": "", "th": "" },
+						"name": {
+							"ko": "6월15일의 축제2",
+							"en": "June's 15th Festival2",
+							"ja": "",
+							"zh": "",
+							"vi": "",
+							"th": ""
+						},
 						"sortingNumber": null,
 						"sectionCongestion": true
 					}
@@ -155,355 +176,6 @@
 			}
 		}
 	},
-	"CMS-LOC-001": [
-		{
-			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
-			"closingDay": {
-				"allWeek": "",
-				"day": "",
-				"dayWeek": ["wed", "fri"],
-				"status": "week",
-				"week": ["2", "3", "4"]
-			},
-			"custom": {
-				"btnLink": [
-					{
-						"id": "custom-btn-1",
-						"img": "blob:http://localhost:5184/42c67bd4-4112-409e-9175-7999436a5bb7",
-						"lang": {
-							"en": {
-								"error": false,
-								"value": "송도센트럴파크2"
-							},
-							"ja": {
-								"error": false,
-								"value": "송도센트럴파크4"
-							},
-							"ko": {
-								"error": false,
-								"value": "송도센트럴파크1"
-							},
-							"th": {
-								"error": false,
-								"value": "송도센트럴파크5"
-							},
-							"vi": {
-								"error": false,
-								"value": "송도센트럴파크6"
-							},
-							"zh": {
-								"error": false,
-								"value": "송도센트럴파크3"
-							}
-						},
-						"use": "10"
-					},
-					{
-						"id": "custom-btn-2",
-						"img": "blob:http://localhost:5184/42c67bd4-4112-409e-9175-7999436a5bb7",
-						"lang": {
-							"en": {
-								"error": false,
-								"value": "송도센트럴파크2"
-							},
-							"ja": {
-								"error": false,
-								"value": "송도센트럴파크4"
-							},
-							"ko": {
-								"error": false,
-								"value": "송도센트럴파크1"
-							},
-							"th": {
-								"error": false,
-								"value": "송도센트럴파크5"
-							},
-							"vi": {
-								"error": false,
-								"value": "송도센트럴파크6"
-							},
-							"zh": {
-								"error": false,
-								"value": "송도센트럴파크3"
-							}
-						},
-						"use": "10"
-					}
-				],
-				"color": "#000000",
-				"features": {
-					"ai": true,
-					"facility": true,
-					"facilityUse": "10",
-					"zone": false,
-					"zoneUse": "10"
-				},
-				"information": {
-					"address": false,
-					"location": true,
-					"locationUse": "10",
-					"sorting": "MANUAL"
-				}
-			},
-			"editTime": "2026-06-12 08:48",
-			"hours": "요일별 상이",
-			"id": "CMS-LOC-001-detail-01",
-			"language": {
-				"en": true,
-				"ja": true,
-				"ko": true,
-				"th": true,
-				"vi": true,
-				"zh": true
-			},
-			"linkHomepage": "https://naver.com",
-			"linkMap": "https://naver.com",
-			"name": {
-				"en": {
-					"error": false,
-					"value": "송도센트럴파크2"
-				},
-				"ja": {
-					"error": false,
-					"value": "송도센트럴파크4"
-				},
-				"ko": {
-					"error": false,
-					"value": "송도센트럴파크1"
-				},
-				"th": {
-					"error": false,
-					"value": "송도센트럴파크5"
-				},
-				"vi": {
-					"error": false,
-					"value": "송도센트럴파크6"
-				},
-				"zh": {
-					"error": false,
-					"value": "송도센트럴파크3"
-				}
-			},
-			"operatingHours": {
-				"cols": [
-					{
-						"dayWeek": ["mon"],
-						"id": "operatingHours1",
-						"time": {
-							"error": false,
-							"rest": false,
-							"restEnd": "",
-							"restStart": "",
-							"timeEnd": "01:00",
-							"timeStart": "00:00"
-						}
-					},
-					{
-						"dayWeek": ["wed", "fri"],
-						"id": "operatingHours2",
-						"time": {
-							"error": false,
-							"rest": false,
-							"restEnd": "",
-							"restStart": "",
-							"timeEnd": "01:00",
-							"timeStart": "00:00"
-						}
-					},
-					{
-						"dayWeek": ["mon", "tue", "wed", "thu", "fri"],
-						"id": "operatingHours3",
-						"time": {
-							"error": false,
-							"rest": false,
-							"restEnd": "",
-							"restStart": "",
-							"timeEnd": "01:00",
-							"timeStart": "00:00"
-						}
-					},
-					{
-						"dayWeek": ["sat", "sun"],
-						"id": "operatingHours4",
-						"time": {
-							"error": false,
-							"rest": false,
-							"restEnd": "",
-							"restStart": "",
-							"timeEnd": "01:00",
-							"timeStart": "00:00"
-						}
-					}
-				],
-				"status": "week"
-			},
-			"operationGuide": {
-				"en": {
-					"error": false,
-					"value": "송도센트럴파크2"
-				},
-				"ja": {
-					"error": false,
-					"value": "송도센트럴파크4"
-				},
-				"ko": {
-					"error": false,
-					"value": "송도센트럴파크1"
-				},
-				"th": {
-					"error": false,
-					"value": "송도센트럴파크5"
-				},
-				"vi": {
-					"error": false,
-					"value": "송도센트럴파크6"
-				},
-				"zh": {
-					"error": false,
-					"value": "송도센트럴파크3"
-				}
-			},
-			"period": {
-				"day": "2026.06.02(화)~2026.06.16(화)",
-				"status": "period"
-			},
-			"status": "운영중"
-		},
-		{
-			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
-			"closingDay": {
-				"allWeek": "",
-				"day": "",
-				"dayWeek": [],
-				"status": "none",
-				"week": []
-			},
-			"custom": {
-				"color": "#ff0000",
-				"features": {
-					"ai": true,
-					"facility": true,
-					"facilityUse": "10",
-					"zone": true,
-					"zoneUse": "10"
-				},
-				"information": {
-					"address": false,
-					"location": true,
-					"locationUse": "10",
-					"sorting": "STATUS"
-				}
-			},
-			"editTime": "2026-06-12 08:48",
-			"hours": "10:00 ~ 22:00",
-			"id": "CMS-LOC-001-detail-02",
-			"language": {
-				"en": true,
-				"ko": true
-			},
-			"linkHomepage": "https://naver.com",
-			"linkMap": "https://naver.com",
-			"name": {
-				"en": {
-					"error": false,
-					"value": "월미도문화의거리2"
-				},
-				"ko": {
-					"error": false,
-					"value": "월미도문화의거리1"
-				}
-			},
-			"operatingHours": {
-				"cols": [
-					{
-						"dayWeek": [],
-						"id": "uniqueId",
-						"time": {
-							"error": false,
-							"rest": false,
-							"restEnd": "",
-							"restStart": "",
-							"timeEnd": "01:00",
-							"timeStart": "00:00"
-						}
-					}
-				],
-				"status": "always"
-			},
-			"period": {
-				"day": "",
-				"status": "always"
-			},
-			"status": "운영종료"
-		},
-		{
-			"address": "서울특별시 용산구 이태원로 29 (한강로1가)",
-			"closingDay": {
-				"allWeek": "",
-				"day": "",
-				"dayWeek": [],
-				"status": "none",
-				"week": []
-			},
-			"custom": {
-				"color": "#ff0000",
-				"features": {
-					"ai": true,
-					"facility": true,
-					"facilityUse": "10",
-					"zone": true,
-					"zoneUse": "10"
-				},
-				"information": {
-					"address": false,
-					"location": true,
-					"locationUse": "10",
-					"sorting": "STATUS"
-				}
-			},
-			"editTime": "2026-06-12 08:48",
-			"hours": "10:00 ~ 22:00",
-			"id": "CMS-LOC-001-detail-03",
-			"language": {
-				"en": true,
-				"ko": true
-			},
-			"linkHomepage": "https://naver.com",
-			"linkMap": "https://naver.com",
-			"name": {
-				"en": {
-					"error": false,
-					"value": "월미도문화의거리2"
-				},
-				"ko": {
-					"error": false,
-					"value": "월미도문화의거리1"
-				}
-			},
-			"operatingHours": {
-				"cols": [
-					{
-						"dayWeek": [],
-						"id": "uniqueId",
-						"time": {
-							"error": false,
-							"rest": false,
-							"restEnd": "",
-							"restStart": "",
-							"timeEnd": "01:00",
-							"timeStart": "00:00"
-						}
-					}
-				],
-				"status": "always"
-			},
-			"period": {
-				"day": "",
-				"status": "always"
-			},
-			"status": "운영 전"
-		}
-	],
 	"map": {
 		"success": true,
 		"data": {
@@ -854,6 +526,96 @@
 								"ko": "XR 콘텐츠"
 							},
 							"url": "https://xxx.cmo"
+						}
+					],
+					"product": [
+						{
+							"name": {
+								"en": "facility1",
+								"ko": "시설테스트1 시설테스트1 시설테스트1"
+							},
+							"price": 99000,
+							"description": {
+								"en": "A facility where voting takes place.",
+								"ja": "",
+								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
+								"th": "",
+								"vi": "",
+								"zh": ""
+							},
+							"fileMimeType": "image/png",
+							"fileOriginalName": "ìë´ì.png",
+							"fileSize": 3527,
+							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+							"fileUploadPath": "images/categories/2026/06/02",
+							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
+							"id": 1
+						},
+						{
+							"name": {
+								"en": "facility1",
+								"ko": "시설테스트1"
+							},
+							"price": 99000,
+							"description": {
+								"en": "A facility where voting takes place.",
+								"ja": "",
+								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
+								"th": "",
+								"vi": "",
+								"zh": ""
+							},
+							"fileMimeType": "image/png",
+							"fileOriginalName": "ìë´ì.png",
+							"fileSize": 3527,
+							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+							"fileUploadPath": "images/categories/2026/06/02",
+							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
+							"id": 2
+						},
+						{
+							"name": {
+								"en": "facility1",
+								"ko": "시설테스트1"
+							},
+							"price": 99000,
+							"description": {
+								"en": "A facility where voting takes place.",
+								"ja": "",
+								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
+								"th": "",
+								"vi": "",
+								"zh": ""
+							},
+							"fileMimeType": "image/png",
+							"fileOriginalName": "ìë´ì.png",
+							"fileSize": 3527,
+							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+							"fileUploadPath": "images/categories/2026/06/02",
+							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
+							"id": 3
+						},
+						{
+							"name": {
+								"en": "facility1",
+								"ko": "시설테스트1"
+							},
+							"price": 99000,
+							"description": {
+								"en": "A facility where voting takes place.",
+								"ja": "",
+								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
+								"th": "",
+								"vi": "",
+								"zh": ""
+							},
+							"fileMimeType": "image/png",
+							"fileOriginalName": "ìë´ì.png",
+							"fileSize": 3527,
+							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
+							"fileUploadPath": "images/categories/2026/06/02",
+							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
+							"id": 4
 						}
 					],
 					"id": 1,
