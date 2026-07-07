@@ -353,12 +353,12 @@ export const getIconData = () => {
 		},
 		{
 			name: 'arrow-down',
-			size: '20',
+			size: '16',
 			html: /* HTML */ `
 				<path
-					d="M19.9181 8.9502L13.3981 15.4702C12.6281 16.2402 11.3681 16.2402 10.5981 15.4702L4.07812 8.9502"
+					d="M11.92 6L8.66 9.26C8.275 9.645 7.645 9.645 7.26 9.26L4 6"
 					fill="none"
-					stroke-width="1.5"
+					stroke-width="0.75"
 					stroke-miterlimit="10"
 					stroke-linecap="round"
 					stroke-linejoin="round"

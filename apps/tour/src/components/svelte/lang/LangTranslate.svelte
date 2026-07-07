@@ -223,10 +223,9 @@
 						size="md"
 						txt="다국어 입력"
 						icon-name="arrow-down"
-						icon-size="16"
 						class="flex-1"
 						cls="stroke-cms-3"
-						icon-cls={langToggle ? '' : 'rotate-180'}
+						icon-cls={langToggle ? 'size-4' : 'size-4 rotate-180'}
 						icon-pos="lt"
 						aria-expanded={open === 'close' ? 'false' : 'true'}
 						click={(e: Event) => {

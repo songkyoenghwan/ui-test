@@ -470,7 +470,7 @@
 	}
 
 	.input-text {
-		@apply focus-within:border-cms-2 focus-within:outline-cms-2 min-h-10 w-full rounded-sm border border-slate-300 bg-white px-3 placeholder:text-sm placeholder:text-slate-500 read-only:border-slate-100 read-only:bg-slate-200;
+		@apply focus-within:border-cms-2 focus-within:outline-cms-2 min-h-10 w-full rounded-sm border border-slate-300 bg-white px-3 placeholder:text-sm placeholder:text-slate-500 read-only:border-slate-200 read-only:bg-slate-100;
 
 		&.m {
 			@apply min-h-10 text-sm placeholder:text-sm;
@@ -707,7 +707,7 @@
 	}
 
 	.sortable-chosen {
-		@apply bg-secondary border-cms-3 border;
+		@apply bg-secondary! border-cms-3 border;
 	}
 
 	.map-list {

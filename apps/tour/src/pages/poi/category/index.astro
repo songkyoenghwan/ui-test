@@ -4,7 +4,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 ---
 
 <LayoutBasic>
-	<div class="grid h-full w-[calc(100dvw-80px)] flex-1 grid-cols-[320px_1fr] gap-5 py-5 pl-5">
+	<div class="grid h-full w-[calc(100dvw-80px)] flex-1 grid-cols-[320px_1fr] grid-rows-[28px_1fr] gap-5 py-5 pl-5">
 		<CategorySide />
 		<header class="flex items-center justify-between">
 			<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '카테고리 수정' : '카테고리 등록'"></ui-tit>
@@ -139,7 +139,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 						class="flex h-full min-h-0 flex-1 flex-col divide-y divide-slate-200 overflow-x-hidden overflow-y-auto"
 						x-sort
 					>
-						<template x-if="$store.data.subCategory.length === 0">
+						<template x-if="$store.data.data.children.length === 0">
 							<li class="grid place-content-center gap-3 py-10">
 								<ui-txt
 									class="flex items-center gap-2 text-center"
@@ -149,18 +149,24 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 								</div>
 							</li>
 						</template>
-						<template x-for="(item, idx) in $store.data.subCategory" :key="idx">
+						<template x-for="(item, idx) in $store.data.data.children" :key="idx">
 							<li class="group/dnd grid grid-cols-[1fr_124px] gap-2 px-5 py-3">
 								<button
 									type="button"
-									class="handle grid grid-cols-[16px_1fr] items-center gap-2"
+									class="handle grid items-center gap-2 has-data-[name=dnd]:grid-cols-[16px_1fr]"
 									aria-label="Drag handle"
 									:x-sort:item="`dnd-general-${idx}`"
 								>
-									<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
-									></icon-list>
-									<ui-tit class="text-left" cls="font-normal" tag="p" tit="하위 카테고리" sub="등록된 시설 N개"
-									></ui-tit>
+									<template x-if="$store.data.data.children.length > 1">
+										<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
+										></icon-list>
+									</template>
+									<ui-tit
+										class="text-left"
+										cls="font-normal"
+										tag="p"
+										tit="하위 카테고리"
+										:sub="`등록된 시설 ${item._count.facilities ?? '0'}개`"></ui-tit>
 								</button>
 
 								<div class="grid grid-cols-[repeat(2,60px)] gap-2">
@@ -185,7 +191,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			loading: false,
 			error: null,
 			itemId: 1,
-			generalCategory: Array.from({ length: 12 }, (_, idx) => ({
+			items: Array.from({ length: 12 }, (_, idx) => ({
 				name: {
 					ko: `대상지명대상지명대상지명대상지명대상지명${idx + 1}`,
 					en: `tour_destination_${idx + 1}`,
@@ -203,22 +209,36 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 				sortingNumber: idx + 1,
 				isEventCategory: idx < 2 ? true : false,
 				isAiRecommendationEnabled: idx === 0 ? true : false,
+				isVisible: idx === 0 ? true : false,
+
+				children: [
+					{
+						_count: {
+							facilities: 1,
+						},
+						sortingNumber: 1,
+						iconUrl: 'location',
+						name: {
+							ko: '1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치',
+							en: '',
+						},
+						id: 1,
+					},
+					{
+						_count: {
+							facilities: 1,
+						},
+						sortingNumber: 1,
+						iconUrl: 'location',
+						name: {
+							ko: '1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치',
+							en: '',
+						},
+						id: 1,
+					},
+				],
 			})),
-			subCategory: Array.from({ length: 12 }, (_, idx) => ({
-				name: {
-					ko: `대상지명${idx + 1}`,
-					en: `tour_destination_${idx + 1}`,
-					zh: '',
-					ja: '',
-					th: '',
-					vi: '',
-				},
-				_count: {
-					facilities: 10,
-				},
-				id: idx + 1,
-				sortingNumber: idx + 1,
-			})),
+			data: {},
 			icons: [
 				'location',
 				'binoculars',
@@ -243,7 +263,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			icon: 'location',
 			colors: Array.from({ length: 12 }, (_, i) => i + 1),
 			color: 1,
-			isEventCategory: true,
+			isEventCategory: false,
 			isAiRecommendationEnabled: false,
 			isNavigationProvided: false,
 
@@ -259,7 +279,13 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 				this.itemId = _id;
 			},
 
+			async findInit(id = 1) {
+				if (!id) return;
+				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
+			},
+
 			init() {
+				this.findInit(1);
 				// Alpine.effect(() => {
 				// 	console.log('store init', this.icon);
 				// 	console.log(this.isEventCategory, this.isAiRecommendationEnabled, this.isNavigationProvided);

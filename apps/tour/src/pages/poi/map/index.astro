@@ -21,8 +21,8 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 
 		<MapList />
 	</div>
+	<MapReg />
 </LayoutBasic>
-<MapReg />
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
@@ -36,7 +36,9 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 			loading: false,
 			error: null,
 			itemId: 0,
-			sidebar: false,
+			sidebar: true,
+			sidebarTopVisible: true,
+			sidebarChkVisible: false,
 			toast: [],
 			async fetchData() {
 				this.loading = true;
@@ -64,7 +66,10 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 				if (!id) return;
 				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
 			},
+
 			sideView(id = 0) {
+				this.sidebar = true;
+				this.itemId = id;
 				this.findInit(id);
 			},
 			async init() {

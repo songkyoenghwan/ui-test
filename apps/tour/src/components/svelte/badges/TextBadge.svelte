@@ -31,18 +31,18 @@
 
 	let color = $derived(
 		variant === 'error'
-			? 'text-error border-error bg-white border'
+			? 'text-error border-error bg-white border stroke-error'
 			: variant === 'bg-error'
-				? 'text-white bg-error'
+				? 'text-white bg-error stroke-white'
 				: variant === 'bg-primary'
-					? 'text-white bg-cms-3'
+					? 'text-white bg-cms-3 stroke-white'
 					: variant === 'bg-cms-4'
-						? 'text-white bg-cms-4'
+						? 'text-white bg-cms-4 stroke-white'
 						: variant === 'bg-slate'
-							? 'text-slate-500 bg-slate-200'
+							? 'text-slate-500 bg-slate-200 stroke-slate-200'
 							: variant === 'bg-secondary'
-								? 'text-cms-3 bg-secondary border border-cms-3'
-								: 'text-cms-3 bg-white border-cms-3 border',
+								? 'text-cms-3 bg-secondary border border-cms-3 stroke-cms-3'
+								: 'text-cms-3 bg-white border-cms-3 border stroke-cms-3',
 	);
 </script>
 
@@ -56,7 +56,7 @@
 	]}
 >
 	{#if icon}
-		<icon-list data-name={icon ?? ''} class="icon stroke-cms-3 size-2.5"></icon-list>
+		<icon-list data-name={icon ?? ''} class="icon size-2.5"></icon-list>
 	{/if}
 	<span class={ellipsis ? 'truncate' : ''}>
 		{txt}

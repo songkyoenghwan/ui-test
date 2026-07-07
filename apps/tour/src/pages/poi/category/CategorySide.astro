@@ -30,7 +30,7 @@
 				<ui-txt
 					cls="text-cms-5 font-bold"
 					size="xs"
-					:txt="($store.data.generalCategory ?? []).filter(item => item?.isEventCategory).length ?? 0"></ui-txt>
+					:txt="($store.data.items ?? []).filter(item => item?.isEventCategory).length ?? 0"></ui-txt>
 				<ui-txt size="xs" txt="개"></ui-txt>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 		<div class="overflow-y-aut o flex min-h-0 flex-col overflow-x-hidden bg-slate-200">
 			<ul class="flex h-full flex-1 flex-col divide-y divide-slate-200" x-sort>
 				<template
-					x-for="(item, idx) in ($store.data.generalCategory ?? []).filter(item => item?.isEventCategory)"
+					x-for="(item, idx) in ($store.data.items ?? []).filter(item => item?.isEventCategory)"
 					:key="item.id ?? idx"
 				>
 					<li
@@ -51,6 +51,7 @@
 							type="button"
 							class="grid grid-cols-[16px_32px_1fr] items-center gap-2"
 							aria-label="Drag handle"
+							:title="item?.name?.ko"
 							x-sort:item
 						>
 							<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
@@ -75,7 +76,7 @@
 						</template>
 					</li>
 				</template>
-				<template x-if="($store.data.generalCategory ?? []).filter(item => item?.isEventCategory).length === 0">
+				<template x-if="($store.data.items ?? []).filter(item => item?.isEventCategory).length === 0">
 					<li class="grid h-full place-content-center">
 						<ui-txt
 							size="lg"
@@ -94,7 +95,7 @@
 			<ui-txt
 				cls="text-cms-5 font-bold"
 				size="xs"
-				:txt="($store.data.isEventCategory ? ($store.data.generalCategory ?? []).filter(item => !item?.isEventCategory) : ($store.data.generalCategory ?? []) ).length"
+				:txt="($store.data.isEventCategory ? ($store.data.items ?? []).filter(item => !item?.isEventCategory) : ($store.data.items ?? []) ).length"
 			></ui-txt>
 
 			<ui-txt size="xs" txt="개"></ui-txt>
@@ -105,8 +106,8 @@
 			<template
 				x-for="(item, idx) in (
 						$store.data.isEventCategory
-							? ($store.data.generalCategory ?? []).filter(item => !item?.isEventCategory)
-							: ($store.data.generalCategory ?? [])
+							? ($store.data.items ?? []).filter(item => !item?.isEventCategory)
+							: ($store.data.items ?? [])
 					)"
 				:key="item.id ?? idx"
 			>
@@ -119,6 +120,7 @@
 						type="button"
 						class="grid grid-cols-[16px_32px_1fr] items-center gap-2"
 						aria-label="Drag handle"
+						:title="item?.name?.ko"
 						x-sort:item
 					>
 						<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"></icon-list>
@@ -143,7 +145,7 @@
 				</li>
 			</template>
 
-			<template x-if="$store.data.generalCategory.length === 0">
+			<template x-if="$store.data.items.length === 0">
 				<li class="grid h-full place-content-center">
 					<ui-txt
 						size="lg"

@@ -260,12 +260,67 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": true,
+					"checked": true,
+					"isVisible": false,
+					"isNavigationProvided": false,
 					"facilityPoiMappings": [
 						{
 							"poi": {
 								"name": {
 									"en": "First POI",
 									"ko": "1번 위치1번 위치1번 위치1번 위치"
+								}
+							},
+							"categoryColorCodeId": 1,
+							"icon": "location",
+							"category": {
+								"name": {
+									"en": "Japaneese Cafe",
+									"ja": "",
+									"ko": "일본풍 카페",
+									"th": "",
+									"vi": "",
+									"zh": ""
+								},
+								"parent": {
+									"name": {
+										"en": "cafe",
+										"ja": "",
+										"ko": "카페",
+										"th": "",
+										"vi": "",
+										"zh": ""
+									}
+								}
+							}
+						},
+						{
+							"poi": {
+								"name": {
+									"en": "First POI",
+									"ko": "1번 위치1번 위치1번 위치1번 위치"
+								}
+							},
+							"categoryColorCodeId": 5,
+							"icon": "three",
+							"category": {
+								"name": {
+									"en": "Japaneese Cafe",
+									"ja": "",
+									"ko": "일본풍 카페",
+									"th": "",
+									"vi": "",
+									"zh": ""
+								},
+								"parent": {
+									"name": {
+										"en": "cafe",
+										"ja": "",
+										"ko": "카페",
+										"th": "",
+										"vi": "",
+										"zh": ""
+									}
 								}
 							}
 						}
@@ -284,6 +339,9 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": true,
+					"checked": false,
+					"isVisible": false,
+					"isNavigationProvided": false,
 					"facilityPoiMappings": [
 						{
 							"poi": {
@@ -308,6 +366,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				},
 				{
@@ -323,6 +383,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				},
 				{
@@ -338,6 +400,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				},
 				{
@@ -353,6 +417,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				},
 				{
@@ -368,6 +434,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				},
 				{
@@ -383,6 +451,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				},
 				{
@@ -398,6 +468,8 @@
 					"createdAt": "2026-05-29T00:54:49.125Z",
 					"updatedAt": null,
 					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
 					"facilityPoiMappings": []
 				}
 			],
@@ -688,7 +760,7 @@
 					"id": 1,
 					"isDeleted": false,
 					"isOperationInfoSynced": false,
-					"isVisible": true,
+					"isVisible": false,
 					"linkButton": null,
 					"name": {
 						"en": "facility1",
@@ -833,7 +905,7 @@
 					"id": 2,
 					"isDeleted": false,
 					"isOperationInfoSynced": true,
-					"isVisible": true,
+					"isVisible": false,
 					"linkButton": {},
 					"name": {
 						"en": "Faciltiy2",
@@ -958,7 +1030,7 @@
 					"id": 3,
 					"isDeleted": false,
 					"isOperationInfoSynced": true,
-					"isVisible": true,
+					"isVisible": false,
 					"linkButton": {},
 					"name": {
 						"en": "Faciltiy2",

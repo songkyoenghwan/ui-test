@@ -288,7 +288,7 @@ const { view, id } = Astro.params;
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
-					const payload = data.data.data ?? {};
+					const payload = data.data ?? {};
 					this.items = payload.items ?? [];
 
 					const { view, id } = this.getRouteInfo();

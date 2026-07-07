@@ -13,7 +13,7 @@
 			<option value="">노출 + 비노출</option>
 			<option value="">옵션</option>
 		</select>
-		<input-search-del placeholder="위치 검색" class="col-span-2"></input-search-del>
+		<input-search-del placeholder="위치명, 시설명 검색" class="col-span-2"></input-search-del>
 	</header>
 
 	<div class="flex items-center justify-between gap-1 px-5 py-3">
@@ -21,10 +21,15 @@
 			<option value="">최신순</option>
 			<option value="">가나다순</option>
 		</select>
-		<p class="flex items-center gap-1">
+		<div class="flex items-center gap-1">
 			<ui-txt size="sm" txt="검색결과"></ui-txt>
 			<ui-txt size="sm" cls="text-cms-3 font-bold" :txt="String($store.data.totalCount ?? '0')"></ui-txt>
-		</p>
+			<ui-btn
+				class="min-w15"
+				variant="primary"
+				:txt="$store.data.sidebarChkVisible ? '선택 취소' : '선택'"
+				@btn-click="$store.data.sidebarChkVisible= !$store.data.sidebarChkVisible"></ui-btn>
+		</div>
 	</div>
 
 	<div class="flex h-full min-h-0 flex-1 flex-col overflow-x-clip overflow-y-auto scroll-smooth">
@@ -42,12 +47,17 @@
 		<template x-if="$store.data.items?.length > 0">
 			<ul class="flex flex-1 flex-col">
 				<template x-for="(item, index) in $store.data.items" :key="item.id">
-					<li :data-index="index" class="w-full border-b border-b-slate-200">
+					<li :data-index="index" class="flex w-full items-center gap-1 border-b border-b-slate-200 px-5">
+						<template x-if="$store.data.sidebarChkVisible">
+							<ui-checkbox :checked="item.checked" @checked-change="$store.data.checked = $event.detail.checked"
+							></ui-checkbox>
+						</template>
 						<button
 							type="button"
 							:aria-label="item.name?.ko ?? ''"
-							class="grid w-full grid-rows-2 gap-x-2 gap-y-1 bg-white px-6 py-4 text-left text-sm transition-colors hover:bg-slate-50 has-[text-badge]:grid-cols-[1fr_minmax(0,40px)]"
-							@click="$store.data.facilitiesCurrent = item"
+							class="grid w-full grid-rows-2 gap-x-2 gap-y-1 bg-white px-2 py-4 text-left text-sm transition-colors hover:bg-slate-50 has-[text-badge]:grid-cols-[1fr_minmax(0,40px)]"
+							:title="item.name?.ko"
+							@click="$store.data.sideView(item.id)"
 						>
 							<span
 								class="order-1 row-span-1 truncate"
@@ -86,4 +96,22 @@
 			</ul>
 		</template>
 	</div>
+
+	<footer class="divide-y divide-slate-200 border-t border-t-slate-200 bg-white">
+		<template x-if="!$store.data.sidebarChkVisible">
+			<div class="grid grid-cols-1 gap-2 px-5 py-3">
+				<ui-btn variant="primary" size="lg" cls="text-lg! font-bold" txt="T맵 위치 불러오기"></ui-btn>
+			</div>
+		</template>
+		<template x-if="$store.data.sidebarChkVisible">
+			<div class="grid grid-cols-1 gap-2 px-5 py-3">
+				<ui-checkbox :txt="`${$store.data.items?.length ?? '0'}개 전체 선택`"></ui-checkbox>
+				<div class="flex w-full items-center gap-2">
+					<ui-btn class="flex-1" variant="primary" size="lg" cls="text-lg! font-bold" txt="노출"></ui-btn>
+					<ui-btn class="flex-1" variant="primary" size="lg" cls="text-lg! font-bold" txt="비노출"></ui-btn>
+					<ui-btn class="flex-1" variant="secondary" size="lg" cls="text-lg! font-bold" txt="삭제"></ui-btn>
+				</div>
+			</div>
+		</template>
+	</footer>
 </section>

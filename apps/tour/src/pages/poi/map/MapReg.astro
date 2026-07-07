@@ -1,4 +1,4 @@
-<template x-if="$store.data.facilitiesCurrent">
+<template x-if="$store.data.sidebar">
 	<div class="map-reg">
 		<header class="px-4 py-3">
 			<div class="flex">
@@ -24,32 +24,33 @@
 						class="flex"></hover-tooltip>
 				</div>
 
-				<ui-txt size="sm" :txt="`POI ${$store.data.facilitiesCurrent?.id ?? '이름없음'}`"></ui-txt>
+				<ui-txt size="sm" :txt="$store.data?.itemId != null ? `POI ${$store.data.itemId}` : '이름없음'"></ui-txt>
 			</div>
 
-			<div class="flex flex-col gap-4">
-				<lang-translate data-max-length="25" view="reg" :lang="$store.data.facilitiesCurrent.name"></lang-translate>
+			<div class="flex flex-col gap-4" x-show="$store.data.sidebarTopVisible">
+				<lang-translate data-max-length="25" view="reg" :lang="JSON.stringify($store?.data?.data?.name ?? {})"
+				></lang-translate>
 
 				<ul class="flex flex-col gap-1">
 					<li class="grid grid-cols-[22px_1fr_22px_1fr] items-center gap-2">
 						<label for="map-reg-lat" class="label flex-none">위도</label>
 						<input
-							type="number"
+							type="text"
 							name="map-reg-lat"
 							id="map-reg-lat"
 							class="input-text s"
 							placeholder="위도"
-							x-model="$store.data.facilitiesCurrent.lat"
+							x-model="$store.data.data.latitude"
 						/>
 
 						<label for="map-reg-lon" class="label flex-none">경도</label>
 						<input
-							type="number"
+							type="text"
 							name="map-reg-lon"
 							id="map-reg-lon"
 							class="input-text s"
 							placeholder="경도"
-							x-model="$store.data.facilitiesCurrent.lon"
+							x-model="$store.data.data.longitude"
 						/>
 					</li>
 
@@ -62,77 +63,95 @@
 							class="input-text s"
 							placeholder="주소"
 							readonly
-							x-model="$store.data.facilitiesCurrent.addr"
+							x-model="$store.data.data.managementCode"
 						/>
 					</li>
 				</ul>
 			</div>
 
-			<label
-				for="map-reg-top-1"
-				class="icon hover:bg-primary/20 focus-within:outline-primary inline-flex h-7 flex-none items-center justify-end gap-2 rounded-r-sm px-1 text-slate-400 focus-within:outline"
-			>
-				<icon-list
-					data-name="arrow-down"
-					class="icon stroke-primary relative size-4 rotate-0 rounded-sm transition-transform group-has-checked/map-lang:rotate-180 group-has-checked/map-lang:stroke-slate-400"
-				></icon-list>
-				<input type="checkbox" id="map-reg-top-1" name="map-reg-top-1" class="peer sr-only" />
-				<span class="relative hidden text-sm group-has-checked/map-lang:flex">접기</span>
-				<span class="text-primary relative flex text-sm group-has-checked/map-lang:hidden">펼치기</span>
-			</label>
+			<ui-btn
+				variant="text"
+				icon-pos="lt"
+				icon-name="arrow-down"
+				:icon-cls="$store.data.sidebarTopVisible ? 'size-4 stroke-cms-3 rotate-180' : 'size-4 stroke-slate-400'"
+				:cls="$store.data.sidebarTopVisible ? 'justify-end! text-cms-3' : 'justify-end!'"
+				:txt="$store.data.sidebarTopVisible ? '접기' : '펼치기'"
+				:aria-expanded="$store.data.sidebarTopVisible"
+				@btn-click.prevent="$store.data.sidebarTopVisible = !$store.data.sidebarTopVisible"></ui-btn>
+		</section>
+
+		<section
+			class="grid min-h-14 grid-cols-[1fr_36px] items-center justify-between gap-1 border-t border-t-slate-200 px-5 py-3"
+		>
+			<ui-tit class="flex items-center gap-1" size="md" tit="차량 네비게이션"></ui-tit>
+
+			<ui-checkbox
+				variant="toggle"
+				:checked="Boolean($store.data.isNavigationProvided) "
+				@checked-change="$store.data.isNavigationProvided = $event.detail.checked"></ui-checkbox>
 		</section>
 
 		<section class="flex min-h-0 flex-1 flex-col gap-4 border-t border-t-slate-200 py-4">
-			<header class="grid grid-cols-2 items-center gap-2.5 px-5">
+			<div class="grid grid-cols-2 items-center gap-2.5 px-5">
 				<div class="flex flex-col">
-					<ui-tit size="md" tit="매칭된 시설"></ui-tit>
-					<hover-tooltip
-						btn="15자 이내 권장"
-						txt="언어에 따라 표현 길이가 달라질 수 있으므로 
-번역 내용을 확인해주세요. (최대 25자)"
-						class="flex"></hover-tooltip>
+					<ui-tit
+						class="flex items-center gap-1"
+						size="md"
+						tit="매칭된 시설"
+						tooltip="여러 개의 시설을 등록한 경우, <br /> 사용자에게 지정한 순서대로 노출됩니다."></ui-tit>
 				</div>
 
-				<p class="flex-1 text-right text-slate-500">
-					<strong class="text-cms-5 font-bold" x-text="$store.data.facilitiesCurrent.facilityPoiMappings?.length ?? 0">
-					</strong>
-					<span>개</span>
+				<p class="flex justify-end gap-2">
+					<ui-txt size="sm" cls="text-cms-5 font-bold" :txt="$store.data.data.facilityPoiMappings?.length ?? 0"
+					></ui-txt>
+					<ui-txt size="sm" txt="개"></ui-txt>
 				</p>
 
 				<div class="col-span-2 grid grid-cols-2 gap-2.5">
 					<ui-btn variant="ghost" size="md" txt="새 시설 등록"></ui-btn>
-					<ui-btn variant="primary" size="md" txt="저장"></ui-btn>
+					<ui-btn variant="ghost" size="md" txt="등록된 시설 매칭"></ui-btn>
 				</div>
-			</header>
+			</div>
 
-			<ul class="flex flex-1 flex-col gap-2 overflow-x-clip overflow-y-auto scroll-smooth">
-				<template
-					x-for="(mapping, index) in $store.data.facilitiesCurrent.facilityPoiMappings"
-					:key="mapping.id ?? index"
-				>
+			<ul
+				class="flex flex-1 flex-col overflow-x-clip overflow-y-auto scroll-smooth"
+				x-bind="($store.data?.data?.facilityPoiMappings?.length ?? 0) > 1 ? { 'x-sort': true } : {}"
+			>
+				<template x-for="(mapping, index) in $store.data.data.facilityPoiMappings" :key="mapping.id ?? index">
 					<li
-						class="grid w-full grid-cols-[24px_35px_1fr_24px] items-center gap-1 rounded-sm border-b border-b-slate-200 bg-white px-5 py-3"
+						class="group/dnd grid w-full grid-cols-[1fr_30px] items-center border-b border-b-slate-200 bg-white pr-5"
+						aria-label="Drag handle"
+						:title="mapping.poi?.name?.ko ?? ''"
 					>
-						<button type="button" class="button icon handle">
-							<span class="sr-only">button</span>
-							<icon-list data-name="drag-dots" class="icon fill-d9d9d9 hover:fill-primary size-4"></icon-list>
+						<button
+							type="button"
+							class="grid grid-cols-[16px_32px_1fr] items-center gap-3 py-3 pl-5 text-left"
+							x-sort:item
+						>
+							<icon-list data-name="drag-dots" class="icon fill-d9d9d9 size-4"></icon-list>
+
+							<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
+								<icon-list
+									:data-name="mapping?.icon"
+									class="size-7"
+									:style="`fill: var(--color-poi-${mapping?.categoryColorCodeId}); stroke: var(--color-poi-${mapping?.categoryColorCodeId})`"
+								></icon-list>
+							</span>
+
+							<span class="grid w-full space-y-0.5">
+								<span class="truncate text-sm text-slate-600" x-text="mapping.poi?.name?.ko ?? ''"></span>
+
+								<span class="flex items-center gap-1 text-xs font-normal text-slate-400">
+									<template x-if="mapping.category?.name.ko">
+										<span x-text="mapping.category?.name.ko ?? ''"></span>
+									</template>
+									<span x-show="mapping.category?.name.ko">/</span>
+									<span x-text="mapping.category?.parent.name.ko ?? ''"></span>
+								</span>
+							</span>
 						</button>
 
-						<picture class="flex size-8.75 overflow-clip rounded-sm bg-slate-50">
-							<img src="" alt="" class="size-full" />
-						</picture>
-
-						<div class="grid w-full space-y-0.5 pl-1">
-							<p class="truncate text-sm text-slate-600" x-text="mapping.poi?.name?.ko ?? ''"></p>
-
-							<p class="flex items-center gap-1 text-xs font-normal text-slate-400">
-								<span x-text="mapping.poi?.categoryName ?? ''"></span>
-								<span>/</span>
-								<span x-text="mapping.poi?.subCategoryName ?? ''"></span>
-							</p>
-						</div>
-
-						<button type="button" class="button icon px-1" aria-label="시설 삭제">
+						<button type="button" class="button icon" aria-label="시설 삭제">
 							<span class="sr-only">삭제</span>
 							<icon-list data-name="input-del" class="icon stroke-error fill-error size-4"></icon-list>
 						</button>
@@ -142,19 +161,34 @@
 		</section>
 
 		<footer class="divide-y divide-slate-200 border-t border-t-slate-200 bg-white">
-			<div class="bg-white px-5 py-4.5">
-				<h4 class="text-lg font-semibold">지도 노출</h4>
+			<div class="grid min-h-14 grid-cols-[1fr_36px] items-center justify-between gap-1 px-5 py-3">
+				<ui-tit class="flex items-center gap-1" size="md" tit="지도 노출"></ui-tit>
+
+				<ui-checkbox
+					variant="toggle"
+					:checked="Boolean($store.data.isVisible) "
+					@checked-change="$store.data.isVisible = $event.detail.checked"></ui-checkbox>
+
+				<template x-if="!$store.data?.itemId || (($store.data?.data?.facilityPoiMappings?.length ?? 0) === 0)">
+					<text-badge
+						x-cloak
+						class="col-span-2"
+						variant="bg-error"
+						cls="text-[10px] w-full text-center"
+						icon="info-circle-outline"
+						txt="드래그로 항목 순서를 변경할 수 있으며, 즉시 적용됩니다."></text-badge>
+				</template>
 			</div>
 
-			<div class="grid grid-cols-[60px_1fr] gap-2 px-5 py-3">
+			<div class="flex items-center gap-2 px-5 py-3">
 				<ui-btn
 					variant="icon"
 					size="lg"
 					icon-name="trash"
 					icon-cls="size-5 stroke-slate-400"
-					class="rounded-sm border border-slate-200"
+					class="flex-[0_0_60px] rounded-sm border border-slate-200"
 					txt="삭제"></ui-btn>
-				<ui-btn variant="primary" size="lg" cls="text-lg! font-bold" txt="저장"></ui-btn>
+				<ui-btn variant="primary" size="lg" cls="text-lg! font-bold" class="flex-1" txt="저장"></ui-btn>
 			</div>
 		</footer>
 	</div>
