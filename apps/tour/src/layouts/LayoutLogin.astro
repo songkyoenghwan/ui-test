@@ -1,58 +1,31 @@
 ---
-import '@/styles/global.css';
+import '@/styles/index.css';
 
-const { title = currentPath(Astro.url.pathname) } = Astro.props;
+interface Props {
+	Title?: string;
+}
+const { Title: title } = Astro.props;
+const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-		<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+		<meta name="view-transition" content="same-origin" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | 유통물류</title>
-		<link rel="stylesheet" href="/src/styles/front-output.css" />
+		<title>{pathname} |</title>
 	</head>
-	<body x-data="{step: 0}">
-		<h1 class="sr-only">
-			<img src="/images/logo/dark-logo.svg.svg" alt="your logo" />
-		</h1>
-
-		<main
-			class="bg-eef2f8 flex min-h-dvh items-center justify-center bg-[url(/images/bg/bg-login.jpg)] bg-cover bg-center bg-no-repeat"
-		>
+	<body x-data>
+		<div class="grid h-dvh w-dvw place-content-center">
 			<slot />
-		</main>
+		</div>
 
 		<script>
-			// 3. UI 프레임워크 및 컴포넌트
-			import '@/svelte/icons/icons.js';
-			import '@/svelte/wc.lit.ts';
-			import '@/svelte/wc.sv.ts';
-			// 4. 프로젝트 로직 (Store & Utils)
-			import '@/stores/inputPatternStore.js';
-			import '@/stores/layoutStore.js';
-			import '@/stores/modalStore.js';
-			import '@/stores/tableStore.js';
-			import '@/utils/dropzone/init.js';
+			import '@/src/index.ts';
 		</script>
-		<!-- <script defer type="module" src="/wc/lit/wc.lit.es.js"></script>
-		<script defer type="module" src="/wc/svelte/wc.sv.es.js"></script> -->
-		<script defer src="/libs/lodash@4.17.21/lodash.min.js"></script>
-		<script defer src="/libs/preline@3.1.0/preline.min.js"></script>
-		<script defer src="/libs/dropzone@5.9.3/dropzone.min.js"></script>
-		<script defer src="/libs/tom-select/tom-select.complete.min.js"></script>
-		<script is:inline src="/libs/validator/validator.min.js"></script>
-
-		<script defer src="/libs/alpinejs@3.x.x/mask@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/alpinejs@3.x.x/focus@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/alpinejs@3.x.x/collapse@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/alpinejs@3.x.x/anchor@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/alpinejs@3.x.x/intersect@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/alpinejs@3.x.x/sort@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/alpinejs@3.x.x/cdn.min.js"></script>
-		<script defer src="/libs/flowbite/flowbite.min.js"></script>
+		<script defer src="/store/layout-store.js"></script>
 	</body>
 </html>

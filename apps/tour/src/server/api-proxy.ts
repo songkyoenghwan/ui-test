@@ -1,5 +1,5 @@
 const API_BASE = process.env.API_BASE ?? 'http://localhost:3001';
-const DEFAULT_PROXY_ROOTS = ['tour-destinations', 'facilities'];
+const DEFAULT_PROXY_ROOTS = ['tour-destinations', 'facilities', 'auth'];
 
 const proxyRoots = new Set(
 	(process.env.API_PROXY_ROOTS ?? DEFAULT_PROXY_ROOTS.join(','))

@@ -263,10 +263,10 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 			async fetchData() {
 				this.loading = true;
 				try {
-					const res = await fetch(`/api/facility`);
+					const res = await fetch(`/api/facilities`);
 
 					const data = await res.json();
-					const payload = data.data.data ?? {};
+					const payload = data.data ?? {};
 
 					this.items = payload.items;
 					this.data = payload.items[0];

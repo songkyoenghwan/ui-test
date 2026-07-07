@@ -29,11 +29,17 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 
 			<div class="flex flex-wrap items-center justify-between gap-2">
 				<div class="inline-flex items-center gap-2">
-					<select class="select min-w-62.5" id="" name="">
-						<option value="전체">전체 (n개)</option>
-						<option value="운영 중">운영 중 (n개)</option>
-						<option value="운영 전">운영 전 (n개)</option>
-						<option value="운영 종료">운영 종료 (n개)</option>
+					<select
+						class="select min-w-62.5"
+						id="operationStatus"
+						name="operationStatus"
+						x-model="$store.data.operationStatus"
+						@change="$store.data.fetchData(1)"
+					>
+						<option value="">전체 운영 상태</option>
+						<option value="operating">운영 중</option>
+						<option value="scheduled">운영 전</option>
+						<option value="closed">운영 종료</option>
 					</select>
 				</div>
 				<div>
@@ -272,21 +278,36 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 			pageSize: 10,
 			totalCount: 1,
 			totalPages: 1,
+			operationStatus: '',
 			loading: false,
 			error: null,
 			itemId: '',
 			async fetchData(page) {
 				this.loading = true;
 				try {
-					const res = await fetch(`/api/tour-destination`);
+					const params = new URLSearchParams({
+						page: String(page ?? 1),
+						pageSize: String(this.pageSize ?? 10),
+					});
+
+					if (this.operationStatus) {
+						params.set('operationStatus', this.operationStatus);
+					}
+
+					const res = await fetch(`/api/tour-destinations?${params}`);
 
 					if (!res.ok) {
+						if (res.status === 401) {
+							window.location.href = '/login';
+							return;
+						}
+
 						const text = await res.text();
 						throw new Error(`Failed to load json: ${res.status} ${text}`);
 					}
 
 					const data = await res.json();
-					const payload = data.data.data ?? {};
+					const payload = data.data ?? {};
 
 					this.items = payload.items ?? [];
 					this.page = payload.page;
@@ -300,17 +321,17 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 					this.loading = false;
 				}
 			},
-			prevView(detail) {
+			async prevView(detail) {
 				const nextPage = Math.max(1, Number(detail.page) - 8);
-				this.page = nextPage;
+				await this.fetchData(nextPage);
 			},
-			nextView(detail) {
+			async nextView(detail) {
 				const nextPage = Math.min(Math.max(1, Number(detail.totalPages) || 1), Number(detail.page) + 8);
-				this.page = nextPage;
+				await this.fetchData(nextPage);
 			},
-			currentView(page) {
+			async currentView(page) {
 				const nextPage = Math.max(1, Number(page) || 1);
-				this.page = nextPage;
+				await this.fetchData(nextPage);
 			},
 			async init() {
 				await this.fetchData(1);

@@ -944,5 +944,42 @@ export const getIconData = () => {
 				/>
 			`,
 		},
+		{
+			name: 'refresh',
+			size: '28',
+			html: /* HTML */ `
+				<path
+					d="M23.9193 14.0007C23.9193 19.4747 19.4766 23.9173 14.0026 23.9173C8.5286 23.9173 5.18669 18.4037 5.18669 18.4037M5.18669 23.362V18.4037H9.66902M4.08594 14.0007C4.08594 8.52665 8.48894 4.08398 14.0026 4.08398C20.617 4.08398 23.9193 9.59765 23.9193 9.59765M19.5163 9.59765H23.9193V4.63932"
+					fill="none"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
+			name: 'gps',
+			size: '28',
+			html: /* HTML */ `
+				<path
+					d="M14 22.75C18.8325 22.75 22.75 18.8325 22.75 14C22.75 9.16751 18.8325 5.25 14 5.25C9.16751 5.25 5.25 9.16751 5.25 14C5.25 18.8325 9.16751 22.75 14 22.75Z"
+					fill="none"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z"
+					fill="none"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path d="M14 4.66732V2.33398" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M4.66927 14H2.33594" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M14 23.334V25.6673" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M23.3359 14H25.6693" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
 	];
 };

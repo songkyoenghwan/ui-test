@@ -1,10 +1,10 @@
 ---
-import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import LayoutLogin from '@/layouts/LayoutLogin.astro';
 ---
 
-<LayoutBasic>
+<LayoutLogin>
 	<article class="relative grid w-full place-content-center overflow-hidden">
-		<form class="shadow-1xs w-200 space-y-5 rounded-sm bg-white">
+		<form id="loginForm" class="shadow-1xs w-200 space-y-5 rounded-sm bg-white">
 			<header class="p-6 text-center">
 				<h2 class="text-lg font-bold text-black">로그인</h2>
 			</header>
@@ -12,13 +12,15 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 			<section class="p-5">
 				<ul class="grid grid-cols-1 gap-2">
 					<li class="grid gap-y-2.5">
-						<label for="inputType">아이디</label>
+						<label for="loginAccount">아이디</label>
 						<input
-							type="email"
-							id="inputType"
-							name="inputType"
+							type="text"
+							id="loginAccount"
+							name="loginAccount"
 							class="input-text peer"
 							placeholder="아이디를 입력하세요"
+							required
+							autocomplete="username"
 						/>
 						<p role="alert" class="text-error text-sm">아이디를 입력하세요</p>
 					</li>
@@ -26,10 +28,12 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						<label for="passwordValid">비밀번호</label>
 						<input
 							type="password"
-							id="passwordValid"
-							name="passwordValid"
+							id="password"
+							name="password"
 							class="input-text"
 							placeholder="비밀번호를 입력하세요"
+							required
+							autocomplete="current-password"
 						/>
 						<p role="alert" class="text-error text-sm">아이디를 입력하세요</p>
 					</li>
@@ -38,8 +42,63 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 			<footer class="grid space-y-5 p-6">
 				<ui-btn btn-type="submit" tag="button" variant="primary" txt="로그인" size="lg" cls="w-full"> </ui-btn>
-				<p role="alert" class="text-error text-center">로그인 정보가 올바르지 않습니다</p>
+				<p id="loginError" role="alert" class="text-error text-center" hidden>로그인 정보가 올바르지 않습니다</p>
 			</footer>
 		</form>
 	</article>
-</LayoutBasic>
+
+	<script defer>
+		document.addEventListener('alpine:init', () => {
+			const form = document.getElementById('loginForm');
+			const loginError = document.getElementById('loginError');
+
+			const setLoginError = (visible) => {
+				if (loginError instanceof HTMLElement) {
+					loginError.hidden = !visible;
+				}
+			};
+
+			if (form instanceof HTMLFormElement) {
+				const submitButton = form.querySelector('ui-btn[btn-type="submit"]');
+
+				form.addEventListener('submit', async (event) => {
+					event.preventDefault();
+					setLoginError(false);
+
+					const formData = new FormData(form);
+					const loginAccount = String(formData.get('loginAccount') ?? '').trim();
+					const password = String(formData.get('password') ?? '');
+
+					if (!loginAccount || !password) {
+						setLoginError(true);
+						return;
+					}
+
+					submitButton?.setAttribute('disabled', 'true');
+
+					try {
+						const response = await fetch('/api/auth/login', {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							credentials: 'include',
+							body: JSON.stringify({ loginAccount, password }),
+						});
+						const result = await response.json().catch(() => null);
+
+						if (response.ok && result?.success === true) {
+							Alpine.store('layout')?.setAuth(result.data);
+							window.location.href = '/tour-destination';
+							return;
+						}
+
+						setLoginError(true);
+					} catch {
+						setLoginError(true);
+					} finally {
+						submitButton?.removeAttribute('disabled');
+					}
+				});
+			}
+		});
+	</script>
+</LayoutLogin>

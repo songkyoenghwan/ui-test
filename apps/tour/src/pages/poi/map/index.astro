@@ -9,9 +9,16 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 
 	<div class="grid h-full grid-cols-[1fr_20rem]">
 		<section id="map_div" class="grid size-full"></section>
+		<div class="absolute right-85 bottom-5 z-5 space-y-3">
+			<ui-btn class="size-11 rounded-sm bg-white" variant="icon" icon-name="refresh" icon-cls="size-7 stroke-black"
+			></ui-btn>
+			<ui-btn class="size-11 rounded-sm bg-white" variant="icon" icon-name="gps" icon-cls="size-7 stroke-black"></ui-btn>
+		</div>
+
 		<MapList />
 	</div>
 </LayoutBasic>
+<MapReg />
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
@@ -29,7 +36,7 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 			async fetchData() {
 				this.loading = true;
 				try {
-					const res = await fetch(`/api/map`);
+					const res = await fetch(`/api/pois`);
 
 					const data = await res.json();
 					const payload = data.data.data ?? {};

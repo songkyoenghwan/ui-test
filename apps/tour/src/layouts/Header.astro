@@ -1,5 +1,5 @@
 ---
-const res = await fetch(new URL('/api/auth', Astro.url), {
+const res = await fetch(new URL('/api/auth/me', Astro.url), {
 	headers: {
 		accept: 'application/json',
 		cookie: Astro.request.headers.get('cookie') ?? '',
@@ -15,7 +15,7 @@ const json = await res.json();
 console.log(json);
 
 const authData = json?.data.data ?? {};
-const user = authData?.user ?? {};
+const user = json?.data ?? {};
 const menus = user?.menus ?? [];
 const tourDestinations = user?.tourDestinations ?? [];
 
