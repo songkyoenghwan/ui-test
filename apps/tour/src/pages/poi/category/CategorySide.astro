@@ -75,6 +75,15 @@
 						</template>
 					</li>
 				</template>
+				<template x-if="($store.data.generalCategory ?? []).filter(item => item?.isEventCategory).length === 0">
+					<li class="grid h-full place-content-center">
+						<ui-txt
+							size="lg"
+							class="grid place-content-center py-3"
+							cls="text-slate-600 text-center"
+							txt="등록된 카테고리가 없습니다"></ui-txt>
+					</li>
+				</template>
 			</ul>
 		</div>
 	</template>
@@ -131,6 +140,16 @@
 					<template x-if="item?.isAiRecommendationEnabled">
 						<text-badge variant="primary" size="md" txt="Ai"></text-badge>
 					</template>
+				</li>
+			</template>
+
+			<template x-if="$store.data.generalCategory.length === 0">
+				<li class="grid h-full place-content-center">
+					<ui-txt
+						size="lg"
+						class="grid place-content-center py-3"
+						cls="text-slate-600 text-center"
+						txt="등록된 카테고리가 없습니다"></ui-txt>
 				</li>
 			</template>
 		</ul>

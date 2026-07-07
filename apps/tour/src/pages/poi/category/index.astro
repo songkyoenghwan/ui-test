@@ -105,7 +105,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 					</section>
 				</li>
 
-				<li class="grid grid-cols-2 gap-3">
+				<li class="grid grid-cols-1 gap-3">
 					<section class="shadow-1xs grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
 						<div>
 							<ui-tit class="flex items-center gap-2" tag="h4" tit="AI 추천 설정"></ui-tit>
@@ -115,18 +115,6 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 							variant="toggle"
 							:checked="$store.data.isAiRecommendationEnabled"
 							@checked-change="$store.data.isAiRecommendationEnabled = $event.detail.checked"></ui-checkbox>
-					</section>
-
-					<section class="shadow-1xs grid flex-1 grid-cols-[1fr_33px] items-center gap-5 rounded-lg bg-white px-5 py-4">
-						<div>
-							<ui-tit class="flex items-center gap-2" tag="h4" tit="차량 내비게이션 제공"></ui-tit>
-							<ui-txt size="xs" txt="외부 내비게이션 앱과 연동하여 이 카테고리 시설까지 길안내를 제공합니다."
-							></ui-txt>
-						</div>
-						<ui-checkbox
-							variant="toggle"
-							:checked="$store.data.isNavigationProvided"
-							@checked-change="$store.data.isNavigationProvided = $event.detail.checked"></ui-checkbox>
 					</section>
 				</li>
 
