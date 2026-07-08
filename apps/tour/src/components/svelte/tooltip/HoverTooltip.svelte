@@ -29,13 +29,7 @@
 		bg?: string;
 	}
 
-	let {
-		btn = 'tooltip',
-		txt = 'tooltip content',
-		animation = 'blur',
-		placement = 'top',
-		bg = 'bg-slate-600',
-	}: Props = $props();
+	let { btn = '', txt = 'tooltip content', animation = 'blur', placement = 'top', bg = 'bg-slate-600' }: Props = $props();
 
 	let place = $derived(placement as Placement);
 	let activeTransition = $derived(() => {

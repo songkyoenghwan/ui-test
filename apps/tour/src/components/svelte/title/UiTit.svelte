@@ -71,7 +71,7 @@
 
 {#if tooltip}
 	<div class="flex items-center">
-		<HoverTooltip btn={tip ?? ''} txt={tooltip} />
+		<HoverTooltip btn={tip} txt={tooltip} />
 	</div>
 {/if}
 

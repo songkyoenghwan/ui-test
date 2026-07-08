@@ -1,12 +1,18 @@
 ---
-import DialogMatchingFacilities from '@/components/modals/DialogMatchingFacilities.astro';
+import DialogMatchingFacilities from '@/src/components/modals/DialogFacilityRegistration.astro';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import MapList from '@/pages/poi/map/MapList.astro';
 import MapReg from '@/pages/poi/map/MapReg.astro';
 ---
 
 <LayoutBasic>
-	<top-tooltip tit="지도를 우클릭하여 위치 변경" class="absolute top-5 left-5 z-5"></top-tooltip>
+	<div x-show="$store.data.sidebar === 'reg'" x-transition class="absolute top-5 left-5 z-5">
+		<top-tooltip variant="bg-secondary" tit="지도를 우클릭하여 위치 변경" checked="chk"></top-tooltip>
+	</div>
+
+	<div x-show="$store.data.sidebar === 'init'" x-transition class="absolute top-5 left-5 z-5">
+		<top-tooltip tit="지도를 우클릭하여 새 위치 생성" checked="chk"></top-tooltip>
+	</div>
 
 	<div class="absolute top-5 right-85 z-5">
 		<ui-btn class="min-w-37.5" variant="ghost" size="lg" txt="오버레이 설정"></ui-btn>
@@ -23,52 +29,56 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 		<MapList />
 	</div>
 	<MapReg />
-
-	<DialogMatchingFacilities />
-
-	<div class="fixed bottom-5 left-25 z-5 inline-flex gap-2">
-		<button @click.prevent="toast.success('저장되었습니다.')">예시 토스트 1</button>
-		/
-		<button @click.prevent="toast.success('비노출 상태로 저장되었습니다.')">예시 토스트 2</button>
-		/
-		<button @click.prevent="$store.alert.open('alert1')">알림1</button>
-		/
-		<button @click.prevent="$store.alert.open('alert2')">알림2</button>
-		/
-		<button @click.prevent="$store.alert.open('alert3')">알림3</button>
-		/
-		<button @click.prevent="$store.alert.open('alert4')">알림4</button>
-	</div>
-
-	<alert-popup
-		id="alert1"
-		open="close"
-		txt="작성 중인 내용이 저장되지 않았습니다. <br />이 페이지를 벗어나시겠습니까?"
-		cancel="취소"
-		@alert-cancel="alert()"
-		@alert-confirm="alert()"></alert-popup>
-	<alert-popup
-		id="alert2"
-		open="close"
-		txt="저장 시 사용자 지도에 즉시 반영됩니다. <br />저장하시겠습니까?"
-		cancel="취소"
-		@alert-cancel="alert()"
-		@alert-confirm="alert()"></alert-popup>
-	<alert-popup
-		id="alert3"
-		open="close"
-		txt="시설 정보로 이동하시겠습니까?"
-		cancel="취소"
-		@alert-cancel="alert()"
-		@alert-confirm="alert()"></alert-popup>
-	<alert-popup
-		id="alert4"
-		open="close"
-		txt="작성 중인 위치 내용이 저장되지 않았습니다. <br />바로 시설 정보로 이동하시겠습니까?"
-		cancel="취소"
-		@alert-cancel="alert()"
-		@alert-confirm="alert()"></alert-popup>
 </LayoutBasic>
+
+<DialogMatchingFacilities />
+
+<div class="fixed bottom-5 left-25 z-5 inline-flex gap-2">
+	<button @click.prevent="toast.success('저장되었습니다.')">토스트</button>
+	/
+	<button @click.prevent="toast.success('비노출 상태로 저장되었습니다.')">토스트</button>
+	<button @click.prevent="toast.success('불러온 T맵 위치가 저장되었습니다. ')">토스트</button>
+	/
+	<button @click.prevent="toast.error('비노출 상태로 저장되었습니다.')">토스트</button>
+	<button @click.prevent="toast.error('위치를 선택해 주세요.')">토스트</button>
+	/
+	<button @click.prevent="$store.alert.open('alert1')">알림1</button>
+	/
+	<button @click.prevent="$store.alert.open('alert2')">알림2</button>
+	/
+	<button @click.prevent="$store.alert.open('alert3')">알림3</button>
+	/
+	<button @click.prevent="$store.alert.open('alert4')">알림4</button>
+</div>
+
+<alert-popup
+	id="alert1"
+	open="close"
+	txt="작성 중인 내용이 저장되지 않았습니다. <br />이 페이지를 벗어나시겠습니까?"
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert2"
+	open="close"
+	txt="저장 시 사용자 지도에 즉시 반영됩니다. <br />저장하시겠습니까?"
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert3"
+	open="close"
+	txt="시설 정보로 이동하시겠습니까?"
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert4"
+	open="close"
+	txt="작성 중인 위치 내용이 저장되지 않았습니다. <br />바로 시설 정보로 이동하시겠습니까?"
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
@@ -82,7 +92,7 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 			loading: false,
 			error: null,
 			itemId: 0,
-			sidebar: false,
+			sidebar: 'reg', // 'init' | 'reg' | 'overlay' | 'confusion'
 			sidebarTopVisible: true,
 			sidebarChkVisible: false,
 			toast: [],
@@ -114,11 +124,9 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 			},
 
 			sideView(id = 0) {
-				this.sidebar = true;
+				this.sidebar = 'reg';
 				this.itemId = id;
 				this.findInit(id);
-
-				console.log(this.data);
 			},
 			async init() {
 				await this.fetchData(1);

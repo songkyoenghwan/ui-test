@@ -185,7 +185,7 @@
 												</td>
 												<td class="text-left">
 													<template x-if="item.facilityPoiMappings.length === 0">
-														<text-badge variant="primary" txt="매칭전"></text-badge>
+														<text-badge variant="primary" txt="매칭 전"></text-badge>
 													</template>
 													<template
 														x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko === ''"
@@ -368,7 +368,7 @@
 												</div>
 
 												<template x-if="poiMappingsLength === 0">
-													<text-badge variant="bg-alert" txt="매칭전"></text-badge>
+													<text-badge variant="bg-alert" txt="매칭 전"></text-badge>
 												</template>
 
 												<template x-if="poiMappingsLength > 0 && firstPoiNameKo === ''">

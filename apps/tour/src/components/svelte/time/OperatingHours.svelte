@@ -42,6 +42,13 @@
 		breakEndTime: string;
 	};
 
+	type DisplaySchedule = {
+		dayOfWeek: number;
+		openingTime: string;
+		closingTime: string;
+		facilityBreakSchedules: FacilityBreakSchedule[];
+	};
+
 	type Status = 'always' | 'week';
 
 	const ALL_DAYS = [0, 1, 2, 3, 4, 5, 6];
@@ -391,6 +398,12 @@
 		if (!group) return false;
 		return hasInvalidRestTime(group);
 	}
+	const ORDERED_DAYS = [1, 2, 3, 4, 5, 6, 0];
+	let displayResult = $derived.by(() => {
+		return [...(result ?? [])]
+			.filter((item) => item.dayOfWeek != null)
+			.sort((a, b) => ORDERED_DAYS.indexOf(a.dayOfWeek ?? 0) - ORDERED_DAYS.indexOf(b.dayOfWeek ?? 0));
+	});
 
 	$effect(() => {
 		const safeResult = Array.isArray(result) ? result : [];
@@ -419,7 +432,7 @@
 {#if view === 'detail' || view === 'side'}
 	{#if status === 'always'}
 		{#if cols[0]}
-			<div class={['grid items-center', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[120px_1fr]']}>
+			<div class={['grid items-center', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[30px_1fr]']}>
 				<ui-txt size={view === 'side' ? 'xs text-cms-3' : 'sm'} cls="text-black" txt="매일"></ui-txt>
 				<ui-txt
 					size={view === 'side' ? 'xs' : 'sm'}
@@ -429,31 +442,40 @@
 			</div>
 		{/if}
 	{:else}
-		<ul class="space-y-1">
-			{#each cols as item (item.id)}
-				<li class={['grid', view === 'side' ? 'grid-cols-[40px_1fr]' : 'grid-cols-[120px_1fr] items-center']}>
+		<ul class={['space-y-1', view === 'side' ? '' : 'divide-y divide-slate-200']}>
+			{#each displayResult as item (item.dayOfWeek)}
+				<li
+					class={[
+						'grid',
+						view === 'side'
+							? 'grid-cols-[40px_1fr]'
+							: 'grid-cols-[40px_1fr] items-center gap-2 py-3 first:pt-0 last:pb-0',
+					]}
+				>
 					<ui-txt
 						size={view === 'side' ? 'xs text-cms-3' : 'sm'}
 						cls="text-black"
-						txt={getFormattedDayText(item.dayOfWeeks)}
+						txt={DAY_LABELS[item.dayOfWeek ?? 0]}
 					></ui-txt>
 
-					<div>
-						<ui-txt
-							size={view === 'side' ? 'xs' : 'sm'}
-							cls="text-black"
-							txt={`${item.openingTime} ~ ${item.closingTime}`}
-						></ui-txt>
-
-						{#if item.breakStartTime && item.breakEndTime}
+					{#if item.openingTime}
+						<div>
 							<ui-txt
-								class="w-full"
 								size={view === 'side' ? 'xs' : 'sm'}
-								cls="text-3e61ff flex items-center"
-								txt={`${item.breakStartTime} ~ ${item.breakEndTime} 휴게시간`}
+								cls="text-black"
+								txt={`${item.openingTime} ~ ${item.closingTime}`}
 							></ui-txt>
-						{/if}
-					</div>
+
+							{#if item.facilityBreakSchedules?.[0]?.breakStartTime && item.facilityBreakSchedules?.[0]?.breakEndTime}
+								<ui-txt
+									class="w-full"
+									size={view === 'side' ? 'xs' : 'sm'}
+									cls="text-3e61ff flex items-center"
+									txt={`${item.facilityBreakSchedules[0].breakStartTime} ~ ${item.facilityBreakSchedules[0].breakEndTime} 휴게시간`}
+								></ui-txt>
+							{/if}
+						</div>
+					{/if}
 				</li>
 			{/each}
 		</ul>

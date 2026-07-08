@@ -10,6 +10,6 @@
 </script>
 
 <icon-list
-	data-name={checked ? 'chk-on' : 'chk-off'}
-	class={[disabled ? 'fill-ccc' : 'fill-primary', 'size-5 transition-all']}
+	data-name={checked ? 'checkbox-on' : 'checkbox-off'}
+	class={['icon size-4 ', checked ? 'fill-cms-3 stroke-white' : 'fill-white stroke-slate-300']}
 ></icon-list>

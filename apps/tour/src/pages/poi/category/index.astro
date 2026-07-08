@@ -1,6 +1,7 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import CategorySide from '@/pages/poi/category/CategorySide.astro';
+import DialogSubcategories from '@/src/components/modals/DialogSubcategories.astro';
 ---
 
 <LayoutBasic>
@@ -9,7 +10,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 		<header class="flex items-center justify-between">
 			<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '카테고리 수정' : '카테고리 등록'"></ui-tit>
 
-			<div class="grid grid-cols-[60px_150px] gap-2 px-5 py-3">
+			<div class="grid grid-cols-[150px] gap-2 px-5 py-3 has-[[icon-name=trash]]:grid-cols-[60px_150px]">
 				<template x-if="$store.data.view === 'edit'">
 					<ui-btn
 						variant="icon"
@@ -132,7 +133,14 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 					<section class="grid grid-cols-[1fr_60px] place-content-between gap-3 px-5">
 						<ui-tit class="flex items-center gap-2" req tag="h4" tit="하위 카테고리"></ui-tit>
 						<div>
-							<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="primary" size="md" txt="추가"></ui-btn>
+							<ui-btn
+								class="bg-f5f5f5 col-span-1 w-15"
+								variant="primary"
+								size="md"
+								txt="추가"
+								x-bind="ModalHandler"
+								data-target="DialogSubcategories"
+								@btn-click="$store.modal.edit = ''"></ui-btn>
 						</div>
 					</section>
 					<ul
@@ -170,7 +178,12 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 								</button>
 
 								<div class="grid grid-cols-[repeat(2,60px)] gap-2">
-									<ui-btn variant="secondary" txt="수정"></ui-btn>
+									<ui-btn
+										variant="secondary"
+										txt="수정"
+										x-bind="ModalHandler"
+										data-target="DialogSubcategories"
+										@btn-click="$store.modal.edit = 'edit'"></ui-btn>
 									<ui-btn variant="ghost" txt="삭제"></ui-btn>
 								</div>
 							</li>
@@ -181,6 +194,43 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 		</div>
 	</div>
 </LayoutBasic>
+
+<DialogSubcategories />
+
+<div class="fixed bottom-5 left-25 z-5 inline-flex gap-2">
+	<button @click.prevent="toast.success('삭제되었습니다.')">토스트</button>
+	<button @click.prevent="toast.success('저장되었습니다.')">토스트</button>
+	/
+	<button @click.prevent="$store.alert.open('alert1')">알림</button>
+	/
+	<button @click.prevent="$store.alert.open('alert2')">알림</button>
+	/
+	<button @click.prevent="$store.alert.open('alert3')">알림</button>
+</div>
+
+<alert-popup id="alertImg" open="close" txt="이미지 확장자(jpg, png)만 첨부 가능합니다."></alert-popup>
+<alert-popup id="alertImgSize" open="close" txt="2MB 이하의 파일만 첨부 가능합니다."></alert-popup>
+<alert-popup
+	id="alert1"
+	open="close"
+	txt="등록된 시설은 하위 카테고리 미선택 상태로 변경되며 <br />카테고리 저장 후 최종 반영됩니다. <br />삭제하시겠습니까?"
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert2"
+	open="close"
+	txt="$시설명$ 카테고리를 삭제하시겠습니까? <br />이 작업은 되돌릴 수 없습니다."
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert3"
+	open="close"
+	txt="등록된 시설이 있는 카테고리는 삭제가 불가합니다. <br />시설 수정 후 다시 시도해주세요."
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
@@ -276,6 +326,7 @@ import CategorySide from '@/pages/poi/category/CategorySide.astro';
 			},
 
 			currentItem(_id = '') {
+				this.view = 'edit';
 				this.itemId = _id;
 			},
 

@@ -155,7 +155,9 @@
 			<p class="mt-px text-center text-[10px] text-slate-500">
 				JPG, PNG
 				<br />
-				최대 2MB 1:1 비율
+				최대 2MB
+				<br />
+				1:1 비율 권장
 			</p>
 		{/if}
 	{/if}

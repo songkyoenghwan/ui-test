@@ -44,50 +44,96 @@
 		<template x-if="$store.data.items?.length > 0">
 			<ul class="flex flex-1 flex-col">
 				<template x-for="(item, index) in $store.data.items" :key="item.id">
-					<li :data-index="index" class="flex w-full items-center gap-1 border-b border-b-slate-200 px-5">
+					<li :data-index="index" class="flex w-full items-center gap-1 border-b border-b-slate-200">
 						<template x-if="$store.data.sidebarChkVisible">
-							<ui-checkbox :checked="item.checked" @checked-change="$store.data.checked = $event.detail.checked"
-							></ui-checkbox>
-						</template>
-						<button
-							type="button"
-							:aria-label="item.name?.ko ?? ''"
-							class="grid w-full grid-rows-2 gap-x-2 gap-y-1 bg-white px-2 py-4 text-left text-sm transition-colors hover:bg-slate-50 has-[text-badge]:grid-cols-[1fr_minmax(0,40px)]"
-							:title="item.name?.ko"
-							@click="$store.data.sideView(item.id)"
-						>
-							<span
-								class="order-1 row-span-1 truncate"
-								:class="{ 'text-slate-500': !item.name?.ko }"
-								x-text="item.name?.ko === '' || item.name?.ko === undefined ?'이름없음' : item.name?.ko"
+							<label
+								:aria-label="item.name?.ko ?? ''"
+								class="grid w-full grid-cols-[16px_1fr] grid-rows-2 gap-x-2 gap-y-1 bg-white px-5 py-4 text-left text-sm transition-colors hover:bg-slate-50 has-[text-badge]:grid-cols-[16px_1fr_minmax(0,40px)]"
+								:title="item.name?.ko"
 							>
-							</span>
-
-							<span class="order-3 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal">
-								<span class="pr-2 text-black" x-show="item?.id" x-text="`POI${String(item.id)}`"></span>
-
-								<span class="flex items-center gap-1 text-slate-500">
-									등록시설
-									<strong class="flex items-center">
-										<span
-											:class="(item.facilityPoiMappings?.length ?? 0) === 0 ? 'text-error' : 'text-cms-3'"
-											x-text="item.facilityPoiMappings?.length ?? 0"
-										>
-										</span>
-										<span class="font-normal">개</span>
-									</strong>
+								<input
+									type="checkbox"
+									class="peer sr-only"
+									:checked="item.checked"
+									@change="$store.data.checked = $event.detail.checked"
+								/>
+								<icon-checkbox class="order-1 row-span-2 flex items-center" :checked="item.checked"
+								></icon-checkbox>
+								<span
+									class="order-2 row-span-1 truncate"
+									:class="{ 'text-slate-500': !item.name?.ko }"
+									x-text="item.name?.ko === '' || item.name?.ko === undefined ?'이름없음' : item.name?.ko"
+								>
 								</span>
-							</span>
 
-							<template x-if="item.isOperationInfoSynced">
-								<text-badge
-									class="order-2 row-span-2 grid place-items-center"
-									size="md"
-									tooltip
-									variant="bg-cms-4"
-									txt="비노출"></text-badge>
-							</template>
-						</button>
+								<span class="order-4 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal">
+									<span class="pr-2 text-black" x-show="item?.id" x-text="`POI${String(item.id)}`"></span>
+
+									<span class="flex items-center gap-1 text-slate-500">
+										등록시설
+										<strong class="flex items-center">
+											<span
+												:class="(item.facilityPoiMappings?.length ?? 0) === 0 ? 'text-error' : 'text-cms-3'"
+												x-text="item.facilityPoiMappings?.length ?? 0"
+											>
+											</span>
+											<span class="font-normal">개</span>
+										</strong>
+									</span>
+								</span>
+
+								<template x-if="item.isOperationInfoSynced">
+									<text-badge
+										class="order-3 row-span-2 grid place-items-center"
+										size="md"
+										tooltip
+										variant="bg-cms-4"
+										txt="비노출"></text-badge>
+								</template>
+							</label>
+						</template>
+
+						<template x-if="!$store.data.sidebarChkVisible">
+							<button
+								type="button"
+								:aria-label="item.name?.ko ?? ''"
+								class="grid w-full grid-rows-2 gap-x-2 gap-y-1 bg-white px-5 py-4 text-left text-sm transition-colors hover:bg-slate-50 has-[text-badge]:grid-cols-[1fr_minmax(0,40px)]"
+								:title="item.name?.ko"
+								@click="$store.data.sideView(item.id)"
+							>
+								<span
+									class="order-1 row-span-1 truncate"
+									:class="{ 'text-slate-500': !item.name?.ko }"
+									x-text="item.name?.ko === '' || item.name?.ko === undefined ?'이름없음' : item.name?.ko"
+								>
+								</span>
+
+								<span class="order-3 row-span-1 flex items-center gap-2 divide-x divide-slate-200 font-normal">
+									<span class="pr-2 text-black" x-show="item?.id" x-text="`POI${String(item.id)}`"></span>
+
+									<span class="flex items-center gap-1 text-slate-500">
+										등록시설
+										<strong class="flex items-center">
+											<span
+												:class="(item.facilityPoiMappings?.length ?? 0) === 0 ? 'text-error' : 'text-cms-3'"
+												x-text="item.facilityPoiMappings?.length ?? 0"
+											>
+											</span>
+											<span class="font-normal">개</span>
+										</strong>
+									</span>
+								</span>
+
+								<template x-if="item.isOperationInfoSynced">
+									<text-badge
+										class="order-2 row-span-2 grid place-items-center"
+										size="md"
+										tooltip
+										variant="bg-cms-4"
+										txt="비노출"></text-badge>
+								</template>
+							</button>
+						</template>
 					</li>
 				</template>
 			</ul>

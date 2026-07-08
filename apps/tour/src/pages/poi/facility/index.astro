@@ -4,248 +4,314 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 ---
 
 <LayoutBasic>
-	<div class="flex w-[calc(100dvw-80px)] flex-1 gap-5 p-5">
-		<article class="flex min-w-xl flex-1 flex-col gap-3">
-			<section class="shadow-1 shadow-1xs space-y-2 rounded-sm bg-white p-5">
-				<div class="flex flex-wrap items-center justify-between gap-2">
-					<div class="flex flex-wrap items-center gap-2">
-						<h3>검색 조건</h3>
-						<ui-btn variant="icon" icon-name="rotate-left" icon-cls="size-4 stroke-slate-500"></ui-btn>
-					</div>
-					<div class="flex items-center gap-2">
-						<ui-btn
-							variant="ghost"
-							size="lg"
-							cls="min-w-30"
-							icon-name="arrow-up"
-							icon-pos="lt"
-							icon-cls="size-3 stroke-slate-400"
-							txt="엑셀 업로드"
-							@click.prevent="$store.data.setView('reg'); window.location = '/tour-destination/reg/'"></ui-btn>
-						<ui-btn
-							variant="primary"
-							size="lg"
-							cls="min-w-30"
-							icon-name="arrow-up"
-							icon-pos="lt"
-							icon-cls="size-3 stroke-white"
-							txt="시설 추가"
-							@click.prevent="$store.data.setView('reg'); window.location = '/tour-destination/reg/'"></ui-btn>
-					</div>
+	<div
+		class="inline-grid max-h-[calc(100dvh-60px)] w-[calc(100dvw-80px)] flex-1 grid-rows-[128px_1fr_32px] gap-5 overflow-clip p-5"
+		:class="$store.data.sidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'"
+	>
+		<section
+			class="shadow-1 shadow-1xs min-h-0 space-y-2 rounded-sm bg-white p-5"
+			:class="$store.data.sidebar ? 'order-1' : ''"
+		>
+			<div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="flex flex-wrap items-center gap-2">
+					<h3>검색 조건</h3>
+					<ui-btn variant="icon" icon-name="rotate-left" icon-cls="size-4 stroke-slate-500"></ui-btn>
 				</div>
+				<div class="flex items-center gap-2">
+					<ui-btn
+						variant="ghost"
+						size="lg"
+						cls="min-w-30"
+						icon-name="arrow-up"
+						icon-pos="lt"
+						icon-cls="size-3 stroke-slate-400"
+						txt="엑셀 업로드"
+						@click.prevent="$store.data.setView('reg'); window.location = '/tour-destination/reg/'"></ui-btn>
+					<ui-btn
+						variant="primary"
+						size="lg"
+						cls="min-w-30"
+						icon-name="arrow-up"
+						icon-pos="lt"
+						icon-cls="size-3 stroke-white"
+						txt="시설 추가"
+						@click.prevent="$store.data.setView('reg'); window.location = '/tour-destination/reg/'"></ui-btn>
+				</div>
+			</div>
 
-				<div class="flex flex-wrap items-center justify-between gap-2">
-					<div class="inline-flex items-center gap-2">
-						<select class="select min-w-62.5" name="status">
-							<option value="all">전체 카테고리</option>
-							<option value="open">운영 중 (n개)</option>
-							<option value="before">운영 전 (n개)</option>
-							<option value="closed">운영 종료 (n개)</option>
-						</select>
+			<div class="flex flex-wrap items-center justify-between gap-2">
+				<div class="inline-flex items-center gap-2">
+					<select class="select min-w-62.5" name="status">
+						<option value="all">전체 카테고리</option>
+						<option value="open">운영 중 (n개)</option>
+						<option value="before">운영 전 (n개)</option>
+						<option value="closed">운영 종료 (n개)</option>
+					</select>
 
-						<select class="select min-w-62.5" name="matching">
-							<option value="all">매칭 전 + 완료</option>
-							<option value="pending">매칭 전</option>
-							<option value="done">매칭 완료</option>
-						</select>
-					</div>
-					<div>
-						<div
-							class="input-search group/input-search relative"
-							x-data="{ focused: false, keyword: '' }"
-							@focusin="focused = true"
-							@focusout="focused = false"
-						>
-							<input class="input-text peer pr-15!" x-model="keyword" type="text" placeholder="위치 검색" />
+					<select class="select min-w-62.5" name="matching">
+						<option value="all">매칭 전 + 완료</option>
+						<option value="pending">매칭 전</option>
+						<option value="done">매칭 완료</option>
+					</select>
+				</div>
+				<div>
+					<div
+						class="input-search group/input-search relative"
+						x-data="{ focused: false, keyword: '' }"
+						@focusin="focused = true"
+						@focusout="focused = false"
+					>
+						<input class="input-text peer pr-15!" x-model="keyword" type="text" placeholder="위치 검색" />
 
-							<div class="absolute top-1.5 right-2 z-2 bg-white">
-								<ui-btn
-									x-show="focused"
-									x-cloak
-									variant="icon"
-									icon-name="input-del"
-									icon-cls="size-4 stroke-slate-400"
-									x-on:click="keyword = ''"></ui-btn>
-							</div>
+						<div class="absolute top-1.5 right-2 z-2 bg-white">
+							<ui-btn
+								x-show="focused"
+								x-cloak
+								variant="icon"
+								icon-name="input-del"
+								icon-cls="size-4 stroke-slate-400"
+								x-on:click="keyword = ''"></ui-btn>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<section class="shadow-1 shadow-1xs space-y-4 rounded-sm bg-white p-5">
-				<div class="inline-flex items-center gap-4">
-					<select class="select w-37.5" id="" name="">
-						<option value="">10개씩 보기</option>
-					</select>
-					<select class="select w-37.5" id="" name="">
-						<option value="">최신순</option>
-						<option value="">가나다순</option>
-					</select>
+		<section
+			class="shadow-1 shadow-1xs flex min-h-0 flex-col gap-4 rounded-sm bg-white p-5"
+			:class="$store.data.sidebar ? 'order-3' : ''"
+		>
+			<div class="inline-flex w-full flex-none items-center gap-4">
+				<select class="select w-37.5" id="" name="">
+					<option value="">10개씩 보기</option>
+				</select>
+				<select class="select w-37.5" id="" name="">
+					<option value="">최신순</option>
+					<option value="">가나다순</option>
+				</select>
 
-					<div class="inline-flex flex-wrap gap-4">
-						<ui-checkbox item-id="thumb-none-chk" txt="썸네일 없음" class="flex-none"></ui-checkbox>
-						<ui-checkbox item-id="congestion=usage-chk" txt="혼잡도 사용" class="flex-none"></ui-checkbox>
-						<ui-checkbox item-id="location-based-chk" txt="위치 기반 콘텐츠 사용" class="flex-none"></ui-checkbox>
-					</div>
-
-					<div class="grid grid-cols-[60px_1fr] gap-2 px-5 py-3">
-						<ui-btn
-							variant="ghost"
-							size="lg"
-							icon-name="trash"
-							icon-cls="size-5 stroke-slate-400"
-							icon-pos="lt"
-							class="w-22.25"
-							txt="삭제"></ui-btn>
-					</div>
+				<div class="inline-flex flex-wrap gap-4">
+					<ui-checkbox item-id="thumb-none-chk" txt="썸네일 없음" class="flex-none"></ui-checkbox>
+					<ui-checkbox item-id="congestion=usage-chk" txt="혼잡도 사용" class="flex-none"></ui-checkbox>
+					<ui-checkbox item-id="location-based-chk" txt="위치 기반 콘텐츠 사용" class="flex-none"></ui-checkbox>
 				</div>
 
-				<div class="table-wrap">
-					<table>
-						<colgroup>
-							<col style="width: 50px" />
-							<col style="width: 60px" />
-							<col style="width: *" />
-							<col style="width: 140px" />
-							<col style="width: 140px" />
-							<col style="width: 100px" />
-							<col style="width: 80px" />
-							<col style="width: 120px" />
-							<col style="width: 120px" />
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="row">
-									<ui-checkbox item-id="all-chk"></ui-checkbox>
-								</th>
-								<th scope="row">NO.</th>
-								<th class="text-left" scope="row">시설명</th>
-								<th class="text-left" scope="row">카테고리</th>
-								<th class="text-left" scope="row">운영기간</th>
-								<th class="text-left" scope="row">공통 링크</th>
-								<th class="text-left" scope="row">상품</th>
-								<th class="text-left" scope="row">매칭 위치</th>
-								<th class="text-left" scope="row">수정일시</th>
-							</tr>
-						</thead>
-						<tbody>
-							<template
-								x-for="(item, idx) in $store.data.items.slice(($store.data.page - 1) * $store.data.pageSize, $store.data.page * $store.data.pageSize)"
-								:key="item.id"
-							>
-								<tr
-									class="group/tr"
-									:class="$store.data.itemId === item.id ? 'bg-secondary border border-cms-3' : ''"
-									:aria-selected="$store.data.itemId === item.id ? 'true' : 'false'"
-								>
-									<td>
-										<ui-checkbox x-bind:item-id="item.id"></ui-checkbox>
-									</td>
-									<td>
-										<ui-txt size="sm" cls="text-center text-black" x-bind:txt="idx + 1"></ui-txt>
-									</td>
-									<td>
-										<ui-txt
-											role="button"
-											size="sm"
-											cls="text-left text-black cursor-pointer"
-											x-bind:txt="item.name.ko"
-											@click="$store.data.sideView(item.id)"></ui-txt>
-									</td>
-									<td>
-										<div class="flex items-center justify-start gap-1">
-											<template x-if="item.category.name.ko">
-												<ui-txt size="sm" cls="text-left text-black" x-bind:txt="item.category.name.ko"
-												></ui-txt>
-											</template>
-											<template x-if="item.category?.parent">
-												<ui-txt
-													size="sm"
-													cls="text-left text-black"
-													:txt="'/ ' + item.category.parent.name.ko"></ui-txt>
-											</template>
-										</div>
-									</td>
-									<td>
-										<template x-if="item.isAlways">
-											<p class="text-left">상시 운영</p>
-										</template>
+				<div class="ml-auto">
+					<ui-btn
+						variant="ghost"
+						size="lg"
+						icon-name="trash"
+						icon-cls="size-5 stroke-slate-400"
+						icon-pos="lt"
+						class="w-22.25"
+						txt="삭제"></ui-btn>
+				</div>
+			</div>
 
-										<template x-if="!item.isAlways">
-											<div>
-												<text-date x-bind:dateTime="item.startAt"></text-date>
-												<div class="flex">~<text-date x-bind:dateTime="item.endAt"></text-date></div>
-											</div>
-										</template>
-									</td>
-									<td>
-										<template x-if="item.facilityButtons.length === 0">
-											<ui-txt size="sm" cls="text-left text-slate-500" txt="미사용"></ui-txt>
-										</template>
-										<template x-if="item.facilityButtons.length">
-											<ui-txt
-												size="sm"
-												cls="text-cms-4 text-left"
-												:txt="'사용 (' + item.facilityButtons.filter(btn => btn.tourDestinationCommonButtonId != null).length + '/' + item.facilityButtons.length + ')'"
+			<div
+				class="table-wrap min-h-0 flex-1 overflow-x-auto overflow-y-auto"
+				:class="$store.data.sidebar ? 'max-w-[calc(100dvw-500px)]' : ''"
+			>
+				<table>
+					<colgroup>
+						<col style="width: 50px" />
+						<col style="width: 60px" />
+						<col style="width: *" />
+						<col style="width: 140px" />
+						<col style="width: 140px" />
+						<col style="width: 100px" />
+						<col style="width: 80px" />
+						<col style="width: 120px" />
+						<col style="width: 120px" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="row">
+								<ui-checkbox item-id="all-chk"></ui-checkbox>
+							</th>
+							<th scope="row">NO.</th>
+							<th class="text-left" scope="row">시설명</th>
+							<th class="text-left" scope="row">카테고리</th>
+							<th class="text-left" scope="row">운영기간</th>
+							<th class="text-left" scope="row">공통 링크</th>
+							<th class="text-left" scope="row">상품</th>
+							<th class="text-left" scope="row">매칭 위치</th>
+							<th class="text-left" scope="row">수정일시</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template
+							x-for="(item, idx) in $store.data.items.slice(($store.data.page - 1) * $store.data.pageSize, $store.data.page * $store.data.pageSize)"
+							:key="item.id"
+						>
+							<tr
+								class="group/tr"
+								:class="$store.data.itemId === item.id ? 'bg-secondary border border-cms-3' : ''"
+								:aria-selected="$store.data.itemId === item.id ? 'true' : 'false'"
+							>
+								<td>
+									<ui-checkbox x-bind:item-id="item.id"></ui-checkbox>
+								</td>
+								<td>
+									<ui-txt size="sm" cls="text-center text-black" x-bind:txt="idx + 1"></ui-txt>
+								</td>
+								<td>
+									<ui-txt
+										role="button"
+										size="sm"
+										cls="text-left text-black cursor-pointer"
+										x-bind:txt="item.name.ko"
+										@click="$store.data.sideView(item.id)"></ui-txt>
+								</td>
+								<td>
+									<div class="flex items-center justify-start gap-1">
+										<template x-if="item.category.name.ko">
+											<ui-txt size="sm" cls="text-left text-black" x-bind:txt="item.category.name.ko"
 											></ui-txt>
 										</template>
-									</td>
-									<td>
-										<ui-txt size="sm" cls="text-left text-slate-500" txt="0개"></ui-txt>
-										<ui-txt size="sm" cls="text-cms-4 text-left" txt="1개"></ui-txt>
-									</td>
-									<td class="text-left">
-										<template x-if="item.facilityPoiMappings.length === 0">
-											<text-badge tooltip variant="error" txt="매칭전"></text-badge>
+										<template x-if="item.category?.parent">
+											<ui-txt
+												size="sm"
+												cls="text-left text-black"
+												:txt="'/ ' + item.category.parent.name.ko"></ui-txt>
 										</template>
-										<template
-											x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko === ''"
-										>
-											<text-badge tooltip variant="bg-slate" txt="이름 없음"></text-badge>
-										</template>
-										<template
-											x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko !== ''"
-										>
-											<text-badge
-												tooltip
-												variant="primary"
-												date-ellipsis="true"
-												cls="max-w-30"
-												x-bind:txt="item.facilityPoiMappings[0].poi.name.ko"></text-badge>
-										</template>
-									</td>
+									</div>
+								</td>
+								<td>
+									<template x-if="item.isAlways">
+										<p class="text-left">상시 운영</p>
+									</template>
 
-									<td class="text-left">
-										<text-date data-time-view="time" x-bind:dateTime="item.updatedAt"></text-date>
-									</td>
-								</tr>
-							</template>
+									<template x-if="!item.isAlways">
+										<div>
+											<text-date x-bind:dateTime="item.startAt"></text-date>
+											<div class="flex">~<text-date x-bind:dateTime="item.endAt"></text-date></div>
+										</div>
+									</template>
+								</td>
+								<td>
+									<template x-if="item.facilityButtons.length === 0">
+										<ui-txt size="sm" cls="text-left text-slate-500" txt="미사용"></ui-txt>
+									</template>
+									<template x-if="item.facilityButtons.length">
+										<ui-txt
+											size="sm"
+											cls="text-cms-4 text-left"
+											:txt="'사용 (' + item.facilityButtons.filter(btn => btn.tourDestinationCommonButtonId != null).length + '/' + item.facilityButtons.length + ')'"
+										></ui-txt>
+									</template>
+								</td>
+								<td>
+									<ui-txt size="sm" cls="text-left text-slate-500" txt="0개"></ui-txt>
+									<ui-txt size="sm" cls="text-cms-4 text-left" txt="1개"></ui-txt>
+								</td>
+								<td class="text-left">
+									<template x-if="item.facilityPoiMappings.length === 0">
+										<text-badge tooltip variant="error" txt="매칭 전"></text-badge>
+									</template>
+									<template
+										x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko === ''"
+									>
+										<text-badge tooltip variant="bg-slate" txt="이름 없음"></text-badge>
+									</template>
+									<template
+										x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko !== ''"
+									>
+										<text-badge
+											tooltip
+											variant="primary"
+											date-ellipsis="true"
+											cls="max-w-30"
+											x-bind:txt="item.facilityPoiMappings[0].poi.name.ko"></text-badge>
+									</template>
+								</td>
 
-							<tr>
-								<td colspan="9"></td>
+								<td class="text-left">
+									<text-date data-time-view="time" x-bind:dateTime="item.updatedAt"></text-date>
+								</td>
 							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>
+						</template>
 
-			<paging-table
-				x-bind:data-page="$store.data.page"
-				x-bind:data-page-size="$store.data.pageSize"
-				x-bind:data-total-count="$store.data.totalCount"
-				x-bind:data-total-pages="$store.data.totalPages"
-				@btn-prev="console.log('prev', $event.detail); $store.data.prevView($event.detail)"
-				@btn-next="console.log('next', $event.detail); $store.data.nextView($event.detail)"
-				@btn-current="console.log('current', $event.detail); $store.data.currentView($event.detail.page)"
-			>
-			</paging-table>
-		</article>
+						<tr>
+							<td colspan="9">
+								<ui-txt
+									size="lg"
+									class="grid place-content-center py-30"
+									cls="text-slate-600 text-center"
+									txt="등록된 시설이 없습니다"></ui-txt>
+								<ui-txt
+									size="lg"
+									class="grid place-content-center py-30"
+									cls="text-slate-600 text-center"
+									txt="검색 결과가 없습니다"></ui-txt>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<paging-table
+			class="flex-none"
+			:class="$store.data.sidebar ? 'order-4' : ''"
+			x-bind:data-page="$store.data.page"
+			x-bind:data-page-size="$store.data.pageSize"
+			x-bind:data-total-count="$store.data.totalCount"
+			x-bind:data-total-pages="$store.data.totalPages"
+			@btn-prev="console.log('prev', $event.detail); $store.data.prevView($event.detail)"
+			@btn-next="console.log('next', $event.detail); $store.data.nextView($event.detail)"
+			@btn-current="console.log('current', $event.detail); $store.data.currentView($event.detail.page)"
+		>
+		</paging-table>
 
 		<FacilitiesSide />
 	</div>
-
-	<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
 </LayoutBasic>
+
+<alert-popup class="fixed top-0 left-0" txt="" confirm="확인" cancel="취소" open="close"></alert-popup>
+<div class="fixed bottom-5 left-25 z-5 inline-flex gap-2">
+	<button @click.prevent="toast.success('삭제되었습니다.')">토스트</button>
+	<button @click.prevent="toast.error('삭제할 시설을 선택해 주세요.')">토스트</button>
+	/
+	<button @click.prevent="$store.alert.open('alert1')">알림1</button>
+	/
+	<button @click.prevent="$store.alert.open('alert2')">알림2</button>
+	/
+	<button @click.prevent="$store.alert.open('alert3')">알림1</button>
+	/
+	<button @click.prevent="$store.alert.open('alert4')">알림2</button>
+</div>
+
+<alert-popup id="alertImg" open="close" txt="이미지 확장자(jpg, png)만 첨부 가능합니다."></alert-popup>
+<alert-popup id="alertImgSize" open="close" txt="2MB 이하의 파일만 첨부 가능합니다."></alert-popup>
+<alert-popup
+	id="alert1"
+	open="close"
+	txt="n건의 시설을 삭제하시겠습니까? <br />이 작업은 되돌릴 수 없습니다."
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert2"
+	open="close"
+	txt="선택된 항목 중 위치가 매칭된 시설이 존재합니다. <br />매칭 해제 후 다시 시도해주세요."
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert3"
+	open="close"
+	txt="$시설명$ 시설을 삭제하시겠습니까? <br />이 작업은 되돌릴 수 없습니다."
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
+<alert-popup
+	id="alert4"
+	open="close"
+	txt="작위치가 매칭된 시설은 삭제가 불가합니다 <br />매칭 해제 후 다시 시도해주세요."
+	cancel="취소"
+	@alert-cancel="alert()"
+	@alert-confirm="alert()"></alert-popup>
 
 <script defer>
 	document.addEventListener('alpine:init', () => {

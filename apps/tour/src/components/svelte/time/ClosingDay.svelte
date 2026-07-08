@@ -351,7 +351,7 @@
 						txt="매주"
 						class="flex-none"
 						checked={allWeek}
-						change={handleAllWeekChange}
+						onchecked-change={handleAllWeekChange}
 					></ui-checkbox>
 				</dd>
 			</dl>

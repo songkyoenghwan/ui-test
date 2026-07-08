@@ -1,5 +1,5 @@
 <section
-	class="shadow-1xs h-full flex-[0_0_320px] flex-col rounded-sm bg-white"
+	class="shadow-1xs order-2 row-span-3 h-full flex-col rounded-sm bg-white"
 	:class="$store.data.sidebar ? 'flex' : 'hidden'"
 	data-dom="sidebar"
 	x-cloak
@@ -94,7 +94,7 @@
 							</div>
 
 							<template x-if="poiMappingsLength === 0">
-								<text-badge variant="error" txt="매칭전"></text-badge>
+								<text-badge variant="error" txt="매칭 전"></text-badge>
 							</template>
 
 							<template x-if="poiMappingsLength > 0 && firstPoiNameKo === ''">
@@ -231,7 +231,7 @@
 										cls="max-w-18.75"
 										blank="_blank"
 										:link="item?.url"
-										txt="링크이동"></ui-btn>
+										txt="링크 이동"></ui-btn>
 								</div>
 							</div>
 

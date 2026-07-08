@@ -1,7 +1,5 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
-
-const { view, id } = Astro.params;
 ---
 
 <LayoutBasic>
@@ -29,19 +27,19 @@ const { view, id } = Astro.params;
 
 							<ui-btn class="w-20" variant="ghost" size="lg" txt="삭제"></ui-btn>
 
-							<ui-btn tag="a" variant="primary" size="lg" class="w-20" txt="수정" link="/tour-destination/edit/1"
-							></ui-btn>
+							<ui-btn
+								tag="a"
+								variant="primary"
+								size="lg"
+								class="w-20"
+								txt="수정"
+								x-bind:link="`/tour-destination/edit/${$store.data.itemId}`"></ui-btn>
 						</div>
 					</template>
 				</div>
 
 				<template x-if="$store.data.view === 'edit' || $store.data.view === 'reg'">
-					<ui-btn
-						class="w-20"
-						variant="primary"
-						size="lg"
-						txt="저장"
-						@click="console.log(document.querySelector('operating-hours').result)"></ui-btn>
+					<ui-btn class="w-20" variant="primary" size="lg" txt="저장" @btn-click="$store.data.saveData()"></ui-btn>
 				</template>
 			</div>
 		</section>
@@ -94,7 +92,7 @@ const { view, id } = Astro.params;
 							return $store.data.data?.facilityPoiMappings?.length ?? 0
 						},
 						get operationGuide() {
-							return JSON.stringify($store.data.data?.operationGuide ?? {})
+							return JSON.stringify($store.data.data?.operationInfo ?? {})
 						}
 						
 					}"
@@ -105,6 +103,7 @@ const { view, id } = Astro.params;
 							tit="제공 언어"
 							:sub="$store.data.view !== 'detail' ? '사용자에게 제공할 언어를 선택해 주세요' : ''"></ui-tit>
 						<lang-chk
+							data-field="supportedLanguages"
 							class="flex flex-wrap items-center gap-5"
 							:class="$store.data.view !== 'detail' ? 'justify-end' : ''"
 							:view="$store.data.view"
@@ -115,8 +114,8 @@ const { view, id } = Astro.params;
 					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
 						<ui-tit
 							tit="대상지명"
-							:tip="$store.data.view !== 'detail'? '15자 이내 권장' : ''"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)"
+							:tip="$store.data.view !== 'detail' ? '15자 이내 권장' : ''"
+							:tooltip="$store.data.view !== 'detail' ? '언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 50자)' : ''"
 						></ui-tit>
 						<lang-translate
 							data-max-length="50"
@@ -145,6 +144,7 @@ const { view, id } = Astro.params;
 								class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
 								tit="운영 기간"></ui-tit>
 							<operating-period
+								data-field="operatingPeriod"
 								:view="$store.data.view"
 								:is-always="$store.data.view !== 'reg' ? $store.data.data?.isAlways : true"
 								:start-at="$store.data.data?.startAt"
@@ -156,6 +156,7 @@ const { view, id } = Astro.params;
 								class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
 								tit="정기 휴무"></ui-tit>
 							<closing-day
+								data-field="holidaySchedules"
 								:view="$store.data.view"
 								:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : []"
 							></closing-day>
@@ -167,9 +168,7 @@ const { view, id } = Astro.params;
 					<div
 						class="group grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]"
 					>
-						<ui-tit
-							class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
-							tit="운영 시간"></ui-tit>
+						<ui-tit class="pt-1 group-has-[[view=detail]]:pt-0" tit="운영 시간"></ui-tit>
 
 						<operating-hours rest="on" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
 						></operating-hours>
@@ -182,11 +181,28 @@ const { view, id } = Astro.params;
 							tit="운영 안내"
 							x-bind:req="$store.data.view !== 'detail'"
 							x-bind:tip="$store.data.view !== 'detail' ? '30자 이내 권장' : ''"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
+							:tooltip="$store.data.view !== 'detail' ? '언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)' : ''"
 						></ui-tit>
 
 						<lang-translate data-max-length="60" :view="$store.data.view" :lang="operationGuide ?? '{}'"
 						></lang-translate>
+					</div>
+				</li>
+
+				<li>
+					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
+						<ui-tit
+							tit="운영 안내"
+							x-bind:req="$store.data.view !== 'detail'"
+							x-bind:tip="$store.data.view !== 'detail' ? '30자 이내 권장' : ''"
+							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
+						></ui-tit>
+
+						<lang-translate
+							data-field="operationInfo"
+							data-max-length="60"
+							:view="$store.data.view"
+							:lang="operationGuide ?? '{}'"></lang-translate>
 					</div>
 				</li>
 
@@ -208,6 +224,7 @@ const { view, id } = Astro.params;
 						</template>
 						<template x-if="$store.data.view !== 'detail'">
 							<input-text
+								data-field="homepageUrl"
 								data-type="url"
 								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
 								:view="$store.data.view"
@@ -229,6 +246,7 @@ const { view, id } = Astro.params;
 						</template>
 						<template x-if="$store.data.view !== 'detail'">
 							<input-text
+								data-field="mapUrl"
 								data-type="url"
 								placeholder="https://(또는 http://)를 포함하여 URL를 입력해주세요"
 								:view="$store.data.view"
@@ -242,7 +260,8 @@ const { view, id } = Astro.params;
 		<section class="shadow-1xs rounded-lg bg-white p-5" id="target-scroll-tab-section-1">
 			<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
-			<group-custom :view="$store.data.view" :result="JSON.stringify($store.data.data) ?? '{}'"></group-custom>
+			<group-custom data-field="customConfig" :view="$store.data.view" :result="JSON.stringify($store.data.data) ?? '{}'"
+			></group-custom>
 		</section>
 	</article>
 </LayoutBasic>
@@ -279,24 +298,241 @@ const { view, id } = Astro.params;
 				};
 			},
 
+			getCookie(name) {
+				return (
+					document.cookie
+						.split('; ')
+						.find((row) => row.startsWith(`${name}=`))
+						?.split('=')[1] ?? ''
+				);
+			},
+
+			getField(selector) {
+				return document.querySelector(`[data-field="${selector}"]`);
+			},
+
+			parseValue(value, fallback) {
+				if (typeof value !== 'string') return value ?? fallback;
+				if (!value.trim()) return fallback;
+
+				try {
+					return JSON.parse(value);
+				} catch {
+					return value;
+				}
+			},
+
+			getLangValue(field, fallback = {}) {
+				const el = this.getField(field);
+				const value = this.parseValue(el?.lang, fallback);
+				const inputValue = (key) => el?.querySelector(`input[id$="-${key}"]`)?.value ?? value?.[key] ?? '';
+
+				return {
+					ko: inputValue('ko'),
+					en: inputValue('en'),
+					zh: inputValue('zh'),
+					ja: inputValue('ja'),
+					th: inputValue('th'),
+					vi: inputValue('vi'),
+				};
+			},
+
+			toNullableNumber(value) {
+				if (value === null || value === undefined || value === '') return null;
+				const num = Number(value);
+				return Number.isFinite(num) ? num : null;
+			},
+
+			getHolidaySchedules() {
+				const el = this.getField('holidaySchedules');
+				const fixedHolidaySelect = el?.querySelector('select[id$="-closing-date"]');
+
+				if (fixedHolidaySelect) {
+					return [
+						{
+							weekOfMonth: undefined,
+							dayOfWeek: undefined,
+							fixedHoliday: this.toNullableNumber(fixedHolidaySelect.value),
+							holidayType: 1,
+						},
+					];
+				}
+
+				const schedules = this.parseValue(el?.result, this.data.tourDestinationHolidaySchedules ?? []);
+				return (Array.isArray(schedules) ? schedules : [])
+					.map((schedule) => {
+						const fixedHoliday = this.toNullableNumber(schedule.fixedHoliday);
+						return {
+							weekOfMonth: this.toNullableNumber(schedule.weekOfMonth),
+							dayOfWeek: this.toNullableNumber(schedule.dayOfWeek),
+							fixedHoliday,
+							holidayType: fixedHoliday != null ? 1 : this.toNullableNumber(schedule.holidayType),
+						};
+					})
+					.filter(
+						(schedule) => schedule.weekOfMonth != null || schedule.dayOfWeek != null || schedule.fixedHoliday != null,
+					);
+			},
+
+			getOperatingSchedules() {
+				const el = this.getField('operatingSchedules');
+				const schedules = this.parseValue(el?.result, this.data.tourDestinationOperatingSchedules ?? []);
+				const rows = Array.isArray(schedules) ? schedules : [];
+				const selectedStatus = el?.querySelector('input[name$="-operating-hours"]:checked')?.value;
+				const getTime = (schedule = {}) => ({
+					openingTime: schedule?.openingTime ?? '00:00',
+					closingTime: schedule?.closingTime ?? '01:00',
+				});
+				const isValidTime = (schedule) => schedule.openingTime && schedule.closingTime;
+
+				if (selectedStatus === 'always') {
+					const time = getTime(rows[0]);
+					if (!isValidTime(time)) return [];
+
+					return [0, 1, 2, 3, 4, 5, 6].map((dayOfWeek) => ({
+						dayOfWeek,
+						...time,
+					}));
+				}
+
+				return rows
+					.flatMap((schedule) => {
+						const dayOfWeeks = Array.isArray(schedule?.dayOfWeeks) ? schedule.dayOfWeeks : [schedule?.dayOfWeek];
+						const time = getTime(schedule);
+
+						return dayOfWeeks.map((dayOfWeek) => ({
+							dayOfWeek: this.toNullableNumber(dayOfWeek),
+							...time,
+						}));
+					})
+					.filter((schedule) => schedule.dayOfWeek != null && isValidTime(schedule));
+			},
+
+			buildPayload() {
+				const name = this.getLangValue('name', this.data.name ?? {});
+				const supportedLanguages = this.parseValue(
+					this.getField('supportedLanguages')?.lang,
+					this.data.supportedLanguages ?? {},
+				);
+				const operationInfo = this.getLangValue('operationInfo', this.data.operationInfo ?? {});
+				const operatingPeriod = this.getField('operatingPeriod');
+				const operatingSchedules = this.getOperatingSchedules();
+				const holidaySchedules = this.getHolidaySchedules();
+				const customConfig = this.parseValue(this.getField('customConfig')?.result, this.data ?? {});
+				const isAlways = Boolean(operatingPeriod?.isAlways ?? this.data.isAlways ?? true);
+				const latitude = Number.isFinite(Number(this.data.latitude)) ? Number(this.data.latitude) : 39.2331;
+				const longitude = Number.isFinite(Number(this.data.longitude)) ? Number(this.data.longitude) : 127.393;
+
+				if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+					throw new Error('대상지 위치 좌표를 확인해 주세요.');
+				}
+
+				return {
+					name,
+					supportedLanguages,
+					latitude,
+					longitude,
+					startAt: isAlways ? undefined : (operatingPeriod?.startAt ?? this.data.startAt ?? undefined),
+					endAt: isAlways ? undefined : (operatingPeriod?.endAt ?? this.data.endAt ?? undefined),
+					colorCode: customConfig?.colorCode ?? this.data.colorCode ?? '#16B17D',
+					homepageUrl: this.getField('homepageUrl')?.value ?? this.data.homepageUrl ?? '',
+					mapUrl: this.getField('mapUrl')?.value ?? this.data.mapUrl ?? '',
+					isAlways,
+					isAiRecommendYn: Boolean(customConfig?.isAiRecommendYn ?? this.data.isAiRecommendYn),
+					isFacilityCongestionYn: Boolean(customConfig?.isFacilityCongestionYn ?? this.data.isFacilityCongestionYn),
+					isSectionCongestionYn: Boolean(customConfig?.isSectionCongestionYn ?? this.data.isSectionCongestionYn),
+					isFacilityAddressYn: Boolean(customConfig?.isFacilityAddressYn ?? this.data.isFacilityAddressYn),
+					isCustomSortingYn: Boolean(customConfig?.isCustomSortingYn ?? this.data.isCustomSortingYn),
+					operationInfo,
+					tourDestinationCommonButtons: (customConfig?.tourDestinationCommonButtons ?? []).map((button, index) => ({
+						iconUrl: button.iconUrl ?? '',
+						buttonName: button.buttonName ?? {},
+						sortingNumber: button.sortingNumber ?? index,
+					})),
+					tourDestinationOperatingSchedules: operatingSchedules,
+					tourDestinationHolidaySchedules: holidaySchedules,
+				};
+			},
+
+			async saveData() {
+				this.loading = true;
+				this.error = null;
+
+				try {
+					const { view, id } = this.getRouteInfo();
+					const isEdit = view === 'edit';
+					const payload = this.buildPayload();
+					const url = isEdit ? `/api/tour-destinations/${id}` : '/api/tour-destinations';
+					console.log('[tour-destination:save] request', {
+						method: isEdit ? 'PATCH' : 'POST',
+						url,
+						payload,
+					});
+					const res = await fetch(url, {
+						method: isEdit ? 'PATCH' : 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'X-CSRF-Token': decodeURIComponent(this.getCookie('csrfToken')),
+						},
+						credentials: 'include',
+						body: JSON.stringify(payload),
+					});
+
+					if (!res.ok) {
+						const text = await res.text();
+						let errorBody = text;
+						try {
+							errorBody = JSON.parse(text);
+						} catch {}
+
+						console.error('[tour-destination:save] response error', {
+							status: res.status,
+							statusText: res.statusText,
+							body: errorBody,
+							payload,
+						});
+						throw new Error(`Failed to save tour destination: ${res.status}`);
+					}
+
+					const data = await res.json();
+					const saved = data.data ?? {};
+					window.location.href = `/tour-destination/detail/${saved.id ?? id}`;
+				} catch (error) {
+					this.error = error instanceof Error ? error.message : 'Unknown error';
+					console.error('데이터 저장 실패:', error);
+					alert('저장에 실패했습니다.');
+				} finally {
+					this.loading = false;
+				}
+			},
+
 			async fetchData() {
 				this.loading = true;
 				this.error = null;
 
 				try {
-					const res = await fetch(`/api/tour-destinations`);
+					const { view, id } = this.getRouteInfo();
+					this.view = view;
+					this.setItemId(id);
+
+					if (!id || view === 'reg') return;
+
+					const res = await fetch(`/api/tour-destinations/${id}`);
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
 					const payload = data.data ?? {};
-					this.items = payload.items ?? [];
+					this.data = payload;
+					this.name = JSON.stringify(this.data.name) ?? '{}';
 
-					const { view, id } = this.getRouteInfo();
-					this.view = view;
+					const nameEl = this.getField('name');
+					if (nameEl) {
+						nameEl.lang = this.data.name;
+					}
 
-					if ((view === 'detail' || view === 'edit' || view === 'reg') && id) {
-						this.setItemId(id);
-						await this.findInit(id);
+					const operationInfoEl = this.getField('operationInfo');
+					if (operationInfoEl) {
+						operationInfoEl.lang = this.data.operationInfo;
 					}
 				} catch (error) {
 					this.error = error instanceof Error ? error.message : 'Unknown error';
@@ -329,7 +565,7 @@ const { view, id } = Astro.params;
 					vi: '',
 				};
 
-				const el = document.querySelector('lang-translate');
+				const el = this.getField('name');
 				if (el) {
 					el.lang = this.data.name;
 				}

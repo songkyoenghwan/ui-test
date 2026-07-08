@@ -1,0 +1,28 @@
+---
+import ModalHeader from '@/components/modals/ModalHeader.astro';
+
+const dialogId = 'DialogSubcategories';
+---
+
+<dialog id={dialogId} class="group/dialog modal" aria-modal="true" x-bind="DialogHandler">
+	<article class="modal-body max-w-120" x-bind="DialogModal">
+		<modal-header id={dialogId} :tit="`하위 카테고리 ${$store?.modal?.edit === 'edit' ? '수정' : '등록'}`"></modal-header>
+
+		<section class="modal-contents">
+			<div class="modal-scroll flex flex-col gap-2 px-5 py-4">
+				<ui-tit
+					tit="하위 카테고리명"
+					tip="15자 이내 권장"
+					tooltip="언어에 따라 표현 길이가 달라질 수 있으므로 <br />번역 내용을 확인해주세요. (최대 20자)"></ui-tit>
+				<lang-translate data-max-length="20" view="reg" @translate=""> </lang-translate>
+			</div>
+		</section>
+
+		<footer class="modal-footer">
+			<div class="flex flex-1 items-center">
+				<ui-btn class="flex-1" variant="primary" size="lg" txt="저장"></ui-btn>
+				<!-- disabled -->
+			</div>
+		</footer>
+	</article>
+</dialog>
