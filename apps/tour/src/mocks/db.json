@@ -248,7 +248,7 @@
 		"data": {
 			"items": [
 				{
-					"id": 0,
+					"id": 1,
 					"tourDestinationId": 1,
 					"name": {
 						"ko": "1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치",
@@ -327,7 +327,7 @@
 					]
 				},
 				{
-					"id": 1,
+					"id": 2,
 					"tourDestinationId": 1,
 					"name": {
 						"ko": "1번 위치",
@@ -354,27 +354,10 @@
 					]
 				},
 				{
-					"id": 2,
-					"tourDestinationId": 1,
-					"name": {
-						"ko": "1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치",
-						"en": ""
-					},
-					"latitude": 37.0123,
-					"longitude": 127.02163,
-					"managementCode": null,
-					"createdAt": "2026-05-29T00:54:49.125Z",
-					"updatedAt": null,
-					"isOperationInfoSynced": false,
-					"checked": false,
-					"isVisible": false,
-					"facilityPoiMappings": []
-				},
-				{
 					"id": 3,
 					"tourDestinationId": 1,
 					"name": {
-						"ko": "",
+						"ko": "1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치",
 						"en": ""
 					},
 					"latitude": 37.0123,
@@ -471,9 +454,26 @@
 					"checked": false,
 					"isVisible": false,
 					"facilityPoiMappings": []
+				},
+				{
+					"id": 9,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "",
+						"en": ""
+					},
+					"latitude": 37.0123,
+					"longitude": 127.02163,
+					"managementCode": null,
+					"createdAt": "2026-05-29T00:54:49.125Z",
+					"updatedAt": null,
+					"isOperationInfoSynced": false,
+					"checked": false,
+					"isVisible": false,
+					"facilityPoiMappings": []
 				}
 			],
-			"totalCount": 1,
+			"totalCount": 9,
 			"page": 1,
 			"pageSize": 10,
 			"totalPages": 1,

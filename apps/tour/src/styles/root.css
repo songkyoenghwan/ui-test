@@ -135,6 +135,7 @@
 	--color-965829: #965829;
 	--color-676767: #676767;
 
+	--color-poi-: #62748e;
 	--color-poi-1: #ff5151;
 	--color-poi-2: #ff983d;
 	--color-poi-3: #ffe345;
@@ -189,4 +190,12 @@ header-list {
 
 icon-list {
 	display: inline-flex;
+}
+
+.toastify.toastify-stack {
+	margin-top: 8px;
+}
+
+.toastify.toastify-stack:last-child {
+	margin-top: 0;
 }

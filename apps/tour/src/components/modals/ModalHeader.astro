@@ -1,0 +1,26 @@
+---
+interface Props {
+	shape?: string;
+	id: string;
+	tit?: string;
+}
+
+const { shape = '', id = '', tit = '' } = Astro.props;
+---
+
+<header class="grid grid-cols-[1fr_26px] overflow-clip rounded-t-sm bg-white px-5 pt-5 pb-3.5">
+	<ui-tit tag="h4" size="lg" size="md" tit={tit}></ui-tit>
+
+	<!-- close -->
+	<ui-btn
+		txt="닫기"
+		variant="icon"
+		icon-name="modal-close"
+		icon-cls="size-5"
+		autofocus
+		btn-id="`${id}Close`"
+		x-bind="ModalClose"
+		data-close={id}
+	>
+	</ui-btn>
+</header>

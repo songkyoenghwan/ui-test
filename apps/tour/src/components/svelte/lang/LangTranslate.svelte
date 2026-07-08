@@ -154,7 +154,7 @@
 							{#if String(local[key]) === ''}
 								<p class="text-xs text-slate-500">없음</p>
 							{:else}
-								<p class="text-xs text-black">{String(local[key])}</p>
+								<p class="text-xs text-black">{String(local[key]).toUpperCase()}</p>
 							{/if}
 						</li>
 					{/if}
@@ -167,7 +167,7 @@
 						]}
 					>
 						<ui-txt size="sm" txt={String(key).toUpperCase()} cls="text-cms-3 font-semibold text-center"></ui-txt>
-						<ui-txt size="sm" txt={local[key]} cls="text-black"></ui-txt>
+						<ui-txt size="sm" txt={local[key].toUpperCase()} cls="text-black"></ui-txt>
 					</li>
 				{/if}
 			{/each}

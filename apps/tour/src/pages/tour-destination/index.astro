@@ -145,8 +145,9 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 
 										const langOrder = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
 										return langOrder
-											.filter((key) => item.supportedLanguages[key])
-											.join(', ');
+												.filter((key) => item.supportedLanguages[key])
+												.map((key) => key.toUpperCase())
+												.join(', ');
 									},
 
 									get supportedLanguageList() {

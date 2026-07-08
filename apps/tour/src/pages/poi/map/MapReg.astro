@@ -9,7 +9,8 @@
 					icon-pos="lt"
 					icon-cls="size-5 stroke-slate-500"
 					cls="text-lg! font-bold"
-					txt="위치 등록"></ui-btn>
+					txt="위치 등록"
+					@btn-click.prevent="$store.data.sidebar = false"></ui-btn>
 			</div>
 		</header>
 
@@ -80,7 +81,7 @@
 				@btn-click.prevent="$store.data.sidebarTopVisible = !$store.data.sidebarTopVisible"></ui-btn>
 		</section>
 
-		<section
+		<!-- <section
 			class="grid min-h-14 grid-cols-[1fr_36px] items-center justify-between gap-1 border-t border-t-slate-200 px-5 py-3"
 		>
 			<ui-tit class="flex items-center gap-1" size="md" tit="차량 네비게이션"></ui-tit>
@@ -89,7 +90,7 @@
 				variant="toggle"
 				:checked="Boolean($store.data.isNavigationProvided) "
 				@checked-change="$store.data.isNavigationProvided = $event.detail.checked"></ui-checkbox>
-		</section>
+		</section> -->
 
 		<section class="flex min-h-0 flex-1 flex-col gap-4 border-t border-t-slate-200 py-4">
 			<div class="grid grid-cols-2 items-center gap-2.5 px-5">
@@ -109,14 +110,17 @@
 
 				<div class="col-span-2 grid grid-cols-2 gap-2.5">
 					<ui-btn variant="ghost" size="md" txt="새 시설 등록"></ui-btn>
-					<ui-btn variant="ghost" size="md" txt="등록된 시설 매칭"></ui-btn>
+					<ui-btn
+						variant="ghost"
+						size="md"
+						txt="등록된 시설 매칭"
+						x-bind="ModalHandler"
+						data-target="DialogMatchingFacilities"
+						@btn-click="Alpine.store('locationMove')?.editView?.(colum)"></ui-btn>
 				</div>
 			</div>
 
-			<ul
-				class="flex flex-1 flex-col overflow-x-clip overflow-y-auto scroll-smooth"
-				x-bind="($store.data?.data?.facilityPoiMappings?.length ?? 0) > 1 ? { 'x-sort': true } : {}"
-			>
+			<ul class="flex flex-1 flex-col overflow-x-clip overflow-y-auto scroll-smooth" x-sort>
 				<template x-for="(mapping, index) in $store.data.data.facilityPoiMappings" :key="mapping.id ?? index">
 					<li
 						class="group/dnd grid w-full grid-cols-[1fr_30px] items-center border-b border-b-slate-200 bg-white pr-5"
@@ -129,26 +133,11 @@
 							x-sort:item
 						>
 							<icon-list data-name="drag-dots" class="icon fill-d9d9d9 size-4"></icon-list>
-
-							<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
-								<icon-list
-									:data-name="mapping?.icon"
-									class="size-7"
-									:style="`fill: var(--color-poi-${mapping?.categoryColorCodeId}); stroke: var(--color-poi-${mapping?.categoryColorCodeId})`"
-								></icon-list>
-							</span>
-
-							<span class="grid w-full space-y-0.5">
-								<span class="truncate text-sm text-slate-600" x-text="mapping.poi?.name?.ko ?? ''"></span>
-
-								<span class="flex items-center gap-1 text-xs font-normal text-slate-400">
-									<template x-if="mapping.category?.name.ko">
-										<span x-text="mapping.category?.name.ko ?? ''"></span>
-									</template>
-									<span x-show="mapping.category?.name.ko">/</span>
-									<span x-text="mapping.category?.parent.name.ko ?? ''"></span>
-								</span>
-							</span>
+							<category-icon :icon="mapping?.icon" :color="mapping?.categoryColorCodeId"></category-icon>
+							<category-txt
+								x-bind:txt="mapping.poi?.name?.ko ?? ''"
+								x-bind:name="mapping.category?.name?.ko ?? ''"
+								x-bind:parent="mapping.category?.parent?.name?.ko ?? ''"></category-txt>
 						</button>
 
 						<button type="button" class="button icon" aria-label="시설 삭제">
@@ -188,7 +177,13 @@
 					icon-cls="size-5 stroke-slate-400"
 					class="flex-[0_0_60px] rounded-sm border border-slate-200"
 					txt="삭제"></ui-btn>
-				<ui-btn variant="primary" size="lg" cls="text-lg! font-bold" class="flex-1" txt="저장"></ui-btn>
+				<ui-btn
+					variant="primary"
+					size="lg"
+					cls="text-lg! font-bold"
+					class="flex-1"
+					txt="저장"
+					@btn-click.prevent="toast.success('저장되었습니다.')"></ui-btn>
 			</div>
 		</footer>
 	</div>

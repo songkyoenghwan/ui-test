@@ -1,0 +1,76 @@
+---
+import ModalHeader from '@/components/modals/ModalHeader.astro';
+
+const dialogId = 'DialogMatchingFacilities';
+---
+
+<dialog id="DialogMatchingFacilities" class="group/dialog modal" aria-modal="true" x-bind="DialogHandler">
+	<article class="modal-body max-w-150" x-bind="DialogModal">
+		<ModalHeader id={dialogId} tit="등록된 시설 매칭" />
+
+		<section class="modal-top">
+			<div class="grid grid-cols-[150px_1fr] gap-2">
+				<select name="" id="" class="select" title="">
+					<option value="">전체 카테고리</option>
+					<option value="">옵션</option>
+				</select>
+				<input-search-del placeholder="시설명 검색"></input-search-del>
+			</div>
+		</section>
+		<section class="modal-contents">
+			<div class="flex items-center justify-between bg-white px-5 py-2">
+				<div class="flex items-center gap-1">
+					<ui-txt cls="text-cms-5" size="sm" txt="0"></ui-txt>
+					<ui-txt size="sm" txt="개 선택"></ui-txt>
+				</div>
+				<ui-checkbox txt="선택된 시설만 보기"></ui-checkbox>
+			</div>
+
+			<ul class="modal-scroll flex h-82.5 flex-col divide-y divide-slate-200">
+				<li class="flex w-full items-center gap-3 px-5 py-3">
+					<ui-checkbox class="flex items-center"></ui-checkbox>
+					<category-icon icon="three" color="3"></category-icon>
+					<category-txt
+						txt="왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕"
+						name="화장실 화장실 화장실 화장실"
+						parent="화장실 화장실 화장실 화장실"></category-txt>
+				</li>
+				<li class="flex w-full items-center gap-3 px-5 py-3">
+					<ui-checkbox class="flex items-center"></ui-checkbox>
+					<category-icon icon="three" color="3"></category-icon>
+					<category-txt
+						txt="왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕"
+						parent="화장실 화장실 화장실 화장실"></category-txt>
+				</li>
+				<li class="flex w-full items-center gap-3 px-5 py-3">
+					<ui-checkbox class="flex items-center"></ui-checkbox>
+					<category-icon icon="three" color="3"></category-icon>
+					<category-txt
+						txt="왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕"
+						name="화장실 화장실 화장실 화장실"></category-txt>
+				</li>
+				<li class="grid h-full place-content-center">
+					<ui-txt
+						size="lg"
+						class="grid place-content-center py-3"
+						cls="text-slate-600 text-center"
+						txt="매칭 가능한 시설이 없습니다."></ui-txt>
+				</li>
+			</ul>
+		</section>
+
+		<div class="px-5 py-3">
+			<text-badge
+				variant="bg-secondary"
+				cls="text-[10px] w-full text-center"
+				icon="info-circle-outline"
+				txt="동일한 콘텐츠를 사용 중인 시설은 동일 위치에 중복 설정할 수 없습니다."></text-badge>
+		</div>
+		<footer class="modal-footer">
+			<div class="flex flex-1 items-center">
+				<ui-btn class="flex-1" variant="primary" size="lg" txt="선택 완료"></ui-btn>
+				<!-- disabled -->
+			</div>
+		</footer>
+	</article>
+</dialog>

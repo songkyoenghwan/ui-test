@@ -21,7 +21,7 @@
 			<option value="">최신순</option>
 			<option value="">가나다순</option>
 		</select>
-		<div class="flex items-center gap-1">
+		<div class="flex items-center gap-2">
 			<ui-txt size="sm" txt="검색결과"></ui-txt>
 			<ui-txt size="sm" cls="text-cms-3 font-bold" :txt="String($store.data.totalCount ?? '0')"></ui-txt>
 			<ui-btn
@@ -35,12 +35,9 @@
 	<div class="flex h-full min-h-0 flex-1 flex-col overflow-x-clip overflow-y-auto scroll-smooth">
 		<template x-if="$store.data.items?.length === 0">
 			<div class="flex flex-1 flex-col items-center justify-center gap-3 p-5">
-				<icon-items data-name="mouse-circle" class="icon stroke-primary fill-primary size-6.5"></icon-items>
-				<p class="text-xl text-slate-400">
-					지도를 우클릭하면
-					<br />
-					새 위치가 생성됩니다
-				</p>
+				<icon-list data-name="mouse-circle" class="icon stroke-cms-5 size-6.5"></icon-list>
+
+				<ui-txt class="text-center text-slate-600" size="lg" txt="지도를 우클릭하면 <br /> 새 위치가 생성됩니다"></ui-txt>
 			</div>
 		</template>
 

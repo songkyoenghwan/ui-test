@@ -132,6 +132,7 @@
 	--color-965829: #965829;
 	--color-676767: #676767;
 
+	--color-poi-: #62748e;
 	--color-poi-1: #ff5151;
 	--color-poi-2: #ff983d;
 	--color-poi-3: #ffe345;
@@ -151,7 +152,7 @@
 
 	--shadow-header: var(--shadow-header);
 	--shadow-1xs: 0 0 2px rgba(0, 0, 0, 0.2);
-	--shadow-2xs: 0 0 0 rgba(0, 0, 0, 0.1);
+	--shadow-2xs: 0 0 8px rgba(0, 0, 0, 0.1);
 
 	--text-2sm: var(--text-2sm);
 	--text-2md: var(--text-2md);
@@ -710,6 +711,30 @@
 		@apply bg-secondary! border-cms-3 border;
 	}
 
+	.modal {
+		@apply shadow-1xs fixed top-0 right-0 left-0 z-100 hidden h-dvh max-h-dvh w-dvw max-w-dvw flex-col items-center justify-center border bg-black/60 p-4 not-open:hidden open:flex;
+
+		.modal-body {
+			@apply relative flex w-full flex-col divide-y divide-slate-200 overflow-hidden rounded-sm bg-white transition-all;
+		}
+
+		.modal-footer {
+			@apply flex items-center justify-center gap-3 rounded-b-sm border-t border-t-slate-200 px-5 pt-3 pb-5;
+		}
+
+		.modal-top {
+			@apply bg-white px-5 pb-3;
+		}
+
+		.modal-contents {
+			@apply flex max-h-[calc(100dvh-18.75rem)] w-full flex-col rounded-b-lg border-t border-t-slate-200 bg-white group-has-[footer]/dialog:rounded-b-none;
+		}
+
+		.modal-scroll {
+			@apply overflow-x-clip overflow-y-auto scroll-smooth;
+		}
+	}
+
 	.map-list {
 		@apply flex h-(--main-height) w-80 flex-col overflow-clip bg-white opacity-100 shadow-2xs transition-all transition-discrete starting:translate-x-20 starting:opacity-0;
 
@@ -723,7 +748,7 @@
 	}
 
 	.map-reg {
-		@apply fixed inset-e-100 top-(--header-top) z-20 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip bg-white opacity-100 shadow-2xs transition-all transition-discrete aria-hidden:hidden aria-hidden:opacity-0 starting:translate-x-20 starting:opacity-0;
+		@apply fixed inset-e-0 top-(--header-top) z-20 flex h-full max-h-(--main-height) w-80 flex-col divide-y divide-slate-200 overflow-clip bg-white opacity-100 shadow-2xs transition-all transition-discrete aria-hidden:hidden aria-hidden:opacity-0 starting:translate-x-20 starting:opacity-0;
 
 		.map-reg__header {
 			@apply flex flex-none flex-col gap-3 rounded-t-xl px-5 pt-5 pb-3;

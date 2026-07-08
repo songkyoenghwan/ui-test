@@ -1,4 +1,7 @@
 import '@/styles/index.css';
+import '@/events/toastEvent';
+import '@/stores/alertStore';
+import '@/stores/modalStore';
 import '@/svelte/tooltip/HoverTooltip.svelte';
 import '@/svelte/alert/AlertPopup.svelte';
 import '@/svelte/badges/BadgeText.svelte';
@@ -29,3 +32,6 @@ import '@/svelte/upload/thumUpload.svelte';
 import '@/svelte/upload/ThumbView.svelte';
 import '@/svelte/facilities/facilityButton.svelte';
 import '@/svelte/paging/pagingTable.svelte';
+import '@/svelte/category/category-icon';
+import '@/svelte/category/category-txt';
+import '@/svelte/toast/toast-txt';

@@ -56,13 +56,8 @@
 						>
 							<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
 							></icon-list>
-							<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
-								<icon-list
-									:data-name="item?.icon"
-									class="size-7"
-									:style="`fill: var(--color-${item?.categoryColorCodeId}); stroke: var(--color-${item?.categoryColorCodeId})`"
-								></icon-list>
-							</span>
+
+							<category-icon :icon="item.icon" :color="String(item?.categoryColorCodeId)"></category-icon>
 							<ui-tit
 								class="text-left"
 								tag="span"
