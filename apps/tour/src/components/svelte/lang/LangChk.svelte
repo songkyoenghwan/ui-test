@@ -81,7 +81,7 @@
 						txt={item.label}
 						class="flex-none"
 						checked={$langStore[item.key]}
-						change={(e: Event) => {
+						onchecked-change={(e: Event) => {
 							const input = e.currentTarget as HTMLInputElement;
 							lang[item.key as keyof SupportedLanguages] = input.checked;
 							toggleLang(item.key as SupportedLanguagesKey);

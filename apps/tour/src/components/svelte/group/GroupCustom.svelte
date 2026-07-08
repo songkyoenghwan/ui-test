@@ -202,7 +202,7 @@
 			<ui-txt size="sm" cls="text-cms-3 font-bold" txt={sub}></ui-txt>
 
 			{#if matching}
-				<ui-txt size="sm" txt={matching} class="text-right"></ui-txt>
+				<ui-txt size="sm" txt={matching} class="text-left"></ui-txt>
 			{/if}
 		</div>
 	</div>

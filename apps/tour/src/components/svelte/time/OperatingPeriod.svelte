@@ -64,7 +64,7 @@
 
 {#if view === 'detail' || view === 'side'}
 	{#if localIsAlways}
-		<ui-txt size={view === 'side' ? 'xs' : 'sm'} cls="text-black" txt="상시운영"></ui-txt>
+		<ui-txt size={view === 'side' ? 'xs' : 'sm'} cls="text-black" txt="상시 운영"></ui-txt>
 	{:else}
 		<div class={['flex', view === 'side' ? 'xs' : 'sm']}>
 			<text-date dateTime={localStartAt}></text-date>

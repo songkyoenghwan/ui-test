@@ -46174,7 +46174,7 @@ function AH(e, t) {
 	}, f = kH(), p = I(f), m = (e) => {
 		var t = V(), n = I(t), r = (e) => {
 			var t = EH();
-			R(() => so(t, "size", a() === "side" ? "xs" : "sm")), so(t, "cls", "text-black"), so(t, "txt", "상시운영"), H(e, t);
+			R(() => so(t, "size", a() === "side" ? "xs" : "sm")), so(t, "cls", "text-black"), so(t, "txt", "상시 운영"), H(e, t);
 		}, i = (e) => {
 			var t = DH(), n = F(t);
 			R(() => so(n, "dateTime", z(l)));

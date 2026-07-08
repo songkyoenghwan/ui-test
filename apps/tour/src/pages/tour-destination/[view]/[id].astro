@@ -171,7 +171,7 @@ const { view, id } = Astro.params;
 							class="pt-1 group-has-[[view=detail]]:place-content-center group-has-[[view=detail]]:pt-0"
 							tit="운영 시간"></ui-tit>
 
-						<operating-hours rest="off" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
+						<operating-hours rest="on" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
 						></operating-hours>
 					</div>
 				</li>

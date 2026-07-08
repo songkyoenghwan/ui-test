@@ -94,7 +94,7 @@
 			id: uuidv4(),
 			dayOfWeeks: [],
 			openingTime: '00:00',
-			closingTime: '01:00',
+			closingTime: '00:00',
 			breakStartTime: '',
 			breakEndTime: '',
 			...partial,
@@ -111,7 +111,7 @@
 			return {
 				dayOfWeek: item.dayOfWeek ?? null,
 				openingTime: item.openingTime ?? '00:00',
-				closingTime: item.closingTime ?? '01:00',
+				closingTime: item.closingTime ?? '00:00',
 				breakStartTime: firstBreak?.breakStartTime ?? '',
 				breakEndTime: firstBreak?.breakEndTime ?? '',
 			};
@@ -145,14 +145,14 @@
 			const breakStartTime = firstBreak?.breakStartTime ?? '';
 			const breakEndTime = firstBreak?.breakEndTime ?? '';
 
-			const key = [item.openingTime ?? '00:00', item.closingTime ?? '01:00', breakStartTime, breakEndTime].join('|');
+			const key = [item.openingTime ?? '00:00', item.closingTime ?? '00:00', breakStartTime, breakEndTime].join('|');
 
 			if (!grouped.has(key)) {
 				grouped.set(
 					key,
 					createGroup({
 						openingTime: item.openingTime ?? '00:00',
-						closingTime: item.closingTime ?? '01:00',
+						closingTime: item.closingTime ?? '00:00',
 						breakStartTime,
 						breakEndTime,
 					}),
@@ -313,8 +313,12 @@
 		return Number(hour) * 60 + Number(minute);
 	}
 
+	function hasAllDayTime(group: UiScheduleGroup) {
+		return timeToMinutes(group.openingTime) === timeToMinutes(group.closingTime);
+	}
+
 	function hasInvalidTime(group: UiScheduleGroup) {
-		return timeToMinutes(group.openingTime) >= timeToMinutes(group.closingTime);
+		return timeToMinutes(group.openingTime) > timeToMinutes(group.closingTime);
 	}
 
 	let selectedDayCount = $derived(new Set(cols.flatMap((col) => col.dayOfWeeks)).size);
@@ -334,7 +338,7 @@
 			alwaysGroup = {
 				...alwaysGroup,
 				breakStartTime: enabled ? alwaysGroup.breakStartTime || '00:00' : '',
-				breakEndTime: enabled ? alwaysGroup.breakEndTime || '01:00' : '',
+				breakEndTime: enabled ? alwaysGroup.breakEndTime || '00:00' : '',
 			};
 		} else {
 			weekCols = weekCols.map((group) =>
@@ -342,7 +346,7 @@
 					? {
 							...group,
 							breakStartTime: enabled ? group.breakStartTime || '00:00' : '',
-							breakEndTime: enabled ? group.breakEndTime || '01:00' : '',
+							breakEndTime: enabled ? group.breakEndTime || '00:00' : '',
 						}
 					: group,
 			);
@@ -374,7 +378,12 @@
 
 	function hasInvalidRestTime(group: UiScheduleGroup) {
 		if (!group.breakStartTime) return false;
-		return timeToMinutes(group.breakStartTime) >= timeToMinutes(group.breakEndTime);
+		return timeToMinutes(group.breakStartTime) > timeToMinutes(group.breakEndTime);
+	}
+
+	function hasAllDayRestTime(group: UiScheduleGroup) {
+		if (!group.breakStartTime) return false;
+		return timeToMinutes(group.breakStartTime) === timeToMinutes(group.breakEndTime);
 	}
 
 	function hasRowRestTimeError(index: number) {
@@ -478,12 +487,14 @@
 									bind:value={cols[i].openingTime}
 									onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-25' : 'w-25'}
+									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>
 								<span>~</span>
 								<TimeScrollPicker
 									bind:value={cols[i].closingTime}
 									onValueChange={(value: string) => handleTimeChange(0, 'closingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-25' : 'w-25'}
+									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>
 							</div>
 
@@ -534,12 +545,14 @@
 									bind:value={cols[i].openingTime}
 									onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-22' : ' w-22'}
+									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>
 								<span>~</span>
 								<TimeScrollPicker
 									bind:value={cols[i].closingTime}
 									onValueChange={(value: string) => handleTimeChange(i, 'closingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-22' : ' w-22'}
+									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>
 							</div>
 
@@ -553,12 +566,14 @@
 												onValueChange={(value: string) =>
 													handleRestTimeChange(i, 'breakStartTime', value)}
 												cls={hasRowRestTimeError(i) ? 'error w-22' : ' w-22'}
+												title={hasAllDayRestTime(cols[i]) ? '종일' : ''}
 											/>
 											<span>~</span>
 											<TimeScrollPicker
 												bind:value={group.breakEndTime}
 												onValueChange={(value: string) => handleRestTimeChange(i, 'breakEndTime', value)}
 												cls={hasRowRestTimeError(i) ? 'error w-22' : ' w-22'}
+												title={hasAllDayRestTime(cols[i]) ? '종일' : ''}
 											/>
 											<UiBtn
 												tag="button"

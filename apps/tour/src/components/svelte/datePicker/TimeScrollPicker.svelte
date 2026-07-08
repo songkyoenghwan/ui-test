@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 
-	let { value = $bindable('00:00'), cls = '', onValueChange = $bindable() } = $props();
+	let { value = $bindable('00:00'), title = '', cls = '', onValueChange = $bindable() } = $props();
 
 	const hourOptions = Array.from({ length: 24 }, (_, i) => ({
 		value: String(i).padStart(2, '0'),
@@ -22,7 +22,7 @@
 	let minute = $derived(value.split(':')[1] || '00');
 
 	let isExpanded = $state(false);
-	let currentVisibleCount = $derived(isExpanded ? 5 : 1);
+	let currentVisibleCount = $derived(isExpanded ? 6 : 1);
 	let timeRef: HTMLElement | null = $state(null);
 
 	function handleKeyDown(e: KeyboardEvent) {
@@ -46,7 +46,7 @@
 
 <svelte:window onclick={handleClickOutside} />
 
-<div class="relative z-5" bind:this={timeRef}>
+<div class="relative z-5" {title} bind:this={timeRef}>
 	<input
 		type="text"
 		class={['input-time m', cls ?? 'w-22']}
@@ -58,15 +58,15 @@
 	{#if isExpanded}
 		<div
 			class="absolute top-7.25 z-3 flex cursor-pointer items-center justify-center overflow-clip rounded border bg-white p-1 text-sm transition-all duration-200 {isExpanded
-				? 'border-cms-3 h-40'
+				? 'border-cms-3 h-45'
 				: 'h-7 border-slate-300'}"
 		>
 			<WheelPickerWrapper classNames={{ group: 'time-picker' }}>
 				<WheelPicker
 					options={hourOptions}
 					infinite={true}
-					dragSensitivity={2}
-					scrollSensitivity={3}
+					dragSensitivity={1}
+					scrollSensitivity={1}
 					value={hour}
 					cylindrical={false}
 					visibleCount={currentVisibleCount}
@@ -84,7 +84,7 @@
 					options={minuteOptions}
 					infinite={true}
 					dragSensitivity={1}
-					scrollSensitivity={2}
+					scrollSensitivity={1}
 					value={minute}
 					visibleCount={currentVisibleCount}
 					classNames={{
