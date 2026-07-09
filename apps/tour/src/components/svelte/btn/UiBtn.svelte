@@ -12,6 +12,7 @@
 			cls: { type: 'String' },
 			iconCls: { type: 'String', attribute: 'icon-cls' },
 			size: { type: 'String' },
+			iconOnly: { type: 'String', attribute: 'icon-only' },
 			value: { type: 'String' },
 			arr: { type: 'Array' },
 			name: { type: 'String' },
@@ -29,6 +30,7 @@
 		tag?: 'button' | 'a' | 'label' | 'chk' | 'rdo';
 		variant?: 'primary' | 'secondary' | 'ghost' | 'segmented' | 'text' | 'icon';
 		size?: 'lg' | 'md' | 'sm';
+		iconOnly?: '' | 'icon';
 		btnType?: 'button' | 'reset' | 'submit';
 		itemId?: string;
 		txt?: string;
@@ -54,6 +56,7 @@
 		tag = 'button',
 		variant = 'primary',
 		size = 'md',
+		iconOnly = '',
 		btnType,
 		itemId,
 		txt,
@@ -170,6 +173,10 @@
 			<span class="sr-only">
 				{txt}
 			</span>
+		{:else if iconOnly === 'icon'}
+			<span class="sr-only">
+				{txt}
+			</span>
 		{:else}
 			{txt}
 		{/if}
@@ -266,7 +273,7 @@
 
 		&.secondary {
 			border: 1px solid var(--color-cms-3);
-			background-color: transparent;
+			background-color: var(--color-fff);
 			color: var(--color-cms-4);
 
 			&:hover:not(:disabled) {

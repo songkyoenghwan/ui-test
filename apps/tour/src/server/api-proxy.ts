@@ -1,5 +1,5 @@
 const API_BASE = process.env.API_BASE ?? 'http://localhost:3001';
-const DEFAULT_PROXY_ROOTS = ['tour-destinations', 'facilities', 'auth'];
+const DEFAULT_PROXY_ROOTS = ['tour-destinations', 'facilities', 'auth', 'pois', 'categories'];
 
 const proxyRoots = new Set(
 	(process.env.API_PROXY_ROOTS ?? DEFAULT_PROXY_ROOTS.join(','))
@@ -26,6 +26,16 @@ const createProxyHeaders = (request: Request) => {
 	const csrfToken = request.headers.get('x-csrf-token');
 	if (csrfToken) {
 		headers.set('x-csrf-token', csrfToken);
+	}
+
+	const origin = request.headers.get('origin');
+	if (origin) {
+		headers.set('origin', origin);
+	}
+
+	const referer = request.headers.get('referer');
+	if (referer) {
+		headers.set('referer', referer);
 	}
 
 	return headers;
@@ -69,12 +79,47 @@ export const proxyApi = async (request: Request, path: string) => {
 
 	const method = request.method.toUpperCase();
 	const body = method === 'GET' || method === 'HEAD' ? undefined : await request.arrayBuffer();
+	const requestBodyText = body && path.startsWith('tour-destinations') ? new TextDecoder().decode(body) : undefined;
 	const response = await fetch(targetUrl, {
 		method,
 		headers: createProxyHeaders(request),
 		body,
 	});
 	const responseBody = await response.text();
+
+	if (!response.ok) {
+		let errorBody: unknown = responseBody;
+		try {
+			errorBody = JSON.parse(responseBody);
+		} catch {}
+		let requestBody: unknown;
+		if (requestBodyText) {
+			try {
+				requestBody = JSON.parse(requestBodyText);
+			} catch {
+				requestBody = requestBodyText;
+			}
+		}
+
+		console.error(
+			'[api-proxy] response error\n' +
+				JSON.stringify(
+					{
+						method,
+						path,
+						target: targetUrl.toString(),
+						status: response.status,
+						statusText: response.statusText,
+						validationDetails:
+							errorBody && typeof errorBody === 'object' && 'details' in errorBody ? errorBody.details : undefined,
+						body: errorBody,
+						requestBody,
+					},
+					null,
+					2,
+				),
+		);
+	}
 
 	return new Response(responseBody, {
 		status: response.status,

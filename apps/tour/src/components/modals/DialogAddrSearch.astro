@@ -1,0 +1,29 @@
+---
+const dialogId = 'DialogAddrSearch';
+---
+
+<dialog id={dialogId} class="group/dialog modal" aria-modal="true">
+	<article class="modal-body h-132 max-w-120" x-bind="DialogTopModal">
+		<header class="grid grid-cols-[1fr_26px] overflow-clip rounded-t-sm bg-white px-5 pt-5 pb-3.5">
+			<ui-tit tag="h4" size="md" tit="주소 검색하기"></ui-tit>
+
+			<ui-btn
+				txt="닫기"
+				variant="icon"
+				icon-name="modal-close"
+				icon-cls="size-5"
+				autofocus
+				btn-id={`${dialogId}Close`}
+				x-bind="ModalTopClose"
+				data-close={dialogId}></ui-btn>
+		</header>
+		<div id="postcodeContainer" class="h-170.5 w-full" data-target-input=""></div>
+	</article>
+</dialog>
+
+<script is:inline src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script defer>
+	window.addEventListener('load', () => {
+		Alpine.store('modal')?.openPostcodeModal('postcodeContainer');
+	});
+</script>

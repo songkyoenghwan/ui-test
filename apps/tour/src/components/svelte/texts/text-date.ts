@@ -1,8 +1,10 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { html, LitElement, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import 'dayjs/locale/ko';
 
+dayjs.extend(utc);
 dayjs.locale('ko');
 
 @customElement('text-date')
@@ -18,7 +20,7 @@ export class TextDate extends LitElement {
 	private formatDate(value?: string) {
 		if (!value) return '';
 
-		const d = dayjs(value);
+		const d = dayjs.utc(value);
 		if (!d.isValid()) return value;
 
 		const weekdayMap = ['일', '월', '화', '수', '목', '금', '토'];

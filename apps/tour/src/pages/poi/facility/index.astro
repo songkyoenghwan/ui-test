@@ -5,7 +5,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 
 <LayoutBasic>
 	<div
-		class="inline-grid max-h-[calc(100dvh-60px)] w-[calc(100dvw-80px)] flex-1 grid-rows-[128px_1fr_32px] gap-5 overflow-clip p-5"
+		class="inline-grid max-h-[calc(100dvh-60px)] w-[calc(100dvw-80px)] flex-1 grid-rows-[128px_1fr_32px] gap-5 p-5"
 		:class="$store.data.sidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'"
 	>
 		<section
@@ -39,16 +39,16 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 				</div>
 			</div>
 
-			<div class="flex flex-wrap items-center justify-between gap-2">
+			<div class="flex items-center justify-between gap-2">
 				<div class="inline-flex items-center gap-2">
-					<select class="select min-w-62.5" name="status">
+					<select class="select min-w-30 xl:min-w-62.5" name="status">
 						<option value="all">전체 카테고리</option>
 						<option value="open">운영 중 (n개)</option>
 						<option value="before">운영 전 (n개)</option>
 						<option value="closed">운영 종료 (n개)</option>
 					</select>
 
-					<select class="select min-w-62.5" name="matching">
+					<select class="select min-w-30 xl:min-w-62.5" name="matching">
 						<option value="all">매칭 전 + 완료</option>
 						<option value="pending">매칭 전</option>
 						<option value="done">매칭 완료</option>
@@ -56,7 +56,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 				</div>
 				<div>
 					<div
-						class="input-search group/input-search relative"
+						class="input-search group/input-search relative max-lg:min-w-40"
 						x-data="{ focused: false, keyword: '' }"
 						@focusin="focused = true"
 						@focusout="focused = false"
@@ -79,7 +79,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 
 		<section
 			class="shadow-1 shadow-1xs flex min-h-0 flex-col gap-4 rounded-sm bg-white p-5"
-			:class="$store.data.sidebar ? 'order-3' : ''"
+			:class="$store.data.sidebar ? 'order-3 max-w-[calc(100dvw-460px)]' : ''"
 		>
 			<div class="inline-flex w-full flex-none items-center gap-4">
 				<select class="select w-37.5" id="" name="">
@@ -110,7 +110,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 
 			<div
 				class="table-wrap min-h-0 flex-1 overflow-x-auto overflow-y-auto"
-				:class="$store.data.sidebar ? 'max-w-[calc(100dvw-500px)]' : ''"
+				:class="$store.data.sidebar ? 'max-w-[calc(100%)]' : ''"
 			>
 				<table>
 					<colgroup>

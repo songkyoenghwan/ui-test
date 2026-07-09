@@ -30,7 +30,14 @@
 	<icon-list data-name={iconName} class={['icon relative size-4 transition-all', iconCls]}></icon-list>
 {/snippet}
 
-<a href={link} class="hover:text-1616ff items-cente flex gap-4 break-all underline underline-offset-1" target="_blank">
+<a
+	href={link}
+	class={[
+		'flex items-center gap-4 break-all',
+		link ? 'hover:text-1616ff underline underline-offset-1' : 'cursor-default text-slate-500',
+	]}
+	target={link ? '_blank' : null}
+>
 	{#if iconName && iconPos === 'lt'}
 		{@render icon()}
 	{/if}

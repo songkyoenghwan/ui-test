@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('modal-header')
 export class ModalHeader extends LitElement {
 	@property({ type: String }) shape = '';
-	@property({ type: String }) id = '';
+	@property({ type: String, attribute: 'data-header-id' }) id = '';
 	@property({ type: String }) tit = '';
 
 	createRenderRoot() {

@@ -1,0 +1,124 @@
+---
+import LayoutBasic from '@/layouts/LayoutBasic.astro';
+import PopupSide from '@/pages/onboarding/popup/PopupSide.astro';
+---
+
+<LayoutBasic>
+	<div class="grid h-full w-[calc(100dvw-80px)] flex-1 grid-cols-[320px_1fr] grid-rows-[28px_1fr] gap-5 py-5 pl-5">
+		<PopupSide />
+	</div>
+</LayoutBasic>
+
+<script defer>
+	document.addEventListener('alpine:init', () => {
+		if (Alpine.store('data')) return;
+
+		Alpine.store('data', {
+			view: 'edit',
+			loading: false,
+			error: null,
+			itemId: 1,
+			items: Array.from({ length: 12 }, (_, idx) => ({
+				name: {
+					ko: `대상지명대상지명대상지명대상지명대상지명${idx + 1}`,
+					en: `tour_destination_${idx + 1}`,
+					zh: '',
+					ja: '',
+					th: '',
+					vi: '',
+				},
+				categoryColorCodeId: `poi-${idx + 1}`,
+				icon: 'location',
+				_count: {
+					facilities: 10,
+				},
+				id: idx + 1,
+				sortingNumber: idx + 1,
+				isEventCategory: idx < 2 ? true : false,
+				isAiRecommendationEnabled: idx === 0 ? true : false,
+				isVisible: idx === 0 ? true : false,
+
+				children: [
+					{
+						_count: {
+							facilities: 1,
+						},
+						sortingNumber: 1,
+						iconUrl: 'location',
+						name: {
+							ko: '1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치',
+							en: '',
+						},
+						id: 1,
+					},
+					{
+						_count: {
+							facilities: 1,
+						},
+						sortingNumber: 1,
+						iconUrl: 'location',
+						name: {
+							ko: '1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치1번 위치',
+							en: '',
+						},
+						id: 1,
+					},
+				],
+			})),
+			data: {},
+			icons: [
+				'location',
+				'binoculars',
+				'ticket',
+				'information',
+				'coffee',
+				'food',
+				'meat',
+				'fish',
+				'apple',
+				'shopping',
+				'three',
+				'flag',
+				'smoking',
+				'stroller',
+				'medical',
+				'toilet',
+				'wheelchair',
+				'parking',
+				'etc',
+			],
+			icon: 'location',
+			colors: Array.from({ length: 12 }, (_, i) => i + 1),
+			color: 1,
+			isEventCategory: false,
+			isAiRecommendationEnabled: false,
+			isNavigationProvided: false,
+
+			setIcon(list) {
+				this.icon = list;
+			},
+
+			setColor(list) {
+				this.color = list;
+			},
+
+			currentItem(_id = '') {
+				this.view = 'edit';
+				this.itemId = _id;
+			},
+
+			async findInit(id = 1) {
+				if (!id) return;
+				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
+			},
+
+			init() {
+				this.findInit(1);
+				// Alpine.effect(() => {
+				// 	console.log('store init', this.icon);
+				// 	console.log(this.isEventCategory, this.isAiRecommendationEnabled, this.isNavigationProvided);
+				// });
+			},
+		});
+	});
+</script>

@@ -1,12 +1,11 @@
 ---
-import ModalHeader from '@/components/modals/ModalHeader.astro';
-
 const dialogId = 'DialogSubcategories';
 ---
 
 <dialog id={dialogId} class="group/dialog modal" aria-modal="true" x-bind="DialogHandler">
 	<article class="modal-body max-w-120" x-bind="DialogModal">
-		<modal-header id={dialogId} :tit="`하위 카테고리 ${$store?.modal?.edit === 'edit' ? '수정' : '등록'}`"></modal-header>
+		<modal-header data-header-id={dialogId} :tit="`하위 카테고리 ${$store?.modal?.edit === 'edit' ? '수정' : '등록'}`"
+		></modal-header>
 
 		<section class="modal-contents">
 			<div class="modal-scroll flex flex-col gap-2 px-5 py-4">

@@ -2,6 +2,7 @@ import '@/styles/index.css';
 import '@/events/toastEvent';
 import '@/stores/alertStore';
 import '@/stores/modalStore';
+import '@/stores/mapStore';
 import '@/svelte/tooltip/HoverTooltip.svelte';
 import '@/svelte/alert/AlertPopup.svelte';
 import '@/svelte/badges/BadgeText.svelte';

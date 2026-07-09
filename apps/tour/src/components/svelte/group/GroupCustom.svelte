@@ -195,11 +195,15 @@
 	});
 </script>
 
-{#snippet use(txt = '', sub = '', matching = '')}
+{#snippet use(chk = false, txt = '', sub = '', matching = '')}
 	<div class="grid min-h-9 grid-cols-[120px_1fr] items-center">
 		<ui-txt size="sm" cls="text-black" {txt}></ui-txt>
 		<div>
-			<ui-txt size="sm" cls="text-cms-3 font-bold" txt={sub}></ui-txt>
+			{#if chk}
+				<ui-txt size="sm" cls="font-bold text-cms-3" txt={sub}></ui-txt>
+			{:else}
+				<ui-txt size="sm" cls="font-bold text-slate-500" txt={sub}></ui-txt>
+			{/if}
 
 			{#if matching}
 				<ui-txt size="sm" txt={matching} class="text-left"></ui-txt>
@@ -248,8 +252,10 @@
 								isAlpha={false}
 								textInputModes={['hex']}
 								label=""
+								onInput={(e) => {
+									colorHex = e.hex;
+								}}
 							/>
-
 							<input
 								type="text"
 								class="input-text s max-w-50 read-only:bg-white"
@@ -268,7 +274,7 @@
 				<ul class="inline-grid divide-y divide-slate-200 py-2">
 					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
-							{@render use('AI 추천', useChk(result?.isAiRecommendYn))}
+							{@render use(result?.isAiRecommendYn, 'AI 추천', useChk(result?.isAiRecommendYn))}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
 								itemId="ai-recommend"
@@ -290,6 +296,7 @@
 					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use(
+								result?.isSectionCongestionYn,
 								'구역 혼잡도',
 								useChk(result?.isSectionCongestionYn),
 								`${result?.isSectionCongestionUse ?? 0}${textNum1}`,
@@ -315,6 +322,7 @@
 					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use(
+								result?.isFacilityCongestionYn,
 								'시설 혼잡도',
 								useChk(result?.isFacilityCongestionYn),
 								`${result?.isFacilityCongestionUse ?? 0}${textNum1}`,
@@ -347,6 +355,7 @@
 					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
 							{@render use(
+								result?.isVpsContentsYn,
 								'위치 기반 콘텐츠',
 								useChk(result?.isVpsContentsYn),
 								`${result?.isVpsContentsYnUse ?? 0}${textNum2}`,
@@ -368,7 +377,7 @@
 					</li>
 					<li class="flex min-h-9 items-center justify-between gap-2 px-3 py-3">
 						{#if view === 'detail'}
-							{@render use('시설 주소 노출', useChk(result?.isFacilityAddressYn))}
+							{@render use(result?.isFacilityAddressYn, '시설 주소 노출', useChk(result?.isFacilityAddressYn))}
 						{:else if view === 'reg' || view === 'edit'}
 							<Chk
 								itemId="facility-address-exposure"

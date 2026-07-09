@@ -1,5 +1,5 @@
 ---
-import DialogMatchingFacilities from '@/src/components/modals/DialogFacilityRegistration.astro';
+import DialogFacilityRegistration from '@/src/components/modals/DialogFacilityRegistration.astro';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import MapList from '@/pages/poi/map/MapList.astro';
 import MapReg from '@/pages/poi/map/MapReg.astro';
@@ -29,9 +29,8 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 		<MapList />
 	</div>
 	<MapReg />
+	<DialogFacilityRegistration />
 </LayoutBasic>
-
-<DialogMatchingFacilities />
 
 <div class="fixed bottom-5 left-25 z-5 inline-flex gap-2">
 	<button @click.prevent="toast.success('저장되었습니다.')">토스트</button>
@@ -102,10 +101,9 @@ import MapReg from '@/pages/poi/map/MapReg.astro';
 					const res = await fetch(`/api/pois`);
 
 					const data = await res.json();
-					const payload = data.data.data ?? {};
+					const payload = data.data ?? {};
 
 					this.items = payload.items;
-					this.data = payload.items[0];
 					this.page = payload.page;
 					this.pageSize = payload.pageSize;
 					this.totalCount = payload.totalCount;

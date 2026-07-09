@@ -1,12 +1,10 @@
 ---
-import ModalHeader from '@/components/modals/ModalHeader.astro';
-
 const dialogId = 'DialogMatchingFacilities';
 ---
 
 <dialog id={dialogId} class="group/dialog modal" aria-modal="true" x-bind="DialogHandler">
 	<article class="modal-body max-w-150" x-bind="DialogModal">
-		<ModalHeader id={dialogId} tit="등록된 시설 매칭" />
+		<modal-header data-header-id={dialogId} tit="등록된 시설 매칭"></modal-header>
 
 		<section class="modal-top">
 			<div class="grid grid-cols-[150px_1fr] gap-2">

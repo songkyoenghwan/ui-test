@@ -1,5 +1,8 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
+
+import DialogSetCenterCoordinates from '@/src/components/modals/DialogSetCenterCoordinates.astro';
+import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 ---
 
 <LayoutBasic>
@@ -85,6 +88,17 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						get tourDestinationOperatingSchedules() {
 							return JSON.stringify($store.data.data?.tourDestinationOperatingSchedules) ?? '{}'
 						},
+						get operatingSchedules() {
+							const schedules = $store.data.data?.tourDestinationOperatingSchedules ?? []
+							if (!Array.isArray(schedules) || schedules.length === 0) return ''
+
+							const { openingTime = '', closingTime = '' } = schedules[0] ?? {}
+							const isSameTime = schedules.every((schedule) => {
+								return schedule?.openingTime === openingTime && schedule?.closingTime === closingTime
+							})
+
+							return isSameTime && openingTime && closingTime ? `${openingTime} ~ ${closingTime}` : '요일별 상이'
+						},
 						get firstPoiNameKo() {
 							return this.firstPoi?.poi?.name?.ko ?? ''
 						},
@@ -129,11 +143,28 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				<li>
 					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
 						<ui-tit tit="위치" cls="h-full items-center"></ui-tit>
-						<div class="flex flex-wrap items-center gap-5">
-							<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
-							<ui-btn class="min-w-30" variant="ghost" size="md" txt="지도에서 선택하기"></ui-btn>
-							<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
-						</div>
+
+						<template x-if="$store.data.view !== 'detail'">
+							<div class="flex flex-wrap items-center gap-5">
+								<ui-txt size="sm" txt="지도의 중심 좌표를 선택해 주세요"></ui-txt>
+								<ui-btn
+									class="min-w-30"
+									variant="ghost"
+									size="md"
+									txt="지도에서 선택하기"
+									x-bind="ModalHandler"
+									data-target="DialogSetCenterCoordinates"
+									@btn-click="$nextTick(() => { $store.map.openCenterPicker({ containerId: 'map_div' }) })"
+								></ui-btn>
+								<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+							</div>
+						</template>
+
+						<template x-if="$store.data.view === 'detail'">
+							<div class="flex flex-wrap items-center gap-5">
+								<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+							</div>
+						</template>
 					</div>
 				</li>
 
@@ -170,7 +201,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 					>
 						<ui-tit class="pt-1 group-has-[[view=detail]]:pt-0" tit="운영 시간"></ui-tit>
 
-						<operating-hours rest="on" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
+						<operating-hours rest="off" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
 						></operating-hours>
 					</div>
 				</li>
@@ -189,23 +220,6 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 					</div>
 				</li>
 
-				<li>
-					<div class="grid max-w-375 grid-cols-[100px_1fr] gap-5 px-4 py-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
-						<ui-tit
-							tit="운영 안내"
-							x-bind:req="$store.data.view !== 'detail'"
-							x-bind:tip="$store.data.view !== 'detail' ? '30자 이내 권장' : ''"
-							tooltip="언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)"
-						></ui-tit>
-
-						<lang-translate
-							data-field="operationInfo"
-							data-max-length="60"
-							:view="$store.data.view"
-							:lang="operationGuide ?? '{}'"></lang-translate>
-					</div>
-				</li>
-
 				<li class="space-y-2">
 					<div class="grid max-w-375 grid-cols-[200px_1fr] gap-5 px-4 pt-5 has-[[view=detail]]:grid-cols-[122px_1fr]">
 						<ui-tit
@@ -219,8 +233,8 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 								icon-pos="lt"
 								icon-cls="size-3 stroke-black flex"
 								:view="$store.data.view"
-								:txt="$store.data.data?.homepageUrl ?? ''"
-								:link="$store.data.data?.homepageUrl ?? ''"></ui-link>
+								:txt="$store.data.data?.homepageUrl ?? '미설정'"
+								:link="$store.data.data?.homepageUrl ?? null"></ui-link>
 						</template>
 						<template x-if="$store.data.view !== 'detail'">
 							<input-text
@@ -241,8 +255,8 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 								icon-pos="lt"
 								icon-cls="size-3 stroke-black flex"
 								:view="$store.data.view"
-								:txt="$store.data.data?.mapUrl ?? ''"
-								:link="$store.data.data?.mapUrl ?? ''"></ui-link>
+								:txt="$store.data.data?.homepageUrl ?? '미설정'"
+								:link="$store.data.data?.homepageUrl ?? null"></ui-link>
 						</template>
 						<template x-if="$store.data.view !== 'detail'">
 							<input-text
@@ -265,6 +279,9 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 		</section>
 	</article>
 </LayoutBasic>
+
+<DialogSetCenterCoordinates />
+<DialogAddrSearch />
 
 <script defer>
 	document.addEventListener('alpine:init', () => {
@@ -381,7 +398,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				const selectedStatus = el?.querySelector('input[name$="-operating-hours"]:checked')?.value;
 				const getTime = (schedule = {}) => ({
 					openingTime: schedule?.openingTime ?? '00:00',
-					closingTime: schedule?.closingTime ?? '01:00',
+					closingTime: schedule?.closingTime ?? '00:00',
 				});
 				const isValidTime = (schedule) => schedule.openingTime && schedule.closingTime;
 
@@ -517,11 +534,13 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 					if (!id || view === 'reg') return;
 
-					const res = await fetch(`/api/tour-destinations/${id}`);
+					const res = await fetch(`/api/tour-destinations`);
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
-					const payload = data.data ?? {};
+
+					const payload = data.items ?? data.data.items?.[0];
+
 					this.data = payload;
 					this.name = JSON.stringify(this.data.name) ?? '{}';
 

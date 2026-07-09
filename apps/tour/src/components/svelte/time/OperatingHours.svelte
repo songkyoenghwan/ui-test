@@ -63,14 +63,7 @@
 		6: '토',
 	};
 
-	let {
-		result = $bindable<ApiSchedule[]>([]),
-		rest = 'off',
-		error = false,
-		timeError = false,
-		weekError = false,
-		view = 'reg',
-	} = $props();
+	let { result = $bindable([]), rest = 'off', error = false, timeError = false, weekError = false, view = 'reg' } = $props();
 
 	const componentId = $props.id();
 	let didInitStatus = $state(false);
@@ -400,8 +393,10 @@
 	}
 	const ORDERED_DAYS = [1, 2, 3, 4, 5, 6, 0];
 	let displayResult = $derived.by(() => {
-		return [...(result ?? [])]
-			.filter((item) => item.dayOfWeek != null)
+		const list = Array.isArray(result) ? result : [];
+
+		return [...list]
+			.filter((item) => item?.dayOfWeek != null)
 			.sort((a, b) => ORDERED_DAYS.indexOf(a.dayOfWeek ?? 0) - ORDERED_DAYS.indexOf(b.dayOfWeek ?? 0));
 	});
 

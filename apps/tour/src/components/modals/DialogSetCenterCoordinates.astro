@@ -1,0 +1,87 @@
+---
+const dialogId = 'DialogSetCenterCoordinates';
+---
+
+<dialog id={dialogId} class="group/dialog modal" aria-modal="true" x-bind="DialogHandler">
+	<article class="modal-body max-w-120" x-bind="DialogModal">
+		<modal-header data-header-id={dialogId} tit="중심 좌표 설정"></modal-header>
+
+		<section class="modal-contents">
+			<div class="modal-scroll flex flex-col gap-2 px-5 py-4">
+				<text-badge
+					variant="bg-secondary"
+					cls="w-full text-center"
+					txt="사용자 화면에 노출될 중심 좌표와 줌 레벨을 설정해 주세요. <br /> <strong>지도 우클릭 및 휠 스크롤을 통해 조정할 수 있습니다.</strong>"
+				></text-badge>
+				<div
+					class="input-search group/input-search relative"
+					x-data="{ focused: false, keyword: '' }"
+					@focusin="focused = true"
+					@focusout="focused = false"
+				>
+					<input
+						class="input-text peer pr-15!"
+						x-model="keyword"
+						type="text"
+						placeholder="주소 검색"
+						x-bind="ModalTopHandler"
+						data-target="DialogAddrSearch"
+					/>
+
+					<div class="absolute top-1.5 right-2 z-2 bg-white">
+						<ui-btn
+							x-show="focused"
+							x-cloak
+							variant="icon"
+							icon-name="input-del"
+							icon-cls="size-4 stroke-slate-400"
+							x-on:click="keyword = ''"></ui-btn>
+					</div>
+				</div>
+				<div class="relative grid h-72.5 w-110">
+					<div class="absolute top-3 right-0 left-0 z-1 flex justify-center">
+						<p class="rounded-full bg-black/85 px-5 py-2 text-white">지도를 우클릭하여 위치 변경</p>
+					</div>
+					<div id="map_div"></div>
+
+					<div class="absolute right-2 bottom-2 flex w-7 flex-1 flex-col items-center gap-2">
+						<ui-btn
+							class="w-full"
+							variant="secondary"
+							icon-only="icon"
+							txt="초기화"
+							icon-name="refresh"
+							icon-cls="size-4 stroke-black flex"></ui-btn>
+						<ui-btn class="w-full" variant="secondary" txt="+"></ui-btn>
+						<ui-btn class="w-full" variant="secondary" txt="-"></ui-btn>
+						<!-- disabled -->
+					</div>
+				</div>
+
+				<dl class="grid grid-cols-[22px_1fr_22px_1fr] gap-2">
+					<dt class="flex items-center">
+						<label for="" class="flex items-center">
+							<ui-txt cls="text-black" size="sm" txt="위도"></ui-txt>
+						</label>
+					</dt>
+					<dd>
+						<input type="text" name="map-reg-lat" id="map-reg-lat" class="input-text l" placeholder="위도" />
+					</dd>
+					<dt class="flex items-center">
+						<label for="" class="flex items-center">
+							<ui-txt cls="text-black" size="sm" txt="경도"></ui-txt>
+						</label>
+					</dt>
+					<dd><input type="text" name="map-reg-lon" id="map-reg-lon" class="input-text l" placeholder="경도" /></dd>
+				</dl>
+			</div>
+		</section>
+
+		<footer class="modal-footer">
+			<div class="flex flex-1 items-center">
+				<ui-btn class="flex-1" variant="primary" size="lg" txt="설정 완료"></ui-btn>
+				<!-- disabled -->
+			</div>
+		</footer>
+	</article>
+</dialog>

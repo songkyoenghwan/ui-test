@@ -1,0 +1,159 @@
+<section
+	class="shadow-1xs row-span-2 flex h-full max-h-[calc(100dvh-100px)] flex-[0_0_320px] flex-col rounded-sm bg-white"
+	data-dom="sidebar"
+>
+	<header class="grid flex-none grid-cols-[1fr_60px] items-center gap-3 px-5 pt-5 pb-3">
+		<ui-tit
+			class="col-span-1 flex items-center gap-2"
+			size="lg"
+			tit="카테고리"
+			tooltip="카테고리에 노출 설정된 시설이 있을 경우에만 <br/>사용자 화면에 표시됩니다."></ui-tit>
+		<div>
+			<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="primary" size="md" txt="추가" @btn-click="$store.data.view = 'reg'"
+			></ui-btn>
+		</div>
+		<text-badge
+			class="col-span-2"
+			variant="bg-secondary"
+			cls="text-[10px] w-full text-center"
+			icon="info-circle-outline"
+			txt="드래그로 항목 순서를 변경할 수 있으며, 즉시 적용됩니다."></text-badge>
+	</header>
+
+	<template x-if="$store.data.isEventCategory">
+		<div class="grid flex-none grid-cols-2 items-center justify-between gap-3 bg-slate-200 px-5 pt-4 pb-2">
+			<ui-tit
+				class="col-span-1 flex items-center gap-2"
+				size="lg"
+				tit="이벤트 카테고리"
+				tooltip="일반 카테고리보다 우선 노출되며 강조된 형태로 표시됩니다."></ui-tit>
+			<div class="flex items-center justify-end gap-2">
+				<ui-txt
+					cls="text-cms-5 font-bold"
+					size="xs"
+					:txt="($store.data.items ?? []).filter(item => item?.isEventCategory).length ?? 0"></ui-txt>
+				<ui-txt size="xs" txt="개"></ui-txt>
+			</div>
+		</div>
+	</template>
+	<template x-if="$store.data.isEventCategory">
+		<div class="overflow-y-aut o flex min-h-0 flex-col overflow-x-hidden bg-slate-200">
+			<ul class="flex h-full flex-1 flex-col divide-y divide-slate-200" x-sort>
+				<template
+					x-for="(item, idx) in ($store.data.items ?? []).filter(item => item?.isEventCategory)"
+					:key="item.id ?? idx"
+				>
+					<li
+						class="aria-current:bg-secondary aria-current:border-cms-3 group/dnd grid items-center gap-2 border-t border-t-white px-5 py-3 has-[text-badge]:grid-cols-[1fr_28px] aria-current:border"
+						:aria-current="$store.data.itemId === item.id"
+						@click.prevent="$store.data.currentItem(item.id)"
+					>
+						<button
+							type="button"
+							class="grid grid-cols-[16px_32px_1fr] items-center gap-2"
+							aria-label="Drag handle"
+							:title="item?.name?.ko"
+							x-sort:item
+						>
+							<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
+							></icon-list>
+
+							<category-icon :icon="item.icon" :color="String(item?.categoryColorCodeId)"></category-icon>
+							<ui-tit
+								class="text-left"
+								tag="span"
+								class="flex min-w-0 flex-col text-left"
+								cls="truncate w-full inline-block"
+								:tit="item?.name?.ko"
+								:sub="`등록된 시설 ${item?._count?.facilities ?? 0}개`"></ui-tit>
+						</button>
+						<template x-if="item?.isAiRecommendationEnabled">
+							<text-badge variant="primary" size="md" txt="Ai"></text-badge>
+						</template>
+					</li>
+				</template>
+				<template x-if="($store.data.items ?? []).filter(item => item?.isEventCategory).length === 0">
+					<li class="grid h-full place-content-center">
+						<ui-txt
+							size="lg"
+							class="grid place-content-center py-3"
+							cls="text-slate-600 text-center"
+							txt="등록된 카테고리가 없습니다"></ui-txt>
+					</li>
+				</template>
+			</ul>
+		</div>
+	</template>
+
+	<div class="grid flex-none grid-cols-2 items-center justify-between gap-3 px-5 pt-4 pb-2">
+		<ui-tit class="col-span-1 flex items-center gap-2" size="lg" tit="일반 카테고리"></ui-tit>
+		<div class="flex items-center justify-end gap-2">
+			<ui-txt
+				cls="text-cms-5 font-bold"
+				size="xs"
+				:txt="($store.data.isEventCategory ? ($store.data.items ?? []).filter(item => !item?.isEventCategory) : ($store.data.items ?? []) ).length"
+			></ui-txt>
+
+			<ui-txt size="xs" txt="개"></ui-txt>
+		</div>
+	</div>
+	<div class="flex h-full min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
+		<ul class="flex h-full flex-1 flex-col divide-y divide-slate-200" x-sort>
+			<template
+				x-for="(item, idx) in (
+						$store.data.isEventCategory
+							? ($store.data.items ?? []).filter(item => !item?.isEventCategory)
+							: ($store.data.items ?? [])
+					)"
+				:key="item.id ?? idx"
+			>
+				<li
+					class="aria-current:bg-secondary aria-current:border-cms-3 group/dnd grid items-center gap-2 border-t border-t-white px-5 py-3 has-[text-badge]:grid-cols-[1fr_28px] aria-current:border"
+					:aria-current="$store.data.itemId === item.id"
+					@click.prevent="$store.data.currentItem(item.id)"
+				>
+					<button
+						type="button"
+						class="grid grid-cols-[16px_32px_1fr] items-center gap-2"
+						aria-label="Drag handle"
+						:title="item?.name?.ko"
+						x-sort:item
+					>
+						<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"></icon-list>
+						<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
+							<icon-list
+								:data-name="item?.icon"
+								class="size-7"
+								:style="`fill: var(--color-${item?.categoryColorCodeId}); stroke: var(--color-${item?.categoryColorCodeId})`"
+							></icon-list>
+						</span>
+						<ui-tit
+							class="text-left"
+							tag="span"
+							class="flex min-w-0 flex-col text-left"
+							cls="truncate w-full inline-block"
+							:tit="item?.name?.ko"
+							:sub="`등록된 시설 ${item?._count?.facilities ?? 0}개`"></ui-tit>
+					</button>
+					<template x-if="item?.isAiRecommendationEnabled">
+						<text-badge variant="primary" size="md" txt="Ai"></text-badge>
+					</template>
+				</li>
+			</template>
+
+			<template x-if="$store.data.items.length === 0">
+				<li class="grid h-full place-content-center">
+					<ui-txt
+						size="lg"
+						class="grid place-content-center py-3"
+						cls="text-slate-600 text-center"
+						txt="등록된 카테고리가 없습니다"></ui-txt>
+				</li>
+			</template>
+		</ul>
+	</div>
+
+	<footer class="flex-none p-5 text-center">
+		<ui-txt size="xs" txt="최대 10개까지 배포 가능합니다."></ui-txt>
+	</footer>
+</section>
