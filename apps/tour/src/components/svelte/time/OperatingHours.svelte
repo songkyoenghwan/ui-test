@@ -63,7 +63,14 @@
 		6: '토',
 	};
 
-	let { result = $bindable([]), rest = 'off', error = false, timeError = false, weekError = false, view = 'reg' } = $props();
+	let {
+		result = $bindable<ApiSchedule[]>([]),
+		rest = 'off',
+		error = false,
+		timeError = false,
+		weekError = false,
+		view = 'reg',
+	} = $props();
 
 	const componentId = $props.id();
 	let didInitStatus = $state(false);
@@ -502,14 +509,14 @@
 							<div class="inline-flex w-full items-center gap-0.5">
 								<TimeScrollPicker
 									bind:value={cols[i].openingTime}
-									onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
+									onValueChange={(value: string) => handleTimeChange(i, 'openingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-25' : 'w-25'}
 									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>
 								<span>~</span>
 								<TimeScrollPicker
 									bind:value={cols[i].closingTime}
-									onValueChange={(value: string) => handleTimeChange(0, 'closingTime', value)}
+									onValueChange={(value: string) => handleTimeChange(i, 'closingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-25' : 'w-25'}
 									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>
@@ -560,7 +567,7 @@
 							<div class="flex items-center gap-0.5">
 								<TimeScrollPicker
 									bind:value={cols[i].openingTime}
-									onValueChange={(value: string) => handleTimeChange(0, 'openingTime', value)}
+									onValueChange={(value: string) => handleTimeChange(i, 'openingTime', value)}
 									cls={hasRowTimeError(i) ? 'error w-22' : ' w-22'}
 									title={hasAllDayTime(cols[i]) ? '종일' : ''}
 								/>

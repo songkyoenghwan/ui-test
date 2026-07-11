@@ -85,6 +85,21 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 						// get firstName() {
 						// 	return JSON.stringify($store.data.data?.name) ?? '{}'
 						// },
+						filterSupportedLang(value = {}) {
+							if ($store.data.view !== 'detail') return value
+
+							const supported = $store.data.data?.supportedLanguages ?? {}
+							return ['ko', 'en', 'zh', 'ja', 'th', 'vi'].reduce((acc, key) => {
+								if (supported[key]) {
+									acc[key] = value?.[key] ?? ''
+								}
+
+								return acc
+							}, {})
+						},
+						get nameLang() {
+							return this.filterSupportedLang($store.data.data?.name ?? {})
+						},
 						get tourDestinationOperatingSchedules() {
 							return JSON.stringify($store.data.data?.tourDestinationOperatingSchedules) ?? '{}'
 						},
@@ -106,7 +121,7 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 							return $store.data.data?.facilityPoiMappings?.length ?? 0
 						},
 						get operationGuide() {
-							return JSON.stringify($store.data.data?.operationInfo ?? {})
+							return this.filterSupportedLang($store.data.data?.operationInfo ?? {})
 						}
 						
 					}"
@@ -133,7 +148,9 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 						></ui-tit>
 						<lang-translate
 							data-max-length="50"
+							data-field="name"
 							:view="$store.data.view"
+							:lang="nameLang"
 							@translate="$store.data.t($event.detail.lang)"
 						>
 						</lang-translate>
@@ -201,8 +218,11 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 					>
 						<ui-tit class="pt-1 group-has-[[view=detail]]:pt-0" tit="운영 시간"></ui-tit>
 
-						<operating-hours rest="off" :view="$store.data.view" :result="tourDestinationOperatingSchedules"
-						></operating-hours>
+						<operating-hours
+							data-field="operatingSchedules"
+							rest="off"
+							:view="$store.data.view"
+							:result="tourDestinationOperatingSchedules"></operating-hours>
 					</div>
 				</li>
 
@@ -215,8 +235,11 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 							:tooltip="$store.data.view !== 'detail' ? '언어에 따라 표현 길이가 달라질 수 <br />있으므로 번역 내용을 확인해주세요. (최대 60자)' : ''"
 						></ui-tit>
 
-						<lang-translate data-max-length="60" :view="$store.data.view" :lang="operationGuide ?? '{}'"
-						></lang-translate>
+						<lang-translate
+							data-field="operationInfo"
+							data-max-length="60"
+							:view="$store.data.view"
+							:lang="operationGuide"></lang-translate>
 					</div>
 				</li>
 
@@ -339,6 +362,19 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 				}
 			},
 
+			getSupportedLangValue(value = {}) {
+				if (this.view !== 'detail') return value ?? {};
+
+				const supported = this.data?.supportedLanguages ?? {};
+				return ['ko', 'en', 'zh', 'ja', 'th', 'vi'].reduce((acc, key) => {
+					if (supported[key]) {
+						acc[key] = value?.[key] ?? '';
+					}
+
+					return acc;
+				}, {});
+			},
+
 			getLangValue(field, fallback = {}) {
 				const el = this.getField(field);
 				const value = this.parseValue(el?.lang, fallback);
@@ -365,11 +401,12 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 				const fixedHolidaySelect = el?.querySelector('select[id$="-closing-date"]');
 
 				if (fixedHolidaySelect) {
+					const fixedHoliday = this.toNullableNumber(fixedHolidaySelect.value);
 					return [
 						{
 							weekOfMonth: undefined,
 							dayOfWeek: undefined,
-							fixedHoliday: this.toNullableNumber(fixedHolidaySelect.value),
+							fixedHoliday: fixedHoliday ?? undefined,
 							holidayType: 1,
 						},
 					];
@@ -379,11 +416,14 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 				return (Array.isArray(schedules) ? schedules : [])
 					.map((schedule) => {
 						const fixedHoliday = this.toNullableNumber(schedule.fixedHoliday);
+						const weekOfMonth = this.toNullableNumber(schedule.weekOfMonth);
+						const dayOfWeek = this.toNullableNumber(schedule.dayOfWeek);
+						const holidayType = fixedHoliday != null ? 1 : this.toNullableNumber(schedule.holidayType);
 						return {
-							weekOfMonth: this.toNullableNumber(schedule.weekOfMonth),
-							dayOfWeek: this.toNullableNumber(schedule.dayOfWeek),
-							fixedHoliday,
-							holidayType: fixedHoliday != null ? 1 : this.toNullableNumber(schedule.holidayType),
+							weekOfMonth: weekOfMonth ?? undefined,
+							dayOfWeek: dayOfWeek ?? undefined,
+							fixedHoliday: fixedHoliday ?? undefined,
+							holidayType: holidayType ?? undefined,
 						};
 					})
 					.filter(
@@ -398,11 +438,14 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 				const selectedStatus = el?.querySelector('input[name$="-operating-hours"]:checked')?.value;
 				const getTime = (schedule = {}) => ({
 					openingTime: schedule?.openingTime ?? '00:00',
-					closingTime: schedule?.closingTime ?? '00:00',
+					closingTime: schedule?.closingTime ?? '01:00',
 				});
 				const isValidTime = (schedule) => schedule.openingTime && schedule.closingTime;
+				const isDailySchedule =
+					selectedStatus === 'always' ||
+					(rows.length === 1 && rows[0]?.dayOfWeek == null && !Array.isArray(rows[0]?.dayOfWeeks));
 
-				if (selectedStatus === 'always') {
+				if (isDailySchedule) {
 					const time = getTime(rows[0]);
 					if (!isValidTime(time)) return [];
 
@@ -534,24 +577,22 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 
 					if (!id || view === 'reg') return;
 
-					const res = await fetch(`/api/tour-destinations`);
+					const res = await fetch(`/api/tour-destinations/${id}`);
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
-
-					const payload = data.items ?? data.data.items?.[0];
-
+					const payload = data.data ?? {};
 					this.data = payload;
 					this.name = JSON.stringify(this.data.name) ?? '{}';
 
 					const nameEl = this.getField('name');
 					if (nameEl) {
-						nameEl.lang = this.data.name;
+						nameEl.lang = this.getSupportedLangValue(this.data.name);
 					}
 
 					const operationInfoEl = this.getField('operationInfo');
 					if (operationInfoEl) {
-						operationInfoEl.lang = this.data.operationInfo;
+						operationInfoEl.lang = this.getSupportedLangValue(this.data.operationInfo);
 					}
 				} catch (error) {
 					this.error = error instanceof Error ? error.message : 'Unknown error';
@@ -571,7 +612,7 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 
 				this.name = JSON.stringify(this.data.name) ?? '{}';
 
-				document.querySelector('lang-translate').lang = this.data.name;
+				document.querySelector('lang-translate').lang = this.getSupportedLangValue(this.data.name);
 			},
 
 			t(lang) {

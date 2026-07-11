@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
+	import { imask } from '@imask/svelte';
 
 	let { value = $bindable('00:00'), title = '', cls = '', onValueChange = $bindable() } = $props();
 
@@ -42,6 +43,49 @@
 			isExpanded = false;
 		}, 10);
 	};
+
+	const timeMaskOptions = {
+		mask: 'HH:mm',
+		lazy: false,
+		overwrite: true,
+		blocks: {
+			HH: {
+				mask: IMask.MaskedRange,
+				from: 0,
+				to: 23,
+				maxLength: 2,
+			},
+			mm: {
+				mask: IMask.MaskedRange,
+				from: 0,
+				to: 59,
+				maxLength: 2,
+			},
+		},
+	};
+
+	function roundTo10Minutes() {
+		const match = value.match(/^(\d{2}):(\d{2})$/);
+		if (!match) return;
+
+		let hour = Number(match[1]);
+		let minute = Number(match[2]);
+
+		minute = Math.round(minute / 10) * 10;
+
+		if (minute === 60) {
+			hour += 1;
+			minute = 0;
+		}
+
+		if (hour > 23) {
+			hour = 23;
+			minute = 50;
+		}
+
+		value = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+		onValueChange?.(value);
+	}
 </script>
 
 <svelte:window onclick={handleClickOutside} />
@@ -49,9 +93,25 @@
 <div class="relative z-5" {title} bind:this={timeRef}>
 	<input
 		type="text"
+		inputmode="numeric"
+		placeholder="00:00"
+		pattern="^([01]\d|2[0-3]):[0-5]\d$"
+		maxlength="5"
+		use:imask={timeMaskOptions}
 		class={['input-time m', cls ?? 'w-22']}
 		onclick={() => (isExpanded = !isExpanded)}
 		onkeydown={handleKeyDown}
+		oninput={(event) => {
+			let v = event.currentTarget.value.replace(/[^\d]/g, '').slice(0, 4);
+
+			if (v.length > 2) {
+				v = `${v.slice(0, 2)}:${v.slice(2)}`;
+			}
+
+			value = v;
+			onValueChange?.(value);
+		}}
+		onblur={roundTo10Minutes}
 		bind:value
 	/>
 
@@ -77,6 +137,7 @@
 					}}
 					onValueChange={(v) => {
 						value = `${v}:${minute}`;
+						onValueChange?.(value);
 					}}
 				/>
 				:
@@ -94,6 +155,7 @@
 					}}
 					onValueChange={(v) => {
 						value = `${hour}:${v}`;
+						onValueChange?.(value);
 					}}
 				/>
 			</WheelPickerWrapper>

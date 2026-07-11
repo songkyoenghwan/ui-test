@@ -45,11 +45,17 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 				<div>
 					<div
 						class="input-search group/input-search relative"
-						x-data="{ focused: false, keyword: '' }"
+						x-data="{ focused: false }"
 						@focusin="focused = true"
 						@focusout="focused = false"
 					>
-						<input class="input-text peer pr-15!" x-model="keyword" type="text" placeholder="대상지명 검색" />
+						<input
+							class="input-text peer pr-15!"
+							x-model="$store.data.keyword"
+							@input.debounce.300ms="$store.data.fetchData(1)"
+							type="text"
+							placeholder="대상지명 검색"
+						/>
 
 						<div class="absolute top-1.5 right-2 z-2 bg-white">
 							<ui-btn
@@ -58,7 +64,7 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 								variant="icon"
 								icon-name="input-del"
 								icon-cls="size-4 stroke-slate-400"
-								x-on:click="keyword = ''"></ui-btn>
+								x-on:click="$store.data.keyword = ''; $store.data.fetchData(1)"></ui-btn>
 						</div>
 					</div>
 				</div>
@@ -67,12 +73,22 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 
 		<section class="shadow-1 shadow-1xs space-y-4 rounded-lg bg-white p-5">
 			<div class="inline-flex items-center gap-2">
-				<select class="select min-w-50" id="" name="">
-					<option value="">10개씩 보기</option>
+				<select
+					class="select min-w-50"
+					id=""
+					name=""
+					x-model.number="$store.data.pageSize"
+					@change="$store.data.fetchData(1)"
+				>
+					<option value="10">10개씩 보기</option>
+					<option value="20">20개씩 보기</option>
+					<option value="30">30개씩 보기</option>
+					<option value="40">40개씩 보기</option>
+					<option value="50">50개씩 보기</option>
 				</select>
-				<select class="select min-w-35" id="" name="">
-					<option value="">최신순</option>
-					<option value="">가나다순</option>
+				<select class="select min-w-35" id="" name="" x-model="$store.data.sortType">
+					<option value="latest">최신순</option>
+					<option value="name">가나다순</option>
 				</select>
 			</div>
 
@@ -125,10 +141,7 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 						</tr>
 					</thead>
 					<tbody>
-						<template
-							x-for="(item, idx) in $store.data.items.slice(($store.data.page - 1) * $store.data.pageSize, $store.data.page * $store.data.pageSize)"
-							:key="item.id"
-						>
+						<template x-for="(item, idx) in $store.data.sortedItems" :key="item.id">
 							<tr
 								x-data="{
 									get link() {
@@ -162,9 +175,13 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 										if (!item.tourDestinationOperatingSchedules || item.tourDestinationOperatingSchedules.length === 0) {
 											return '정보 없음';
 										}
-										return item.tourDestinationOperatingSchedules.length > 1 
-											? '요일별 상이' 
-											: `${item.tourDestinationOperatingSchedules[0].openingTime} <br /> ~ ${item.tourDestinationOperatingSchedules[0].closingTime}`;
+										const { openingTime, closingTime } = item.tourDestinationOperatingSchedules[0] ?? {};
+										const isSameTime = item.tourDestinationOperatingSchedules.every((schedule) => {
+											return schedule.openingTime === openingTime && schedule.closingTime === closingTime;
+										});
+										return isSameTime
+											? `${openingTime} <br /> ~ ${closingTime}`
+											: '요일별 상이';
 									},
 									get useText() {
 										return (_v) => _v  ? '사용' : '미사용';
@@ -280,9 +297,20 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 			totalCount: 1,
 			totalPages: 1,
 			operationStatus: '',
+			keyword: '',
+			sortType: 'latest',
 			loading: false,
 			error: null,
 			itemId: '',
+			get sortedItems() {
+				return [...this.items].sort((a, b) => {
+					if (this.sortType === 'name') {
+						return (a?.name?.ko ?? '').localeCompare(b?.name?.ko ?? '', 'ko');
+					}
+
+					return new Date(b?.lastUpdatedAt ?? 0).getTime() - new Date(a?.lastUpdatedAt ?? 0).getTime();
+				});
+			},
 			async fetchData(page) {
 				this.loading = true;
 				try {
@@ -293,6 +321,10 @@ const staticUrl = import.meta.env.PUBLIC_STATIC_URL ?? '/output';
 
 					if (this.operationStatus) {
 						params.set('operationStatus', this.operationStatus);
+					}
+
+					if (this.keyword.trim()) {
+						params.set('keyword', this.keyword.trim());
 					}
 
 					const res = await fetch(`/api/tour-destinations?${params}`);
