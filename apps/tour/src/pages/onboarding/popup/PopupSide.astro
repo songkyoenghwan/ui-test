@@ -127,5 +127,12 @@ let _sections = [
 		Alpine.data('sidebar', () => ({
 			sections: _sections,
 		}));
+
+		Alpine.data('dropdown', () => ({
+			open: false,
+			toggle() {
+				this.open = !this.open;
+			},
+		}));
 	});
 </script>
