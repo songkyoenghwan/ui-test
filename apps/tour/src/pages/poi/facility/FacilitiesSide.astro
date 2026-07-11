@@ -1,6 +1,6 @@
 <section
-	class="shadow-1xs order-2 row-span-3 h-full flex-col rounded-sm bg-white"
-	:class="$store.data.sidebar ? 'flex' : 'hidden'"
+	class="shadow-1xs order-2 row-span-3 h-full flex-col rounded-sm bg-white opacity-0"
+	:class="$store.data.sidebar ? 'flex opacity-100' : 'hidden opacity-0'"
 	data-dom="sidebar"
 	x-cloak
 	x-show="$store.data.sidebar"
@@ -259,34 +259,28 @@
 						<ui-txt class="flex-none" size="xs" txt="이미지는 최대 5개까지 등록 가능합니다."></ui-txt>
 					</div>
 
-					<swiper-container
-						slides-per-view="auto"
-						space-between="10"
-						free-mode="true"
-						scrollbar="true"
-						class="inline-flex max-w-75"
-					>
-						<swiper-slide class="w-25">
+					<ul class="inline-flex max-w-75">
+						<li class="w-25">
 							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
 							></thumbnail-upload>
-						</swiper-slide>
-						<swiper-slide class="w-25">
+						</li>
+						<li class="w-25">
 							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
 							></thumbnail-upload>
-						</swiper-slide>
-						<swiper-slide class="w-25">
+						</li>
+						<li class="w-25">
 							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
 							></thumbnail-upload>
-						</swiper-slide>
-						<swiper-slide class="w-25">
+						</li>
+						<li class="w-25">
 							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
 							></thumbnail-upload>
-						</swiper-slide>
-						<swiper-slide class="w-25">
+						</li>
+						<li class="w-25">
 							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
 							></thumbnail-upload>
-						</swiper-slide>
-					</swiper-container>
+						</li>
+					</ul>
 				</li>
 				<li class="grid grid-rows-[24px_1fr_20px] space-y-2 py-3">
 					<div class="flex items-center justify-between px-5">
@@ -397,9 +391,3 @@
 		</div>
 	</footer>
 </section>
-
-<script>
-	import { register } from 'swiper/element/bundle';
-
-	register();
-</script>

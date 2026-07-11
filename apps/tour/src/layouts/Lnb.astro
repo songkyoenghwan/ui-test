@@ -6,8 +6,7 @@ if (!res.ok) {
 }
 
 const json = await res.json();
-
-const authData = json?.auth?.data ?? {};
+const authData = json?.auth?.data ?? json?.data;
 const user = authData?.user ?? {};
 const menus = user?.menus ?? [];
 const tourDestinations = user?.tourDestinations ?? [];

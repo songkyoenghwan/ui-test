@@ -119,6 +119,20 @@
 	});
 </script>
 
+{#snippet btnDel(size: string = '')}
+	<button
+		type="button"
+		class={[
+			'border-error  size-5 rounded-sm border bg-white transition-all hover:scale-105',
+			size === 'onboarding' ? '' : 'absolute top-2 right-2',
+		]}
+		onclick={() => clearFile()}
+	>
+		<span class="sr-only">Clear File</span>
+		<icon-list data-name="btn-del" class="icon fill-error size-4"></icon-list>
+	</button>
+{/snippet}
+
 <Dropzone
 	id={uuidv4()}
 	bind:files={filesInDropzone}
@@ -128,28 +142,34 @@
 	class="relative {cls ? cls : 'size-25'}"
 >
 	{#if (filesInDropzone && filesInDropzone.length > 0) || previewUrl}
-		<div class="flex flex-col items-center gap-2">
-			<picture
-				class="flex size-25 items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
-				aria-label={previewUrl}
-			>
-				<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
-			</picture>
+		{#if size === 'onboarding'}
+			<div class="flex w-full gap-2 px-5">
+				{#each thumbFiles as item}
+					<p class="line-clamp-2 flex-1 text-left text-sm text-slate-600">{item.fileUploadName}</p>
+				{/each}
 
-			<button
-				type="button"
-				class="border-error absolute top-2 right-2 size-5 rounded-sm border bg-white transition-all hover:scale-105"
-				onclick={() => clearFile()}
-			>
-				<span class="sr-only">Clear File</span>
-				<icon-list data-name="btn-del" class="icon fill-error size-4"></icon-list>
-			</button>
-		</div>
+				{@render btnDel(size)}
+			</div>
+		{:else}
+			<div class="flex flex-col items-center gap-2">
+				<picture
+					class="flex size-full items-center justify-center overflow-hidden rounded border-2 border-dashed border-slate-200 bg-slate-100"
+					aria-label={previewUrl}
+				>
+					<img src={previewUrl} alt="PNG 미리보기" class="max-w-auto min-h-30 object-cover" />
+				</picture>
+
+				{@render btnDel(size)}
+			</div>
+		{/if}
 	{:else}
 		<icon-list data-name="gallery" class="icon size-5 fill-slate-500"></icon-list>
 		{#if size === 'full'}
 			<p class="mt-1 text-center text-xs text-slate-600">이미지를 드래그하거나 클릭하여 업로드</p>
 			<p class="mt-px text-center text-[10px] text-slate-500">JPG, PNG / 최대 2MB / 1:1 비율 권장</p>
+		{:else if size === 'onboarding'}
+			<p class="mt-1 text-center text-xs text-slate-600">이미지를 드래그하거나 클릭하여 업로드</p>
+			<p class="mt-px text-center text-[10px] text-slate-500">PNG / 최대 2MB / 1:1 비율</p>
 		{:else}
 			<p class="mt-1 text-center text-xs text-slate-600">드래그 혹은 클릭</p>
 			<p class="mt-px text-center text-[10px] text-slate-500">

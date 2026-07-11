@@ -97,7 +97,7 @@ import DialogSetCenterCoordinates from '@/components/modals/DialogSetCenterCoord
 							}, {})
 						},
 						get nameLang() {
-							return this.filterSupportedLang($store.data.data?.name ?? {})
+							return JSON.stringify(this.filterSupportedLang($store.data.data?.name ?? {}))
 						},
 						get tourDestinationOperatingSchedules() {
 							return JSON.stringify($store.data.data?.tourDestinationOperatingSchedules) ?? '{}'
@@ -576,7 +576,7 @@ import DialogSetCenterCoordinates from '@/components/modals/DialogSetCenterCoord
 
 					if (!id || view === 'reg') return;
 
-					const res = await fetch(`/api/tour-destinations/${id}`);
+					const res = await fetch(`/api/tour-destinations`);
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
@@ -593,6 +593,7 @@ import DialogSetCenterCoordinates from '@/components/modals/DialogSetCenterCoord
 					if (operationInfoEl) {
 						operationInfoEl.lang = this.getSupportedLangValue(this.data.operationInfo);
 					}
+					this.items = payload.items?.[0];
 				} catch (error) {
 					this.error = error instanceof Error ? error.message : 'Unknown error';
 					console.error('데이터 로드 실패:', error);
@@ -603,6 +604,8 @@ import DialogSetCenterCoordinates from '@/components/modals/DialogSetCenterCoord
 
 			async init() {
 				await this.fetchData();
+
+				await this.findInit(1);
 			},
 
 			async findInit(id = '') {

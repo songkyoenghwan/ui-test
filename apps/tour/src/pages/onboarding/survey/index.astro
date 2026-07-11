@@ -1,18 +1,17 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
-import PopupSide from '@/pages/onboarding/popup/PopupSide.astro';
-import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
+import SurveySide from '@/pages/onboarding/survey/SurveySide.astro';
 ---
 
 <LayoutBasic>
 	<div
-		class="grid h-full w-[calc(100dvw-100px)] min-w-5xl flex-1 grid-cols-[minmax(240px,320px)_minmax(360px,1fr)_minmax(240px,480px)] grid-rows-[28px_1fr] gap-5 overflow-x-auto py-5 pl-5"
+		class="grid h-full w-[calc(100dvw-100px)] flex-1 grid-cols-[320px_1fr] grid-rows-[28px_1fr] gap-5 overflow-x-auto py-5 pl-5"
 	>
-		<PopupSide />
+		<SurveySide />
 
-		<header class="order-2 col-span-2 flex items-center justify-between">
+		<header class="order-2 flex items-center justify-between">
 			<div class="flex items-center gap-2.5">
-				<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '온보딩 수정' : '온보딩 등록'"></ui-tit>
+				<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '기초 설문 수정' : '기초 설문 등록'"></ui-tit>
 
 				<text-badge variant="primary" txt="배포 중"></text-badge>
 				<text-badge variant="error" txt="배포 전"></text-badge>
@@ -31,85 +30,39 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 			</div>
 		</header>
 
-		<ul class="order-4 inline-flex h-full flex-1 flex-col gap-3 overflow-x-clip overflow-y-auto p-1">
+		<ul class="order-3 inline-flex h-full flex-1 flex-col gap-3 overflow-x-clip overflow-y-auto p-1">
 			<li class="shadow-1xs grid gap-5 rounded-lg bg-white px-5 py-4">
 				<section class="col-span-2 grid grid-cols-[90px_1fr] gap-4">
 					<ui-tit
 						tag="h4"
-						tit="제목"
-						tip="15자 이내 권장"
+						tit="설문명"
+						tip="10자 이내 권장"
 						tooltip="언어에 따라 표현 길이가 달라질 수 있으므로 <br />번역 내용을 확인해주세요. <strong>(최대 50자)</strong>"
 					></ui-tit>
 					<lang-translate data-max-length="50"> </lang-translate>
 				</section>
 			</li>
+
 			<li class="shadow-1xs grid gap-5 rounded-lg bg-white px-5 py-4">
-				<section class="col-span-2 grid grid-cols-[90px_1fr] gap-4">
-					<ui-tit
-						tag="h4"
-						tit="세부 내용"
-						req
-						tip="40자 이내 권장"
-						tooltip="언어에 따라 표현 길이가 달라질 수 있으므로 <br />번역 내용을 확인해주세요. <strong>(최대 100자)</strong>"
-					></ui-tit>
-					<lang-translate data-max-length="15"> </lang-translate>
+				<section class="grid grid-cols-[1fr_33px] items-center gap-5">
+					<div>
+						<ui-tit class="flex items-center gap-2" tag="h4" tit="설문 유형"></ui-tit>
+					</div>
+					<ui-checkbox variant="toggle"></ui-checkbox>
 				</section>
 			</li>
+
 			<li class="shadow-1xs grid gap-5 rounded-lg bg-white px-5 py-4">
-				<section class="grid gap-4">
-					<ui-tit tag="h4" tit="메인 이미지" sub="온보딩 화면에 메인으로 보이는 이미지입니다. e.g. 서비스 목업"
-					></ui-tit>
-					<dl class="grid grid-cols-[60px_1fr] items-center gap-2">
-						<dt>
-							<ui-tit tag="h5" tit="기본"></ui-tit>
-						</dt>
-						<dd>
-							<thumbnail-upload cls="w-full h-15" size="onboarding"></thumbnail-upload>
-						</dd>
-						<dt>
-							<ui-tit
-								class="flex items-center gap-1"
-								tag="h5"
-								tit="다국어"
-								tooltip="사용자 언어 설정이 한국어가 아닌 경우 다국어 이미지가 지도에 표시됩니다.<br />다국어 이미지가 등록되지 않은 경우에는 국문 이미지로 대체됩니다."
-							></ui-tit>
-							<ui-txt size="xs" txt="선택"></ui-txt>
-						</dt>
-						<dd>
-							<thumbnail-upload cls="w-full h-15" size="onboarding"></thumbnail-upload>
-						</dd>
-					</dl>
-				</section>
-			</li>
-			<li class="shadow-1xs grid gap-5 rounded-lg bg-white px-5 py-4">
-				<section class="grid gap-4">
-					<ui-tit tag="h4" tit="서브 이미지" sub="메인 이미지보다 더 작게 보이는 이미지입니다. e.g. 기업·기관 로고"
-					></ui-tit>
-					<dl class="grid grid-cols-[60px_1fr] items-center gap-2">
-						<dt>
-							<ui-tit tag="h5" tit="기본"></ui-tit>
-						</dt>
-						<dd>
-							<thumbnail-upload cls="w-full h-15" size="onboarding"></thumbnail-upload>
-						</dd>
-						<dt>
-							<ui-tit
-								class="flex items-center gap-1"
-								tag="h5"
-								tit="다국어"
-								tooltip="사용자 언어 설정이 한국어가 아닌 경우 다국어 이미지가 지도에 표시됩니다.<br />다국어 이미지가 등록되지 않은 경우에는 국문 이미지로 대체됩니다."
-							></ui-tit>
-							<ui-txt size="xs" txt="선택"></ui-txt>
-						</dt>
-						<dd>
-							<thumbnail-upload cls="w-full h-15" size="onboarding"></thumbnail-upload>
-						</dd>
-					</dl>
+				<section class="grid grid-cols-[1fr_33px] items-center gap-5">
+					<div>
+						<ui-tit class="flex items-center gap-2" tag="h4" tit="AI 추천 활용"></ui-tit>
+						<ui-txt size="xs" txt="응답이 AI 추천 기반 데이터로 활용됩니다. 의미가 명확한 항목으로 구성해 주세요."
+						></ui-txt>
+					</div>
+					<ui-checkbox variant="toggle"></ui-checkbox>
 				</section>
 			</li>
 		</ul>
-
-		<PopupPreview />
 	</div>
 </LayoutBasic>
 
@@ -120,7 +73,7 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 	<button @click.prevent="toast.success('삭제되었습니다.')">토스트</button>
 	/
 	<button @click.prevent="toast.error('다국어 이미지 등록 후 다시 시도해 주세요')">토스트</button>
-	<button @click.prevent="toast.error('배포 해제할 온보딩을 선택해 주세요.')">토스트</button>
+	<button @click.prevent="toast.error('배포 해제할 기초 설문을 선택해 주세요.')">토스트</button>
 	<button @click.prevent="toast.error('배포할 설문을 선택해 주세요.')">토스트</button>
 	/
 	<button @click.prevent="$store.alert.open('alert1')">알림1</button>
@@ -133,14 +86,14 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 <alert-popup
 	id="alert1"
 	open="close"
-	txt="배포 해제 시 사용자 지도에 즉시 비노출됩니다. <br />n건의 온보딩 화면을 배포 해제하시겠습니까?"
+	txt="배포 해제 시 사용자 지도에 즉시 비노출됩니다. <br />n건의 기초 설문 화면을 배포 해제하시겠습니까?"
 	cancel="취소"
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
 <alert-popup
 	id="alert2"
 	open="close"
-	txt="배포 시 사용자 지도에 즉시 반영됩니다.<br />n건의 온보딩 화면을 배포하시겠습니까?"
+	txt="배포 시 사용자 지도에 즉시 반영됩니다.<br />n건의 기초 설문 화면을 배포하시겠습니까?"
 	cancel="취소"
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
@@ -154,14 +107,14 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 <alert-popup
 	id="alert4"
 	open="close"
-	txt="$제목$ 온보딩 화면을 삭제하시겠습니까?"
+	txt="$제목$ 기초 설문 화면을 삭제하시겠습니까?"
 	cancel="취소"
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
 <alert-popup
 	id="alert5"
 	open="close"
-	txt="배포 시 사용자 지도에 즉시 반영됩니다. <br />온보딩 화면을 배포하시겠습니까?"
+	txt="배포 시 사용자 지도에 즉시 반영됩니다. <br />기초 설문 화면을 배포하시겠습니까?"
 	cancel="취소"
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
@@ -179,7 +132,7 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 				id: idx + 1,
 				tourDestinationId: 1,
 				title: {
-					ko: `온보딩 ${idx + 1}`,
+					ko: `기초 설문 ${idx + 1}`,
 					en: 'Onboarding 1',
 				},
 				description: {

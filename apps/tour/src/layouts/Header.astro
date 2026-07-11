@@ -11,13 +11,10 @@ if (!res.ok) {
 }
 
 const json = await res.json();
-
-console.log(json);
-
-const authData = json?.data ?? {};
-const user = json?.user ?? {};
+const authData = json?.auth?.data ?? json?.data;
+const user = authData?.user ?? {};
 const menus = user?.menus ?? [];
-const tourDestinations = authData?.tourDestinations ?? [];
+const tourDestinations = user?.tourDestinations ?? [];
 
 const pathname = Astro.url.pathname;
 const currentSub = pathname;
@@ -57,7 +54,7 @@ const displayId = currentParentMenu?.code ?? currentParentMenu?.url ?? '';
 
 		{
 			displaySub.length > 0 && displayId !== 'CMS-LOC' && displayId !== 'CMS-CON' && (
-				<ul class="text-md flex h-full items-center gap-2 px-2 text-center opacity-100 starting:opacity-0">
+				<ul class="text-md flex h-full items-center gap-2 px-2 text-center opacity-100 transition-all duration-200 starting:opacity-70">
 					{displaySub.map((sub) => {
 						const link = sub.url ?? sub.link ?? '#';
 						const text = sub.text ?? sub.name ?? '';

@@ -1053,6 +1053,55 @@
 		},
 		"success": true
 	},
+	"onboardings": {
+		"success": true,
+		"data": {
+			"id": 1,
+			"tourDestinationId": 2,
+			"title": {
+				"ko": "온보딩 렛츠고111",
+				"en": "Start Onborading~! ",
+				"ja": "",
+				"zh": "",
+				"vi": "",
+				"th": ""
+			},
+			"description": {
+				"ko": "환영입니다.222",
+				"en": "",
+				"ja": "",
+				"zh": "",
+				"vi": "",
+				"th": ""
+			},
+			"sortingNumber": null,
+			"deploymentStatus": "DRAFT",
+			"createdAt": "2026-06-11T11:48:29.475Z",
+			"updatedAt": "2026-06-11T16:51:40.196Z",
+			"onboardingFiles": [
+				{
+					"id": 4,
+					"fileOriginalName": "af1762b4ff31db38db2bcacb6dc78d07e40b81e5.png",
+					"fileUrl": "/uploads/images/onboarding/2026/06/11/8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileUploadPath": "images/onboarding/2026/06/11",
+					"fileUploadName": "8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileSize": 1371529,
+					"fileMimeType": "image/png",
+					"fileType": "MAIN"
+				},
+				{
+					"id": 5,
+					"fileOriginalName": "af1762b4ff31db38db2bcacb6dc78d07e40b81e5.png",
+					"fileUrl": "/uploads/images/onboarding/2026/06/11/8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileUploadPath": "images/onboarding/2026/06/11",
+					"fileUploadName": "8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileSize": 1371529,
+					"fileMimeType": "image/png",
+					"fileType": "MAIN_GLOBAL"
+				}
+			]
+		}
+	},
 	"tour-destinations": {
 		"data": {
 			"items": [

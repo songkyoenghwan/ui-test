@@ -5,7 +5,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 
 <LayoutBasic>
 	<div
-		class="inline-grid max-h-[calc(100dvh-60px)] w-[calc(100dvw-80px)] flex-1 grid-rows-[128px_1fr_32px] gap-5 p-5"
+		class="inline-grid max-h-[calc(100dvh-80px)] w-[calc(100dvw-80px)] flex-1 grid-cols-1 grid-rows-[128px_1fr_32px] gap-5 p-5"
 		:class="$store.data.sidebar ? 'grid-cols-[1fr_320px]' : 'grid-cols-1'"
 	>
 		<section
@@ -79,7 +79,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 
 		<section
 			class="shadow-1 shadow-1xs flex min-h-0 flex-col gap-4 rounded-sm bg-white p-5"
-			:class="$store.data.sidebar ? 'order-3 max-w-[calc(100dvw-460px)]' : ''"
+			:class="$store.data.sidebar ? 'order-3 max-w-[calc(100dvw-440px)] min-w-full' : ''"
 		>
 			<div class="inline-flex w-full flex-none items-center gap-4">
 				<select class="select w-37.5" id="" name="">
@@ -90,7 +90,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 					<option value="">가나다순</option>
 				</select>
 
-				<div class="inline-flex flex-wrap gap-4">
+				<div class="inline-flex flex-wrap gap-x-4">
 					<ui-checkbox item-id="thumb-none-chk" txt="썸네일 없음" class="flex-none"></ui-checkbox>
 					<ui-checkbox item-id="congestion=usage-chk" txt="혼잡도 사용" class="flex-none"></ui-checkbox>
 					<ui-checkbox item-id="location-based-chk" txt="위치 기반 콘텐츠 사용" class="flex-none"></ui-checkbox>
@@ -108,10 +108,7 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 				</div>
 			</div>
 
-			<div
-				class="table-wrap min-h-0 flex-1 overflow-x-auto overflow-y-auto"
-				:class="$store.data.sidebar ? 'max-w-[calc(100dvw-500px)]' : ''"
-			>
+			<div class="table-wrap min-h-0 flex-1 overflow-x-auto overflow-y-auto" :class="$store.data.sidebar ? '' : ''">
 				<table>
 					<colgroup>
 						<col style="width: 50px" />
@@ -159,8 +156,9 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 									<ui-txt
 										role="button"
 										size="sm"
-										cls="text-left text-black cursor-pointer"
+										cls="text-left text-black cursor-pointer truncate max-w-75"
 										x-bind:txt="item.name.ko"
+										:title="item.name.ko"
 										@click="$store.data.sideView(item.id)"></ui-txt>
 								</td>
 								<td>
