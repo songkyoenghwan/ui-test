@@ -1,7 +1,11 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
-import PopupSide from '@/pages/onboarding/popup/PopupSide.astro';
 import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
+import PopupSide from '@/pages/onboarding/popup/PopupSide.astro';
+
+const pathArray = Astro.url.pathname.split('/').filter(Boolean);
+
+let _viewState = 'reg';
 ---
 
 <LayoutBasic>
@@ -9,7 +13,6 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 		class="grid h-full w-[calc(100dvw-100px)] min-w-5xl flex-1 grid-cols-[minmax(240px,320px)_minmax(360px,1fr)_minmax(240px,480px)] grid-rows-[28px_1fr] gap-5 overflow-x-auto py-5 pl-5"
 	>
 		<PopupSide />
-
 		<header class="order-2 col-span-2 flex items-center justify-between">
 			<div class="flex items-center gap-2.5">
 				<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '온보딩 수정' : '온보딩 등록'"></ui-tit>
@@ -166,12 +169,12 @@ import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
 
-<script defer>
+<script defer define:vars={{ _viewState }}>
 	document.addEventListener('alpine:init', () => {
 		if (Alpine.store('data')) return;
 
 		Alpine.store('data', {
-			view: 'edit',
+			view: _viewState,
 			loading: false,
 			error: null,
 			itemId: 1,

@@ -1,26 +1,28 @@
+---
+let _sections = [
+	{
+		key: 'deploying',
+		status: 'DEPLOYING',
+		title: '배포 중',
+		actionText: '배포 해제',
+		showCount: true,
+		bodyClass: 'flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto',
+	},
+	{
+		key: 'draft',
+		status: 'DRAFT',
+		title: '배포 전',
+		actionText: '배포',
+		showCount: false,
+		bodyClass: 'flex min-h-0 flex-col overflow-x-hidden overflow-y-auto bg-slate-50 min-h-5',
+	},
+];
+---
+
 <section
 	class="shadow-1xs order-1 row-span-2 flex h-full max-h-[calc(100dvh-100px)] flex-[0_0_320px] flex-col rounded-sm bg-white select-none"
 	data-dom="sidebar"
-	x-data="{
-		sections: [
-			{
-				key: 'deploying',
-				status: 'DEPLOYING',
-				title: '배포 중',
-				actionText: '배포 해제',
-				showCount: true,
-				bodyClass: 'flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto'
-			},
-			{
-				key: 'draft',
-				status: 'DRAFT',
-				title: '배포 전',
-				actionText: '배포',
-				showCount: false,
-				bodyClass: 'flex min-h-0 flex-col overflow-x-hidden overflow-y-auto bg-slate-50 min-h-5'
-			}
-		]
-	}"
+	x-data="sidebar"
 >
 	<header class="grid flex-none grid-cols-[1fr_60px] items-center gap-3 px-5 pt-5 pb-3">
 		<ui-tit
@@ -117,3 +119,13 @@
 		</div>
 	</template>
 </section>
+
+<script is:inline define:vars={{ _sections }}>
+	document.addEventListener('alpine:init', () => {
+		const Alpine = window.Alpine;
+
+		Alpine.data('sidebar', () => ({
+			sections: _sections,
+		}));
+	});
+</script>
