@@ -14,16 +14,11 @@ export class CategoryIcon extends LitElement {
 	color = '';
 
 	render(): TemplateResult {
-		const hasColor = !!this.color;
 		const colorVar = `var(--color-poi-${this.color})`;
 
 		return html`
 			<span class="grid size-8 place-content-center rounded-sm border border-slate-200 bg-slate-50">
-				<icon-list
-					data-name=${this.icon}
-					class="${hasColor ? '' : 'fill-slate-500 stroke-slate-500'} size-7"
-					style=${hasColor ? `fill: ${colorVar}; stroke: ${colorVar};` : ''}
-				></icon-list>
+				<icon-list data-name=${this.icon} class="size-7" style=${`fill: ${colorVar}; stroke: ${colorVar};`}></icon-list>
 			</span>
 		`;
 	}

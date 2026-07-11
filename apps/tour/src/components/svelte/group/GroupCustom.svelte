@@ -256,6 +256,7 @@
 									colorHex = e.hex;
 								}}
 							/>
+
 							<input
 								type="text"
 								class="input-text s max-w-50 read-only:bg-white"

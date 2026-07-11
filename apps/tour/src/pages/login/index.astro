@@ -86,7 +86,6 @@ import LayoutLogin from '@/layouts/LayoutLogin.astro';
 						const result = await response.json().catch(() => null);
 
 						if (response.ok && result?.success === true) {
-							Alpine.store('layout')?.setAuth(result.data);
 							window.location.href = '/tour-destination';
 							return;
 						}

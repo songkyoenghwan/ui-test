@@ -48,7 +48,7 @@
 	});
 </script>
 
-{#if totalPages > 1}
+{#if totalPages >= 1}
 	<section class="inline-flex w-full items-center justify-center gap-3">
 		<UiBtn
 			variant="text"

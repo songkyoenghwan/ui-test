@@ -65,8 +65,10 @@
 	let itemId = uuidv4();
 	let langToggle = $state(false);
 	let local = $state(createTranslateLang());
+	let isTranslating = $state(false);
 	let btnView = $derived($langStore.zh || $langStore.ja || $langStore.th || $langStore.vi);
 	const LANG_ORDER: LocalizedKey[] = ['ko', 'en', 'zh', 'ja', 'th', 'vi'];
+	const MANY_TRANSLATE_TARGETS: LocalizedKey[] = ['zh', 'ja', 'th', 'vi'];
 	function sortLangObject(value?: Partial<LocalizedText> | null): LocalizedText {
 		const source = value ?? {};
 
@@ -86,16 +88,83 @@
 		);
 	}
 
-	function dispatchTranslate() {
-		$host().dispatchEvent(
-			new CustomEvent('translate', {
-				detail: {
-					lang: $state.snapshot(local),
-				},
-				bubbles: true,
-				composed: true,
-			}),
+	function getCookie(name: string) {
+		return (
+			document.cookie
+				.split('; ')
+				.find((row) => row.startsWith(`${name}=`))
+				?.split('=')[1] ?? ''
 		);
+	}
+
+	function applyTranslatedValue(key: LocalizedKey, value?: string) {
+		if (value === undefined) return;
+
+		local[key] = value;
+		dispatchUpdate(key, value);
+	}
+
+	async function translateFromKo() {
+		const sourceText = local.ko.trim();
+		if (!sourceText || isTranslating) return;
+
+		isTranslating = true;
+		langToggle = false;
+
+		try {
+			const enRes = await fetch('/api/google/translate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRF-Token': decodeURIComponent(getCookie('csrfToken')),
+				},
+				credentials: 'include',
+				body: JSON.stringify({
+					text: sourceText,
+					target: 'en',
+					source: 'ko',
+				}),
+			});
+
+			if (!enRes.ok) {
+				throw new Error(`Failed to translate ko to en: ${enRes.status}`);
+			}
+
+			const enData = await enRes.json();
+			const englishText = enData.data?.translatedText ?? '';
+			applyTranslatedValue('en', englishText);
+
+			if (!englishText) return;
+
+			const manyRes = await fetch('/api/google/translate-many', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-CSRF-Token': decodeURIComponent(getCookie('csrfToken')),
+				},
+				credentials: 'include',
+				body: JSON.stringify({
+					text: englishText,
+					targets: MANY_TRANSLATE_TARGETS,
+					source: 'en',
+				}),
+			});
+
+			if (!manyRes.ok) {
+				throw new Error(`Failed to translate en to many: ${manyRes.status}`);
+			}
+
+			const manyData = await manyRes.json();
+			const translations = manyData.data?.translations ?? {};
+			MANY_TRANSLATE_TARGETS.forEach((key) => {
+				applyTranslatedValue(key, translations[key]);
+			});
+		} catch (error) {
+			console.error('자동번역 실패:', error);
+			alert('자동번역에 실패했습니다.');
+		} finally {
+			isTranslating = false;
+		}
 	}
 
 	$effect(() => {
@@ -206,9 +275,10 @@
 								icon-name="translate"
 								class="flex-none"
 								cls="stroke-cms-3"
-								click={dispatchTranslate}
+								disabled={isTranslating}
+								click={translateFromKo}
 								mousedown={() => {
-									langToggle = true;
+									langToggle = false;
 								}}
 							></ui-btn>
 						{/if}

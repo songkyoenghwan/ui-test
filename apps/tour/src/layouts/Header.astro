@@ -12,6 +12,8 @@ if (!res.ok) {
 
 const json = await res.json();
 
+console.log(json);
+
 const authData = json?.data ?? {};
 const user = json?.user ?? {};
 const menus = user?.menus ?? [];

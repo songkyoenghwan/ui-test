@@ -1,8 +1,7 @@
 ---
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
-
-import DialogSetCenterCoordinates from '@/src/components/modals/DialogSetCenterCoordinates.astro';
-import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
+import DialogAddrSearch from '@/components/modals/DialogAddrSearch.astro';
+import DialogSetCenterCoordinates from '@/components/modals/DialogSetCenterCoordinates.astro';
 ---
 
 <LayoutBasic>
@@ -121,7 +120,7 @@ import DialogAddrSearch from '@/src/components/modals/DialogAddrSearch.astro';
 							return $store.data.data?.facilityPoiMappings?.length ?? 0
 						},
 						get operationGuide() {
-							return this.filterSupportedLang($store.data.data?.operationInfo ?? {})
+							return JSON.stringify(this.filterSupportedLang($store.data.data?.operationInfo ?? {}))
 						}
 						
 					}"

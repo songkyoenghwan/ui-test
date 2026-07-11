@@ -10,7 +10,7 @@ const json = await res.json();
 const authData = json?.auth?.data ?? {};
 const user = authData?.user ?? {};
 const menus = user?.menus ?? [];
-const tourDestinations = authData?.tourDestinations ?? [];
+const tourDestinations = user?.tourDestinations ?? [];
 
 const pathname = Astro.url.pathname ?? '/';
 const displayName = pathname.replace(/^\/+/, '').split('/')[0] ?? '';
