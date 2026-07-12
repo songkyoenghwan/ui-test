@@ -77,6 +77,10 @@ document.addEventListener('alpine:init', () => {
 			this.targetInputId = targetId;
 			this.isOpen = true;
 			document.body.classList.add('overflow-hidden');
+
+			if (targetId === 'DialogAddrSearch') {
+				this.openPostcodeModal(targetId);
+			}
 		},
 		hidden(e) {
 			const currentTargetId = e?.target?.closest('dialog')?.id || this.targetId;
@@ -122,17 +126,26 @@ document.addEventListener('alpine:init', () => {
 
 			requestAnimationFrame(() => {
 				if (!this.container) return;
+				if (this.postcode && this.container.children.length > 0) return;
 
 				this.postcode = new window.daum.Postcode({
 					oncomplete: (data) => {
+						const address = data.roadAddress || data.jibunAddress || '';
 						const postInput = this.targetInputId ? document.getElementById(this.targetInputId) : null;
+						console.log('[postcode] selected', { address, data });
 
 						if (postInput) {
-							postInput.value = data.roadAddress || data.jibunAddress || '';
+							postInput.value = address;
 							postInput.dispatchEvent(new Event('input', { bubbles: true }));
 							postInput.dispatchEvent(new Event('change', { bubbles: true }));
 						}
 
+						Alpine.store('map')?.selectAddress?.({
+							address,
+							roadAddress: data.roadAddress,
+							jibunAddress: data.jibunAddress,
+							zonecode: data.zonecode,
+						});
 						this.closePostcodeModal('');
 					},
 					width: '100%',
@@ -146,7 +159,6 @@ document.addEventListener('alpine:init', () => {
 		closePostcodeModal() {
 			if (this.postModal) this.postModal.setAttribute('aria-hidden', 'true');
 			if (this.container) {
-				this.container.innerHTML = '';
 				this.container.style.height = '682px';
 			}
 			document.getElementById('DialogAddrSearch')?.close();

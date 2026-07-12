@@ -21,7 +21,7 @@ const dialogId = 'DialogSetCenterCoordinates';
 				>
 					<input
 						class="input-text peer pr-15!"
-						x-model="keyword"
+						x-model="$store.map.searchKeyword"
 						type="text"
 						placeholder="주소 검색"
 						x-bind="ModalTopHandler"
@@ -35,7 +35,7 @@ const dialogId = 'DialogSetCenterCoordinates';
 							variant="icon"
 							icon-name="input-del"
 							icon-cls="size-4 stroke-slate-400"
-							x-on:click="keyword = ''"></ui-btn>
+							x-on:click="$store.map.searchKeyword = ''; $store.map.selectedAddress = ''"></ui-btn>
 					</div>
 				</div>
 				<div class="relative grid h-72.5 w-110">
@@ -51,9 +51,10 @@ const dialogId = 'DialogSetCenterCoordinates';
 							icon-only="icon"
 							txt="초기화"
 							icon-name="refresh"
-							icon-cls="size-4 stroke-black flex"></ui-btn>
-						<ui-btn class="w-full" variant="secondary" txt="+"></ui-btn>
-						<ui-btn class="w-full" variant="secondary" txt="-"></ui-btn>
+							icon-cls="size-4 stroke-black flex"
+							@btn-click="$store.map.resetCenterPicker()"></ui-btn>
+						<ui-btn class="w-full" variant="secondary" txt="+" @btn-click="$store.map.zoomIn()"></ui-btn>
+						<ui-btn class="w-full" variant="secondary" txt="-" @btn-click="$store.map.zoomOut()"></ui-btn>
 						<!-- disabled -->
 					</div>
 				</div>
@@ -65,21 +66,21 @@ const dialogId = 'DialogSetCenterCoordinates';
 						</label>
 					</dt>
 					<dd>
-						<input type="text" name="map-reg-lat" id="map-reg-lat" class="input-text l" placeholder="위도" />
+						<input type="text" name="map-reg-lat" id="map-reg-lat" class="input-text l" placeholder="위도" x-model="$store.map.center.lat" />
 					</dd>
 					<dt class="flex items-center">
 						<label for="" class="flex items-center">
 							<ui-txt cls="text-black" size="sm" txt="경도"></ui-txt>
 						</label>
 					</dt>
-					<dd><input type="text" name="map-reg-lon" id="map-reg-lon" class="input-text l" placeholder="경도" /></dd>
+					<dd><input type="text" name="map-reg-lon" id="map-reg-lon" class="input-text l" placeholder="경도" x-model="$store.map.center.lng" /></dd>
 				</dl>
 			</div>
 		</section>
 
 		<footer class="modal-footer">
 			<div class="flex flex-1 items-center">
-				<ui-btn class="flex-1" variant="primary" size="lg" txt="설정 완료"></ui-btn>
+				<ui-btn class="flex-1" variant="primary" size="lg" txt="설정 완료" @btn-click="$store.map.confirmCenterPicker()"></ui-btn>
 				<!-- disabled -->
 			</div>
 		</footer>

@@ -79,7 +79,8 @@ export const proxyApi = async (request: Request, path: string) => {
 
 	const method = request.method.toUpperCase();
 	const body = method === 'GET' || method === 'HEAD' ? undefined : await request.arrayBuffer();
-	const requestBodyText = body && path.startsWith('tour-destinations') ? new TextDecoder().decode(body) : undefined;
+	const requestBodyText =
+		body && path.startsWith('tour-destinations') ? new TextDecoder().decode(body) : undefined;
 	const response = await fetch(targetUrl, {
 		method,
 		headers: createProxyHeaders(request),
@@ -91,7 +92,7 @@ export const proxyApi = async (request: Request, path: string) => {
 		let errorBody: unknown = responseBody;
 		try {
 			errorBody = JSON.parse(responseBody);
-		} catch {}
+		} catch { }
 		let requestBody: unknown;
 		if (requestBodyText) {
 			try {
@@ -103,21 +104,23 @@ export const proxyApi = async (request: Request, path: string) => {
 
 		console.error(
 			'[api-proxy] response error\n' +
-				JSON.stringify(
-					{
-						method,
-						path,
-						target: targetUrl.toString(),
-						status: response.status,
-						statusText: response.statusText,
-						validationDetails:
-							errorBody && typeof errorBody === 'object' && 'details' in errorBody ? errorBody.details : undefined,
-						body: errorBody,
-						requestBody,
-					},
-					null,
-					2,
-				),
+			JSON.stringify(
+				{
+					method,
+					path,
+					target: targetUrl.toString(),
+					status: response.status,
+					statusText: response.statusText,
+					validationDetails:
+						errorBody && typeof errorBody === 'object' && 'details' in errorBody
+							? errorBody.details
+							: undefined,
+					body: errorBody,
+					requestBody,
+				},
+				null,
+				2,
+			),
 		);
 	}
 

@@ -22,8 +22,3 @@ const dialogId = 'DialogAddrSearch';
 </dialog>
 
 <script is:inline src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script defer>
-	window.addEventListener('load', () => {
-		Alpine.store('modal')?.openPostcodeModal('postcodeContainer');
-	});
-</script>

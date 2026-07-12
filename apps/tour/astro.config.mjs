@@ -4,6 +4,10 @@ import node from '@astrojs/node';
 import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, envField } from 'astro/config';
+import { loadEnv } from 'vite';
+
+const rootEnv = loadEnv(process.env.NODE_ENV ?? 'development', '..', 'TMAP_');
+process.env.TMAP_APP_KEY ??= rootEnv.TMAP_APP_KEY;
 
 // https://astro.build/config
 export default defineConfig({

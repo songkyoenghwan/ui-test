@@ -1,0 +1,282 @@
+<section
+	class="shadow-1xs h-full flex-[0_0_320px] flex-col rounded-sm bg-white"
+	:class="$store.data.sidebar ? 'flex' : 'hidden'"
+	data-dom="sidebar"
+	x-cloak
+	x-show="$store.data.sidebar"
+	x-bind:inert="!$store.data.sidebar"
+	x-transition:enter="transition ease-in duration-100"
+	x-transition:enter-start="opacity-0 translate-x-full"
+	x-transition:enter-end="opacity-100 translate-x-0"
+>
+	<header class="flex flex-none items-center justify-between px-5 pt-5 pb-1.5">
+		<ui-tit size="lg" tit="시설 상세"></ui-tit>
+		<div>
+			<ui-btn
+				variant="icon"
+				size="md"
+				icon-name="close"
+				icon-cls="size-2.5 stroke-slate-500"
+				class="bg-f5f5f5 size-7"
+				txt="삭제"
+				@btn-click="$store.data.sidebar = false"></ui-btn>
+		</div>
+	</header>
+
+	<div
+		class="tab group/tab flex-1"
+		x-data="{
+            get firstThumb() {
+                return JSON.stringify($store.data.data?.facilityFiles?.[0]) ?? null
+            },
+            get firstName() {
+                return $store.data.data?.name?.ko ?? ''
+            },
+            get firstCategory() {
+                const current = $store.data.data?.category?.name?.ko ?? ''
+                const parent = $store.data.data?.category?.parent?.name?.ko ?? ''
+
+                if (current && parent) return `${current} / ${parent}`
+                return current || parent || ''
+            },
+            get firstPoi() {
+                return $store.data.data?.facilityPoiMappings?.[0] ?? null
+            },
+            get firstPoiNameKo() {
+                return this.firstPoi?.poi?.name?.ko ?? ''
+            },
+            get poiMappingsLength() {
+                return $store.data.data?.facilityPoiMappings?.length ?? 0
+            },
+            get facilityVpsPopups() {
+                return $store.data.data?.facilityVpsPopups ?? []
+            }
+        }"
+	>
+		<ul class="tab-list">
+			<li class="tab-item group/tab-item">
+				<label for="tab-1" class="tab-button">
+					<input type="radio" id="tab-1" name="tab-1" class="peer sr-only" checked />
+					<span class="text-">시설 정보</span>
+				</label>
+			</li>
+			<li class="tab-item group/tab-item">
+				<label for="tab-2" class="tab-button">
+					<input type="radio" id="tab-2" name="tab-1" class="peer sr-only" />
+					<span class="text-">연계 정보</span>
+				</label>
+			</li>
+		</ul>
+
+		<div class="flex h-full max-h-[calc(100dvh-295px)] min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
+			<ul class="hidden flex-1 flex-col divide-y divide-slate-200 group-has-[#tab-1:checked]/tab:flex">
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit tag="h5" size="md" tit="기본 정보"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+
+					<div class="grid grid-cols-[90px_1fr] gap-2.5">
+						<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
+						></thumbnail-upload>
+
+						<div class="space-y-0.75">
+							<ui-tit tag="h4" size="sm" x-bind:tit="firstName"></ui-tit>
+
+							<div class="flex items-center justify-start gap-1">
+								<ui-txt size="xs" x-bind:txt="firstCategory"></ui-txt>
+							</div>
+
+							<template x-if="poiMappingsLength === 0">
+								<text-badge variant="error" txt="매칭 전"></text-badge>
+							</template>
+
+							<template x-if="poiMappingsLength > 0 && firstPoiNameKo === ''">
+								<text-badge variant="bg-slate" txt="이름 없음"></text-badge>
+							</template>
+
+							<template x-if="poiMappingsLength > 0 && firstPoiNameKo !== ''">
+								<text-badge x-bind:txt="firstPoiNameKo"></text-badge>
+							</template>
+						</div>
+					</div>
+					<lang-translate view="side" data-text-hidden="ko" x-bind:lang="JSON.stringify($store.data.data.name)"
+					></lang-translate>
+				</li>
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit tag="h5" size="md" tit="운영 정보"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+
+					<div class="flex items-center gap-2">
+						<ui-txt size="xs" txt="운영 기간"></ui-txt>
+
+						<template x-if="$store.data.data.isAlways">
+							<ui-txt size="xs" cls="text-black" txt="상시 운영"></ui-txt>
+						</template>
+						<div class="flex items-center">
+							<template x-if="!$store.data.data.isAlways">
+								<text-date class="text-xs" x-bind:dateTime="$store.data.data.startAt"></text-date>
+							</template>
+							~
+							<template x-if="!$store.data.data.isAlways">
+								<text-date class="text-xs" x-bind:dateTime="$store.data.data.endAt"></text-date>
+							</template>
+						</div>
+					</div>
+
+					<div class="flex gap-2">
+						<ui-txt size="xs" txt="운영 시간" class="flex-none"></ui-txt>
+
+						<operating-hours
+							rest="off"
+							view="side"
+							:result="JSON.stringify($store.data?.data.facilityOperatingSchedules?? [])"
+							class="text-xs"></operating-hours>
+					</div>
+
+					<div class="flex items-center gap-2">
+						<ui-txt size="xs" txt="정기 휴무" class="flex-none"></ui-txt>
+						<closing-day view="side" x-bind:result="JSON.stringify($store.data?.data.facilityHolidaySchedules ?? [])"
+						></closing-day>
+					</div>
+				</li>
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit tag="h5" size="md" tit="상세 정보"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+					<lang-translate view="side" x-bind:lang="JSON.stringify($store.data.data.description)"></lang-translate>
+				</li>
+			</ul>
+
+			<ul class="hidden flex-1 flex-col divide-y divide-slate-200 group-has-[#tab-2:checked]/tab:flex">
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit tag="h5" size="md" tit="대상지 공통 버튼"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+					<div>
+						<!-- 프론트 디자인 시 재 작성 -->
+						<button
+							type="button"
+							class="border-cms-3 shadow-1xs inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border px-3"
+						>
+							<picture class="h-4">
+								<img src="" alt="" class="h-4" />
+							</picture>
+
+							<span class="max-w-40 truncate">c</span>
+						</button>
+					</div>
+				</li>
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit
+							class="flex items-center gap-2"
+							tag="h5"
+							size="md"
+							tit="시설 단독 버튼"
+							:sub="$store.data.data?.facilityButtons?.length === 0 ? '미사용' : ''"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+
+					<facility-button x-effect="$el.facilityButtons = $store.data.data?.facilityButtons ?? []"></facility-button>
+				</li>
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit
+							class="flex items-center gap-2"
+							tag="h5"
+							size="md"
+							tit="시설 혼잡도"
+							:sub="!$store.data.data?.overwriteCongestionStatus ? '미사용' : ''"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+					<div class="flex items-center gap-2">
+						<ui-txt size="xs" txt="매칭된 데이터"></ui-txt>
+						<ui-txt cls="text-black" size="xs" txt="$데이터 명$"></ui-txt>
+					</div>
+				</li>
+				<li class="space-y-2 px-5 py-3">
+					<div class="flex items-center justify-between">
+						<ui-tit
+							class="flex items-center gap-2"
+							tag="h5"
+							size="md"
+							tit="위치 기반 콘텐츠"
+							:sub="$store.data.data?.facilityVpsPopups?.length === 0 ? '미사용' : ''"></ui-tit>
+						<ui-btn variant="ghost" size="sm" cls="min-w-15" txt="수정"></ui-btn>
+					</div>
+
+					<template x-for="item in facilityVpsPopups" :key="item.id">
+						<div class="grid grid-cols-[90px_1fr] items-center gap-2.5">
+							<thumbnail-view :thumb-files="item.fileUrl"></thumbnail-view>
+
+							<div class="space-y-1">
+								<ui-txt cls="text-black" size="sm" :txt="item?.name?.ko || ''"></ui-txt>
+								<ui-txt size="xs" x-bind:txt="item?.description ?? '없음'"></ui-txt>
+								<div>
+									<ui-btn
+										tag="a"
+										variant="ghost"
+										size="sm"
+										cls="max-w-18.75"
+										blank="_blank"
+										:link="item?.url"
+										txt="링크 이동"></ui-btn>
+								</div>
+							</div>
+
+							<lang-translate
+								class="col-span-2"
+								view="side"
+								data-text-hidden="ko"
+								x-bind:lang="JSON.stringify(item.name)"></lang-translate>
+
+							<div class="col-span-2 flex flex-col gap-2">
+								<ui-txt cls="text-black" size="sm" txt="팝업 내용"></ui-txt>
+
+								<lang-translate view="side" data-text-hidden="ko" x-bind:lang="JSON.stringify(item.name)"
+								></lang-translate>
+							</div>
+						</div>
+					</template>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<footer class="flex-none divide-y divide-slate-200 border-t border-t-slate-200 bg-white">
+		<div class="flex items-center gap-2 px-5 py-3">
+			<ui-txt size="xs" txt="등록" class="flex-none"></ui-txt>
+			<text-date class="text-xs text-slate-500" data-time-view="time" x-bind:dateTime="$store.data.data.createdAt"
+			></text-date>
+
+			<template x-if="$store.data.data.updatedAt">
+				<div class="flex items-center gap-2">
+					<ui-txt size="xs" txt="수정" class="flex-none"></ui-txt>
+					<text-date class="text-xs text-slate-500" data-time-view="time" :dateTime="$store.data.data.updatedAt"
+					></text-date>
+				</div>
+			</template>
+		</div>
+
+		<div class="grid grid-cols-[60px_1fr] gap-2 px-5 py-3">
+			<ui-btn
+				variant="icon"
+				size="lg"
+				icon-name="trash"
+				icon-cls="size-5 stroke-slate-400"
+				class="rounded-sm border border-slate-200"
+				txt="삭제"></ui-btn>
+			<ui-btn
+				variant="primary"
+				size="lg"
+				cls="text-lg! font-bold"
+				txt="저장"
+				@click="console.log(document.querySelector('thumbnail-upload').thumbFilesValue)"></ui-btn>
+		</div>
+	</footer>
+</section>

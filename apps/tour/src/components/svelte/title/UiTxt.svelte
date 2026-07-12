@@ -13,7 +13,6 @@
 <script lang="ts">
 	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
 	import type { Placement } from '@floating-ui/utils';
-
 	interface Props {
 		tag: 'p' | 'strong' | 'span' | 'div';
 		txt?: string;
