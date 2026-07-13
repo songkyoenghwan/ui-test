@@ -172,13 +172,19 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 									data-target="DialogSetCenterCoordinates"
 									@btn-click="$nextTick(() => { $store.map.openCenterPicker({ containerId: 'map_div' }) })"
 								></ui-btn>
-								<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+								<ui-txt
+									size="sm"
+									:txt="$store.map.selectedAddress || ($store.data.data?.latitude && $store.data.data?.longitude ? `${$store.data.data.latitude}, ${$store.data.data.longitude}` : '주소를 선택해 주세요')"
+									cls="text-black"></ui-txt>
 							</div>
 						</template>
 
 						<template x-if="$store.data.view === 'detail'">
 							<div class="flex flex-wrap items-center gap-5">
-								<ui-txt size="sm" txt="서울특별시 용산구 이태원로 29 (한강로1가)" cls="text-black"></ui-txt>
+								<ui-txt
+									size="sm"
+									:txt="$store.map.selectedAddress || ($store.data.data?.latitude && $store.data.data?.longitude ? `${$store.data.data.latitude}, ${$store.data.data.longitude}` : '주소 정보 없음')"
+									cls="text-black"></ui-txt>
 							</div>
 						</template>
 					</div>
@@ -205,7 +211,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 							<closing-day
 								data-field="holidaySchedules"
 								:view="$store.data.view"
-								:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : []"
+								:result="$store.data.view !== 'reg' ? JSON.stringify($store.data.data?.tourDestinationHolidaySchedules) : JSON.stringify([])"
 							></closing-day>
 						</div>
 					</div>
@@ -479,8 +485,9 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				const holidaySchedules = this.getHolidaySchedules();
 				const customConfig = this.parseValue(this.getField('customConfig')?.result, this.data ?? {});
 				const isAlways = Boolean(operatingPeriod?.isAlways ?? this.data.isAlways ?? true);
-				const latitude = Number.isFinite(Number(this.data.latitude)) ? Number(this.data.latitude) : 39.2331;
-				const longitude = Number.isFinite(Number(this.data.longitude)) ? Number(this.data.longitude) : 127.393;
+				const mapCenter = Alpine.store('map')?.center ?? {};
+				const latitude = this.toNullableNumber(mapCenter.lat) ?? this.toNullableNumber(this.data.latitude);
+				const longitude = this.toNullableNumber(mapCenter.lng) ?? this.toNullableNumber(this.data.longitude);
 
 				if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
 					throw new Error('대상지 위치 좌표를 확인해 주세요.');
@@ -576,13 +583,19 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 					if (!id || view === 'reg') return;
 
-					const res = await fetch(`/api/tour-destinations`);
+					const res = await fetch(`/api/tour-destinations/${id}`);
 					if (!res.ok) throw new Error('Failed to load json');
 
 					const data = await res.json();
 					const payload = data.data ?? {};
 					this.data = payload;
 					this.name = JSON.stringify(this.data.name) ?? '{}';
+
+					const latitude = this.toNullableNumber(this.data.latitude);
+					const longitude = this.toNullableNumber(this.data.longitude);
+					if (latitude != null && longitude != null) {
+						Alpine.store('map')?.reverseGeocodeCenter(latitude, longitude);
+					}
 
 					const nameEl = this.getField('name');
 					if (nameEl) {
@@ -593,7 +606,6 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 					if (operationInfoEl) {
 						operationInfoEl.lang = this.getSupportedLangValue(this.data.operationInfo);
 					}
-					this.items = payload.items?.[0];
 				} catch (error) {
 					this.error = error instanceof Error ? error.message : 'Unknown error';
 					console.error('데이터 로드 실패:', error);
@@ -604,8 +616,6 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 			async init() {
 				await this.fetchData();
-
-				await this.findInit(1);
 			},
 
 			async findInit(id = '') {
