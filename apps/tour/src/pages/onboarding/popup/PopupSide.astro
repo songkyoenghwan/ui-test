@@ -6,7 +6,7 @@ let _sections = [
 		title: '배포 중',
 		actionText: '배포 해제',
 		showCount: true,
-		bodyClass: 'flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto',
+		bodyClass: 'flex min-h-0 flex-col',
 	},
 	{
 		key: 'draft',
@@ -14,16 +14,12 @@ let _sections = [
 		title: '배포 전',
 		actionText: '배포',
 		showCount: false,
-		bodyClass: 'flex min-h-0 flex-col overflow-x-hidden overflow-y-auto bg-slate-50 min-h-5',
+		bodyClass: 'flex min-h-0 flex-col bg-slate-50',
 	},
 ];
 ---
 
-<section
-	class="shadow-1xs order-1 row-span-2 flex h-full max-h-[calc(100dvh-100px)] flex-[0_0_320px] flex-col rounded-sm bg-white select-none"
-	data-dom="sidebar"
-	x-data="sidebar"
->
+<section class="shadow-1xs order-1 row-span-2 flex-[0_0_320px] overflow-clip rounded-lg bg-white select-none" data-dom="sidebar">
 	<header class="grid flex-none grid-cols-[1fr_60px] items-center gap-3 px-5 pt-5 pb-3">
 		<ui-tit
 			class="col-span-1 flex items-center gap-2"
@@ -31,7 +27,7 @@ let _sections = [
 			tit="온보딩"
 			tooltip="서비스에 처음 접속한 사용자에게 노출됩니다."></ui-tit>
 		<div>
-			<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="primary" size="md" txt="추가" @btn-click="$store.data.view = 'reg'"
+			<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="primary" size="md" txt="추가" @btn-click="pageViewChange('reg')"
 			></ui-btn>
 		</div>
 		<text-badge
@@ -42,97 +38,103 @@ let _sections = [
 			txt="드래그로 항목 순서를 변경할 수 있으며, 즉시 적용됩니다."></text-badge>
 	</header>
 
-	<template x-for="section in sections" :key="section.key">
-		<div class="flex flex-col" :class="section.status === 'DRAFT' ? 'bg-slate-50 ' : 'flex-1'">
-			<div
-				class="grid flex-none grid-cols-2 items-center justify-between gap-3 border-t border-t-slate-200 px-5 pt-4 pb-2"
-				:class="section.status === 'DRAFT' ? 'bg-slate-50' : ''"
-			>
-				<ui-tit class="col-span-1 flex items-center gap-2" size="lg" :tit="section.title"></ui-tit>
+	<div class="relative h-[calc(100%-100px)] min-h-0 flex-1 overflow-y-auto" x-ref="scrollBar">
+		<div
+			class="sticky top-0 z-3 grid flex-none grid-cols-2 items-center justify-between gap-3 border-t border-t-slate-200 bg-white px-5 pt-4 pb-2"
+		>
+			<button type="button" @click.prevent.throttle.750ms="scrollBarTopEvent($event, 0)">
+				<ui-tit size="lg" tit="배포 중"></ui-tit>
+			</button>
 
-				<div class="flex items-center justify-end gap-2">
-					<template x-if="section.showCount">
-						<div class="flex items-center gap-2">
-							<ui-txt cls="text-cms-5 font-bold" size="xs" :txt="$store.data.deploymentItems"></ui-txt>
-							<ui-txt size="xs" txt="개"></ui-txt>
-						</div>
-					</template>
-
-					<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="ghost" size="md" :txt="section.actionText" @btn-click=""
-					></ui-btn>
+			<div class="flex items-center justify-end gap-2">
+				<div class="flex items-center gap-2">
+					<ui-txt cls="text-cms-5 font-bold" size="xs" :txt="$store.data.deploymentItems"></ui-txt>
+					<ui-txt size="xs" txt="개"></ui-txt>
 				</div>
+
+				<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="ghost" size="md" txt="배포 해제" @btn-click=""></ui-btn>
 			</div>
-
-			<div :class="section.bodyClass">
-				<ul
-					:data-status="section.status"
-					class="flex h-full flex-1 flex-col divide-y divide-slate-200"
-					x-sort
-					x-sort:config="{
-                        group: { name: 'onboarding-shared', pull: true, put: true },
-                        animation: 150,
-                        handle: '[data-drag-handle]',
-                        onAdd(evt) {
-                            $store.data.moveItemToStatus(evt.item.dataset.id, evt.to.dataset.status);
-                            $store.data.syncItemsOrder($el.closest('[data-dom=sidebar]'));
-                        },
-                        onUpdate() {
-                            $store.data.syncItemsOrder($el.closest('[data-dom=sidebar]'));
-                        }
-                    }"
-				>
-					<template
-						x-for="(item, idx) in ($store.data.items ?? []).filter(item => item?.deploymentStatus === section.status)"
-						:key="item.id ?? idx"
-					>
-						<li
-							class="aria-current:bg-secondary aria-current:border-cms-3 group/dnd grid min-h-12.75 grid-cols-[1fr_20px] items-center gap-2 border border-white pr-3"
-							:aria-current="$store.data.itemId === item.id"
-						>
-							<button
-								type="button"
-								class="grid grid-cols-[16px_1fr] items-center gap-2 py-3 pl-5 select-none"
-								aria-label="Drag handle"
-								data-drag-handle
-								:title="item?.title?.ko"
-								:data-id="item.id"
-								x-sort:item="item.id"
-								@click.prevent="$store.data.currentItem(item.id)"
-							>
-								<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"
-								></icon-list>
-
-								<ui-tit class="text-left" tag="span" cls="truncate w-full inline-block" :tit="item?.title?.ko"
-								></ui-tit>
-							</button>
-
-							<ui-checkbox></ui-checkbox>
-						</li>
-					</template>
-				</ul>
-			</div>
-			<template x-if="section.status === 'DEPLOYING'">
-				<footer class="mt-auto flex-none p-5 text-center">
-					<ui-txt size="xs" txt="최대 12개까지 등록 가능합니다."></ui-txt>
-				</footer>
-			</template>
 		</div>
-	</template>
+
+		<ul class="divide-y divide-slate-200" x-sort x-sort:config="{ animation: 150, handle: '[data-drag-handle]', }">
+			<template
+				x-for="(item, idx) in ($store.data.items ?? []).filter(item => item?.deploymentStatus === 'DEPLOYING').slice(0, 12)"
+				:key="item.id ?? idx"
+			>
+				<li
+					class="aria-current:bg-secondary aria-current:border-cms-3 group/dnd grid min-h-12.75 grid-cols-[1fr_20px] items-center gap-2 border border-transparent border-b-slate-200 pr-3"
+					:aria-current="$store.data.itemId === item.id"
+				>
+					<button
+						type="button"
+						class="grid grid-cols-[16px_1fr] items-center gap-2 py-3 pl-5 select-none"
+						aria-label="Drag handle"
+						data-drag-handle
+						:title="item?.title?.ko"
+						:data-id="item.id"
+						x-sort:item="item.id"
+						@click.prevent="pageViewChange('edit'); $store.data.currentItem(item.id)"
+					>
+						<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"></icon-list>
+
+						<ui-tit
+							class="text-left"
+							tag="span"
+							cls="truncate w-full leading-none inline-block"
+							:tit="item?.title?.ko"></ui-tit>
+					</button>
+
+					<ui-checkbox></ui-checkbox>
+				</li>
+			</template>
+		</ul>
+		<footer class="mt-auto flex-none p-5 text-center">
+			<ui-txt size="xs" txt="최대 12개까지 등록 가능합니다."></ui-txt>
+		</footer>
+
+		<div
+			class="sticky top-12.5 z-3 grid flex-none grid-cols-2 items-center justify-between gap-3 border-t border-t-slate-200 bg-slate-50 px-5 pt-4 pb-2"
+		>
+			<button type="button" @click.prevent.throttle.750ms="scrollBarTopEvent($event, 1)">
+				<ui-tit class="col-span-1 flex items-center gap-2" size="lg" tit="배포 전"></ui-tit>
+			</button>
+
+			<div class="flex items-center justify-end gap-2">
+				<ui-btn class="bg-f5f5f5 col-span-1 w-15" variant="ghost" size="md" txt="배포" @btn-click=""></ui-btn>
+			</div>
+		</div>
+
+		<ul class="divide-y divide-slate-200" x-sort x-sort:config="{ animation: 150, handle: '[data-drag-handle]', }">
+			<template
+				x-for="(item, idx) in ($store.data.items ?? []).filter(item => item?.deploymentStatus === 'DRAFT')"
+				:key="item.id ?? idx"
+			>
+				<li
+					class="aria-current:bg-secondary aria-current:border-cms-3 group/dnd grid min-h-12.75 grid-cols-[1fr_20px] items-center gap-2 border border-transparent border-b-slate-200 pr-3"
+					:aria-current="$store.data.itemId === item.id"
+				>
+					<button
+						type="button"
+						class="grid grid-cols-[16px_1fr] items-center gap-2 py-3 pl-5 select-none"
+						aria-label="Drag handle"
+						data-drag-handle
+						:title="item?.title?.ko"
+						:data-id="item.id"
+						x-sort:item="item.id"
+						@click.prevent="pageViewChange('edit'); $store.data.currentItem(item.id)"
+					>
+						<icon-list data-name="dnd" class="group-aria-current/dnd:fill-cms-3 size-4 fill-slate-300"></icon-list>
+
+						<ui-tit
+							class="text-left"
+							tag="span"
+							cls="truncate w-full leading-none inline-block"
+							:tit="item?.title?.ko"></ui-tit>
+					</button>
+
+					<ui-checkbox></ui-checkbox>
+				</li>
+			</template>
+		</ul>
+	</div>
 </section>
-
-<script is:inline define:vars={{ _sections }}>
-	document.addEventListener('alpine:init', () => {
-		const Alpine = window.Alpine;
-
-		Alpine.data('sidebar', () => ({
-			sections: _sections,
-		}));
-
-		Alpine.data('dropdown', () => ({
-			open: false,
-			toggle() {
-				this.open = !this.open;
-			},
-		}));
-	});
-</script>

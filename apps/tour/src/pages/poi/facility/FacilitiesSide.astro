@@ -259,26 +259,37 @@
 						<ui-txt class="flex-none" size="xs" txt="이미지는 최대 5개까지 등록 가능합니다."></ui-txt>
 					</div>
 
-					<ul class="inline-flex max-w-75">
-						<li class="w-25">
-							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
-							></thumbnail-upload>
+					<ul class="inline-flex max-w-75 flex-wrap gap-3">
+						<li class="w-20">
+							<thumbnail-upload
+								size="product"
+								cls="size-20"
+								:img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''"
+								:thumbFiles="firstThumb"></thumbnail-upload>
 						</li>
-						<li class="w-25">
-							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
-							></thumbnail-upload>
+						<li class="w-20">
+							<thumbnail-upload
+								size="product"
+								cls="size-20"
+								:img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''"
+								:thumbFiles="firstThumb"></thumbnail-upload>
 						</li>
-						<li class="w-25">
-							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
-							></thumbnail-upload>
+						<li class="w-20">
+							<thumbnail-upload
+								size="product"
+								cls="size-20"
+								:img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''"
+								:thumbFiles="firstThumb"></thumbnail-upload>
 						</li>
-						<li class="w-25">
-							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
-							></thumbnail-upload>
+						<li class="w-20">
+							<thumbnail-upload
+								size="product"
+								cls="size-20"
+								:img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''"
+								:thumbFiles="firstThumb"></thumbnail-upload>
 						</li>
-						<li class="w-25">
-							<thumbnail-upload :img="$store.data.data?.facilityFiles?.[0]?.fileUrl ?? ''" :thumbFiles="firstThumb"
-							></thumbnail-upload>
+						<li class="w-20">
+							<thumbnail-upload size="product" cls="size-20"></thumbnail-upload>
 						</li>
 					</ul>
 				</li>
@@ -301,7 +312,7 @@
 							>
 								<button
 									type="button"
-									class="grid grid-cols-[16px_1fr_90px] items-center gap-2"
+									class="grid grid-cols-[16px_1fr_70px] items-center gap-2"
 									aria-label="Drag handle"
 									x-sort:item
 								>
@@ -324,7 +335,7 @@
 											:txt="`${item?.description.ko ?? ''}`"></ui-txt>
 									</div>
 
-									<thumbnail-view :thumb-files="item.fileUrl"></thumbnail-view>
+									<thumbnail-view cls="size-17.5" :thumb-files="item.fileUrl"></thumbnail-view>
 								</button>
 
 								<div

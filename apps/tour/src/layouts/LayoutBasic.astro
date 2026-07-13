@@ -22,7 +22,7 @@ const pathname = Astro.url.pathname;
 		<title>{pathname} |</title>
 		<script is:inline src="/api/tmap/vectorjs?version=1"></script>
 	</head>
-	<body x-data>
+	<body x-data="page">
 		<section class="grid h-dvh grid-cols-[var(--lnb-width)_1fr] grid-rows-[var(--header-height)_1fr]">
 			<Lnb />
 

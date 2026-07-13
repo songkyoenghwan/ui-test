@@ -2,27 +2,25 @@
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import PopupPreview from '@/pages/onboarding/popup/PopupPreview.astro';
 import PopupSide from '@/pages/onboarding/popup/PopupSide.astro';
-
-const pathArray = Astro.url.pathname.split('/').filter(Boolean);
-
-let _viewState = 'reg';
 ---
 
 <LayoutBasic>
 	<div
-		class="grid h-full w-[calc(100dvw-100px)] min-w-5xl flex-1 grid-cols-[minmax(240px,320px)_minmax(360px,1fr)_minmax(240px,480px)] grid-rows-[28px_1fr] gap-5 overflow-x-auto py-5 pl-5"
+		data-scroll="none"
+		class="grid h-full w-[calc(100dvw-100px)] flex-1 grid-cols-[minmax(240px,320px)_minmax(360px,1fr)_minmax(240px,480px)] grid-rows-[28px_1fr] gap-5 py-5 pl-5"
 	>
 		<PopupSide />
+
 		<header class="order-2 col-span-2 flex items-center justify-between">
 			<div class="flex items-center gap-2.5">
-				<ui-tit size="lg" :tit="$store.data.view === 'edit' ? '온보딩 수정' : '온보딩 등록'"></ui-tit>
+				<ui-tit size="lg" :tit="view === 'edit' ? '온보딩 수정' : '온보딩 등록'"></ui-tit>
 
 				<text-badge variant="primary" txt="배포 중"></text-badge>
 				<text-badge variant="error" txt="배포 전"></text-badge>
 			</div>
 
 			<div class="grid grid-cols-[150px] gap-2 has-[[icon-name=trash]]:grid-cols-[60px_150px]">
-				<template x-if="$store.data.view === 'edit'">
+				<template x-if="view === 'edit'">
 					<ui-btn
 						variant="icon"
 						icon-name="trash"
@@ -169,16 +167,15 @@ let _viewState = 'reg';
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
 
-<script defer define:vars={{ _viewState }}>
+<script defer>
 	document.addEventListener('alpine:init', () => {
+		const Alpine = window.Alpine;
 		if (Alpine.store('data')) return;
 
 		Alpine.store('data', {
-			view: _viewState,
-			loading: false,
 			error: null,
 			itemId: 1,
-			items: Array.from({ length: 5 }, (_, idx) => ({
+			items: Array.from({ length: 50 }, (_, idx) => ({
 				id: idx + 1,
 				tourDestinationId: 1,
 				title: {
@@ -190,7 +187,7 @@ let _viewState = 'reg';
 					en: 'Description',
 				},
 				sortingNumber: null,
-				deploymentStatus: idx < 2 ? 'DRAFT' : 'DEPLOYING',
+				deploymentStatus: idx < 40 ? 'DRAFT' : 'DEPLOYING',
 				createdAt: '2026-07-11T12:23:15.300Z',
 				updatedAt: null,
 				onboardingFiles: [
@@ -207,28 +204,13 @@ let _viewState = 'reg';
 				],
 			})),
 			data: {},
-			colors: Array.from({ length: 12 }, (_, i) => i + 1),
-			color: 1,
-			isEventCategory: false,
-			isAiRecommendationEnabled: false,
-			isNavigationProvided: false,
 
 			get deploymentItems() {
 				return (this.items ?? []).filter((item) => item?.deploymentStatus === 'DEPLOYING').length;
 			},
 
-			setColor(list) {
-				this.color = list;
-			},
-
 			currentItem(_id = '') {
-				this.view = 'edit';
 				this.itemId = _id;
-			},
-
-			async findInit(id = 1) {
-				if (!id) return;
-				this.data = this.items.find((v) => v.id === Number(id)) ?? {};
 			},
 
 			deploymentHandler(id = 1) {
@@ -278,12 +260,7 @@ let _viewState = 'reg';
 				}
 			},
 
-			init() {
-				this.findInit(1);
-				Alpine.effect(() => {
-					console.log(document.querySelectorAll('thumbnail-upload'));
-				});
-			},
+			init() {},
 		});
 	});
 </script>
