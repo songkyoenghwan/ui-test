@@ -14,7 +14,7 @@ const json = await res.json();
 const authData = json?.auth?.data ?? json?.data;
 const user = authData?.user ?? {};
 const menus = user?.menus ?? [];
-const tourDestinations = user?.tourDestinations ?? [];
+const tourDestinations = authData?.tourDestinations ?? [];
 
 const pathname = Astro.url.pathname;
 const currentSub = pathname;

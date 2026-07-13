@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 	import { imask } from '@imask/svelte';
+	import { WheelPicker, WheelPickerWrapper } from '@uinstinct/svelte-wheel-picker';
 
 	let { value = $bindable('00:00'), title = '', cls = '', onValueChange = $bindable() } = $props();
 

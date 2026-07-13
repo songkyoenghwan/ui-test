@@ -26,7 +26,9 @@ export class TestBadge extends LitElement {
 
 		return html`
 			<p
-				class="${this.variant} ${toneClass} ${this.cls} ${this.ellipsis ? 'block truncate' : 'inline-flex'} rounded-sm px-2 text-sm"
+				class="${this.variant} ${toneClass} ${this.cls} ${this.ellipsis
+					? 'block truncate'
+					: 'inline-flex'} rounded-sm px-2 text-sm"
 				title="${this.txt}"
 			>
 				${this.txt}

@@ -3,15 +3,18 @@
 	"arrowParens": "always",
 	"bracketSpacing": true,
 	"htmlWhitespaceSensitivity": "ignore",
-	"printWidth": 140,
+	"printWidth": 130,
 	"singleQuote": true,
 	"tabWidth": 4,
 	"useTabs": true,
 	"trailingComma": "all",
+	"embeddedLanguageFormatting": "auto",
+	"singleAttributePerLine": false,
+	"cssDeclarationSorterOrder": "smacss",
+	"tailwindPreserveDuplicates": false,
 	"sortTailwindcss": {
 		"preserveDuplicates": false
 	},
-	"cssDeclarationSorterOrder": "smacss",
 	"sortPackageJson": true,
 	"sortImports": true,
 	"ignorePatterns": [

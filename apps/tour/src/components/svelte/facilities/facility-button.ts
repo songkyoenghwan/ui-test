@@ -38,7 +38,11 @@ export class FacilityButton extends LitElement {
 								></ui-btn>
 							</div>
 
-							<lang-translate view="side" data-text-hidden="ko" .lang=${button?.buttonName ?? null}></lang-translate>
+							<lang-translate
+								view="side"
+								data-text-hidden="ko"
+								.lang=${button?.buttonName ?? null}
+							></lang-translate>
 						</li>
 					`,
 				)}

@@ -66,21 +66,38 @@ const dialogId = 'DialogSetCenterCoordinates';
 						</label>
 					</dt>
 					<dd>
-						<input type="text" name="map-reg-lat" id="map-reg-lat" class="input-text l" placeholder="위도" x-model="$store.map.center.lat" />
+						<input
+							type="text"
+							name="map-reg-lat"
+							id="map-reg-lat"
+							class="input-text l"
+							placeholder="위도"
+							x-model="$store.map.center.lat"
+						/>
 					</dd>
 					<dt class="flex items-center">
 						<label for="" class="flex items-center">
 							<ui-txt cls="text-black" size="sm" txt="경도"></ui-txt>
 						</label>
 					</dt>
-					<dd><input type="text" name="map-reg-lon" id="map-reg-lon" class="input-text l" placeholder="경도" x-model="$store.map.center.lng" /></dd>
+					<dd>
+						<input
+							type="text"
+							name="map-reg-lon"
+							id="map-reg-lon"
+							class="input-text l"
+							placeholder="경도"
+							x-model="$store.map.center.lng"
+						/>
+					</dd>
 				</dl>
 			</div>
 		</section>
 
 		<footer class="modal-footer">
 			<div class="flex flex-1 items-center">
-				<ui-btn class="flex-1" variant="primary" size="lg" txt="설정 완료" @btn-click="$store.map.confirmCenterPicker()"></ui-btn>
+				<ui-btn class="flex-1" variant="primary" size="lg" txt="설정 완료" @btn-click="$store.map.confirmCenterPicker()"
+				></ui-btn>
 				<!-- disabled -->
 			</div>
 		</footer>

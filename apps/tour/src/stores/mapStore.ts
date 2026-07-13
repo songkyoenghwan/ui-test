@@ -125,20 +125,18 @@ document.addEventListener('alpine:init', () => {
 
 		buildReverseAddress(data = {}) {
 			const info = data?.addressInfo ?? data?.features?.[0]?.properties ?? data;
-			const roadAddress = [
-				info.city_do,
-				info.gu_gun,
-				info.eup_myun,
-				info.roadName,
-				info.buildingIndex,
-			].filter(Boolean).join(' ');
+			const roadAddress = [info.city_do, info.gu_gun, info.eup_myun, info.roadName, info.buildingIndex]
+				.filter(Boolean)
+				.join(' ');
 			const jibunAddress = [
 				info.city_do,
 				info.gu_gun,
 				info.legalDong || info.adminDong || info.eup_myun,
 				info.ri,
 				info.bunji,
-			].filter(Boolean).join(' ');
+			]
+				.filter(Boolean)
+				.join(' ');
 
 			return info.fullAddress || info.roadAddress || info.newAddress || roadAddress || info.address || jibunAddress || '';
 		},
@@ -196,17 +194,15 @@ document.addEventListener('alpine:init', () => {
 				fullAddr: address,
 			});
 			const coordinates =
-				data?.coordinateInfo?.coordinate ??
-				data?.coordinates ??
-				data?.features ??
-				data?.searchPoiInfo?.pois?.poi ??
-				[];
+				data?.coordinateInfo?.coordinate ?? data?.coordinates ?? data?.features ?? data?.searchPoiInfo?.pois?.poi ?? [];
 			console.log('[tmap:address-geocode] data', { address, zonecode, data });
 			console.log('[tmap:address-geocode] coordinates', coordinates);
 
-			return (Array.isArray(coordinates) ? coordinates : [coordinates])
-				.map((item) => this.buildAddressResult(item))
-				.find(Boolean) ?? null;
+			return (
+				(Array.isArray(coordinates) ? coordinates : [coordinates])
+					.map((item) => this.buildAddressResult(item))
+					.find(Boolean) ?? null
+			);
 		},
 
 		async reverseGeocodeCenter(lat, lng) {
@@ -218,14 +214,18 @@ document.addEventListener('alpine:init', () => {
 			this.selectCenter(nextLat, nextLng);
 
 			try {
-				const data = await this.fetchTmapJson('geo/reversegeocoding', {
-					version: '1',
-					format: 'json',
-					coordType: 'WGS84GEO',
-					addressType: 'A04',
-					lat: nextLat,
-					lon: nextLng,
-				}, '[tmap:reverse-geocode]');
+				const data = await this.fetchTmapJson(
+					'geo/reversegeocoding',
+					{
+						version: '1',
+						format: 'json',
+						coordType: 'WGS84GEO',
+						addressType: 'A04',
+						lat: nextLat,
+						lon: nextLng,
+					},
+					'[tmap:reverse-geocode]',
+				);
 				const address = this.buildReverseAddress(data);
 
 				console.log('[tmap:reverse-geocode] data', data);
@@ -375,19 +375,27 @@ document.addEventListener('alpine:init', () => {
 			this.map?.on?.('contextmenu', handleContextMenu);
 			this.map?.on?.('ContextMenu', handleContextMenu);
 
-			container.addEventListener('contextmenu', (evt) => {
-				evt.preventDefault();
-				evt.stopPropagation();
-				selectMousePoint(evt);
-			}, true);
+			container.addEventListener(
+				'contextmenu',
+				(evt) => {
+					evt.preventDefault();
+					evt.stopPropagation();
+					selectMousePoint(evt);
+				},
+				true,
+			);
 
-			container.addEventListener('mousedown', (evt) => {
-				if (evt.button !== 2) return;
+			container.addEventListener(
+				'mousedown',
+				(evt) => {
+					if (evt.button !== 2) return;
 
-				evt.preventDefault();
-				evt.stopPropagation();
-				selectMousePoint(evt);
-			}, true);
+					evt.preventDefault();
+					evt.stopPropagation();
+					selectMousePoint(evt);
+				},
+				true,
+			);
 		},
 
 		openCenterPicker(options = {}) {

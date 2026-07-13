@@ -42,7 +42,9 @@ document.addEventListener('alpine:init', () => {
 			document.body.classList.add('overflow-hidden');
 		},
 		close(e) {
-			const dialogs = [...document.querySelectorAll('dialog')].filter((item) => item instanceof HTMLDialogElement && item.open);
+			const dialogs = [...document.querySelectorAll('dialog')].filter(
+				(item) => item instanceof HTMLDialogElement && item.open,
+			);
 
 			if (!dialogs.length) {
 				this.isOpen = false;
@@ -57,7 +59,9 @@ document.addEventListener('alpine:init', () => {
 				targetEl.close();
 			}
 
-			const remainDialogs = [...document.querySelectorAll('dialog')].filter((item) => item instanceof HTMLDialogElement && item.open);
+			const remainDialogs = [...document.querySelectorAll('dialog')].filter(
+				(item) => item instanceof HTMLDialogElement && item.open,
+			);
 
 			this.isOpen = remainDialogs.length > 0;
 			this.targetId = remainDialogs.length ? remainDialogs[remainDialogs.length - 1].id : '';
@@ -100,7 +104,8 @@ document.addEventListener('alpine:init', () => {
 			document.body.classList.remove('overflow-hidden');
 		},
 		editHandle(e) {
-			const targetState = e?.target?.closest('[data-target-edit]')?.dataset.targetEdit || e?.target?.getAttribute('data-target-edit');
+			const targetState =
+				e?.target?.closest('[data-target-edit]')?.dataset.targetEdit || e?.target?.getAttribute('data-target-edit');
 			if (targetState === '') return;
 
 			this.edit = targetState;

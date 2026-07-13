@@ -14,7 +14,10 @@ export const createSuccessResponse = <T>(data: T): ApiSuccessResponse<T> => ({
 	data,
 });
 
-export const createErrorResponse = (message: string, details?: Record<string, { message: string; value?: unknown }>): ApiErrorResponse => ({
+export const createErrorResponse = (
+	message: string,
+	details?: Record<string, { message: string; value?: unknown }>,
+): ApiErrorResponse => ({
 	success: false,
 	message,
 	details,
