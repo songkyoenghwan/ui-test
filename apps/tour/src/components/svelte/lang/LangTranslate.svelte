@@ -227,7 +227,7 @@
 							{/if}
 						</li>
 					{/if}
-				{:else if local[key] !== ''}
+				{:else if $langStore[key] && local[key] !== ''}
 					<li
 						class={[
 							btnPreview === 'btn-name'

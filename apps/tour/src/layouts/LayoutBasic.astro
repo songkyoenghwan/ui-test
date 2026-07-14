@@ -1,13 +1,13 @@
 ---
 import Header from '@/layouts/Header.astro';
 import Lnb from '@/layouts/Lnb.astro';
-import ScriptInline from '@/layouts/ScriptInline.astro';
 import '@/styles/index.css';
 
 interface Props {
+	Submenu?: string;
 	Title?: string;
 }
-const { Title: title } = Astro.props;
+const { Title: title, Submenu: submenu } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 
@@ -19,7 +19,7 @@ const pathname = Astro.url.pathname;
 		<link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
 		<meta name="view-transition" content="same-origin" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{pathname} |</title>
+		<title>{submenu} | {title}</title>
 		<script is:inline src="/api/tmap/vectorjs?version=1"></script>
 	</head>
 	<body x-data="page">

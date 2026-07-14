@@ -137,97 +137,99 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 						</tr>
 					</thead>
 					<tbody>
-						<template
-							x-for="(item, idx) in $store.data.items.slice(($store.data.page - 1) * $store.data.pageSize, $store.data.page * $store.data.pageSize)"
-							:key="item.id"
-						>
-							<tr
-								class="group/tr"
-								:class="$store.data.itemId === item.id ? 'bg-secondary border border-cms-3' : ''"
-								:aria-selected="$store.data.itemId === item.id ? 'true' : 'false'"
+						<template x-if="$store.data?.items">
+							<template
+								x-for="(item, idx) in $store.data?.items?.slice(($store.data.page - 1) * $store.data.pageSize, $store.data.page * $store.data.pageSize)"
+								:key="item.id"
 							>
-								<td>
-									<ui-checkbox x-bind:item-id="item.id"></ui-checkbox>
-								</td>
-								<td>
-									<ui-txt size="sm" cls="text-center text-black" x-bind:txt="idx + 1"></ui-txt>
-								</td>
-								<td>
-									<ui-txt
-										role="button"
-										size="sm"
-										cls="text-left text-black cursor-pointer truncate max-w-75"
-										x-bind:txt="item.name.ko"
-										:title="item.name.ko"
-										@click="$store.data.sideView(item.id)"></ui-txt>
-								</td>
-								<td>
-									<div class="flex items-center justify-start gap-1">
-										<template x-if="item.category.name.ko">
-											<ui-txt size="sm" cls="text-left text-black" x-bind:txt="item.category.name.ko"
-											></ui-txt>
+								<tr
+									class="group/tr"
+									:class="$store.data.itemId === item.id ? 'bg-secondary border border-cms-3' : ''"
+									:aria-selected="$store.data.itemId === item.id ? 'true' : 'false'"
+								>
+									<td>
+										<ui-checkbox x-bind:item-id="item.id"></ui-checkbox>
+									</td>
+									<td>
+										<ui-txt size="sm" cls="text-center text-black" x-bind:txt="idx + 1"></ui-txt>
+									</td>
+									<td>
+										<ui-txt
+											role="button"
+											size="sm"
+											cls="text-left text-black cursor-pointer truncate max-w-75"
+											x-bind:txt="item.name.ko"
+											:title="item.name.ko"
+											@click="$store.data.sideView(item.id)"></ui-txt>
+									</td>
+									<td>
+										<div class="flex items-center justify-start gap-1">
+											<template x-if="item.category?.name?.ko">
+												<ui-txt size="sm" cls="text-left text-black" x-bind:txt="item.category?.name?.ko"
+												></ui-txt>
+											</template>
+											<template x-if="item.category?.parent">
+												<ui-txt
+													size="sm"
+													cls="text-left text-black"
+													:txt="'/ ' + item.category?.parent?.name?.ko"></ui-txt>
+											</template>
+										</div>
+									</td>
+									<td>
+										<template x-if="item.isAlways">
+											<p class="text-left">상시 운영</p>
 										</template>
-										<template x-if="item.category?.parent">
+
+										<template x-if="!item.isAlways">
+											<div>
+												<text-date x-bind:dateTime="item.startAt"></text-date>
+												<div class="flex">~<text-date x-bind:dateTime="item.endAt"></text-date></div>
+											</div>
+										</template>
+									</td>
+									<td>
+										<template x-if="item.facilityButtons?.length === 0">
+											<ui-txt size="sm" cls="text-left text-slate-500" txt="미사용"></ui-txt>
+										</template>
+										<template x-if="item.facilityButtons?.length">
 											<ui-txt
 												size="sm"
-												cls="text-left text-black"
-												:txt="'/ ' + item.category.parent.name.ko"></ui-txt>
+												cls="text-cms-4 text-left"
+												:txt="'사용 (' + item.facilityButtons.filter(btn => btn.tourDestinationCommonButtonId != null)?.length + '/' + item.facilityButtons?.length + ')'"
+											></ui-txt>
 										</template>
-									</div>
-								</td>
-								<td>
-									<template x-if="item.isAlways">
-										<p class="text-left">상시 운영</p>
-									</template>
+									</td>
+									<td>
+										<ui-txt size="sm" cls="text-left text-slate-500" txt="0개"></ui-txt>
+										<ui-txt size="sm" cls="text-cms-4 text-left" txt="1개"></ui-txt>
+									</td>
+									<td class="text-left">
+										<template x-if="item.facilityPoiMappings?.length === 0">
+											<text-badge tooltip variant="error" txt="매칭 전"></text-badge>
+										</template>
+										<template
+											x-if="item.facilityPoiMappings?.length && item.facilityPoiMappings?.[0]?.poi?.name?.ko !== ''"
+										>
+											<text-badge tooltip variant="bg-slate" txt="이름 없음"></text-badge>
+										</template>
+										<template
+											x-if="item.facilityPoiMappings?.length && item.facilityPoiMappings?.[0]?.poi?.name?.ko !== ''"
+										>
+											<text-badge
+												tooltip
+												variant="primary"
+												date-ellipsis="true"
+												cls="max-w-30"
+												x-bind:txt="item.facilityPoiMappings?.[0]?.poi?.name?.ko"></text-badge>
+										</template>
+									</td>
 
-									<template x-if="!item.isAlways">
-										<div>
-											<text-date x-bind:dateTime="item.startAt"></text-date>
-											<div class="flex">~<text-date x-bind:dateTime="item.endAt"></text-date></div>
-										</div>
-									</template>
-								</td>
-								<td>
-									<template x-if="item.facilityButtons.length === 0">
-										<ui-txt size="sm" cls="text-left text-slate-500" txt="미사용"></ui-txt>
-									</template>
-									<template x-if="item.facilityButtons.length">
-										<ui-txt
-											size="sm"
-											cls="text-cms-4 text-left"
-											:txt="'사용 (' + item.facilityButtons.filter(btn => btn.tourDestinationCommonButtonId != null).length + '/' + item.facilityButtons.length + ')'"
-										></ui-txt>
-									</template>
-								</td>
-								<td>
-									<ui-txt size="sm" cls="text-left text-slate-500" txt="0개"></ui-txt>
-									<ui-txt size="sm" cls="text-cms-4 text-left" txt="1개"></ui-txt>
-								</td>
-								<td class="text-left">
-									<template x-if="item.facilityPoiMappings.length === 0">
-										<text-badge tooltip variant="error" txt="매칭 전"></text-badge>
-									</template>
-									<template
-										x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko === ''"
-									>
-										<text-badge tooltip variant="bg-slate" txt="이름 없음"></text-badge>
-									</template>
-									<template
-										x-if="item.facilityPoiMappings.length && item.facilityPoiMappings[0].poi.name.ko !== ''"
-									>
-										<text-badge
-											tooltip
-											variant="primary"
-											date-ellipsis="true"
-											cls="max-w-30"
-											x-bind:txt="item.facilityPoiMappings[0].poi.name.ko"></text-badge>
-									</template>
-								</td>
-
-								<td class="text-left">
-									<text-date data-time-view="time" x-bind:dateTime="item.updatedAt"></text-date>
-								</td>
-							</tr>
+									<td class="text-left">
+										<text-date data-time-view="time" x-bind:dateTime="item?.updatedAt"></text-date>
+									</td>
+								</tr>
+							</template>
 						</template>
 
 						<tr>
@@ -311,7 +313,9 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
 
-<script defer>
+<script>
+	import { currentTourDestinationId } from '@/stores/pageStore';
+
 	document.addEventListener('alpine:init', () => {
 		if (Alpine.store('data')) return;
 		Alpine.store('data', {
@@ -324,11 +328,10 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 			error: null,
 			itemId: 0,
 			sidebar: false,
-			async fetchData() {
+			async fetchData(tourDestinationId: number) {
 				this.loading = true;
 				try {
-					const res = await fetch(`/api/facilities`);
-
+					const res = await fetch(`/api/facilities?tourDestinationId=${tourDestinationId}`);
 					const data = await res.json();
 					const payload = data.data ?? {};
 
@@ -367,9 +370,13 @@ import FacilitiesSide from '@/pages/poi/facility/FacilitiesSide.astro';
 				this.itemId = id;
 				this.findInit(id);
 			},
-			async init() {
-				await this.fetchData(1);
-			},
+			async init() {},
+		});
+
+		const store = Alpine.store('data');
+
+		currentTourDestinationId.subscribe(async (id) => {
+			await store.fetchData(id);
 		});
 	});
 </script>

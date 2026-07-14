@@ -41,6 +41,7 @@
 	function handleChange(event: Event) {
 		const target = event.currentTarget as HTMLInputElement;
 		checked = target.checked;
+		change?.(event);
 
 		$host()?.dispatchEvent(
 			new CustomEvent('checked-change', {

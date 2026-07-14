@@ -1,11 +1,11 @@
 ---
+import DialogFacilityRegistration from '@/components/modals/DialogFacilityRegistration.astro';
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import MapList from '@/pages/poi/map/MapList.astro';
 import MapReg from '@/pages/poi/map/MapReg.astro';
-import DialogFacilityRegistration from '@/src/components/modals/DialogFacilityRegistration.astro';
 ---
 
-<LayoutBasic>
+<LayoutBasic Submenu="지도" Title="위치">
 	<div x-show="$store.data.sidebar === 'reg'" x-transition class="absolute top-5 left-5 z-5">
 		<top-tooltip variant="bg-secondary" tit="지도를 우클릭하여 위치 변경" checked="chk"></top-tooltip>
 	</div>
@@ -79,8 +79,11 @@ import DialogFacilityRegistration from '@/src/components/modals/DialogFacilityRe
 	@alert-cancel="alert()"
 	@alert-confirm="alert()"></alert-popup>
 
-<script defer>
+<script>
+	import { currentTourDestinationId } from '@/stores/pageStore';
+
 	document.addEventListener('alpine:init', () => {
+		const Alpine = window.Alpine;
 		if (Alpine.store('data')) return;
 		Alpine.store('data', {
 			items: [],
@@ -95,10 +98,10 @@ import DialogFacilityRegistration from '@/src/components/modals/DialogFacilityRe
 			sidebarTopVisible: true,
 			sidebarChkVisible: false,
 			toast: [],
-			async fetchData() {
+			async fetchData(tourDestinationId: number) {
 				this.loading = true;
 				try {
-					const res = await fetch(`/api/pois`);
+					const res = await fetch(`/api/pois?tourDestinationId=${tourDestinationId}`);
 
 					const data = await res.json();
 					const payload = data.data ?? {};
@@ -129,6 +132,12 @@ import DialogFacilityRegistration from '@/src/components/modals/DialogFacilityRe
 			async init() {
 				await this.fetchData(1);
 			},
+		});
+
+		const store = Alpine.store('data');
+
+		currentTourDestinationId.subscribe(async (id) => {
+			await store.fetchData(id);
 		});
 	});
 </script>

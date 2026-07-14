@@ -84,20 +84,8 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 						// get firstName() {
 						// 	return JSON.stringify($store.data.data?.name) ?? '{}'
 						// },
-						filterSupportedLang(value = {}) {
-							if ($store.data.view !== 'detail') return value
-
-							const supported = $store.data.data?.supportedLanguages ?? {}
-							return ['ko', 'en', 'zh', 'ja', 'th', 'vi'].reduce((acc, key) => {
-								if (supported[key]) {
-									acc[key] = value?.[key] ?? ''
-								}
-
-								return acc
-							}, {})
-						},
 						get nameLang() {
-							return JSON.stringify(this.filterSupportedLang($store.data.data?.name ?? {}))
+							return JSON.stringify($store.data.data?.name ?? {})
 						},
 						get tourDestinationOperatingSchedules() {
 							return JSON.stringify($store.data.data?.tourDestinationOperatingSchedules) ?? '{}'
@@ -120,7 +108,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 							return $store.data.data?.facilityPoiMappings?.length ?? 0
 						},
 						get operationGuide() {
-							return JSON.stringify(this.filterSupportedLang($store.data.data?.operationInfo ?? {}))
+							return JSON.stringify($store.data.data?.operationInfo ?? {})
 						}
 						
 					}"
@@ -302,8 +290,21 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 		<section class="shadow-1xs rounded-lg bg-white p-5" id="target-scroll-tab-section-1">
 			<ui-tit tag="h2" size="lg" tit="커스텀 항목"></ui-tit>
 
-			<group-custom data-field="customConfig" :view="$store.data.view" :result="JSON.stringify($store.data.data) ?? '{}'"
-			></group-custom>
+			<group-custom
+				data-field="customConfig"
+				:view="$store.data.view"
+				:color-code="$store.data.data?.colorCode"
+				:is-ai-recommend-yn="$store.data.data?.isAiRecommendYn"
+				:is-section-congestion-yn="$store.data.data?.isSectionCongestionYn"
+				:is-section-congestion-use="$store.data.data?.isSectionCongestionUse"
+				:is-facility-congestion-yn="$store.data.data?.isFacilityCongestionYn"
+				:is-facility-congestion-use="$store.data.data?.isFacilityCongestionUse"
+				:is-vps-contents-yn="$store.data.data?.isVpsContentsYn"
+				:is-vps-contents-yn-use="$store.data.data?.isVpsContentsYnUse"
+				:is-facility-address-yn="$store.data.data?.isFacilityAddressYn"
+				:is-facility-address-yn-use="$store.data.data?.isFacilityAddressYnUse"
+				:is-custom-sorting-yn="$store.data.data?.isCustomSortingYn"
+				:tour-destination-common-buttons="$store.data.data?.tourDestinationCommonButtons ?? []"></group-custom>
 		</section>
 	</article>
 </LayoutBasic>
@@ -311,7 +312,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 <DialogSetCenterCoordinates />
 <DialogAddrSearch />
 
-<script defer>
+<script>
 	document.addEventListener('alpine:init', () => {
 		if (Alpine.store('data')) return;
 
@@ -365,19 +366,6 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				} catch {
 					return value;
 				}
-			},
-
-			getSupportedLangValue(value = {}) {
-				if (this.view !== 'detail') return value ?? {};
-
-				const supported = this.data?.supportedLanguages ?? {};
-				return ['ko', 'en', 'zh', 'ja', 'th', 'vi'].reduce((acc, key) => {
-					if (supported[key]) {
-						acc[key] = value?.[key] ?? '';
-					}
-
-					return acc;
-				}, {});
 			},
 
 			getLangValue(field, fallback = {}) {
@@ -520,6 +508,12 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 				};
 			},
 
+			updateLocation(lat, lng, address) {
+				this.data.latitude = Number(lat);
+				this.data.longitude = Number(lng);
+				this.data.address = address;
+			},
+
 			async saveData() {
 				this.loading = true;
 				this.error = null;
@@ -599,12 +593,12 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 					const nameEl = this.getField('name');
 					if (nameEl) {
-						nameEl.lang = this.getSupportedLangValue(this.data.name);
+						nameEl.lang = this.data.name ?? {};
 					}
 
 					const operationInfoEl = this.getField('operationInfo');
 					if (operationInfoEl) {
-						operationInfoEl.lang = this.getSupportedLangValue(this.data.operationInfo);
+						operationInfoEl.lang = this.data.operationInfo ?? {};
 					}
 				} catch (error) {
 					this.error = error instanceof Error ? error.message : 'Unknown error';
@@ -624,7 +618,7 @@ import LayoutBasic from '@/layouts/LayoutBasic.astro';
 
 				this.name = JSON.stringify(this.data.name) ?? '{}';
 
-				document.querySelector('lang-translate').lang = this.getSupportedLangValue(this.data.name);
+				document.querySelector('lang-translate').lang = this.data.name ?? {};
 			},
 
 			t(lang) {

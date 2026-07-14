@@ -35,13 +35,12 @@
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (!timeRef) return;
-		if (timeRef.contains(event.target as Node)) return;
 		if (!isExpanded) return;
+		if (timeRef.contains(event.target as Node)) return;
 
-		// 즉시 실행 대신 10ms 지연 (너무 민감한 반응을 살짝 완화)
 		setTimeout(() => {
 			isExpanded = false;
-		}, 10);
+		}, 120);
 	};
 
 	const timeMaskOptions = {
@@ -88,7 +87,7 @@
 	}
 </script>
 
-<svelte:window onclick={handleClickOutside} />
+<svelte:window onpointerdown={handleClickOutside} />
 
 <div class="relative z-5" {title} bind:this={timeRef}>
 	<input
@@ -124,11 +123,11 @@
 			<WheelPickerWrapper classNames={{ group: 'time-picker' }}>
 				<WheelPicker
 					options={hourOptions}
-					infinite={true}
+					infinite={false}
 					dragSensitivity={1}
 					scrollSensitivity={1}
 					value={hour}
-					cylindrical={false}
+					cylindrical={true}
 					visibleCount={currentVisibleCount}
 					classNames={{
 						wrapper: 'my-wheel',
@@ -143,10 +142,11 @@
 				:
 				<WheelPicker
 					options={minuteOptions}
-					infinite={true}
+					infinite={false}
 					dragSensitivity={1}
 					scrollSensitivity={1}
 					value={minute}
+					cylindrical={true}
 					visibleCount={currentVisibleCount}
 					classNames={{
 						wrapper: 'my-wheel',

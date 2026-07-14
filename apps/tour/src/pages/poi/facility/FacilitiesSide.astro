@@ -312,7 +312,7 @@
 							>
 								<button
 									type="button"
-									class="grid grid-cols-[16px_1fr_70px] items-center gap-2"
+									class="grid grid-cols-[16px_1fr_90px] items-center gap-2"
 									aria-label="Drag handle"
 									x-sort:item
 								>
@@ -335,7 +335,7 @@
 											:txt="`${item?.description.ko ?? ''}`"></ui-txt>
 									</div>
 
-									<thumbnail-view cls="size-17.5" :thumb-files="item.fileUrl"></thumbnail-view>
+									<thumbnail-view :thumb-files="item.fileUrl"></thumbnail-view>
 								</button>
 
 								<div

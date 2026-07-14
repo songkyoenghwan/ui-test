@@ -1,8 +1,10 @@
+import persist from '@alpinejs/persist';
 import sort from '@alpinejs/sort';
 import type { Alpine } from 'alpinejs';
 
 export default (Alpine: Alpine) => {
 	Alpine.plugin(sort);
+	Alpine.plugin(persist);
 
 	Alpine.data('page', () => ({
 		view: 'reg',

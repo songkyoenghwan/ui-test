@@ -171,7 +171,7 @@
 			<p class="mt-1 text-center text-[10px] text-slate-600">드래그 혹은 클릭</p>
 			<p class="mt-px text-center text-[8px] text-slate-500">
 				JPG, PNG 최대 2MB <br />
-				 1:1 비율 권장
+				1:1 비율 권장
 			</p>
 		{:else if size === 'onboarding'}
 			<p class="mt-1 text-center text-xs text-slate-600">이미지를 드래그하거나 클릭하여 업로드</p>

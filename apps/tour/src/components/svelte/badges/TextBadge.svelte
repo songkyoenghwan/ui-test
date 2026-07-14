@@ -16,8 +16,8 @@
 />
 
 <script lang="ts">
-	import { blur, scale, slide } from 'svelte/transition';
 	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';
+	import { blur, scale, slide } from 'svelte/transition';
 
 	type Props = {
 		txt?: string;
