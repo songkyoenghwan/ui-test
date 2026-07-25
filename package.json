@@ -4,7 +4,8 @@
 	"homepage": "songkyoenghwan.github.io/ui-test/",
 	"workspaces": [
 		"apps/homepage",
-		"apps/tour"
+		"apps/tour",
+		"apps/front"
 	],
 	"scripts": {
 		"build": "bun run --filter \"*\" build",
