@@ -33,6 +33,7 @@
 		"@astrojs/alpinejs": "^1.0.0",
 		"@astrojs/node": "^11.0.2",
 		"@astrojs/svelte": "^9.0.1",
+		"@astrojs/ts-plugin": "^1.10.10",
 		"@dnd-kit/helpers": "^0.5.0",
 		"@dnd-kit/svelte": "^0.5.0",
 		"@master/css": "^1.37.8",
