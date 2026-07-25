@@ -2,13 +2,24 @@
 import LayoutBasic from '@/layouts/LayoutBasic.astro';
 import '@/styles/index.css';
 
-const { data } = Astro.props as Props;
+type PageStatus = '완료' | '수정' | '삭제' | '신규' | '확인 필요';
 
-const list = [
+interface PageLink {
+	text: string;
+	url: string;
+	status?: PageStatus;
+	description?: string;
+}
+
+interface PageSection {
+	title: string;
+	links: PageLink[];
+}
+
+const sections: PageSection[] = [
 	{
-		page: '관광솔루션',
 		title: '지도',
-		subList: [
+		links: [
 			{
 				text: '지도',
 				url: '/CMS-MAP-001/',
@@ -17,7 +28,7 @@ const list = [
 	},
 	{
 		title: '대상지',
-		subList: [
+		links: [
 			{
 				text: '대상지 관리(List)',
 				url: '/tour-destination',
@@ -38,11 +49,11 @@ const list = [
 	},
 	{
 		title: '시설',
-		subList: [
+		links: [
 			{
 				text: '위치',
 				url: '/poi/map',
-				etc: '모달: 등록된 시설 매칭',
+				description: '모달: 등록된 시설 매칭',
 			},
 			{
 				text: '시설(List)',
@@ -51,13 +62,13 @@ const list = [
 			{
 				text: '카테고리',
 				url: '/poi/category',
-				etc: '모달: 하위 카테고리(등록/수정)',
+				description: '모달: 하위 카테고리(등록/수정)',
 			},
 		],
 	},
 	{
 		title: '온보딩',
-		subList: [
+		links: [
 			{
 				text: '온보딩',
 				url: '/onboarding/popup',
@@ -70,64 +81,55 @@ const list = [
 	},
 ];
 
-const getStatusClass = (check?: string) => {
-	switch (check) {
-		case '완료':
-			return 'text-[--222]';
-		case '수정':
-			return 'text-red-600';
-		case '삭제':
-			return 'text-gray-300 line-through';
-		case '신규':
-			return 'text-2070fb';
-		case '확인 필요':
-			return 'text-green-600';
-		default:
-			return 'text-gray-600';
-	}
+const statusClasses: Record<PageStatus, string> = {
+	완료: 'text-[#222]',
+	수정: 'text-red-600',
+	삭제: 'text-gray-300 line-through',
+	신규: 'text-2070fb',
+	'확인 필요': 'text-green-600',
 };
+
+const getStatusClass = (status?: PageStatus) => (status ? statusClasses[status] : 'text-gray-600');
 ---
 
 <LayoutBasic>
-	<section>
+	<main class="p-2" aria-labelledby="page-title">
+		<h1 id="page-title" class="text-2070fb m-2 pb-2 text-2xl font-bold">관광솔루션</h1>
+
 		{
-			list.map((item) => (
-				<div class="p-2">
-					{item.page && <h1 class="text-2070fb m-2 pb-2 text-2xl font-bold">{item.page}</h1>}
+			sections.map((section) => (
+				<section class="p-2" aria-labelledby={`section-${section.title}`}>
+					<h2 id={`section-${section.title}`} class="text-2d3648 m-2 text-xl font-bold">
+						{section.title}
+					</h2>
 
-					{item.title && <h2 class="text-2d3648 m-2 text-xl font-bold">{item.title}</h2>}
-
-					<div class="grid gap-1 sm:grid-cols-1">
-						{item.subList.map((subItem, subIndex) => (
-							<div
-								class={`border-b border-gray-300 transition-shadow hover:shadow-md ${getStatusClass(subItem.check)}`}
+					<ul class="grid gap-1">
+						{section.links.map((link, linkIndex) => (
+							<li
+								class={`border-b border-gray-300 transition-shadow hover:shadow-md ${getStatusClass(link.status)}`}
 							>
-								{subItem.subtitle && <p class="py-2 text-blue-400">&middot; {subItem.subtitle}</p>}
-
 								<a
-									href={subItem.url}
+									href={link.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="group flex h-full flex-col gap-2 p-2 hover:bg-slate-50"
+									class="group flex min-h-11 items-center justify-between gap-3 rounded-sm p-2 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
 								>
-									<div class="flex items-start justify-between gap-2">
-										<p class="space-x-1 font-medium">
-											{subIndex + 1}. {subItem.text}
-											<span class="text-xs">{subItem.url}</span>
-										</p>
+									<span class="font-medium">
+										{linkIndex + 1}. {link.text}
+										<span class="ml-1 text-xs font-normal text-gray-500">{link.url}</span>
+									</span>
 
-										{subItem.etc && (
-											<span class="shrink-0 rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 group-hover:bg-white">
-												{subItem.etc}
-											</span>
-										)}
-									</div>
+									{link.description && (
+										<span class="shrink-0 rounded bg-gray-100 px-2 py-0.5 text-xs text-gray-600 group-hover:bg-white">
+											{link.description}
+										</span>
+									)}
 								</a>
-							</div>
+							</li>
 						))}
-					</div>
-				</div>
+					</ul>
+				</section>
 			))
 		}
-	</section>
+	</main>
 </LayoutBasic>
