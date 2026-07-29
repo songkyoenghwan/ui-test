@@ -1,0 +1,37 @@
+---
+import Language from '@/components/btn/Language.svelte';
+---
+
+<section class="h-dvh bg-(--base-color)">
+	<div class="grid h-full grid-rows-[36px_1fr_40px] bg-linear-0 from-black/0 to-black/60 p-5">
+		<Language client:only />
+
+		<div class="mt-5 flex flex-1 flex-col justify-center overflow-y-auto">
+			<ul class="flex flex-wrap gap-3 overflow-y-auto **:text-center **:text-white">
+				<li class="group/link flex flex-col items-center">
+					<header class="flex flex-col items-center justify-center">
+						<picture class="max-h-11.25">
+							<img src="/images/dummy/Frame 1686558025.png" alt="" />
+						</picture>
+						<h3 class="text-[26px]">광집사로 더 편리해진 관광</h3>
+						<p class="mt-2 text-sm leading-tight">
+							관광의 모든 불편함을 해결해주는 AI 집사 ‘광집사’ 서비스로 순천만국가정원을 200% 즐겨보세요!
+						</p>
+					</header>
+					<picture class="min-h-20 py-5">
+						<img src="/images/dummy/image 165619.png" alt="" />
+					</picture>
+				</li>
+			</ul>
+		</div>
+
+		<a
+			href="http://"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="group relative flex h-10 items-center justify-center rounded-sm bg-white to-[#0f1f42] px-2 py-1 transition-colors hover:bg-(--base-color) hover:text-white active:bg-(--base-color) active:text-white"
+		>
+			<p class="text-base font-medium text-(--base-color) group-hover:text-white">시작하기</p>
+		</a>
+	</div>
+</section>
