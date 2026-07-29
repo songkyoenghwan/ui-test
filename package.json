@@ -5,7 +5,7 @@
 	"workspaces": [
 		"apps/homepage",
 		"apps/tour",
-		"front"
+		"apps/front"
 	],
 	"scripts": {
 		"build": "bun run --filter \"*\" build",
@@ -14,7 +14,7 @@
 		"dev:homepage": " bun run --filter homepage dev",
 		"dev:map": "bun run --filter map dev",
 		"dev:tour": "bun run --filter tour dev",
-		"dev:front": "bun run --filter front dev",
+		"dev:front": "bun run --filter map-front dev",
 		"fm": "prettier --write . && oxfmt",
 		"format:pretter": "prettier --write .",
 		"fmt": "oxfmt .",
