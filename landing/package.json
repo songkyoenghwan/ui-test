@@ -1,0 +1,32 @@
+{
+    "name": "ouster",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "npm-run-all --parallel tailwind:watch client:dev ",
+        "build": "vite build",
+        "preview": "vite preview",
+        "client:dev": "vite dev --host",
+        "tailwind:watch": "bun x @tailwindcss/cli -i ./src/lib/css/salesforce.css -o ./src/lib/css/salesforce-output.css --watch"
+    },
+    "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^5.0.3",
+        "@tailwindcss/cli": "^4.1.2",
+        "@types/bun": "latest",
+        "concurrently": "^9.1.2",
+        "eslint": "^9.21.0",
+        "prettier": "^3.5.3",
+        "prettier-plugin-svelte": "^3.3.3",
+        "prettier-plugin-tailwindcss": "^0.6.11",
+        "tailwindcss": "^4.1.2",
+        "vite": "^6.2.0"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.2"
+    },
+    "module": "index.ts",
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
+}

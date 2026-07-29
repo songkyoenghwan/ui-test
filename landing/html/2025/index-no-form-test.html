@@ -1,0 +1,1608 @@
+<!doctype html>
+<html>
+    <head>
+        <base href="https://offers.deepfine.com" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="%%description%%" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>랜딩 페이지</title>
+
+        <style>
+            /*! tailwindcss v4.1.2 | MIT License | https://tailwindcss.com */
+            @layer properties;
+            @layer theme, base, components, utilities;
+            @layer theme {
+                :root,
+                :host {
+                    --font-sans:
+                        ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+                        'Noto Color Emoji';
+                    --font-mono:
+                        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+                        monospace;
+                    --color-blue-300: oklch(80.9% 0.105 251.813);
+                    --color-gray-50: oklch(98.5% 0.002 247.839);
+                    --color-black: #000;
+                    --color-white: #fff;
+                    --spacing: 0.25rem;
+                    --container-6xl: 72rem;
+                    --container-7xl: 80rem;
+                    --text-sm: 0.875rem;
+                    --text-sm--line-height: calc(1.25 / 0.875);
+                    --text-base: 1rem;
+                    --text-base--line-height: calc(1.5 / 1);
+                    --text-lg: 1.125rem;
+                    --text-lg--line-height: calc(1.75 / 1.125);
+                    --text-xl: 1.25rem;
+                    --text-xl--line-height: calc(1.75 / 1.25);
+                    --text-2xl: 1.5rem;
+                    --text-2xl--line-height: calc(2 / 1.5);
+                    --text-3xl: 1.875rem;
+                    --text-3xl--line-height: calc(2.25 / 1.875);
+                    --text-4xl: 2.25rem;
+                    --text-4xl--line-height: calc(2.5 / 2.25);
+                    --font-weight-medium: 500;
+                    --font-weight-bold: 700;
+                    --radius-sm: 0.25rem;
+                    --radius-md: 0.375rem;
+                    --radius-lg: 0.5rem;
+                    --radius-xl: 0.75rem;
+                    --radius-2xl: 1rem;
+                    --radius-3xl: 1.5rem;
+                    --blur-xs: 4px;
+                    --default-font-family: var(--font-sans);
+                    --default-mono-font-family: var(--font-mono);
+                }
+            }
+            @layer base {
+                *,
+                ::after,
+                ::before,
+                ::backdrop,
+                ::file-selector-button {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                    border: 0 solid;
+                }
+                html,
+                :host {
+                    line-height: 1.5;
+                    -webkit-text-size-adjust: 100%;
+                    tab-size: 4;
+                    font-family: var(
+                        --default-font-family,
+                        ui-sans-serif,
+                        system-ui,
+                        sans-serif,
+                        'Apple Color Emoji',
+                        'Segoe UI Emoji',
+                        'Segoe UI Symbol',
+                        'Noto Color Emoji'
+                    );
+                    font-feature-settings: var(--default-font-feature-settings, normal);
+                    font-variation-settings: var(--default-font-variation-settings, normal);
+                    -webkit-tap-highlight-color: transparent;
+                }
+                hr {
+                    height: 0;
+                    color: inherit;
+                    border-top-width: 1px;
+                }
+                abbr:where([title]) {
+                    -webkit-text-decoration: underline dotted;
+                    text-decoration: underline dotted;
+                }
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    font-size: inherit;
+                    font-weight: inherit;
+                }
+                a {
+                    color: inherit;
+                    -webkit-text-decoration: inherit;
+                    text-decoration: inherit;
+                }
+                b,
+                strong {
+                    font-weight: bolder;
+                }
+                code,
+                kbd,
+                samp,
+                pre {
+                    font-family: var(
+                        --default-mono-font-family,
+                        ui-monospace,
+                        SFMono-Regular,
+                        Menlo,
+                        Monaco,
+                        Consolas,
+                        'Liberation Mono',
+                        'Courier New',
+                        monospace
+                    );
+                    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+                    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+                    font-size: 1em;
+                }
+                small {
+                    font-size: 80%;
+                }
+                sub,
+                sup {
+                    font-size: 75%;
+                    line-height: 0;
+                    position: relative;
+                    vertical-align: baseline;
+                }
+                sub {
+                    bottom: -0.25em;
+                }
+                sup {
+                    top: -0.5em;
+                }
+                table {
+                    text-indent: 0;
+                    border-color: inherit;
+                    border-collapse: collapse;
+                }
+                :-moz-focusring {
+                    outline: auto;
+                }
+                progress {
+                    vertical-align: baseline;
+                }
+                summary {
+                    display: list-item;
+                }
+                ol,
+                ul,
+                menu {
+                    list-style: none;
+                }
+                img,
+                svg,
+                video,
+                canvas,
+                audio,
+                iframe,
+                embed,
+                object {
+                    display: block;
+                    vertical-align: middle;
+                }
+                img,
+                video {
+                    max-width: 100%;
+                    height: auto;
+                }
+                button,
+                input,
+                select,
+                optgroup,
+                textarea,
+                ::file-selector-button {
+                    font: inherit;
+                    font-feature-settings: inherit;
+                    font-variation-settings: inherit;
+                    letter-spacing: inherit;
+                    color: inherit;
+                    border-radius: 0;
+                    background-color: transparent;
+                    opacity: 1;
+                }
+                :where(select:is([multiple], [size])) optgroup {
+                    font-weight: bolder;
+                }
+                :where(select:is([multiple], [size])) optgroup option {
+                    padding-inline-start: 20px;
+                }
+                ::file-selector-button {
+                    margin-inline-end: 4px;
+                }
+                ::placeholder {
+                    opacity: 1;
+                }
+                @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
+                    ::placeholder {
+                        color: currentcolor;
+                        @supports (color: color-mix(in lab, red, red)) {
+                            color: color-mix(in oklab, currentcolor 50%, transparent);
+                        }
+                    }
+                }
+                textarea {
+                    resize: vertical;
+                }
+                ::-webkit-search-decoration {
+                    -webkit-appearance: none;
+                }
+                ::-webkit-date-and-time-value {
+                    min-height: 1lh;
+                    text-align: inherit;
+                }
+                ::-webkit-datetime-edit {
+                    display: inline-flex;
+                }
+                ::-webkit-datetime-edit-fields-wrapper {
+                    padding: 0;
+                }
+                ::-webkit-datetime-edit,
+                ::-webkit-datetime-edit-year-field,
+                ::-webkit-datetime-edit-month-field,
+                ::-webkit-datetime-edit-day-field,
+                ::-webkit-datetime-edit-hour-field,
+                ::-webkit-datetime-edit-minute-field,
+                ::-webkit-datetime-edit-second-field,
+                ::-webkit-datetime-edit-millisecond-field,
+                ::-webkit-datetime-edit-meridiem-field {
+                    padding-block: 0;
+                }
+                :-moz-ui-invalid {
+                    box-shadow: none;
+                }
+                button,
+                input:where([type='button'], [type='reset'], [type='submit']),
+                ::file-selector-button {
+                    appearance: button;
+                }
+                ::-webkit-inner-spin-button,
+                ::-webkit-outer-spin-button {
+                    height: auto;
+                }
+                [hidden]:where(:not([hidden='until-found'])) {
+                    display: none !important;
+                }
+            }
+            @layer utilities {
+                .\@container {
+                    container-type: inline-size;
+                }
+                .sr-only {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border-width: 0;
+                }
+                .fixed {
+                    position: fixed;
+                }
+                .relative {
+                    position: relative;
+                }
+                .right-0 {
+                    right: calc(var(--spacing) * 0);
+                }
+                .right-2 {
+                    right: calc(var(--spacing) * 2);
+                }
+                .bottom-0 {
+                    bottom: calc(var(--spacing) * 0);
+                }
+                .bottom-2 {
+                    bottom: calc(var(--spacing) * 2);
+                }
+                .col-span-2 {
+                    grid-column: span 2 / span 2;
+                }
+                .mx-auto {
+                    margin-inline: auto;
+                }
+                .mt-7 {
+                    margin-top: calc(var(--spacing) * 7);
+                }
+                .mt-7\.5 {
+                    margin-top: calc(var(--spacing) * 7.5);
+                }
+                .mt-auto {
+                    margin-top: auto;
+                }
+                .flex {
+                    display: flex;
+                }
+                .grid {
+                    display: grid;
+                }
+                .table {
+                    display: table;
+                }
+                .size-5 {
+                    width: calc(var(--spacing) * 5);
+                    height: calc(var(--spacing) * 5);
+                }
+                .size-10 {
+                    width: calc(var(--spacing) * 10);
+                    height: calc(var(--spacing) * 10);
+                }
+                .size-16 {
+                    width: calc(var(--spacing) * 16);
+                    height: calc(var(--spacing) * 16);
+                }
+                .size-\[70px\] {
+                    width: 70px;
+                    height: 70px;
+                }
+                .h-10 {
+                    height: calc(var(--spacing) * 10);
+                }
+                .h-\[2\.5rem\] {
+                    height: 2.5rem;
+                }
+                .h-\[40px\] {
+                    height: 40px;
+                }
+                .min-h-10 {
+                    min-height: calc(var(--spacing) * 10);
+                }
+                .min-h-dvh {
+                    min-height: 100dvh;
+                }
+                .w-\[11\.5625rem\] {
+                    width: 11.5625rem;
+                }
+                .w-\[185px\] {
+                    width: 185px;
+                }
+                .w-full {
+                    width: 100%;
+                }
+                .max-w-6xl {
+                    max-width: var(--container-6xl);
+                }
+                .max-w-7xl {
+                    max-width: var(--container-7xl);
+                }
+                .max-w-\[80rem\] {
+                    max-width: 80rem;
+                }
+                .max-w-\[1280px\] {
+                    max-width: 1280px;
+                }
+                .flex-1 {
+                    flex: 1;
+                }
+                .flex-none {
+                    flex: none;
+                }
+                .basis-5 {
+                    flex-basis: calc(var(--spacing) * 5);
+                }
+                .border-collapse {
+                    border-collapse: collapse;
+                }
+                .transform {
+                    transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x)
+                        var(--tw-skew-y);
+                }
+                .cursor-pointer {
+                    cursor: pointer;
+                }
+                .resize {
+                    resize: both;
+                }
+                .grid-cols-1 {
+                    grid-template-columns: repeat(1, minmax(0, 1fr));
+                }
+                .grid-cols-2 {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                .grid-cols-\[4\.375rem_repeat\(4\)\] {
+                    grid-template-columns: 4.375rem repeat(4);
+                }
+                .flex-col {
+                    flex-direction: column;
+                }
+                .flex-wrap {
+                    flex-wrap: wrap;
+                }
+                .place-content-center {
+                    place-content: center;
+                }
+                .items-center {
+                    align-items: center;
+                }
+                .justify-between {
+                    justify-content: space-between;
+                }
+                .justify-center {
+                    justify-content: center;
+                }
+                .gap-1 {
+                    gap: calc(var(--spacing) * 1);
+                }
+                .gap-2 {
+                    gap: calc(var(--spacing) * 2);
+                }
+                .gap-2\.5 {
+                    gap: calc(var(--spacing) * 2.5);
+                }
+                .gap-5 {
+                    gap: calc(var(--spacing) * 5);
+                }
+                .gap-7 {
+                    gap: calc(var(--spacing) * 7);
+                }
+                .gap-7\.5 {
+                    gap: calc(var(--spacing) * 7.5);
+                }
+                .space-y-2 {
+                    :where(& > :not(:last-child)) {
+                        --tw-space-y-reverse: 0;
+                        margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+                        margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+                    }
+                }
+                .overflow-hidden {
+                    overflow: hidden;
+                }
+                .overflow-x-hidden {
+                    overflow-x: hidden;
+                }
+                .rounded-2xl {
+                    border-radius: var(--radius-2xl);
+                }
+                .rounded-3xl {
+                    border-radius: var(--radius-3xl);
+                }
+                .rounded-\[1\.25rem\] {
+                    border-radius: 1.25rem;
+                }
+                .rounded-\[20px\] {
+                    border-radius: 20px;
+                }
+                .rounded-lg {
+                    border-radius: var(--radius-lg);
+                }
+                .rounded-md {
+                    border-radius: var(--radius-md);
+                }
+                .rounded-none {
+                    border-radius: 0;
+                }
+                .rounded-sm {
+                    border-radius: var(--radius-sm);
+                }
+                .rounded-xl {
+                    border-radius: var(--radius-xl);
+                }
+                .border {
+                    border-style: var(--tw-border-style);
+                    border-width: 1px;
+                }
+                .border-b {
+                    border-bottom-style: var(--tw-border-style);
+                    border-bottom-width: 1px;
+                }
+                .border-\[\#ddd\] {
+                    border-color: #ddd;
+                }
+                .border-black {
+                    border-color: var(--color-black);
+                }
+                .border-white {
+                    border-color: var(--color-white);
+                }
+                .border-b-\[\#666\] {
+                    border-bottom-color: #666;
+                }
+                .bg-\[\#1e00Db\] {
+                    background-color: #1e00db;
+                }
+                .bg-\[\#1e145e\] {
+                    background-color: #1e145e;
+                }
+                .bg-gray-50 {
+                    background-color: var(--color-gray-50);
+                }
+                .bg-white {
+                    background-color: var(--color-white);
+                }
+                .bg-white\/20 {
+                    background-color: color-mix(in srgb, #fff 20%, transparent);
+                    @supports (color: color-mix(in lab, red, red)) {
+                        background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+                    }
+                }
+                .bg-white\/60 {
+                    background-color: color-mix(in srgb, #fff 60%, transparent);
+                    @supports (color: color-mix(in lab, red, red)) {
+                        background-color: color-mix(in oklab, var(--color-white) 60%, transparent);
+                    }
+                }
+                .bg-linear-\[180deg\,\#fff_50\%\,\#f4f3fb_100\%\] {
+                    --tw-gradient-position: 180deg, #fff 50%, #f4f3fb 100%;
+                    background-image: linear-gradient(var(--tw-gradient-stops, 180deg, #fff 50%, #f4f3fb 100%));
+                }
+                .bg-\[url\(\.\/static\/images\/bg-main\.jpg\)\] {
+                    background-image: url(./static/images/bg-main.jpg);
+                }
+                .bg-\[url\(\/static\/images\/bg-main\.jpg\)\] {
+                    background-image: url(/static/images/bg-main.jpg);
+                }
+                .bg-\[url\(https\:\/\/www\.deepfine\.com\/static\/images\/banner\/bg-dac-banner\.png\)\] {
+                    background-image: url(https://www.deepfine.com/static/images/banner/bg-dac-banner.png);
+                }
+                .bg-\[url\(https\:\/\/www\.deepfine\.com\/static\/images\/icon_image\/icon-blog\.png\)\] {
+                    background-image: url(https://www.deepfine.com/static/images/icon_image/icon-blog.png);
+                }
+                .bg-\[url\(https\:\/\/www\.deepfine\.com\/static\/images\/icon_image\/icon-insta\.png\)\] {
+                    background-image: url(https://www.deepfine.com/static/images/icon_image/icon-insta.png);
+                }
+                .bg-\[url\(https\:\/\/www\.deepfine\.com\/static\/images\/icon_image\/icon-linked\.png\)\] {
+                    background-image: url(https://www.deepfine.com/static/images/icon_image/icon-linked.png);
+                }
+                .bg-\[url\(https\:\/\/www\.deepfine\.com\/static\/images\/icon_image\/icon-youtube\.png\)\] {
+                    background-image: url(https://www.deepfine.com/static/images/icon_image/icon-youtube.png);
+                }
+                .bg-\[length\:2\.5rem_2\.5rem\] {
+                    background-size: 2.5rem 2.5rem;
+                }
+                .bg-\[length\:40px_40px\] {
+                    background-size: 40px 40px;
+                }
+                .bg-contain {
+                    background-size: contain;
+                }
+                .bg-cover {
+                    background-size: cover;
+                }
+                .bg-center {
+                    background-position: center;
+                }
+                .bg-no-repeat {
+                    background-repeat: no-repeat;
+                }
+                .p-1 {
+                    padding: calc(var(--spacing) * 1);
+                }
+                .p-2 {
+                    padding: calc(var(--spacing) * 2);
+                }
+                .p-2\.5 {
+                    padding: calc(var(--spacing) * 2.5);
+                }
+                .p-5 {
+                    padding: calc(var(--spacing) * 5);
+                }
+                .px-2 {
+                    padding-inline: calc(var(--spacing) * 2);
+                }
+                .px-2\.5 {
+                    padding-inline: calc(var(--spacing) * 2.5);
+                }
+                .px-5 {
+                    padding-inline: calc(var(--spacing) * 5);
+                }
+                .py-2 {
+                    padding-block: calc(var(--spacing) * 2);
+                }
+                .py-2\.5 {
+                    padding-block: calc(var(--spacing) * 2.5);
+                }
+                .py-3 {
+                    padding-block: calc(var(--spacing) * 3);
+                }
+                .pt-3 {
+                    padding-top: calc(var(--spacing) * 3);
+                }
+                .pt-5 {
+                    padding-top: calc(var(--spacing) * 5);
+                }
+                .pb-2 {
+                    padding-bottom: calc(var(--spacing) * 2);
+                }
+                .pb-2\.5 {
+                    padding-bottom: calc(var(--spacing) * 2.5);
+                }
+                .pl-5 {
+                    padding-left: calc(var(--spacing) * 5);
+                }
+                .text-center {
+                    text-align: center;
+                }
+                .text-right {
+                    text-align: right;
+                }
+                .text-2xl {
+                    font-size: var(--text-2xl);
+                    line-height: var(--tw-leading, var(--text-2xl--line-height));
+                }
+                .text-base {
+                    font-size: var(--text-base);
+                    line-height: var(--tw-leading, var(--text-base--line-height));
+                }
+                .text-sm {
+                    font-size: var(--text-sm);
+                    line-height: var(--tw-leading, var(--text-sm--line-height));
+                }
+                .text-xl {
+                    font-size: var(--text-xl);
+                    line-height: var(--tw-leading, var(--text-xl--line-height));
+                }
+                .text-\[\.8125rem\] {
+                    font-size: 0.8125rem;
+                }
+                .text-\[13px\] {
+                    font-size: 13px;
+                }
+                .font-bold {
+                    --tw-font-weight: var(--font-weight-bold);
+                    font-weight: var(--font-weight-bold);
+                }
+                .font-medium {
+                    --tw-font-weight: var(--font-weight-medium);
+                    font-weight: var(--font-weight-medium);
+                }
+                .break-keep {
+                    word-break: keep-all;
+                }
+                .text-black {
+                    color: var(--color-black);
+                }
+                .text-white {
+                    color: var(--color-white);
+                }
+                .text-white\/50 {
+                    color: color-mix(in srgb, #fff 50%, transparent);
+                    @supports (color: color-mix(in lab, red, red)) {
+                        color: color-mix(in oklab, var(--color-white) 50%, transparent);
+                    }
+                }
+                .not-italic {
+                    font-style: normal;
+                }
+                .underline {
+                    text-decoration-line: underline;
+                }
+                .shadow-xl {
+                    --tw-shadow:
+                        0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+                        0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+                    box-shadow:
+                        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+                        var(--tw-ring-shadow), var(--tw-shadow);
+                }
+                .outline {
+                    outline-style: var(--tw-outline-style);
+                    outline-width: 1px;
+                }
+                .blur-xs {
+                    --tw-blur: blur(var(--blur-xs));
+                    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,)
+                        var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,)
+                        var(--tw-drop-shadow,);
+                }
+                .filter {
+                    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,)
+                        var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,)
+                        var(--tw-drop-shadow,);
+                }
+                .backdrop-blur-xs {
+                    --tw-backdrop-blur: blur(var(--blur-xs));
+                    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
+                        var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
+                        var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
+                        var(--tw-backdrop-sepia,);
+                    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
+                        var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
+                        var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
+                        var(--tw-backdrop-sepia,);
+                }
+                .backdrop-filter {
+                    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
+                        var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
+                        var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
+                        var(--tw-backdrop-sepia,);
+                    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,)
+                        var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,)
+                        var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,)
+                        var(--tw-backdrop-sepia,);
+                }
+                .placeholder\:text-\[\#999\] {
+                    &::placeholder {
+                        color: #999;
+                    }
+                }
+                .focus\:border-blue-300 {
+                    &:focus {
+                        border-color: var(--color-blue-300);
+                    }
+                }
+                .max-lg\:flex {
+                    @media (width < 64rem) {
+                        display: flex;
+                    }
+                }
+                .max-lg\:flex-col {
+                    @media (width < 64rem) {
+                        flex-direction: column;
+                    }
+                }
+                .max-lg\:gap-5 {
+                    @media (width < 64rem) {
+                        gap: calc(var(--spacing) * 5);
+                    }
+                }
+                .\@max-5xl\:mt-5 {
+                    @container (width < 64rem) {
+                        margin-top: calc(var(--spacing) * 5);
+                    }
+                }
+                .\@3xs\:col-span-2 {
+                    @container (width >= 16rem) {
+                        grid-column: span 2 / span 2;
+                    }
+                }
+                .\@3xs\:grid-cols-1 {
+                    @container (width >= 16rem) {
+                        grid-template-columns: repeat(1, minmax(0, 1fr));
+                    }
+                }
+                .\@3xs\:gap-2\.5 {
+                    @container (width >= 16rem) {
+                        gap: calc(var(--spacing) * 2.5);
+                    }
+                }
+                .\@3xl\:col-span-1 {
+                    @container (width >= 48rem) {
+                        grid-column: span 1 / span 1;
+                    }
+                }
+                .\@5xl\:mx-auto {
+                    @container (width >= 64rem) {
+                        margin-inline: auto;
+                    }
+                }
+                .\@5xl\:grid-cols-1 {
+                    @container (width >= 64rem) {
+                        grid-template-columns: repeat(1, minmax(0, 1fr));
+                    }
+                }
+                .\@5xl\:grid-cols-2 {
+                    @container (width >= 64rem) {
+                        grid-template-columns: repeat(2, minmax(0, 1fr));
+                    }
+                }
+                .\@5xl\:flex-row {
+                    @container (width >= 64rem) {
+                        flex-direction: row;
+                    }
+                }
+                .\@5xl\:items-start {
+                    @container (width >= 64rem) {
+                        align-items: flex-start;
+                    }
+                }
+                .\@5xl\:justify-start {
+                    @container (width >= 64rem) {
+                        justify-content: flex-start;
+                    }
+                }
+                .\@5xl\:gap-5 {
+                    @container (width >= 64rem) {
+                        gap: calc(var(--spacing) * 5);
+                    }
+                }
+                .\@5xl\:gap-7\.5 {
+                    @container (width >= 64rem) {
+                        gap: calc(var(--spacing) * 7.5);
+                    }
+                }
+                .\@5xl\:gap-12\.5 {
+                    @container (width >= 64rem) {
+                        gap: calc(var(--spacing) * 12.5);
+                    }
+                }
+                .\@5xl\:gap-20 {
+                    @container (width >= 64rem) {
+                        gap: calc(var(--spacing) * 20);
+                    }
+                }
+                .\@5xl\:rounded-xl {
+                    @container (width >= 64rem) {
+                        border-radius: var(--radius-xl);
+                    }
+                }
+                .\@5xl\:p-5 {
+                    @container (width >= 64rem) {
+                        padding: calc(var(--spacing) * 5);
+                    }
+                }
+                .\@5xl\:p-7\.5 {
+                    @container (width >= 64rem) {
+                        padding: calc(var(--spacing) * 7.5);
+                    }
+                }
+                .\@5xl\:px-7\.5 {
+                    @container (width >= 64rem) {
+                        padding-inline: calc(var(--spacing) * 7.5);
+                    }
+                }
+                .\@5xl\:text-left {
+                    @container (width >= 64rem) {
+                        text-align: left;
+                    }
+                }
+                .\@5xl\:text-right {
+                    @container (width >= 64rem) {
+                        text-align: right;
+                    }
+                }
+                .\@5xl\:text-3xl {
+                    @container (width >= 64rem) {
+                        font-size: var(--text-3xl);
+                        line-height: var(--tw-leading, var(--text-3xl--line-height));
+                    }
+                }
+                .\@5xl\:text-4xl {
+                    @container (width >= 64rem) {
+                        font-size: var(--text-4xl);
+                        line-height: var(--tw-leading, var(--text-4xl--line-height));
+                    }
+                }
+                .\@5xl\:text-base {
+                    @container (width >= 64rem) {
+                        font-size: var(--text-base);
+                        line-height: var(--tw-leading, var(--text-base--line-height));
+                    }
+                }
+                .\@5xl\:text-lg {
+                    @container (width >= 64rem) {
+                        font-size: var(--text-lg);
+                        line-height: var(--tw-leading, var(--text-lg--line-height));
+                    }
+                }
+            }
+            @layer base {
+                @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&display=swap');
+                html,
+                body {
+                    background-color: #f9f9f9;
+                    font-family:
+                        'Noto Sans KR',
+                        system-ui,
+                        -apple-system,
+                        Apple SD Gothic Neo,
+                        BlinkMacSystemFont,
+                        'Segoe UI',
+                        Roboto,
+                        Helvetica,
+                        Arial,
+                        sans-serif,
+                        'Apple Color Emoji',
+                        'Segoe UI Emoji',
+                        'Segoe UI Symbol',
+                        'Noto Color Emoji';
+                    font-optical-sizing: auto;
+                    font-weight: 400;
+                    font-style: normal;
+                    color: var(--222);
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    scroll-behavior: smooth;
+                }
+                .bg-salesforce-main {
+                    background-image: url(../../../static/images/bg-main.jpg);
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+            @property --tw-rotate-x {
+                syntax: '*';
+                inherits: false;
+                initial-value: rotateX(0);
+            }
+            @property --tw-rotate-y {
+                syntax: '*';
+                inherits: false;
+                initial-value: rotateY(0);
+            }
+            @property --tw-rotate-z {
+                syntax: '*';
+                inherits: false;
+                initial-value: rotateZ(0);
+            }
+            @property --tw-skew-x {
+                syntax: '*';
+                inherits: false;
+                initial-value: skewX(0);
+            }
+            @property --tw-skew-y {
+                syntax: '*';
+                inherits: false;
+                initial-value: skewY(0);
+            }
+            @property --tw-space-y-reverse {
+                syntax: '*';
+                inherits: false;
+                initial-value: 0;
+            }
+            @property --tw-border-style {
+                syntax: '*';
+                inherits: false;
+                initial-value: solid;
+            }
+            @property --tw-font-weight {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-shadow {
+                syntax: '*';
+                inherits: false;
+                initial-value: 0 0 #0000;
+            }
+            @property --tw-shadow-color {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-shadow-alpha {
+                syntax: '<percentage>';
+                inherits: false;
+                initial-value: 100%;
+            }
+            @property --tw-inset-shadow {
+                syntax: '*';
+                inherits: false;
+                initial-value: 0 0 #0000;
+            }
+            @property --tw-inset-shadow-color {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-inset-shadow-alpha {
+                syntax: '<percentage>';
+                inherits: false;
+                initial-value: 100%;
+            }
+            @property --tw-ring-color {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-ring-shadow {
+                syntax: '*';
+                inherits: false;
+                initial-value: 0 0 #0000;
+            }
+            @property --tw-inset-ring-color {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-inset-ring-shadow {
+                syntax: '*';
+                inherits: false;
+                initial-value: 0 0 #0000;
+            }
+            @property --tw-ring-inset {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-ring-offset-width {
+                syntax: '<length>';
+                inherits: false;
+                initial-value: 0px;
+            }
+            @property --tw-ring-offset-color {
+                syntax: '*';
+                inherits: false;
+                initial-value: #fff;
+            }
+            @property --tw-ring-offset-shadow {
+                syntax: '*';
+                inherits: false;
+                initial-value: 0 0 #0000;
+            }
+            @property --tw-outline-style {
+                syntax: '*';
+                inherits: false;
+                initial-value: solid;
+            }
+            @property --tw-blur {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-brightness {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-contrast {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-grayscale {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-hue-rotate {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-invert {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-opacity {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-saturate {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-sepia {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-drop-shadow {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-drop-shadow-color {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-drop-shadow-alpha {
+                syntax: '<percentage>';
+                inherits: false;
+                initial-value: 100%;
+            }
+            @property --tw-drop-shadow-size {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-blur {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-brightness {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-contrast {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-grayscale {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-hue-rotate {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-invert {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-opacity {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-saturate {
+                syntax: '*';
+                inherits: false;
+            }
+            @property --tw-backdrop-sepia {
+                syntax: '*';
+                inherits: false;
+            }
+            @layer properties {
+                @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
+                    ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+                    *,
+                    ::before,
+                    ::after,
+                    ::backdrop {
+                        --tw-rotate-x: rotateX(0);
+                        --tw-rotate-y: rotateY(0);
+                        --tw-rotate-z: rotateZ(0);
+                        --tw-skew-x: skewX(0);
+                        --tw-skew-y: skewY(0);
+                        --tw-space-y-reverse: 0;
+                        --tw-border-style: solid;
+                        --tw-font-weight: initial;
+                        --tw-shadow: 0 0 #0000;
+                        --tw-shadow-color: initial;
+                        --tw-shadow-alpha: 100%;
+                        --tw-inset-shadow: 0 0 #0000;
+                        --tw-inset-shadow-color: initial;
+                        --tw-inset-shadow-alpha: 100%;
+                        --tw-ring-color: initial;
+                        --tw-ring-shadow: 0 0 #0000;
+                        --tw-inset-ring-color: initial;
+                        --tw-inset-ring-shadow: 0 0 #0000;
+                        --tw-ring-inset: initial;
+                        --tw-ring-offset-width: 0px;
+                        --tw-ring-offset-color: #fff;
+                        --tw-ring-offset-shadow: 0 0 #0000;
+                        --tw-outline-style: solid;
+                        --tw-blur: initial;
+                        --tw-brightness: initial;
+                        --tw-contrast: initial;
+                        --tw-grayscale: initial;
+                        --tw-hue-rotate: initial;
+                        --tw-invert: initial;
+                        --tw-opacity: initial;
+                        --tw-saturate: initial;
+                        --tw-sepia: initial;
+                        --tw-drop-shadow: initial;
+                        --tw-drop-shadow-color: initial;
+                        --tw-drop-shadow-alpha: 100%;
+                        --tw-drop-shadow-size: initial;
+                        --tw-backdrop-blur: initial;
+                        --tw-backdrop-brightness: initial;
+                        --tw-backdrop-contrast: initial;
+                        --tw-backdrop-grayscale: initial;
+                        --tw-backdrop-hue-rotate: initial;
+                        --tw-backdrop-invert: initial;
+                        --tw-backdrop-opacity: initial;
+                        --tw-backdrop-saturate: initial;
+                        --tw-backdrop-sepia: initial;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body class="overflow-x-hidden">
+        <main
+            class="@container flex min-h-dvh w-full flex-col gap-5 overflow-x-hidden bg-[url(https://www.deepfine.com/static/images/banner/bg-dac-banner.png)] bg-cover bg-center bg-no-repeat backdrop-blur-xs"
+        >
+            <header class="px-5 pt-5">
+                <div class="mx-auto max-w-7xl">
+                    <h1>
+                        <a
+                            href="http://offers.deepfine.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex h-10 w-[11.5625rem]"
+                            title="딥파인 홈페이지로 새창열기"
+                        >
+                            <img src="https://www.deepfine.com/static/images/logo/logo-light.png" alt="DEEP.FINE" />
+                        </a>
+                    </h1>
+                </div>
+            </header>
+
+            <article class="w-full @5xl:px-7.5">
+                <div
+                    class="grid max-w-[1280px] gap-7.5 rounded-none bg-white/60 p-5 break-keep @3xs:grid-cols-1 @5xl:mx-auto @5xl:grid-cols-2 @5xl:gap-20 @5xl:rounded-xl @5xl:p-7.5"
+                >
+                    <section class="flex flex-col @3xs:gap-2.5 @5xl:gap-5">
+                        <h2 class="grid grid-cols-1 font-bold">
+                            <span class="text-xl @5xl:text-3xl">DEEP.FINE INSIGHT</span>
+                            <span class="text-2xl @5xl:text-4xl">공간컴퓨팅 트렌드 백서</span>
+                        </h2>
+
+                        <p class="text-base @5xl:text-lg">
+                            디지털 전환이 필요한 산업 현장에 XR과 공간 정보 기술이 어떻게 적용되는지 정리한 백서를 공유
+                            드립니다.
+                        </p>
+                        <p class="text-base @5xl:text-lg">
+                            공간컴퓨팅 + AI + 실전 적용 사례까지산업을 움직이는 기술 인사이트를 딥파인에서 한눈에.
+                        </p>
+
+                        <ul class="grid grid-cols-1 gap-1 text-sm @5xl:text-base">
+                            <li>✅ 최신 공간컴퓨팅 기술/산업 트렌드</li>
+                            <li>✅ CES 등 전시·이벤트 초청</li>
+                            <li>✅ 백서 및 활용사례 무료 제공</li>
+                            <li>✅ 국내외 산업 리더 인터뷰</li>
+                            <li>✅ 딥파인 파트너 프로그램 소식</li>
+                        </ul>
+
+                        <div class="flex">
+                            <picture class="flex-1 overflow-hidden rounded-2xl">
+                                <img src="./static/images/img-ex-1.png" alt="" class="w-full" />
+                            </picture>
+                        </div>
+                    </section>
+
+                    <section class="flex flex-col @3xs:gap-2.5 @5xl:gap-5">
+                        <h2 class="grid grid-cols-1 text-xl font-bold @5xl:text-3xl">지금 바로 다운로드하세요! 📥</h2>
+
+                        <!--//using for form generator from section form-->
+                        %%content%%
+
+                        <form accept-charset="UTF-8" method="post" action="https://offers.deepfine.com/l/1098812/2025-04-15/csbz3b" class="form" id="pardot-form">
+                            
+                            
+                            
+                            
+                            
+                                
+                                    
+                            
+                                    
+                                        <p class="form-field  first_name pd-text required    ">
+                                            
+                                                <label class="field-label" for="1098812_502986pi_1098812_502986">성</label>
+                                            
+                            
+                                            <input type="text" name="1098812_502986pi_1098812_502986" id="1098812_502986pi_1098812_502986" value="" class="text" size="30" maxlength="40" onchange="" onfocus=""/>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_502986pi_1098812_502986" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  last_name pd-text required    ">
+                                            
+                                                <label class="field-label" for="1098812_502989pi_1098812_502989">이름</label>
+                                            
+                            
+                                            <input type="text" name="1098812_502989pi_1098812_502989" id="1098812_502989pi_1098812_502989" value="" class="text" size="30" maxlength="80" onchange="" onfocus=""/>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_502989pi_1098812_502989" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  company pd-text required    ">
+                                            
+                                                <label class="field-label" for="1098812_502992pi_1098812_502992">회사명</label>
+                                            
+                            
+                                            <input type="text" name="1098812_502992pi_1098812_502992" id="1098812_502992pi_1098812_502992" value="" class="text" size="30" maxlength="255" onchange="" onfocus=""/>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_502992pi_1098812_502992" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  job_title pd-text required    ">
+                                            
+                                                <label class="field-label" for="1098812_502995pi_1098812_502995">직함</label>
+                                            
+                            
+                                            <input type="text" name="1098812_502995pi_1098812_502995" id="1098812_502995pi_1098812_502995" value="" class="text" size="30" maxlength="128" onchange="" onfocus=""/>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_502995pi_1098812_502995" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  employees pd-select required    ">
+                                            
+                                                <label class="field-label" for="1098812_503004pi_1098812_503004">직원</label>
+                                            
+                            
+                                            <select name="1098812_503004pi_1098812_503004" id="1098812_503004pi_1098812_503004" class="select" onchange=""><option value="" selected="selected"></option>
+                            <option value="5021028">50명 미만</option>
+                            <option value="5021031">51-200명</option>
+                            <option value="5021034">201-500명</option>
+                            <option value="5021037">501명 이상</option>
+                            </select>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_503004pi_1098812_503004" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  email pd-text required    ">
+                                            
+                                                <label class="field-label" for="1098812_502998pi_1098812_502998">이메일</label>
+                                            
+                            
+                                            <input type="text" name="1098812_502998pi_1098812_502998" id="1098812_502998pi_1098812_502998" value="" class="text" size="30" maxlength="255" onchange="" onfocus=""/>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_502998pi_1098812_502998" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  phone pd-text required    ">
+                                            
+                                                <label class="field-label" for="1098812_503001pi_1098812_503001">전화번호</label>
+                                            
+                            
+                                            <input type="text" name="1098812_503001pi_1098812_503001" id="1098812_503001pi_1098812_503001" value="" class="text" size="30" maxlength="40" onchange="" onfocus=""/>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_503001pi_1098812_503001" style="display:none"></div>
+                                        
+                                    
+                                        <p class="form-field  comments pd-textarea     ">
+                                            
+                                                <label class="field-label" for="1098812_503010pi_1098812_503010">부스 방문 일정</label>
+                                            
+                            
+                                            <textarea name="1098812_503010pi_1098812_503010" id="1098812_503010pi_1098812_503010" onchange="" cols="40" rows="10" class="standard"></textarea>
+                                            
+                                        </p>
+                                        <div id="error_for_1098812_503010pi_1098812_503010" style="display:none"></div>
+                                        
+                                    
+                            
+                                    
+                                <p style="position:absolute; width:190px; left:-9999px; top: -9999px;visibility:hidden;">
+                                    <label for="pi_extra_field">Comments</label>
+                                    <input type="text" name="pi_extra_field" id="pi_extra_field"/>
+                                </p>
+                                    
+                            
+                                    <!-- forces IE5-8 to correctly submit UTF8 content  -->
+                                    <input name="_utf8" type="hidden" value="☃">
+                            
+                                    <p class="submit">
+                                        <input type="submit" accesskey="s" value="온라인 초청장 신청하기"/>
+                                    </p>
+                                
+                            
+                            
+<!--                             
+                            <script type="text/javascript">
+                            //<![CDATA[
+                            
+                                var anchors = document.getElementsByTagName("a");
+                                for (var i=0; i<anchors.length; i++) {
+                                    var anchor = anchors[i];
+                                    if(anchor.getAttribute("href")&&!anchor.getAttribute("target")) {
+                                        anchor.target = "_top";
+                                    }
+                                }
+                                    
+                            //]]>
+                            </script> -->
+                            <input type="hidden" name="hiddenDependentFields" id="hiddenDependentFields" value="" /></form>
+
+                            <div class="flex flex-col gap-2">
+                                <div class="flex items-center gap-2 border-b border-b-[#666] pb-2.5">
+                                    <input
+                                        type="checkbox"
+                                        name="confirmAll"
+                                        id="confirmAll"
+                                        class="peer size-5 flex-none basis-5 rounded-sm border border-black bg-gray-50 focus:border-blue-300"
+                                    />
+                                    <label for="confirmAll">아래 모든 내용에 동의합니다.</label>
+                                </div>
+                                <div class="flex items-center gap-2 pl-5">
+                                    <input type="hidden" name="Personal_Info_Opt_In" value="false" />
+                                    <input
+                                        type="checkbox"
+                                        name="Personal_Info_Opt_In"
+                                        id="confirmTerms"
+                                        value="true"
+                                        class="peer size-5 flex-none basis-5 rounded-sm border border-black bg-gray-50 focus:border-blue-300"
+                                    />
+                                    <label for="confirmTerms">
+                                        본인은
+                                        <strong>개인정보 처리방침</strong>
+                                        및
+                                        <strong>개인 정보</strong>
+                                        수집 및 사용에 동의합니다.
+                                    </label>
+                                </div>
+                                <div class="flex items-center gap-2 pl-5">
+                                    <input type="hidden" name="Marketing_Opt_In" value="false" />
+                                    <input
+                                        type="checkbox"
+                                        name="Marketing_Opt_In"
+                                        id="confirmMarketing"
+                                        value="true"
+                                        class="peer size-5 flex-none basis-5 rounded-sm border border-black bg-gray-50 focus:border-blue-300"
+                                    />
+                                    <label for="confirmMarketing">
+                                        (선택) DEEP.FINE 제품, 서비스 및 이벤트 관련 정보 제공을 위 한 마케팅 정보
+                                        수신에 동의합니다.
+                                    </label>
+                                </div>
+                                <div id="checkbox-error" style="color: red; display: none; padding-left: 20px">
+                                    최소한 하나 이상의 항목에 동의해야 합니다
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1">
+                                <button
+                                    type="submit"
+                                    class="grid cursor-pointer grid-cols-1 rounded-lg bg-[#1e00Db] py-2.5"
+                                >
+                                    <span class="font-boldd text-white">보고서 확인하기</span>
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </article>
+
+            <footer class="mt-auto bg-[#1e145e] p-5 text-center text-[13px] text-white/50 @5xl:p-7.5 @5xl:text-left">
+                <div class="mx-auto flex max-w-7xl flex-col justify-between @5xl:flex-row @5xl:gap-12.5">
+                    <div class="flex flex-col items-center justify-between gap-5 @5xl:items-start">
+                        <div class="flex h-[40px] w-[185px] justify-center @5xl:justify-start">
+                            <a
+                                href="http://offers.deepfine.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex"
+                                title="딥파인 홈페이지로 새창열기"
+                            >
+                                <img src="https://www.deepfine.com/static/images/logo/logo-light.png" alt="DEEP.FINE" />
+                            </a>
+                        </div>
+                        <div>
+                            <div>
+                                <p>
+                                    <span class="font-medium">대표이사.</span>
+                                    김현배
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap items-center justify-center gap-2.5 @5xl:justify-start">
+                                <p>
+                                    <span class="font-medium">Tel.</span>
+                                    070-4633-2487~8
+                                </p>
+                                <p>
+                                    <span class="font-medium">Email.</span>
+                                    help@deepfine.com
+                                </p>
+                                <p>
+                                    <span class="font-medium">Fax.</span>
+                                    070-4009-7779
+                                </p>
+                            </div>
+                            <div>
+                                <address class="not-italic">
+                                    <span class="font-medium">주소.</span>
+                                    <span>
+                                        서울특별시 용산구 한강대로30길 25, 업무동 10층 1호 (한강로2가, 아스테리움 용산)
+                                    </span>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-right @max-5xl:mt-5">
+                        <div class="flex flex-col justify-between gap-5 @5xl:gap-7.5">
+                            <div class="flex flex-wrap items-center justify-center gap-5 @5xl:justify-start">
+                                <div>
+                                    <a
+                                        href="https://www.deepfine.com/privacy-policy"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        title="개인정보처리방침 새창열림"
+                                        class="rounded-[20px] border border-white px-5 py-3"
+                                    >
+                                        <span class="text-white">개인정보처리방침</span>
+                                    </a>
+                                </div>
+
+                                <ul class="flex flex-wrap items-center justify-center gap-5 @5xl:justify-start">
+                                    <li>
+                                        <a
+                                            href="https://www.instagram.com/deepfinecorp/"
+                                            class="flex items-center justify-center"
+                                            title="인스타그램 새창열림"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <i
+                                                class="size-10 bg-[url(https://www.deepfine.com/static/images/icon_image/icon-insta.png)] bg-[length:40px_40px] bg-no-repeat"
+                                            ></i>
+                                            <span class="sr-only">인스타그램</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://www.youtube.com/channel/UCRzU2-rKT06nbB8IVxOg0Lg"
+                                            class="flex items-center justify-center"
+                                            title="유튜브 새창열림"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <i
+                                                class="size-10 bg-[url(https://www.deepfine.com/static/images/icon_image/icon-youtube.png)] bg-[length:40px_40px] bg-no-repeat"
+                                            ></i>
+                                            <span class="sr-only">유튜브</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://www.linkedin.com/company/deepfine/mycompany/"
+                                            class="flex items-center justify-center"
+                                            title="링크드인 새창열림"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <i
+                                                class="size-10 bg-[url(https://www.deepfine.com/static/images/icon_image/icon-linked.png)] bg-[length:40px_40px] bg-no-repeat"
+                                            ></i>
+                                            <span class="sr-only">링크드인</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="https://blog.naver.com/PostList.naver?blogId=deepfine0722&categoryNo=0&from=postList"
+                                            class="flex items-center justify-center"
+                                            title="블로그 새창열림"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <i
+                                                class="size-10 bg-[url(https://www.deepfine.com/static/images/icon_image/icon-blog.png)] bg-[length:40px_40px] bg-no-repeat"
+                                            ></i>
+                                            <span class="sr-only">블로그</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="text-center @5xl:text-right">
+                                <p>
+                                    ⓒ
+                                    <span data-copyright="year"></span>
+                                    . DEEP.FINE Co., Ltd. All rights reserved.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+
+        <script defer src="./src/lib/event/main.js"></script>
+        <script>
+            function validateForm() {
+                let isValid = true;
+
+                // Danh sách các trường cần kiểm tra
+                const fields = [
+                    { id: 'salesforceLastName', errorId: 'error-lastname', message: '성을 입력해주세요' },
+                    { id: 'salesforceFirstName', errorId: 'error-firstname', message: '이름을 입력해주세요' },
+                    { id: 'salesforceCompany', errorId: 'error-company', message: '회사를 입력해주세요' },
+                    { id: 'salesforceCompanyTitle', errorId: 'error-title', message: '직함을 입력해주세요' },
+                    { id: 'salesforceEmail', errorId: 'error-email', message: '이메일을 입력해주세요' },
+                    { id: 'salesforcePhone', errorId: 'error-phone', message: '전화를 입력해주세요' },
+                    { id: 'salesforceEmployee', errorId: 'error-employee', message: '직원을 입력해주세요' },
+                    { id: 'salesforceCountry', errorId: 'error-country', message: '국가/지역을 입력해주세요' },
+                ];
+
+                fields.forEach((field) => {
+                    const input = document.getElementById(field.id);
+                    const errorDiv = document.getElementById(field.errorId);
+                    if (!input.value || input.value.trim() === '') {
+                        errorDiv.textContent = field.message;
+                        errorDiv.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        errorDiv.style.display = 'none';
+                    }
+                });
+
+                const termsCheckbox = document.getElementById('confirmTerms');
+                const marketingCheckbox = document.getElementById('confirmMarketing');
+                const checkboxError = document.getElementById('checkbox-error');
+
+                if (!termsCheckbox.checked && !marketingCheckbox.checked) {
+                    checkboxError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    checkboxError.style.display = 'none';
+                }
+
+                return isValid;
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const confirmAll = document.getElementById('confirmAll');
+                const confirmTerms = document.getElementById('confirmTerms');
+                const confirmMarketing = document.getElementById('confirmMarketing');
+
+                confirmAll.addEventListener('change', function () {
+                    const checked = this.checked;
+                    confirmTerms.checked = checked;
+                    confirmMarketing.checked = checked;
+                });
+
+                confirmTerms.addEventListener('change', updateConfirmAllStatus);
+                confirmMarketing.addEventListener('change', updateConfirmAllStatus);
+
+                function updateConfirmAllStatus() {
+                    confirmAll.checked = confirmTerms.checked && confirmMarketing.checked;
+                }
+            });
+        </script>
+    </body>
+</html>

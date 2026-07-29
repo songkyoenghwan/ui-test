@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DEEP.FINE LOGI | 무료 견적 확인하기</title>
+
+		<link rel="stylesheet" href="https://www.deepfine.com/output/main-bundle.es.css" />
+		<style>
+			:root {
+				--navy: #031c3d;
+				--navy2: #072b5d;
+				--blue: #1268f5;
+				--blue2: #0d52d8;
+				--cyan: #19a7ff;
+				--text: #12223f;
+				--muted: #65738c;
+				--line: #dbe4f1;
+				--soft: #f6f9fe;
+				--white: #fff;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			html {
+				scroll-behavior: smooth;
+			}
+			body {
+				max-width: 100% !important;
+				margin: 0;
+				font-family: Arial, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+				color: var(--text);
+				background: #fff;
+				line-height: 1.55;
+			}
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
+			.container {
+				max-width: 1180px;
+				margin: 0 auto;
+				padding: 0 28px;
+			}
+
+			.hero {
+				position: relative;
+				min-height: 536px;
+				color: #fff;
+				overflow: hidden;
+				background:
+					linear-gradient(
+						90deg,
+						rgba(2, 24, 52, 0.98) 0%,
+						rgba(3, 30, 64, 0.94) 46%,
+						rgba(3, 28, 58, 0.52) 70%,
+						rgba(3, 25, 52, 0.08) 100%
+					),
+					url('hero-worker.png') right center/auto 100% no-repeat,
+					linear-gradient(135deg, var(--navy), var(--navy2));
+			}
+			.hero::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: radial-gradient(circle at 58% 34%, rgba(36, 135, 255, 0.16), transparent 32%);
+				pointer-events: none;
+			}
+			.topbar {
+				position: relative;
+				z-index: 2;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 24px 0;
+				font-weight: 700;
+			}
+			.brand {
+				font-size: 19px;
+				letter-spacing: 0.2px;
+			}
+			.product {
+				font-size: 14px;
+				color: #eef6ff;
+			}
+			.hero-content {
+				position: relative;
+				z-index: 2;
+				background-color: rgba(0, 0, 0, 0.2);
+				border-radius: 24px;
+				margin: 20px 0;
+				color: #fff;
+
+				h3 {
+					padding: 20px 25px 0 25px;
+					font-size: 28px;
+					color: #fff;
+				}
+
+				p {
+					color: #fff !important;
+				}
+			}
+			.eyebrow {
+				color: #23a8ff;
+				font-weight: 700;
+				margin-bottom: 16px;
+			}
+			h1 {
+				margin: 0;
+				font-size: 50px;
+				line-height: 1.18;
+				letter-spacing: -2px;
+			}
+			.hero-copy {
+				font-size: 18px;
+				color: #e9f2ff;
+				margin: 20px 0 34px;
+			}
+			.benefit-row {
+				display: flex;
+				gap: 24px;
+				flex-wrap: wrap;
+			}
+			.benefit {
+				width: 145px;
+				padding: 18px 12px;
+				background: rgba(5, 42, 86, 0.38);
+				border: 1px solid rgba(85, 157, 255, 0.34);
+				border-radius: 12px;
+				backdrop-filter: blur(4px);
+			}
+			.benefit-icon {
+				width: 44px;
+				height: 44px;
+				border-radius: 12px;
+				display: grid;
+				place-items: center;
+				border: 1px solid rgba(74, 155, 255, 0.8);
+				color: #4da1ff;
+				margin-bottom: 12px;
+				font-size: 21px;
+			}
+			.benefit strong {
+				display: block;
+				font-size: 15px;
+				margin-bottom: 4px;
+			}
+			.benefit small {
+				display: block;
+				color: #d7e5f7;
+				font-size: 12px;
+			}
+
+			.quote-section {
+				padding: 56px 0 34px;
+				background: #fff;
+			}
+			.quote-grid {
+				display: grid;
+				grid-template-columns: 0.95fr 1.05fr;
+				gap: 60px;
+				align-items: start;
+			}
+			.intro {
+				padding: 54px 10px 0 8px;
+			}
+			.intro .kicker {
+				color: var(--blue);
+				font-weight: 700;
+				margin-bottom: 8px;
+			}
+			.intro h2 {
+				margin: 0 0 28px;
+				font-size: 38px;
+				line-height: 1.24;
+				letter-spacing: -1px;
+			}
+			.check-list {
+				display: grid;
+				gap: 22px;
+			}
+			.check-item {
+				display: flex;
+				gap: 13px;
+				align-items: flex-start;
+				font-size: 16px;
+			}
+			.check {
+				width: 24px;
+				height: 24px;
+				border-radius: 50%;
+				display: grid;
+				place-items: center;
+				color: var(--blue);
+				font-weight: 800;
+				flex: 0 0 24px;
+			}
+
+			.form-card {
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				padding: 30px;
+				background: #fff;
+				box-shadow: 0 10px 30px rgba(19, 49, 91, 0.05);
+			}
+			.form-card h3 {
+				font-size: 28px;
+				margin: 0 0 22px;
+			}
+			.field {
+				margin-bottom: 16px;
+			}
+			label {
+				display: block;
+				font-size: 14px;
+				font-weight: 700;
+				margin-bottom: 8px;
+			}
+			.req {
+				color: #e24343;
+			}
+			input,
+			select {
+				width: 100%;
+				height: 50px;
+				border: 1px solid var(--line);
+				border-radius: 7px;
+				padding: 0 14px;
+				font-size: 15px;
+				color: var(--text);
+				outline: none;
+				background: #fff;
+				transition: 0.2s;
+			}
+			input:focus,
+			select:focus {
+				border-color: var(--blue);
+				box-shadow: 0 0 0 3px rgba(18, 104, 245, 0.09);
+			}
+			select {
+				padding-right: 30px;
+				background: #fff url(https://storage.pardot.com/1098812/1783983249M0Hu9bt7/icon_select_down.jpg) no-repeat
+					calc(100% - 5px) 50% / 24px 24px;
+			}
+			.two-col {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 14px;
+			}
+			.submit {
+				width: 100%;
+				border: 0;
+				border-radius: 7px;
+				padding: 16px 18px;
+				background: linear-gradient(90deg, var(--blue2), var(--blue));
+				color: #fff;
+				font-size: 17px;
+				font-weight: 700;
+				cursor: pointer;
+				margin-top: 4px;
+			}
+			.fineprint {
+				font-size: 12px;
+				color: #98a3b6;
+				margin-top: 14px;
+			}
+
+			.features {
+				padding: 26px 0 38px;
+				background: var(--soft);
+				border-top: 1px solid #e6edf7;
+				border-bottom: 1px solid #e6edf7;
+			}
+			.features h2 {
+				text-align: center;
+				font-size: 22px;
+				margin: 0 0 28px;
+			}
+			.feature-grid {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 24px;
+			}
+			.feature {
+				text-align: center;
+				padding: 8px;
+			}
+			.feature-icon {
+				width: 70px;
+				height: 63px;
+				margin: 0 auto 14px;
+				color: var(--blue);
+				display: grid;
+				place-items: center;
+				font-size: 27px;
+			}
+			.feature strong {
+				display: block;
+				margin-bottom: 7px;
+			}
+			.feature p {
+				margin: 0;
+				font-size: 13px;
+				color: #5d6a81;
+			}
+
+			.proof {
+				padding: 28px 0;
+				background: #fff;
+			}
+			.proof-grid {
+				display: grid;
+				grid-template-columns: 1.1fr 1fr;
+				gap: 40px;
+				align-items: center;
+			}
+			.proof h3 {
+				text-align: center;
+				margin: 0 0 20px;
+				font-size: 21px;
+			}
+			.logos {
+				display: grid;
+				grid-template-columns: repeat(6, 1fr);
+				gap: 8px;
+			}
+			.logo-card {
+				min-height: 54px;
+				border: 1px solid #e3e9f2;
+				border-radius: 7px;
+				display: grid;
+				place-items: center;
+				background: #fff;
+				font-weight: 700;
+				font-size: 13px;
+				color: #23406d;
+			}
+			.metrics {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 0;
+			}
+			.metric {
+				padding: 10px 20px;
+				border-left: 1px solid #dfe6f1;
+			}
+			.metric:first-child {
+				border-left: 0;
+			}
+			.metric small {
+				display: block;
+				color: #3f4d65;
+				margin-bottom: 4px;
+			}
+			.metric strong {
+				display: block;
+				font-size: 27px;
+				color: #0a3472;
+			}
+
+			footer {
+				background: #041e3f;
+				color: #fff;
+				padding: 22px 0;
+			}
+			.footer-row {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 20px;
+				flex-wrap: wrap;
+			}
+			.footer-links {
+				display: flex;
+				gap: 28px;
+				flex-wrap: wrap;
+				color: #e2ebf8;
+				font-size: 14px;
+			}
+			.term-link {
+				text-align: center;
+				span {
+					text-decoration: underline;
+				}
+			}
+
+			form.form p {
+				margin: 0 !important;
+			}
+
+			form.form p label {
+				display: block;
+				float: none;
+				margin: 0;
+				padding: 3px 13px 10px 0;
+				text-align: left !important;
+				width: 100% !important;
+			}
+
+			.field-label {
+				display: inline-flex !important;
+				align-items: flex-start;
+				padding-bottom: 10px !important;
+
+				&.required::before {
+					display: block;
+					content: '*';
+					color: #ff0000;
+				}
+			}
+
+			.required {
+				.field-label {
+					display: inline-flex !important;
+					align-items: flex-start;
+					padding: 0 0 10px 0 !important;
+					background-image: none !important;
+					gap: 2px;
+
+					&::after {
+						display: block;
+						content: '*';
+						color: #ff0000;
+					}
+				}
+			}
+
+			form.form input.text {
+				width: 100% !important;
+			}
+
+			form.form p.submit {
+				margin: 10px 0 0 0 !important;
+				padding: 0;
+				cursor: pointer;
+
+				input[type='submit'] {
+					background-color: #3743ff;
+					color: #fff;
+				}
+
+				&:disabled {
+					cursor: no-drop;
+					background-color: #d8d8d8;
+				}
+			}
+
+			form.form span.value {
+				> span {
+					display: flex;
+					align-items: center;
+					gap: 10px;
+				}
+
+				&:has(input[type='checkbox']) {
+					width: 100%;
+					margin: 0 !important;
+					display: flex;
+					align-items: center;
+					gap: 10px;
+				}
+			}
+
+			span {
+				&:has(input[type='checkbox']) {
+					display: flex;
+					align-items: center;
+					gap: 10px;
+
+					.inline {
+						padding: 0 !important;
+					}
+
+					input[type='checkbox'] {
+						width: 30px;
+					}
+				}
+			}
+			.logi-txt {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 20px;
+			}
+
+			.error {
+				width: auto !important;
+				margin: auto !important;
+			}
+
+			.comp {
+				border-radius: 10px;
+				padding: 20px;
+				background-color: var(--bg);
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+
+				a {
+					justify-content: center;
+					color: #fff;
+
+					&:hover {
+						color: black;
+					}
+				}
+			}
+
+			.form-card {
+				.comp {
+					display: none;
+				}
+
+				&:not(input[type='checkbox']) {
+					.comp {
+						display: flex;
+					}
+
+					.comp-next {
+						display: none;
+					}
+				}
+
+				&:has(input[type='checkbox']) {
+					.comp {
+						display: none;
+					}
+				}
+			}
+
+			@media (max-width: 900px) {
+				.hero {
+					background-position: 72% center;
+				}
+				h1 {
+					font-size: 42px;
+				}
+				.quote-grid,
+				.proof-grid {
+					grid-template-columns: 1fr;
+				}
+				.intro {
+					padding-top: 0;
+				}
+				.feature-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+				.logos {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
+			@media (max-width: 600px) {
+				.container {
+					padding: 0 18px;
+				}
+				.hero {
+					min-height: 620px;
+					background-position: 76% center;
+				}
+				.hero::before {
+					content: '';
+					position: absolute;
+					inset: 0;
+					background: rgba(0, 19, 42, 0.28);
+				}
+				h1 {
+					font-size: 36px;
+				}
+				.hero-copy {
+					font-size: 16px;
+				}
+				.benefit {
+					width: calc(50% - 12px);
+				}
+				.two-col {
+					grid-template-columns: 1fr;
+				}
+				.feature-grid {
+					grid-template-columns: 1fr;
+				}
+				.metrics {
+					grid-template-columns: 1fr;
+				}
+				.metric {
+					border-left: 0;
+					border-top: 1px solid #dfe6f1;
+				}
+				.metric:first-child {
+					border-top: 0;
+				}
+				.footer-row {
+					align-items: flex-start;
+					flex-direction: column;
+				}
+			}
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
+	</head>
+	<body>
+		<section class="hero">
+			<div class="container">
+				<div class="topbar max-w-1180">
+					<img
+						src="https://storage.pardot.com/1098812/1784028244E7PLnztV/logo_light.png"
+						alt="DEEP.FINE"
+						style="width: 200px"
+					/>
+				</div>
+
+				<div class="hero-content">
+					<h3>고객사 CASE</h3>
+					<swiper-container
+						slides-per-view="1"
+						space-between="10"
+						centered-slides="true"
+						speed="450"
+						autoplay-delay="5000"
+						data-scroll="slide-up"
+					>
+						<swiper-slide
+							class="grid grid-cols-1 items-center gap-5 px-5 pt-5 pb-7.5 lg:grid-cols-[minmax(480px,4fr)_minmax(460px,6fr)] lg:p-7.5 xl:gap-15 swiper-slide-next"
+							role="group"
+							aria-label="2 / 2"
+							style="width: 1880px; margin-right: 10px"
+						>
+							<div class="relative transition-all max-sm:w-full">
+								<picture
+									class="bg-primary/10 inline-flex min-h-53.75 w-auto overflow-clip rounded-xl max-sm:w-full max-sm:max-w-full lg:h-120"
+								>
+									<img
+										loading="lazy"
+										alt=""
+										class="flex-none object-cover max-sm:w-full lg:w-full"
+										src="https://www.deepfine.com/output/imgs/case/img-case-logi-2.jpg"
+									/>
+								</picture>
+							</div>
+							<div class="inline-grid place-content-baseline gap-5">
+								<div class="inline-flex flex-wrap gap-2.5">
+									<!---->
+									<p>
+										<span
+											class="text-2md bg-999 inline-flex min-h-7.5 items-center gap-3 rounded-full px-2.5 text-white"
+										>
+											<icon-list class="size-5 fill-white" data-name="lock">
+												<!---->
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+													width="100%"
+													height="100%"
+													viewBox="0 0 20 20"
+												>
+													<path
+														d="M16.28 7.53V6.28C16.28 3.58 15.63 0 10 0C4.37 0 3.72 3.58 3.72 6.28V7.53C0.92 7.88 0 9.3 0 12.79V14.65C0 18.75 1.25 20 5.35 20H14.65C18.75 20 20 18.75 20 14.65V12.79C20 9.3 19.08 7.88 16.28 7.53ZM10 16.74C8.33 16.74 6.98 15.38 6.98 13.72C6.98 12.05 8.34 10.7 10 10.7C11.66 10.7 13.02 12.06 13.02 13.72C13.02 15.39 11.67 16.74 10 16.74ZM5.35 7.44C5.27 7.44 5.2 7.44 5.12 7.44V6.28C5.12 3.35 5.95 1.4 10 1.4C14.05 1.4 14.88 3.35 14.88 6.28V7.45C14.8 7.45 14.73 7.45 14.65 7.45H5.35V7.44Z"
+														stroke="none"
+													></path>
+												</svg>
+											</icon-list>
+											Client Confidential
+										</span>
+									</p>
+									<!---->
+									<!---->
+								</div>
+								<!---->
+								<h4 class="text-lg font-bold lg:text-4xl">스마트 물류 솔루션</h4>
+								<div class="inline-flex flex-wrap gap-2.5">
+									<p
+										class="bg-primary/10 text-primary text-2md inline-flex flex-none rounded-full px-5 py-1 font-bold"
+									>
+										풀필먼트 / 배송
+									</p>
+								</div>
+								<!---->
+								<div>
+									<p class="text-2md text-666 lg:text-lg">
+										종합 물류센터에 스마트 글라스 기반 피킹 솔루션을 도입해 현장 작업 효율을 대폭
+										향상시켰습니다.
+									</p>
+									<p class="text-2md text-666 lg:text-lg">
+										숙련자 의존 구조에서 벗어나 신규 인력도 즉시 투입 가능한 표준화된 피킹 환경을
+										구축했습니다.
+									</p>
+								</div>
+								<ul class="text-2md border-t-d9d9d9 space-y-2.5 border-t border-dashed pt-5 text-lg font-bold">
+									<li class="flex items-center gap-1.5">
+										<icon-list class="fill-primary size-5 flex-none" data-name="tick-circle-list">
+											<!---->
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true"
+												width="100%"
+												height="100%"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM14.78 7.7L9.11 13.37C8.97 13.51 8.78 13.59 8.58 13.59C8.38 13.59 8.19 13.51 8.05 13.37L5.22 10.54C4.93 10.25 4.93 9.77 5.22 9.48C5.51 9.19 5.99 9.19 6.28 9.48L8.58 11.78L13.72 6.64C14.01 6.35 14.49 6.35 14.78 6.64C15.07 6.93 15.07 7.4 14.78 7.7Z"
+													stroke="none"
+												></path>
+											</svg>
+										</icon-list>
+										<div>
+											<!---->
+											<!---->
+											<!---->
+											<p class="text-white font-bold">
+												<!---->
+												<!---->
+												시간당 생산성
+												<!---->
+											</p>
+											<p class="text-white font-bold text-2xl">
+												<!---->
+												<!---->
+												58% 이상 향상
+												<!---->
+											</p>
+										</div>
+									</li>
+									<li class="flex items-center gap-1.5">
+										<icon-list class="fill-primary size-5 flex-none" data-name="tick-circle-list">
+											<!---->
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true"
+												width="100%"
+												height="100%"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM14.78 7.7L9.11 13.37C8.97 13.51 8.78 13.59 8.58 13.59C8.38 13.59 8.19 13.51 8.05 13.37L5.22 10.54C4.93 10.25 4.93 9.77 5.22 9.48C5.51 9.19 5.99 9.19 6.28 9.48L8.58 11.78L13.72 6.64C14.01 6.35 14.49 6.35 14.78 6.64C15.07 6.93 15.07 7.4 14.78 7.7Z"
+													stroke="none"
+												></path>
+											</svg>
+										</icon-list>
+										<div>
+											<!---->
+											<!---->
+											<!---->
+											<p class="text-white font-bold">
+												<!---->
+												<!---->
+												1피킹당 시간
+												<!---->
+											</p>
+											<p class="text-white font-bold text-2xl">
+												<!---->
+												<!---->
+												75% 단축
+												<!---->
+											</p>
+										</div>
+									</li>
+								</ul>
+								<p class="text-2md text-666 lg:text-lg">
+									보안 정책에 따라 고객사 정보 및 이미지 일부를 대체하였습니다
+								</p>
+								<!---->
+							</div>
+						</swiper-slide>
+						<!---->
+						<!---->
+						<swiper-slide
+							class="grid grid-cols-1 items-center gap-5 px-5 pt-5 pb-7.5 lg:grid-cols-[minmax(480px,4fr)_minmax(460px,6fr)] lg:p-7.5 xl:gap-15 swiper-slide-active"
+							style="width: 1880px; margin-right: 10px"
+							role="group"
+							aria-label="1 / 2"
+						>
+							<div class="relative transition-all max-sm:w-full">
+								<picture
+									class="bg-primary/10 inline-flex min-h-53.75 w-auto overflow-clip rounded-xl max-sm:w-full max-sm:max-w-full lg:h-120"
+								>
+									<img
+										loading="lazy"
+										alt=""
+										class="flex-none object-cover max-sm:w-full lg:w-full"
+										src="https://www.deepfine.com/output/imgs/case/img-case-logi-1.jpg"
+									/>
+								</picture>
+							</div>
+							<div class="inline-grid place-content-baseline gap-5">
+								<div class="inline-flex flex-wrap gap-2.5">
+									<!---->
+									<p>
+										<span
+											class="text-2md bg-999 inline-flex min-h-7.5 items-center gap-3 rounded-full px-2.5 text-white"
+										>
+											<icon-list class="size-5 fill-white" data-name="lock">
+												<!---->
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													aria-hidden="true"
+													width="100%"
+													height="100%"
+													viewBox="0 0 20 20"
+												>
+													<path
+														d="M16.28 7.53V6.28C16.28 3.58 15.63 0 10 0C4.37 0 3.72 3.58 3.72 6.28V7.53C0.92 7.88 0 9.3 0 12.79V14.65C0 18.75 1.25 20 5.35 20H14.65C18.75 20 20 18.75 20 14.65V12.79C20 9.3 19.08 7.88 16.28 7.53ZM10 16.74C8.33 16.74 6.98 15.38 6.98 13.72C6.98 12.05 8.34 10.7 10 10.7C11.66 10.7 13.02 12.06 13.02 13.72C13.02 15.39 11.67 16.74 10 16.74ZM5.35 7.44C5.27 7.44 5.2 7.44 5.12 7.44V6.28C5.12 3.35 5.95 1.4 10 1.4C14.05 1.4 14.88 3.35 14.88 6.28V7.45C14.8 7.45 14.73 7.45 14.65 7.45H5.35V7.44Z"
+														stroke="none"
+													></path>
+												</svg>
+											</icon-list>
+											Client Confidential
+										</span>
+									</p>
+									<!---->
+									<!---->
+								</div>
+								<!---->
+								<h4 class="text-lg font-bold lg:text-4xl">피킹/검수 솔루션</h4>
+								<div class="inline-flex flex-wrap gap-2.5">
+									<p
+										class="bg-primary/10 text-primary text-2md inline-flex flex-none rounded-full px-5 py-1 font-bold"
+									>
+										물류 / 3PL
+									</p>
+								</div>
+								<!---->
+								<div>
+									<p class="text-2md text-666 lg:text-lg">
+										피킹·검수 작업을 스마트 글라스 기반 단일 시스템으로 통합해 현장 전 과정을
+										디지털화했습니다.
+									</p>
+									<p class="text-2md text-666 lg:text-lg">
+										기존 종이 피킹지와 수기 검수 방식에서 벗어나 바코드 스캔과 영상 녹화 기반의 표준화된 작업
+										환경을 갖출 수 있었습니다.
+									</p>
+								</div>
+								<ul class="text-2md border-t-d9d9d9 space-y-2.5 border-t border-dashed pt-5 text-lg font-bold">
+									<li class="flex items-center gap-1.5">
+										<icon-list class="fill-primary size-5 flex-none" data-name="tick-circle-list">
+											<!---->
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true"
+												width="100%"
+												height="100%"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM14.78 7.7L9.11 13.37C8.97 13.51 8.78 13.59 8.58 13.59C8.38 13.59 8.19 13.51 8.05 13.37L5.22 10.54C4.93 10.25 4.93 9.77 5.22 9.48C5.51 9.19 5.99 9.19 6.28 9.48L8.58 11.78L13.72 6.64C14.01 6.35 14.49 6.35 14.78 6.64C15.07 6.93 15.07 7.4 14.78 7.7Z"
+													stroke="none"
+												></path>
+											</svg>
+										</icon-list>
+										<div>
+											<!---->
+											<!---->
+											<!---->
+											<p class="text-white font-bold">
+												<!---->
+												<!---->
+												작업정확도
+												<!---->
+											</p>
+											<p class="text-white font-bold text-2xl">
+												<!---->
+												<!---->
+												99% 이상 향상
+												<!---->
+											</p>
+										</div>
+									</li>
+									<li class="flex items-center gap-1.5">
+										<icon-list class="fill-primary size-5 flex-none" data-name="tick-circle-list">
+											<!---->
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true"
+												width="100%"
+												height="100%"
+												viewBox="0 0 20 20"
+											>
+												<path
+													d="M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM14.78 7.7L9.11 13.37C8.97 13.51 8.78 13.59 8.58 13.59C8.38 13.59 8.19 13.51 8.05 13.37L5.22 10.54C4.93 10.25 4.93 9.77 5.22 9.48C5.51 9.19 5.99 9.19 6.28 9.48L8.58 11.78L13.72 6.64C14.01 6.35 14.49 6.35 14.78 6.64C15.07 6.93 15.07 7.4 14.78 7.7Z"
+													stroke="none"
+												></path>
+											</svg>
+										</icon-list>
+										<div>
+											<!---->
+											<!---->
+											<!---->
+											<p class="text-white font-bold">
+												<!---->
+												<!---->
+												시간당 처리 수
+												<!---->
+											</p>
+											<p class="text-white font-bold text-2xl">
+												<!---->
+												<!---->
+												18% 이상
+												<!---->
+											</p>
+										</div>
+									</li>
+								</ul>
+								<p class="text-2md text-666 lg:text-lg">
+									보안 정책에 따라 고객사 정보 및 이미지 일부를 대체하였습니다
+								</p>
+								<!---->
+							</div>
+						</swiper-slide>
+					</swiper-container>
+				</div>
+			</div>
+		</section>
+
+		<main class="quote-section">
+			<div class="container quote-grid">
+				<section class="intro">
+					<div class="kicker">맞춤 견적을 통해 우리 회사에 최적화된</div>
+					<h2>
+						도입 비용과 효과를
+						<br />
+						확인해보세요.
+					</h2>
+					<div class="check-list">
+						<div class="check-item">
+							<span class="check">✓</span>
+							<span>전문 컨설턴트가 1:1 맞춤 상담을 제공합니다.</span>
+						</div>
+						<div class="check-item">
+							<span class="check">✓</span>
+							<span>우리 회사 환경에 맞는 예상 비용을 안내해드립니다.</span>
+						</div>
+						<div class="check-item">
+							<span class="check">✓</span>
+							<span>도입 효과 및 ROI 분석 자료를 받아보실 수 있습니다.</span>
+						</div>
+					</div>
+				</section>
+
+				<section class="form-card">
+					<h3>무료 견적 확인하기</h3>
+					%%content%%
+
+					<div class="term-link comp-next">
+						<a
+							href="https://www.deepfine.com/privacy-policy"
+							target="_blank"
+							rel="noopener noreferrer"
+							title="개인정보처리방침 새창열림"
+						>
+							<span class="text-sm text-gray-700 underline">개인정보처리방침</span>
+						</a>
+					</div>
+
+					<div class="comp">
+						<div class="icon justify-center flex">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								aria-hidden="true"
+								width="40px"
+								height="100%"
+								viewBox="0 0 24 24"
+							>
+								<path
+									d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.78 9.7L11.11 15.37C10.97 15.51 10.78 15.59 10.58 15.59C10.38 15.59 10.19 15.51 10.05 15.37L7.22 12.54C6.93 12.25 6.93 11.77 7.22 11.48C7.51 11.19 7.99 11.19 8.28 11.48L10.58 13.78L15.72 8.64C16.01 8.35 16.49 8.35 16.78 8.64C17.07 8.93 17.07 9.4 16.78 9.7Z"
+									fill="#3743ff"
+								></path>
+							</svg>
+						</div>
+						<p class="text-2xl text-primary font-bold">무료 견적 신청이 완료되었습니다!</p>
+						<p class="text-primary">
+							신청해 주셔서 감사합니다.
+							<br />
+							담당자가 확인 후 빠르게 연락드리겠습니다.
+						</p>
+						<p>평균 1영업일 이내에 연락드리고 있습니다.</p>
+
+						<a
+							class="bg-primary hover:text-primary hover:border-primary group border-primary flex min-h-12 items-center gap-2 rounded-md border px-5 text-white hover:border hover:bg-white"
+							href="https://www.deepfine.com/"
+							aria-current="false"
+							target="_blank"
+						>
+							<span class="flex-none text-lg">딥파인 홈페이지로 이동하기</span>
+							<icon-list
+								class="group-hover:stroke-primary size-6 stroke-white"
+								name="arrow-right"
+								data-name="arrow-right"
+							>
+								<!---->
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true"
+									width="100%"
+									height="100%"
+									viewBox="0 0 24 24"
+								>
+									<path
+										d="M14.4302 5.92969L20.5002 11.9997L14.4302 18.0697"
+										fill="none"
+										stroke-width="1.5"
+										stroke-miterlimit="10"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+									<path
+										d="M3.5 12H20.33"
+										fill="none"
+										stroke-width="1.5"
+										stroke-miterlimit="10"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									></path>
+								</svg>
+							</icon-list>
+						</a>
+					</div>
+
+					<p class="mt-5">🔒 입력하신 정보는 안전하게 보호되며, 미팅 목적 외에 사용되지 않습니다.</p>
+				</section>
+			</div>
+		</main>
+
+		<section class="features">
+			<div class="container">
+				<h2 class="logi-txt">
+					<img src="https://storage.pardot.com/1098812/17840904695FWqO6B0/logo_logi_blk.png" alt="LOGI.FINE" />
+					주요 기능
+				</h2>
+				<div class="feature-grid">
+					<div class="feature">
+						<picture class="feature-icon">
+							<img src="https://storage.pardot.com/1098812/1783945055DpS0etFn/2026_landing_icon_1.png" alt="" />
+						</picture>
+						<strong>웨이브 피킹</strong>
+						<p>
+							동선 최적화로 피킹·검수·패킹을
+							<br />
+							한 작업자가 끊김 없이 수행
+						</p>
+					</div>
+					<div class="feature">
+						<picture class="feature-icon">
+							<img src="https://storage.pardot.com/1098812/1783945063i224uZlG/2026_landing_icon_2.png" alt="" />
+						</picture>
+						<strong>DAS 가이드</strong>
+						<p>
+							상품 바코드 스캔 시
+							<br />
+							글라스 혹은 모바일 화면에 투입 박스 위치 안내
+						</p>
+					</div>
+					<div class="feature">
+						<picture class="feature-icon">
+							<img src="https://storage.pardot.com/1098812/178394507841kHFpkN/2026_landing_icon_3.png" alt="" />
+						</picture>
+						<strong>검수</strong>
+						<p>
+							스캔 기반으로 오피킹을 방지하고
+							<br />
+							정확한 실적을 기록
+						</p>
+					</div>
+					<div class="feature">
+						<picture class="feature-icon">
+							<img src="https://storage.pardot.com/1098812/1783945097eZy1AkP4/2026_landing_icon_4.png" alt="" />
+						</picture>
+						<strong>멀티스캔</strong>
+						<p>
+							여러 상품을 연속 스캔하여
+							<br />
+							대량 검수·분류를 빠르게 처리
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container footer-row">
+				<picture>
+					<img
+						src="https://storage.pardot.com/1098812/1784028244E7PLnztV/logo_light.png"
+						alt="DEEP.FINE"
+						style="width: 200px"
+					/>
+				</picture>
+				<div class="footer-links">
+					<span>☎ 대표번호 070-4633-2487~8</span>
+					<span>✉ 이메일 help@deepfine.com</span>
+					<span>
+						◎ 홈페이지
+						<a class="hover:underline" href="www.deepfine.com" target="_blank" rel="noopener noreferrer">
+							www.deepfine.com
+						</a>
+					</span>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

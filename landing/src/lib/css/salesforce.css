@@ -1,0 +1,212 @@
+@import 'tailwindcss';
+
+
+@layer base {
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&display=swap');
+
+    html,
+    body {
+        background-color: #f9f9f9;
+        font-family:
+            'Noto Sans KR',
+            system-ui,
+            -apple-system,
+            Apple SD Gothic Neo,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif,
+            'Apple Color Emoji',
+            'Segoe UI Emoji',
+            'Segoe UI Symbol',
+            'Noto Color Emoji';
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        color: var(--222);
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+
+        .term-wrap {
+            @apply hidden!;  
+        }
+
+        .redirect-link {
+            @apply grid;  
+        }
+
+        &:has(.submit){
+            .term-wrap {
+                @apply grid!;  
+            }
+
+            .redirect-link {
+                @apply hidden;  
+            }
+        }
+    }
+
+    .bg-salesforce-main {
+        @apply bg-[url(../../../static/images/bg-main.jpg)] bg-cover bg-center bg-no-repeat;
+    }
+
+    label {
+        position: relative;
+        font-size: 14px;
+        font-weight: 700;
+        color: #000;
+        text-align: left;
+    }
+
+    input[type='text'],
+    input[type='password'],
+    input[type='number'],
+    input[type='email'],
+    input[type='phone'],
+    input[type='date'],
+    textarea,
+    select {
+        min-height: 40px;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        color: #000;
+
+        &::placeholder {
+            color: #999;
+        }
+    }
+
+    input[type='checkbox'],
+    input[type='radio'] {
+        width: 20px;
+        height: 20px;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    input[type='submit'] {
+        display: grid;
+        place-content: center;
+        width: 100%;
+        min-height: 2.5rem;
+        border-radius: 8px;
+        background-color: #0089ff;
+        color: #fff;
+    }
+
+    section {
+        form {
+            gap:8px;
+        }
+
+        form.form {
+            margin: 0 !important;
+            padding: 0 20px !important;
+            border-radius: 8px;
+
+            & > .errors {
+                display: none;
+            }
+        }
+        form.form p {
+            float: none;
+            margin: 0 !important;
+            padding: 0 !important;
+
+            &.error {
+                font-size: 12px;
+            }
+            
+        }
+
+        form.form p label {
+            float: none !important;
+            width: max-content !important;
+            max-width: calc(100dvw - 60px);
+            padding-right: 20px !important;
+            text-align: left !important;
+
+            &.inline {
+                line-height: 1.3 !important;
+            }
+        }
+
+        form.form input[type='text'] {
+            width: 100% !important;
+            padding: 5px !important;
+        }
+
+        form.form textarea.standard {
+            width: 100% !important;
+            padding: 5px !important;
+        }
+
+        form.form p.submit {
+            margin: 0 !important;
+        }
+
+        form.form p span.description {
+            margin: 0 !important;
+            color: #000;
+        }
+        form.form span.value {
+            margin: 0 !important;
+
+            > span {
+                display: flex !important;
+                align-items: center;
+                gap: 10px;
+
+                > input[type='checkbox'],
+                input[type='radio'] {
+                    width: 20px;
+                    height: 20px;
+                    flex: none !important;
+                }
+            }
+        }
+
+        .form-field {
+            .value {
+                line-height: 1.3;
+
+                & > span {
+                    display: flex;
+                    gap: 10px;
+                }
+            }
+        }
+
+        .error,
+        .red-background,
+        form.form p.errors {
+            font-size: 13px;
+            color: #ff0000 !important;
+            background-color: transparent !important;
+        }
+    }
+}
+
+.field-label {
+    @apply relative text-sm font-bold text-black;
+}
