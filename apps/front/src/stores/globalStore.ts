@@ -1,8 +1,6 @@
 import { persistentAtom } from '@nanostores/persistent';
 import { atom, map } from 'nanostores';
 
-import * as m from '@/paraglide/messages.js';
-import { setLocale } from '@/paraglide/runtime.js';
 import type { LocalizedText, SupportedLanguages } from '@/types/common/locale';
 import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 

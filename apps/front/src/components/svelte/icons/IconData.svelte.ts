@@ -67,5 +67,17 @@ export const getIconData = () => {
 				/>
 			`,
 		},
+		{
+			name: 'arrow-slide',
+			size: '22 42',
+			html: /* HTML */ `
+				<path
+					d="M0.964844 0.964844L20.3998 19.6531C21.1532 20.3776 21.1532 21.5521 20.3998 22.2766L0.964844 40.9648"
+					fill="none"
+					stroke-width="1.92919"
+					stroke-linecap="round"
+				/>
+			`,
+		},
 	];
 };

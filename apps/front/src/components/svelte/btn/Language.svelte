@@ -33,8 +33,8 @@
 	</button>
 </div>
 
-<Modal class="max-w-[calc(100%-3.75rem)]" bind:open={langModal}>
-	<ul class="space-y-2">
+<Modal class="w-82.5 max-w-[calc(100%-3.75rem)]" bind:open={langModal}>
+	<ul class="space-y-2 pt-7">
 		{#each LANGS as item (item.key)}
 			<li>
 				<button

@@ -1,13 +1,14 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages.js';
 	import { langState, pickText } from '@/stores/globalStore';
-	import { Navigation, Pagination } from 'swiper/modules';
+	import Icons from '@/svelte/icons/icons.svelte';
 	import Swiper from 'swiper';
+	import { Navigation, Pagination } from 'swiper/modules';
 	import 'swiper/css';
 	import 'swiper/css/navigation';
 	import 'swiper/css/pagination';
 
-	let { OnboardingList } = $props();
+	let { OnboardingList, linkUrl = '' } = $props();
 
 	const getOnboardingFile = (files: { fileType: string; fileUrl: string; fileOriginalName: string }[], lang: string) => {
 		const targetType = lang === 'ko' ? 'MAIN' : 'MAIN_GLOBAL';
@@ -41,8 +42,10 @@
 	<button
 		type="button"
 		aria-label="onboarding slide prev"
-		class="swiper-button-prev onboarding-button-prev stroke-white text-white! *:fill-white!"
-	></button>
+		class="swiper-button-prev onboarding-button-prev -left-2.5! stroke-white text-white! *:fill-white!"
+	>
+		<Icons client:load name="arrow-slide" cls="w-5.5 h-10.5 rotate-180 stroke-white" />
+	</button>
 	<ul class="swiper-wrapper flex h-full **:text-center **:text-white">
 		{#each OnboardingList as item (item.id)}
 			{@const onboardingFile = getOnboardingFile(item.onboardingFiles ?? [], $langState)}
@@ -75,13 +78,15 @@
 	<button
 		type="button"
 		aria-label="onboarding slide next"
-		class="swiper-button-next onboarding-button-next stroke-white text-white! *:fill-white!"
-	></button>
+		class="swiper-button-next onboarding-button-next -right-2.5! stroke-white text-white! *:fill-white!"
+	>
+		<Icons client:load name="arrow-slide" cls="w-5.5 h-10.5 stroke-white" />
+	</button>
 </div>
 
 <div>
 	<a
-		href="/survey"
+		href={linkUrl}
 		target="_blank"
 		rel="noopener noreferrer"
 		class="group relative flex h-10 items-center justify-center rounded-sm bg-white to-[#0f1f42] px-2 py-1 transition-colors hover:bg-(--base-color) hover:text-white active:bg-(--base-color) active:text-white"
@@ -92,6 +97,9 @@
 
 <style>
 	:global(.swiper-pagination-bullet-active) {
-		background-color: white;
+		width: 1.5rem;
+		border-radius: 0.25rem;
+		background-color: var(--color-fff);
+		transition: all ease-in 0.2s;
 	}
 </style>
