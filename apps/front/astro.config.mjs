@@ -1,5 +1,7 @@
+import node from '@astrojs/node';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import tailwindcss from '@tailwindcss/vite';
 // @ts-check
 import { defineConfig } from 'astro/config';
@@ -7,7 +9,16 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [
+			tailwindcss(),
+			paraglideVitePlugin({
+				project: './project.inlang',
+				outdir: './src/paraglide',
+				emitTsDeclarations: true,
+			}),
+		],
 	},
 	integrations: [svelte(), react()],
+	output: 'server',
+	adapter: node({ mode: 'standalone' }),
 });

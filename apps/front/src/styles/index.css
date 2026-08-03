@@ -6,8 +6,9 @@
 
 /* @plugin 'flowbite/plugin'; */
 /* 
-@source '../../node_modules/flowbite-svelte/dist';
 @source '../../node_modules/flowbite-svelte-icons/dist'; */
+
+@source '../../node_modules/flowbite-svelte/dist';
 
 @theme {
 	--color-000: rgb(0, 0, 0);
@@ -106,6 +107,7 @@
 	--color-1616ff: #1616ff;
 	--color-256ef4: #256ef4;
 	--color-3e61ff: #3e61ff;
+	--color-26b7ff: #26b7ff;
 
 	--color-slate-50: #f8fafc;
 	--color-slate-100: #f1f5f9;

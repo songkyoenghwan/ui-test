@@ -1,5 +1,8 @@
 ---
 import '@/styles/index.css';
+import { colorState } from '@/stores/globalStore';
+
+const baseColor = colorState.get();
 ---
 
 <!doctype html>
@@ -12,7 +15,7 @@ import '@/styles/index.css';
 		<meta name="generator" content={Astro.generator} />
 		<title>front</title>
 	</head>
-	<body style="--base-color: #274fa8;">
+	<body style={{ '--base-color': baseColor }}>
 		<slot />
 	</body>
 </html>
