@@ -3,19 +3,20 @@ import '@/styles/index.css';
 import { colorState } from '@/stores/globalStore';
 
 const baseColor = colorState.get();
+const locale = Astro.cookies.get('PARAGLIDE_LOCALE')?.value ?? 'ko';
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang={locale} data-locale={locale}>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>front</title>
 	</head>
-	<body style={{ '--base-color': baseColor }}>
+	<body style={{ '--base-color': baseColor }} class="touch-manipulation">
 		<slot />
 	</body>
 </html>

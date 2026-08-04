@@ -1,8 +1,8 @@
-import { persistentAtom } from '@nanostores/persistent';
-import { atom, map } from 'nanostores';
-
+import { getLocale, setLocale } from '@/paraglide/runtime';
 import type { LocalizedText, SupportedLanguages } from '@/types/common/locale';
 import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
+import { persistentAtom } from '@nanostores/persistent';
+import { atom, map } from 'nanostores';
 
 type LocalizedKey = keyof LocalizedText;
 
@@ -74,11 +74,24 @@ export function watchCurrentTourDestinationId(callback: (id: number) => void) {
 	return currentTourDestinationId.subscribe(callback);
 }
 
-export const langState = atom('ko');
+const initialLocale = (
+	typeof document !== 'undefined' ? document.documentElement.getAttribute('data-locale') : getLocale()
+) as LocalizedKey;
 
-export const pickText = (text: Partial<LocalizedText>, lang: string) => {
-	const key = lang as LocalizedKey;
-	return text[key] ?? text.ko ?? '';
+export const langState = atom<LocalizedKey>(initialLocale || 'ko');
+
+export const setLang = async (_key: LocalizedKey) => {
+	if (langState.get() === _key) return;
+
+	document.documentElement.setAttribute('lang', _key);
+	document.documentElement.setAttribute('data-locale', _key);
+
+	await setLocale(_key, { reload: false });
+	langState.set(_key);
+};
+
+export const pickText = (text: Partial<LocalizedText>, lang: LocalizedKey) => {
+	return text[lang]?.trim() || text.en?.trim() || '';
 };
 
 export const colorState = atom('#274fa8');

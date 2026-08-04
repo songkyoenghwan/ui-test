@@ -18,6 +18,8 @@
 	"usr_obd_003_03": "*You may select more than one option.",
 	"usr_obd_003_04": "Skip",
 	"usr_obd_003_05": "View Map",
+	"usr_obd_003_06": "Prev",
+	"usr_obd_003_07": "Next",
 	"usr_map_001_01": "Search around $대상지명$",
 	"usr_map_001_02": "Explore Nearby Information",
 	"usr_map_001_03": "Multilingual Guide",

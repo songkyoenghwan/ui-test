@@ -1,8 +1,281 @@
 ---
-import Survey from '@/components/survey/Survey.astro';
 import Layout from '@/layouts/Layout.astro';
+import SurveyHeader from '@/svelte/survey/SurveyHeader.svelte';
+import SurveyList from '@/svelte/survey/SurveyList.svelte';
+import SurveySkeletonFallback from '@/pages/survey/SurveySkeletonFallback.astro';
+
+let data = [
+	{
+		id: 2,
+		tourDestinationId: 1,
+		title: {
+			ko: '방문목적',
+			en: 'Tourism made more convenient with Gwangjibs',
+			ch: '使用光管家让旅游更便利',
+			ja: 'グァンジプサでより便利になった観光',
+			th: 'การท่องเที่ยวที่สะดวกยิ่งขึ้นด้วยกวังจิบซา',
+			vi: 'Du lịch thuận tiện hơn với Gwangjibs',
+		},
+		questionType: 'MULTI',
+		isAiRecommendationEnabled: true,
+		deploymentStatus: 'DEPLOYING',
+		deployedAt: '2026-06-12T16:17:36.936Z',
+		deploymentEndedAt: null,
+		createdAt: '2026-06-12T15:42:53.396Z',
+		options: [
+			{
+				id: 5,
+				optionItem: {
+					ko: '데이트',
+					en: 'On a Date',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 1,
+				isActive: true,
+			},
+			{
+				id: 6,
+				optionItem: {
+					ko: '효도관광',
+					en: 'for Parents',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 2,
+				isActive: true,
+			},
+			{
+				id: 7,
+				optionItem: {
+					ko: '소풍',
+					en: 'Picnic',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 3,
+				isActive: true,
+			},
+			{
+				id: 4,
+				optionItem: {
+					ko: '데이트',
+					en: 'On a Date',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 1,
+				isActive: true,
+			},
+			{
+				id: 3,
+				optionItem: {
+					ko: '효도관광',
+					en: 'for Parents',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 2,
+				isActive: true,
+			},
+			{
+				id: 27,
+				optionItem: {
+					ko: '소풍',
+					en: 'Picnic',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 3,
+				isActive: true,
+			},
+			{
+				id: 35,
+				optionItem: {
+					ko: '데이트',
+					en: 'On a Date',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 1,
+				isActive: true,
+			},
+			{
+				id: 16,
+				optionItem: {
+					ko: '효도관광',
+					en: 'for Parents',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 2,
+				isActive: true,
+			},
+		],
+	},
+	{
+		id: 3,
+		tourDestinationId: 1,
+		title: {
+			ko: '성별',
+			en: 'Tourism made more convenient with Gwangjibs',
+			ch: '使用光管家让旅游更便利',
+			ja: 'グァンジプサでより便利になった観光',
+			th: 'การท่องเที่ยวที่สะดวกยิ่งขึ้นด้วยกวังจิบซา',
+			vi: 'Du lịch thuận tiện hơn với Gwangjibs',
+		},
+		questionType: 'SINGLE',
+		isAiRecommendationEnabled: true,
+		deploymentStatus: 'ENDED',
+		deployedAt: '2026-06-12T17:15:58.564Z',
+		deploymentEndedAt: '2026-06-12T17:16:30.162Z',
+		createdAt: '2026-06-12T15:44:25.848Z',
+		options: [
+			{
+				id: 8,
+				optionItem: {
+					ko: '여자',
+					en: 'Female',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 1,
+				isActive: true,
+			},
+			{
+				id: 9,
+				optionItem: {
+					ko: '남자',
+					en: 'Male',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 2,
+				isActive: true,
+			},
+			{
+				id: 10,
+				optionItem: {
+					ko: '둘 다 아님',
+					en: 'None',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 3,
+				isActive: true,
+			},
+		],
+	},
+	{
+		id: 1,
+		tourDestinationId: 1,
+		title: {
+			ko: '연령대',
+			en: 'Tourism made more convenient with Gwangjibs',
+			ch: '使用光管家让旅游更便利',
+			ja: 'グァンジプサでより便利になった観光',
+			th: 'การท่องเที่ยวที่สะดวกยิ่งขึ้นด้วยกวังจิบซา',
+			vi: 'Du lịch thuận tiện hơn với Gwangjibs',
+		},
+		questionType: 'SINGLE',
+		isAiRecommendationEnabled: true,
+		deploymentStatus: 'ENDED',
+		deployedAt: '2026-06-12T16:17:36.936Z',
+		deploymentEndedAt: '2026-06-15T12:09:26.516Z',
+		createdAt: '2026-06-12T12:11:17.011Z',
+		options: [
+			{
+				id: 1,
+				optionItem: {
+					ko: '10대',
+					en: '10',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 1,
+				isActive: true,
+			},
+			{
+				id: 2,
+				optionItem: {
+					ko: '20대',
+					en: '20',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: 2,
+				isActive: true,
+			},
+			{
+				id: 3,
+				optionItem: {
+					ko: '30대',
+					en: '30',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: null,
+				isActive: true,
+			},
+			{
+				id: 4,
+				optionItem: {
+					ko: '40대',
+					en: '40',
+					ja: '',
+					zh: '',
+					vi: '',
+					th: '',
+				},
+				sortingNumber: null,
+				isActive: true,
+			},
+		],
+	},
+];
 ---
 
 <Layout>
-	<Survey />
+	<section class="flex h-dvh flex-col bg-slate-50">
+		<SurveyHeader client:only="svelte">
+			<div slot="fallback" class="flex h-20 shrink-0 animate-pulse items-center bg-white p-5">
+				<div class="h-4 w-1/7 animate-pulse rounded bg-slate-100"></div>
+				<div class="h-4 w-1/7 animate-pulse rounded bg-slate-100"></div>
+			</div>
+		</SurveyHeader>
+
+		<SurveyList client:only="svelte" surveyList={data}>
+			<div class="flex h-[calc(100dvh-80px)] flex-1 flex-col justify-between" slot="fallback">
+				<SurveySkeletonFallback />
+			</div>
+		</SurveyList>
+	</section>
 </Layout>

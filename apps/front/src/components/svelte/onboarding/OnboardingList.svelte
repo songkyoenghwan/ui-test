@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages.js';
 	import { langState, pickText } from '@/stores/globalStore';
-	import Icons from '@/svelte/icons/icons.svelte';
+	import Icons from '@/svelte/icons/Icons.svelte';
 	import Swiper from 'swiper';
 	import { Navigation, Pagination } from 'swiper/modules';
 	import 'swiper/css';
@@ -44,7 +44,7 @@
 		aria-label="onboarding slide prev"
 		class="swiper-button-prev onboarding-button-prev -left-2.5! stroke-white text-white! *:fill-white!"
 	>
-		<Icons client:load name="arrow-slide" cls="w-5.5 h-10.5 rotate-180 stroke-white" />
+		<Icons name="arrow-slide" cls="w-5.5 h-10.5 rotate-180 stroke-white" />
 	</button>
 	<ul class="swiper-wrapper flex h-full **:text-center **:text-white">
 		{#each OnboardingList as item (item.id)}
@@ -80,15 +80,14 @@
 		aria-label="onboarding slide next"
 		class="swiper-button-next onboarding-button-next -right-2.5! stroke-white text-white! *:fill-white!"
 	>
-		<Icons client:load name="arrow-slide" cls="w-5.5 h-10.5 stroke-white" />
+		<Icons name="arrow-slide" cls="w-5.5 h-10.5 stroke-white" />
 	</button>
 </div>
 
 <div>
 	<a
 		href={linkUrl}
-		target="_blank"
-		rel="noopener noreferrer"
+		aria-label={$langState && m.usr_obd_002_01()}
 		class="group relative flex h-10 items-center justify-center rounded-sm bg-white to-[#0f1f42] px-2 py-1 transition-colors hover:bg-(--base-color) hover:text-white active:bg-(--base-color) active:text-white"
 	>
 		<p class="text-base font-medium text-(--base-color) group-hover:text-white">{$langState && m.usr_obd_002_01()}</p>

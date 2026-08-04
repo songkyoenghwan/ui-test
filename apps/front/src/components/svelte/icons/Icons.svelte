@@ -51,3 +51,9 @@
 {#if tooltipTxt && hoverEvent}
 	<ContentTooltip txt={tooltipTxt} referenceId={`#${tooltipRefId}`} placement="top" />
 {/if}
+
+<style>
+	:global(svg) {
+		flex: none;
+	}
+</style>

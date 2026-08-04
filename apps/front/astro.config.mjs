@@ -15,10 +15,11 @@ export default defineConfig({
 				project: './project.inlang',
 				outdir: './src/paraglide',
 				emitTsDeclarations: true,
+				strategy: ['cookie', 'url', 'baseLocale'],
 			}),
 		],
 	},
-	integrations: [svelte(), react()],
+	integrations: [svelte({ extensions: ['.svelte'] }), react(), alpinejs({ entrypoint: '/src/entrypoint' })],
 	output: 'server',
 	adapter: node({ mode: 'standalone' }),
 });

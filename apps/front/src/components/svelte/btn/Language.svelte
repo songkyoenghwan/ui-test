@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { getLocale, setLocale } from '@/paraglide/runtime.js';
-	import { langState } from '@/stores/globalStore';
+	import { langState, setLang } from '@/stores/globalStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import type { LocalizedText } from '@/types/common/locale';
 	import { Modal } from 'flowbite-svelte';
@@ -20,13 +19,12 @@
 		{ key: 'vi', label: 'Tiếng Việt(VI)' },
 	];
 	const langHandler = async (_key: LocalizedKey) => {
-		langState.set(_key);
+		setLang(_key);
 		langModal = false;
-		await setLocale(_key, { reload: false });
 	};
 </script>
 
-<div class="flex justify-end">
+<div class="flex flex-none justify-end">
 	<button type="button" class={[defaultClass]} onclick={() => (langModal = true)}>
 		<Icons name="global" cls="size-5 stroke-26b7ff" />
 		<span>language</span>
@@ -40,7 +38,7 @@
 				<button
 					type="button"
 					class="group relative flex h-10 w-full items-center justify-center rounded-lg bg-white px-2 py-1 transition-colors hover:bg-(--base-color) hover:text-white active:bg-(--base-color) active:text-white aria-current:bg-(--base-color) aria-current:text-white"
-					aria-current={item.key === getLocale()}
+					aria-current={item.key === $langState}
 					onclick={() => langHandler(item.key)}
 				>
 					{item.label}
