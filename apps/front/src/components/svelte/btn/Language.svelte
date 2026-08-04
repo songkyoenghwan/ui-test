@@ -27,7 +27,7 @@
 <div class="flex flex-none justify-end">
 	<button type="button" class={[defaultClass]} onclick={() => (langModal = true)}>
 		<Icons name="global" cls="size-5 stroke-26b7ff" />
-		<span>language</span>
+		<span>Language</span>
 	</button>
 </div>
 

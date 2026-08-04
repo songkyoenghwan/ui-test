@@ -69,7 +69,7 @@ const locale = cookieLocale ?? headerLocale ?? 'ko';
 				await setLang(nextLocale);
 			};
 
-			if (window.localStorage.get('lang') !== '') {
+			if (localStorage.getItem('lang') === null) {
 				syncLocale();
 			}
 		</script>

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages.js';
 	import { langState } from '@/stores/globalStore';
-	import Icons from '@/svelte/icons/Icons.svelte';
 	import type { GateItem } from '@/svelte/gate/Gate.event.svelte';
+	import Icons from '@/svelte/icons/Icons.svelte';
+
 	let { data }: { data: GateItem[] } = $props();
 </script>
 

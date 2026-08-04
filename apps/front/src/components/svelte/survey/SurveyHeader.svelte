@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages.js';
-	import Language from '@/svelte/btn/Language.svelte';
 	import { langState } from '@/stores/globalStore';
+	import Language from '@/svelte/btn/Language.svelte';
 </script>
 
 <header class="flex flex-none items-start justify-between gap-1 bg-white px-5 pt-5 pb-1">
