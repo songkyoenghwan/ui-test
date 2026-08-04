@@ -10,7 +10,6 @@
 	let currentStep = $state<'plus' | 'minus'>('plus');
 	let listTotal = $derived(current === surveyList.length - 1 ? false : true);
 	let listStart = $derived(current > 0);
-
 	let answers = $state<Record<number, string | string[]>>({});
 
 	let isCurrentAnswered = $derived.by(() => {
@@ -23,6 +22,11 @@
 
 		return typeof value === 'string' && value.length > 0;
 	});
+
+	const handleRadioClick = (surveyId: number, optId: number) => {
+		const value = String(optId);
+		answers[surveyId] = answers[surveyId] === value ? '' : value;
+	};
 
 	const stepHandler = (state: 'plus' | 'minus') => {
 		prevCurrent = current;
@@ -40,24 +44,27 @@
 	};
 </script>
 
-<div class="grid min-h-0 flex-1 grid-rows-[1fr_90px]">
-	<ul class="flex flex-col gap-2 overflow-y-scroll">
+<div class="group/lang flex min-h-0 flex-1 flex-col" data-lang={$langState}>
+	<ul class="grid min-h-0 flex-1 gap-2" data-prev-number={prevCurrent ?? 0} data-index={current}>
 		{#each surveyList as survey, i (survey.id)}
-			<li class={['relative', current === i ? 'flex flex-1 flex-col' : 'hidden']} aria-hidden={current !== i}>
-				<div class=" bg-white px-5 pt-2.5 pb-5">
+			<li class={['relative min-h-0', current === i ? 'flex flex-1 flex-col' : 'hidden']} aria-hidden={current !== i}>
+				<div class="flex h-28 flex-none flex-col justify-center bg-white px-5 py-1.5">
 					<p
-						class="text-111 relative flex max-h-12 translate-y-0 items-center text-[22px] transition-all starting:translate-y-1 starting:opacity-0"
+						class={[
+							'text-111 relative flex max-h-12 translate-y-0 items-center text-[22px] leading-tight break-all transition-all starting:translate-y-1 starting:opacity-0',
+							$langState === 'en' || $langState === 'ja' ? 'text-lg' : '',
+						]}
 					>
 						{pickText(survey.title, $langState)}
 					</p>
 
 					{#if survey.questionType.trim() === 'MULTI'}
-						<p class="mt-2 text-sm text-slate-500">{m.usr_obd_003_03({ locale: $langState })}</p>
+						<p class="mt-1.5 text-sm text-slate-500">{m.usr_obd_003_03({ locale: $langState })}</p>
 					{/if}
 				</div>
 
 				{#if surveyList.length > 0}
-					<ol class="mx-5 flex items-center gap-1" aria-hidden="true">
+					<ol class="mx-5 flex flex-none items-center gap-1" aria-hidden="true">
 						{#each surveyList as step, z (step.id)}
 							<li
 								class={[
@@ -74,58 +81,60 @@
 					</ol>
 				{/if}
 
-				<ul
-					class="max-h- relative flex flex-1 translate-x-0 flex-col gap-2 overflow-y-auto bg-slate-50
-					p-5 opacity-100 transition-all transition-discrete duration-400 starting:translate-x-10 starting:opacity-0"
+				<div
+					class="relative flex flex-1 translate-x-0 flex-col overflow-y-auto bg-slate-50 p-5 opacity-100 transition-all transition-discrete duration-400 starting:translate-x-10 starting:opacity-0"
 				>
-					{#each survey.options as opt, y (opt.id)}
-						{@const inputId = `${survey.id}-${opt.id}`}
+					<ul class="flex flex-1 flex-col gap-2">
+						{#each survey.options as opt, y (opt.id)}
+							{@const inputId = `${survey.id}-${opt.id}`}
 
-						<li
-							class={[
-								'relative flex-1 transition-all duration-300 ease-out',
-								current === i ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0',
-							]}
-							style={`transition-delay:${current === i ? y * 40 : 0}ms`}
-						>
-							<label
-								for={inputId}
-								class="itmes-center flex h-full items-center justify-between rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-black has-checked:border-(--base-color) has-checked:bg-(--base-color)/5 has-checked:font-bold has-checked:text-(--base-color)"
+							<li
+								class={[
+									'relative flex-1 transition-all duration-300 ease-out',
+									current === i ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0',
+								]}
+								style={`transition-delay:${current === i ? y * 40 : 0}ms`}
 							>
-								{#if survey.questionType.trim() === 'MULTI'}
-									<input
-										type="checkbox"
-										value={String(opt.id)}
-										id={inputId}
-										class="peer sr-only"
-										bind:group={answers[survey.id]}
-									/>
-								{:else}
-									<input
-										type="radio"
-										name={String(survey.id)}
-										id={inputId}
-										class="peer sr-only"
-										value={String(opt.id)}
-										bind:group={answers[survey.id]}
-									/>
-								{/if}
-								{pickText(opt.optionItem, $langState)}
+								<label
+									for={inputId}
+									class="itmes-center flex h-full items-center justify-between rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-black has-checked:border-(--base-color) has-checked:bg-(--base-color)/5 has-checked:font-bold has-checked:text-(--base-color)"
+								>
+									{#if survey.questionType.trim() === 'MULTI'}
+										<input
+											type="checkbox"
+											value={String(opt.id)}
+											id={inputId}
+											class="peer sr-only"
+											bind:group={answers[survey.id]}
+										/>
+									{:else}
+										<input
+											type="radio"
+											name={String(survey.id)}
+											id={inputId}
+											class="peer sr-only"
+											value={String(opt.id)}
+											checked={answers[survey.id] === String(opt.id)}
+											onclick={() => handleRadioClick(survey.id, opt.id)}
+										/>
+									{/if}
+									{pickText(opt.optionItem, $langState)}
 
-								<Icons name="input-chk-off" cls="size-4.5 stroke-slate-400 peer-checked:hidden" />
-								<Icons
-									name="input-chk-on"
-									cls="size-4.5 starting:scale-0 transition-all scale-100 relative fill-(--base-color) peer-checked:flex hidden"
-								/>
-							</label>
-						</li>
-					{/each}
-				</ul>
+									<Icons name="input-chk-off" cls="size-4.5 stroke-slate-400 peer-checked:hidden" />
+									<Icons
+										name="input-chk-on"
+										cls="size-4.5 starting:scale-0 transition-all scale-100 relative fill-(--base-color) peer-checked:flex hidden"
+									/>
+								</label>
+							</li>
+						{/each}
+					</ul>
+				</div>
 			</li>
 		{/each}
 	</ul>
 
-	<footer>
+	<footer class="flex-none">
 		<div
 			class="flex w-full flex-nowrap items-center justify-center gap-2 border-t border-slate-200 bg-slate-50 px-5 py-2 text-slate-500 *:inline-flex *:items-center *:text-base"
 		>
@@ -149,9 +158,17 @@
 					<span>{m.usr_obd_003_07({ locale: $langState })}</span>
 				</button>
 			{:else}
-				<a href={linkUrl} class="h-10 flex-1 justify-center rounded-sm bg-(--base-color) text-white">
-					<span>{m.usr_obd_003_05({ locale: $langState })}</span>
-				</a>
+				{#if isCurrentAnswered}
+					<a href={linkUrl} class="h-10 flex-1 justify-center gap-2.5 rounded-sm bg-(--base-color) text-white">
+						<Icons name="map-start" cls="fill-white size-3.25" />
+						<span>{m.usr_obd_003_05({ locale: $langState })}</span>
+					</a>
+				{:else}
+					<p class="h-10 flex-1 justify-center gap-2.5 rounded-sm bg-slate-200 text-slate-500">
+						<Icons name="map-start" cls="fill-slate-500 size-3.25" />
+						<span>{m.usr_obd_003_05({ locale: $langState })}</span>
+					</p>
+				{/if}
 			{/if}
 		</div>
 

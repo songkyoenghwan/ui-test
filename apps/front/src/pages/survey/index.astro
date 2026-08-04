@@ -9,9 +9,9 @@ let data = [
 		id: 2,
 		tourDestinationId: 1,
 		title: {
-			ko: '방문목적',
+			ko: '방문목적방문목적방문목적방문목적방문목적방문목적방문목적방문목적',
 			en: 'Tourism made more convenient with Gwangjibs',
-			ch: '使用光管家让旅游更便利',
+			zh: '使用光管家让旅游更便利',
 			ja: 'グァンジプサでより便利になった観光',
 			th: 'การท่องเที่ยวที่สะดวกยิ่งขึ้นด้วยกวังจิบซา',
 			vi: 'Du lịch thuận tiện hơn với Gwangjibs',
@@ -273,7 +273,7 @@ let data = [
 		</SurveyHeader>
 
 		<SurveyList client:only="svelte" surveyList={data}>
-			<div class="flex h-[calc(100dvh-80px)] flex-1 flex-col justify-between" slot="fallback">
+			<div class="flex h-[calc(100%-80px)] flex-1 flex-col justify-between" slot="fallback">
 				<SurveySkeletonFallback />
 			</div>
 		</SurveyList>

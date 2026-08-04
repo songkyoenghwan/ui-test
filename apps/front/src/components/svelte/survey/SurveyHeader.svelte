@@ -4,7 +4,7 @@
 	import { langState } from '@/stores/globalStore';
 </script>
 
-<header class="flex items-start justify-between gap-2 bg-white px-5 pt-5 pb-2.5">
+<header class="flex flex-none items-start justify-between gap-2 bg-white px-5 pt-5">
 	<h2 class="text-base leading-tight break-all text-slate-500">
 		{m.usr_obd_003_01({ locale: $langState })}
 		<br />
