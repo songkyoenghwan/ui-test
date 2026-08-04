@@ -3,13 +3,16 @@ import Logo from '@/components/img/Logo.astro';
 import Layout from '@/layouts/Layout.astro';
 import * as m from '@/paraglide/messages.js';
 import Language from '@/svelte/btn/Language.svelte';
-import Icons from '@/svelte/icons/Icons.svelte';
+import Gate from '@/svelte/gate/Gate.svelte';
+import type { GateItem } from '@/svelte/gate/Gate.event.svelte';
 
 const OBD_LABELS = {
-	1: m.usr_obd_001_01,
-	2: m.usr_obd_001_02,
-	3: m.usr_obd_001_03,
-	4: m.usr_obd_001_04,
+	1: m.usr_obd_001_03,
+	2: m.usr_obd_001_04,
+	3: m.usr_obd_001_05,
+	4: m.usr_obd_001_06,
+	5: m.usr_obd_001_07,
+	6: m.usr_obd_001_08,
 } as const;
 
 type ObdCode = keyof typeof OBD_LABELS;
@@ -18,46 +21,39 @@ export function getObdLabel(code: ObdCode) {
 	return OBD_LABELS[code]();
 }
 
-type GateItem = {
-	tit: string;
-	img: string;
-	href: string;
-	code: 1 | 2 | 3 | 4 | 5 | 6;
-};
-
 const gateList: GateItem[] = [
 	{
-		tit: m.usr_obd_001_03(),
+		name: 'usr_obd_001_03',
 		img: 'https://cdn.pixabay.com/photo/2026/06/30/07/54/whitetopaz-digital-art-10356325_1280.jpg',
 		href: '/onboarding',
 		code: 1,
 	},
 	{
-		tit: m.usr_obd_001_04(),
+		name: 'usr_obd_001_04',
 		img: 'https://cdn.pixabay.com/photo/2026/06/30/07/54/whitetopaz-digital-art-10356325_1280.jpg',
 		href: '/onboarding',
 		code: 2,
 	},
 	{
-		tit: m.usr_obd_001_04(),
+		name: 'usr_obd_001_04',
 		img: 'https://cdn.pixabay.com/photo/2026/06/30/07/54/whitetopaz-digital-art-10356325_1280.jpg',
 		href: '/onboarding',
 		code: 1,
 	},
 	{
-		tit: m.usr_obd_001_05(),
+		name: 'usr_obd_001_05',
 		img: 'https://cdn.pixabay.com/photo/2026/06/30/07/54/whitetopaz-digital-art-10356325_1280.jpg',
 		href: '/onboarding',
 		code: 2,
 	},
 	{
-		tit: m.usr_obd_001_06(),
+		name: 'usr_obd_001_06',
 		img: 'https://cdn.pixabay.com/photo/2026/06/30/07/54/whitetopaz-digital-art-10356325_1280.jpg',
 		href: '/onboarding',
 		code: 1,
 	},
 	{
-		tit: m.usr_obd_001_07(),
+		name: 'usr_obd_001_07',
 		img: 'https://cdn.pixabay.com/photo/2026/06/30/07/54/whitetopaz-digital-art-10356325_1280.jpg',
 		href: '/onboarding',
 		code: 2,
@@ -67,39 +63,10 @@ const gateList: GateItem[] = [
 
 <Layout>
 	<section class="flex h-dvh flex-col gap-3.5 overflow-x-clip overflow-y-auto p-5 **:tracking-tight">
-		<Language client:only />
+		<Language client:only="svelte" />
 
-		<header class="flex flex-none flex-col items-center justify-center gap-1 *:text-center *:leading-tight">
-			<Logo />
-			<h2 class="pt-1 text-[26px] font-bold">{m.usr_obd_001_01()}</h2>
-			<p class="text-lg text-slate-500">{m.usr_obd_001_02()}</p>
-		</header>
+		<Logo />
 
-		<ul class="flex flex-1 flex-wrap gap-3">
-			{
-				gateList.map((item) => (
-					<li class="flex-1 basis-1/4">
-						<a
-							href={item.href ?? '#'}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="group/link flex h-full flex-col justify-between gap-3 rounded-lg border border-slate-300 bg-white px-1.5 pt-3 pb-1.5 *:leading-tight active:border-slate-100"
-						>
-							<h3 class="text-center text-base text-black">{item.tit ?? ''}</h3>
-
-							<picture class="overflow-clip">
-								<img src={item.img ?? ''} alt={item.tit ?? ''} class="aspect-square" />
-							</picture>
-
-							<div class="flex items-center justify-between rounded-sm border border-slate-100 bg-white px-2 py-1 group-hover/link:bg-linear-90 group-hover/link:from-(--base-color) group-hover/link:to-[#0f1f42] group-hover/link:text-white group-active/link:bg-linear-90 group-active/link:from-(--base-color) group-active/link:to-[#0f1f42] group-active/link:text-white pointer-coarse:scale-105">
-								<p class="text-[10px] font-medium">{m.usr_obd_002_01()}</p>
-
-								<Icons client:load name="arrow-circle" cls="size-2.5 fill-slate-300" />
-							</div>
-						</a>
-					</li>
-				))
-			}
-		</ul>
+		<Gate client:only="svelte" data={gateList} />
 	</section>
 </Layout>

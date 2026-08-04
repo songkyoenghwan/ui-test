@@ -88,6 +88,7 @@ export const setLang = async (_key: LocalizedKey) => {
 
 	await setLocale(_key, { reload: false });
 	langState.set(_key);
+	localStorage.setItem('lang', _key);
 };
 
 export const pickText = (text: Partial<LocalizedText>, lang: LocalizedKey) => {

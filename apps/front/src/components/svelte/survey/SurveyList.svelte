@@ -51,7 +51,7 @@
 				<div class="flex h-28 flex-none flex-col justify-center bg-white px-5 py-1.5">
 					<p
 						class={[
-							'text-111 relative flex max-h-12 translate-y-0 items-center text-[22px] leading-tight break-all transition-all starting:translate-y-1 starting:opacity-0',
+							'text-111 relative line-clamp-2 flex max-h-12 translate-y-0 items-center text-[22px] leading-tight break-all transition-all starting:translate-y-1 starting:opacity-0',
 							$langState === 'en' || $langState === 'ja' ? 'text-lg' : '',
 						]}
 					>
