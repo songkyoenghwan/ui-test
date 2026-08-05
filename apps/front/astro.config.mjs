@@ -1,3 +1,4 @@
+import alpinejs from '@astrojs/alpinejs';
 import node from '@astrojs/node';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';

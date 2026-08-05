@@ -973,9 +973,6 @@
   .pt-5 {
     padding-top: calc(var(--spacing) * 5);
   }
-  .pt-\[36\.5\%\] {
-    padding-top: 36.5%;
-  }
   .pr-9 {
     padding-right: calc(var(--spacing) * 9);
   }

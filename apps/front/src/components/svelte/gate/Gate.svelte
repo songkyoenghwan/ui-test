@@ -1,5 +1,5 @@
 <script lang="ts">
-	import * as m from '@/paraglide/messages.js';
+	import * as m from '@/paraglide/messages';
 	import { langState } from '@/stores/globalStore';
 	import type { GateItem } from '@/svelte/gate/Gate.event.svelte';
 	import Icons from '@/svelte/icons/Icons.svelte';

@@ -1,0 +1,17 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import * as m from '@/paraglide/messages';
+import { langState } from '@/stores/globalStore';
+import SearchBar from '@/src/components/svelte/map/SearchBar.svelte';
+import Category from '@/src/components/svelte/map/Category.svelte';
+import Sheet from '@/src/components/svelte/map/Sheet.svelte';
+
+import { categories } from './dummy';
+---
+
+<Layout>
+	<SearchBar client:only="svelte" name="대상지명" />
+	<Category client:only="svelte" categories={categories} />
+
+	<Sheet client:only="svelte" />
+</Layout>

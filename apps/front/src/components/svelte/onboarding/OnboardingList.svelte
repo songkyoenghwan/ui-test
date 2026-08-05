@@ -8,7 +8,23 @@
 	import 'swiper/css/navigation';
 	import 'swiper/css/pagination';
 
-	let { OnboardingList, linkUrl = '' } = $props();
+	type OnboardingItem = {
+		id: number;
+		name: Record<string, string>;
+		description: Record<string, string>;
+		onboardingFiles?: {
+			fileType: string;
+			fileUrl: string;
+			fileOriginalName: string;
+		}[];
+	};
+
+	interface Props {
+		OnboardingList: OnboardingItem[];
+		linkUrl?: string;
+	}
+
+	let { OnboardingList, linkUrl = '' }: Props = $props();
 
 	const getOnboardingFile = (files: { fileType: string; fileUrl: string; fileOriginalName: string }[], lang: string) => {
 		const targetType = lang === 'ko' ? 'MAIN' : 'MAIN_GLOBAL';

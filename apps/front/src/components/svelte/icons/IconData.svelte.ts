@@ -1,3 +1,6 @@
+import { iconCategory } from './iconCategory';
+import { iconFacilities } from './iconFacilities';
+
 export const getIconData = () => {
 	// 간단한 대체 UUID 생성 함수 예시 (RFC4122 버전 4)
 	function uuidv4() {
@@ -80,6 +83,20 @@ export const getIconData = () => {
 			`,
 		},
 		{
+			name: 'arrow-left',
+			size: '20',
+			html: /* HTML */ `
+				<path
+					d="M12.0398 15.9357L6.82384 10.7197C6.20784 10.1037 6.20784 9.09567 6.82384 8.47967L12.0398 3.26367"
+					fill="none"
+					stroke-width="1.2"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
 			name: 'input-chk-off',
 			size: '18',
 			html: /* HTML */ `
@@ -114,6 +131,33 @@ export const getIconData = () => {
 					stroke="none"
 				/>
 			`,
+		},
+		{
+			name: 'search',
+			size: '20',
+			html: /* HTML */ `
+				<path
+					d="M9.16699 1.875C13.1938 1.87518 16.4578 5.14017 16.458 9.16699C16.4579 10.9551 15.8123 12.5911 14.7441 13.8594L17.9424 17.0576C18.1864 17.3017 18.1864 17.6983 17.9424 17.9424C17.6983 18.1865 17.3017 18.1865 17.0576 17.9424L13.8594 14.7441C12.5911 15.8123 10.9551 16.4579 9.16699 16.458C5.14017 16.4578 1.87518 13.1938 1.875 9.16699C1.87518 5.14017 5.14017 1.87518 9.16699 1.875ZM9.16699 3.125C5.83053 3.12518 3.12518 5.83053 3.125 9.16699C3.12518 12.5035 5.83053 15.2078 9.16699 15.208C10.8116 15.2079 12.3013 14.5494 13.3906 13.4834C13.4043 13.4665 13.4169 13.4483 13.4326 13.4326C13.4483 13.4169 13.4665 13.4043 13.4834 13.3906C14.5494 12.3013 15.2079 10.8116 15.208 9.16699C15.2078 5.83053 12.5035 3.12518 9.16699 3.125Z"
+					stroke="none"
+				/>
+			`,
+		},
+		{
+			name: 'menu',
+			size: '24',
+			html: /* HTML */ `
+				<path d="M2.40625 6H21.5924" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M2.40625 12H21.5924" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+				<path d="M2.40625 18H21.5924" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+			`,
+		},
+		...iconCategory,
+		...iconFacilities,
+
+		{
+			name: '',
+			size: '16',
+			html: /* HTML */ ``,
 		},
 	];
 };
