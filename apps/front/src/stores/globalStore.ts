@@ -98,8 +98,8 @@ export const pickText = (text: Partial<LocalizedText>, lang: LocalizedKey) => {
 export const colorState = atom<string>('#274fa8');
 export const loadingState = atom<boolean>(false);
 
-type MainView = 'default' | 'detail' | 'ai' | 'search' | 'route';
-type DetailView = 'idle' | 'facilities' | 'aiMultiple' | 'aiSingle' | 'directions' | 'searchResult' | 'empty';
+type MainView = 'default' | 'ai' | 'search' | 'route';
+type DetailView = 'idle' | 'default' | 'facilities' | 'aiMultiple' | 'aiSingle' | 'directions' | 'searchResult' | 'empty';
 type SearchView = 'idle' | 'result' | 'empty' | 'noResult' | 'empty';
 type RouteView = 'idle' | 'result' | 'waypoint' | 'point' | 'empty';
 type RecommendView = 'idle' | 'loading' | 'result' | 'empty';
@@ -109,3 +109,9 @@ export const detailViewState = atom<DetailView>('idle');
 export const searchViewState = atom<SearchView>('idle');
 export const routeViewState = atom<RouteView>('idle');
 export const recommendViewState = atom<RecommendView>('idle');
+
+export const sheetRatio = map({
+	min: 0.2,
+	mid: 0.5,
+	max: 0.99,
+});

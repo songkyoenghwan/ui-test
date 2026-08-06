@@ -1,66 +1,113 @@
 <script lang="ts">
+	import { mainViewState, detailViewState } from '@/stores/globalStore';
 	import { BottomSheet } from 'svelte-bottom-sheet';
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
 	import Detail from '@/svelte/sheet/Detail.svelte';
 	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
+	import { tick } from 'svelte';
 
-	let isSheetOpen = $state(true);
-	let mainView = $state<'default' | 'detail' | 'search' | 'route'>('default');
-
-	const SHEET_SETTINGS: Record<string, BottomSheetSettings> = {
-		default: {
-			maxHeight: 0.99,
-			snapPoints: [0.2, 0.45, 0.9],
-			startingSnappoint: 0.28,
-			disableClosing: true,
-		},
-		detail: {
-			maxHeight: 0.95,
-			snapPoints: [0.18, 0.55, 0.95],
-			startingSnappoint: 1,
-			disableClosing: true,
-		},
-		search: {
-			maxHeight: 0.92,
-			snapPoints: [0.12, 0.4, 0.92],
-			startingSnappoint: 0,
-			disableClosing: true,
-		},
-		route: {
-			maxHeight: 0.95,
-			snapPoints: [0.25, 0.6, 0.95],
-			startingSnappoint: 1,
-			disableClosing: true,
-		},
+	type BottomSheetRef = {
+		setSnapPoint: (point: number, throwEvent?: boolean) => boolean;
 	};
 
-	const sheetSettings = $derived(SHEET_SETTINGS[mainView]);
-	let sheet;
+	let sheet: BottomSheetRef | undefined;
+	let rootEl: HTMLDivElement | undefined;
+	let sheetEl: HTMLElement | null = null;
+	let bottomSheetHeight = $state(0);
+	let isSheetOpen = $state(false);
+	let sheetHandleH = $state(30);
+	let contentH = $state(30);
+	let viewportH = $state(0);
+	let maxH = $state(0.99);
 
-	function snapToMiddle() {
-		sheet?.setSnapPoint(0.5);
+	let currentSnapPoint = $state<number | null>(null);
+	let currentSnapIndex = $state(0);
+	let initialSnapRatios = $state<number[]>([]);
+
+	function round2(value: number) {
+		return Math.round(value * 100) / 100;
 	}
 
-	function openDefaultSheet() {
-		isSheetOpen = true;
-		queueMicrotask(() => {
-			sheet?.setSnapPoint(0.28);
-		});
+	let minRatio = $derived.by(() => {
+		const value = viewportH > 0 ? Math.min(Math.max(contentH / viewportH, 0.15), maxH) : 0.15;
+
+		return round2(value);
+	});
+	let midRatio = $derived.by(() => {
+		return round2(Math.min(Math.max(minRatio + 0.2, minRatio), maxH));
+	});
+
+	let snapRatios = $derived([minRatio, midRatio, maxH]);
+
+	const sheetSettings = $derived.by<BottomSheetSettings>(() => {
+		return {
+			disableClosing: true,
+			autoCloseThreshold: 0,
+			maxHeight: maxH,
+			snapPoints: snapRatios,
+			startingSnapPoint: snapRatios[0],
+			closeThreshold: snapRatios[0],
+		};
+	});
+
+	async function keepOpen() {
+		if (!isSheetOpen) {
+			isSheetOpen = true;
+			await tick();
+		}
 	}
+
+	// $effect(() => {
+	// 	if (initialSnapRatios.length > 0) return;
+	// 	if (viewportH <= 0) return;
+
+	// 	initialSnapRatios = [minRatio, midRatio, maxH];
+	// });
+
+	// $effect(() => {
+	// 	if (!rootEl) return;
+
+	// 	const target = rootEl.querySelector<HTMLElement>('.bottom-sheet');
+	// 	if (!target) return;
+
+	// 	sheetEl = target;
+
+	// 	const observer = new ResizeObserver((entries) => {
+	// 		const entry = entries[0];
+	// 		contentH = entry.contentRect.height;
+	// 	});
+
+	// 	observer.observe(target);
+
+	// 	return () => observer.disconnect();
+	// });
+
+	$inspect(initialSnapRatios);
 </script>
 
-<BottomSheet bind:isSheetOpen settings={sheetSettings}>
-	<BottomSheet.Sheet>
-		<BottomSheet.Handle />
-		<div class="has-[footer]:pb-17">
-			<TabAi />
+<svelte:window bind:innerHeight={viewportH} />
 
-			<Detail />
-			<BtnDirections />
-		</div>
-	</BottomSheet.Sheet>
-</BottomSheet>
+<div bind:this={rootEl} data-detail-index={currentSnapIndex} bind:clientHeight={contentH}>
+	<BottomSheet bind:this={sheet} bind:isSheetOpen settings={sheetSettings} onclose={keepOpen}>
+		<BottomSheet.Sheet>
+			<div bind:clientHeight={sheetHandleH}>
+				<BottomSheet.Handle />
+			</div>
+
+			<div class="has-[footer]:pb-20" role="region" aria-label="하단 시트 콘텐츠" data-height={bottomSheetHeight}>
+				{#if $mainViewState === 'ai'}
+					<TabAi />
+				{/if}
+				<Detail viewIndex={currentSnapIndex} />
+
+				{#if currentSnapIndex !== 0}
+					<BtnDirections />
+				{/if}
+			</div>
+		</BottomSheet.Sheet>
+	</BottomSheet>
+</div>
 
 <style>
 	:global(.handle-container) {
