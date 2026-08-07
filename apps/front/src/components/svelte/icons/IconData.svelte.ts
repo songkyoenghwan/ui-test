@@ -151,6 +151,82 @@ export const getIconData = () => {
 				<path d="M2.40625 18H21.5924" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 			`,
 		},
+		{
+			name: 'back',
+			size: '24',
+			html: /* HTML */ `
+				<path
+					d="M9.57 5.92969L3.5 11.9997L9.57 18.0697"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M20.4999 12H3.66992"
+					fill="none"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
+			name: 'refresh',
+			size: '22',
+			html: /* HTML */ `
+				<path
+					d="M19.9999 10.9083C19.9999 15.9265 15.9272 19.9992 10.909 19.9992C5.89084 19.9992 2.82721 14.9447 2.82721 14.9447M2.82721 19.4901V14.9447H6.9363M1.81812 10.9083C1.81812 5.89011 5.85448 1.81738 10.909 1.81738C16.9727 1.81738 19.9999 6.87193 19.9999 6.87193M15.9636 6.87193H19.9999V2.32647"
+					fill="none"
+					stroke-width="1.36364"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
+			name: 'gpe',
+			size: '26',
+			html: /* HTML */ `
+				<path
+					d="M12.7279 21.5658C17.6092 21.5658 21.5663 17.6087 21.5663 12.7274C21.5663 7.84612 17.6092 3.88904 12.7279 3.88904C7.84664 3.88904 3.88956 7.84612 3.88956 12.7274C3.88956 17.6087 7.84664 21.5658 12.7279 21.5658Z"
+					fill="none"
+					stroke-width="1.36364"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M12.7283 6.36375V1.8183"
+					fill="none"
+					stroke-width="1.36364"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M6.3647 12.7274H1.81924"
+					fill="none"
+					stroke-width="1.36364"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M12.7283 23.6365V19.091"
+					fill="none"
+					stroke-width="1.36364"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M23.6374 12.7274H19.092"
+					fill="none"
+					stroke-width="1.36364"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
 		...iconCategory,
 		...iconFacilities,
 

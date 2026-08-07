@@ -1,10 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import * as m from '@/paraglide/messages';
-import { langState } from '@/stores/globalStore';
 import SearchBar from '@/src/components/svelte/map/SearchBar.svelte';
 import Category from '@/src/components/svelte/map/Category.svelte';
 import Sheet from '@/src/components/svelte/map/Sheet.svelte';
+import BackView from '@/src/components/svelte/map/BackView.svelte';
+import TopBtn from '@/src/pages/map/TopBtn.astro';
+import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 
 import { categories } from './dummy';
 ---
@@ -13,5 +14,23 @@ import { categories } from './dummy';
 	<SearchBar client:only="svelte" name="대상지명" />
 	<Category client:only="svelte" categories={categories} />
 
+	<BackView client:only="svelte" />
+
+	<TopBtn />
+	<ConfusionState client:only="svelte" />
 	<Sheet client:only="svelte" />
+
+	<button type="button" class="fixed bottom-1/2 left-0" data-btn="detail">detail</button>
 </Layout>
+
+<script>
+	import { sheetHandleOpen } from '@/stores/uxStore';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		document.querySelector('[data-btn="detail"]')?.addEventListener('click', () => {
+			alert(1);
+
+			sheetHandleOpen.set(true);
+		});
+	});
+</script>

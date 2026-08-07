@@ -1,122 +1,129 @@
 <script lang="ts">
-	import { mainViewState, detailViewState } from '@/stores/globalStore';
+	import { mainViewState } from '@/stores/globalStore';
+	import {
+		sheetInstance,
+		sheetScrollInstance,
+		sheetRatio,
+		sheetHandleOpen,
+		sheetSnapPoint,
+		sheetMaxHeight,
+	} from '@/stores/uxStore';
 	import { BottomSheet } from 'svelte-bottom-sheet';
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
 	import Detail from '@/svelte/sheet/Detail.svelte';
-	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
 	import { tick } from 'svelte';
+	import { type BottomSheetRef } from '@/utils/uxEvent.type';
 
-	type BottomSheetRef = {
-		setSnapPoint: (point: number, throwEvent?: boolean) => boolean;
-	};
-
-	let sheet: BottomSheetRef | undefined;
+	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
-	let sheetEl: HTMLElement | null = null;
-	let bottomSheetHeight = $state(0);
-	let isSheetOpen = $state(false);
-	let sheetHandleH = $state(30);
-	let contentH = $state(30);
-	let viewportH = $state(0);
-	let maxH = $state(0.99);
-
-	let currentSnapPoint = $state<number | null>(null);
-	let currentSnapIndex = $state(0);
-	let initialSnapRatios = $state<number[]>([]);
-
-	function round2(value: number) {
-		return Math.round(value * 100) / 100;
-	}
-
-	let minRatio = $derived.by(() => {
-		const value = viewportH > 0 ? Math.min(Math.max(contentH / viewportH, 0.15), maxH) : 0.15;
-
-		return round2(value);
-	});
-	let midRatio = $derived.by(() => {
-		return round2(Math.min(Math.max(minRatio + 0.2, minRatio), maxH));
-	});
-
-	let snapRatios = $derived([minRatio, midRatio, maxH]);
+	let viewportH = $state<number | 0>(0);
+	let snapRatios = $derived([$sheetRatio.min, $sheetRatio.mid, $sheetRatio.max]);
 
 	const sheetSettings = $derived.by<BottomSheetSettings>(() => {
 		return {
 			disableClosing: true,
 			autoCloseThreshold: 0,
-			maxHeight: maxH,
+			maxHeight: $sheetMaxHeight,
 			snapPoints: snapRatios,
-			startingSnapPoint: snapRatios[0],
-			closeThreshold: snapRatios[0],
+			startingSnapPoint: snapRatios[1],
+			closeThreshold: snapRatios[1],
 		};
 	});
 
 	async function keepOpen() {
-		if (!isSheetOpen) {
-			isSheetOpen = true;
+		if (!$sheetHandleOpen) {
 			await tick();
+			sheetHandleOpen.set(true);
 		}
 	}
 
-	// $effect(() => {
-	// 	if (initialSnapRatios.length > 0) return;
-	// 	if (viewportH <= 0) return;
+	$effect(() => {
+		if (!rootEl) return;
+		sheetInstance.set(sheet);
+		sheetInstance.get()?.setSnapPoint(0.01);
 
-	// 	initialSnapRatios = [minRatio, midRatio, maxH];
-	// });
+		const handleEl = rootEl.querySelector<HTMLElement>('[aria-valuenow]');
+		if (!handleEl) return;
 
-	// $effect(() => {
-	// 	if (!rootEl) return;
+		const update = () => {
+			const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
+			sheetSnapPoint.set(next);
 
-	// 	const target = rootEl.querySelector<HTMLElement>('.bottom-sheet');
-	// 	if (!target) return;
+			const scrollEl = $sheetScrollInstance;
 
-	// 	sheetEl = target;
+			if (scrollEl instanceof HTMLElement && scrollEl?.scrollTop > 0) {
+				scrollEl.scrollTop = 0;
+			}
+		};
 
-	// 	const observer = new ResizeObserver((entries) => {
-	// 		const entry = entries[0];
-	// 		contentH = entry.contentRect.height;
-	// 	});
+		update();
 
-	// 	observer.observe(target);
+		const observer = new MutationObserver(() => {
+			update();
+		});
 
-	// 	return () => observer.disconnect();
-	// });
+		observer.observe(handleEl, {
+			attributes: true,
+			attributeFilter: ['aria-valuenow'],
+		});
 
-	$inspect(initialSnapRatios);
+		return () => {
+			observer.disconnect();
+		};
+	});
 </script>
 
 <svelte:window bind:innerHeight={viewportH} />
 
-<div bind:this={rootEl} data-detail-index={currentSnapIndex} bind:clientHeight={contentH}>
-	<BottomSheet bind:this={sheet} bind:isSheetOpen settings={sheetSettings} onclose={keepOpen}>
+<div
+	bind:this={rootEl}
+	data-detail-index={$sheetSnapPoint}
+	data-scroll-check={$sheetSnapPoint > 70 ? 'on' : 'off'}
+	class={[$mainViewState === 'poi' ? 'pt-17.5' : '']}
+>
+	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetHandleOpen} onclose={keepOpen}>
 		<BottomSheet.Sheet>
-			<div bind:clientHeight={sheetHandleH}>
-				<BottomSheet.Handle />
-			</div>
+			<BottomSheet.Handle />
 
-			<div class="has-[footer]:pb-20" role="region" aria-label="하단 시트 콘텐츠" data-height={bottomSheetHeight}>
-				{#if $mainViewState === 'ai'}
-					<TabAi />
-				{/if}
-				<Detail viewIndex={currentSnapIndex} />
+			{#if $mainViewState === 'ai'}
+				<TabAi />
+			{/if}
 
-				{#if currentSnapIndex !== 0}
-					<BtnDirections />
-				{/if}
-			</div>
+			{#if $mainViewState === 'default' || $mainViewState === 'poi'}
+				<Detail {viewportH} />
+			{/if}
 		</BottomSheet.Sheet>
 	</BottomSheet>
 </div>
 
 <style>
-	:global(.handle-container) {
-		padding: 4px 0 !important;
-		outline: none !important;
-	}
+	:global {
+		.bottom-sheet {
+			overflow: hidden !important;
+			touch-action: pan-x pan-y;
+		}
 
-	:global(.bottom-sheet-grip) {
-		width: 3.75rem !important;
-		height: 0.375rem !important;
+		.handle-container {
+			padding: 4px 0 !important;
+			outline: none !important;
+		}
+
+		.bottom-sheet-grip {
+			width: 3.75rem !important;
+			height: 0.375rem !important;
+		}
+
+		[data-scroll-check='off'] {
+			[data-scroll='content'] {
+				overflow-y: hidden;
+			}
+		}
+
+		[data-scroll-check='on'] {
+			[data-scroll='content'] {
+				overflow-y: auto;
+			}
+		}
 	}
 </style>

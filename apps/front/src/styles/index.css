@@ -7,8 +7,8 @@
 /* @plugin 'flowbite/plugin'; */
 /* 
 @source '../../node_modules/flowbite-svelte-icons/dist'; */
-
-@source '../../node_modules/flowbite-svelte/dist';
+/* 
+@source '../../node_modules/flowbite-svelte/dist'; */
 
 @theme {
 	--color-000: rgb(0, 0, 0);
@@ -149,6 +149,27 @@
 	--color-poi-10: #f29ad5;
 	--color-poi-11: #965829;
 	--color-poi-12: #676767;
+
+	--color-poi-outline-1: rgba(255, 81, 81, 0.4);
+	--color-poi-outline-2: rgba(255, 152, 61, 0.3);
+	--color-poi-outline-3: rgba(255, 227, 69, 0.8);
+	--color-poi-outline-4: rgba(93, 226, 81, 0.8);
+	--color-poi-outline-5: rgba(35, 182, 60, 0.8);
+	--color-poi-outline-6: rgba(114, 212, 234, 0.8);
+	--color-poi-outline-7: rgba(38, 124, 209, 0.8);
+	--color-poi-outline-8: rgba(117, 98, 238, 0.8);
+	--color-poi-outline-9: rgba(186, 102, 239, 0.8);
+	--color-poi-outline-10: rgba(242, 154, 213, 0.8);
+	--color-poi-outline-11: rgba(150, 88, 41, 0.8);
+	--color-poi-outline-12: rgba(103, 103, 103, 0.8);
+
+	--color-e7352b: #e7352b;
+	--color-ff8826: #ff8826;
+	--color-00c922: #00c922;
+	--color-26b7ff: #26b7ff;
+
+	--color-20b9fb: #20b9fb;
+	--color-2070fb: #2070fb;
 
 	--spacing-input: var(--spacing-input);
 
@@ -343,16 +364,18 @@
 		}
 	}
 
+	html,
 	body {
 		min-width: 18.75rem;
 		min-height: 100dvh;
 		margin: 0 auto;
-		overflow: hidden;
+		overflow-x: clip;
+		overflow-y: auto;
 		font-synthesis: none;
 		text-rendering: optimizeLegibility;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-		overscroll-behavior: none;
+		overscroll-behavior-y: none;
 		background-color: #f8fafc;
 		color: var(--color-121212);
 		color-scheme: light;
@@ -360,11 +383,6 @@
 		font-weight: 400;
 		font-family: var(--font-sans);
 		font-optical-sizing: auto;
-	}
-
-	:root {
-		--select-border: #777;
-		--select-arrow: var(--select-border);
 	}
 
 	/* Select button */
@@ -443,5 +461,14 @@
 
 	.icon {
 		@apply inline-flex flex-none;
+	}
+}
+
+@utility scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
 	}
 }

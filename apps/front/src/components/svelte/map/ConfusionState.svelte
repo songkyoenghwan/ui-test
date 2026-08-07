@@ -1,0 +1,39 @@
+<script lang="ts">
+	import * as m from '@/paraglide/messages';
+	import { langState, mainViewState } from '@/stores/globalStore';
+	import { sheetSnapPoint } from '@/stores/uxStore';
+	import { confusionLists } from '@/utils/uxEvent.type';
+</script>
+
+{#if $mainViewState === 'default' || $mainViewState === 'poi'}
+	<div
+		data-confusion="state"
+		class={[
+			'fixed right-5 z-40 min-w-[calc(100dvw-2.5rem)] rounded-lg bg-linear-90 from-0% to-white to-71% shadow-2xs transition-[bottom] duration-10 ease-in',
+			confusionLists[0].color,
+		]}
+		style:bottom={`${$sheetSnapPoint}%`}
+		style:display={$sheetSnapPoint > 70 ? 'none' : ''}
+	>
+		<div class="flex min-h-8 w-full items-center justify-between gap-2 p-2">
+			<p class="flex items-center gap-2 px-2 text-sm font-bold text-white">
+				{m.usr_map_001_06({ locale: $langState })}
+				{m.usr_map_001_07({ locale: $langState })}
+				{m.usr_map_001_08({ locale: $langState })}
+				{m.usr_map_001_09({ locale: $langState })}
+			</p>
+
+			<div class="flex items-center gap-1.5 text-sm">
+				<p class="flex-none text-slate-500">현재 인원</p>
+				<strong
+					class={[
+						'before flex flex-none items-center gap-1.5  before:h-2 before:w-px before:bg-slate-200',
+						confusionLists[0].textColor,
+					]}
+				>
+					99명
+				</strong>
+			</div>
+		</div>
+	</div>
+{/if}
