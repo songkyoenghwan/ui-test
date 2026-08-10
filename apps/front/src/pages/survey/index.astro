@@ -272,7 +272,7 @@ let data = [
 			</div>
 		</SurveyHeader>
 
-		<SurveyList client:only="svelte" surveyList={data}>
+		<SurveyList client:only="svelte" surveyList={data} linkUrl="/map">
 			<div class="flex h-[calc(100%-80px)] flex-1 flex-col justify-between" slot="fallback">
 				<SurveySkeletonFallback />
 			</div>

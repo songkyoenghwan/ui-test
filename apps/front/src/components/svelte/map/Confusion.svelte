@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
 	import { langState, mainViewState } from '@/stores/globalStore';
-	import { confusionBar } from '@/stores/uxStore';
+	import { sheetSnapPoint } from '@/stores/uxStore';
 	import { confusionLists } from '@/utils/uxEvent.type';
 	let toggleState = $state(false);
 
@@ -12,7 +12,7 @@
 </script>
 
 {#if $mainViewState === 'default' || $mainViewState === 'poi'}
-	<div class={['flex items-center justify-end group-has-data-[confusion=state]/body:pb-10', $confusionBar && 'pb-10']}>
+	<div data-confusion="list" class={['flex items-center justify-end', $sheetSnapPoint > 72 ? 'opacity-0' : '']}>
 		<div
 			class={[
 				'from-20b9fb to-2070fb absolute right-7.5 min-h-7.5 w-max translate-x-0 items-center gap-2 rounded-l-full bg-white bg-linear-90 py-0.5 pl-0.5 opacity-100 transition-all transition-discrete duration-300 starting:translate-x-3 starting:opacity-0',

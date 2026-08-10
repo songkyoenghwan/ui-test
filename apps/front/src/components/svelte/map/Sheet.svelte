@@ -12,6 +12,8 @@
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
 	import Detail from '@/svelte/sheet/Detail.svelte';
+	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
+	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 	import { tick } from 'svelte';
 	import { type BottomSheetRef } from '@/utils/uxEvent.type';
 
@@ -80,7 +82,7 @@
 	bind:this={rootEl}
 	data-detail-index={$sheetSnapPoint}
 	data-scroll-check={$sheetSnapPoint > 70 ? 'on' : 'off'}
-	class={[$mainViewState === 'poi' ? 'pt-17.5' : '']}
+	class={['relative', $mainViewState === 'poi' ? 'pt-17.5' : '']}
 >
 	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetHandleOpen} onclose={keepOpen}>
 		<BottomSheet.Sheet>
@@ -90,7 +92,10 @@
 				<TabAi />
 			{/if}
 
+			<ControlGroup />
+
 			{#if $mainViewState === 'default' || $mainViewState === 'poi'}
+				<ConfusionState />
 				<Detail {viewportH} />
 			{/if}
 		</BottomSheet.Sheet>
@@ -100,12 +105,13 @@
 <style>
 	:global {
 		.bottom-sheet {
-			overflow: hidden !important;
+			overflow: visible !important;
 			touch-action: pan-x pan-y;
 		}
 
 		.handle-container {
 			padding: 4px 0 !important;
+			border-radius: 1.25rem 1.25rem 0 0;
 			outline: none !important;
 		}
 

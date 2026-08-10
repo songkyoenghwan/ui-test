@@ -75,8 +75,8 @@
 	</dl>
 {/snippet}
 
-<div class="grid h-[calc(100%-30px)] min-h-0 min-w-0 grid-rows-1 has-[footer]:grid-rows-[1fr_68px]">
-	<div bind:this={scrollRef} data-scroll="content" class="flex min-h-0 flex-col overflow-x-clip">
+<div class="grid h-[calc(100%-30px)] min-h-0 max-w-dvw min-w-0 grid-rows-1 has-[footer]:grid-rows-[1fr_68px]">
+	<div bind:this={scrollRef} data-scroll="content" class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip">
 		<div class="flex items-center justify-between gap-2 px-5" bind:clientHeight={h.min}>
 			<div class="">
 				<p class="text-000 text-[20px] leading-tight font-semibold">
