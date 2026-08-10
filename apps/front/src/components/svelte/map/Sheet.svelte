@@ -1,82 +1,143 @@
 <script lang="ts">
 	import { mainViewState } from '@/stores/globalStore';
-	import {
-		sheetInstance,
-		sheetScrollInstance,
-		sheetRatio,
-		sheetHandleOpen,
-		sheetSnapPoint,
-		sheetMaxHeight,
-	} from '@/stores/uxStore';
+	import { viewportH, sheetInstance, sheetScrollInstance, sheetSnapPoint } from '@/stores/uxStore';
+	import { sheetUi, sheetMinRatioValue, sheetMidRatioValue, sheetMaxRatioValue } from '@/src/stores/sheetUiStore';
+	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
+	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
+	import Detail from '@/svelte/sheet/Detail.svelte';
+	import TabAi from '@/svelte/sheet/TabAi.svelte';
+	import { type BottomSheetRef } from '@/utils/uxEvent.type';
+	import { tick } from 'svelte';
 	import { BottomSheet } from 'svelte-bottom-sheet';
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
-	import TabAi from '@/svelte/sheet/TabAi.svelte';
-	import Detail from '@/svelte/sheet/Detail.svelte';
-	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
-	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
-	import { tick } from 'svelte';
-	import { type BottomSheetRef } from '@/utils/uxEvent.type';
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
-	let viewportH = $state<number | 0>(0);
-	let snapRatios = $derived([$sheetRatio.min, $sheetRatio.mid, $sheetRatio.max]);
+	let initialized = false;
+
+	let prevSnapRatios: number[] | undefined;
+	let prevSheetSettings: BottomSheetSettings | undefined;
+
+	let snapRatios = $derived.by(() => {
+		const next = [$sheetMinRatioValue, $sheetMidRatioValue, $sheetMaxRatioValue];
+
+		if (prevSnapRatios && prevSnapRatios[0] === next[0] && prevSnapRatios[1] === next[1] && prevSnapRatios[2] === next[2]) {
+			return prevSnapRatios;
+		}
+
+		prevSnapRatios = next;
+		return next;
+	});
 
 	const sheetSettings = $derived.by<BottomSheetSettings>(() => {
-		return {
+		const ratios = snapRatios;
+
+		const next: BottomSheetSettings = {
 			disableClosing: true,
 			autoCloseThreshold: 0,
-			maxHeight: $sheetMaxHeight,
-			snapPoints: snapRatios,
-			startingSnapPoint: snapRatios[1],
-			closeThreshold: snapRatios[1],
+			maxHeight: $sheetMaxRatioValue,
+			snapPoints: ratios,
+			startingSnapPoint: ratios[1],
+			closeThreshold: ratios[1],
 		};
+
+		if (
+			prevSheetSettings &&
+			prevSheetSettings.maxHeight === next.maxHeight &&
+			prevSheetSettings.startingSnapPoint === next.startingSnapPoint &&
+			prevSheetSettings.closeThreshold === next.closeThreshold &&
+			prevSheetSettings.snapPoints === next.snapPoints
+		) {
+			return prevSheetSettings;
+		}
+
+		prevSheetSettings = next;
+		return next;
 	});
 
 	async function keepOpen() {
-		if (!$sheetHandleOpen) {
+		if (!$sheetUi.sheetHandleOpen) {
 			await tick();
-			sheetHandleOpen.set(true);
+			sheetUi.setKey('sheetHandleOpen', true);
 		}
 	}
 
 	$effect(() => {
+		const midRatio = $sheetMidRatioValue;
+		const instance = sheet;
+
+		if (!instance || midRatio <= 0) return;
+
+		void tick().then(() => instance.setSnapPoint(midRatio));
+	});
+
+	$effect(() => {
 		if (!rootEl) return;
-		sheetInstance.set(sheet);
-		sheetInstance.get()?.setSnapPoint(0.01);
 
-		const handleEl = rootEl.querySelector<HTMLElement>('[aria-valuenow]');
-		if (!handleEl) return;
+		if (!initialized) {
+			initialized = true;
+			sheetInstance.set(sheet);
+		}
 
-		const update = () => {
-			const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
-			sheetSnapPoint.set(next);
+		let valueObserver: MutationObserver | undefined;
+		let mountObserver: MutationObserver | undefined;
 
-			const scrollEl = $sheetScrollInstance;
+		const bindHandle = (handleEl: HTMLElement) => {
+			const update = () => {
+				const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
+				sheetSnapPoint.set(next);
 
-			if (scrollEl instanceof HTMLElement && scrollEl?.scrollTop > 0) {
-				scrollEl.scrollTop = 0;
-			}
+				const scrollEl = $sheetScrollInstance;
+				if (scrollEl instanceof HTMLElement && scrollEl.scrollTop > 0) {
+					scrollEl.scrollTop = 0;
+				}
+			};
+
+			update();
+
+			valueObserver = new MutationObserver(() => {
+				update();
+			});
+
+			valueObserver.observe(handleEl, {
+				attributes: true,
+				attributeFilter: ['aria-valuenow'],
+			});
 		};
 
-		update();
+		const tryBind = () => {
+			const handleEl = rootEl?.querySelector<HTMLElement>('[aria-valuenow]');
 
-		const observer = new MutationObserver(() => {
-			update();
-		});
+			if (!handleEl) return false;
 
-		observer.observe(handleEl, {
-			attributes: true,
-			attributeFilter: ['aria-valuenow'],
+			bindHandle(handleEl);
+			return true;
+		};
+
+		queueMicrotask(() => {
+			if (tryBind()) return;
+
+			mountObserver = new MutationObserver(() => {
+				if (tryBind()) {
+					mountObserver?.disconnect();
+				}
+			});
+
+			if (!rootEl) return;
+			mountObserver.observe(rootEl, {
+				childList: true,
+				subtree: true,
+			});
 		});
 
 		return () => {
-			observer.disconnect();
+			valueObserver?.disconnect();
+			mountObserver?.disconnect();
 		};
 	});
 </script>
 
-<svelte:window bind:innerHeight={viewportH} />
+<svelte:window bind:innerHeight={$viewportH} />
 
 <div
 	bind:this={rootEl}
@@ -84,7 +145,7 @@
 	data-scroll-check={$sheetSnapPoint > 70 ? 'on' : 'off'}
 	class={['relative', $mainViewState === 'poi' ? 'pt-17.5' : '']}
 >
-	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetHandleOpen} onclose={keepOpen}>
+	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
 		<BottomSheet.Sheet>
 			<BottomSheet.Handle />
 
@@ -96,7 +157,7 @@
 
 			{#if $mainViewState === 'default' || $mainViewState === 'poi'}
 				<ConfusionState />
-				<Detail {viewportH} />
+				<Detail />
 			{/if}
 		</BottomSheet.Sheet>
 	</BottomSheet>

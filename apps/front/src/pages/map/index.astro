@@ -1,10 +1,9 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import SearchBar from '@/src/components/svelte/map/SearchBar.svelte';
-import Category from '@/src/components/svelte/map/Category.svelte';
-import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 import BackView from '@/src/components/svelte/map/BackView.svelte';
-
+import Category from '@/src/components/svelte/map/Category.svelte';
+import SearchBar from '@/src/components/svelte/map/SearchBar.svelte';
+import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 import { categories } from './dummy';
 ---
 
@@ -16,10 +15,10 @@ import { categories } from './dummy';
 
 	<Sheet client:only="svelte" />
 
-	<button type="button" class="fixed bottom-1/2 left-0" data-btn="detail">detail</button>
+	<!-- <button type="button" class="fixed bottom-1/2 left-0" data-btn="detail">detail</button> -->
 </Layout>
 
-<script>
+<!-- <script>
 	import { sheetHandleOpen } from '@/stores/uxStore';
 
 	document.addEventListener('DOMContentLoaded', () => {
@@ -29,4 +28,4 @@ import { categories } from './dummy';
 			sheetHandleOpen.set(true);
 		});
 	});
-</script>
+</script> -->

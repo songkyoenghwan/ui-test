@@ -3,6 +3,7 @@
 	import { langState, mainViewState } from '@/stores/globalStore';
 	import { sheetSnapPoint } from '@/stores/uxStore';
 	import { confusionLists } from '@/utils/uxEvent.type';
+
 	let toggleState = $state(false);
 
 	function toggleHandler(e: Event) {
@@ -12,7 +13,7 @@
 </script>
 
 {#if $mainViewState === 'default' || $mainViewState === 'poi'}
-	<div data-confusion="list" class={['flex items-center justify-end', $sheetSnapPoint > 72 ? 'opacity-0' : '']}>
+	<div data-confusion="list" class={['flex items-center justify-end', $sheetSnapPoint > 70 ? 'opacity-0' : '']}>
 		<div
 			class={[
 				'from-20b9fb to-2070fb absolute right-7.5 min-h-7.5 w-max translate-x-0 items-center gap-2 rounded-l-full bg-white bg-linear-90 py-0.5 pl-0.5 opacity-100 transition-all transition-discrete duration-300 starting:translate-x-3 starting:opacity-0',

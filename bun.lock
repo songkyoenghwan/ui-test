@@ -47,6 +47,7 @@
         "@astrojs/svelte": "^9.0.1",
         "@nanostores/alpine": "^0.1.1",
         "@nanostores/persistent": "^1.3.5",
+        "@nanostores/svelte-runes": "^1.0.1",
         "@tailwindcss/vite": "^4.3.3",
         "@types/react": "^19.2.18",
         "@types/react-dom": "^19.2.4",
@@ -506,6 +507,8 @@
     "@nanostores/alpine": ["@nanostores/alpine@0.1.1", "", { "peerDependencies": { "alpinejs": ">=3.0.0", "nanostores": "^0.11.3 || ^1.0.0" } }, "sha512-4K6VpI/hviKo87jDcmghDUUTwkUCld1s/FthCG+9ODmrczz9BQB/9BPEAtYTBE+Q0nJRXAKJBPZ4gpyD945vnQ=="],
 
     "@nanostores/persistent": ["@nanostores/persistent@1.3.5", "", { "peerDependencies": { "nanostores": "^0.9.0 || ^0.10.0 || ^0.11.0 || ^1.0.0" } }, "sha512-CNdhro3jEzNdPpPImIltnPpDKp5vxYmomHlZI7EMNoAxddImx97djxXDdPd2HIC4UczzUUMk7AMWCfMpFJHUsw=="],
+
+    "@nanostores/svelte-runes": ["@nanostores/svelte-runes@1.0.1", "", { "peerDependencies": { "nanostores": "^1.2.0", "svelte": ">=5.7.0" } }, "sha512-ZdO+qJpGAe6RD2uIRoe4uGcrW60xLFDPH5bNhy8KA3fUiCQLVUJVWAcUe9ioO9kmMmfJminj9CWC3eW9R6XWQg=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.4", "", { "dependencies": { "@tybys/wasm-util": "^0.10.1" }, "peerDependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1" } }, "sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow=="],
 

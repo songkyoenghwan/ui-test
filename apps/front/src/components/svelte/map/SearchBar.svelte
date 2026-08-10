@@ -1,18 +1,16 @@
 <script lang="ts">
-	import Icons from '@/svelte/icons/Icons.svelte';
 	import * as m from '@/paraglide/messages';
 	import { langState, mainViewState } from '@/stores/globalStore';
+	import Icons from '@/svelte/icons/Icons.svelte';
 
 	let { name = '' } = $props();
 </script>
 
-{#if $mainViewState === 'default' || $mainViewState === 'search'}
+{#if $mainViewState === 'default' || $mainViewState === 'search' || $mainViewState === 'ai'}
 	<header
 		class={[
-			'fixed top-0 left-0 z-40 w-full max-w-dvw',
-			$mainViewState === 'default' &&
-				'grid h-16 grid-cols-[minmax(120px,1fr)_40px] gap-1 bg-linear-90 from-(--base-color) to-[#07235e] py-3 pr-1 pl-5',
-			$mainViewState === 'poi' && 'hidden',
+			'fixed top-0 left-0 z-40 grid h-16 w-full max-w-dvw grid-cols-[minmax(120px,1fr)_40px] gap-1 bg-linear-90 from-(--base-color) to-[#07235e] py-3 pr-1 pl-5',
+			$mainViewState === 'default' ? '' : '',
 		]}
 	>
 		<div class="flex h-10 flex-1 items-center rounded-lg bg-white/10 px-3">

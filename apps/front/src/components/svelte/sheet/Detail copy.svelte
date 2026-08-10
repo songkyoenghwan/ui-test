@@ -1,16 +1,66 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
-	import { langState } from '@/stores/globalStore';
-	import { sheetSnapPoint } from '@/stores/uxStore';
-	import { setSheetMidH, setSheetMinH, setSheetScrollRef, sheetMinRatioValue } from '@/src/stores/sheetUiStore';
+	import { langState, mainViewState } from '@/stores/globalStore';
+	import {
+		sheetBackArea,
+		sheetBottomArea,
+		sheetHandleArea,
+		sheetInstance,
+		sheetMaxHeight,
+		sheetRatio,
+		sheetScrollInstance,
+		sheetSnapPoint,
+	} from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
+	import { round2 } from '@/utils/uxEvent';
 
-	let scrollEl: HTMLDivElement | null = $state(null);
-	let bottomVisible = $derived($sheetSnapPoint >= $sheetMinRatioValue * 100 + 2);
+	let { viewportH = 0 }: { viewportH: number } = $props();
+
+	let scrollRef: HTMLElement | null = $state(null);
+	let h = $state({
+		min: 0,
+		mid: 0,
+		max: 0,
+	});
+	let minRatio = $derived.by(() => {
+		const value = h.min > 0 ? (h.min + $sheetHandleArea) / viewportH : 0.12;
+		return round2(value);
+	});
+	let midRatio = $derived.by(() => {
+		const value = h.mid > 0 ? (h.min + h.mid + $sheetBottomArea + $sheetHandleArea) / viewportH : 0;
+		return round2(value);
+	});
+	let maxRatio = $derived.by(() => {
+		let value = 0.99;
+
+		if ($mainViewState === 'poi' && $sheetSnapPoint > 90) {
+			value = h.mid > 0 ? (viewportH - $sheetBottomArea) / viewportH : 0;
+		}
+
+		return round2(value);
+	});
+	let bottomVisible = $derived($sheetSnapPoint >= minRatio * 100 + 3);
 
 	$effect(() => {
-		setSheetScrollRef(scrollEl);
+		if (minRatio !== $sheetRatio.min && midRatio !== $sheetRatio.mid) {
+			sheetRatio.set({
+				min: minRatio,
+				mid: midRatio + 0.01,
+				max: 0.99,
+			});
+			$sheetInstance?.setSnapPoint($sheetRatio.mid);
+		}
+
+		$inspect($sheetSnapPoint);
+
+		if ($sheetSnapPoint > 90) {
+			sheetMaxHeight.set(maxRatio);
+		} else {
+			sheetMaxHeight.set(0.98);
+		}
+
+		sheetScrollInstance.set(scrollRef);
 	});
 </script>
 
@@ -25,11 +75,11 @@
 {/snippet}
 
 <div class="grid h-[calc(100%-30px)] min-h-0 max-w-dvw min-w-0 grid-rows-1 has-[footer]:grid-rows-[1fr_68px]">
-	<div bind:this={scrollEl} data-scroll="content" class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip">
-		<div class="flex items-center justify-between gap-2 px-5" bind:clientHeight={null, setSheetMinH}>
-			<div class="inline-flex flex-col">
+	<div bind:this={scrollRef} data-scroll="content" class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip">
+		<div class="flex items-center justify-between gap-2 px-5" bind:clientHeight={h.min}>
+			<div class="">
 				<p class="text-000 text-[20px] leading-tight font-semibold">
-					{$sheetSnapPoint} 시설명 시설명 시 시설명
+					시설명 시설명 시설명시설명 시설명 시설명시설명 시설명 시설명시설명 시설명 시설명시설명 시설명 시설명
 				</p>
 				<p class="mt-2.5 text-sm text-slate-700">카테고리명</p>
 			</div>
@@ -39,7 +89,7 @@
 			</picture>
 		</div>
 
-		<div bind:clientHeight={null, setSheetMidH}>
+		<div bind:clientHeight={h.mid}>
 			<div class="flex flex-col px-5">
 				{@render info('map-pin-filled', '24km', '상세주소')}
 			</div>

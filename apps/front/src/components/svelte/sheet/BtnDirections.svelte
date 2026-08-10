@@ -1,17 +1,11 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
 	import { langState } from '@/stores/globalStore';
-	import { sheetBottomArea } from '@/stores/uxStore';
-
-	let footerH = $state(0);
-
-	$effect(() => {
-		sheetBottomArea.set(footerH);
-	});
+	import { setSheetBottomArea } from '@/stores/sheetUiStore';
 </script>
 
 <footer
-	bind:clientHeight={footerH}
+	bind:clientHeight={null, setSheetBottomArea}
 	class="relative grid w-full flex-none gap-2 border-t border-t-slate-200 bg-white px-5 py-3 opacity-100 transition-all transition-discrete starting:opacity-0"
 >
 	<div class=" grid grid-cols-2 items-center gap-2 *:h-11">

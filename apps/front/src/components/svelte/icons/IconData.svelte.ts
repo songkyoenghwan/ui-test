@@ -1,3 +1,4 @@
+import { iconAi } from './iconAi';
 import { iconCategory } from './iconCategory';
 import { iconFacilities } from './iconFacilities';
 
@@ -229,6 +230,7 @@ export const getIconData = () => {
 		},
 		...iconCategory,
 		...iconFacilities,
+		...iconAi(_id),
 
 		{
 			name: '',

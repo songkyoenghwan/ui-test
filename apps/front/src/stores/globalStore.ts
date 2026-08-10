@@ -113,7 +113,7 @@ type SearchView = 'idle' | 'result' | 'empty' | 'noResult' | 'empty';
 type RouteView = 'idle' | 'result' | 'waypoint' | 'point' | 'empty';
 type RecommendView = 'idle' | 'loading' | 'result' | 'empty';
 
-export const mainViewState = atom<MainView>('poi');
+export const mainViewState = atom<MainView>('ai');
 export const detailViewState = atom<DetailView>('idle');
 export const searchViewState = atom<SearchView>('idle');
 export const routeViewState = atom<RouteView>('idle');

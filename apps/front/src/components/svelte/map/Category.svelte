@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Icons from '@/svelte/icons/Icons.svelte';
 	import { langState, mainViewState, pickText } from '@/stores/globalStore';
+	import Icons from '@/svelte/icons/Icons.svelte';
 
 	let { categories = [] } = $props();
 </script>
 
-{#if $mainViewState === 'default' || $mainViewState === 'search'}
-	<section class={['fixed z-40 flex w-full max-w-dvw  items-center', $mainViewState === 'default' && 'top-16 ']}>
+{#if $mainViewState === 'default' || $mainViewState === 'poi' || $mainViewState === 'ai' || $mainViewState === 'search'}
+	<section class={['fixed top-16 z-40 flex w-full max-w-dvw items-center']}>
 		<ul
 			class="category-scroll scrollbar-hide flex h-12 touch-pan-x snap-x snap-proximity items-center gap-2 overflow-x-auto scroll-smooth px-5 py-2"
 			onpointerdown={(e) => e.stopPropagation()}
