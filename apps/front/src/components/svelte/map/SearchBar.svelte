@@ -9,7 +9,8 @@
 	const onSearchHandler = () => {
 		updateViewState({
 			layout: 'search',
-			search: 'result',
+			detail: 'search',
+			search: 'searchResult',
 		});
 	};
 

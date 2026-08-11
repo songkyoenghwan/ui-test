@@ -123,7 +123,7 @@
 			<BottomSheet.Sheet>
 				<BottomSheet.Handle {@attach bottomValueNow} />
 
-				{#if $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
+				{#if $detailViewState === 'idle' || $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
 					<ControlGroup />
 				{/if}
 
