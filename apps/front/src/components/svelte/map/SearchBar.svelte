@@ -7,19 +7,27 @@
 	let { name = '' } = $props();
 
 	const onSearchHandler = () => {
-		updateViewState({
-			layout: 'search',
-			detail: 'search',
-			search: 'searchResult',
-		});
+		if ($searchViewState === 'searchResult') {
+			updateViewState({
+				layout: 'search',
+				detail: 'idle',
+				search: 'result',
+			});
+		} else {
+			updateViewState({
+				layout: 'search',
+				detail: 'search',
+				search: 'searchResult',
+			});
+		}
 	};
 
 	const offSearchHandler = () => {
 		if ($searchViewState === 'searchResult') {
 			updateViewState({
-				layout: 'ai',
-				detail: 'ai',
-				search: 'idle',
+				layout: 'search',
+				detail: 'idle',
+				search: 'result',
 			});
 		} else {
 			updateViewState({
@@ -72,7 +80,6 @@
 				]}
 				placeholder={m.usr_map_001_01({ locale: $langState, name: name })}
 				onpointerdown={onSearchHandler}
-				onfocusin={onSearchHandler}
 			/>
 		</div>
 

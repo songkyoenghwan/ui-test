@@ -120,11 +120,12 @@
 								name="category-search"
 								id={`category-${category.id}`}
 								class="sr-only"
+								value={category.iconKey}
+								bind:group={$categoryState}
 								onchange={(e: Event) => {
 									const input = e.currentTarget as HTMLInputElement;
 
 									if (input.checked) {
-										categoryState.set(category.iconKey);
 										onCategoryHandler();
 									}
 								}}

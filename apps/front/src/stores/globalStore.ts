@@ -105,5 +105,6 @@ export const search = map<{
 	end: '',
 });
 export const colorState = atom<string>('#274fa8');
+export const keywordState = atom<string>('키워드');
 export const categoryState = atom<string>('');
 export const loadingState = atom<boolean>(false);

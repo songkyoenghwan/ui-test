@@ -31,6 +31,8 @@ export const sheetMaxRatioValue = computed([sheetUi, layoutViewState, viewportH,
 	if (state.sheetMidHeight <= 0 && vh <= 0) return state.sheetMaxRatio;
 	if (view === 'facilities') {
 		return round2((vh - state.sheetBackArea) / vh);
+	} else if (view === 'search') {
+		return round2((vh - state.sheetBackArea) / vh);
 	}
 	return round2(state.sheetMaxRatio);
 });
