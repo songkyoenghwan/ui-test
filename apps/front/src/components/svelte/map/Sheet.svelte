@@ -113,7 +113,7 @@
 <div
 	bind:this={rootEl}
 	data-detail-index={$sheetSnapPoint}
-	data-scroll-check={$sheetSnapPoint > 85 ? 'on' : 'off'}
+	data-scroll-check={$sheetSnapPoint > 89 ? 'on' : 'off'}
 	class={['relative', $mainViewState === 'poi' ? 'pt-17.5' : '']}
 >
 	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
@@ -137,8 +137,9 @@
 	:global {
 		.bottom-sheet {
 			overflow: visible !important;
-			animation-duration: 300ms;
 			touch-action: pan-y;
+			transition-delay: 1ms;
+			transition-duration: 10ms;
 		}
 
 		.handle-container {
