@@ -2,7 +2,7 @@ import { getLocale, setLocale } from '@/paraglide/runtime';
 import type { LocalizedText, SupportedLanguages } from '@/types/common/locale';
 import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 import { persistentAtom } from '@nanostores/persistent';
-import { atom, map } from 'nanostores';
+import { atom, batch, map } from 'nanostores';
 
 type LocalizedKey = keyof LocalizedText;
 
@@ -105,16 +105,5 @@ export const search = map<{
 	end: '',
 });
 export const colorState = atom<string>('#274fa8');
+export const categoryState = atom<string>('');
 export const loadingState = atom<boolean>(false);
-
-type MainView = 'default' | 'poi' | 'ai' | 'search' | 'route';
-type DetailView = 'idle' | 'default' | 'facilities' | 'recommended' | 'directions' | 'searchResult' | 'empty';
-type SearchView = 'idle' | 'result' | 'empty' | 'noResult' | 'empty';
-type RouteView = 'idle' | 'result' | 'waypoint' | 'point' | 'empty';
-type RecommendView = 'idle' | 'loading' | 'result' | 'empty';
-
-export const mainViewState = atom<MainView>('ai');
-export const detailViewState = atom<DetailView>('idle');
-export const searchViewState = atom<SearchView>('idle');
-export const routeViewState = atom<RouteView>('idle');
-export const recommendViewState = atom<RecommendView>('idle');

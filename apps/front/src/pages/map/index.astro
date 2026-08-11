@@ -20,17 +20,23 @@ import { categories } from './dummy';
 </Layout>
 
 <script>
-	import { detailViewState, mainViewState } from '@/stores/globalStore';
+	import { updateViewState } from '@/stores/uxStore';
 
 	document.addEventListener('DOMContentLoaded', () => {
 		document.querySelector('[data-btn="poi"]')?.addEventListener('click', () => {
-			mainViewState.set('poi');
-			detailViewState.set('facilities');
+			updateViewState({
+				layout: 'facilities',
+				detail: 'facilities',
+				search: 'idle',
+			});
 		});
 
 		document.querySelector('[data-btn="ai"]')?.addEventListener('click', () => {
-			mainViewState.set('ai');
-			detailViewState.set('recommended');
+			updateViewState({
+				layout: 'ai',
+				detail: 'ai',
+				search: 'idle',
+			});
 		});
 	});
 </script>

@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { langState, mainViewState } from '@/stores/globalStore';
+	import { langState } from '@/stores/globalStore';
+	import { layoutViewState, searchViewState } from '@/stores/uxStore';
 	import { sheetSnapPoint } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import Confusion from '@/svelte/map/Confusion.svelte';
 </script>
 
-{#if $mainViewState === 'default' || $mainViewState === 'poi'}
+{#if $layoutViewState === 'default' || $layoutViewState === 'facilities'}
 	<div
 		class="ease-in-outstarting:opacity-0 absolute top-0 right-5 z-40 inline-flex -translate-y-24 flex-col justify-end opacity-100 transition-[bottom] transition-discrete duration-0 group-has-data-[confusion=list]/body:-translate-y-37"
 		style:display={$sheetSnapPoint > 70 ? 'none' : ''}

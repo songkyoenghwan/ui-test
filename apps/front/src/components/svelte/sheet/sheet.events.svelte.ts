@@ -11,10 +11,10 @@ import { round2 } from '@/utils/uxEvent';
 
 type Params = {
 	getViewportH: () => number;
-	getMainViewState: () => string;
+	getlayoutViewState: () => string;
 };
 
-export function createSheetController({ getViewportH, getMainViewState }: Params) {
+export function createSheetController({ getViewportH, getlayoutViewState }: Params) {
 	let scrollRef: HTMLElement | null = $state(null);
 
 	let h = $state({
@@ -41,7 +41,7 @@ export function createSheetController({ getViewportH, getMainViewState }: Params
 		const viewportH = getViewportH();
 		let value = 0.99;
 
-		if (getMainViewState() === 'poi' && sheetSnapPoint.get() > 90) {
+		if (getlayoutViewState() === 'poi' && sheetSnapPoint.get() > 90) {
 			value = h.mid > 0 ? (viewportH - sheetHandleArea.get()) / viewportH : 0;
 		}
 

@@ -1,5 +1,4 @@
-import { mainViewState } from '@/stores/globalStore';
-import { sheetInstance, sheetScrollInstance, sheetSnapPoint, viewportH } from '@/stores/uxStore';
+import { layoutViewState, sheetInstance, sheetScrollInstance, viewportH } from '@/stores/uxStore';
 import { round2 } from '@/utils/uxEvent';
 import { computed, map } from 'nanostores';
 
@@ -12,7 +11,7 @@ export const sheetUi = map({
 	scrollRef: null as HTMLElement | null,
 	sheetMinHeight: 0,
 	sheetMidHeight: 0,
-	sheetMinRatio: 0,
+	sheetMinRatio: 0.1,
 	sheetMidRatio: 0.18,
 	sheetMaxRatio: 0.99,
 });
@@ -28,9 +27,9 @@ export const sheetMidRatioValue = computed([sheetUi, viewportH], (state, vh) => 
 	return round2((state.sheetMidHeight + state.sheetMinHeight + state.sheetBottomArea + state.sheetHandleArea) / vh);
 });
 
-export const sheetMaxRatioValue = computed([sheetUi, mainViewState, viewportH, sheetMidRatioValue], (state, view, vh) => {
+export const sheetMaxRatioValue = computed([sheetUi, layoutViewState, viewportH, sheetMidRatioValue], (state, view, vh) => {
 	if (state.sheetMidHeight <= 0 && vh <= 0) return state.sheetMaxRatio;
-	if (view === 'poi') {
+	if (view === 'facilities') {
 		return round2((vh - state.sheetBackArea) / vh);
 	}
 	return round2(state.sheetMaxRatio);

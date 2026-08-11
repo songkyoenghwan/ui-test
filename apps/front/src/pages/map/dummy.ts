@@ -11,7 +11,7 @@ export let categories = [
 		},
 		iconKey: 'popper',
 		sortingNumber: 1,
-		isEventCategory: true,
+		isEventCategory: false,
 		isAiRecommendationEnabled: false,
 		categoryColorCodes: {
 			id: 5,
@@ -35,7 +35,7 @@ export let categories = [
 		},
 		iconKey: 'wheelchair',
 		sortingNumber: 2,
-		isEventCategory: true,
+		isEventCategory: false,
 		isAiRecommendationEnabled: true,
 		categoryColorCodes: {
 			id: 9,

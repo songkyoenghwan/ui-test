@@ -1,15 +1,17 @@
 <script lang="ts">
+	import { sheetMaxRatioValue, sheetMidRatioValue, sheetMinRatioValue, sheetUi } from '@/src/stores/sheetUiStore';
 	import {
-		sheetMaxRatioValue,
-		sheetMidRatioValue,
-		sheetMinRatioValue,
-		sheetUi,
-		setPointSheetUi,
-	} from '@/src/stores/sheetUiStore';
-	import { detailViewState, mainViewState } from '@/stores/globalStore';
-	import { sheetInstance, sheetMaxHeight, sheetSnapPoint, viewportH } from '@/stores/uxStore';
+		viewDri,
+		sheetInstance,
+		sheetSnapPoint,
+		viewportH,
+		layoutViewState,
+		detailViewState,
+		searchViewState,
+	} from '@/stores/uxStore';
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
+	import Search from '@/svelte/sheet/Search.svelte';
 	import Detail from '@/svelte/sheet/Detail.svelte';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
 	import { type BottomSheetRef } from '@/utils/uxEvent.type';
@@ -20,11 +22,9 @@
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
-	let initialized = false;
 
 	let prevSnapRatios: number[] | undefined;
 	let prevSheetSettings: BottomSheetSettings | undefined;
-	let prevMainViewState: string | undefined = $state('');
 
 	let snapRatios = $derived.by(() => {
 		const next = [$sheetMinRatioValue, $sheetMidRatioValue, $sheetMaxRatioValue];
@@ -106,32 +106,51 @@
 			observer.disconnect();
 		};
 	};
+
+	$inspect($viewDri);
 </script>
 
 <svelte:window bind:innerHeight={$viewportH} />
 
-<div
-	bind:this={rootEl}
-	data-detail-index={$sheetSnapPoint}
-	data-scroll-check={$sheetSnapPoint > 89 ? 'on' : 'off'}
-	class={['relative', $mainViewState === 'poi' ? 'pt-17.5' : '']}
->
-	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
-		<BottomSheet.Sheet>
-			<BottomSheet.Handle {@attach bottomValueNow} />
+{#if $searchViewState !== 'result'}
+	<div
+		bind:this={rootEl}
+		data-detail-index={$sheetSnapPoint}
+		data-scroll-check={$sheetSnapPoint > 89 ? 'on' : 'off'}
+		class={['relative', $layoutViewState === 'facilities' ? 'pt-17.5' : '']}
+	>
+		<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
+			<BottomSheet.Sheet>
+				<BottomSheet.Handle {@attach bottomValueNow} />
 
-			{#if $mainViewState === 'ai'}
-				<TabAi />
-			{/if}
+				{#if $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
+					<ControlGroup />
+				{/if}
 
-			{#if $mainViewState === 'poi'}
-				<ControlGroup />
-				<ConfusionState />
-				<Detail />
-			{/if}
-		</BottomSheet.Sheet>
-	</BottomSheet>
-</div>
+				{#if $detailViewState === 'ai'}
+					<TabAi />
+				{/if}
+
+				{#if $detailViewState === 'facilities'}
+					<ConfusionState />
+					<Detail />
+				{/if}
+
+				{#if $detailViewState === 'search'}
+					<Search />
+				{/if}
+
+				{#if $detailViewState === 'path'}
+					path
+				{/if}
+
+				{#if $detailViewState === 'directions'}
+					directions
+				{/if}
+			</BottomSheet.Sheet>
+		</BottomSheet>
+	</div>
+{/if}
 
 <style>
 	:global {

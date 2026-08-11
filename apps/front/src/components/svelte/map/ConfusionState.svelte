@@ -1,11 +1,12 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
-	import { langState, mainViewState } from '@/stores/globalStore';
+	import { langState } from '@/stores/globalStore';
+	import { layoutViewState, searchViewState } from '@/stores/uxStore';
 	import { sheetSnapPoint } from '@/stores/uxStore';
 	import { confusionLists } from '@/utils/uxEvent.type';
 </script>
 
-{#if $mainViewState === 'default' || $mainViewState === 'poi'}
+{#if $layoutViewState === 'default' || $layoutViewState === 'facilities'}
 	<div
 		data-confusion="state"
 		class={[

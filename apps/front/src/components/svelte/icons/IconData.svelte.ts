@@ -98,6 +98,26 @@ export const getIconData = () => {
 			`,
 		},
 		{
+			name: 'close-circle',
+			size: '20',
+			html: /* HTML */ `
+				<path
+					d="M3.33203 16.6693L16.6654 3.33594"
+					fill="none"
+					stroke-width="1.25"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M16.6654 16.6693L3.33203 3.33594"
+					fill="none"
+					stroke-width="1.25"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			`,
+		},
+		{
 			name: 'input-chk-off',
 			size: '18',
 			html: /* HTML */ `
