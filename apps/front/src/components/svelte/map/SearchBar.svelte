@@ -22,6 +22,7 @@
 				id="searchMapInput"
 				class="h-full flex-1 px-2 text-white outline-none placeholder:text-slate-400"
 				placeholder={m.usr_map_001_01({ locale: $langState, name: name })}
+				onpointerdown={() => mainViewState.set('search')}
 			/>
 		</div>
 

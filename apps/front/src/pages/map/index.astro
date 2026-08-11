@@ -15,17 +15,22 @@ import { categories } from './dummy';
 
 	<Sheet client:only="svelte" />
 
-	<!-- <button type="button" class="fixed bottom-1/2 left-0" data-btn="detail">detail</button> -->
+	<button type="button" class="fixed top-1/5 left-0" data-btn="poi">poi</button>
+	<button type="button" class="fixed top-1/5 left-10" data-btn="ai">ai</button>
 </Layout>
 
-<!-- <script>
-	import { sheetHandleOpen } from '@/stores/uxStore';
+<script>
+	import { detailViewState, mainViewState } from '@/stores/globalStore';
 
 	document.addEventListener('DOMContentLoaded', () => {
-		document.querySelector('[data-btn="detail"]')?.addEventListener('click', () => {
-			alert(1);
+		document.querySelector('[data-btn="poi"]')?.addEventListener('click', () => {
+			mainViewState.set('poi');
+			detailViewState.set('facilities');
+		});
 
-			sheetHandleOpen.set(true);
+		document.querySelector('[data-btn="ai"]')?.addEventListener('click', () => {
+			mainViewState.set('ai');
+			detailViewState.set('recommended');
 		});
 	});
-</script> -->
+</script>

@@ -1,8 +1,14 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
+	import {
+		setSheetMidH,
+		setSheetMinH,
+		setSheetScrollRef,
+		sheetMidRatioValue,
+		sheetMinRatioValue,
+	} from '@/src/stores/sheetUiStore';
 	import { langState } from '@/stores/globalStore';
-	import { sheetSnapPoint } from '@/stores/uxStore';
-	import { setSheetMidH, setSheetMinH, setSheetScrollRef, sheetMinRatioValue } from '@/src/stores/sheetUiStore';
+	import { sheetInstance, sheetSnapPoint } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
 
@@ -11,6 +17,7 @@
 
 	$effect(() => {
 		setSheetScrollRef(scrollEl);
+		$sheetInstance?.setSnapPoint($sheetMidRatioValue);
 	});
 </script>
 

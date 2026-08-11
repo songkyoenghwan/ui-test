@@ -108,7 +108,7 @@ export const colorState = atom<string>('#274fa8');
 export const loadingState = atom<boolean>(false);
 
 type MainView = 'default' | 'poi' | 'ai' | 'search' | 'route';
-type DetailView = 'idle' | 'default' | 'facilities' | 'aiMultiple' | 'aiSingle' | 'directions' | 'searchResult' | 'empty';
+type DetailView = 'idle' | 'default' | 'facilities' | 'recommended' | 'directions' | 'searchResult' | 'empty';
 type SearchView = 'idle' | 'result' | 'empty' | 'noResult' | 'empty';
 type RouteView = 'idle' | 'result' | 'waypoint' | 'point' | 'empty';
 type RecommendView = 'idle' | 'loading' | 'result' | 'empty';

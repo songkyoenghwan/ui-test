@@ -5,7 +5,7 @@
 	let { categories = [] } = $props();
 </script>
 
-{#if $mainViewState === 'default' || $mainViewState === 'poi' || $mainViewState === 'ai' || $mainViewState === 'search'}
+{#if $mainViewState === 'default' || $mainViewState === 'ai' || $mainViewState === 'search'}
 	<section class={['fixed top-16 z-40 flex w-full max-w-dvw items-center']}>
 		<ul
 			class="category-scroll scrollbar-hide flex h-12 touch-pan-x snap-x snap-proximity items-center gap-2 overflow-x-auto scroll-smooth px-5 py-2"

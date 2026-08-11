@@ -74,6 +74,71 @@
 			observer.disconnect();
 		};
 	});
+
+	// $effect(() => {
+	// 	if (!rootEl) return;
+
+	// 	if (!initialized) {
+	// 		initialized = true;
+	// 		sheetInstance.set(sheet);
+	// 	}
+
+	// 	let valueObserver: MutationObserver | undefined;
+	// 	let mountObserver: MutationObserver | undefined;
+
+	// 	const bindHandle = (handleEl: HTMLElement) => {
+	// 		const update = () => {
+	// 			const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
+	// 			sheetSnapPoint.set(next);
+
+	// 			const scrollEl = $sheetScrollInstance;
+	// 			if (scrollEl instanceof HTMLElement && scrollEl.scrollTop > 0) {
+	// 				scrollEl.scrollTop = 0;
+	// 			}
+	// 		};
+
+	// 		update();
+
+	// 		valueObserver = new MutationObserver(() => {
+	// 			update();
+	// 		});
+
+	// 		valueObserver.observe(handleEl, {
+	// 			attributes: true,
+	// 			attributeFilter: ['aria-valuenow'],
+	// 		});
+	// 	};
+
+	// 	const tryBind = () => {
+	// 		const handleEl = rootEl?.querySelector<HTMLElement>('[aria-valuenow]');
+
+	// 		if (!handleEl) return false;
+
+	// 		bindHandle(handleEl);
+	// 		return true;
+	// 	};
+
+	// 	queueMicrotask(() => {
+	// 		if (tryBind()) return;
+
+	// 		mountObserver = new MutationObserver(() => {
+	// 			if (tryBind()) {
+	// 				mountObserver?.disconnect();
+	// 			}
+	// 		});
+
+	// 		if (!rootEl) return;
+	// 		mountObserver.observe(rootEl, {
+	// 			childList: true,
+	// 			subtree: true,
+	// 		});
+	// 	});
+
+	// 	return () => {
+	// 		valueObserver?.disconnect();
+	// 		mountObserver?.disconnect();
+	// 	};
+	// });
 </script>
 
 <svelte:window bind:innerHeight={viewportH} />

@@ -1,4 +1,4 @@
-import { detailViewState, mainViewState } from '@/stores/globalStore';
+import { mainViewState } from '@/stores/globalStore';
 import { sheetInstance, sheetScrollInstance, sheetSnapPoint, viewportH } from '@/stores/uxStore';
 import { round2 } from '@/utils/uxEvent';
 import { computed, map } from 'nanostores';
@@ -7,46 +7,15 @@ export const sheetUi = map({
 	sheetHandleArea: 30,
 	sheetBottomArea: 68,
 	sheetBackArea: 70,
-	sheetMaxHeight: 0.99,
+	sheetMaxHeight: 1,
 	sheetHandleOpen: false,
 	scrollRef: null as HTMLElement | null,
 	sheetMinHeight: 0,
 	sheetMidHeight: 0,
 	sheetMinRatio: 0,
-	sheetMidRatio: 0,
+	sheetMidRatio: 0.18,
 	sheetMaxRatio: 0.99,
 });
-
-sheetUi.listen((state, _previousState, changedKey) => {
-	if (
-		changedKey === undefined ||
-		changedKey === 'sheetHandleArea' ||
-		changedKey === 'sheetBottomArea' ||
-		changedKey === 'sheetMinHeight' ||
-		changedKey === 'sheetMidHeight'
-	) {
-		updateSheetRatios();
-	}
-});
-
-function updateSheetRatios() {
-	const state = sheetUi.get();
-	const vh = viewportH.get();
-
-	if (vh <= 0) return;
-
-	if (state.sheetMinHeight > 0) {
-		const minRatio = round2((state.sheetMinHeight + state.sheetHandleArea) / vh);
-		if (state.sheetMinRatio !== minRatio) sheetUi.setKey('sheetMinRatio', minRatio);
-	}
-
-	if (state.sheetMidHeight > 0) {
-		const midRatio = round2(
-			(state.sheetMidHeight + state.sheetMinHeight + state.sheetBottomArea + state.sheetHandleArea) / vh,
-		);
-		if (state.sheetMidRatio !== midRatio) sheetUi.setKey('sheetMidRatio', midRatio);
-	}
-}
 
 export const sheetMinRatioValue = computed([sheetUi, viewportH], (state, vh) => {
 	if (state.sheetMinHeight <= 0 || vh <= 0) return state.sheetMinRatio;
@@ -60,18 +29,13 @@ export const sheetMidRatioValue = computed([sheetUi, viewportH], (state, vh) => 
 	return round2((state.sheetMidHeight + state.sheetMinHeight + state.sheetBottomArea + state.sheetHandleArea) / vh);
 });
 
-export const sheetMaxRatioValue = computed(
-	[sheetUi, mainViewState, viewportH, sheetSnapPoint, sheetMidRatioValue],
-	(state, view, vh, point, midRatio) => {
-		if (state.sheetMidHeight <= 0 || vh <= 0) return state.sheetMaxRatio;
-
-		if (view === 'poi' && point > midRatio * 100) {
-			return round2((vh - state.sheetBackArea / 2) / vh);
-		}
-
-		return round2(state.sheetMaxRatio);
-	},
-);
+export const sheetMaxRatioValue = computed([sheetUi, mainViewState, viewportH, sheetMidRatioValue], (state, view, vh) => {
+	if (state.sheetMidHeight <= 0 && vh <= 0) return state.sheetMaxRatio;
+	if (view === 'poi') {
+		return round2((vh - state.sheetBackArea) / vh);
+	}
+	return round2(state.sheetMaxRatio);
+});
 
 export function setSheetScrollRef(node: HTMLElement | null) {
 	sheetUi.setKey('scrollRef', node);

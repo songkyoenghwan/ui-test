@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { mainViewState } from '@/stores/globalStore';
-	import { viewportH, sheetInstance, sheetScrollInstance, sheetSnapPoint } from '@/stores/uxStore';
-	import { sheetUi, sheetMinRatioValue, sheetMidRatioValue, sheetMaxRatioValue } from '@/src/stores/sheetUiStore';
+	import { sheetMaxRatioValue, sheetMidRatioValue, sheetMinRatioValue, sheetUi } from '@/src/stores/sheetUiStore';
+	import { detailViewState, mainViewState } from '@/stores/globalStore';
+	import { sheetInstance, sheetMaxHeight, sheetSnapPoint, viewportH } from '@/stores/uxStore';
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
 	import Detail from '@/svelte/sheet/Detail.svelte';
@@ -10,6 +10,7 @@
 	import { tick } from 'svelte';
 	import { BottomSheet } from 'svelte-bottom-sheet';
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
+	import type { Attachment } from 'svelte/attachments';
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
@@ -17,6 +18,7 @@
 
 	let prevSnapRatios: number[] | undefined;
 	let prevSheetSettings: BottomSheetSettings | undefined;
+	let prevMainViewState: string | undefined = $state('');
 
 	let snapRatios = $derived.by(() => {
 		const next = [$sheetMinRatioValue, $sheetMidRatioValue, $sheetMaxRatioValue];
@@ -35,7 +37,7 @@
 		const next: BottomSheetSettings = {
 			disableClosing: true,
 			autoCloseThreshold: 0,
-			maxHeight: $sheetMaxRatioValue,
+			maxHeight: 0.99,
 			snapPoints: ratios,
 			startingSnapPoint: ratios[1],
 			closeThreshold: ratios[1],
@@ -62,79 +64,42 @@
 		}
 	}
 
-	$effect(() => {
-		const midRatio = $sheetMidRatioValue;
-		const instance = sheet;
+	const bottomValueNow: Attachment = (element) => {
+		const handleEl = element;
 
-		if (!instance || midRatio <= 0) return;
-
-		void tick().then(() => instance.setSnapPoint(midRatio));
-	});
-
-	$effect(() => {
-		if (!rootEl) return;
-
-		if (!initialized) {
-			initialized = true;
-			sheetInstance.set(sheet);
+		if (!handleEl) {
+			console.log('handleEl not found');
+			return () => {
+				return;
+			};
 		}
 
-		let valueObserver: MutationObserver | undefined;
-		let mountObserver: MutationObserver | undefined;
+		sheetInstance.set(sheet);
 
-		const bindHandle = (handleEl: HTMLElement) => {
-			const update = () => {
-				const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
-				sheetSnapPoint.set(next);
-
-				const scrollEl = $sheetScrollInstance;
-				if (scrollEl instanceof HTMLElement && scrollEl.scrollTop > 0) {
-					scrollEl.scrollTop = 0;
-				}
-			};
-
-			update();
-
-			valueObserver = new MutationObserver(() => {
-				update();
-			});
-
-			valueObserver.observe(handleEl, {
-				attributes: true,
-				attributeFilter: ['aria-valuenow'],
-			});
+		const update = () => {
+			const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
+			sheetSnapPoint.set(next);
 		};
 
-		const tryBind = () => {
-			const handleEl = rootEl?.querySelector<HTMLElement>('[aria-valuenow]');
+		update();
 
-			if (!handleEl) return false;
-
-			bindHandle(handleEl);
-			return true;
-		};
-
-		queueMicrotask(() => {
-			if (tryBind()) return;
-
-			mountObserver = new MutationObserver(() => {
-				if (tryBind()) {
-					mountObserver?.disconnect();
+		const observer = new MutationObserver((mutations) => {
+			for (const mutation of mutations) {
+				if (mutation.type === 'attributes' && mutation.attributeName === 'aria-valuenow') {
+					update();
 				}
-			});
+			}
+		});
 
-			if (!rootEl) return;
-			mountObserver.observe(rootEl, {
-				childList: true,
-				subtree: true,
-			});
+		observer.observe(handleEl, {
+			attributes: true,
+			attributeFilter: ['aria-valuenow'],
 		});
 
 		return () => {
-			valueObserver?.disconnect();
-			mountObserver?.disconnect();
+			observer.disconnect();
 		};
-	});
+	};
 </script>
 
 <svelte:window bind:innerHeight={$viewportH} />
@@ -147,15 +112,14 @@
 >
 	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
 		<BottomSheet.Sheet>
-			<BottomSheet.Handle />
+			<BottomSheet.Handle {@attach bottomValueNow} />
 
 			{#if $mainViewState === 'ai'}
 				<TabAi />
 			{/if}
 
-			<ControlGroup />
-
-			{#if $mainViewState === 'default' || $mainViewState === 'poi'}
+			{#if $mainViewState === 'poi'}
+				<ControlGroup />
 				<ConfusionState />
 				<Detail />
 			{/if}
@@ -167,7 +131,8 @@
 	:global {
 		.bottom-sheet {
 			overflow: visible !important;
-			touch-action: pan-x pan-y;
+			animation-duration: 300ms;
+			touch-action: pan-y;
 		}
 
 		.handle-container {

@@ -4,13 +4,17 @@
 
 	function viewBackHandler() {
 		if ($mainViewState === 'poi') {
-			mainViewState.set('default');
+			mainViewState.set('ai');
 		}
 	}
 </script>
 
-<section class={['fixed flex w-full  items-center', $mainViewState === 'poi' ? 'top-5 left-5 z-40' : 'hidden']}>
-	<button type="button" class="grid size-10 place-content-center rounded-lg bg-white shadow-2xs" onclick={viewBackHandler}>
+<section class={['fixed inline-flex items-center', $mainViewState === 'poi' ? 'top-5 left-5 z-40' : 'hidden']}>
+	<button
+		type="button"
+		class="relative grid size-10 place-content-center rounded-lg bg-white opacity-100 shadow-2xs transition-all transition-discrete starting:opacity-0"
+		onclick={viewBackHandler}
+	>
 		<Icons name="back" cls="size-6 stroke-black" />
 	</button>
 </section>

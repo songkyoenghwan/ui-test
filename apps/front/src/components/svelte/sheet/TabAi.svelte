@@ -1,12 +1,21 @@
 <script lang="ts">
+	import {
+		setPointSheetUi,
+		setSheetMidH,
+		setSheetMinH,
+		setSheetScrollRef,
+		sheetMidRatioValue,
+	} from '@/src/stores/sheetUiStore';
+	import { sheetInstance, sheetSnapPoint } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
-	import { setSheetMidH, setSheetMinH, setSheetScrollRef, setPointSheetUi } from '@/src/stores/sheetUiStore';
 
 	let tab = $state<'ai-recommend' | 'popularity'>('ai-recommend');
 	let scrollEl: HTMLDivElement | null = $state(null);
 
 	$effect(() => {
 		setSheetScrollRef(scrollEl);
+
+		$sheetInstance?.setSnapPoint($sheetMidRatioValue);
 	});
 </script>
 
@@ -29,7 +38,7 @@
 			{:else}
 				<Icons name="ai-off" cls="size-4 fill-121212" />
 			{/if}
-			AI 추천
+			AI 추천 {$sheetSnapPoint}
 		</label>
 		<label
 			for="popularity"
