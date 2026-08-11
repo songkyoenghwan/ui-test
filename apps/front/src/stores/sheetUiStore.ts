@@ -18,8 +18,7 @@ export const sheetUi = map({
 });
 
 export const sheetMinRatioValue = computed([sheetUi, viewportH], (state, vh) => {
-	if (state.sheetMinHeight <= 0 || vh <= 0) return state.sheetMinRatio;
-
+	if (state.sheetMinHeight <= 0) return state.sheetMinRatio;
 	return round2((state.sheetMinHeight + state.sheetHandleArea) / vh);
 });
 

@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { sheetMaxRatioValue, sheetMidRatioValue, sheetMinRatioValue, sheetUi } from '@/src/stores/sheetUiStore';
+	import {
+		sheetMaxRatioValue,
+		sheetMidRatioValue,
+		sheetMinRatioValue,
+		sheetUi,
+		setPointSheetUi,
+	} from '@/src/stores/sheetUiStore';
 	import { detailViewState, mainViewState } from '@/stores/globalStore';
 	import { sheetInstance, sheetMaxHeight, sheetSnapPoint, viewportH } from '@/stores/uxStore';
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
@@ -107,7 +113,7 @@
 <div
 	bind:this={rootEl}
 	data-detail-index={$sheetSnapPoint}
-	data-scroll-check={$sheetSnapPoint > 70 ? 'on' : 'off'}
+	data-scroll-check={$sheetSnapPoint > 85 ? 'on' : 'off'}
 	class={['relative', $mainViewState === 'poi' ? 'pt-17.5' : '']}
 >
 	<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
