@@ -3,6 +3,7 @@ import type { LocalizedText, SupportedLanguages } from '@/types/common/locale';
 import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 import { persistentAtom } from '@nanostores/persistent';
 import { atom, batch, map } from 'nanostores';
+import { recommendViewState } from './uxStore';
 
 type LocalizedKey = keyof LocalizedText;
 
@@ -95,15 +96,7 @@ export const pickText = (text: Partial<LocalizedText>, lang: LocalizedKey) => {
 	return text[lang]?.trim() || text.en?.trim() || '';
 };
 
-export const search = map<{
-	name: string;
-	start: '';
-	end: '';
-}>({
-	name: '',
-	start: '',
-	end: '',
-});
+export const search = atom<string>('');
 export const colorState = atom<string>('#274fa8');
 export const keywordState = atom<string>('키워드');
 export const categoryState = atom<string>('');

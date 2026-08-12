@@ -1,4 +1,4 @@
-<svelte:options
+<!-- <svelte:options
 	customElement={{
 		tag: 'hover-tooltip',
 		shadow: 'none',
@@ -10,7 +10,7 @@
 			bg: { type: 'String', reflect: true },
 		},
 	}}
-/>
+/> -->
 
 <script lang="ts">
 	import ContentTooltip from '@/svelte/tooltip/ContentTooltip.svelte';

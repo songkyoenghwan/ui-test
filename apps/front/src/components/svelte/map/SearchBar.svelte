@@ -1,13 +1,17 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
-	import { langState } from '@/stores/globalStore';
+	import { categoryList } from '@/src/stores/pageDataStore';
+	import { langState, categoryState } from '@/stores/globalStore';
 	import { layoutViewState, searchViewState, updateViewState } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 
 	let { name = '' } = $props();
+	let categoryName = $derived(
+		$categoryList.length > 0 ? $categoryList.find((c) => c.iconKey === $categoryState)?.name[$langState] : '',
+	);
 
 	const onSearchHandler = () => {
-		if ($searchViewState === 'searchResult') {
+		if ($searchViewState === 'searchResult' && categoryName !== '') {
 			updateViewState({
 				layout: 'search',
 				detail: 'idle',
@@ -79,7 +83,7 @@
 					$layoutViewState === 'search' ? 'rounded-sm border border-slate-200' : 'text-white',
 				]}
 				placeholder={m.usr_map_001_01({ locale: $langState, name: name })}
-				onpointerdown={onSearchHandler}
+				bind:value={categoryName}
 			/>
 		</div>
 

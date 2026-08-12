@@ -1,4 +1,4 @@
-<svelte:options
+<!-- <svelte:options
 	customElement={{
 		tag: 'top-tooltip',
 		shadow: 'none',
@@ -6,7 +6,7 @@
 			variant: { type: 'String' },
 		},
 	}}
-/>
+/> -->
 
 <script lang="ts">
 	import { v4 as uuidv4 } from 'uuid';

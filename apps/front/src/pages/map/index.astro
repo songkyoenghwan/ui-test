@@ -4,12 +4,11 @@ import BackView from '@/src/components/svelte/map/BackView.svelte';
 import Category from '@/src/components/svelte/map/Category.svelte';
 import SearchBar from '@/src/components/svelte/map/SearchBar.svelte';
 import Sheet from '@/src/components/svelte/map/Sheet.svelte';
-import { categories } from './dummy';
 ---
 
 <Layout>
 	<SearchBar client:only="svelte" name="대상지명" />
-	<Category client:only="svelte" categories={categories} />
+	<Category client:only="svelte" />
 
 	<BackView client:only="svelte" />
 
@@ -21,22 +20,52 @@ import { categories } from './dummy';
 
 <script>
 	import { updateViewState } from '@/stores/uxStore';
+	import {
+		searchList,
+		searchResultList,
+		categoryList,
+		facilityList,
+		pathList,
+		recommendList,
+		distance,
+	} from '@/stores/pageDataStore';
 
-	document.addEventListener('DOMContentLoaded', () => {
-		document.querySelector('[data-btn="poi"]')?.addEventListener('click', () => {
-			updateViewState({
-				layout: 'facilities',
-				detail: 'facilities',
-				search: 'idle',
-			});
+	document.addEventListener('DOMContentLoaded', async () => {
+		const response = await fetch('/src/mocks/db.json');
+		if (!response.ok) throw new Error('Failed to fetch map data');
+
+		const data = await response.json();
+
+		categoryList.set(data.categories.data.items ?? []);
+
+		// searchList.set(data.searchList.data.items ?? []);
+		// searchResultList.set(data.searchResultList.data.items ?? []);
+		// facilityList.set(data.facilityList.data ?? []);
+		// pathList.set(data.pathList.data ?? []);
+		// recommendList.set(data.recommendList.data ?? []);
+
+		// distance.set({
+		// 	start: data.distance?.start ?? '',
+		// 	end: data.distance?.end ?? '',
+		// 	step: data.distance?.step ?? 0,
+		// 	totalDistance: data.distance?.totalDistance ?? 0,
+		// 	time: data.distance?.time ?? 0,
+		// });
+	});
+
+	document.querySelector('[data-btn="poi"]')?.addEventListener('click', () => {
+		updateViewState({
+			layout: 'facilities',
+			detail: 'facilities',
+			search: 'idle',
 		});
+	});
 
-		document.querySelector('[data-btn="ai"]')?.addEventListener('click', () => {
-			updateViewState({
-				layout: 'ai',
-				detail: 'ai',
-				search: 'idle',
-			});
+	document.querySelector('[data-btn="ai"]')?.addEventListener('click', () => {
+		updateViewState({
+			layout: 'ai',
+			detail: 'ai',
+			search: 'idle',
 		});
 	});
 </script>

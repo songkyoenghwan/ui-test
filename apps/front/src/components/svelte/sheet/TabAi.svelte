@@ -70,7 +70,7 @@
 		<p class="text-lg text-slate-400">{m.usr_rec_001_03({ locale: $langState })}</p>
 	</div>
 
-	<div class="grid min-h-30 place-content-center gap-3 text-center">
+	<div class="hidden min-h-30 place-content-center gap-3 text-center">
 		<p class="text-[20px] font-bold text-black">{m.usr_rec_001_12({ locale: $langState })}</p>
 		<p class="text-base text-slate-400">{m.usr_rec_001_13({ locale: $langState })}</p>
 		<div class="flex items-center gap-2 pt-2.5 text-sm">
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 
-	<div class="grid min-h-30 place-content-center gap-3 text-center">
+	<div class="hidden min-h-30 place-content-center gap-3 text-center">
 		<p class="text-[20px] font-bold text-black">{m.usr_rec_001_16({ locale: $langState })}</p>
 		<p class="text-base text-slate-400">{m.usr_rec_001_17({ locale: $langState })}</p>
 		<div class="flex items-center gap-2 pt-2.5 text-sm">
@@ -105,7 +105,7 @@
 		</div>
 	</div>
 
-	<ul class="min-h-px" bind:clientHeight={null, setSheetMidH}>
+	<ul class="hidden min-h-px">
 		<li class={[tab === 'ai-recommend' ? 'flex flex-col' : 'hidden']}>
 			<p class="flex items-center gap-1 p-5">
 				<Icons name="ai-on" cls="size-4" />

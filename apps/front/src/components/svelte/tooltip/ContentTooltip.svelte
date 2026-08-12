@@ -1,4 +1,4 @@
-<svelte:options
+<!-- <svelte:options
 	customElement={{
 		tag: 'content-tooltip',
 		shadow: 'none',
@@ -12,7 +12,7 @@
 			open: { type: 'Boolean', reflect: true },
 		},
 	}}
-/>
+/> -->
 
 <script lang="ts">
 	import type { Placement } from '@floating-ui/utils';

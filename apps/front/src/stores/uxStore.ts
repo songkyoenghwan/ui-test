@@ -16,7 +16,7 @@ type ViewStatePatch = {
 
 export const prevViewState = atom<LayoutView>('default');
 export const layoutViewState = atom<LayoutView>('default');
-export const detailViewState = atom<DetailView>('ai');
+export const detailViewState = atom<DetailView>('idle');
 export const searchViewState = atom<SearchView>('idle');
 export const routeViewState = atom<RouteView>('idle');
 export const recommendViewState = atom<RecommendView>('idle');
