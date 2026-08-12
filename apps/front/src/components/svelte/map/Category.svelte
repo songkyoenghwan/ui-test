@@ -11,7 +11,6 @@
 
 		return [...$categoryList].sort((a, b) => Number(b.isEventCategory) - Number(a.isEventCategory));
 	});
-	$inspect(sortedCategories);
 
 	const onCategoryHandler = () => {
 		updateViewState({

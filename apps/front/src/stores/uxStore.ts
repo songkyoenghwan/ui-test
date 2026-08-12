@@ -14,12 +14,12 @@ type ViewStatePatch = {
 	route?: RouteView;
 };
 
-export const prevViewState = atom<LayoutView>('default');
-export const layoutViewState = atom<LayoutView>('default');
+export const layoutViewState = atom<LayoutView>('facilities');
 export const detailViewState = atom<DetailView>('idle');
 export const searchViewState = atom<SearchView>('idle');
 export const routeViewState = atom<RouteView>('idle');
 export const recommendViewState = atom<RecommendView>('idle');
+export const prevViewState = atom<LayoutView>('default');
 
 export const viewportH = atom<number>(30);
 export const sheetInstance = atom<BottomSheetRef | undefined>(undefined);

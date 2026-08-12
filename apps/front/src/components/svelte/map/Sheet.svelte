@@ -12,7 +12,7 @@
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
 	import Search from '@/svelte/sheet/Search.svelte';
-	import Detail from '@/svelte/sheet/Detail.svelte';
+	import Facility from '@/svelte/sheet/Facility.svelte';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
 	import { type BottomSheetRef } from '@/utils/uxEvent.type';
 	import { tick } from 'svelte';
@@ -133,7 +133,7 @@
 
 				{#if $detailViewState === 'facilities'}
 					<ConfusionState />
-					<Detail />
+					<Facility />
 				{/if}
 
 				{#if $detailViewState === 'search'}

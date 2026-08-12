@@ -23,7 +23,9 @@ import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 	import {
 		searchList,
 		searchResultList,
+		destinationList,
 		categoryList,
+		poiList,
 		facilityList,
 		pathList,
 		recommendList,
@@ -36,7 +38,12 @@ import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 
 		const data = await response.json();
 
-		categoryList.set(data.categories.data.items ?? []);
+		console.log(data);
+
+		categoryList.set(data.categories.data ?? []);
+		destinationList.set(data['tour-destinations']?.data?.items ?? []);
+		poiList.set(data.pois.data.items ?? []);
+		facilityList.set(data.facilities.data.items ?? []);
 
 		// searchList.set(data.searchList.data.items ?? []);
 		// searchResultList.set(data.searchResultList.data.items ?? []);
@@ -51,6 +58,12 @@ import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 		// 	totalDistance: data.distance?.totalDistance ?? 0,
 		// 	time: data.distance?.time ?? 0,
 		// });
+
+		updateViewState({
+			layout: 'facilities',
+			detail: 'facilities',
+			search: 'idle',
+		});
 	});
 
 	document.querySelector('[data-btn="poi"]')?.addEventListener('click', () => {
