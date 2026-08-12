@@ -41,7 +41,7 @@ import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 		console.log(data);
 
 		categoryList.set(data.categories.data ?? []);
-		destinationList.set(data['tour-destinations']?.data?.items ?? []);
+		destinationList.set(data['tour-destinations']?.data?.items ?? {});
 		poiList.set(data.pois.data.items ?? []);
 		facilityList.set(data.facilities.data.items ?? []);
 

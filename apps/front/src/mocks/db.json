@@ -3065,296 +3065,6 @@
 		"data": {
 			"items": [
 				{
-					"category": {
-						"name": {
-							"en": "Japaneese Cafe",
-							"ja": "",
-							"ko": "일본풍 카페",
-							"th": "",
-							"vi": "",
-							"zh": ""
-						},
-						"parent": {
-							"name": { "ko": "주차장", "en": "Parking lot", "zh": "", "ja": "ㅈㄱㄹㅇ", "th": "", "vi": "" },
-							"iconKey": "parking"
-						},
-						"iconKey": "popper",
-						"categoryColorCodes": { "colorCode": "#23B63C" }
-					},
-					"congestionSections": [],
-					"createdAt": "2026-05-28T16:49:30.110Z",
-					"createdBy": 1,
-					"description": {
-						"ko": "시설"
-					},
-					"endAt": "2026-05-30T00:00:00.000Z",
-					"facilityButtons": [
-						{
-							"buttonName": {
-								"en": "button1",
-								"ja": "",
-								"ko": "버튼1",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"buttonUrl": "http://localshot:3002/123",
-							"id": 11,
-							"tourDestinationCommonButtonId": 7
-						},
-						{
-							"buttonName": {
-								"en": "facility button1",
-								"ja": "",
-								"ko": "시설버튼1",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"buttonUrl": "http://localshot:3002/123",
-							"id": 13,
-							"tourDestinationCommonButtonId": null
-						}
-					],
-					"facilityFiles": [
-						{
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 2
-						},
-						{
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 222
-						}
-					],
-					"facilityHolidaySchedules": [
-						{
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 13,
-							"weekOfMonth": 1
-						},
-						{
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 14,
-							"weekOfMonth": 2
-						},
-						{
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 15,
-							"weekOfMonth": 3
-						},
-						{
-							"dayOfWeek": 1,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 17,
-							"weekOfMonth": 5
-						},
-						{
-							"dayOfWeek": 2,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 13,
-							"weekOfMonth": 1
-						},
-						{
-							"dayOfWeek": 2,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 14,
-							"weekOfMonth": 2
-						},
-						{
-							"dayOfWeek": 2,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 15,
-							"weekOfMonth": 3
-						},
-						{
-							"dayOfWeek": 2,
-							"fixedHoliday": null,
-							"holidayType": 1,
-							"id": 17,
-							"weekOfMonth": 5
-						}
-					],
-					"facilityOperatingSchedules": [
-						{
-							"closingTime": "1800",
-							"dayOfWeek": 5,
-							"facilityBreakSchedules": [
-								{
-									"breakEndTime": "1400",
-									"breakStartTime": "1300",
-									"id": 2
-								}
-							],
-							"id": 4,
-							"openingTime": "0900"
-						},
-						{
-							"closingTime": "1800",
-							"dayOfWeek": 6,
-							"facilityBreakSchedules": [],
-							"id": 5,
-							"openingTime": "0900"
-						},
-						{
-							"closingTime": "1730",
-							"dayOfWeek": 1,
-							"facilityBreakSchedules": [],
-							"id": 6,
-							"openingTime": "1100"
-						}
-					],
-					"facilityPoiMappings": [
-						{
-							"poi": {
-								"name": {
-									"en": "First POI",
-									"ko": "1번 위치1번 위치1번 위치1번 위치"
-								}
-							}
-						}
-					],
-					"facilityVpsPopups": [
-						{
-							"description": "XR ContentsContents Contents",
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 1,
-							"name": {
-								"en": "XR Contents",
-								"ko": "XR 콘텐츠"
-							},
-							"url": "https://xxx.cmo"
-						}
-					],
-					"product": [
-						{
-							"name": {
-								"en": "facility1",
-								"ko": "시설테스트1 시설테스트1 시설테스트1"
-							},
-							"price": 99000,
-							"description": {
-								"en": "A facility where voting takes place.",
-								"ja": "",
-								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 1
-						},
-						{
-							"name": {
-								"en": "facility1",
-								"ko": "시설테스트1"
-							},
-							"price": 99000,
-							"description": {
-								"en": "A facility where voting takes place.",
-								"ja": "",
-								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 2
-						},
-						{
-							"name": {
-								"en": "facility1",
-								"ko": "시설테스트1"
-							},
-							"price": 99000,
-							"description": {
-								"en": "A facility where voting takes place.",
-								"ja": "",
-								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 3
-						},
-						{
-							"name": {
-								"en": "facility1",
-								"ko": "시설테스트1"
-							},
-							"price": 99000,
-							"description": {
-								"en": "A facility where voting takes place.",
-								"ja": "",
-								"ko": "투표를 하는 시설입니다.투표를 하는 시설입니다 투표를 하는 시설입니다.",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"fileMimeType": "image/png",
-							"fileOriginalName": "ìë´ì.png",
-							"fileSize": 3527,
-							"fileUploadName": "ccc60128-54a0-41c4-abbd-812bd3ac1ff0.png",
-							"fileUploadPath": "images/categories/2026/06/02",
-							"fileUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 4
-						}
-					],
-					"id": 190,
-					"isDeleted": false,
-					"isOperationInfoSynced": false,
-					"isVisible": false,
-					"linkButton": null,
-					"name": {
-						"en": "facility1",
-						"ko": "시설테스트1"
-					},
-					"overwriteCongestionStatus": null,
-					"startAt": "2026-05-28T00:00:00.000Z",
-					"updatedAt": "2026-05-28T16:49:30.110Z",
-					"updatedBy": null
-				},
-				{
 					"id": 191,
 					"name": {
 						"ko": "생서테스트",
@@ -3376,9 +3086,68 @@
 					},
 					"linkButton": null,
 					"createdAt": "2026-08-11T20:36:39.242Z",
-					"updatedAt": "2026-08-11T20:36:39.242Z",
+					"updatedAt": "2026-08-12T18:31:30.328Z",
 					"isOperationInfoSynced": false,
+					"isVisible": true,
+					"isDeleted": false,
+					"createdBy": 1,
+					"updatedBy": 1,
+					"contact": "010-3448-7866",
+					"facilityHolidaySchedules": [],
+					"facilityOperatingSchedules": [
+						{
+							"id": 635,
+							"dayOfWeek": 0,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 636,
+							"dayOfWeek": 1,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 637,
+							"dayOfWeek": 2,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 638,
+							"dayOfWeek": 3,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 639,
+							"dayOfWeek": 4,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 640,
+							"dayOfWeek": 5,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 641,
+							"dayOfWeek": 6,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						}
+					],
+					"facilityVpsPopups": [],
 					"category": {
+						"id": 29,
 						"name": {
 							"ko": "행사부스",
 							"en": "Event booth",
@@ -3387,29 +3156,124 @@
 							"th": "บูธกิจกรรม",
 							"vi": "Gian hàng sự kiện"
 						},
-						"iconKey": "popper",
-						"categoryColorCodes": { "colorCode": "#23B63C" },
-						"parent": {
-							"name": { "ko": "주차장", "en": "Parking lot", "zh": "", "ja": "ㅈㄱㄹㅇ", "th": "", "vi": "" },
-							"iconKey": "parking"
+						"parent": null
+					},
+					"facilityPoiMappings": [
+						{
+							"poi": {
+								"name": {
+									"ko": "청소년광장",
+									"en": "Youth Plaza",
+									"zh": "青年广场",
+									"ja": "青年広場",
+									"th": "จัตุรัสเยาวชน",
+									"vi": "Quảng trường Thanh niên"
+								}
+							}
 						}
-					},
+					],
+					"congestionSections": [],
+					"facilityProducts": [
+						{
+							"id": 21,
+							"isVisible": true,
+							"displayOrder": 1,
+							"name": {
+								"ko": "dddd",
+								"en": "Dddd",
+								"zh": "DDDD",
+								"ja": "うわぁ",
+								"th": "ดดด",
+								"vi": "Dddd"
+							},
+							"description": {
+								"ko": "ㅇㄹㅇㄹ",
+								"en": "ㅇㄹㅇㄹ",
+								"zh": "ㅇㄹㅇㄹ",
+								"ja": "ㅇㄹㅇㄹ",
+								"th": "ㅇㄹㅇㄹ",
+								"vi": "ㅇㄹㅇㄹ"
+							},
+							"price": 160000,
+							"currency": "KRW",
+							"facilityProductFiles": [
+								{
+									"id": 7,
+									"fileOriginalName": "1785731840.9149.png",
+									"fileUrl": "/uploads/images/facility-products/2026/08/7361b241-e9b8-4eda-a30f-059719ddfbbd.png",
+									"fileUploadPath": "images/facility-products/2026/08",
+									"fileUploadName": "7361b241-e9b8-4eda-a30f-059719ddfbbd.png",
+									"fileSize": 159113,
+									"fileMimeType": "image/png"
+								}
+							]
+						}
+					],
 					"overwriteCongestionStatus": null,
-					"isUsingCongestion": false,
-					"hasVpsPopup": false,
-					"matchingPoiName": {
-						"ko": "청소년광장",
-						"en": "Youth Plaza",
-						"zh": "青年广场",
-						"ja": "青年広場",
-						"th": "จัตุรัสเยาวชน",
-						"vi": "Quảng trường Thanh niên"
-					},
-					"facilityProductsCount": 0,
-					"facilityButtonsCount": 0
+					"facilityFiles": [],
+					"facilityProductGuideFiles": [
+						{
+							"id": 58,
+							"fileOriginalName": "image (2).png",
+							"fileUrl": "/uploads/images/facility-products/2026/08/211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileSize": 1330132,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						},
+						{
+							"id": 59,
+							"fileOriginalName": "image (1).png",
+							"fileUrl": "/uploads/images/facility-products/2026/08/95bcf825-1452-4134-b6d7-ed89df5ff6bf.png",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "95bcf825-1452-4134-b6d7-ed89df5ff6bf.png",
+							"fileSize": 150267,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						},
+						{
+							"id": 60,
+							"fileOriginalName": "ì ëª© ìì.png",
+							"fileUrl": "/uploads/images/facility-products/2026/08/74df0099-f650-40b3-af85-a979ca68fe9c.png",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "74df0099-f650-40b3-af85-a979ca68fe9c.png",
+							"fileSize": 93100,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						}
+					],
+					"facilityButtons": [
+						{
+							"id": 75,
+							"buttonName": {
+								"ko": "주문페이지",
+								"en": "Food Order Url",
+								"zh": "",
+								"ja": "",
+								"th": "",
+								"vi": ""
+							},
+							"buttonUrl": "https://deepfine.com",
+							"tourDestinationCommonButtonId": 69
+						},
+						{
+							"id": 76,
+							"buttonName": {
+								"ko": "안녕하세요",
+								"en": "Hello",
+								"ja": "こんにちは",
+								"zh": "你好",
+								"vi": "Xin chào",
+								"th": "สวัสดี"
+							},
+							"buttonUrl": "https://deepfine.com",
+							"tourDestinationCommonButtonId": null
+						}
+					]
 				},
 				{
-					"id": 19022,
+					"id": 190,
 					"name": {
 						"ko": "위치서생성",
 						"en": "Location generation",
@@ -3432,7 +3296,66 @@
 					"createdAt": "2026-08-11T20:28:24.509Z",
 					"updatedAt": "2026-08-11T20:28:24.509Z",
 					"isOperationInfoSynced": false,
+					"isVisible": true,
+					"isDeleted": false,
+					"createdBy": 1,
+					"updatedBy": 1,
+					"contact": "010-1234-1234",
+					"facilityHolidaySchedules": [],
+					"facilityOperatingSchedules": [
+						{
+							"id": 628,
+							"dayOfWeek": 0,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 629,
+							"dayOfWeek": 1,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 630,
+							"dayOfWeek": 2,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 631,
+							"dayOfWeek": 3,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 632,
+							"dayOfWeek": 4,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 633,
+							"dayOfWeek": 5,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 634,
+							"dayOfWeek": 6,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						}
+					],
+					"facilityVpsPopups": [],
 					"category": {
+						"id": 29,
 						"name": {
 							"ko": "행사부스",
 							"en": "Event booth",
@@ -3441,23 +3364,28 @@
 							"th": "บูธกิจกรรม",
 							"vi": "Gian hàng sự kiện"
 						},
-						"iconKey": "popper",
-						"categoryColorCodes": { "colorCode": "#23B63C" },
 						"parent": null
 					},
+					"facilityPoiMappings": [
+						{
+							"poi": {
+								"name": {
+									"ko": "이촌어린이공원",
+									"en": "Ichon Children's Park",
+									"zh": "一川儿童公园",
+									"ja": "イチョン子供公園",
+									"th": "สวนเด็กอิชอน",
+									"vi": "Công viên thiếu nhi Ichon"
+								}
+							}
+						}
+					],
+					"congestionSections": [],
+					"facilityProducts": [],
 					"overwriteCongestionStatus": null,
-					"isUsingCongestion": false,
-					"hasVpsPopup": false,
-					"matchingPoiName": {
-						"ko": "이촌어린이공원",
-						"en": "Ichon Children's Park",
-						"zh": "一川儿童公园",
-						"ja": "イチョン子供公園",
-						"th": "สวนเด็กอิชอน",
-						"vi": "Công viên thiếu nhi Ichon"
-					},
-					"facilityProductsCount": 0,
-					"facilityButtonsCount": 0
+					"facilityFiles": [],
+					"facilityProductGuideFiles": [],
+					"facilityButtons": []
 				},
 				{
 					"id": 189,
@@ -3767,12 +3695,262 @@
 					},
 					"facilityProductsCount": 0,
 					"facilityButtonsCount": 0
+				},
+				{
+					"id": 172,
+					"name": {
+						"ko": "꿈나무어린이공원",
+						"en": "Dream Tree Children's Park",
+						"ja": "夢の木の子供公園",
+						"zh": "梦树儿童公园",
+						"th": "สวนเด็กดรีมทรี",
+						"vi": "Công viên thiếu nhi Dream Tree"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "꿈나무어린이공원",
+						"en": "Dream Tree Children's Park",
+						"ja": "夢の木の子供公園",
+						"zh": "梦树儿童公园",
+						"th": "สวนเด็กดรีมทรี",
+						"vi": "Công viên thiếu nhi Dream Tree"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 171,
+					"name": {
+						"ko": "강변어린이공원",
+						"en": "Riverside Children's Park",
+						"ja": "川沿いの子供公園",
+						"zh": "河滨儿童公园",
+						"th": "สวนเด็กริเวอร์ไซด์",
+						"vi": "Công viên trẻ em Riverside"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "강변어린이공원",
+						"en": "Riverside Children's Park",
+						"zh": "河滨儿童公园",
+						"ja": "川沿いの子供公園",
+						"th": "สวนเด็กริเวอร์ไซด์",
+						"vi": "Công viên trẻ em Riverside"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 170,
+					"name": {
+						"ko": "씨스페이스24 용산삼각지점",
+						"en": "C-Space 24 Yongsan Triangle Branch",
+						"ja": "シースペース24龍山三角支店",
+						"zh": "C-Space 24 龙山三角分店",
+						"th": "C-Space 24 สาขายงซานไทรแองเกิล",
+						"vi": "C-Space 24 Chi nhánh Tam giác Yongsan"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "씨스페이스24 용산삼각지점",
+						"en": "C-Space 24 Yongsan Triangle Branch",
+						"ja": "シースペース24龍山三角支店",
+						"zh": "C-Space 24 龙山三角分店",
+						"th": "C-Space 24 สาขายงซานไทรแองเกิล",
+						"vi": "C-Space 24 Chi nhánh Tam giác Yongsan"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 169,
+					"name": {
+						"ko": "세븐일레븐 이촌점",
+						"en": "7-Eleven Ichon branch",
+						"ja": "セブンイレブンイチョン店",
+						"zh": "7-Eleven 一川分店",
+						"th": "เซเว่นอีเลฟเว่น สาขาอิชอน",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Ichon"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "세븐일레븐 이촌점",
+						"en": "7-Eleven Ichon branch",
+						"ja": "セブンイレブンイチョン店",
+						"zh": "7-Eleven 一川分店",
+						"th": "เซเว่นอีเลฟเว่น สาขาอิชอน",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Ichon"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 168,
+					"name": {
+						"ko": "CU 한강르네상스이촌2호",
+						"en": "CU Hangang Renaissance Ichon No. 2",
+						"ja": "CUハンガンルネッサンスイチョン2号",
+						"zh": "CU汉江万丽二馆2号",
+						"th": "CU Hangang Renaissance Ichon No. 2",
+						"vi": "CU Hangang Phục hưng Ichon số 2"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "CU 한강르네상스이촌2호",
+						"en": "CU Hangang Renaissance Ichon No. 2",
+						"ja": "CUハンガンルネッサンスイチョン2号",
+						"zh": "CU汉江万丽二馆2号",
+						"th": "CU Hangang Renaissance Ichon No. 2",
+						"vi": "CU Hangang Phục hưng Ichon số 2"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 167,
+					"name": {
+						"ko": "GS25 이촌대림점",
+						"en": "GS25 Ichon Daerim Branch",
+						"ja": "GS25利村大林店",
+						"zh": "GS25 一川大林分部",
+						"th": "GS25 สาขาอิชอนแดริม",
+						"vi": "Chi nhánh GS25 Ichon Daerim"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "GS25 이촌대림점",
+						"en": "GS25 Ichon Daerim Branch",
+						"ja": "GS25利村大林店",
+						"zh": "GS25 一川大林分部",
+						"th": "GS25 สาขาอิชอนแดริม",
+						"vi": "Chi nhánh GS25 Ichon Daerim"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
 				}
 			],
 			"totalCount": 156,
 			"page": 1,
-			"pageSize": 10,
-			"totalPages": 16,
+			"pageSize": 16,
+			"totalPages": 10,
 			"matchingStatus": { "totalCount": 156, "matched": 56, "unmatched": 100 }
 		}
 	},
@@ -3839,11 +4017,16 @@
 						"th": "ตลาดซูวอนนัมมุน",
 						"vi": "Chợ Suwon Nammun"
 					},
+					"latitude": 37.279357,
+					"longitude": 127.017038,
 					"startAt": null,
 					"endAt": null,
+					"colorCode": "#274FA8",
 					"homepageUrl": "https://www.instagram.com/nammun100y/",
 					"mapUrl": "",
 					"isAlways": true,
+					"isVisible": true,
+					"isDeleted": false,
 					"isAiRecommendYn": false,
 					"isFacilityCongestionYn": true,
 					"isSectionCongestionYn": true,
@@ -3866,37 +4049,10 @@
 						"th": "ทดสอบที่หน้างานจริง",
 						"vi": "Thử nghiệm tại địa điểm thực tế"
 					},
-					"updatedAt": "2026-08-11T09:21:40.660Z",
 					"createdAt": "2026-07-31T13:47:33.460Z",
-					"colorCode": "#274FA8",
-					"tourDestinationCommonButtons": [
-						{
-							"buttonName": {
-								"en": "2de",
-								"ja": "",
-								"ko": "122ㅎ",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"iconUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 1,
-							"sortingNumber": 1
-						},
-						{
-							"buttonName": {
-								"en": "2de",
-								"ja": "",
-								"ko": "12ㅎ",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"iconUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 2,
-							"sortingNumber": 2
-						}
-					],
+					"createdBy": 1,
+					"updatedAt": "2026-08-11T09:21:40.660Z",
+					"updatedBy": 5,
 					"tourDestinationOperatingSchedules": [
 						{
 							"id": 380,
@@ -3942,8 +4098,39 @@
 						}
 					],
 					"tourDestinationHolidaySchedules": [],
-					"operationStatus": "operating",
-					"lastUpdatedAt": "2026-08-11T09:21:40.660Z"
+					"tourDestinationCommonButtons": [
+						{
+							"id": 96,
+							"iconUrl": "blob:http://localhost:5196/db7d97a7-134c-4b81-8f53-5a51ff235141",
+							"buttonName": {
+								"ko": "수원시청",
+								"en": "Suwon City Hall",
+								"zh": "水原市政府",
+								"ja": "水原市役所",
+								"th": "ศาลาว่าการเมืองซูวอน",
+								"vi": "Tòa thị chính Suwon"
+							},
+							"sortingNumber": 0,
+							"facilityUsageCount": 0
+						},
+						{
+							"id": 97,
+							"iconUrl": "blob:http://localhost:5194/65655f24-0414-4594-b0ad-d26b8f8d0377",
+							"buttonName": {
+								"ko": "테스트2",
+								"en": "Test 2",
+								"zh": "测试 2",
+								"ja": "テスト2",
+								"th": "การทดสอบที่ 2",
+								"vi": "Bài kiểm tra 2"
+							},
+							"sortingNumber": 1,
+							"facilityUsageCount": 0
+						}
+					],
+					"facilityCongestionCount": 1,
+					"sectionCongestionCount": 1,
+					"vpsContentsCount": 2
 				},
 				{
 					"id": 1,
@@ -3955,11 +4142,16 @@
 						"th": "ตลาดซูวอนนัมมุน",
 						"vi": "Chợ Suwon Nammun"
 					},
+					"latitude": 37.506417,
+					"longitude": 127.005362,
 					"startAt": null,
 					"endAt": null,
+					"colorCode": "#7a70a7",
 					"homepageUrl": "https://naver.com",
 					"mapUrl": "https://www.google.com/maps/place/%EA%B3%A0%ED%88%AC%EB%AA%B0(%EA%B3%A0%EC%86%8D%ED%84%B0%EB%AF%B8%EB%84%90+%EC%A7%80%ED%95%98%EC%83%81%EA%B0%80)/data=!4m6!3m5!1s0x357ca1918e5c4145:0x7b8307b609846119!8m2!3d37.506163!4d127.0049887!16s%2Fg%2F11fghvsc1g?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D",
 					"isAlways": true,
+					"isVisible": true,
+					"isDeleted": false,
 					"isAiRecommendYn": true,
 					"isFacilityCongestionYn": true,
 					"isSectionCongestionYn": true,
@@ -3982,84 +4174,74 @@
 						"th": "ยินดีต้อนรับสู่ตลาดนัมมุนซูวอน เวลาทำการอาจแตกต่างกันไปในแต่ละร้าน โปรดตรวจสอบก่อนเข้าเยี่ยมชม",
 						"vi": "Chào mừng đến với chợ Suwon Nammun. Giờ mở cửa có thể khác nhau tùy từng cửa hàng. Vui lòng kiểm tra trước khi đến."
 					},
-					"updatedAt": "2026-07-28T14:29:52.154Z",
 					"createdAt": "2026-05-20T18:03:27.302Z",
-					"colorCode": "#7a70a7",
-					"tourDestinationCommonButtons": [
-						{
-							"buttonName": {
-								"en": "2de",
-								"ja": "",
-								"ko": "122ㅎ",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"iconUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 1231231,
-							"sortingNumber": 1
-						},
-						{
-							"buttonName": {
-								"en": "2de",
-								"ja": "",
-								"ko": "12ㅎ",
-								"th": "",
-								"vi": "",
-								"zh": ""
-							},
-							"iconUrl": "https://cdn.pixabay.com/photo/2026/05/08/10/11/10-11-08-608_1280.jpg",
-							"id": 2123123,
-							"sortingNumber": 2
-						}
-					],
+					"createdBy": 1,
+					"updatedAt": "2026-08-12T18:36:54.131Z",
+					"updatedBy": 1,
 					"tourDestinationOperatingSchedules": [
 						{
-							"id": 219,
+							"id": 528,
 							"dayOfWeek": 0,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						},
 						{
-							"id": 220,
+							"id": 529,
 							"dayOfWeek": 1,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						},
 						{
-							"id": 221,
+							"id": 530,
 							"dayOfWeek": 2,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						},
 						{
-							"id": 222,
+							"id": 531,
 							"dayOfWeek": 3,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						},
 						{
-							"id": 223,
+							"id": 532,
 							"dayOfWeek": 4,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						},
 						{
-							"id": 224,
+							"id": 533,
 							"dayOfWeek": 5,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						},
 						{
-							"id": 225,
+							"id": 534,
 							"dayOfWeek": 6,
 							"openingTime": "09:00",
 							"closingTime": "20:00"
 						}
 					],
 					"tourDestinationHolidaySchedules": [],
-					"operationStatus": "operating",
-					"lastUpdatedAt": "2026-07-28T14:29:52.154Z"
+					"tourDestinationCommonButtons": [
+						{
+							"id": 69,
+							"iconUrl": "/uploads/images/tour-destination-overlays/2026/08/0e9624b2-3e5c-4387-bf8a-5e54d53f1de3.png",
+							"buttonName": {
+								"ko": "주문페이지",
+								"en": "Food Order Url",
+								"zh": "",
+								"ja": "",
+								"th": "",
+								"vi": ""
+							},
+							"sortingNumber": 0,
+							"facilityUsageCount": 5
+						}
+					],
+					"facilityCongestionCount": 3,
+					"sectionCongestionCount": 1,
+					"vpsContentsCount": 5
 				},
 				{
 					"id": 27,
@@ -4082,14 +4264,7 @@
 					"isFacilityAddressYn": false,
 					"isCustomSortingYn": true,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": false,
-						"ko": true,
-						"th": false,
-						"vi": false,
-						"zh": false
-					},
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
 					"operationInfo": {
 						"ko": "무지개 축제 빨주노초파남보",
 						"en": "Rainbow Festival: Red, Orange, Yellow, Green, Blue, Indigo, Violet",
@@ -4102,30 +4277,10 @@
 					"createdAt": "2026-07-14T15:44:05.814Z",
 					"colorCode": "#c71c8e",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 208,
-							"dayOfWeek": 3,
-							"openingTime": "11:30",
-							"closingTime": "16:00"
-						},
-						{
-							"id": 209,
-							"dayOfWeek": 4,
-							"openingTime": "11:30",
-							"closingTime": "16:00"
-						},
-						{
-							"id": 210,
-							"dayOfWeek": 5,
-							"openingTime": "11:30",
-							"closingTime": "16:00"
-						},
-						{
-							"id": 211,
-							"dayOfWeek": 6,
-							"openingTime": "11:30",
-							"closingTime": "16:00"
-						}
+						{ "id": 208, "dayOfWeek": 3, "openingTime": "11:30", "closingTime": "16:00" },
+						{ "id": 209, "dayOfWeek": 4, "openingTime": "11:30", "closingTime": "16:00" },
+						{ "id": 210, "dayOfWeek": 5, "openingTime": "11:30", "closingTime": "16:00" },
+						{ "id": 211, "dayOfWeek": 6, "openingTime": "11:30", "closingTime": "16:00" }
 					],
 					"tourDestinationHolidaySchedules": [],
 					"operationStatus": "closed",
@@ -4133,14 +4288,7 @@
 				},
 				{
 					"id": 28,
-					"name": {
-						"ko": "안녕",
-						"en": "hi",
-						"zh": "你好",
-						"ja": "こんにちは",
-						"th": "สวัสดี",
-						"vi": "CHÀO"
-					},
+					"name": { "ko": "안녕", "en": "hi", "zh": "你好", "ja": "こんにちは", "th": "สวัสดี", "vi": "CHÀO" },
 					"startAt": "2026-07-01T00:00:00.000Z",
 					"endAt": "2026-07-31T00:00:00.000Z",
 					"homepageUrl": "https://github.com/byungsker/opengiver-skills/blob/main/README.ko.md",
@@ -4152,14 +4300,7 @@
 					"isFacilityAddressYn": true,
 					"isCustomSortingYn": true,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": false,
-						"ko": true,
-						"th": false,
-						"vi": false,
-						"zh": false
-					},
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
 					"operationInfo": {
 						"ko": "매주 주말은 휴일입니다. 참고 부탁드립니다.",
 						"en": "Every weekend is a holiday. Please take note.",
@@ -4172,134 +4313,32 @@
 					"createdAt": "2026-07-14T15:55:39.070Z",
 					"colorCode": "#d099db",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 165,
-							"dayOfWeek": 0,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 166,
-							"dayOfWeek": 1,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 167,
-							"dayOfWeek": 2,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 168,
-							"dayOfWeek": 3,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 169,
-							"dayOfWeek": 4,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 170,
-							"dayOfWeek": 5,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 171,
-							"dayOfWeek": 6,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						}
+						{ "id": 165, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 166, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 167, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 168, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 169, "dayOfWeek": 4, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 170, "dayOfWeek": 5, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 171, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "15:00" }
 					],
 					"tourDestinationHolidaySchedules": [
-						{
-							"id": 58,
-							"weekOfMonth": 1,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 59,
-							"weekOfMonth": 1,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 60,
-							"weekOfMonth": 2,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 61,
-							"weekOfMonth": 2,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 62,
-							"weekOfMonth": 3,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 63,
-							"weekOfMonth": 3,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 64,
-							"weekOfMonth": 4,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 65,
-							"weekOfMonth": 4,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 66,
-							"weekOfMonth": 5,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 67,
-							"weekOfMonth": 5,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						}
+						{ "id": 58, "weekOfMonth": 1, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 59, "weekOfMonth": 1, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 60, "weekOfMonth": 2, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 61, "weekOfMonth": 2, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 62, "weekOfMonth": 3, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 63, "weekOfMonth": 3, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 64, "weekOfMonth": 4, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 65, "weekOfMonth": 4, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 66, "weekOfMonth": 5, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 67, "weekOfMonth": 5, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 }
 					],
 					"operationStatus": "closed",
 					"lastUpdatedAt": "2026-07-14T17:53:14.299Z"
 				},
 				{
 					"id": 17,
-					"name": {
-						"ko": "6월15일의 축제2",
-						"en": "June's 15th Festival2",
-						"zh": "",
-						"ja": "",
-						"th": "",
-						"vi": ""
-					},
+					"name": { "ko": "6월15일의 축제2", "en": "June's 15th Festival2", "zh": "", "ja": "", "th": "", "vi": "" },
 					"startAt": "2026-06-15T00:00:00.000Z",
 					"endAt": "2026-06-15T00:00:00.000Z",
 					"homepageUrl": "",
@@ -4311,32 +4350,13 @@
 					"isFacilityAddressYn": true,
 					"isCustomSortingYn": true,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": true,
-						"ko": true,
-						"th": true,
-						"vi": true,
-						"zh": true
-					},
-					"operationInfo": {
-						"ko": "",
-						"en": "",
-						"zh": "",
-						"ja": "",
-						"th": "",
-						"vi": ""
-					},
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": true, "vi": true, "zh": true },
+					"operationInfo": { "ko": "", "en": "", "zh": "", "ja": "", "th": "", "vi": "" },
 					"updatedAt": "2026-07-14T16:17:11.308Z",
 					"createdAt": "2026-06-15T16:17:25.396Z",
 					"colorCode": "#00dd22",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 158,
-							"dayOfWeek": 1,
-							"openingTime": "08:00",
-							"closingTime": "20:00"
-						}
+						{ "id": 158, "dayOfWeek": 1, "openingTime": "08:00", "closingTime": "20:00" }
 					],
 					"tourDestinationHolidaySchedules": [],
 					"operationStatus": "closed",
@@ -4363,14 +4383,7 @@
 					"isFacilityAddressYn": false,
 					"isCustomSortingYn": false,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": true,
-						"ko": true,
-						"th": true,
-						"vi": true,
-						"zh": false
-					},
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": true, "vi": true, "zh": false },
 					"operationInfo": {
 						"ko": "많이들 놀러오세요",
 						"en": "Please come visit!",
@@ -4383,24 +4396,9 @@
 					"createdAt": "2026-07-10T11:14:51.606Z",
 					"colorCode": "#d7b7d7",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 141,
-							"dayOfWeek": 4,
-							"openingTime": "10:00",
-							"closingTime": "20:00"
-						},
-						{
-							"id": 142,
-							"dayOfWeek": 5,
-							"openingTime": "10:00",
-							"closingTime": "20:00"
-						},
-						{
-							"id": 143,
-							"dayOfWeek": 1,
-							"openingTime": "08:50",
-							"closingTime": "11:00"
-						}
+						{ "id": 141, "dayOfWeek": 4, "openingTime": "10:00", "closingTime": "20:00" },
+						{ "id": 142, "dayOfWeek": 5, "openingTime": "10:00", "closingTime": "20:00" },
+						{ "id": 143, "dayOfWeek": 1, "openingTime": "08:50", "closingTime": "11:00" }
 					],
 					"tourDestinationHolidaySchedules": [],
 					"operationStatus": "operating",
@@ -4427,14 +4425,7 @@
 					"isFacilityAddressYn": false,
 					"isCustomSortingYn": false,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": false,
-						"ko": true,
-						"th": false,
-						"vi": false,
-						"zh": false
-					},
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
 					"operationInfo": {
 						"ko": "시간 테스트 (월화수 8-14 / 목금 9-15)",
 						"en": "Time Test (Mon-Wed 8-14 / Thu-Fri 9-15)",
@@ -4447,108 +4438,23 @@
 					"createdAt": "2026-07-10T11:38:49.326Z",
 					"colorCode": "#692230",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 121,
-							"dayOfWeek": 1,
-							"openingTime": "08:00",
-							"closingTime": "14:00"
-						},
-						{
-							"id": 122,
-							"dayOfWeek": 2,
-							"openingTime": "08:00",
-							"closingTime": "14:00"
-						},
-						{
-							"id": 123,
-							"dayOfWeek": 3,
-							"openingTime": "08:00",
-							"closingTime": "14:00"
-						},
-						{
-							"id": 124,
-							"dayOfWeek": 4,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						},
-						{
-							"id": 125,
-							"dayOfWeek": 5,
-							"openingTime": "09:00",
-							"closingTime": "15:00"
-						}
+						{ "id": 121, "dayOfWeek": 1, "openingTime": "08:00", "closingTime": "14:00" },
+						{ "id": 122, "dayOfWeek": 2, "openingTime": "08:00", "closingTime": "14:00" },
+						{ "id": 123, "dayOfWeek": 3, "openingTime": "08:00", "closingTime": "14:00" },
+						{ "id": 124, "dayOfWeek": 4, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 125, "dayOfWeek": 5, "openingTime": "09:00", "closingTime": "15:00" }
 					],
 					"tourDestinationHolidaySchedules": [
-						{
-							"id": 48,
-							"weekOfMonth": 1,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 49,
-							"weekOfMonth": 1,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 50,
-							"weekOfMonth": 2,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 51,
-							"weekOfMonth": 2,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 52,
-							"weekOfMonth": 3,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 53,
-							"weekOfMonth": 3,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 54,
-							"weekOfMonth": 4,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 55,
-							"weekOfMonth": 4,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 56,
-							"weekOfMonth": 5,
-							"dayOfWeek": 6,
-							"fixedHoliday": null,
-							"holidayType": 0
-						},
-						{
-							"id": 57,
-							"weekOfMonth": 5,
-							"dayOfWeek": 0,
-							"fixedHoliday": null,
-							"holidayType": 0
-						}
+						{ "id": 48, "weekOfMonth": 1, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 49, "weekOfMonth": 1, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 50, "weekOfMonth": 2, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 51, "weekOfMonth": 2, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 52, "weekOfMonth": 3, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 53, "weekOfMonth": 3, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 54, "weekOfMonth": 4, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 55, "weekOfMonth": 4, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 56, "weekOfMonth": 5, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 57, "weekOfMonth": 5, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 }
 					],
 					"operationStatus": "operating",
 					"lastUpdatedAt": "2026-07-10T17:55:53.165Z"
@@ -4574,14 +4480,7 @@
 					"isFacilityAddressYn": false,
 					"isCustomSortingYn": false,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": true,
-						"ko": true,
-						"th": false,
-						"vi": false,
-						"zh": false
-					},
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": false, "vi": false, "zh": false },
 					"operationInfo": {
 						"ko": "팔레트가 색상이 안 바뀝니다.",
 						"en": "The palette colors won't change.",
@@ -4619,14 +4518,7 @@
 					"isFacilityAddressYn": false,
 					"isCustomSortingYn": false,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": false,
-						"ko": true,
-						"th": false,
-						"vi": false,
-						"zh": true
-					},
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": true },
 					"operationInfo": {
 						"ko": "운영안내 30자 이내 ",
 						"en": "Operation Guide (within 30 characters)",
@@ -4639,35 +4531,17 @@
 					"createdAt": "2026-07-08T16:53:17.137Z",
 					"colorCode": "#14b871",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 51,
-							"dayOfWeek": 1,
-							"openingTime": "09:00",
-							"closingTime": "20:00"
-						}
+						{ "id": 51, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "20:00" }
 					],
 					"tourDestinationHolidaySchedules": [
-						{
-							"id": 37,
-							"weekOfMonth": null,
-							"dayOfWeek": null,
-							"fixedHoliday": 6,
-							"holidayType": 1
-						}
+						{ "id": 37, "weekOfMonth": null, "dayOfWeek": null, "fixedHoliday": 6, "holidayType": 1 }
 					],
 					"operationStatus": "closed",
 					"lastUpdatedAt": "2026-07-09T17:32:35.781Z"
 				},
 				{
 					"id": 2,
-					"name": {
-						"ko": "대상지명1",
-						"en": "tour_destination_1",
-						"ja": "",
-						"zh": "",
-						"vi": "",
-						"th": ""
-					},
+					"name": { "ko": "대상지명1", "en": "tour_destination_1", "ja": "", "zh": "", "vi": "", "th": "" },
 					"startAt": null,
 					"endAt": null,
 					"homepageUrl": "",
@@ -4679,121 +4553,29 @@
 					"isFacilityAddressYn": true,
 					"isCustomSortingYn": true,
 					"isVpsContentsYn": false,
-					"supportedLanguages": {
-						"en": true,
-						"ja": false,
-						"ko": true,
-						"th": false,
-						"vi": false,
-						"zh": false
-					},
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
 					"operationInfo": null,
 					"updatedAt": "2026-06-22T14:00:00.460Z",
 					"createdAt": "2026-05-21T11:34:09.013Z",
 					"colorCode": "",
 					"tourDestinationOperatingSchedules": [
-						{
-							"id": 1,
-							"dayOfWeek": 0,
-							"openingTime": "09:00",
-							"closingTime": "06:00"
-						},
-						{
-							"id": 2,
-							"dayOfWeek": 1,
-							"openingTime": "09:00",
-							"closingTime": "06:00"
-						},
-						{
-							"id": 3,
-							"dayOfWeek": 2,
-							"openingTime": "09:00",
-							"closingTime": "06:00"
-						},
-						{
-							"id": 4,
-							"dayOfWeek": 3,
-							"openingTime": "09:00",
-							"closingTime": "06:00"
-						},
-						{
-							"id": 5,
-							"dayOfWeek": 6,
-							"openingTime": "09:00",
-							"closingTime": "06:00"
-						}
+						{ "id": 1, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 2, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 3, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 4, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 5, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "06:00" }
 					],
 					"tourDestinationHolidaySchedules": [
-						{
-							"id": 1,
-							"weekOfMonth": 1,
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 3,
-							"weekOfMonth": 2,
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 4,
-							"weekOfMonth": 3,
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 5,
-							"weekOfMonth": 4,
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 6,
-							"weekOfMonth": 5,
-							"dayOfWeek": 5,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 8,
-							"weekOfMonth": 1,
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 9,
-							"weekOfMonth": 2,
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 10,
-							"weekOfMonth": 3,
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 11,
-							"weekOfMonth": 4,
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						},
-						{
-							"id": 12,
-							"weekOfMonth": 5,
-							"dayOfWeek": 4,
-							"fixedHoliday": 1,
-							"holidayType": 0
-						}
+						{ "id": 1, "weekOfMonth": 1, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 3, "weekOfMonth": 2, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 4, "weekOfMonth": 3, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 5, "weekOfMonth": 4, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 6, "weekOfMonth": 5, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 8, "weekOfMonth": 1, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 9, "weekOfMonth": 2, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 10, "weekOfMonth": 3, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 11, "weekOfMonth": 4, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 12, "weekOfMonth": 5, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 }
 					],
 					"operationStatus": "operating",
 					"lastUpdatedAt": "2026-06-22T14:00:00.460Z"
@@ -4822,8 +4604,15 @@
 				"sortingNumber": 1,
 				"isEventCategory": true,
 				"isAiRecommendationEnabled": false,
-				"categoryColorCodes": { "id": 5, "paletteNumber": 5, "sortingNumber": 5, "colorCode": "#23B63C" },
-				"_count": { "facilities": 29 }
+				"categoryColorCodes": {
+					"id": 5,
+					"paletteNumber": 5,
+					"sortingNumber": 5,
+					"colorCode": "#23B63C"
+				},
+				"_count": {
+					"facilities": 29
+				}
 			},
 			{
 				"id": 21,
@@ -4839,8 +4628,15 @@
 				"sortingNumber": 2,
 				"isEventCategory": true,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 9, "paletteNumber": 9, "sortingNumber": 9, "colorCode": "#BA66EF" },
-				"_count": { "facilities": 0 }
+				"categoryColorCodes": {
+					"id": 9,
+					"paletteNumber": 9,
+					"sortingNumber": 9,
+					"colorCode": "#BA66EF"
+				},
+				"_count": {
+					"facilities": 0
+				}
 			},
 			{
 				"id": 19,
@@ -4856,58 +4652,135 @@
 				"sortingNumber": 3,
 				"isEventCategory": true,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 10, "paletteNumber": 10, "sortingNumber": 10, "colorCode": "#F29AD5" },
-				"_count": { "facilities": 3 }
+				"categoryColorCodes": {
+					"id": 10,
+					"paletteNumber": 10,
+					"sortingNumber": 10,
+					"colorCode": "#F29AD5"
+				},
+				"_count": {
+					"facilities": 3
+				}
 			},
 			{
 				"id": 4,
-				"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+				"name": {
+					"ko": "정원",
+					"en": "garden",
+					"zh": "",
+					"ja": "",
+					"th": "",
+					"vi": ""
+				},
 				"iconKey": "location",
 				"sortingNumber": 4,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 4, "paletteNumber": 4, "sortingNumber": 4, "colorCode": "#5DE251" },
-				"_count": { "facilities": 15 }
+				"categoryColorCodes": {
+					"id": 4,
+					"paletteNumber": 4,
+					"sortingNumber": 4,
+					"colorCode": "#5DE251"
+				},
+				"_count": {
+					"facilities": 15
+				}
 			},
 			{
 				"id": 3,
-				"name": { "ko": "화장실", "en": "restroom", "zh": "", "ja": "", "th": "", "vi": "" },
+				"name": {
+					"ko": "화장실",
+					"en": "restroom",
+					"zh": "",
+					"ja": "",
+					"th": "",
+					"vi": ""
+				},
 				"iconKey": "toilet",
 				"sortingNumber": 5,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 6, "paletteNumber": 6, "sortingNumber": 6, "colorCode": "#72D4EA" },
-				"_count": { "facilities": 3 }
+				"categoryColorCodes": {
+					"id": 6,
+					"paletteNumber": 6,
+					"sortingNumber": 6,
+					"colorCode": "#72D4EA"
+				},
+				"_count": {
+					"facilities": 3
+				}
 			},
 			{
 				"id": 9,
-				"name": { "ko": "주차장", "en": "Parking lot", "zh": "", "ja": "ㅈㄱㄹㅇ", "th": "", "vi": "" },
+				"name": {
+					"ko": "주차장",
+					"en": "Parking lot",
+					"zh": "",
+					"ja": "ㅈㄱㄹㅇ",
+					"th": "",
+					"vi": ""
+				},
 				"iconKey": "parking",
 				"sortingNumber": 6,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": false,
-				"categoryColorCodes": { "id": 11, "paletteNumber": 11, "sortingNumber": 11, "colorCode": "#965829" },
-				"_count": { "facilities": 0 }
+				"categoryColorCodes": {
+					"id": 11,
+					"paletteNumber": 11,
+					"sortingNumber": 11,
+					"colorCode": "#965829"
+				},
+				"_count": {
+					"facilities": 0
+				}
 			},
 			{
 				"id": 2,
-				"name": { "ko": "음식점", "en": "eating house", "zh": "餐馆", "ja": "飲食店", "th": "ภัตตาคาร", "vi": "quán ăn" },
+				"name": {
+					"ko": "음식점",
+					"en": "eating house",
+					"zh": "餐馆",
+					"ja": "飲食店",
+					"th": "ภัตตาคาร",
+					"vi": "quán ăn"
+				},
 				"iconKey": "meat",
 				"sortingNumber": 7,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 1, "paletteNumber": 1, "sortingNumber": 1, "colorCode": "#FF5151" },
-				"_count": { "facilities": 6 }
+				"categoryColorCodes": {
+					"id": 1,
+					"paletteNumber": 1,
+					"sortingNumber": 1,
+					"colorCode": "#FF5151"
+				},
+				"_count": {
+					"facilities": 6
+				}
 			},
 			{
 				"id": 1,
-				"name": { "ko": "카페", "en": "cafe", "zh": "", "ja": "", "th": "", "vi": "" },
+				"name": {
+					"ko": "카페",
+					"en": "cafe",
+					"zh": "",
+					"ja": "",
+					"th": "",
+					"vi": ""
+				},
 				"iconKey": "location",
 				"sortingNumber": 8,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 2, "paletteNumber": 2, "sortingNumber": 2, "colorCode": "#FF983D" },
-				"_count": { "facilities": 5 }
+				"categoryColorCodes": {
+					"id": 2,
+					"paletteNumber": 2,
+					"sortingNumber": 2,
+					"colorCode": "#FF983D"
+				},
+				"_count": {
+					"facilities": 5
+				}
 			},
 			{
 				"id": 23,
@@ -4923,8 +4796,15 @@
 				"sortingNumber": 9,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": false,
-				"categoryColorCodes": { "id": 5, "paletteNumber": 5, "sortingNumber": 5, "colorCode": "#23B63C" },
-				"_count": { "facilities": 45 }
+				"categoryColorCodes": {
+					"id": 5,
+					"paletteNumber": 5,
+					"sortingNumber": 5,
+					"colorCode": "#23B63C"
+				},
+				"_count": {
+					"facilities": 45
+				}
 			},
 			{
 				"id": 30,
@@ -4940,8 +4820,15 @@
 				"sortingNumber": 10,
 				"isEventCategory": false,
 				"isAiRecommendationEnabled": true,
-				"categoryColorCodes": { "id": 3, "paletteNumber": 3, "sortingNumber": 3, "colorCode": "#F1C71F" },
-				"_count": { "facilities": 8 }
+				"categoryColorCodes": {
+					"id": 3,
+					"paletteNumber": 3,
+					"sortingNumber": 3,
+					"colorCode": "#F1C71F"
+				},
+				"_count": {
+					"facilities": 8
+				}
 			}
 		]
 	},

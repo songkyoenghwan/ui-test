@@ -2,8 +2,7 @@ import { getLocale, setLocale } from '@/paraglide/runtime';
 import type { LocalizedText, SupportedLanguages } from '@/types/common/locale';
 import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
 import { persistentAtom } from '@nanostores/persistent';
-import { atom, batch, map } from 'nanostores';
-import { recommendViewState } from './uxStore';
+import { atom, map } from 'nanostores';
 
 type LocalizedKey = keyof LocalizedText;
 
@@ -92,8 +91,11 @@ export const setLang = async (_key: LocalizedKey) => {
 	localStorage.setItem('lang', _key);
 };
 
-export const pickText = (text: Partial<LocalizedText>, lang: LocalizedKey) => {
-	return text[lang]?.trim() || text.en?.trim() || '';
+export const pickText = (text: unknown, lang: LocalizedKey) => {
+	if (!text || typeof text !== 'object') return '';
+
+	const value = text as Partial<LocalizedText>;
+	return value[lang]?.trim() || value.en?.trim() || '';
 };
 
 export const search = atom<string>('');

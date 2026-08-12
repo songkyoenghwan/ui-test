@@ -54,9 +54,12 @@
 								$layoutViewState === 'ai' && 'border-white shadow-2xs',
 								$layoutViewState === 'search' && 'border-slate-200',
 							]}
-							style:--category-color={category.categoryColorCodes.colorCode}
+							style:--category-color={category?.categoryColorCodes?.colorCode}
 						>
-							<Icons name={category.iconKey} cls="size-5 fill-(--category-color) stroke-(--category-color)" />
+							<Icons
+								name={String(category.iconKey)}
+								cls="size-5 fill-(--category-color) stroke-(--category-color)"
+							/>
 							<input
 								type="radio"
 								name="category-search"
