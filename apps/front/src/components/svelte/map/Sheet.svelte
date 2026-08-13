@@ -27,7 +27,6 @@
 	import { BottomSheet } from 'svelte-bottom-sheet';
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
 	import type { Attachment } from 'svelte/attachments';
-	import type { Snippet } from 'svelte';
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
@@ -218,7 +217,7 @@
 			overflow: visible !important;
 			touch-action: pan-y;
 			transition-delay: 0.1ms;
-			transition-duration: 10ms;
+			transition-duration: 100ms;
 		}
 
 		.handle-container {

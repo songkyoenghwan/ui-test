@@ -3200,7 +3200,7 @@
 								{
 									"id": 7,
 									"fileOriginalName": "1785731840.9149.png",
-									"fileUrl": "/uploads/images/facility-products/2026/08/7361b241-e9b8-4eda-a30f-059719ddfbbd.png",
+									"fileUrl": "https://www.dummyimage.com/600x400/000/fff",
 									"fileUploadPath": "images/facility-products/2026/08",
 									"fileUploadName": "7361b241-e9b8-4eda-a30f-059719ddfbbd.png",
 									"fileSize": 159113,
@@ -3214,7 +3214,7 @@
 						{
 							"id": 158,
 							"fileOriginalName": "image (2).png",
-							"fileUrl": "/uploads/images/facility-products/2026/08/211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileUrl": "https://www.dummyimage.com/600x400/000/fff",
 							"fileUploadPath": "images/facility-products/2026/08",
 							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
 							"fileSize": 1330132,
@@ -3224,22 +3224,22 @@
 					],
 					"facilityProductGuideFiles": [
 						{
-							"id": 58,
-							"fileOriginalName": "image (2).png",
-							"fileUrl": "/uploads/images/facility-products/2026/08/211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"id": 59,
+							"fileOriginalName": "image (1).png",
+							"fileUrl": "https://www.dummyimage.com/400X600/000/fff",
 							"fileUploadPath": "images/facility-products/2026/08",
-							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
-							"fileSize": 1330132,
+							"fileUploadName": "95bcf825-1452-4134-b6d7-ed89df5ff6bf.png",
+							"fileSize": 150267,
 							"fileMimeType": "image/png",
 							"fileType": "PRODUCT"
 						},
 						{
-							"id": 59,
-							"fileOriginalName": "image (1).png",
-							"fileUrl": "/uploads/images/facility-products/2026/08/95bcf825-1452-4134-b6d7-ed89df5ff6bf.png",
+							"id": 58,
+							"fileOriginalName": "image (2).png",
+							"fileUrl": "https://www.dummyimage.com/400X600/000/fff",
 							"fileUploadPath": "images/facility-products/2026/08",
-							"fileUploadName": "95bcf825-1452-4134-b6d7-ed89df5ff6bf.png",
-							"fileSize": 150267,
+							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileSize": 1330132,
 							"fileMimeType": "image/png",
 							"fileType": "PRODUCT"
 						},

@@ -83,7 +83,7 @@
 	"usr_map_002_52": "Danh sách sản phẩm",
 	"usr_map_002_53": "Thông tin có thể thay đổi tùy theo điều kiện thực tế tại chỗ.",
 	"usr_map_002_54": "000,000 ₩(KRW)",
-	"usr_map_112_01": "Đi đến $시설명$",
+	"usr_map_112_01": "Đi đến {name}",
 	"usr_map_112_02": "Mở bằng TMAP",
 	"usr_map_112_03": "Mở bằng Kakao Navi",
 	"usr_map_112_04": "Mở bằng Naver Map",

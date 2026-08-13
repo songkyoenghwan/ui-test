@@ -52,8 +52,6 @@
 	let hasFiles = $derived((facilityCurrent.facility?.facilityFiles?.length ?? 0) > 0);
 	let hasProduct = $derived(!!facilityCurrent.facility?.facilityFiles);
 	let tabState = $derived(hasFiles || hasProduct);
-
-	$inspect(facilityCurrent.otherFacilities);
 </script>
 
 {#snippet info(icon: string, tit: string, txt: string)}
@@ -74,7 +72,7 @@
 	</div>
 
 	{#if facilityCurrent?.poisMatch?.managementCode}
-		<VehicleNavigation />
+		<VehicleNavigation facility={facilityCurrent.facility} />
 	{/if}
 
 	{#if (facilityCurrent?.destinationMatch?.tourDestinationCommonButtons?.length ?? 0) > 0}
