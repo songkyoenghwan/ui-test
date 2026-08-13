@@ -18,6 +18,16 @@
 		txt: z.string(),
 	});
 	type TabItem = z.infer<typeof TabItemSchema>;
+	const tabs = $state<TabItem[]>([
+		{
+			id: 'operations',
+			txt: m.usr_map_002_08({ locale: $langState }),
+		},
+		{
+			id: 'products',
+			txt: m.usr_map_002_50({ locale: $langState }),
+		},
+	]);
 
 	$effect(() => {
 		$sheetInstance?.setSnapPoint($sheetMidRatioValue);
@@ -46,22 +56,10 @@
 
 		return $facilityList?.filter((facilityItem) => facilityIds.includes(facilityItem.id) && facilityItem.id !== facility.id);
 	});
-	const tabs = $state<TabItem[]>([
-		{
-			id: 'operations',
-			txt: m.usr_map_002_08({ locale: $langState }),
-		},
-		{
-			id: 'products',
-			txt: m.usr_map_002_50({ locale: $langState }),
-		},
-	]);
 	let tabCurrent = $state<TabType>('operations');
 	let hasFiles = $derived((facility?.facilityFiles?.length ?? 0) > 0);
 	let hasProduct = $derived(!!facility?.facilityFiles);
 	let tabState = $derived(hasFiles || hasProduct);
-
-	$inspect(destinationMatch);
 </script>
 
 {#snippet info(icon: string, tit: string, txt: string)}
@@ -90,7 +88,7 @@
 	<Thumb facilityFiles={facility?.facilityFiles?.slice(0, 1) ?? []} />
 </div>
 
-<div bind:clientHeight={null, setSheetMidH}>
+<div class="pb-1" bind:clientHeight={null, setSheetMidH}>
 	<div class="flex flex-col px-5 py-2">
 		{@render info('map-pin-filled', '24km', `${pickText(poisMatch?.address, $langState)}`)}
 	</div>
@@ -117,7 +115,7 @@
 					class="flex h-10 flex-1 items-center justify-between gap-0.5 rounded-lg border border-slate-200 bg-white px-3"
 				>
 					<span class="flex items-center gap-1">
-						{#if item.iconUrl}
+						{#if item.iconUrl !== '' && item.iconUrl !== undefined && item.iconUrl !== null}
 							<picture class="h-4">
 								<img alt="" class="h-4" src={item.iconUrl} />
 							</picture>
