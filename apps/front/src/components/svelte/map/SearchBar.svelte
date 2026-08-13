@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
 	import { categoryList } from '@/src/stores/pageDataStore';
-	import { langState, categoryState } from '@/stores/globalStore';
+	import { categoryState, langState } from '@/stores/globalStore';
 	import { layoutViewState, searchViewState, updateViewState } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 

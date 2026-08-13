@@ -29,6 +29,7 @@ export const sheetScrollInstance = atom<HTMLElement | null>(null);
 // export const sheetBackArea = atom<number>(70);
 export const sheetMaxHeight = atom(0.99);
 export const sheetSnapPoint = atom<number>(0);
+export const sheetScrollPoint = atom<number>(90);
 export const confusionBar = atom(false);
 
 export const viewDri = computed(

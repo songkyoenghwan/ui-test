@@ -1,19 +1,27 @@
 <script lang="ts">
-	import { sheetMaxRatioValue, sheetMidRatioValue, sheetMinRatioValue, sheetUi } from '@/src/stores/sheetUiStore';
 	import {
-		viewDri,
+		setSheetScrollRef,
+		sheetMaxRatioValue,
+		sheetMidRatioValue,
+		sheetMinRatioValue,
+		sheetUi,
+	} from '@/src/stores/sheetUiStore';
+	import {
+		detailViewState,
+		layoutViewState,
+		searchViewState,
 		sheetInstance,
 		sheetSnapPoint,
+		viewDri,
 		viewportH,
-		layoutViewState,
-		detailViewState,
-		searchViewState,
+		sheetScrollPoint,
 	} from '@/stores/uxStore';
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
-	import Search from '@/svelte/sheet/Search.svelte';
 	import Facility from '@/svelte/sheet/Facility.svelte';
+	import Search from '@/svelte/sheet/Search.svelte';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
+	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
 	import { type BottomSheetRef } from '@/utils/uxEvent.type';
 	import { tick } from 'svelte';
 	import { BottomSheet } from 'svelte-bottom-sheet';
@@ -22,9 +30,12 @@
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
+	let scrollEl: HTMLDivElement | null = $state(null);
 
 	let prevSnapRatios: number[] | undefined;
 	let prevSheetSettings: BottomSheetSettings | undefined;
+
+	let bottomVisible = $derived($sheetSnapPoint >= $sheetMinRatioValue * 100 + 2);
 
 	let snapRatios = $derived.by(() => {
 		const next = [$sheetMinRatioValue, $sheetMidRatioValue, $sheetMaxRatioValue];
@@ -74,7 +85,6 @@
 		const handleEl = element;
 
 		if (!handleEl) {
-			console.log('handleEl not found');
 			return () => {
 				return;
 			};
@@ -84,7 +94,10 @@
 
 		const update = () => {
 			const next = Number(handleEl.getAttribute('aria-valuenow') ?? 0);
-			sheetSnapPoint.set(next);
+
+			if (sheet !== undefined) {
+				sheetSnapPoint.set(next);
+			}
 		};
 
 		update();
@@ -107,6 +120,31 @@
 		};
 	};
 
+	const bottomScroll: Attachment = (element) => {
+		let prev = $sheetSnapPoint;
+
+		const stop = $effect.root(() => {
+			$effect(() => {
+				const current = $sheetSnapPoint;
+				const contentEl = element as HTMLDivElement | null;
+
+				if (contentEl && prev < $sheetScrollPoint && contentEl.scrollTop > 0) {
+					contentEl.scrollTo({ top: 0, behavior: 'smooth' });
+				}
+
+				prev = current;
+			});
+		});
+
+		return () => {
+			stop();
+		};
+	};
+
+	$effect(() => {
+		setSheetScrollRef(scrollEl);
+	});
+
 	$inspect($viewDri);
 </script>
 
@@ -116,37 +154,50 @@
 	<div
 		bind:this={rootEl}
 		data-detail-index={$sheetSnapPoint}
-		data-scroll-check={$sheetSnapPoint > 89 ? 'on' : 'off'}
+		data-scroll-check={$sheetSnapPoint > $sheetScrollPoint - 1 ? 'on' : 'off'}
 		class={['relative', $layoutViewState === 'facilities' ? 'pt-17.5' : '']}
 	>
 		<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
 			<BottomSheet.Sheet>
 				<BottomSheet.Handle {@attach bottomValueNow} />
 
-				{#if $detailViewState === 'idle' || $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
-					<ControlGroup />
-				{/if}
+				<div class="grid h-[calc(100%-30px)] min-h-0 max-w-dvw min-w-0 grid-rows-1 has-[footer]:grid-rows-[1fr_68px]">
+					<div
+						bind:this={scrollEl}
+						{@attach bottomScroll}
+						data-scroll="content"
+						class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip"
+					>
+						{#if $detailViewState === 'idle' || $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
+							<ControlGroup />
+						{/if}
 
-				{#if $detailViewState === 'ai'}
-					<TabAi />
-				{/if}
+						{#if $detailViewState === 'ai'}
+							<TabAi />
+						{/if}
 
-				{#if $detailViewState === 'facilities'}
-					<ConfusionState />
-					<Facility />
-				{/if}
+						{#if $detailViewState === 'facilities'}
+							<ConfusionState />
+							<Facility />
+						{/if}
 
-				{#if $detailViewState === 'search'}
-					<Search />
-				{/if}
+						{#if $detailViewState === 'search'}
+							<Search />
+						{/if}
 
-				{#if $detailViewState === 'path'}
-					path
-				{/if}
+						{#if $detailViewState === 'path'}
+							path
+						{/if}
 
-				{#if $detailViewState === 'directions'}
-					directions
-				{/if}
+						{#if $detailViewState === 'directions'}
+							directions
+						{/if}
+					</div>
+
+					{#if bottomVisible}
+						<BtnDirections />
+					{/if}
+				</div>
 			</BottomSheet.Sheet>
 		</BottomSheet>
 	</div>
@@ -157,7 +208,7 @@
 		.bottom-sheet {
 			overflow: visible !important;
 			touch-action: pan-y;
-			transition-delay: 1ms;
+			transition-delay: 0.1ms;
 			transition-duration: 10ms;
 		}
 
@@ -175,6 +226,7 @@
 		[data-scroll-check='off'] {
 			[data-scroll='content'] {
 				overflow-y: hidden;
+				scroll-behavior: smooth;
 			}
 		}
 

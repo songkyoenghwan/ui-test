@@ -1,8 +1,9 @@
+import { atom, map } from 'nanostores';
+
 import type { CategoryDetailResponse } from '@/types/categories';
 import type { FacilityDetailResponse, FacilityListResponse } from '@/types/facilities';
 import type { PoiDetailResponse } from '@/types/pois';
 import type { TourDestinationDetailResponse } from '@/types/tour-destinations';
-import { atom, map } from 'nanostores';
 
 export const searchList = atom([]);
 export const searchResultList = atom<FacilityListResponse[]>([]);

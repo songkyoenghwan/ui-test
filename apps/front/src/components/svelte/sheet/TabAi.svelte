@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '@/paraglide/messages.js';
 	import {
 		setPointSheetUi,
 		setSheetMidH,
@@ -6,10 +7,9 @@
 		setSheetScrollRef,
 		sheetMidRatioValue,
 	} from '@/src/stores/sheetUiStore';
+	import { keywordState, langState, pickText } from '@/stores/globalStore';
 	import { sheetInstance, sheetSnapPoint } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
-	import * as m from '@/paraglide/messages.js';
-	import { langState, pickText, keywordState } from '@/stores/globalStore';
 
 	let tab = $state<'ai-recommend' | 'popularity'>('ai-recommend');
 	let scrollEl: HTMLDivElement | null = $state(null);

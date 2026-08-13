@@ -1,8 +1,7 @@
 <script lang="ts">
+	import { categoryState, langState, pickText } from '@/stores/globalStore';
 	import { categoryList } from '@/stores/pageDataStore';
-	import { langState, pickText, categoryState } from '@/stores/globalStore';
-	import { searchViewState, layoutViewState, updateViewState } from '@/stores/uxStore';
-
+	import { layoutViewState, searchViewState, updateViewState } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import Recommended from '@/svelte/map/Recommended.svelte';
 

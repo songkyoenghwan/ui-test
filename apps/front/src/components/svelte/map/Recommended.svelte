@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { searchList } from '@/stores/pageDataStore';
 	import { searchViewState, updateViewState } from '@/stores/uxStore';
-
-	import Icons from '@/svelte/icons/Icons.svelte';
 	import IconCategory from '@/svelte/icons/IconCategory.svelte';
+	import Icons from '@/svelte/icons/Icons.svelte';
 
 	let listEl = $state<HTMLUListElement | null>(null);
 	let sentinelEl = $state<HTMLLIElement | null>(null);

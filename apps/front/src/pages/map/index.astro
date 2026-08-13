@@ -19,18 +19,18 @@ import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 </Layout>
 
 <script>
-	import { updateViewState } from '@/stores/uxStore';
 	import {
-		searchList,
-		searchResultList,
-		destinationList,
 		categoryList,
-		poiList,
+		destinationList,
+		distance,
 		facilityList,
 		pathList,
+		poiList,
 		recommendList,
-		distance,
+		searchList,
+		searchResultList,
 	} from '@/stores/pageDataStore';
+	import { updateViewState } from '@/stores/uxStore';
 
 	document.addEventListener('DOMContentLoaded', async () => {
 		const response = await fetch('/src/mocks/db.json');
