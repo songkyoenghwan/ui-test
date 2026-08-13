@@ -16,7 +16,6 @@
 
 	$effect(() => {
 		setSheetScrollRef(scrollEl);
-
 		$sheetInstance?.setSnapPoint($sheetMidRatioValue);
 	});
 </script>
@@ -65,7 +64,7 @@
 </div>
 
 <div bind:this={scrollEl} bind:clientHeight={null, setSheetMidH}>
-	<div class="grid min-h-30 place-content-center gap-3 text-center">
+	<div class="grid place-content-center gap-3 py-5 text-center">
 		<p class="text-[20px] font-bold text-black">{m.usr_rec_001_02({ locale: $langState })}</p>
 		<p class="text-lg text-slate-400">{m.usr_rec_001_03({ locale: $langState })}</p>
 	</div>

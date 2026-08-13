@@ -3077,7 +3077,7 @@
 					"startAt": null,
 					"endAt": null,
 					"description": {
-						"ko": "테스트요",
+						"ko": "테스트요테스트요테스트 요테스트요테스트요테스트요테스트요 테스트요테스트 요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트 요테스트요테 스트요테스트요 테스트요테스트 요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트 요테스트요테스트요테스트요테스트 요 테스 트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스 트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테 스트요 테스트요테스 트요테스트요테스트요 테스트요테스트요테스  트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 ",
 						"en": "Test",
 						"zh": "测试",
 						"ja": "テスト",
@@ -3210,7 +3210,18 @@
 						}
 					],
 					"overwriteCongestionStatus": null,
-					"facilityFiles": [],
+					"facilityFiles": [
+						{
+							"id": 158,
+							"fileOriginalName": "image (2).png",
+							"fileUrl": "/uploads/images/facility-products/2026/08/211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileSize": 1330132,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						}
+					],
 					"facilityProductGuideFiles": [
 						{
 							"id": 58,

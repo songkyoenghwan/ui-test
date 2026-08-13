@@ -69,6 +69,7 @@
         "@inlang/cli": "^3.3.0",
         "@inlang/paraglide-js": "^2.23.1",
         "@prettier/plugin-oxc": "^0.2.2",
+        "flowbite": "^4.0.2",
         "flowbite-svelte": "^1.33.1",
         "prettier": "^3.9.6",
         "prettier-plugin-astro": "^0.14.1",

@@ -27,6 +27,7 @@
 	import { BottomSheet } from 'svelte-bottom-sheet';
 	import type { BottomSheetSettings } from 'svelte-bottom-sheet';
 	import type { Attachment } from 'svelte/attachments';
+	import type { Snippet } from 'svelte';
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
 	let rootEl: HTMLDivElement | undefined;
@@ -150,54 +151,62 @@
 
 <svelte:window bind:innerHeight={$viewportH} />
 
+{#snippet detailContent()}
+	{#if $detailViewState === 'facilities'}
+		<ConfusionState />
+		<Facility />
+	{/if}
+
+	{#if $detailViewState === 'search'}
+		<Search />
+	{/if}
+
+	{#if $detailViewState === 'path'}
+		path
+	{/if}
+
+	{#if $detailViewState === 'directions'}
+		directions
+	{/if}
+{/snippet}
+
+{#snippet scrollWrap()}
+	<div class="grid h-[calc(100%-30px)] min-h-0 max-w-dvw min-w-0 grid-rows-1 has-[footer]:grid-rows-[1fr_68px]">
+		<div
+			bind:this={scrollEl}
+			{@attach bottomScroll}
+			data-scroll="content"
+			class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip"
+		>
+			{@render detailContent()}
+		</div>
+
+		{#if bottomVisible}
+			<BtnDirections />
+		{/if}
+	</div>
+{/snippet}
+
 {#if $searchViewState !== 'result'}
 	<div
 		bind:this={rootEl}
 		data-detail-index={$sheetSnapPoint}
 		data-scroll-check={$sheetSnapPoint > $sheetScrollPoint - 1 ? 'on' : 'off'}
-		class={['relative', $layoutViewState === 'facilities' ? 'pt-17.5' : '']}
+		class={['relative']}
 	>
 		<BottomSheet bind:this={sheet} settings={sheetSettings} bind:isSheetOpen={$sheetUi.sheetHandleOpen} onclose={keepOpen}>
 			<BottomSheet.Sheet>
 				<BottomSheet.Handle {@attach bottomValueNow} />
 
-				<div class="grid h-[calc(100%-30px)] min-h-0 max-w-dvw min-w-0 grid-rows-1 has-[footer]:grid-rows-[1fr_68px]">
-					<div
-						bind:this={scrollEl}
-						{@attach bottomScroll}
-						data-scroll="content"
-						class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip"
-					>
-						{#if $detailViewState === 'idle' || $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
-							<ControlGroup />
-						{/if}
+				{#if $detailViewState === 'idle' || $detailViewState === 'ai' || $detailViewState === 'facilities' || $detailViewState === 'search' || $detailViewState === 'path' || $detailViewState === 'directions'}
+					<ControlGroup />
+				{/if}
 
-						{#if $detailViewState === 'ai'}
-							<TabAi />
-						{/if}
-
-						{#if $detailViewState === 'facilities'}
-							<ConfusionState />
-							<Facility />
-						{/if}
-
-						{#if $detailViewState === 'search'}
-							<Search />
-						{/if}
-
-						{#if $detailViewState === 'path'}
-							path
-						{/if}
-
-						{#if $detailViewState === 'directions'}
-							directions
-						{/if}
-					</div>
-
-					{#if bottomVisible}
-						<BtnDirections />
-					{/if}
-				</div>
+				{#if $detailViewState === 'ai'}
+					<TabAi />
+				{:else}
+					{@render scrollWrap()}
+				{/if}
 			</BottomSheet.Sheet>
 		</BottomSheet>
 	</div>

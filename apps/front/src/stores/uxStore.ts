@@ -14,7 +14,7 @@ type ViewStatePatch = {
 	route?: RouteView;
 };
 
-export const layoutViewState = atom<LayoutView>('facilities');
+export const layoutViewState = atom<LayoutView>('default');
 export const detailViewState = atom<DetailView>('idle');
 export const searchViewState = atom<SearchView>('idle');
 export const routeViewState = atom<RouteView>('idle');
