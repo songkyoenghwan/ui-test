@@ -23,7 +23,7 @@ import '@/svelte/pois/PoiPin.svelte';
 		searchList,
 		searchResultList,
 	} from '@/stores/pageDataStore';
-	import type { FacilityDetailResponse } from '@/types/facilities';
+	import type { FacilityListResponse, FacilityDetailResponse } from '@/types/facilities';
 
 	const mapController = new MapController();
 
@@ -95,11 +95,13 @@ import '@/svelte/pois/PoiPin.svelte';
 
 			const response = await fetch(`/api/facilities/${item.facilityId}`);
 			const data = await response.json();
-			const currentFacility = facilityList.get()?.find((f) => Number(f.id) === Number(item.facilityId));
+			const currentFacilityListItem = facilityList.get()?.find((f) => Number(f.id) === Number(item.facilityId));
 
-			console.log(currentFacility);
-			facility.set(currentFacility);
+			facility.set(currentFacilityListItem ?? null);
 			facilityDetail.set(data.data ?? null);
+
+			console.log(facility.get());
+			console.log(facilityDetail.get());
 		});
 	});
 

@@ -39,14 +39,7 @@
 	$effect(() => {
 		$sheetInstance?.setSnapPoint($sheetMidRatioValue);
 	});
-	const facilityCurrent = new FacilityOverview({
-		facility: () => $facility,
-		facilityDetail: () => $facilityDetail,
-		facilityList: () => $facilityList,
-		poiList: () => $poiList,
-		destinationList: () => $destinationList,
-		categoryList: () => $categoryList,
-	});
+	const facilityCurrent = new FacilityOverview();
 
 	$effect(() => {
 		facilityCurrent.currentFacilityId = $facility?.id ?? null;
@@ -55,9 +48,6 @@
 	let hasFiles = $derived((facilityCurrent.facility?.facilityFiles?.length ?? 0) > 0);
 	let hasProduct = $derived(!!facilityCurrent.facility?.facilityFiles);
 	let tabState = $derived(hasFiles || hasProduct);
-
-	$inspect(facilityCurrent.currentFacility);
-	$inspect(facilityCurrent.facilityDetail);
 </script>
 
 {#snippet info(icon: string, tit: string, txt: string)}
