@@ -35,6 +35,7 @@ const locale = cookieLocale ?? headerLocale ?? 'ko';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		<script is:inline src="/api/tmap/vectorjs?version=1"></script>
 		<title>front</title>
 	</head>
 	<body style={{ '--base-color': baseColor }} class="group/body touch-manipulation">

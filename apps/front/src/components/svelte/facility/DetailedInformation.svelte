@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { tick } from 'svelte';
 	import { langState, pickText } from '@/stores/globalStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import type { FacilityDetailResponse } from '@/types/facilities';
+	import { tick } from 'svelte';
 	import IntersectionObserver from 'svelte-intersection-observer';
 
 	let element: HTMLDivElement | undefined = $state();

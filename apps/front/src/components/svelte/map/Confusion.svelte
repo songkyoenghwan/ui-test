@@ -8,6 +8,7 @@
 
 	function toggleHandler(e: Event) {
 		e.preventDefault();
+		e.stopPropagation();
 		toggleState = !toggleState;
 	}
 </script>
@@ -40,6 +41,9 @@
 		type="button"
 		class={['shadow-1xs from-20b9fb to-2070fb grid size-10 place-content-center overflow-clip rounded-full bg-linear-90']}
 		onclick={toggleHandler}
+		onpointerdown={(e) => e.stopPropagation()}
+		ontouchmove={(e) => e.stopPropagation()}
+		onmousedown={(e) => e.stopPropagation()}
 	>
 		<strong
 			class={[

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { Clipboard } from 'flowbite-svelte';
 	import * as m from '@/paraglide/messages';
 	import { langState } from '@/stores/globalStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import type { FacilityDetailResponse } from '@/types/facilities';
+	import { Clipboard } from 'flowbite-svelte';
 
 	type Props = {
 		facility?: FacilityDetailResponse;
@@ -20,7 +20,7 @@
 
 	<a href="tel:{facility?.contact}" class="text-base text-black">{value}</a>
 
-	<Clipboard bind:value bind:success class="text-2877ff p-0 text-sm active:bg-slate-50">
+	<Clipboard bind:value bind:success class="text-2877ff bg-white p-0 text-sm active:bg-slate-50">
 		{#if success}
 			{m.usr_gps_001_03({ locale: $langState })}
 		{:else}

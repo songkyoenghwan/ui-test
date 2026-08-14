@@ -11,17 +11,17 @@
 		layoutViewState,
 		searchViewState,
 		sheetInstance,
+		sheetScrollPoint,
 		sheetSnapPoint,
 		viewDri,
 		viewportH,
-		sheetScrollPoint,
 	} from '@/stores/uxStore';
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';
 	import ControlGroup from '@/svelte/map/ControlGroup.svelte';
+	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
 	import Facility from '@/svelte/sheet/Facility.svelte';
 	import Search from '@/svelte/sheet/Search.svelte';
 	import TabAi from '@/svelte/sheet/TabAi.svelte';
-	import BtnDirections from '@/svelte/sheet/BtnDirections.svelte';
 	import { type BottomSheetRef } from '@/utils/uxEvent.type';
 	import { tick } from 'svelte';
 	import { BottomSheet } from 'svelte-bottom-sheet';
@@ -29,14 +29,10 @@
 	import type { Attachment } from 'svelte/attachments';
 
 	let sheet: BottomSheetRef | undefined = $state(undefined);
-	let rootEl: HTMLDivElement | undefined;
 	let scrollEl: HTMLDivElement | null = $state(null);
-
 	let prevSnapRatios: number[] | undefined;
 	let prevSheetSettings: BottomSheetSettings | undefined;
-
-	let bottomVisible = $derived($sheetSnapPoint >= $sheetMinRatioValue * 100 + 2);
-
+	let bottomVisible = $derived($layoutViewState === 'facilities' && $sheetSnapPoint >= $sheetMinRatioValue * 100 + 2);
 	let snapRatios = $derived.by(() => {
 		const next = [$sheetMinRatioValue, $sheetMidRatioValue, $sheetMaxRatioValue];
 
@@ -186,9 +182,8 @@
 	</div>
 {/snippet}
 
-{#if $searchViewState !== 'result'}
+{#if $layoutViewState !== 'default' && $searchViewState !== 'result'}
 	<div
-		bind:this={rootEl}
 		data-detail-index={$sheetSnapPoint}
 		data-scroll-check={$sheetSnapPoint > $sheetScrollPoint - 1 ? 'on' : 'off'}
 		class={['relative']}
@@ -215,7 +210,6 @@
 	:global {
 		.bottom-sheet {
 			overflow: visible !important;
-			touch-action: pan-y;
 			transition-delay: 0.1ms;
 			transition-duration: 100ms;
 		}

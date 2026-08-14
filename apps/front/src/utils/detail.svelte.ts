@@ -1,31 +1,40 @@
 import type { CategoryDetailResponse } from '@/types/categories';
-import type { FacilityDetailResponse } from '@/types/facilities';
+import type { FacilityDetailResponse, FacilityListResponse } from '@/types/facilities';
 import type { PoiDetailResponse } from '@/types/pois';
 import type { TourDestinationDetailResponse } from '@/types/tour-destinations';
 
 export class FacilityOverview {
 	#getFacility;
+	#getFacilityDetail;
 	#getPoiList;
 	#getDestinationList;
 	#getCategoryList;
 	#getFacilityList;
 
+	currentFacilityId = $state<number | null>(null);
+
 	constructor(params: {
-		facility: () => FacilityDetailResponse | undefined;
+		facility: () => FacilityListResponse | undefined;
+		facilityDetail: () => FacilityDetailResponse;
+		facilityList: () => readonly FacilityDetailResponse[] | null;
 		poiList: () => readonly PoiDetailResponse[];
 		destinationList: () => readonly TourDestinationDetailResponse[];
 		categoryList: () => readonly CategoryDetailResponse[];
-		facilityList: () => readonly FacilityDetailResponse[] | null;
 	}) {
 		this.#getFacility = params.facility;
+		this.#getFacilityDetail = params.facilityDetail;
+		this.#getFacilityList = params.facilityList;
 		this.#getPoiList = params.poiList;
 		this.#getDestinationList = params.destinationList;
 		this.#getCategoryList = params.categoryList;
-		this.#getFacilityList = params.facilityList;
 	}
 
 	get facility() {
 		return this.#getFacility();
+	}
+
+	get facilityDetail() {
+		return this.#getFacilityDetail();
 	}
 
 	get poiList() {
@@ -70,6 +79,24 @@ export class FacilityOverview {
 
 		return categoryList.find((p) => p.id === facility?.category?.id);
 	});
+
+	get currentFacility() {
+		const id = this.currentFacilityId;
+		const facilityList = this.#getFacilityList();
+
+		if (id == null) return null;
+
+		return facilityList?.find((p) => Number(p.id) === Number(id)) ?? null;
+	}
+
+	get currentFacilityDetail() {
+		const id = this.currentFacilityId;
+		const facilityList = this.#getFacilityList();
+
+		if (id == null) return null;
+
+		return facilityList?.find((p) => Number(p.id) === Number(id)) ?? null;
+	}
 
 	otherFacilityList = $derived.by(() => {
 		const facility = this.#getFacility();

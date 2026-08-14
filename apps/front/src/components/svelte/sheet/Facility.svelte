@@ -2,22 +2,21 @@
 	import * as m from '@/paraglide/messages';
 	import { setSheetMidH, sheetMidRatioValue } from '@/src/stores/sheetUiStore';
 	import { langState, pickText } from '@/stores/globalStore';
-	import { categoryList, destinationList, facilityList, poiList } from '@/stores/pageDataStore';
+	import { facility, facilityDetail, categoryList, destinationList, facilityList, poiList } from '@/stores/pageDataStore';
 	import { sheetInstance } from '@/stores/uxStore';
-	import Icons from '@/svelte/icons/Icons.svelte';
-	import Thumb from '@/svelte/thumb/Thumb.svelte';
-	import { z } from 'zod';
-	import Contact from '@/svelte/facility/Contact.svelte';
-	import DetailedInformation from '@/svelte/facility/DetailedInformation.svelte';
 	import CommonButtons from '@/svelte/facility/CommonButtons.svelte';
 	import ConfusionCurrent from '@/svelte/facility/ConfusionCurrent.svelte';
-	import VehicleNavigation from '@/svelte/facility/VehicleNavigation.svelte';
-	import Overview from '@/svelte/facility/Overview.svelte';
-	import OtherFacilities from '@/svelte/facility/OtherFacilities.svelte';
+	import Contact from '@/svelte/facility/Contact.svelte';
+	import DetailedInformation from '@/svelte/facility/DetailedInformation.svelte';
 	import ExclusiveButton from '@/svelte/facility/ExclusiveButton.svelte';
+	import OtherFacilities from '@/svelte/facility/OtherFacilities.svelte';
+	import Overview from '@/svelte/facility/Overview.svelte';
 	import ProductGuide from '@/svelte/facility/ProductGuide.svelte';
 	import Products from '@/svelte/facility/Products.svelte';
+	import VehicleNavigation from '@/svelte/facility/VehicleNavigation.svelte';
+	import Icons from '@/svelte/icons/Icons.svelte';
 	import { FacilityOverview } from '@/utils/detail.svelte.ts';
+	import { z } from 'zod';
 
 	const TabTypeSchema = z.enum(['operations', 'products']);
 	type TabType = z.infer<typeof TabTypeSchema>;
@@ -40,18 +39,25 @@
 	$effect(() => {
 		$sheetInstance?.setSnapPoint($sheetMidRatioValue);
 	});
-
 	const facilityCurrent = new FacilityOverview({
-		facility: () => $facilityList?.[0],
+		facility: () => $facility,
+		facilityDetail: () => $facilityDetail,
+		facilityList: () => $facilityList,
 		poiList: () => $poiList,
 		destinationList: () => $destinationList,
 		categoryList: () => $categoryList,
-		facilityList: () => $facilityList,
+	});
+
+	$effect(() => {
+		facilityCurrent.currentFacilityId = $facility?.id ?? null;
 	});
 	let tabCurrent = $state<TabType>('operations');
 	let hasFiles = $derived((facilityCurrent.facility?.facilityFiles?.length ?? 0) > 0);
 	let hasProduct = $derived(!!facilityCurrent.facility?.facilityFiles);
 	let tabState = $derived(hasFiles || hasProduct);
+
+	$inspect(facilityCurrent.currentFacility);
+	$inspect(facilityCurrent.facilityDetail);
 </script>
 
 {#snippet info(icon: string, tit: string, txt: string)}
@@ -64,7 +70,7 @@
 	</dl>
 {/snippet}
 
-<Overview facility={facilityCurrent.facility} categoryMatch={facilityCurrent.categoryMatch} />
+<Overview list={facilityCurrent.facility} detail={facilityCurrent.facilityDetail} />
 
 <div class="pb-1" bind:clientHeight={null, setSheetMidH}>
 	<div class="flex flex-col px-5 py-2">
@@ -72,11 +78,11 @@
 	</div>
 
 	{#if facilityCurrent?.poisMatch?.managementCode}
-		<VehicleNavigation facility={facilityCurrent.facility} />
+		<VehicleNavigation facility={facilityCurrent.currentFacilityDetail} />
 	{/if}
 
 	{#if (facilityCurrent?.destinationMatch?.tourDestinationCommonButtons?.length ?? 0) > 0}
-		<CommonButtons facility={facilityCurrent.facility} destination={facilityCurrent.destinationMatch} />
+		<CommonButtons facility={facilityCurrent.currentFacilityDetail} destination={facilityCurrent.destinationMatch} />
 	{/if}
 </div>
 
@@ -102,7 +108,7 @@
 		<ConfusionCurrent />
 
 		{#if facilityCurrent.facility?.contact}
-			<Contact facility={facilityCurrent.facility} />
+			<Contact facility={facilityCurrent.currentFacilityDetail} />
 		{/if}
 
 		<div class="flex min-h-12.5 items-center gap-2 px-5 py-1">
@@ -117,11 +123,11 @@
 		{/if}
 
 		{#if pickText(facilityCurrent.facility?.description, $langState)}
-			<DetailedInformation facility={facilityCurrent.facility} />
+			<DetailedInformation facility={facilityCurrent.currentFacilityDetail} />
 		{/if}
 
 		{#if facilityCurrent.facility?.facilityButtons?.length}
-			<ExclusiveButton facility={facilityCurrent.facility} />
+			<ExclusiveButton facility={facilityCurrent.currentFacilityDetail} />
 		{/if}
 	</div>
 {/if}
@@ -129,11 +135,11 @@
 {#if tabState && tabCurrent === 'products'}
 	<div class="divide-y-4 divide-slate-100 *:py-4">
 		{#if (facilityCurrent.facility?.facilityProductGuideFiles.length ?? 0) > 0}
-			<ProductGuide facility={facilityCurrent.facility} />
+			<ProductGuide facility={facilityCurrent.currentFacilityDetail} />
 		{/if}
 
 		{#if facilityCurrent.facility?.facilityProducts}
-			<Products facility={facilityCurrent.facility} />
+			<Products facility={facilityCurrent.currentFacilityDetail} />
 		{/if}
 	</div>
 {/if}

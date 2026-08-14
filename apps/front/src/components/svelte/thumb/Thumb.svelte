@@ -1,19 +1,16 @@
 <script lang="ts">
+	import Icons from '@/svelte/icons/Icons.svelte';
 	import { Modal } from 'flowbite-svelte';
 	import Swiper from 'swiper';
 	import { Navigation, Pagination } from 'swiper/modules';
-	import Icons from '@/svelte/icons/Icons.svelte';
 	import 'swiper/css';
 	import 'swiper/css/navigation';
 	import 'swiper/css/pagination';
-	import type { Attachment } from 'svelte/attachments';
 	import { tick } from 'svelte';
+	import type { Attachment } from 'svelte/attachments';
 
 	let { facilityFiles = [], variant = '' } = $props();
-
 	let restFiles = $derived(facilityFiles ?? []);
-
-	let element: HTMLImageElement | undefined = $state();
 	let defaultModal = $state(false);
 	let swiperInstance: Swiper | null = $state(null);
 	let swiperIdx: number = $state(0);
@@ -87,7 +84,7 @@
 		class="scrollbar-hide inline-flex w-full max-w-[clac(100dvw-40px)] snap-x snap-mandatory items-center gap-2 overflow-x-auto"
 	>
 		{#each restFiles as item, idx (item.id)}
-			<li class="size-25 flex-none snap-center rounded-lg">
+			<li class="size-25 flex-none snap-center overflow-clip rounded-lg">
 				<button
 					type="button"
 					class="inline-flex h-full flex-none"
@@ -121,7 +118,7 @@
 	placement="center"
 	size="none"
 	fullscreen
-	class="h-dvh max-h-dvh max-w-dvw divide-transparent rounded-none bg-slate-800 *:h-dvh"
+	class="h-dvh max-h-dvh max-w-dvw divide-transparent rounded-none bg-slate-800 *:h-dvh *:p-0"
 >
 	<div class="flex h-full w-full items-center justify-center overflow-hidden">
 		<div {@attach swiperAttach} class="swiper h-full w-full max-w-full min-w-0 overflow-hidden">

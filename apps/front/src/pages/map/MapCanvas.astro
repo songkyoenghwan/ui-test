@@ -1,0 +1,143 @@
+---
+import '@/svelte/pois/PoiPin.svelte';
+---
+
+<div class="relative h-dvh w-dvw">
+	<section id="MapCanvas" class="grid h-dvh w-dvw"></section>
+</div>
+
+<script>
+	import '@/svelte/pois/PoiPin.svelte';
+	import MapController from '@/events/mapEvent';
+	import { updateViewState } from '@/stores/uxStore';
+	import {
+		categoryList,
+		destinationList,
+		distance,
+		facility,
+		facilityDetail,
+		facilityList,
+		pathList,
+		poiList,
+		recommendList,
+		searchList,
+		searchResultList,
+	} from '@/stores/pageDataStore';
+	import type { FacilityDetailResponse } from '@/types/facilities';
+
+	const mapController = new MapController();
+
+	let center = mapController.defaultCenter;
+
+	mapController.containerId = 'MapCanvas';
+	mapController.init();
+
+	mapController.map.on('ConfigLoad', function () {
+		mapController.groundOverlayInit('/images/overlay/img-overlay-bg.png');
+	});
+
+	const [responsePoi, responseFacility] = await Promise.all([
+		fetch('/api/pois?tourDestinationId=1'),
+		fetch('/api/facilities?tourDestinationId=1&page=1&pageSize=100'),
+	]);
+
+	if (!responsePoi.ok) {
+		throw new Error('Failed to fetch POIs');
+	}
+
+	if (!responseFacility.ok) {
+		throw new Error('Failed to fetch facilities');
+	}
+
+	const [poiData, facilityData] = await Promise.all([responsePoi.json(), responseFacility.json()]);
+
+	poiList.set(poiData?.data?.items ?? []);
+	facilityList.set(facilityData?.data?.items ?? []);
+
+	const pois = new Map();
+	const poiFacilityList = poiList.get().flatMap((poi) =>
+		(poi.facilityPoiMappings ?? []).map((mapping) => ({
+			poiId: poi.id,
+			poiName: poi.name,
+			latitude: poi.latitude,
+			longitude: poi.longitude,
+			address: poi.address,
+			managementCode: poi.managementCode,
+			facilityMappingId: mapping.id,
+			facilityId: mapping.facilityId,
+			facility: mapping.facility,
+			category: mapping.facility?.category,
+		})),
+	);
+
+	poiFacilityList.forEach((item) => {
+		const newPoi = mapController.makerPin(
+			item.latitude,
+			item.longitude,
+			item.category?.iconKey ?? 'location',
+			'',
+			item.category?.categoryColorCodes?.colorCode ?? 'var(--base-color)',
+			item.poiName?.ko ?? '',
+			'category',
+			String(item.facilityId ?? ''),
+		);
+
+		pois.set(item.facilityId, newPoi);
+
+		const marker = pois.get(item.facilityId);
+
+		marker?.on('Click', async () => {
+			updateViewState({
+				layout: 'facilities',
+				detail: 'facilities',
+				search: 'idle',
+			});
+
+			const response = await fetch(`/api/facilities/${item.facilityId}`);
+			const data = await response.json();
+			const currentFacility = facilityList.get()?.find((f) => Number(f.id) === Number(item.facilityId));
+
+			console.log(currentFacility);
+			facility.set(currentFacility);
+			facilityDetail.set(data.data ?? null);
+		});
+	});
+
+	// let poi1 = mapController.makerPin(
+	// 	center.lat,
+	// 	center.lng,
+	// 	'popper',
+	// 	'',
+	// 	'#23B63C',
+	// 	'테이테이터명테이테이터명테이테이터명테이테이터명',
+	// 	'category',
+	// 	'191',
+	// );
+	// let poi12 = mapController.makerPin(
+	// 	37.52825838989,
+	// 	126.9692721723763,
+	// 	'food',
+	// 	'',
+	// 	'#F29AD5',
+	// 	'테이테이터명테이테이',
+	// 	'category',
+	// 	'190',
+	// );
+	// let poi2 = mapController.makerPin(37.527925838989, center.lng, '/images/poi/poi-center-select.png', '보통', 'green');
+	// let poi3 = mapController.makerPin(
+	// 	37.52825838989,
+	// 	126.9692721723763,
+	// 	'food',
+	// 	'주의',
+	// 	'orange',
+	// 	'테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명',
+	// );
+	// let poi4 = mapController.makerPin(
+	// 	37.52815838989,
+	// 	center.lng,
+	// 	'/images/poi/poi-center-select.png',
+	// 	'여유',
+	// 	'blue',
+	// 	'테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명',
+	// );
+</script>

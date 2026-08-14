@@ -1,9 +1,8 @@
-import { persistentAtom } from '@nanostores/persistent';
-import { atom, map } from 'nanostores';
-
 import { getLocale, setLocale } from '@/paraglide/runtime';
 import type { LocalizedText, SupportedLanguages } from '@/types/common/locale';
 import { type LangTranslateKey } from '@/types/lang/LangTranslate.type';
+import { persistentAtom } from '@nanostores/persistent';
+import { atom, map } from 'nanostores';
 
 type LocalizedKey = keyof LocalizedText;
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
+	import Overview from '@/src/components/svelte/facility/Overview.svelte';
 	import { setSheetMidH, setSheetMinH, sheetMidRatioValue } from '@/src/stores/sheetUiStore';
 	import { langState, pickText } from '@/stores/globalStore';
 	import { categoryList, destinationList, facilityList, poiList } from '@/stores/pageDataStore';
@@ -9,9 +10,8 @@
 	import Thumb from '@/svelte/thumb/Thumb.svelte';
 	import type { FacilityDetailResponse } from '@/types/facilities';
 	import type { PoiDetailResponse } from '@/types/pois';
-	import { z } from 'zod';
-	import Overview from '@/src/components/svelte/facility/Overview.svelte';
 	import { FacilityOverviewModel } from '@/utils/detail.svelte.ts';
+	import { z } from 'zod';
 
 	const TabTypeSchema = z.enum(['operations', 'products']);
 	type TabType = z.infer<typeof TabTypeSchema>;

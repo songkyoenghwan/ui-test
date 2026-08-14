@@ -20,4 +20,12 @@ declare global {
 	var Tmapv3: any;
 }
 
+interface Window {
+	Tmapv3?: {
+		Map: new (...args: any[]) => any;
+		LatLng: new (...args: any[]) => any;
+		Marker: new (...args: any[]) => any;
+	};
+}
+
 export {};

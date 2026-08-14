@@ -2,8 +2,8 @@
 	import * as m from '@/paraglide/messages';
 	import { langState, pickText } from '@/stores/globalStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
-	import { Modal } from 'flowbite-svelte';
 	import type { FacilityDetailResponse } from '@/types/facilities';
+	import { Modal } from 'flowbite-svelte';
 
 	type Props = {
 		facility?: FacilityDetailResponse | undefined;

@@ -10,6 +10,8 @@
 	};
 
 	let { facility, destination }: Props = $props();
+
+	$inspect(facility);
 </script>
 
 <div class="flex items-center gap-2 px-5 py-1 text-xs **:leading-tight **:tracking-tighter **:break-all">
