@@ -12,8 +12,8 @@
 />
 
 <script lang="ts">
-	import { v4 as uuidv4 } from 'uuid';
 	import IconCategory from '@/svelte/icons/IconCategory.svelte';
+	import { v4 as uuidv4 } from 'uuid';
 
 	let { tooltipType = '', category = '', label = '', color = '' } = $props();
 

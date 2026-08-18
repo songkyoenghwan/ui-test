@@ -338,7 +338,7 @@ export default class MapController {
 	) {
 		this.containerId = containerId;
 		this.defaultCenter = options?.center ?? { lat: 37.52761415838989, lng: 126.96885721723763 };
-		this.defaultZoom = options?.zoom ?? 18;
+		this.defaultZoom = options?.zoom ?? 16;
 		this.onPointSelect = options?.onPointSelect;
 		this.onPoiSelect = options?.onPoiSelect;
 		this.onCongestionPolygonChange = options?.onCongestionPolygonChange;

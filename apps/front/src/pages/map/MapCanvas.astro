@@ -11,7 +11,9 @@ import '@/svelte/pois/PoiPin.svelte';
 	import MapController from '@/events/mapEvent';
 	import { updateViewState } from '@/stores/uxStore';
 	import {
+		current,
 		categoryList,
+		destinationDetail,
 		destinationList,
 		distance,
 		facility,
@@ -22,37 +24,19 @@ import '@/svelte/pois/PoiPin.svelte';
 		recommendList,
 		searchList,
 		searchResultList,
+		facilityOtherList,
+		loadDestination,
+		currentDetail,
 	} from '@/stores/pageDataStore';
-	import type { FacilityListResponse, FacilityDetailResponse } from '@/types/facilities';
 
 	const mapController = new MapController();
-
-	let center = mapController.defaultCenter;
-
 	mapController.containerId = 'MapCanvas';
 	mapController.init();
-
 	mapController.map.on('ConfigLoad', function () {
 		mapController.groundOverlayInit('/images/overlay/img-overlay-bg.png');
 	});
 
-	const [responsePoi, responseFacility] = await Promise.all([
-		fetch('/api/pois?tourDestinationId=1'),
-		fetch('/api/facilities?tourDestinationId=1&page=1&pageSize=100'),
-	]);
-
-	if (!responsePoi.ok) {
-		throw new Error('Failed to fetch POIs');
-	}
-
-	if (!responseFacility.ok) {
-		throw new Error('Failed to fetch facilities');
-	}
-
-	const [poiData, facilityData] = await Promise.all([responsePoi.json(), responseFacility.json()]);
-
-	poiList.set(poiData?.data?.items ?? []);
-	facilityList.set(facilityData?.data?.items ?? []);
+	await loadDestination(1);
 
 	const pois = new Map();
 	const poiFacilityList = poiList.get().flatMap((poi) =>
@@ -87,21 +71,15 @@ import '@/svelte/pois/PoiPin.svelte';
 		const marker = pois.get(item.facilityId);
 
 		marker?.on('Click', async () => {
+			const clickedFacilityId = Number(item.facilityId);
+			current.setKey('facility', clickedFacilityId);
+
 			updateViewState({
 				layout: 'facilities',
 				detail: 'facilities',
 				search: 'idle',
 			});
-
-			const response = await fetch(`/api/facilities/${item.facilityId}`);
-			const data = await response.json();
-			const currentFacilityListItem = facilityList.get()?.find((f) => Number(f.id) === Number(item.facilityId));
-
-			facility.set(currentFacilityListItem ?? null);
-			facilityDetail.set(data.data ?? null);
-
-			console.log(facility.get());
-			console.log(facilityDetail.get());
+			currentDetail();
 		});
 	});
 

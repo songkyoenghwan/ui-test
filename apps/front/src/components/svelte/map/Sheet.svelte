@@ -140,8 +140,6 @@
 	$effect(() => {
 		setSheetScrollRef(scrollEl);
 	});
-
-	$inspect($viewDri);
 </script>
 
 <svelte:window bind:innerHeight={$viewportH} />

@@ -1,8 +1,62 @@
-import { categoryList, destinationList, facility, facilityDetail, facilityList, poiList } from '@/stores/pageDataStore';
-import type { CategoryDetailResponse } from '@/types/categories';
-import type { FacilityDetailResponse, FacilityListResponse } from '@/types/facilities';
-import type { PoiDetailResponse } from '@/types/pois';
-import type { TourDestinationDetailResponse } from '@/types/tour-destinations';
+import {
+	categoryList,
+	destinationDetail,
+	destinationList,
+	facility,
+	facilityDetail,
+	facilityList,
+	facilityOtherList,
+	poiList,
+} from '@/stores/pageDataStore';
+import { computed } from 'nanostores';
+
+export const facilityCurrent = computed(
+	[facility, facilityDetail, facilityList, poiList, destinationDetail, destinationList, categoryList, facilityOtherList],
+	(
+		$facility,
+		$facilityDetail,
+		$facilityList,
+		$poiList,
+		$destinationDetail,
+		$destinationList,
+		$categoryList,
+		$facilityOtherList,
+	) => {
+		const poisMatch = !$poiList.length
+			? null
+			: ($poiList.find((p) => p.facilityPoiMappings?.some((mapping) => mapping.facilityId === $facility?.id)) ?? null);
+
+		const destinationMatch =
+			!$destinationList.length || !poisMatch?.tourDestinationId
+				? null
+				: ($destinationList.find((p) => p.id === poisMatch.tourDestinationId) ?? null);
+
+		const categoryMatch = !$categoryList.length
+			? undefined
+			: $categoryList.find((p) => p.id === Number($facilityDetail?.category?.id));
+
+		const otherFacilities =
+			!poisMatch || !$facility?.id || !$facilityList?.length
+				? []
+				: $facilityList.filter(
+						(item) =>
+							item.id !== $facility.id &&
+							(poisMatch.facilityPoiMappings ?? []).some((mapping) => mapping.facilityId === item.id),
+					);
+
+		return {
+			facility: $facility,
+			facilityDetail: $facilityDetail,
+			facilityList: $facilityList,
+			poisMatch,
+			destinationDetail: $destinationDetail,
+			destinationMatch,
+			categoryMatch,
+			otherFacilities,
+			facilityOtherList: $facilityOtherList,
+		};
+	},
+);
 
 export class FacilityOverview {
 	currentFacilityId = $state<number | null>(null);

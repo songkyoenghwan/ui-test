@@ -1,10 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Map from '@/src/pages/map/MapCanvas.astro';
 import BackView from '@/src/components/svelte/map/BackView.svelte';
 import Category from '@/src/components/svelte/map/Category.svelte';
 import SearchBar from '@/src/components/svelte/map/SearchBar.svelte';
 import Sheet from '@/src/components/svelte/map/Sheet.svelte';
+import Map from '@/src/pages/map/MapCanvas.astro';
 ---
 
 <Layout>
@@ -22,17 +22,7 @@ import Sheet from '@/src/components/svelte/map/Sheet.svelte';
 </Layout>
 
 <script>
-	import {
-		categoryList,
-		destinationList,
-		distance,
-		facilityList,
-		pathList,
-		poiList,
-		recommendList,
-		searchList,
-		searchResultList,
-	} from '@/stores/pageDataStore';
+	import { categoryList, destinationList } from '@/stores/pageDataStore';
 	import { updateViewState } from '@/stores/uxStore';
 
 	// const response = await fetch('/src/mocks/db.json');
