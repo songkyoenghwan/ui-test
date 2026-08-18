@@ -164,12 +164,14 @@
 	function toggle() {
 		open = !open;
 	}
+
+	let d = $derived($facilityCurrent?.facilityDetail?.facilityOperatingSchedules);
 </script>
 
 {#snippet currentState()}
 	{#if isOutsideOperationPeriod}
 		{m.usr_map_002_09({ locale: $langState })}
-	{:else if isHoliday || !todaySchedule}
+	{:else if isHoliday}
 		{m.usr_map_002_10({ locale: $langState })}
 	{:else if isAlwaysOperating}
 		{m.usr_map_002_11({ locale: $langState })}
@@ -185,15 +187,17 @@
 {/snippet}
 
 {#if variant === 'state'}
-	<dl class="flex items-center gap-2 px-5">
-		<dt class="flex items-center gap-1 text-sm font-bold text-black">
-			<Icons name="clock-filled" cls="size-4 fill-slate-400 stroke-slate-400" />
-			{m.usr_map_002_08({ locale: $langState })}
-		</dt>
-		<dd class=" text-sm text-slate-500">
-			{@render currentState()}
-		</dd>
-	</dl>
+	{#if ($facilityCurrent.facilityDetail?.facilityOperatingSchedules?.length ?? 0) > 0}
+		<dl class="flex items-center gap-2 px-5 py-1">
+			<dt class="flex items-center gap-1 text-sm font-bold text-black">
+				<Icons name="clock-filled" cls="size-4 fill-slate-400 stroke-slate-400" />
+				{m.usr_map_002_08({ locale: $langState })}
+			</dt>
+			<dd class=" text-sm text-slate-500">
+				{@render currentState()}
+			</dd>
+		</dl>
+	{/if}
 {:else}
 	<dl class="flex flex-col gap-3 px-5 py-1.5">
 		<dt class="flex items-center gap-1 text-sm font-bold text-black">
@@ -205,9 +209,15 @@
 
 				<span class="flex items-center justify-center gap-1 text-xs text-slate-500">
 					{#if !isHoliday && todaySchedule && isAlwaysOperating && !isBreakTime && !isBeforeOpen && !isClosed}
-						{m.usr_map_002_12({ locale: $langState, time: normalizeClosingTime(todaySchedule.closingTime) ?? '' })}
+						{m.usr_map_002_12({
+							locale: $langState,
+							time: normalizeClosingTime(todaySchedule.closingTime) ?? '',
+						})}
 					{:else if isBreakTime}
-						{m.usr_map_002_14({ locale: $langState, time: normalizeClosingTime(currentBreak?.breakEndTime) ?? '' })}
+						{m.usr_map_002_14({
+							locale: $langState,
+							time: normalizeClosingTime(currentBreak?.breakEndTime) ?? '',
+						})}
 					{:else if isBeforeOpen}
 						{m.usr_map_002_16({ locale: $langState, time: todaySchedule?.openingTime ?? '' })}
 					{/if}
@@ -225,7 +235,7 @@
 				open ? 'flex flex-col' : 'hidden',
 			]}
 		>
-			{#if isAlwaysOperating}
+			{#if isAlwaysOperating || ($facilityCurrent.facilityDetail?.facilityOperatingSchedules?.length ?? 0) === 0}
 				<div class="pl-6 text-base text-black">{m.usr_map_002_18({ locale: $langState })}</div>
 			{:else if startDate || endDate}
 				<div class="pl-6 text-base text-black">
@@ -237,17 +247,19 @@
 				</div>
 			{/if}
 
-			{#each holidaySummaries as summary}
-				<div class="text-error pl-6 text-base">{summary}</div>
-			{/each}
+			{#if (holidaySummaries.length ?? 0) > 0}
+				{#each holidaySummaries as summary}
+					<div class="text-error pl-6 text-base">{summary}</div>
+				{/each}
+			{/if}
 
-			{#if operationTime}
-				<div class="mt-2 flex flex-col gap-2 border-t border-t-slate-200 pt-3">
-					{#each isDailySchedule ? operationTime.slice(0, 1) : operationTime as time}
+			<div class="mt-2 flex flex-col gap-2 border-t border-t-slate-200 pt-3">
+				{#if (operationTime?.length ?? 0) > 0}
+					{#each isDailySchedule ? operationTime?.slice(0, 1) : operationTime as time}
 						<div class="flex gap-1 text-sm text-black">
-							<div class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
+							<p class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
 								{isDailySchedule ? m.usr_map_002_39({ locale: $langState }) : DAY_LABELS[time.dayOfWeek ?? 0]}
-							</div>
+							</p>
 							<div class="flex flex-col gap-1 text-sm">
 								<div class="flex items-center gap-1 text-sm text-slate-600">
 									{#if time?.openingTime === time?.closingTime}
@@ -282,8 +294,19 @@
 							</div>
 						</div>
 					{/each}
-				</div>
-			{/if}
+				{:else}
+					<div class="flex gap-1 text-sm text-black">
+						<p class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
+							{m.usr_map_002_39({ locale: $langState })}
+						</p>
+						<div class="flex items-center gap-1 text-sm text-slate-600">
+							<p class="min-w-10">
+								{m.usr_map_002_40({ locale: $langState })}
+							</p>
+						</div>
+					</div>
+				{/if}
+			</div>
 		</dd>
 	</dl>
 {/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '@/paraglide/messages';
 	import { langState, pickText } from '@/stores/globalStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import { facilityCurrent } from '@/utils/detail.svelte.ts';
@@ -38,7 +39,7 @@
 	<div class="flex min-h-12.5 flex-col gap-3 px-5 py-1">
 		<p class="text-000 flex items-center gap-2 text-base">
 			<Icons name="chat" cls="size-4 fill-slate-400" />
-			상세 정보
+			{m.usr_map_002_60({ locale: $langState })}
 		</p>
 		<IntersectionObserver {element} bind:intersecting>
 			<div class="relative rounded-lg bg-slate-100 p-3 transition-all">

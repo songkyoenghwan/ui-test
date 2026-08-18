@@ -11,7 +11,7 @@
 	<div class="flex min-h-12.5 flex-col gap-3 px-5 py-1">
 		<p class="text-000 flex items-center gap-2 text-base">
 			<Icons name="building" cls="size-4 fill-slate-400" />
-			이 위치에 다른 시설
+			{m.usr_map_002_59({ locale: $langState })}
 		</p>
 
 		<ul

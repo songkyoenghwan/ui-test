@@ -169,7 +169,7 @@
 			bind:this={scrollEl}
 			{@attach bottomScroll}
 			data-scroll="content"
-			class="flex min-h-0 w-full min-w-0 flex-col overflow-x-clip"
+			class="flex min-h-0 w-full min-w-0 flex-col gap-1 overflow-x-clip"
 		>
 			{@render detailContent()}
 		</div>

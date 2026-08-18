@@ -4,8 +4,8 @@
 	import { facilityCurrent } from '@/utils/detail.svelte.ts';
 </script>
 
-{#if $facilityCurrent?.poisMatch?.managementCode}
-	<dl class="flex items-center gap-2 px-5 py-1.5">
+{#if $facilityCurrent.poisMatch?.address}
+	<dl class="flex items-center gap-2 px-5 py-1">
 		<dt class="flex items-center gap-1 text-sm font-bold text-black">
 			<Icons name="map-pin-filled" cls="size-4 fill-slate-400 stroke-slate-400" />
 			24km
