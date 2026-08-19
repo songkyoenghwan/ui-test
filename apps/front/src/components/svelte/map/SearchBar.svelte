@@ -1,29 +1,20 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
-	import { categoryList } from '@/src/stores/pageDataStore';
 	import { categoryState, langState } from '@/stores/globalStore';
 	import { layoutViewState, searchViewState, updateViewState } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 
 	let { name = '' } = $props();
-	let categoryName = $derived(
-		$categoryList.length > 0 ? $categoryList.find((c) => c.iconKey === $categoryState)?.name[$langState] : '',
-	);
+	// let categoryName = $derived(
+	// 	$categoryList.length > 0 ? $categoryList.find((c) => c.iconKey === $categoryState)?.name[$langState] : '',
+	// );
 
 	const onSearchHandler = () => {
-		if ($searchViewState === 'searchResult' && categoryName !== '') {
-			updateViewState({
-				layout: 'search',
-				detail: 'idle',
-				search: 'result',
-			});
-		} else {
-			updateViewState({
-				layout: 'search',
-				detail: 'search',
-				search: 'searchResult',
-			});
-		}
+		updateViewState({
+			layout: 'search',
+			detail: 'idle',
+			search: 'recommend',
+		});
 	};
 
 	const offSearchHandler = () => {
@@ -82,13 +73,17 @@
 					'h-full flex-1 px-2 outline-none placeholder:text-slate-400',
 					$layoutViewState === 'search' ? 'rounded-sm border border-slate-200' : 'text-white',
 				]}
-				placeholder={m.usr_map_001_01({ locale: $langState, name: name })}
-				bind:value={categoryName}
+				autocomplete="off"
+				placeholder={m.usr_map_001_01({ name: name }, { locale: $langState })}
+				bind:value={$categoryState}
+				onclick={() => onSearchHandler()}
 			/>
 		</div>
 
-		<button type="button" class="grid h-10 w-9 place-content-center rounded-lg active:bg-white/10">
-			<Icons name="menu" cls="size-5 stroke-white" />
-		</button>
+		{#if $layoutViewState === 'default' || $layoutViewState === 'ai'}
+			<button type="button" class="grid h-10 w-9 place-content-center rounded-lg active:bg-white/10">
+				<Icons name="menu" cls="size-5 stroke-white" />
+			</button>
+		{/if}
 	</header>
 {/if}

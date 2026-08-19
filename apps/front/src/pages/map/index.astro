@@ -22,48 +22,7 @@ import Map from '@/src/pages/map/MapCanvas.astro';
 </Layout>
 
 <script>
-	import { categoryList, destinationList } from '@/stores/pageDataStore';
 	import { updateViewState } from '@/stores/uxStore';
-
-	// const response = await fetch('/src/mocks/db.json');
-	// const responseCategory = await fetch('http://localhost:5194/api/categories?tourDestinationId=1');
-
-	// if (!response.ok) throw new Error('Failed to fetch map data');
-	// const data = await response.json();
-
-	// categoryList.set(data.categories.data ?? []);
-	// destinationList.set(data['tour-destinations']?.data?.items ?? {});
-
-	const [responseDestinations, responseCategory] = await Promise.all([
-		fetch('/api/tour-destinations?page=1&pageSize=100'),
-		fetch('/api/categories?tourDestinationId=1'),
-	]);
-
-	if (!responseDestinations.ok) {
-		throw new Error('Failed to fetch POIs');
-	}
-
-	if (!responseCategory.ok) {
-		throw new Error('Failed to fetch facilities');
-	}
-	const [destinationsData, categoryData] = await Promise.all([responseDestinations.json(), responseCategory.json()]);
-
-	destinationList.set(destinationsData.data ?? []);
-	categoryList.set(categoryData?.data?.items ?? {});
-
-	// searchList.set(data.searchList.data.items ?? []);
-	// searchResultList.set(data.searchResultList.data.items ?? []);
-	// facilityList.set(data.facilityList.data ?? []);
-	// pathList.set(data.pathList.data ?? []);
-	// recommendList.set(data.recommendList.data ?? []);
-
-	// distance.set({
-	// 	start: data.distance?.start ?? '',
-	// 	end: data.distance?.end ?? '',
-	// 	step: data.distance?.step ?? 0,
-	// 	totalDistance: data.distance?.totalDistance ?? 0,
-	// 	time: data.distance?.time ?? 0,
-	// });
 
 	updateViewState({
 		layout: 'ai',

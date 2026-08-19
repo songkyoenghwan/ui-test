@@ -19,7 +19,7 @@ export const current = map<Current>({
 	facility: 0,
 });
 
-export const searchList = atom([]);
+export const searchList = atom<FacilityListResponse[]>([]);
 export const searchResultList = atom<FacilityListResponse[]>([]);
 export const categoryList = atom<CategoryDetailResponse[]>([]);
 export const destinationDetail = atom<TourDestinationDetailResponse | null>(null);
@@ -32,7 +32,7 @@ export const facilityList = atom<FacilityListResponse[] | null>(null);
 export const facilityOtherList = atom<FacilityDetailResponse[] | null>(null);
 export const otherFacilityDetails = atom<FacilityDetailResponse[]>([]);
 export const pathList = atom([]);
-export const recommendList = atom([]);
+export const recommendList = atom<FacilityListResponse[]>([]);
 export const distance = map({
 	start: '',
 	end: '',
@@ -42,10 +42,11 @@ export const distance = map({
 });
 
 export async function loadDestination(destinationId: number) {
-	const [resDestination, resPoi, resFacility] = await Promise.all([
+	const [resDestination, resCategory, resPoi, resFacility] = await Promise.all([
 		fetch(`/api/tour-destinations/${destinationId}`, {
 			credentials: 'include',
 		}),
+		fetch(`/api/categories?tourDestinationId=${destinationId}`),
 		fetch(`/api/pois?tourDestinationId=${destinationId}`, {
 			credentials: 'include',
 		}),
@@ -55,19 +56,23 @@ export async function loadDestination(destinationId: number) {
 	]);
 
 	if (!resDestination.ok) throw new Error('Failed to fetch destination');
+	if (!resCategory.ok) throw new Error('Failed to fetch Category');
 	if (!resPoi.ok) throw new Error('Failed to fetch POIs');
 	if (!resFacility.ok) throw new Error('Failed to fetch facilities');
 
-	const [destinationData, poiData, facilityData] = await Promise.all([
+	const [destinationData, categoryData, poiData, facilityData] = await Promise.all([
 		resDestination.json(),
+		resCategory.json(),
 		resPoi.json(),
 		resFacility.json(),
 	]);
 
 	current.setKey('destination', destinationId);
 	destinationDetail.set(destinationData?.data ?? null);
+	categoryList.set(categoryData.data ?? []);
 	poiList.set(poiData?.data?.items ?? []);
 	facilityList.set(facilityData?.data?.items ?? []);
+	searchList.set(facilityData.data.items ?? []);
 }
 
 export async function currentDetail() {

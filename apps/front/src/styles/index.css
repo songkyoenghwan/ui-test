@@ -438,7 +438,7 @@
 		button[type='button'],
 		a {
 			&:hover {
-				transform: scale(1.01);
+				transform: scale(1.005);
 			}
 		}
 	}
@@ -447,7 +447,7 @@
 		button[type='button'],
 		a {
 			&:active {
-				transform: scale(1.01);
+				transform: scale(1.005);
 			}
 		}
 	}
@@ -487,6 +487,19 @@
 		/* &.tooltip-label--safe {
 			@apply bg-ff3d59 fill-ff3d59;
 		} */
+	}
+
+	.VERY_CROWDED {
+		@apply bg-e7352b fill-e7352b;
+	}
+	.CROWDED {
+		@apply bg-ff8826 fill-ff8826;
+	}
+	.NORMAL {
+		@apply bg-00c922 fill-00c922;
+	}
+	.RELAXED {
+		@apply bg-26b7ff fill-26b7ff;
 	}
 
 	.tooltip-label-arrow {

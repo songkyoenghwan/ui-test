@@ -139,7 +139,7 @@
 
 		for (const holiday of fixedHolidays.sort((a, b) => (a.fixedHoliday ?? 0) - (b.fixedHoliday ?? 0))) {
 			summaries.push(
-				`${m.usr_map_002_37({ locale: $langState, time: holiday.fixedHoliday })} ${m.usr_map_002_38({ locale: $langState })}`,
+				`${m.usr_map_002_37({ time: holiday?.fixedHoliday }, { locale: $langState })} ${m.usr_map_002_38({ locale: $langState })}`,
 			);
 		}
 
@@ -164,8 +164,6 @@
 	function toggle() {
 		open = !open;
 	}
-
-	let d = $derived($facilityCurrent?.facilityDetail?.facilityOperatingSchedules);
 </script>
 
 {#snippet currentState()}
@@ -178,7 +176,7 @@
 	{:else if isBreakTime}
 		{m.usr_map_002_13({ locale: $langState })}
 	{:else if isBeforeOpen}
-		{m.usr_map_002_16({ locale: $langState, time: todaySchedule?.openingTime ?? '' })}
+		{m.usr_map_002_16({ time: todaySchedule?.openingTime ?? '' }, { locale: $langState })}
 	{:else if isClosed}
 		{m.usr_map_002_17({ locale: $langState })}
 	{:else}
@@ -186,8 +184,8 @@
 	{/if}
 {/snippet}
 
-{#if variant === 'state'}
-	{#if ($facilityCurrent.facilityDetail?.facilityOperatingSchedules?.length ?? 0) > 0}
+{#if ($facilityCurrent.facilityDetail?.facilityOperatingSchedules?.length ?? 0) > 0}
+	{#if variant === 'state'}
 		<dl class="flex items-center gap-2 px-5 py-1">
 			<dt class="flex items-center gap-1 text-sm font-bold text-black">
 				<Icons name="clock-filled" cls="size-4 fill-slate-400 stroke-slate-400" />
@@ -197,116 +195,122 @@
 				{@render currentState()}
 			</dd>
 		</dl>
-	{/if}
-{:else}
-	<dl class="flex flex-col gap-3 px-5 py-1.5">
-		<dt class="flex items-center gap-1 text-sm font-bold text-black">
-			<button type="button" class="flex w-full items-start gap-3" onclick={toggle} aria-expanded={open}>
-				<span class="inline-flex items-start gap-2">
-					<Icons name="clock-filled" cls="size-4 fill-slate-400 stroke-slate-400" />
-					{@render currentState()}
-				</span>
-
-				<span class="flex items-center justify-center gap-1 text-xs text-slate-500">
-					{#if !isHoliday && todaySchedule && isAlwaysOperating && !isBreakTime && !isBeforeOpen && !isClosed}
-						{m.usr_map_002_12({
-							locale: $langState,
-							time: normalizeClosingTime(todaySchedule.closingTime) ?? '',
-						})}
-					{:else if isBreakTime}
-						{m.usr_map_002_14({
-							locale: $langState,
-							time: normalizeClosingTime(currentBreak?.breakEndTime) ?? '',
-						})}
-					{:else if isBeforeOpen}
-						{m.usr_map_002_16({ locale: $langState, time: todaySchedule?.openingTime ?? '' })}
-					{/if}
-
-					<span class={['relative transition-all', open ? 'rotate-90' : 'rotate-270']}>
-						<Icons name="arrow-left" cls="size-4 stroke-slate-500" />
+	{:else}
+		<dl class="flex flex-col gap-3 px-5 py-1.5">
+			<dt class="flex items-center gap-1 text-sm font-bold text-black">
+				<button type="button" class="flex w-full items-start gap-3" onclick={toggle} aria-expanded={open}>
+					<span class="inline-flex items-start gap-2">
+						<Icons name="clock-filled" cls="size-4 fill-slate-400 stroke-slate-400" />
+						{@render currentState()}
 					</span>
-				</span>
-			</button>
-		</dt>
 
-		<dd
-			class={[
-				'gap-1 opacity-100 transition-all transition-discrete duration-75 starting:opacity-0',
-				open ? 'flex flex-col' : 'hidden',
-			]}
-		>
-			{#if isAlwaysOperating || ($facilityCurrent.facilityDetail?.facilityOperatingSchedules?.length ?? 0) === 0}
-				<div class="pl-6 text-base text-black">{m.usr_map_002_18({ locale: $langState })}</div>
-			{:else if startDate || endDate}
-				<div class="pl-6 text-base text-black">
-					{#if startDate && endDate && !isSameOperationDate}
-						<TextDate dateTime={startDate} /> ~ <TextDate dateTime={normalizeClosingTime(endDate)} />
-					{:else}
-						<TextDate dateTime={startDate ?? endDate} />
-					{/if}
-				</div>
-			{/if}
+					<span class="flex items-center justify-center gap-1 text-xs text-slate-500">
+						{#if !isHoliday && todaySchedule && isAlwaysOperating && !isBreakTime && !isBeforeOpen && !isClosed}
+							{m.usr_map_002_12(
+								{
+									time: normalizeClosingTime(todaySchedule.closingTime) ?? '',
+								},
+								{
+									locale: $langState,
+								},
+							)}
+						{:else if isBreakTime}
+							{m.usr_map_002_14(
+								{
+									time: normalizeClosingTime(currentBreak?.breakEndTime) ?? '',
+								},
+								{ locale: $langState },
+							)}
+						{:else if isBeforeOpen}
+							{m.usr_map_002_16({ time: todaySchedule?.openingTime ?? '' }, { locale: $langState })}
+						{/if}
 
-			{#if (holidaySummaries.length ?? 0) > 0}
-				{#each holidaySummaries as summary}
-					<div class="text-error pl-6 text-base">{summary}</div>
-				{/each}
-			{/if}
+						<span class={['relative transition-all', open ? 'rotate-90' : 'rotate-270']}>
+							<Icons name="arrow-left" cls="size-4 stroke-slate-500" />
+						</span>
+					</span>
+				</button>
+			</dt>
 
-			<div class="mt-2 flex flex-col gap-2 border-t border-t-slate-200 pt-3">
-				{#if (operationTime?.length ?? 0) > 0}
-					{#each isDailySchedule ? operationTime?.slice(0, 1) : operationTime as time}
-						<div class="flex gap-1 text-sm text-black">
-							<p class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
-								{isDailySchedule ? m.usr_map_002_39({ locale: $langState }) : DAY_LABELS[time.dayOfWeek ?? 0]}
-							</p>
-							<div class="flex flex-col gap-1 text-sm">
-								<div class="flex items-center gap-1 text-sm text-slate-600">
-									{#if time?.openingTime === time?.closingTime}
-										{m.usr_map_002_40({ locale: $langState })}
-									{:else}
-										<p>
-											<TextDate dateTime={time?.openingTime ?? undefined} />
-										</p>
-										<p>~</p>
-										<p>
-											<TextDate dateTime={normalizeClosingTime(time?.closingTime)} />
-										</p>
-									{/if}
-								</div>
+			<dd
+				class={[
+					'gap-1 opacity-100 transition-all transition-discrete duration-75 starting:opacity-0',
+					open ? 'flex flex-col' : 'hidden',
+				]}
+			>
+				{#if isAlwaysOperating || ($facilityCurrent.facilityDetail?.facilityOperatingSchedules?.length ?? 0) === 0}
+					<div class="pl-6 text-base text-black">{m.usr_map_002_18({ locale: $langState })}</div>
+				{:else if startDate || endDate}
+					<div class="pl-6 text-base text-black">
+						{#if startDate && endDate && !isSameOperationDate}
+							<TextDate dateTime={startDate} /> ~ <TextDate dateTime={normalizeClosingTime(endDate)} />
+						{:else}
+							<TextDate dateTime={startDate ?? endDate} />
+						{/if}
+					</div>
+				{/if}
 
-								{#if time.facilityBreakSchedules}
+				{#if (holidaySummaries.length ?? 0) > 0}
+					{#each holidaySummaries as summary}
+						<div class="text-error pl-6 text-base">{summary}</div>
+					{/each}
+				{/if}
+
+				<div class="mt-2 flex flex-col gap-2 border-t border-t-slate-200 pt-3">
+					{#if (operationTime?.length ?? 0) > 0}
+						{#each isDailySchedule ? operationTime?.slice(0, 1) : operationTime as time}
+							<div class="flex gap-1 text-sm text-black">
+								<p class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
+									{isDailySchedule ? m.usr_map_002_39({ locale: $langState }) : DAY_LABELS[time.dayOfWeek ?? 0]}
+								</p>
+								<div class="flex flex-col gap-1 text-sm">
 									<div class="flex items-center gap-1 text-sm text-slate-600">
-										{#each time.facilityBreakSchedules as item (item.id)}
-											<p class="min-w-10">
-												{m.usr_map_002_13({ locale: $langState })}
-											</p>
+										{#if time?.openingTime === time?.closingTime}
+											{m.usr_map_002_40({ locale: $langState })}
+										{:else}
 											<p>
-												<TextDate dateTime={item.breakStartTime ?? undefined} />
+												<TextDate dateTime={time?.openingTime ?? undefined} />
 											</p>
 											<p>~</p>
 											<p>
-												<TextDate dateTime={normalizeClosingTime(item?.breakEndTime)} />
+												<TextDate dateTime={normalizeClosingTime(time?.closingTime)} />
 											</p>
-										{/each}
+										{/if}
 									</div>
-								{/if}
+
+									{#if time.facilityBreakSchedules}
+										<div class="flex items-center gap-1 text-sm text-slate-600">
+											{#each time.facilityBreakSchedules as item (item.id)}
+												<p class="min-w-10">
+													{m.usr_map_002_13({ locale: $langState })}
+												</p>
+												<p>
+													<TextDate dateTime={item.breakStartTime ?? undefined} />
+												</p>
+												<p>~</p>
+												<p>
+													<TextDate dateTime={normalizeClosingTime(item?.breakEndTime)} />
+												</p>
+											{/each}
+										</div>
+									{/if}
+								</div>
+							</div>
+						{/each}
+					{:else}
+						<div class="flex gap-1 text-sm text-black">
+							<p class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
+								{m.usr_map_002_39({ locale: $langState })}
+							</p>
+							<div class="flex items-center gap-1 text-sm text-slate-600">
+								<p class="min-w-10">
+									{m.usr_map_002_40({ locale: $langState })}
+								</p>
 							</div>
 						</div>
-					{/each}
-				{:else}
-					<div class="flex gap-1 text-sm text-black">
-						<p class="flex-[0_1_66px] text-center" style="flex: 0 1 66px;">
-							{m.usr_map_002_39({ locale: $langState })}
-						</p>
-						<div class="flex items-center gap-1 text-sm text-slate-600">
-							<p class="min-w-10">
-								{m.usr_map_002_40({ locale: $langState })}
-							</p>
-						</div>
-					</div>
-				{/if}
-			</div>
-		</dd>
-	</dl>
+					{/if}
+				</div>
+			</dd>
+		</dl>
+	{/if}
 {/if}

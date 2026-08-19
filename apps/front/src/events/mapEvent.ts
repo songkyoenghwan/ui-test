@@ -1655,7 +1655,7 @@ export default class MapController {
 		lat = this.defaultCenter.lat,
 		lng = this.defaultCenter.lng,
 		category = '',
-		text = '매우 혼잡',
+		congestion = '',
 		color = 'var(--base-color)',
 		label = '',
 		/** 라벨 래퍼 data-facility-marker-id — 현황 마커 호버 타깃용 */
@@ -1674,6 +1674,7 @@ export default class MapController {
 							data-category="${category}"
 							data-color="${color}"
 							data-label="${label}"
+							data-congestion="${congestion}"
 							data-facility-marker-id="${key}"
 						></poi-pin>
 					`
@@ -1685,6 +1686,7 @@ export default class MapController {
 								data-category="${category}"
 								data-color="${color}"
 								data-label="${label}"
+								data-congestion="${congestion}"
 								data-facility-marker-id="${key}"
 							></poi-pin>
 						`

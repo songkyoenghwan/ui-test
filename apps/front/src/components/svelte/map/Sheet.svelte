@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { recommendList } from '@/src/stores/pageDataStore';
 	import {
 		setSheetScrollRef,
 		sheetMaxRatioValue,
@@ -146,7 +147,7 @@
 
 {#snippet detailContent()}
 	{#if $detailViewState === 'facilities'}
-		<ConfusionState />
+		<ConfusionState congestion="none" />
 		<Facility />
 	{/if}
 
@@ -180,7 +181,7 @@
 	</div>
 {/snippet}
 
-{#if $layoutViewState !== 'default' && $searchViewState !== 'result'}
+{#if $layoutViewState !== 'default' && $searchViewState !== 'recommend' && $searchViewState !== 'result'}
 	<div
 		data-detail-index={$sheetSnapPoint}
 		data-scroll-check={$sheetSnapPoint > $sheetScrollPoint - 1 ? 'on' : 'off'}

@@ -6,22 +6,71 @@
 			category: { reflect: true, type: 'String', attribute: 'data-category' },
 			label: { reflect: true, type: 'String', attribute: 'data-label' },
 			color: { reflect: true, type: 'String', attribute: 'data-color' },
+			congestion: { reflect: true, type: 'String', attribute: 'data-congestion' },
 			tooltipType: { type: 'String', attribute: 'data-tooltip-type' },
 		},
 	}}
 />
 
 <script lang="ts">
+	import * as m from '@/paraglide/messages';
+	import { langState } from '@/stores/globalStore';
 	import IconCategory from '@/svelte/icons/IconCategory.svelte';
 	import { v4 as uuidv4 } from 'uuid';
 
-	let { tooltipType = '', category = '', label = '', color = '' } = $props();
+	let { tooltipType = '', category = '', label = '', color = '', congestion = 'none' } = $props();
 
 	const _id = $derived(`filter-poi-pin-${uuidv4()}`);
+	function getCongestionLabel() {
+		switch (congestion) {
+			case 'VERY_CROWDED':
+				return m.usr_map_001_06({ locale: $langState });
+			case 'CROWDED':
+				return m.usr_map_001_07({ locale: $langState });
+			case 'NORMAL':
+				return m.usr_map_001_08({ locale: $langState });
+			case 'RELAXED':
+				return m.usr_map_001_09({ locale: $langState });
+			case 'none':
+			default:
+				return '';
+		}
+	}
 </script>
+
+{#snippet tip()}
+	{#if congestion !== '' && congestion !== 'none'}
+		<span
+			class={[
+				'absolute w-max',
+				tooltipType === 'category' ? 'bottom-full' : tooltipType === 'current' ? 'bottom-[calc(100%+16px)]' : '',
+			]}
+		>
+			<span class="relative flex pb-2 text-xs text-white">
+				<span class={['w-max rounded-sm px-1.5 py-1.25 font-medium', congestion]}>{getCongestionLabel()}</span>
+				<svg
+					class={['absolute left-[calc(50%-13px)] -translate-x-[calc(50%-13px)]']}
+					width="36"
+					height="30"
+					viewBox="0 0 36 30"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M19.4305 28.5359C18.6459 29.3389 17.3541 29.3389 16.5695 28.5359L11.7935 23.6477C10.556 22.3812 11.4534 20.25 13.224 20.25L22.776 20.25C24.5466 20.25 25.444 22.3812 24.2065 23.6477L19.4305 28.5359Z"
+						stroke="none"
+						class={congestion}
+					/>
+				</svg>
+			</span>
+		</span>
+	{/if}
+{/snippet}
 
 {#snippet currentPin()}
 	<span class="-mt-6 flex flex-col items-center justify-center gap-1" style:--category-color={color}>
+		{@render tip()}
+
 		<span class="relative">
 			<svg
 				width="49"
@@ -121,7 +170,9 @@
 {/snippet}
 
 {#snippet categoryPin()}
-	<span class="flex flex-col items-center justify-center gap-1" style:--category-color={color}>
+	<span class="relative flex flex-col items-center justify-center gap-1" style:--category-color={color}>
+		{@render tip()}
+
 		<span class="relative">
 			<IconCategory reverse="poi" icon={category} {color} />
 		</span>
@@ -137,9 +188,3 @@
 {:else if tooltipType === 'category'}
 	{@render categoryPin()}
 {/if}
-
-<!-- <IconCategory
-	icon={categoryMatch?.iconKey ?? ''}
-	color={categoryMatch?.categoryColorCodes?.colorCode ?? ''}
-	name={pickText(categoryMatch?.name, $langState)}
-/> -->

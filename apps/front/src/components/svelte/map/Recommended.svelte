@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { searchList } from '@/stores/pageDataStore';
+	import * as m from '@/paraglide/messages';
+	import { searchList, recommendList } from '@/stores/pageDataStore';
 	import { searchViewState, updateViewState } from '@/stores/uxStore';
+	import { langState, pickText } from '@/stores/globalStore';
 	import IconCategory from '@/svelte/icons/IconCategory.svelte';
 	import Icons from '@/svelte/icons/Icons.svelte';
 
@@ -8,9 +10,13 @@
 	let sentinelEl = $state<HTMLLIElement | null>(null);
 	let visibleCount = $state(30);
 	let loading = $state(false);
-	let visibleItems = $derived($searchList.slice(0, visibleCount));
-	let hasRender = $derived(0 < $searchList.length);
-	let hasMore = $derived(visibleCount < $searchList.length);
+	let visibleItems = $derived.by(() => {
+		if ($searchViewState === 'searchResult') return $searchList ?? [];
+		if ($searchViewState === 'recommend') return $recommendList ?? [];
+		return [];
+	});
+	let hasRender = $derived(0 < visibleItems.length);
+	let hasMore = $derived(visibleCount < visibleItems.length);
 	function loadMore() {
 		if (loading || !hasMore) return;
 
@@ -56,6 +62,8 @@
 			search: 'searchResult',
 		});
 	};
+
+	$inspect(visibleItems);
 </script>
 
 <ul bind:this={listEl} class="h-full min-h-0 divide-y divide-slate-200 overflow-x-clip overflow-y-auto scroll-smooth">
@@ -67,11 +75,14 @@
 			>
 				<button
 					type="button"
-					class="flex min-h-16 w-full items-center gap-2 pl-3 active:bg-slate-50"
+					class="flex min-h-16 w-full items-center gap-2 active:bg-slate-50"
 					onclick={searchResultView}
 				>
-					<IconCategory icon="binoculars" color="red" />
-					<span>{item.name}</span>
+					<IconCategory
+						icon={item?.category?.iconKey ?? ''}
+						color={item?.category?.categoryColorCodes?.colorCode ?? ''}
+						name={pickText(item?.name, $langState)}
+					/>
 				</button>
 
 				<button type="button" data-btn="del" class="flex items-center px-2 active:bg-slate-50">
@@ -79,15 +90,18 @@
 				</button>
 			</li>
 		{/each}
-	{:else}
+	{:else if visibleItems.length === 0}
 		<li class="h-full">
-			<p class="grid h-full place-content-center bg-slate-50 text-[20px] font-semibold text-slate-700">
-				최근 검색 이력이 없어요
+			<p class="grid h-full place-content-center bg-slate-50 text-center text-[20px] font-semibold text-slate-700">
+				{m.usr_src_001_01({ locale: $langState })}
 			</p>
-			<p class="grid h-full place-content-center bg-slate-50 text-[20px] font-semibold text-slate-700">
-				검색 결과가 없습니다.
+		</li>
+	{:else if visibleItems.length === 100}
+		<li class="h-full">
+			<p class="grid h-full place-content-center bg-slate-50 text-center text-[20px] font-semibold text-slate-700">
+				{m.usr_nav_101_08({ locale: $langState })}
 				<br />
-				다른 검색어를 입력해주세요.
+				{m.usr_nav_101_09({ locale: $langState })}
 			</p>
 		</li>
 	{/if}
@@ -95,7 +109,7 @@
 	{#if hasMore}
 		<li bind:this={sentinelEl} class="flex min-h-12 items-center justify-center text-sm text-slate-400">
 			{#if loading}
-				불러오는 중...
+				Loading...
 			{/if}
 		</li>
 	{/if}

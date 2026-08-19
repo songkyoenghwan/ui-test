@@ -12,21 +12,12 @@ import '@/svelte/pois/PoiPin.svelte';
 	import { updateViewState } from '@/stores/uxStore';
 	import {
 		current,
-		categoryList,
-		destinationDetail,
-		destinationList,
-		distance,
-		facility,
-		facilityDetail,
-		facilityList,
-		pathList,
 		poiList,
-		recommendList,
-		searchList,
-		searchResultList,
-		facilityOtherList,
 		loadDestination,
 		currentDetail,
+		recommendList,
+		searchList,
+		facilityList,
 	} from '@/stores/pageDataStore';
 
 	const mapController = new MapController();
@@ -37,6 +28,8 @@ import '@/svelte/pois/PoiPin.svelte';
 	});
 
 	await loadDestination(1);
+
+	recommendList.set(facilityList?.get() ?? []);
 
 	const pois = new Map();
 	const poiFacilityList = poiList.get().flatMap((poi) =>
@@ -54,15 +47,15 @@ import '@/svelte/pois/PoiPin.svelte';
 		})),
 	);
 
-	poiFacilityList.forEach((item) => {
+	poiFacilityList.forEach((item, idx) => {
 		const newPoi = mapController.makerPin(
 			item.latitude,
 			item.longitude,
 			item.category?.iconKey ?? 'location',
-			'',
+			idx === 2 ? 'VERY_CROWDED' : idx === 5 ? 'CROWDED' : idx === 6 ? 'NORMAL' : idx === 8 ? 'RELAXED' : 'none',
 			item.category?.categoryColorCodes?.colorCode ?? 'var(--base-color)',
 			item.poiName?.ko ?? '',
-			'category',
+			idx === 8 ? 'current' : 'category',
 			String(item.facilityId ?? ''),
 		);
 
@@ -82,42 +75,4 @@ import '@/svelte/pois/PoiPin.svelte';
 			currentDetail();
 		});
 	});
-
-	// let poi1 = mapController.makerPin(
-	// 	center.lat,
-	// 	center.lng,
-	// 	'popper',
-	// 	'',
-	// 	'#23B63C',
-	// 	'테이테이터명테이테이터명테이테이터명테이테이터명',
-	// 	'category',
-	// 	'191',
-	// );
-	// let poi12 = mapController.makerPin(
-	// 	37.52825838989,
-	// 	126.9692721723763,
-	// 	'food',
-	// 	'',
-	// 	'#F29AD5',
-	// 	'테이테이터명테이테이',
-	// 	'category',
-	// 	'190',
-	// );
-	// let poi2 = mapController.makerPin(37.527925838989, center.lng, '/images/poi/poi-center-select.png', '보통', 'green');
-	// let poi3 = mapController.makerPin(
-	// 	37.52825838989,
-	// 	126.9692721723763,
-	// 	'food',
-	// 	'주의',
-	// 	'orange',
-	// 	'테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명',
-	// );
-	// let poi4 = mapController.makerPin(
-	// 	37.52815838989,
-	// 	center.lng,
-	// 	'/images/poi/poi-center-select.png',
-	// 	'여유',
-	// 	'blue',
-	// 	'테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명테이테이터명테이터명테이터명테이터명터명',
-	// );
 </script>

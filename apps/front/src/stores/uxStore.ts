@@ -1,10 +1,9 @@
-import { atom, batch, computed } from 'nanostores';
-
 import { type BottomSheetRef } from '@/utils/uxEvent.type';
+import { atom, batch, computed } from 'nanostores';
 
 type LayoutView = 'default' | 'facilities' | 'ai' | 'search' | 'path' | 'directions';
 type DetailView = 'idle' | 'ai' | 'facilities' | 'search' | 'path' | 'directions';
-type SearchView = 'idle' | 'result' | 'searchResult' | 'directions';
+type SearchView = 'idle' | 'recommend' | 'result' | 'searchResult' | 'directions';
 type RouteView = 'idle' | 'path' | 'directions';
 type RecommendView = 'idle' | 'loading' | 'result' | 'empty';
 

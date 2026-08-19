@@ -6,8 +6,6 @@
 	import Thumb from '@/svelte/thumb/Thumb.svelte';
 	import { facilityCurrent } from '@/utils/detail.svelte.ts';
 	import { current } from '@/stores/pageDataStore';
-
-	$inspect($facilityCurrent?.poisMatch?.facilityPoiMappings);
 </script>
 
 {#if ($facilityCurrent?.facilityOtherList?.length ?? 0) > 1}

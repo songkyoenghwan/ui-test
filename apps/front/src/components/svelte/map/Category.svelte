@@ -23,8 +23,8 @@
 {#if $layoutViewState === 'default' || $layoutViewState === 'ai' || $layoutViewState === 'search'}
 	<section
 		class={[
-			'fixed top-16 z-40 grid w-full max-w-dvw items-center transition-all starting:divide-transparent',
-			$searchViewState === 'result' &&
+			'fixed top-16 z-60 grid w-full max-w-dvw items-center transition-all starting:divide-transparent',
+			($searchViewState === 'recommend' || $searchViewState === 'result') &&
 				'h-[calc(100dvh-4rem)] min-h-0 grid-rows-[48px_minmax(0,1fr)] divide-y-4 divide-slate-200 bg-white',
 		]}
 	>
@@ -88,7 +88,7 @@
 			</ul>
 		{/if}
 
-		{#if $searchViewState === 'result'}
+		{#if $searchViewState === 'recommend' || $searchViewState === 'result'}
 			<Recommended />
 		{/if}
 	</section>
