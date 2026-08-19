@@ -12,7 +12,7 @@
 				? 'rounded-full border border-white bg-(--category-color)'
 				: reverse === 'poi-current'
 					? 'bg-white'
-					: 'bg-(--category-color)',
+					: 'shadow-3xs border border-white bg-(--category-color)',
 		]}
 		style:--category-color={color}
 	>
@@ -27,11 +27,11 @@
 {/snippet}
 
 {#if name}
-	<span class="flex items-center gap-2">
+	<span class="flex min-w-0 items-center gap-2">
 		{@render bgIcon()}
 
 		{#if name}
-			<span class="text-sm text-slate-700">
+			<span class="truncate text-sm text-slate-700">
 				{name}
 			</span>
 		{/if}

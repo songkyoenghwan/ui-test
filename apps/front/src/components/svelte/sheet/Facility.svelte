@@ -48,10 +48,20 @@
 	let hiddenState = $derived.by(() => $sheetSnapPoint >= $sheetMaxRatioValue * 100);
 </script>
 
+{#snippet midContents()}
+	<div class="pb-1" bind:clientHeight={null, setSheetMidH}>
+		<Address />
+
+		<VehicleNavigation />
+
+		<CommonButtons />
+	</div>
+{/snippet}
+
 <Overview />
 
 <div class="pb-1" bind:clientHeight={null, setSheetMidH}>
-	<div class={[hiddenState ? ' opacity-0 transition-all delay-10' : '']}>
+	<div class={[hiddenState ? 'opacity-0 transition-all delay-5' : '']}>
 		<OperationInformation variant="state" />
 	</div>
 

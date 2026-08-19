@@ -118,7 +118,8 @@
 	placement="center"
 	size="none"
 	fullscreen
-	class="h-dvh max-h-dvh max-w-dvw divide-transparent rounded-none bg-slate-800 *:h-dvh *:p-0"
+	class="model-thumb h-dvh max-h-dvh max-w-dvw divide-transparent overflow-clip rounded-none bg-slate-800 *:h-dvh *:p-0"
+	classes={{ header: 'p-0 md:p-0', body: 'p-0 md:p-0 overflow-hidden' }}
 >
 	<div class="flex h-full w-full items-center justify-center overflow-hidden">
 		<div {@attach swiperAttach} class="swiper h-full w-full max-w-full min-w-0 overflow-hidden">
@@ -151,7 +152,8 @@
 	<div class="fixed top-5 right-5 z-50">
 		<button
 			type="button"
-			class=" grid size-10 place-content-center rounded-lg bg-white"
+			class="grid size-10 cursor-pointer place-content-center rounded-lg bg-white"
+			aria-label="Close"
 			onclick={() => (defaultModal = !defaultModal)}
 		>
 			<Icons name="close-circle" cls="size-4 stroke-black" />
@@ -166,5 +168,11 @@
 		border-radius: 0.25rem;
 		background-color: var(--color-fff);
 		transition: all ease-in 0.2s;
+	}
+
+	:global(.model-thumb) {
+		& > button[type='submit'] {
+			display: none;
+		}
 	}
 </style>
