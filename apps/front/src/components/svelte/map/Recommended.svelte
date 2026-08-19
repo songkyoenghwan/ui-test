@@ -62,8 +62,6 @@
 			search: 'searchResult',
 		});
 	};
-
-	$inspect(visibleItems);
 </script>
 
 <ul bind:this={listEl} class="h-full min-h-0 divide-y divide-slate-200 overflow-x-clip overflow-y-auto scroll-smooth">

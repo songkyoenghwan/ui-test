@@ -1,10 +1,9 @@
-import { atom, map } from 'nanostores';
-import { z } from 'zod';
-
 import type { CategoryDetailResponse } from '@/types/categories';
 import type { FacilityDetailResponse, FacilityListResponse } from '@/types/facilities';
 import type { PoiDetailResponse, PoiListResponse } from '@/types/pois';
 import type { TourDestinationDetailResponse, TourDestinationListResponse } from '@/types/tour-destinations';
+import { atom, map } from 'nanostores';
+import { z } from 'zod';
 
 export const CurrentSchema = z.object({
 	destination: z.number(),
@@ -74,6 +73,8 @@ export async function loadDestination(destinationId: number) {
 	poiList.set(poiData?.data?.items ?? []);
 	facilityList.set(facilityData?.data?.items ?? []);
 	searchList.set(facilityData.data.items ?? []);
+
+	console.log(categoryList.get());
 }
 
 export async function currentDetail() {

@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { categoryState, langState, pickText } from '@/stores/globalStore';
-	import { categoryList } from '@/stores/pageDataStore';
+	import { categoryList, searchResultList } from '@/stores/pageDataStore';
 	import { layoutViewState, searchViewState, updateViewState } from '@/stores/uxStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
 	import Recommended from '@/svelte/map/Recommended.svelte';
+	import { facilityList } from '@/stores/pageDataStore';
+	import type { CategoryDetailResponse } from '@/types/categories';
 
 	const sortedCategories = $derived.by(() => {
 		if (!$categoryList.length) return [];
@@ -11,7 +13,12 @@
 		return [...$categoryList].sort((a, b) => Number(b.isEventCategory) - Number(a.isEventCategory));
 	});
 
-	const onCategoryHandler = () => {
+	const onCategoryHandler = (category: CategoryDetailResponse) => {
+		const findFa = ($facilityList ?? []).filter((f) => f?.category?.iconKey === category.iconKey);
+
+		categoryState.set(`${pickText(category?.name, $langState)}`);
+		searchResultList.set(findFa);
+
 		updateViewState({
 			layout: 'search',
 			detail: 'search',
@@ -71,12 +78,11 @@
 									id={`category-${category.id}`}
 									class="sr-only"
 									value={category.iconKey}
-									bind:group={$categoryState}
 									onchange={(e: Event) => {
 										const input = e.currentTarget as HTMLInputElement;
 
 										if (input.checked) {
-											onCategoryHandler();
+											onCategoryHandler(category);
 										}
 									}}
 								/>
