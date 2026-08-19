@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { recommendList } from '@/src/stores/pageDataStore';
 	import {
 		setSheetScrollRef,
 		sheetMaxRatioValue,
@@ -14,7 +13,6 @@
 		sheetInstance,
 		sheetScrollPoint,
 		sheetSnapPoint,
-		viewDri,
 		viewportH,
 	} from '@/stores/uxStore';
 	import ConfusionState from '@/svelte/map/ConfusionState.svelte';

@@ -9,16 +9,16 @@ import '@/svelte/pois/PoiPin.svelte';
 <script>
 	import '@/svelte/pois/PoiPin.svelte';
 	import MapController from '@/events/mapEvent';
-	import { updateViewState } from '@/stores/uxStore';
 	import {
 		current,
-		poiList,
-		loadDestination,
 		currentDetail,
+		facilityList,
+		loadDestination,
+		poiList,
 		recommendList,
 		searchList,
-		facilityList,
 	} from '@/stores/pageDataStore';
+	import { updateViewState } from '@/stores/uxStore';
 
 	const mapController = new MapController();
 	mapController.containerId = 'MapCanvas';

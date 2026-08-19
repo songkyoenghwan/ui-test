@@ -1,8 +1,8 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
-	import { searchList, recommendList } from '@/stores/pageDataStore';
-	import { searchViewState, updateViewState } from '@/stores/uxStore';
 	import { langState, pickText } from '@/stores/globalStore';
+	import { recommendList, searchList } from '@/stores/pageDataStore';
+	import { searchViewState, updateViewState } from '@/stores/uxStore';
 	import IconCategory from '@/svelte/icons/IconCategory.svelte';
 	import Icons from '@/svelte/icons/Icons.svelte';
 

@@ -2,8 +2,8 @@
 	import * as m from '@/paraglide/messages';
 	import { langState } from '@/stores/globalStore';
 	import Icons from '@/svelte/icons/Icons.svelte';
-	import { Clipboard } from 'flowbite-svelte';
 	import { facilityCurrent } from '@/utils/detail.svelte.ts';
+	import { Clipboard } from 'flowbite-svelte';
 
 	let value = $derived(`${$facilityCurrent?.facilityDetail?.contact}`);
 	let success = $state(false);

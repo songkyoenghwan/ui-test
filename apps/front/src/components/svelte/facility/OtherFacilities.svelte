@@ -1,11 +1,11 @@
 <script lang="ts">
 	import * as m from '@/paraglide/messages';
 	import { langState, pickText } from '@/stores/globalStore';
-	import Icons from '@/svelte/icons/Icons.svelte';
+	import { current } from '@/stores/pageDataStore';
 	import IconCategory from '@/svelte/icons/IconCategory.svelte';
+	import Icons from '@/svelte/icons/Icons.svelte';
 	import Thumb from '@/svelte/thumb/Thumb.svelte';
 	import { facilityCurrent } from '@/utils/detail.svelte.ts';
-	import { current } from '@/stores/pageDataStore';
 </script>
 
 {#if ($facilityCurrent?.facilityOtherList?.length ?? 0) > 1}

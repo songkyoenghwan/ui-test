@@ -1,3 +1,5 @@
+import { computed } from 'nanostores';
+
 import {
 	categoryList,
 	destinationDetail,
@@ -8,7 +10,6 @@ import {
 	facilityOtherList,
 	poiList,
 } from '@/stores/pageDataStore';
-import { computed } from 'nanostores';
 
 export const facilityCurrent = computed(
 	[facility, facilityDetail, facilityList, poiList, destinationDetail, destinationList, categoryList, facilityOtherList],
