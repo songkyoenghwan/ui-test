@@ -1,0 +1,49 @@
+---
+import Language from '@/components/btn/Language.svelte';
+---
+
+<section class="h-dvh bg-slate-50">
+	<header class="flex flex-col bg-white p-5 *:leading-tight">
+		<div class="flex items-center justify-between">
+			<h2 class="text-base text-slate-500">
+				잠깐만요!<br />
+				몇 가지만 여쭤볼게요.
+			</h2>
+			<Language client:only />
+		</div>
+	</header>
+
+	<ul>
+		<li>
+			<div class="bg-white px-5">
+				<p class="text-111 pt-5 text-[22px]">왕왕왕왕왕왕왕왕왕왕 왕왕왕왕왕왕왕왕왕왕</p>
+				<p class="mt-2 text-sm text-slate-500">*여러 항목을 선택할 수 있어요</p>
+			</div>
+
+			<ul class="overflow-y-auto bg-slate-50 p-5">
+				<li>
+					<label for="" class="flex rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-black">
+						왕왕왕왕왕왕왕왕왕왕왕왕왕왕왕
+					</label>
+				</li>
+			</ul>
+
+			<div
+				class="w-full flex-row flex-nowrap items-center justify-center gap-2 border-t border-slate-200 bg-slate-50 px-5 py-2 *:inline-flex *:items-center *:text-base *:text-slate-500"
+			>
+				<button type="button" class="h-10 flex-[0_0_80px] justify-center rounded-sm border border-slate-300 bg-white">
+					<span>이전</span>
+				</button>
+				<button type="button" class="h-10 flex-1 justify-center rounded-sm border border-slate-300 bg-white">
+					<span>다음</span>
+				</button>
+			</div>
+		</li>
+	</ul>
+
+	<div class="text-center">
+		<a href="http://" target="_blank" rel="noopener noreferrer" class="flex justify-center text-sm text-slate-500">
+			<p>설문 건너뛰기</p>
+		</a>
+	</div>
+</section>

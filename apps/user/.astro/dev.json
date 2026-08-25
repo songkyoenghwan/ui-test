@@ -1,0 +1,20 @@
+{
+	"pid": 36122,
+	"port": 5294,
+	"url": "http://localhost:5294",
+	"urls": {
+		"local": [
+			"http://localhost:5294/"
+		],
+		"network": [
+			"http://192.168.1.189:5294/",
+			"http://169.254.211.217:5294/"
+		],
+		"networkInterfaceNames": [
+			"en0",
+			"en7"
+		]
+	},
+	"background": false,
+	"startedAt": "2026-08-25T03:07:13.032Z"
+}

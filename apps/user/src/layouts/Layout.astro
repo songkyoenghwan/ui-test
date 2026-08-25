@@ -1,0 +1,78 @@
+---
+import '@/styles/index.css';
+import { colorState } from '@/stores/globalStore';
+
+const baseColor = colorState.get();
+
+const normalizeLocale = (value?: string | null) => {
+	if (!value) return null;
+
+	const locale = value.toLowerCase();
+
+	if (locale.startsWith('ko')) return 'ko';
+	if (locale.startsWith('en')) return 'en';
+	if (locale.startsWith('ja')) return 'ja';
+	if (locale.startsWith('zh')) return 'zh';
+	if (locale.startsWith('vi')) return 'vi';
+	if (locale.startsWith('th')) return 'th';
+
+	return null;
+};
+
+const cookieLocale = normalizeLocale(Astro.cookies.get('PARAGLIDE_LOCALE')?.value);
+
+const acceptLanguage = Astro.request.headers.get('accept-language');
+const headerLocale = normalizeLocale(acceptLanguage?.split(',')[0]?.split(';')[0]?.trim());
+
+const locale = cookieLocale ?? headerLocale ?? 'ko';
+---
+
+<!doctype html>
+<html lang={locale} data-locale={locale}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<script is:inline src="/api/tmap/vectorjs?version=1"></script>
+		<title>front</title>
+	</head>
+	<body style={{ '--base-color': baseColor }} class="group/body touch-manipulation">
+		<slot />
+
+		<script>
+			import { setLang } from '@/stores/globalStore';
+
+			const normalizeLocale = (value) => {
+				if (!value) return null;
+
+				const locale = value.toLowerCase();
+
+				if (locale.startsWith('ko')) return 'ko';
+				if (locale.startsWith('en')) return 'en';
+				if (locale.startsWith('ja')) return 'ja';
+				if (locale.startsWith('zh')) return 'zh';
+				if (locale.startsWith('vi')) return 'vi';
+				if (locale.startsWith('th')) return 'th';
+
+				return null;
+			};
+
+			const getDeviceLocale = () => {
+				const preferred = navigator.languages?.[0] ?? navigator.language;
+				return normalizeLocale(preferred) ?? 'ko';
+			};
+
+			const syncLocale = async () => {
+				const nextLocale = getDeviceLocale();
+
+				await setLang(nextLocale);
+			};
+
+			if (localStorage.getItem('lang') === null) {
+				syncLocale();
+			}
+		</script>
+	</body>
+</html>

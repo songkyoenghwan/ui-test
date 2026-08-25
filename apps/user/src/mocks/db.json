@@ -1,0 +1,4610 @@
+{
+	"pois": {
+		"success": true,
+		"data": {
+			"items": [
+				{
+					"id": 62,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "이촌어린이공원",
+						"en": "Ichon Children's Park",
+						"zh": "一川儿童公园",
+						"ja": "イチョン子供公園",
+						"th": "สวนเด็กอิชอน",
+						"vi": "Công viên thiếu nhi Ichon"
+					},
+					"latitude": 37.52009436713452,
+					"longitude": 126.9792189664859,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌동 413-1",
+						"en": "413-1 Ichon-dong, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:11954108",
+					"isVisible": true,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-12T11:06:12.836Z",
+					"facilityPoiMappings": [
+						{
+							"id": 65,
+							"facilityId": 190,
+							"facility": {
+								"id": 190,
+								"name": {
+									"ko": "위치서생성",
+									"en": "Location generation",
+									"zh": "位置生成",
+									"ja": "位置情報生成",
+									"th": "การสร้างตำแหน่งที่ตั้ง",
+									"vi": "Tạo vị trí"
+								},
+								"category": {
+									"id": 29,
+									"name": {
+										"ko": "행사부스",
+										"en": "Event booth",
+										"zh": "活动展位",
+										"ja": "イベントブース",
+										"th": "บูธกิจกรรม",
+										"vi": "Gian hàng sự kiện"
+									},
+									"iconKey": "popper",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						},
+						{
+							"id": 60,
+							"facilityId": 174,
+							"facility": {
+								"id": 174,
+								"name": {
+									"ko": "이촌어린이공원",
+									"en": "Ichon Children's Park",
+									"ja": "イチョン子供公園",
+									"zh": "一川儿童公园",
+									"th": "สวนเด็กอิชอน",
+									"vi": "Công viên thiếu nhi Ichon"
+								},
+								"category": {
+									"id": 4,
+									"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 4, "colorCode": "#5DE251" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 64,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "청소년광장",
+						"en": "Youth Plaza",
+						"zh": "青年广场",
+						"ja": "青年広場",
+						"th": "จัตุรัสเยาวชน",
+						"vi": "Quảng trường Thanh niên"
+					},
+					"latitude": 37.52009819,
+					"longitude": 126.96238491,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌동 361-1",
+						"en": "361-1 Ichon-dong, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:4099896",
+					"isVisible": true,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T20:36:40.447Z",
+					"facilityPoiMappings": [
+						{
+							"id": 66,
+							"facilityId": 191,
+							"facility": {
+								"id": 191,
+								"name": {
+									"ko": "생서테스트",
+									"en": "Generation test",
+									"zh": "世代测试",
+									"ja": "生成テスト",
+									"th": "การทดสอบรุ่น",
+									"vi": "Kiểm thử thế hệ"
+								},
+								"category": {
+									"id": 29,
+									"name": {
+										"ko": "행사부스",
+										"en": "Event booth",
+										"zh": "活动展位",
+										"ja": "イベントブース",
+										"th": "บูธกิจกรรม",
+										"vi": "Gian hàng sự kiện"
+									},
+									"iconKey": "popper",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						},
+						{
+							"id": 62,
+							"facilityId": 176,
+							"facility": {
+								"id": 176,
+								"name": {
+									"ko": "청소년광장",
+									"en": "Youth Plaza",
+									"ja": "青年広場",
+									"zh": "青年广场",
+									"th": "จัตุรัสเยาวชน",
+									"vi": "Quảng trường Thanh niên"
+								},
+								"category": {
+									"id": 4,
+									"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 4, "colorCode": "#5DE251" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 59,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "강변어린이공원",
+						"en": "Riverside Children's Park",
+						"zh": "河滨儿童公园",
+						"ja": "川沿いの子供公園",
+						"th": "สวนเด็กริเวอร์ไซด์",
+						"vi": "Công viên trẻ em Riverside"
+					},
+					"latitude": 37.52694270126081,
+					"longitude": 126.9734966146444,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 용산동5가 5",
+						"en": "5 Yongsan-dong 5(o)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8804826",
+					"isVisible": true,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-12T11:06:35.356Z",
+					"facilityPoiMappings": [
+						{
+							"id": 57,
+							"facilityId": 171,
+							"facility": {
+								"id": 171,
+								"name": {
+									"ko": "강변어린이공원",
+									"en": "Riverside Children's Park",
+									"ja": "川沿いの子供公園",
+									"zh": "河滨儿童公园",
+									"th": "สวนเด็กริเวอร์ไซด์",
+									"vi": "Công viên trẻ em Riverside"
+								},
+								"category": {
+									"id": 4,
+									"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 4, "colorCode": "#5DE251" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 63,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "용산어린이정원",
+						"en": "Yongsan Children's Garden",
+						"ja": "龍山子供庭園",
+						"zh": "龙山儿童花园",
+						"th": "สวนเด็กยงซาน",
+						"vi": "Vườn thiếu nhi Yongsan"
+					},
+					"latitude": 37.5283196,
+					"longitude": 126.97027285,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 용산동5가 2-45",
+						"en": "2-45 Yongsan-dong 5(o)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:11035821",
+					"isVisible": false,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T17:27:28.785Z",
+					"facilityPoiMappings": [
+						{
+							"id": 61,
+							"facilityId": 175,
+							"facility": {
+								"id": 175,
+								"name": {
+									"ko": "용산어린이정원",
+									"en": "Yongsan Children's Garden",
+									"ja": "龍山子供庭園",
+									"zh": "龙山儿童花园",
+									"th": "สวนเด็กยงซาน",
+									"vi": "Vườn thiếu nhi Yongsan"
+								},
+								"category": {
+									"id": 4,
+									"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 4, "colorCode": "#5DE251" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 60,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "꿈나무어린이공원",
+						"en": "Dream Tree Children's Park",
+						"ja": "夢の木の子供公園",
+						"zh": "梦树儿童公园",
+						"th": "สวนเด็กดรีมทรี",
+						"vi": "Công viên thiếu nhi Dream Tree"
+					},
+					"latitude": 37.52090382,
+					"longitude": 126.97193958,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌로",
+						"en": "Ichon-ro, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8934537",
+					"isVisible": true,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 58,
+							"facilityId": 172,
+							"facility": {
+								"id": 172,
+								"name": {
+									"ko": "꿈나무어린이공원",
+									"en": "Dream Tree Children's Park",
+									"ja": "夢の木の子供公園",
+									"zh": "梦树儿童公园",
+									"th": "สวนเด็กดรีมทรี",
+									"vi": "Công viên thiếu nhi Dream Tree"
+								},
+								"category": {
+									"id": 4,
+									"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 4, "colorCode": "#5DE251" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 61,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "이촌한강공원 1주차장",
+						"en": "Ichon Hangang Park Parking Lot 1",
+						"ja": "利村漢江公園1駐車場",
+						"zh": "二村汉江公园第1停车场",
+						"th": "ลานจอดรถสวนสาธารณะอีชอนฮันกัง 1",
+						"vi": "Bãi đậu xe công viên Ichon Hangang 1"
+					},
+					"latitude": 37.51796008,
+					"longitude": 126.99213226,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 서빙고동 287-4",
+						"en": "287-4 Seobinggo-dong, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:395143",
+					"isVisible": true,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 59,
+							"facilityId": 173,
+							"facility": {
+								"id": 173,
+								"name": {
+									"ko": "이촌한강공원 1주차장",
+									"en": "Ichon Hangang Park Parking Lot 1",
+									"ja": "利村漢江公園1駐車場",
+									"zh": "二村汉江公园第1停车场",
+									"th": "ลานจอดรถสวนสาธารณะอีชอนฮันกัง 1",
+									"vi": "Bãi đậu xe công viên Ichon Hangang 1"
+								},
+								"category": {
+									"id": 4,
+									"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 4, "colorCode": "#5DE251" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 24,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 LG유플러스용산점",
+						"en": "GS25 LG Uplus Yongsan Branch",
+						"ja": "GS25 LGユープラス龍山店",
+						"zh": "GS25 LG Uplus 龙山分店",
+						"th": "GS25 LG Uplus สาขายงซาน",
+						"vi": "GS25 LG Uplus Chi nhánh Yongsan"
+					},
+					"latitude": 37.52415329,
+					"longitude": 126.96335693,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 65-557",
+						"en": "65-557 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:6453724",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 22,
+							"facilityId": 136,
+							"facility": {
+								"id": 136,
+								"name": {
+									"ko": "GS25 LG유플러스용산점",
+									"en": "GS25 LG Uplus Yongsan Branch",
+									"ja": "GS25 LGユープラス龍山店",
+									"zh": "GS25 LG Uplus 龙山分店",
+									"th": "GS25 LG Uplus สาขายงซาน",
+									"vi": "GS25 LG Uplus Chi nhánh Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 25,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 나인트리로카우스점",
+						"en": "GS25 Nine Tree Locows branch",
+						"ja": "GS25ナイントリロカウス店",
+						"zh": "GS25 九树牛分部",
+						"th": "สาขาไนน์ทรีโลคาวส์ GS25",
+						"vi": "GS25 Chi nhánh Nine Tree Locows"
+					},
+					"latitude": 37.52745849,
+					"longitude": 126.96460673,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 40-717",
+						"en": "40-717 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:11126415",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 23,
+							"facilityId": 137,
+							"facility": {
+								"id": 137,
+								"name": {
+									"ko": "GS25 나인트리로카우스점",
+									"en": "GS25 Nine Tree Locows branch",
+									"ja": "GS25ナイントリロカウス店",
+									"zh": "GS25 九树牛分部",
+									"th": "สาขาไนน์ทรีโลคาวส์ GS25",
+									"vi": "GS25 Chi nhánh Nine Tree Locows"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 27,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 용산LS타워점",
+						"en": "GS25 Yongsan LS Tower Branch",
+						"ja": "GS25龍山LSタワー店",
+						"zh": "GS25 龙山 LS 塔分店",
+						"th": "สาขา GS25 ยงซาน LS ทาวเวอร์",
+						"vi": "Chi nhánh GS25 Yongsan LS Tower"
+					},
+					"latitude": 37.52831955,
+					"longitude": 126.9673009,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 226-4",
+						"en": "226-4 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:2776629",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 25,
+							"facilityId": 139,
+							"facility": {
+								"id": 139,
+								"name": {
+									"ko": "GS25 용산LS타워점",
+									"en": "GS25 Yongsan LS Tower Branch",
+									"ja": "GS25龍山LSタワー店",
+									"zh": "GS25 龙山 LS 塔分店",
+									"th": "สาขา GS25 ยงซาน LS ทาวเวอร์",
+									"vi": "Chi nhánh GS25 Yongsan LS Tower"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 29,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 신용산래미안점 주차장",
+						"en": "CU Shinyongsan Raemian Branch Parking Lot",
+						"ja": "CUクレジットサンラミアン店駐車場",
+						"zh": "CU新龙山来面分店停车场",
+						"th": "ลานจอดรถจุฬาฯ สาขาชินยงซานเรเมียน",
+						"vi": "Bãi đậu xe chi nhánh CU Shinyongsan Raemian"
+					},
+					"latitude": 37.52887502,
+					"longitude": 126.96613432,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 한강대로 39-4",
+						"en": "39-4 Hangang-daero, Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8674029",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 27,
+							"facilityId": 141,
+							"facility": {
+								"id": 141,
+								"name": {
+									"ko": "CU 신용산래미안점 주차장",
+									"en": "CU Shinyongsan Raemian Branch Parking Lot",
+									"ja": "CUクレジットサンラミアン店駐車場",
+									"zh": "CU新龙山来面分店停车场",
+									"th": "ลานจอดรถจุฬาฯ สาขาชินยงซานเรเมียน",
+									"vi": "Bãi đậu xe chi nhánh CU Shinyongsan Raemian"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 30,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "STORYWAY",
+						"en": "STORYWAY",
+						"ja": "STORYWAY",
+						"zh": "故事",
+						"th": "สตอรี่เวย์",
+						"vi": "CÂU CHUYỆN"
+					},
+					"latitude": 37.52790285,
+					"longitude": 126.96313462,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 40-1010",
+						"en": "40-1010 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8095168",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 28,
+							"facilityId": 142,
+							"facility": {
+								"id": 142,
+								"name": {
+									"ko": "STORYWAY",
+									"en": "STORYWAY",
+									"ja": "STORYWAY",
+									"zh": "故事",
+									"th": "สตอรี่เวย์",
+									"vi": "CÂU CHUYỆN"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 32,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 용산땡땡거리점",
+						"en": "CU Yongsan Ttengtteng Street Branch",
+						"ja": "CU龍山水玉店",
+						"zh": "CU龙山滕滕街分行",
+						"th": "CU สาขาถนนยงซานเต็งเต็ง",
+						"vi": "Chi nhánh đường CU Yongsan Ttengtteng"
+					},
+					"latitude": 37.52520868,
+					"longitude": 126.96099601,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 40-368",
+						"en": "40-368 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:11611815",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 30,
+							"facilityId": 144,
+							"facility": {
+								"id": 144,
+								"name": {
+									"ko": "CU 용산땡땡거리점",
+									"en": "CU Yongsan Ttengtteng Street Branch",
+									"ja": "CU龍山水玉店",
+									"zh": "CU龙山滕滕街分行",
+									"th": "CU สาขาถนนยงซานเต็งเต็ง",
+									"vi": "Chi nhánh đường CU Yongsan Ttengtteng"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 33,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 아모레퍼시픽점",
+						"en": "Seven Eleven Amorepacific Store",
+						"ja": "セブンイレブンアモーレパシフィック店",
+						"zh": "7-11 爱茉莉太平洋商店",
+						"th": "ร้านเซเว่นอีเลฟเว่น อามอร์แปซิฟิก",
+						"vi": "Cửa hàng Seven Eleven Amorepacific"
+					},
+					"latitude": 37.52879174,
+					"longitude": 126.96866187,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강대로 100",
+						"en": "100 Hangang-daero, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12028323",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 31,
+							"facilityId": 145,
+							"facility": {
+								"id": 145,
+								"name": {
+									"ko": "세븐일레븐 아모레퍼시픽점",
+									"en": "Seven Eleven Amorepacific Store",
+									"ja": "セブンイレブンアモーレパシフィック店",
+									"zh": "7-11 爱茉莉太平洋商店",
+									"th": "ร้านเซเว่นอีเลฟเว่น อามอร์แปซิฟิก",
+									"vi": "Cửa hàng Seven Eleven Amorepacific"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 34,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "STORYWAY 용산역",
+						"en": "STORYWAY Yongsan Station",
+						"ja": "STORYWAY 龍山駅",
+						"zh": "故事 龙山站",
+						"th": "สตอรี่เวย์ สถานียงซาน",
+						"vi": "STORYWAY Ga Yongsan"
+					},
+					"latitude": 37.52904166,
+					"longitude": 126.96568992,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 95-4",
+						"en": "95-4 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:1172033",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 32,
+							"facilityId": 146,
+							"facility": {
+								"id": 146,
+								"name": {
+									"ko": "STORYWAY 용산역",
+									"en": "STORYWAY Yongsan Station",
+									"ja": "STORYWAY 龍山駅",
+									"zh": "故事 龙山站",
+									"th": "สตอรี่เวย์ สถานียงซาน",
+									"vi": "STORYWAY Ga Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 36,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 아이파크몰용산점4층점",
+						"en": "7-Eleven I-Park Mall Yongsan Branch, 4th Floor",
+						"ja": "セブンイレブンアイパークモール龍山店4階店",
+						"zh": "7-Eleven I-Park Mall 龙山分店，4楼",
+						"th": "7-Eleven สาขายงซาน ศูนย์การค้าไอพาร์คมอลล์",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Yongsan, trung tâm thương mại I-Park, tầng 4."
+					},
+					"latitude": 37.52976378,
+					"longitude": 126.96471776,
+					"address": { "ko": "대한민국 서울특별시 용산역", "en": "Yongsan-Yeog, Seoul, South Korea" },
+					"managementCode": "tmap:12028800",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 34,
+							"facilityId": 148,
+							"facility": {
+								"id": 148,
+								"name": {
+									"ko": "세븐일레븐 아이파크몰용산점4층점",
+									"en": "7-Eleven I-Park Mall Yongsan Branch, 4th Floor",
+									"ja": "セブンイレブンアイパークモール龍山店4階店",
+									"zh": "7-Eleven I-Park Mall 龙山分店，4楼",
+									"th": "7-Eleven สาขายงซาน ศูนย์การค้าไอพาร์คมอลล์",
+									"vi": "Cửa hàng 7-Eleven chi nhánh Yongsan, trung tâm thương mại I-Park, tầng 4."
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 37,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 용산파크점",
+						"en": "7-Eleven Yongsan Park Branch",
+						"ja": "セブンイレブン龍山公園店",
+						"zh": "7-Eleven 龙山公园分店",
+						"th": "เซเว่นอีเลฟเว่น สาขายงซานพาร์ค",
+						"vi": "Chi nhánh 7-Eleven Công viên Yongsan"
+					},
+					"latitude": 37.52362572,
+					"longitude": 126.9716062,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 용산동5가 19-636",
+						"en": "19-636 Yongsan-dong 5(o)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:2441204",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 35,
+							"facilityId": 149,
+							"facility": {
+								"id": 149,
+								"name": {
+									"ko": "세븐일레븐 용산파크점",
+									"en": "7-Eleven Yongsan Park Branch",
+									"ja": "セブンイレブン龍山公園店",
+									"zh": "7-Eleven 龙山公园分店",
+									"th": "เซเว่นอีเลฟเว่น สาขายงซานพาร์ค",
+									"vi": "Chi nhánh 7-Eleven Công viên Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 38,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 동부이촌본점",
+						"en": "7-Eleven Dongbu Ichon Main Branch",
+						"ja": "セブンイレブン東部二村本店",
+						"zh": "7-Eleven 东部二村总店",
+						"th": "เซเว่นอีเลฟเว่น สาขาหลัก ดงบู อิชอน",
+						"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh chính Dongbu Ichon"
+					},
+					"latitude": 37.52123706,
+					"longitude": 126.96893984,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌로 196",
+						"en": "196 Ichon-ro, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:2440827",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 36,
+							"facilityId": 150,
+							"facility": {
+								"id": 150,
+								"name": {
+									"ko": "세븐일레븐 동부이촌본점",
+									"en": "7-Eleven Dongbu Ichon Main Branch",
+									"ja": "セブンイレブン東部二村本店",
+									"zh": "7-Eleven 东部二村总店",
+									"th": "เซเว่นอีเลฟเว่น สาขาหลัก ดงบู อิชอน",
+									"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh chính Dongbu Ichon"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 39,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 용산역점",
+						"en": "CU Yongsan Station Branch",
+						"ja": "CU龍山駅店",
+						"zh": "CU龙山站分行",
+						"th": "สาขาสถานี CU ยงซาน",
+						"vi": "Chi nhánh ga Yongsan của Đại học Colorado"
+					},
+					"latitude": 37.53026377,
+					"longitude": 126.9673564,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 2-424",
+						"en": "2-424 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:1539427",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 37,
+							"facilityId": 151,
+							"facility": {
+								"id": 151,
+								"name": {
+									"ko": "CU 용산역점",
+									"en": "CU Yongsan Station Branch",
+									"ja": "CU龍山駅店",
+									"zh": "CU龙山站分行",
+									"th": "สาขาสถานี CU ยงซาน",
+									"vi": "Chi nhánh ga Yongsan của Đại học Colorado"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 41,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "로사무인편의점",
+						"en": "Rosa unmanned convenience store",
+						"ja": "ロサム人コンビニエンスストア",
+						"zh": "罗莎无人便利店",
+						"th": "ร้านสะดวกซื้อโรซ่าแบบไร้พนักงาน",
+						"vi": "Cửa hàng tiện lợi tự động Rosa"
+					},
+					"latitude": 37.52340331,
+					"longitude": 126.95938509,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌로 104",
+						"en": "104 Ichon-ro, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12857317",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 39,
+							"facilityId": 153,
+							"facility": {
+								"id": 153,
+								"name": {
+									"ko": "로사무인편의점",
+									"en": "Rosa unmanned convenience store",
+									"ja": "ロサム人コンビニエンスストア",
+									"zh": "罗莎无人便利店",
+									"th": "ร้านสะดวกซื้อโรซ่าแบบไร้พนักงาน",
+									"vi": "Cửa hàng tiện lợi tự động Rosa"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 42,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 용산파크타워점",
+						"en": "GS25 Yongsan Park Tower Branch",
+						"ja": "GS25龍山パークタワー店",
+						"zh": "GS25 龙山公园塔分店",
+						"th": "สาขา GS25 ยงซานพาร์คทาวเวอร์",
+						"vi": "Chi nhánh GS25 Tháp Công viên Yongsan"
+					},
+					"latitude": 37.52329245,
+					"longitude": 126.97277277,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 서빙고로 69",
+						"en": "69 Seobinggo-ro, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8547900",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 40,
+							"facilityId": 154,
+							"facility": {
+								"id": 154,
+								"name": {
+									"ko": "GS25 용산파크타워점",
+									"en": "GS25 Yongsan Park Tower Branch",
+									"ja": "GS25龍山パークタワー店",
+									"zh": "GS25 龙山公园塔分店",
+									"th": "สาขา GS25 ยงซานพาร์คทาวเวอร์",
+									"vi": "Chi nhánh GS25 Tháp Công viên Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 43,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 신용산점",
+						"en": "7-Eleven Shinyongsan Branch",
+						"ja": "セブンイレブン信用山店",
+						"zh": "7-Eleven 新龙山分店",
+						"th": "เซเว่นอีเลฟเว่น สาขาชินยองซาน",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Shinyongsan"
+					},
+					"latitude": 37.53031935,
+					"longitude": 126.96957841,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강대로40길 5 2층",
+						"en": "South Korea, Seoul, Yongsan District, Hangang-daero 40-gil, 5 2층"
+					},
+					"managementCode": "tmap:7868062",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 41,
+							"facilityId": 155,
+							"facility": {
+								"id": 155,
+								"name": {
+									"ko": "세븐일레븐 신용산점",
+									"en": "7-Eleven Shinyongsan Branch",
+									"ja": "セブンイレブン信用山店",
+									"zh": "7-Eleven 新龙山分店",
+									"th": "เซเว่นอีเลฟเว่น สาขาชินยองซาน",
+									"vi": "Cửa hàng 7-Eleven chi nhánh Shinyongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 45,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 한강로마루점",
+						"en": "CU Hangang-ro Maru Branch",
+						"ja": "CU漢江ローマル店",
+						"zh": "CU Hangangro Maru分店",
+						"th": "CU สาขาฮันกังโร มารุ",
+						"vi": "Chi nhánh CU Hangang-ro Maru"
+					},
+					"latitude": 37.53068044,
+					"longitude": 126.97068941,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 112-3",
+						"en": "112-3 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8311987",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 43,
+							"facilityId": 157,
+							"facility": {
+								"id": 157,
+								"name": {
+									"ko": "CU 한강로마루점",
+									"en": "CU Hangang-ro Maru Branch",
+									"ja": "CU漢江ローマル店",
+									"zh": "CU Hangangro Maru分店",
+									"th": "CU สาขาฮันกังโร มารุ",
+									"vi": "Chi nhánh CU Hangang-ro Maru"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 46,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 용산한강로점",
+						"en": "CU Yongsan Hangang-ro Branch",
+						"ja": "CU龍山漢江路店",
+						"zh": "CU 龙山汉江路分行",
+						"th": "มหาวิทยาลัยแคลิฟอร์เนีย สาขายงซาน ฮันกังโร",
+						"vi": "Chi nhánh Yongsan Hangang-ro của Đại học Colorado"
+					},
+					"latitude": 37.5316803,
+					"longitude": 126.9692173,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강대로 118",
+						"en": "118 Hangang-daero, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:1539426",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 44,
+							"facilityId": 158,
+							"facility": {
+								"id": 158,
+								"name": {
+									"ko": "CU 용산한강로점",
+									"en": "CU Yongsan Hangang-ro Branch",
+									"ja": "CU龍山漢江路店",
+									"zh": "CU 龙山汉江路分行",
+									"th": "มหาวิทยาลัยแคลิฟอร์เนีย สาขายงซาน ฮันกังโร",
+									"vi": "Chi nhánh Yongsan Hangang-ro của Đại học Colorado"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 16,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 용산하이브점",
+						"en": "7-Eleven Yongsan Hive Branch",
+						"ja": "セブンイレブン龍山ハイブ店",
+						"zh": "7-Eleven 龙山蜂巢分店",
+						"th": "เซเว่นอีเลฟเว่น สาขายงซานไฮฟ์",
+						"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh Yongsan Hive"
+					},
+					"latitude": 37.52523652,
+					"longitude": 126.96449569,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 65-6",
+						"en": "65-6 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:10498122",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 14,
+							"facilityId": 128,
+							"facility": {
+								"id": 128,
+								"name": {
+									"ko": "세븐일레븐 용산하이브점",
+									"en": "7-Eleven Yongsan Hive Branch",
+									"ja": "セブンイレブン龍山ハイブ店",
+									"zh": "7-Eleven 龙山蜂巢分店",
+									"th": "เซเว่นอีเลฟเว่น สาขายงซานไฮฟ์",
+									"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh Yongsan Hive"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 19,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 푸르지오써밋점",
+						"en": "GS25 Prugio Summit branch",
+						"ja": "GS25プルジオサミット店",
+						"zh": "GS25 普鲁吉奥峰分部",
+						"th": "GS25 สาขา Prugio Summit",
+						"vi": "Chi nhánh GS25 Prugio Summit"
+					},
+					"latitude": 37.52709743,
+					"longitude": 126.96524557,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 390-1",
+						"en": "390-1 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12017592",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 17,
+							"facilityId": 131,
+							"facility": {
+								"id": 131,
+								"name": {
+									"ko": "GS25 푸르지오써밋점",
+									"en": "GS25 Prugio Summit branch",
+									"ja": "GS25プルジオサミット店",
+									"zh": "GS25 普鲁吉奥峰分部",
+									"th": "GS25 สาขา Prugio Summit",
+									"vi": "Chi nhánh GS25 Prugio Summit"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 22,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 용산해링턴파크점",
+						"en": "7-Eleven Yongsan Harrington Park Branch",
+						"ja": "セブンイレブン龍山ハリントンパーク店",
+						"zh": "7-Eleven 龙山哈灵顿公园分店",
+						"th": "เซเว่นอีเลฟเว่น สาขายงซาน แฮร์ริงตันพาร์ค",
+						"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh Yongsan Harrington Park"
+					},
+					"latitude": 37.52368121,
+					"longitude": 126.96782876,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 65-391",
+						"en": "65-391 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12028056",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 20,
+							"facilityId": 134,
+							"facility": {
+								"id": 134,
+								"name": {
+									"ko": "세븐일레븐 용산해링턴파크점",
+									"en": "7-Eleven Yongsan Harrington Park Branch",
+									"ja": "セブンイレブン龍山ハリントンパーク店",
+									"zh": "7-Eleven 龙山哈灵顿公园分店",
+									"th": "เซเว่นอีเลฟเว่น สาขายงซาน แฮร์ริงตันพาร์ค",
+									"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh Yongsan Harrington Park"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 26,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 신용산아스테리움점",
+						"en": "CU Shinyongsan Asterium Branch",
+						"ja": "CU信用山アステリウム店",
+						"zh": "CU新龙山Asterium分校",
+						"th": "สาขาซียูชินยงซานแอสเทเรียม",
+						"vi": "Chi nhánh Asterium CU Shinyongsan"
+					},
+					"latitude": 37.52679197,
+					"longitude": 126.96888413,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 용산동5가 1-45",
+						"en": "1-45 Yongsan-dong 5(o)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:10990430",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 24,
+							"facilityId": 138,
+							"facility": {
+								"id": 138,
+								"name": {
+									"ko": "CU 신용산아스테리움점",
+									"en": "CU Shinyongsan Asterium Branch",
+									"ja": "CU信用山アステリウム店",
+									"zh": "CU新龙山Asterium分校",
+									"th": "สาขาซียูชินยงซานแอสเทเรียม",
+									"vi": "Chi nhánh Asterium CU Shinyongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 28,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "이마트24 용산트럼프월드점",
+						"en": "E-mart24 Yongsan Trump World Branch",
+						"ja": "イマート24龍山トランプワールド店",
+						"zh": "E-mart24 龙山特朗普世界分店",
+						"th": "อีมาร์ท24 สาขายงซาน ทรัมป์เวิลด์",
+						"vi": "E-mart24 Chi nhánh Trump World Yongsan"
+					},
+					"latitude": 37.52362557,
+					"longitude": 126.96288477,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 65-523",
+						"en": "65-523 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:9039566",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 26,
+							"facilityId": 140,
+							"facility": {
+								"id": 140,
+								"name": {
+									"ko": "이마트24 용산트럼프월드점",
+									"en": "E-mart24 Yongsan Trump World Branch",
+									"ja": "イマート24龍山トランプワールド店",
+									"zh": "E-mart24 龙山特朗普世界分店",
+									"th": "อีมาร์ท24 สาขายงซาน ทรัมป์เวิลด์",
+									"vi": "E-mart24 Chi nhánh Trump World Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 49,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 이촌2호점",
+						"en": "7-Eleven Ichon Branch No. 2",
+						"ja": "セブンイレブンイチョン2号店",
+						"zh": "7-Eleven 一川分店 2 号",
+						"th": "เซเว่นอีเลฟเว่น สาขาอิชอน หมายเลข 2",
+						"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh Ichon số 2"
+					},
+					"latitude": 37.52029279,
+					"longitude": 126.97252287,
+					"address": {
+						"ko": "대한민국 서울특별시 이촌동한강맨션.이촌역",
+						"en": "Ichon-dong Hangang Mansion. Ichon Station, Seoul, South Korea"
+					},
+					"managementCode": "tmap:217552",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 47,
+							"facilityId": 161,
+							"facility": {
+								"id": 161,
+								"name": {
+									"ko": "세븐일레븐 이촌2호점",
+									"en": "7-Eleven Ichon Branch No. 2",
+									"ja": "セブンイレブンイチョン2号店",
+									"zh": "7-Eleven 一川分店 2 号",
+									"th": "เซเว่นอีเลฟเว่น สาขาอิชอน หมายเลข 2",
+									"vi": "Cửa hàng tiện lợi 7-Eleven chi nhánh Ichon số 2"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 50,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 신용산점",
+						"en": "CU Shinyongsan Branch",
+						"ja": "CU信用山店",
+						"zh": "CU新龙山支行",
+						"th": "จุฬาฯ สาขาชินหยงซาน",
+						"vi": "Chi nhánh CU Shinyongsan"
+					},
+					"latitude": 37.53187475,
+					"longitude": 126.97074493,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 93-4번지",
+						"en": "93-4번지 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:217651",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 48,
+							"facilityId": 162,
+							"facility": {
+								"id": 162,
+								"name": {
+									"ko": "CU 신용산점",
+									"en": "CU Shinyongsan Branch",
+									"ja": "CU信用山店",
+									"zh": "CU新龙山支行",
+									"th": "จุฬาฯ สาขาชินหยงซาน",
+									"vi": "Chi nhánh CU Shinyongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 52,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "이마트24 용산메가트리움점",
+						"en": "E-mart24 Yongsan Megatrium Branch",
+						"ja": "イマート24龍山メガトリウム店",
+						"zh": "易买得24龙山Megatrium店",
+						"th": "E-mart24 สาขายงซานเมกาเทรียม",
+						"vi": "E-mart24 Chi nhánh Megatrium Yongsan"
+					},
+					"latitude": 37.53265243,
+					"longitude": 126.9700783,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 2-395",
+						"en": "2-395 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:9040301",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 50,
+							"facilityId": 164,
+							"facility": {
+								"id": 164,
+								"name": {
+									"ko": "이마트24 용산메가트리움점",
+									"en": "E-mart24 Yongsan Megatrium Branch",
+									"ja": "イマート24龍山メガトリウム店",
+									"zh": "易买得24龙山Megatrium店",
+									"th": "E-mart24 สาขายงซานเมกาเทรียม",
+									"vi": "E-mart24 Chi nhánh Megatrium Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 54,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "슬기로운편의점",
+						"en": "Smart Convenience Store",
+						"ja": "賢いコンビニエンスストア",
+						"zh": "智能便利店",
+						"th": "ร้านสะดวกซื้ออัจฉริยะ",
+						"vi": "Cửa hàng tiện lợi thông minh"
+					},
+					"latitude": 37.53340229,
+					"longitude": 126.96746741,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 2-185",
+						"en": "2-185 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12570771",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 52,
+							"facilityId": 166,
+							"facility": {
+								"id": 166,
+								"name": {
+									"ko": "슬기로운편의점",
+									"en": "Smart Convenience Store",
+									"ja": "賢いコンビニエンスストア",
+									"zh": "智能便利店",
+									"th": "ร้านสะดวกซื้ออัจฉริยะ",
+									"vi": "Cửa hàng tiện lợi thông minh"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 55,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 이촌대림점",
+						"en": "GS25 Ichon Daerim Branch",
+						"ja": "GS25利村大林店",
+						"zh": "GS25 一川大林分部",
+						"th": "GS25 สาขาอิชอนแดริม",
+						"vi": "Chi nhánh GS25 Ichon Daerim"
+					},
+					"latitude": 37.52512526,
+					"longitude": 126.95563539,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌동 199-50",
+						"en": "199-50 Ichon-dong, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:5807063",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 53,
+							"facilityId": 167,
+							"facility": {
+								"id": 167,
+								"name": {
+									"ko": "GS25 이촌대림점",
+									"en": "GS25 Ichon Daerim Branch",
+									"ja": "GS25利村大林店",
+									"zh": "GS25 一川大林分部",
+									"th": "GS25 สาขาอิชอนแดริม",
+									"vi": "Chi nhánh GS25 Ichon Daerim"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 56,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 한강르네상스이촌2호",
+						"en": "CU Hangang Renaissance Ichon No. 2",
+						"ja": "CUハンガンルネッサンスイチョン2号",
+						"zh": "CU汉江万丽二馆2号",
+						"th": "CU Hangang Renaissance Ichon No. 2",
+						"vi": "CU Hangang Phục hưng Ichon số 2"
+					},
+					"latitude": 37.51723756,
+					"longitude": 126.97043982,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌로72길 62",
+						"en": "62 Ichon-ro 72-gil, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:11419658",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 54,
+							"facilityId": 168,
+							"facility": {
+								"id": 168,
+								"name": {
+									"ko": "CU 한강르네상스이촌2호",
+									"en": "CU Hangang Renaissance Ichon No. 2",
+									"ja": "CUハンガンルネッサンスイチョン2号",
+									"zh": "CU汉江万丽二馆2号",
+									"th": "CU Hangang Renaissance Ichon No. 2",
+									"vi": "CU Hangang Phục hưng Ichon số 2"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 58,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "씨스페이스24 용산삼각지점",
+						"en": "C-Space 24 Yongsan Triangle Branch",
+						"ja": "シースペース24龍山三角支店",
+						"zh": "C-Space 24 龙山三角分店",
+						"th": "C-Space 24 สาขายงซานไทรแองเกิล",
+						"vi": "C-Space 24 Chi nhánh Tam giác Yongsan"
+					},
+					"latitude": 37.53265246,
+					"longitude": 126.97224477,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 35-6",
+						"en": "35-6 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12466037",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 56,
+							"facilityId": 170,
+							"facility": {
+								"id": 170,
+								"name": {
+									"ko": "씨스페이스24 용산삼각지점",
+									"en": "C-Space 24 Yongsan Triangle Branch",
+									"ja": "シースペース24龍山三角支店",
+									"zh": "C-Space 24 龙山三角分店",
+									"th": "C-Space 24 สาขายงซานไทรแองเกิล",
+									"vi": "C-Space 24 Chi nhánh Tam giác Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 31,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "이마트24 용산센트럴점 주차장",
+						"en": "E-mart 24 Yongsan Central Branch Parking Lot",
+						"ja": "イマート24龍山セントラル店駐車場",
+						"zh": "易买得24龙山中心分店停车场",
+						"th": "ลานจอดรถสาขาอีมาร์ท 24 ยงซานเซ็นทรัล",
+						"vi": "Bãi đậu xe chi nhánh trung tâm Yongsan, siêu thị E-mart 24"
+					},
+					"latitude": 37.52890279,
+					"longitude": 126.96613432,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 한강대로 39-4",
+						"en": "39-4 Hangang-daero, Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:9039568",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 29,
+							"facilityId": 143,
+							"facility": {
+								"id": 143,
+								"name": {
+									"ko": "이마트24 용산센트럴점 주차장",
+									"en": "E-mart 24 Yongsan Central Branch Parking Lot",
+									"ja": "イマート24龍山セントラル店駐車場",
+									"zh": "易买得24龙山中心分店停车场",
+									"th": "ลานจอดรถสาขาอีมาร์ท 24 ยงซานเซ็นทรัล",
+									"vi": "Bãi đậu xe chi nhánh trung tâm Yongsan, siêu thị E-mart 24"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 35,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 아이파크몰용산점",
+						"en": "CU I'Park Mall Yongsan Branch",
+						"ja": "CUアイパークモールヨンサン店",
+						"zh": "CU I'Park Mall 龙山分店",
+						"th": "CU I'Park Mall สาขายงซาน",
+						"vi": "Chi nhánh Yongsan của Trung tâm thương mại I'Park thuộc Đại học Colorado"
+					},
+					"latitude": 37.52848614,
+					"longitude": 126.96446782,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 40-909",
+						"en": "40-909 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:10809043",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 33,
+							"facilityId": 147,
+							"facility": {
+								"id": 147,
+								"name": {
+									"ko": "CU 아이파크몰용산점",
+									"en": "CU I'Park Mall Yongsan Branch",
+									"ja": "CUアイパークモールヨンサン店",
+									"zh": "CU I'Park Mall 龙山分店",
+									"th": "CU I'Park Mall สาขายงซาน",
+									"vi": "Chi nhánh Yongsan của Trung tâm thương mại I'Park thuộc Đại học Colorado"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 40,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 용산하이엘점",
+						"en": "GS25 Yongsan High-El Branch",
+						"ja": "GS25龍山ハイエル店",
+						"zh": "GS25 龙山高架分部",
+						"th": "GS25 สาขาสถานีรถไฟฟ้าสูงยงซาน",
+						"vi": "Tuyến đường sắt cao tốc GS25 Yongsan"
+					},
+					"latitude": 37.53037488,
+					"longitude": 126.96821743,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 새창로 213-12",
+						"en": "213-12 Saechang-ro, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:9021103",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 38,
+							"facilityId": 152,
+							"facility": {
+								"id": 152,
+								"name": {
+									"ko": "GS25 용산하이엘점",
+									"en": "GS25 Yongsan High-El Branch",
+									"ja": "GS25龍山ハイエル店",
+									"zh": "GS25 龙山高架分部",
+									"th": "GS25 สาขาสถานีรถไฟฟ้าสูงยงซาน",
+									"vi": "Tuyến đường sắt cao tốc GS25 Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 44,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 서부이촌점",
+						"en": "CU Seobu Ichon Branch",
+						"ja": "CU西部イチョン店",
+						"zh": "CU 西部一村分行",
+						"th": "CU สาขาเซโอบุ อิชอน",
+						"vi": "Chi nhánh Seobu Ichon của Đại học Colorado"
+					},
+					"latitude": 37.52343107,
+					"longitude": 126.95871849,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌로 100-11 1층",
+						"en": "South Korea, Seoul, Yongsan District, Ichon-ro, 100-11 1층"
+					},
+					"managementCode": "tmap:7796014",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 42,
+							"facilityId": 156,
+							"facility": {
+								"id": 156,
+								"name": {
+									"ko": "CU 서부이촌점",
+									"en": "CU Seobu Ichon Branch",
+									"ja": "CU西部イチョン店",
+									"zh": "CU 西部一村分行",
+									"th": "CU สาขาเซโอบุ อิชอน",
+									"vi": "Chi nhánh Seobu Ichon của Đại học Colorado"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 47,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 용산앰버서더호텔점",
+						"en": "CU Yongsan Ambassador Hotel Branch",
+						"ja": "CU龍山アンバサダーホテル店",
+						"zh": "CU龙山大使酒店分店",
+						"th": "โรงแรม CU Yongsan Ambassador สาขา",
+						"vi": "Chi nhánh Khách sạn Đại sứ Yongsan thuộc Đại học Colorado"
+					},
+					"latitude": 37.53190238,
+					"longitude": 126.96241236,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 청파로20길 95 서울드래곤시티",
+						"en": "South Korea, Seoul, Yongsan District, Cheongpa-ro 20-gil, 95 서울드래곤시티"
+					},
+					"managementCode": "tmap:8977910",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 45,
+							"facilityId": 159,
+							"facility": {
+								"id": 159,
+								"name": {
+									"ko": "CU 용산앰버서더호텔점",
+									"en": "CU Yongsan Ambassador Hotel Branch",
+									"ja": "CU龍山アンバサダーホテル店",
+									"zh": "CU龙山大使酒店分店",
+									"th": "โรงแรม CU Yongsan Ambassador สาขา",
+									"vi": "Chi nhánh Khách sạn Đại sứ Yongsan thuộc Đại học Colorado"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 48,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 선인상가점",
+						"en": "CU Seonin Shopping Center Branch",
+						"ja": "CUサイン商店",
+						"zh": "CU Seonin购物中心分店",
+						"th": "สาขาศูนย์การค้าเซอนิน มหาวิทยาลัยแคลิฟอร์เนีย",
+						"vi": "Chi nhánh Trung tâm mua sắm CU Seonin"
+					},
+					"latitude": 37.53234681,
+					"longitude": 126.96496767,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 17-2",
+						"en": "17-2 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:10180383",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 46,
+							"facilityId": 160,
+							"facility": {
+								"id": 160,
+								"name": {
+									"ko": "CU 선인상가점",
+									"en": "CU Seonin Shopping Center Branch",
+									"ja": "CUサイン商店",
+									"zh": "CU Seonin购物中心分店",
+									"th": "สาขาศูนย์การค้าเซอนิน มหาวิทยาลัยแคลิฟอร์เนีย",
+									"vi": "Chi nhánh Trung tâm mua sắm CU Seonin"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 51,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 용리단길점",
+						"en": "GS25 Yongnidan-gil branch",
+						"ja": "GS25 ヨンリダンギル店",
+						"zh": "GS25 永尼丹吉分店",
+						"th": "GS25 สาขายงนีดันกิล",
+						"vi": "Chi nhánh GS25 Yongnidan-gil"
+					},
+					"latitude": 37.53162479,
+					"longitude": 126.97160597,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 88",
+						"en": "88 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:12017882",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 49,
+							"facilityId": 163,
+							"facility": {
+								"id": 163,
+								"name": {
+									"ko": "GS25 용리단길점",
+									"en": "GS25 Yongnidan-gil branch",
+									"ja": "GS25 ヨンリダンギル店",
+									"zh": "GS25 永尼丹吉分店",
+									"th": "GS25 สาขายงนีดันกิล",
+									"vi": "Chi nhánh GS25 Yongnidan-gil"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 53,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "이마트24 동부이촌점",
+						"en": "E-mart 24 Dongbu Ichon branch",
+						"ja": "イマート24東部二村店",
+						"zh": "易买得24东部二村分店",
+						"th": "อีมาร์ท 24 สาขาดงบู อิชอน",
+						"vi": "Cửa hàng E-mart 24 chi nhánh Dongbu Ichon"
+					},
+					"latitude": 37.52098719,
+					"longitude": 126.97452267,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌동 301-152",
+						"en": "301-152 Ichon-dong, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:6549441",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 51,
+							"facilityId": 165,
+							"facility": {
+								"id": 165,
+								"name": {
+									"ko": "이마트24 동부이촌점",
+									"en": "E-mart 24 Dongbu Ichon branch",
+									"ja": "イマート24東部二村店",
+									"zh": "易买得24东部二村分店",
+									"th": "อีมาร์ท 24 สาขาดงบู อิชอน",
+									"vi": "Cửa hàng E-mart 24 chi nhánh Dongbu Ichon"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 57,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 이촌점",
+						"en": "7-Eleven Ichon branch",
+						"ja": "セブンイレブンイチョン店",
+						"zh": "7-Eleven 一川分店",
+						"th": "เซเว่นอีเลฟเว่น สาขาอิชอน",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Ichon"
+					},
+					"latitude": 37.51987621,
+					"longitude": 126.97438383,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 이촌동 301-10",
+						"en": "301-10 Ichon-dong, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:217551",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 55,
+							"facilityId": 169,
+							"facility": {
+								"id": 169,
+								"name": {
+									"ko": "세븐일레븐 이촌점",
+									"en": "7-Eleven Ichon branch",
+									"ja": "セブンイレブンイチョン店",
+									"zh": "7-Eleven 一川分店",
+									"th": "เซเว่นอีเลฟเว่น สาขาอิชอน",
+									"vi": "Cửa hàng 7-Eleven chi nhánh Ichon"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 17,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "세븐일레븐 용산해링턴스퀘어점 주차장",
+						"en": "7-Eleven Yongsan Harrington Square branch parking lot",
+						"ja": "セブンイレブン龍山ハリントンスクエア店駐車場",
+						"zh": "7-Eleven 龙山哈灵顿广场分店停车场",
+						"th": "ลานจอดรถของร้าน 7-Eleven สาขายงซาน แฮร์ริงตัน สแควร์",
+						"vi": "Bãi đậu xe chi nhánh 7-Eleven Yongsan Harrington Square"
+					},
+					"latitude": 37.52568096,
+					"longitude": 126.96688435,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 63-199",
+						"en": "63-199 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:11491039",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 15,
+							"facilityId": 129,
+							"facility": {
+								"id": 129,
+								"name": {
+									"ko": "세븐일레븐 용산해링턴스퀘어점 주차장",
+									"en": "7-Eleven Yongsan Harrington Square branch parking lot",
+									"ja": "セブンイレブン龍山ハリントンスクエア店駐車場",
+									"zh": "7-Eleven 龙山哈灵顿广场分店停车场",
+									"th": "ลานจอดรถของร้าน 7-Eleven สาขายงซาน แฮร์ริงตัน สแควร์",
+									"vi": "Bãi đậu xe chi nhánh 7-Eleven Yongsan Harrington Square"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 18,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "GS25 용산점",
+						"en": "GS25 Yongsan branch",
+						"ja": "GS25龍山店",
+						"zh": "GS25 龙山分店",
+						"th": "GS25 สาขายงซาน",
+						"vi": "Chi nhánh GS25 Yongsan"
+					},
+					"latitude": 37.52568091,
+					"longitude": 126.96410682,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로3가 40-449",
+						"en": "40-449 Hangangno 3(sam)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:217621",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 16,
+							"facilityId": 130,
+							"facility": {
+								"id": 130,
+								"name": {
+									"ko": "GS25 용산점",
+									"en": "GS25 Yongsan branch",
+									"ja": "GS25龍山店",
+									"zh": "GS25 龙山分店",
+									"th": "GS25 สาขายงซาน",
+									"vi": "Chi nhánh GS25 Yongsan"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 20,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 용산하이브점",
+						"en": "CU Yongsan Hive Branch",
+						"ja": "CU龍山ハイブ店",
+						"zh": "CU 龙山蜂巢分部",
+						"th": "CU สาขายงซานไฮฟ์",
+						"vi": "Chi nhánh Yongsan Hive của Đại học Colorado"
+					},
+					"latitude": 37.52401443,
+					"longitude": 126.96419019,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강대로10길 13 지하 1층",
+						"en": "South Korea, Seoul, Yongsan District, Hangang-daero 10-gil, 13 지하 1층"
+					},
+					"managementCode": "tmap:9027462",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 18,
+							"facilityId": 132,
+							"facility": {
+								"id": 132,
+								"name": {
+									"ko": "CU 용산하이브점",
+									"en": "CU Yongsan Hive Branch",
+									"ja": "CU龍山ハイブ店",
+									"zh": "CU 龙山蜂巢分部",
+									"th": "CU สาขายงซานไฮฟ์",
+									"vi": "Chi nhánh Yongsan Hive của Đại học Colorado"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 21,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "CU 용산푸르지오써밋점",
+						"en": "CU Yongsan Prugio Summit Branch",
+						"ja": "CU龍山プルジオサミット店",
+						"zh": "CU龙山Prugio峰会支部",
+						"th": "สาขาการประชุมสุดยอดจุฬายงซาน พรูจิโอ",
+						"vi": "Chi nhánh CU Yongsan Prugio Summit"
+					},
+					"latitude": 37.52723631,
+					"longitude": 126.96574552,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강로2가 358-1",
+						"en": "358-1 Hangangno 2(i)-ga, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:8624462",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 19,
+							"facilityId": 133,
+							"facility": {
+								"id": 133,
+								"name": {
+									"ko": "CU 용산푸르지오써밋점",
+									"en": "CU Yongsan Prugio Summit Branch",
+									"ja": "CU龍山プルジオサミット店",
+									"zh": "CU龙山Prugio峰会支部",
+									"th": "สาขาการประชุมสุดยอดจุฬายงซาน พรูจิโอ",
+									"vi": "Chi nhánh CU Yongsan Prugio Summit"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 23,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "씨스페이스24 한강로3가점",
+						"en": "C-Space 24 Hangang-ro 3-ga Branch",
+						"ja": "シースペース24漢江路3店",
+						"zh": "C-Space 汉江路 3 街 24 店",
+						"th": "C-Space 24 สาขาฮันกัง-โร 3-กา",
+						"vi": "C-Space 24 Chi nhánh Hangang-ro 3-ga"
+					},
+					"latitude": 37.52659746,
+					"longitude": 126.96371794,
+					"address": {
+						"ko": "대한민국 서울특별시 용산구 한강대로17길 24",
+						"en": "24 Hangang-daero 17-gil, Yongsan District, Seoul, South Korea"
+					},
+					"managementCode": "tmap:10855258",
+					"isVisible": false,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": null,
+					"facilityPoiMappings": [
+						{
+							"id": 21,
+							"facilityId": 135,
+							"facility": {
+								"id": 135,
+								"name": {
+									"ko": "씨스페이스24 한강로3가점",
+									"en": "C-Space 24 Hangang-ro 3-ga Branch",
+									"ja": "シースペース24漢江路3店",
+									"zh": "C-Space 汉江路 3 街 24 店",
+									"th": "C-Space 24 สาขาฮันกัง-โร 3-กา",
+									"vi": "C-Space 24 Chi nhánh Hangang-ro 3-ga"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 6,
+					"tourDestinationId": 1,
+					"name": {
+						"ko": "수정테스",
+						"en": "Correction test",
+						"zh": "校正测试",
+						"ja": "修正テスト",
+						"th": "การทดสอบแก้ไข",
+						"vi": "Bài kiểm tra sửa lỗi"
+					},
+					"latitude": 37.50881707088567,
+					"longitude": 127.0068050284526,
+					"address": {
+						"ko": "서울특별시 서초구 잠원로 37-48 신반포4차아파트",
+						"en": "Sinbanpo 4th Apartment, 37-48 Jamwon-ro, Seocho-gu, Seoul"
+					},
+					"managementCode": null,
+					"isVisible": true,
+					"createdAt": "2026-08-05T16:30:43.823Z",
+					"updatedAt": "2026-08-07T16:14:14.784Z",
+					"facilityPoiMappings": [
+						{
+							"id": 11,
+							"facilityId": 30,
+							"facility": {
+								"id": 30,
+								"name": {
+									"ko": "고양이쉼터",
+									"en": "cat shelter",
+									"zh": "猫收容所",
+									"ja": "猫のシェルター",
+									"th": "ที่พักพิงแมว",
+									"vi": "nơi trú ẩn cho mèo"
+								},
+								"category": {
+									"id": 23,
+									"name": {
+										"ko": "쉼터",
+										"en": "Shelter",
+										"zh": "庇护所",
+										"ja": "シェルター",
+										"th": "ที่หลบภัย",
+										"vi": "Nơi trú ẩn"
+									},
+									"iconKey": "three",
+									"categoryColorCodes": { "id": 5, "colorCode": "#23B63C" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 4,
+					"tourDestinationId": 1,
+					"name": { "ko": "test", "en": "", "zh": "", "ja": "", "th": "", "vi": "" },
+					"latitude": 37.50851969046663,
+					"longitude": 127.0139097720414,
+					"address": {
+						"ko": "서울특별시 서초구 신반포로 270 반포자이아파트",
+						"en": "Banpo Xi Apartment, 270 Sinbanpo-ro, Seocho-gu, Seoul"
+					},
+					"managementCode": null,
+					"isVisible": true,
+					"createdAt": "2026-08-03T11:38:04.449Z",
+					"updatedAt": "2026-08-07T16:14:14.825Z",
+					"facilityPoiMappings": [
+						{
+							"id": 8,
+							"facilityId": 51,
+							"facility": {
+								"id": 51,
+								"name": { "ko": "갤러리아트랩", "en": "false", "zh": "", "ja": "", "th": "", "vi": "" },
+								"category": {
+									"id": 30,
+									"name": {
+										"ko": "관광명소",
+										"en": "Tourist attractions",
+										"zh": "旅游景点",
+										"ja": "観光名所",
+										"th": "สถานที่ท่องเที่ยว",
+										"vi": "Điểm tham quan du lịch"
+									},
+									"iconKey": "binoculars",
+									"categoryColorCodes": { "id": 3, "colorCode": "#F1C71F" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 2,
+					"tourDestinationId": 1,
+					"name": { "ko": "동문 위치 B1", "en": "First POI", "zh": "", "ja": "", "th": "", "vi": "" },
+					"latitude": 37.0123,
+					"longitude": 127.02163,
+					"address": {
+						"ko": "대한민국 경기도 평택시 고덕면 궁리 424-45",
+						"en": "424-45 Gung-ri, Godeok-myeon, Pyeongtaek, Gyeonggi-do, South Korea"
+					},
+					"managementCode": null,
+					"isVisible": true,
+					"createdAt": "2026-05-29T00:54:49.125Z",
+					"updatedAt": "2026-08-10T11:11:59.088Z",
+					"facilityPoiMappings": [
+						{
+							"id": 7,
+							"facilityId": 27,
+							"facility": {
+								"id": 27,
+								"name": { "ko": "시설33", "en": "store3", "ja": "", "zh": "", "vi": "", "th": "" },
+								"category": {
+									"id": 11,
+									"name": {
+										"ko": "주차장",
+										"en": "Parking",
+										"zh": "停车场",
+										"ja": "駐車場",
+										"th": "ที่จอดรถ",
+										"vi": "Bãi đỗ xe"
+									},
+									"iconKey": "/img/default_parking_icon.png",
+									"categoryColorCodes": { "id": 2, "colorCode": "#FF983D" },
+									"parent": null
+								}
+							}
+						},
+						{
+							"id": 5,
+							"facilityId": 23,
+							"facility": {
+								"id": 23,
+								"name": { "ko": "우래옥", "en": "store3", "ja": "", "zh": "", "vi": "", "th": "" },
+								"category": {
+									"id": 1,
+									"name": { "ko": "카페", "en": "cafe", "zh": "", "ja": "", "th": "", "vi": "" },
+									"iconKey": "location",
+									"categoryColorCodes": { "id": 2, "colorCode": "#FF983D" },
+									"parent": null
+								}
+							}
+						}
+					]
+				},
+				{
+					"id": 3,
+					"tourDestinationId": 1,
+					"name": { "ko": "동문 위치 A1", "en": "First POI" },
+					"latitude": 37.0123,
+					"longitude": 127.02163,
+					"address": {
+						"ko": "대한민국 경기도 평택시 고덕면 궁리 424-45",
+						"en": "424-45 Gung-ri, Godeok-myeon, Pyeongtaek, Gyeonggi-do, South Korea"
+					},
+					"managementCode": null,
+					"isVisible": true,
+					"createdAt": "2026-05-29T00:54:49.125Z",
+					"updatedAt": "2026-08-07T16:14:14.863Z",
+					"facilityPoiMappings": [
+						{
+							"id": 6,
+							"facilityId": 29,
+							"facility": {
+								"id": 29,
+								"name": { "ko": "시설23", "en": "store3", "ja": "", "zh": "", "vi": "", "th": "" },
+								"category": {
+									"id": 25,
+									"name": {
+										"ko": "달 주차장",
+										"en": "Moon Parking Lot",
+										"zh": "月亮停车场",
+										"ja": "ムーン駐車場",
+										"th": "ลานจอดรถดวงจันทร์",
+										"vi": "Bãi đậu xe Moon"
+									},
+									"iconKey": "parking",
+									"categoryColorCodes": null,
+									"parent": {
+										"id": 9,
+										"name": {
+											"ko": "주차장",
+											"en": "Parking lot",
+											"zh": "",
+											"ja": "ㅈㄱㄹㅇ",
+											"th": "",
+											"vi": ""
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			],
+			"totalCount": 53,
+			"page": 1,
+			"pageSize": 53,
+			"totalPages": 1,
+			"tourDestination": { "latitude": 37.506417, "longitude": 127.005362 }
+		}
+	},
+	"facilities": {
+		"success": true,
+		"data": {
+			"items": [
+				{
+					"id": 191,
+					"name": {
+						"ko": "생서테스트",
+						"en": "Generation test",
+						"zh": "世代测试",
+						"ja": "生成テスト",
+						"th": "การทดสอบรุ่น",
+						"vi": "Kiểm thử thế hệ"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": {
+						"ko": "테스트요테스트요테스트 요테스트요테스트요테스트요테스트요 테스트요테스트 요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트 요테스트요테 스트요테스트요 테스트요테스트 요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트 요테스트요테스트요테스트요테스트 요 테스 트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스 트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테 스트요 테스트요테스 트요테스트요테스트요 테스트요테스트요테스  트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 테스트요테스트요테스트요테스트요테스트요테스트요테스트요 ",
+						"en": "Test",
+						"zh": "测试",
+						"ja": "テスト",
+						"th": "ทดสอบ",
+						"vi": "Bài kiểm tra"
+					},
+					"linkButton": null,
+					"createdAt": "2026-08-11T20:36:39.242Z",
+					"updatedAt": "2026-08-12T18:31:30.328Z",
+					"isOperationInfoSynced": false,
+					"isVisible": true,
+					"isDeleted": false,
+					"createdBy": 1,
+					"updatedBy": 1,
+					"contact": "010-3448-7866",
+					"facilityHolidaySchedules": [],
+					"facilityOperatingSchedules": [
+						{
+							"id": 635,
+							"dayOfWeek": 0,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 636,
+							"dayOfWeek": 1,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 637,
+							"dayOfWeek": 2,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 638,
+							"dayOfWeek": 3,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 639,
+							"dayOfWeek": 4,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 640,
+							"dayOfWeek": 5,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 641,
+							"dayOfWeek": 6,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						}
+					],
+					"facilityVpsPopups": [],
+					"category": {
+						"id": 29,
+						"name": {
+							"ko": "행사부스",
+							"en": "Event booth",
+							"zh": "活动展位",
+							"ja": "イベントブース",
+							"th": "บูธกิจกรรม",
+							"vi": "Gian hàng sự kiện"
+						},
+						"parent": null
+					},
+					"facilityPoiMappings": [
+						{
+							"poi": {
+								"name": {
+									"ko": "청소년광장",
+									"en": "Youth Plaza",
+									"zh": "青年广场",
+									"ja": "青年広場",
+									"th": "จัตุรัสเยาวชน",
+									"vi": "Quảng trường Thanh niên"
+								}
+							}
+						}
+					],
+					"congestionSections": [],
+					"facilityProducts": [
+						{
+							"id": 21,
+							"isVisible": true,
+							"displayOrder": 1,
+							"name": {
+								"ko": "dddd",
+								"en": "Dddd",
+								"zh": "DDDD",
+								"ja": "うわぁ",
+								"th": "ดดด",
+								"vi": "Dddd"
+							},
+							"description": {
+								"ko": "ㅇㄹㅇㄹ",
+								"en": "ㅇㄹㅇㄹ",
+								"zh": "ㅇㄹㅇㄹ",
+								"ja": "ㅇㄹㅇㄹ",
+								"th": "ㅇㄹㅇㄹ",
+								"vi": "ㅇㄹㅇㄹ"
+							},
+							"price": 160000,
+							"currency": "KRW",
+							"facilityProductFiles": [
+								{
+									"id": 7,
+									"fileOriginalName": "1785731840.9149.png",
+									"fileUrl": "https://www.dummyimage.com/600x400/000/fff",
+									"fileUploadPath": "images/facility-products/2026/08",
+									"fileUploadName": "7361b241-e9b8-4eda-a30f-059719ddfbbd.png",
+									"fileSize": 159113,
+									"fileMimeType": "image/png"
+								}
+							]
+						}
+					],
+					"overwriteCongestionStatus": null,
+					"facilityFiles": [
+						{
+							"id": 158,
+							"fileOriginalName": "image (2).png",
+							"fileUrl": "https://www.dummyimage.com/600x400/000/fff",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileSize": 1330132,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						}
+					],
+					"facilityProductGuideFiles": [
+						{
+							"id": 59,
+							"fileOriginalName": "image (1).png",
+							"fileUrl": "https://www.dummyimage.com/400X600/000/fff",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "95bcf825-1452-4134-b6d7-ed89df5ff6bf.png",
+							"fileSize": 150267,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						},
+						{
+							"id": 58,
+							"fileOriginalName": "image (2).png",
+							"fileUrl": "https://www.dummyimage.com/400X600/000/fff",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "211f06c5-f45c-4fcb-becf-9de834416041.png",
+							"fileSize": 1330132,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						},
+						{
+							"id": 60,
+							"fileOriginalName": "ì ëª© ìì.png",
+							"fileUrl": "/uploads/images/facility-products/2026/08/74df0099-f650-40b3-af85-a979ca68fe9c.png",
+							"fileUploadPath": "images/facility-products/2026/08",
+							"fileUploadName": "74df0099-f650-40b3-af85-a979ca68fe9c.png",
+							"fileSize": 93100,
+							"fileMimeType": "image/png",
+							"fileType": "PRODUCT"
+						}
+					],
+					"facilityButtons": [
+						{
+							"id": 75,
+							"buttonName": {
+								"ko": "주문페이지",
+								"en": "Food Order Url",
+								"zh": "",
+								"ja": "",
+								"th": "",
+								"vi": ""
+							},
+							"buttonUrl": "https://deepfine.com",
+							"tourDestinationCommonButtonId": 69
+						},
+						{
+							"id": 76,
+							"buttonName": {
+								"ko": "안녕하세요",
+								"en": "Hello",
+								"ja": "こんにちは",
+								"zh": "你好",
+								"vi": "Xin chào",
+								"th": "สวัสดี"
+							},
+							"buttonUrl": "https://deepfine.com",
+							"tourDestinationCommonButtonId": null
+						}
+					]
+				},
+				{
+					"id": 190,
+					"name": {
+						"ko": "위치서생성",
+						"en": "Location generation",
+						"zh": "位置生成",
+						"ja": "位置情報生成",
+						"th": "การสร้างตำแหน่งที่ตั้ง",
+						"vi": "Tạo vị trí"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": {
+						"ko": "테스트설명",
+						"en": "Test description",
+						"zh": "测试说明",
+						"ja": "テストの説明",
+						"th": "คำอธิบายการทดสอบ",
+						"vi": "Mô tả bài kiểm tra"
+					},
+					"linkButton": null,
+					"createdAt": "2026-08-11T20:28:24.509Z",
+					"updatedAt": "2026-08-11T20:28:24.509Z",
+					"isOperationInfoSynced": false,
+					"isVisible": true,
+					"isDeleted": false,
+					"createdBy": 1,
+					"updatedBy": 1,
+					"contact": "010-1234-1234",
+					"facilityHolidaySchedules": [],
+					"facilityOperatingSchedules": [
+						{
+							"id": 628,
+							"dayOfWeek": 0,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 629,
+							"dayOfWeek": 1,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 630,
+							"dayOfWeek": 2,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 631,
+							"dayOfWeek": 3,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 632,
+							"dayOfWeek": 4,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 633,
+							"dayOfWeek": 5,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						},
+						{
+							"id": 634,
+							"dayOfWeek": 6,
+							"openingTime": "00:00",
+							"closingTime": "00:00",
+							"facilityBreakSchedules": []
+						}
+					],
+					"facilityVpsPopups": [],
+					"category": {
+						"id": 29,
+						"name": {
+							"ko": "행사부스",
+							"en": "Event booth",
+							"zh": "活动展位",
+							"ja": "イベントブース",
+							"th": "บูธกิจกรรม",
+							"vi": "Gian hàng sự kiện"
+						},
+						"parent": null
+					},
+					"facilityPoiMappings": [
+						{
+							"poi": {
+								"name": {
+									"ko": "이촌어린이공원",
+									"en": "Ichon Children's Park",
+									"zh": "一川儿童公园",
+									"ja": "イチョン子供公園",
+									"th": "สวนเด็กอิชอน",
+									"vi": "Công viên thiếu nhi Ichon"
+								}
+							}
+						}
+					],
+					"congestionSections": [],
+					"facilityProducts": [],
+					"overwriteCongestionStatus": null,
+					"facilityFiles": [],
+					"facilityProductGuideFiles": [],
+					"facilityButtons": []
+				},
+				{
+					"id": 189,
+					"name": {
+						"ko": "위치서 생성",
+						"en": "Created at the location",
+						"zh": "创建于此地点",
+						"ja": "場所で作成されました",
+						"th": "สร้างขึ้น ณ สถานที่",
+						"vi": "Được tạo tại vị trí"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": {
+						"ko": "위치서생성설명요",
+						"en": "Explanation of location generation",
+						"zh": "位置生成原理说明",
+						"ja": "位置情報生成の説明",
+						"th": "คำอธิบายเกี่ยวกับการสร้างตำแหน่งที่ตั้ง",
+						"vi": "Giải thích về quá trình tạo vị trí"
+					},
+					"linkButton": null,
+					"createdAt": "2026-08-11T20:27:49.345Z",
+					"updatedAt": "2026-08-11T20:27:49.345Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "해 주차장",
+							"en": "Sea parking lot",
+							"zh": "海滨停车场",
+							"ja": "海辺の駐車場",
+							"th": "ลานจอดรถริมทะเล",
+							"vi": "Bãi đậu xe ven biển"
+						},
+						"iconKey": "parking",
+						"categoryColorCodes": null,
+						"parent": {
+							"name": { "ko": "주차장", "en": "Parking lot", "zh": "", "ja": "ㅈㄱㄹㅇ", "th": "", "vi": "" },
+							"iconKey": "parking"
+						}
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": null,
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 188,
+					"name": {
+						"ko": "생성테스트",
+						"en": "Creation test",
+						"zh": "创建测试",
+						"ja": "作成テスト",
+						"th": "การทดสอบการสร้าง",
+						"vi": "Bài kiểm tra tạo lập"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": {
+						"ko": "증명사진 테스트",
+						"en": "ID photo test",
+						"zh": "身份证照片测试",
+						"ja": "身分証明写真テスト",
+						"th": "การทดสอบรูปถ่ายบัตรประจำตัว",
+						"vi": "kiểm tra ảnh chứng minh thư"
+					},
+					"linkButton": null,
+					"createdAt": "2026-08-11T18:25:34.261Z",
+					"updatedAt": "2026-08-11T18:25:34.261Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "증명사진",
+							"en": "ID photo",
+							"zh": "证件照",
+							"ja": "証明写真",
+							"th": "รูปถ่ายบัตรประจำตัว",
+							"vi": "ảnh chứng minh thư"
+						},
+						"iconKey": "camera",
+						"categoryColorCodes": null,
+						"parent": {
+							"name": {
+								"ko": "포토존",
+								"en": "Photo zone",
+								"zh": "摄影区",
+								"ja": "フォトゾーン",
+								"th": "โซนภาพถ่าย",
+								"vi": "Khu vực chụp ảnh"
+							},
+							"iconKey": "camera"
+						}
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": null,
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 178,
+					"name": {
+						"ko": "동빙고근린공원",
+						"en": "Dongbinggo Neighborhood Park",
+						"ja": "東ビンゴ近隣公園",
+						"zh": "东冰果邻里公园",
+						"th": "สวนสาธารณะชุมชนดงบิงโก",
+						"vi": "Công viên khu phố Dongbinggo"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": null,
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 177,
+					"name": {
+						"ko": "용산가족공원",
+						"en": "Yongsan Family Park",
+						"ja": "龍山家族公園",
+						"zh": "龙山家庭公园",
+						"th": "สวนสาธารณะครอบครัวยงซาน",
+						"vi": "Công viên gia đình Yongsan"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": null,
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 176,
+					"name": {
+						"ko": "청소년광장",
+						"en": "Youth Plaza",
+						"ja": "青年広場",
+						"zh": "青年广场",
+						"th": "จัตุรัสเยาวชน",
+						"vi": "Quảng trường Thanh niên"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "청소년광장",
+						"en": "Youth Plaza",
+						"zh": "青年广场",
+						"ja": "青年広場",
+						"th": "จัตุรัสเยาวชน",
+						"vi": "Quảng trường Thanh niên"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 175,
+					"name": {
+						"ko": "용산어린이정원",
+						"en": "Yongsan Children's Garden",
+						"ja": "龍山子供庭園",
+						"zh": "龙山儿童花园",
+						"th": "สวนเด็กยงซาน",
+						"vi": "Vườn thiếu nhi Yongsan"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "용산어린이정원",
+						"en": "Yongsan Children's Garden",
+						"ja": "龍山子供庭園",
+						"zh": "龙山儿童花园",
+						"th": "สวนเด็กยงซาน",
+						"vi": "Vườn thiếu nhi Yongsan"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 174,
+					"name": {
+						"ko": "이촌어린이공원",
+						"en": "Ichon Children's Park",
+						"ja": "イチョン子供公園",
+						"zh": "一川儿童公园",
+						"th": "สวนเด็กอิชอน",
+						"vi": "Công viên thiếu nhi Ichon"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "이촌어린이공원",
+						"en": "Ichon Children's Park",
+						"zh": "一川儿童公园",
+						"ja": "イチョン子供公園",
+						"th": "สวนเด็กอิชอน",
+						"vi": "Công viên thiếu nhi Ichon"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 173,
+					"name": {
+						"ko": "이촌한강공원 1주차장",
+						"en": "Ichon Hangang Park Parking Lot 1",
+						"ja": "利村漢江公園1駐車場",
+						"zh": "二村汉江公园第1停车场",
+						"th": "ลานจอดรถสวนสาธารณะอีชอนฮันกัง 1",
+						"vi": "Bãi đậu xe công viên Ichon Hangang 1"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "이촌한강공원 1주차장",
+						"en": "Ichon Hangang Park Parking Lot 1",
+						"ja": "利村漢江公園1駐車場",
+						"zh": "二村汉江公园第1停车场",
+						"th": "ลานจอดรถสวนสาธารณะอีชอนฮันกัง 1",
+						"vi": "Bãi đậu xe công viên Ichon Hangang 1"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 172,
+					"name": {
+						"ko": "꿈나무어린이공원",
+						"en": "Dream Tree Children's Park",
+						"ja": "夢の木の子供公園",
+						"zh": "梦树儿童公园",
+						"th": "สวนเด็กดรีมทรี",
+						"vi": "Công viên thiếu nhi Dream Tree"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "꿈나무어린이공원",
+						"en": "Dream Tree Children's Park",
+						"ja": "夢の木の子供公園",
+						"zh": "梦树儿童公园",
+						"th": "สวนเด็กดรีมทรี",
+						"vi": "Công viên thiếu nhi Dream Tree"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 171,
+					"name": {
+						"ko": "강변어린이공원",
+						"en": "Riverside Children's Park",
+						"ja": "川沿いの子供公園",
+						"zh": "河滨儿童公园",
+						"th": "สวนเด็กริเวอร์ไซด์",
+						"vi": "Công viên trẻ em Riverside"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T16:53:35.940Z",
+					"updatedAt": "2026-08-11T16:53:35.940Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": { "ko": "정원", "en": "garden", "zh": "", "ja": "", "th": "", "vi": "" },
+						"iconKey": "location",
+						"categoryColorCodes": { "colorCode": "#5DE251" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "강변어린이공원",
+						"en": "Riverside Children's Park",
+						"zh": "河滨儿童公园",
+						"ja": "川沿いの子供公園",
+						"th": "สวนเด็กริเวอร์ไซด์",
+						"vi": "Công viên trẻ em Riverside"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 170,
+					"name": {
+						"ko": "씨스페이스24 용산삼각지점",
+						"en": "C-Space 24 Yongsan Triangle Branch",
+						"ja": "シースペース24龍山三角支店",
+						"zh": "C-Space 24 龙山三角分店",
+						"th": "C-Space 24 สาขายงซานไทรแองเกิล",
+						"vi": "C-Space 24 Chi nhánh Tam giác Yongsan"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "씨스페이스24 용산삼각지점",
+						"en": "C-Space 24 Yongsan Triangle Branch",
+						"ja": "シースペース24龍山三角支店",
+						"zh": "C-Space 24 龙山三角分店",
+						"th": "C-Space 24 สาขายงซานไทรแองเกิล",
+						"vi": "C-Space 24 Chi nhánh Tam giác Yongsan"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 169,
+					"name": {
+						"ko": "세븐일레븐 이촌점",
+						"en": "7-Eleven Ichon branch",
+						"ja": "セブンイレブンイチョン店",
+						"zh": "7-Eleven 一川分店",
+						"th": "เซเว่นอีเลฟเว่น สาขาอิชอน",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Ichon"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "세븐일레븐 이촌점",
+						"en": "7-Eleven Ichon branch",
+						"ja": "セブンイレブンイチョン店",
+						"zh": "7-Eleven 一川分店",
+						"th": "เซเว่นอีเลฟเว่น สาขาอิชอน",
+						"vi": "Cửa hàng 7-Eleven chi nhánh Ichon"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 168,
+					"name": {
+						"ko": "CU 한강르네상스이촌2호",
+						"en": "CU Hangang Renaissance Ichon No. 2",
+						"ja": "CUハンガンルネッサンスイチョン2号",
+						"zh": "CU汉江万丽二馆2号",
+						"th": "CU Hangang Renaissance Ichon No. 2",
+						"vi": "CU Hangang Phục hưng Ichon số 2"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "CU 한강르네상스이촌2호",
+						"en": "CU Hangang Renaissance Ichon No. 2",
+						"ja": "CUハンガンルネッサンスイチョン2号",
+						"zh": "CU汉江万丽二馆2号",
+						"th": "CU Hangang Renaissance Ichon No. 2",
+						"vi": "CU Hangang Phục hưng Ichon số 2"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				},
+				{
+					"id": 167,
+					"name": {
+						"ko": "GS25 이촌대림점",
+						"en": "GS25 Ichon Daerim Branch",
+						"ja": "GS25利村大林店",
+						"zh": "GS25 一川大林分部",
+						"th": "GS25 สาขาอิชอนแดริม",
+						"vi": "Chi nhánh GS25 Ichon Daerim"
+					},
+					"startAt": null,
+					"endAt": null,
+					"description": null,
+					"linkButton": null,
+					"createdAt": "2026-08-11T13:48:18.974Z",
+					"updatedAt": "2026-08-11T13:48:18.974Z",
+					"isOperationInfoSynced": false,
+					"category": {
+						"name": {
+							"ko": "쉼터",
+							"en": "Shelter",
+							"zh": "庇护所",
+							"ja": "シェルター",
+							"th": "ที่หลบภัย",
+							"vi": "Nơi trú ẩn"
+						},
+						"iconKey": "three",
+						"categoryColorCodes": { "colorCode": "#23B63C" },
+						"parent": null
+					},
+					"overwriteCongestionStatus": null,
+					"isUsingCongestion": false,
+					"hasVpsPopup": false,
+					"matchingPoiName": {
+						"ko": "GS25 이촌대림점",
+						"en": "GS25 Ichon Daerim Branch",
+						"ja": "GS25利村大林店",
+						"zh": "GS25 一川大林分部",
+						"th": "GS25 สาขาอิชอนแดริม",
+						"vi": "Chi nhánh GS25 Ichon Daerim"
+					},
+					"facilityProductsCount": 0,
+					"facilityButtonsCount": 0
+				}
+			],
+			"totalCount": 156,
+			"page": 1,
+			"pageSize": 16,
+			"totalPages": 10,
+			"matchingStatus": { "totalCount": 156, "matched": 56, "unmatched": 100 }
+		}
+	},
+	"onboardings": {
+		"success": true,
+		"data": {
+			"id": 1,
+			"tourDestinationId": 2,
+			"title": {
+				"ko": "온보딩 렛츠고111",
+				"en": "Start Onborading~! ",
+				"ja": "",
+				"zh": "",
+				"vi": "",
+				"th": ""
+			},
+			"description": {
+				"ko": "환영입니다.222",
+				"en": "",
+				"ja": "",
+				"zh": "",
+				"vi": "",
+				"th": ""
+			},
+			"sortingNumber": null,
+			"deploymentStatus": "DRAFT",
+			"createdAt": "2026-06-11T11:48:29.475Z",
+			"updatedAt": "2026-06-11T16:51:40.196Z",
+			"onboardingFiles": [
+				{
+					"id": 4,
+					"fileOriginalName": "af1762b4ff31db38db2bcacb6dc78d07e40b81e5.png",
+					"fileUrl": "/uploads/images/onboarding/2026/06/11/8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileUploadPath": "images/onboarding/2026/06/11",
+					"fileUploadName": "8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileSize": 1371529,
+					"fileMimeType": "image/png",
+					"fileType": "MAIN"
+				},
+				{
+					"id": 5,
+					"fileOriginalName": "af1762b4ff31db38db2bcacb6dc78d07e40b81e5.png",
+					"fileUrl": "/uploads/images/onboarding/2026/06/11/8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileUploadPath": "images/onboarding/2026/06/11",
+					"fileUploadName": "8ed6120c-a567-4455-a332-ffb34af6da66.png",
+					"fileSize": 1371529,
+					"fileMimeType": "image/png",
+					"fileType": "MAIN_GLOBAL"
+				}
+			]
+		}
+	},
+	"tour-destinations": {
+		"success": true,
+		"data": {
+			"items": [
+				{
+					"id": 30,
+					"name": {
+						"ko": "수원 남문 시장",
+						"en": "Suwon Nammun Market",
+						"zh": "水原南门市场",
+						"ja": "水原南門市場",
+						"th": "ตลาดซูวอนนัมมุน",
+						"vi": "Chợ Suwon Nammun"
+					},
+					"latitude": 37.279357,
+					"longitude": 127.017038,
+					"startAt": null,
+					"endAt": null,
+					"colorCode": "#274FA8",
+					"homepageUrl": "https://www.instagram.com/nammun100y/",
+					"mapUrl": "",
+					"isAlways": true,
+					"isVisible": true,
+					"isDeleted": false,
+					"isAiRecommendYn": false,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": false,
+					"isVpsContentsYn": true,
+					"supportedLanguages": {
+						"en": true,
+						"ja": false,
+						"ko": true,
+						"th": false,
+						"vi": false,
+						"zh": false
+					},
+					"operationInfo": {
+						"ko": "실제 대상지로 테스트",
+						"en": "Test at the actual site",
+						"zh": "在实际场地进行测试",
+						"ja": "実際の現場でテストを実施",
+						"th": "ทดสอบที่หน้างานจริง",
+						"vi": "Thử nghiệm tại địa điểm thực tế"
+					},
+					"createdAt": "2026-07-31T13:47:33.460Z",
+					"createdBy": 1,
+					"updatedAt": "2026-08-11T09:21:40.660Z",
+					"updatedBy": 5,
+					"tourDestinationOperatingSchedules": [
+						{
+							"id": 380,
+							"dayOfWeek": 0,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						},
+						{
+							"id": 381,
+							"dayOfWeek": 1,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						},
+						{
+							"id": 382,
+							"dayOfWeek": 2,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						},
+						{
+							"id": 383,
+							"dayOfWeek": 3,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						},
+						{
+							"id": 384,
+							"dayOfWeek": 4,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						},
+						{
+							"id": 385,
+							"dayOfWeek": 5,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						},
+						{
+							"id": 386,
+							"dayOfWeek": 6,
+							"openingTime": "10:00",
+							"closingTime": "21:00"
+						}
+					],
+					"tourDestinationHolidaySchedules": [],
+					"tourDestinationCommonButtons": [
+						{
+							"id": 96,
+							"iconUrl": "blob:http://localhost:5196/db7d97a7-134c-4b81-8f53-5a51ff235141",
+							"buttonName": {
+								"ko": "수원시청",
+								"en": "Suwon City Hall",
+								"zh": "水原市政府",
+								"ja": "水原市役所",
+								"th": "ศาลาว่าการเมืองซูวอน",
+								"vi": "Tòa thị chính Suwon"
+							},
+							"sortingNumber": 0,
+							"facilityUsageCount": 0
+						},
+						{
+							"id": 97,
+							"iconUrl": "blob:http://localhost:5194/65655f24-0414-4594-b0ad-d26b8f8d0377",
+							"buttonName": {
+								"ko": "테스트2",
+								"en": "Test 2",
+								"zh": "测试 2",
+								"ja": "テスト2",
+								"th": "การทดสอบที่ 2",
+								"vi": "Bài kiểm tra 2"
+							},
+							"sortingNumber": 1,
+							"facilityUsageCount": 0
+						}
+					],
+					"facilityCongestionCount": 1,
+					"sectionCongestionCount": 1,
+					"vpsContentsCount": 2
+				},
+				{
+					"id": 1,
+					"name": {
+						"ko": "수원남문시장222",
+						"en": "Suwon Nammun Market",
+						"zh": "水原南门市场",
+						"ja": "水原南門市場",
+						"th": "ตลาดซูวอนนัมมุน",
+						"vi": "Chợ Suwon Nammun"
+					},
+					"latitude": 37.506417,
+					"longitude": 127.005362,
+					"startAt": null,
+					"endAt": null,
+					"colorCode": "#7a70a7",
+					"homepageUrl": "https://naver.com",
+					"mapUrl": "https://www.google.com/maps/place/%EA%B3%A0%ED%88%AC%EB%AA%B0(%EA%B3%A0%EC%86%8D%ED%84%B0%EB%AF%B8%EB%84%90+%EC%A7%80%ED%95%98%EC%83%81%EA%B0%80)/data=!4m6!3m5!1s0x357ca1918e5c4145:0x7b8307b609846119!8m2!3d37.506163!4d127.0049887!16s%2Fg%2F11fghvsc1g?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D",
+					"isAlways": true,
+					"isVisible": true,
+					"isDeleted": false,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": true,
+					"supportedLanguages": {
+						"en": true,
+						"ja": false,
+						"ko": true,
+						"th": false,
+						"vi": false,
+						"zh": false
+					},
+					"operationInfo": {
+						"ko": "수원남문시장에 오신걸 환영합니다. 각 점포별 운영시간은 상이할 수 있습니다. 방문전 확인해주세요",
+						"en": "Welcome to Suwon Nammun Market. Operating hours may vary by store. Please check before visiting.",
+						"zh": "欢迎光临水原南门市场。各店铺营业时间可能有所不同，请在到访前查询。",
+						"ja": "水原南門市場へようこそ。営業時間は店舗によって異なる場合があります。ご来店前にご確認ください。",
+						"th": "ยินดีต้อนรับสู่ตลาดนัมมุนซูวอน เวลาทำการอาจแตกต่างกันไปในแต่ละร้าน โปรดตรวจสอบก่อนเข้าเยี่ยมชม",
+						"vi": "Chào mừng đến với chợ Suwon Nammun. Giờ mở cửa có thể khác nhau tùy từng cửa hàng. Vui lòng kiểm tra trước khi đến."
+					},
+					"createdAt": "2026-05-20T18:03:27.302Z",
+					"createdBy": 1,
+					"updatedAt": "2026-08-12T18:36:54.131Z",
+					"updatedBy": 1,
+					"tourDestinationOperatingSchedules": [
+						{
+							"id": 528,
+							"dayOfWeek": 0,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						},
+						{
+							"id": 529,
+							"dayOfWeek": 1,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						},
+						{
+							"id": 530,
+							"dayOfWeek": 2,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						},
+						{
+							"id": 531,
+							"dayOfWeek": 3,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						},
+						{
+							"id": 532,
+							"dayOfWeek": 4,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						},
+						{
+							"id": 533,
+							"dayOfWeek": 5,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						},
+						{
+							"id": 534,
+							"dayOfWeek": 6,
+							"openingTime": "09:00",
+							"closingTime": "20:00"
+						}
+					],
+					"tourDestinationHolidaySchedules": [],
+					"tourDestinationCommonButtons": [
+						{
+							"id": 69,
+							"iconUrl": "/uploads/images/tour-destination-overlays/2026/08/0e9624b2-3e5c-4387-bf8a-5e54d53f1de3.png",
+							"buttonName": {
+								"ko": "주문페이지",
+								"en": "Food Order Url",
+								"zh": "",
+								"ja": "",
+								"th": "",
+								"vi": ""
+							},
+							"sortingNumber": 0,
+							"facilityUsageCount": 5
+						}
+					],
+					"facilityCongestionCount": 3,
+					"sectionCongestionCount": 1,
+					"vpsContentsCount": 5
+				},
+				{
+					"id": 27,
+					"name": {
+						"ko": "레인보우 축제",
+						"en": "Rainbow Festival",
+						"zh": "彩虹节",
+						"ja": "レインボーフェスティバル",
+						"th": "เทศกาลสายรุ้ง",
+						"vi": "Lễ hội cầu vồng"
+					},
+					"startAt": "2026-07-15T00:00:00.000Z",
+					"endAt": "2026-07-18T00:00:00.000Z",
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": false,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": false,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"operationInfo": {
+						"ko": "무지개 축제 빨주노초파남보",
+						"en": "Rainbow Festival: Red, Orange, Yellow, Green, Blue, Indigo, Violet",
+						"zh": "彩虹节：红、橙、黄、绿、蓝、靛、紫",
+						"ja": "レインボーフェスティバル：赤、オレンジ、黄色、緑、青、藍色、紫",
+						"th": "เทศกาลสายรุ้ง: สีแดง สีส้ม สีเหลือง สีเขียว สีน้ำเงิน สีคราม สีม่วง",
+						"vi": "Lễ hội cầu vồng: Đỏ, Cam, Vàng, Xanh lá cây, Xanh dương, Chàm, Tím"
+					},
+					"updatedAt": "2026-07-15T14:00:16.859Z",
+					"createdAt": "2026-07-14T15:44:05.814Z",
+					"colorCode": "#c71c8e",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 208, "dayOfWeek": 3, "openingTime": "11:30", "closingTime": "16:00" },
+						{ "id": 209, "dayOfWeek": 4, "openingTime": "11:30", "closingTime": "16:00" },
+						{ "id": 210, "dayOfWeek": 5, "openingTime": "11:30", "closingTime": "16:00" },
+						{ "id": 211, "dayOfWeek": 6, "openingTime": "11:30", "closingTime": "16:00" }
+					],
+					"tourDestinationHolidaySchedules": [],
+					"operationStatus": "closed",
+					"lastUpdatedAt": "2026-07-15T14:00:16.859Z"
+				},
+				{
+					"id": 28,
+					"name": { "ko": "안녕", "en": "hi", "zh": "你好", "ja": "こんにちは", "th": "สวัสดี", "vi": "CHÀO" },
+					"startAt": "2026-07-01T00:00:00.000Z",
+					"endAt": "2026-07-31T00:00:00.000Z",
+					"homepageUrl": "https://github.com/byungsker/opengiver-skills/blob/main/README.ko.md",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"operationInfo": {
+						"ko": "매주 주말은 휴일입니다. 참고 부탁드립니다.",
+						"en": "Every weekend is a holiday. Please take note.",
+						"zh": "每个周末都是假日。请注意。",
+						"ja": "毎週末は祝日です。ご注意ください。",
+						"th": "ทุกสุดสัปดาห์คือวันหยุด โปรดทราบ",
+						"vi": "Mỗi cuối tuần đều là ngày nghỉ. Xin lưu ý điều này."
+					},
+					"updatedAt": "2026-07-14T17:53:14.299Z",
+					"createdAt": "2026-07-14T15:55:39.070Z",
+					"colorCode": "#d099db",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 165, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 166, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 167, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 168, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 169, "dayOfWeek": 4, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 170, "dayOfWeek": 5, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 171, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "15:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 58, "weekOfMonth": 1, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 59, "weekOfMonth": 1, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 60, "weekOfMonth": 2, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 61, "weekOfMonth": 2, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 62, "weekOfMonth": 3, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 63, "weekOfMonth": 3, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 64, "weekOfMonth": 4, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 65, "weekOfMonth": 4, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 66, "weekOfMonth": 5, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 67, "weekOfMonth": 5, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 }
+					],
+					"operationStatus": "closed",
+					"lastUpdatedAt": "2026-07-14T17:53:14.299Z"
+				},
+				{
+					"id": 17,
+					"name": { "ko": "6월15일의 축제2", "en": "June's 15th Festival2", "zh": "", "ja": "", "th": "", "vi": "" },
+					"startAt": "2026-06-15T00:00:00.000Z",
+					"endAt": "2026-06-15T00:00:00.000Z",
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": true, "vi": true, "zh": true },
+					"operationInfo": { "ko": "", "en": "", "zh": "", "ja": "", "th": "", "vi": "" },
+					"updatedAt": "2026-07-14T16:17:11.308Z",
+					"createdAt": "2026-06-15T16:17:25.396Z",
+					"colorCode": "#00dd22",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 158, "dayOfWeek": 1, "openingTime": "08:00", "closingTime": "20:00" }
+					],
+					"tourDestinationHolidaySchedules": [],
+					"operationStatus": "closed",
+					"lastUpdatedAt": "2026-07-14T16:17:11.308Z"
+				},
+				{
+					"id": 22,
+					"name": {
+						"ko": "망원시장 관광 특구 지정",
+						"en": "Mangwon Market designated as a special tourism zone",
+						"zh": "望远市场被指定为特别旅游区",
+						"ja": "望遠市場は特別観光区域に指定されている。",
+						"th": "ตลาดมังวอนได้รับการกำหนดให้เป็นเขตท่องเที่ยวพิเศษ",
+						"vi": "Chợ Mangwon được chỉ định là khu du lịch đặc biệt."
+					},
+					"startAt": "2026-08-01T00:00:00.000Z",
+					"endAt": "2026-08-31T00:00:00.000Z",
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": false,
+					"isFacilityCongestionYn": false,
+					"isSectionCongestionYn": false,
+					"isFacilityAddressYn": false,
+					"isCustomSortingYn": false,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": true, "vi": true, "zh": false },
+					"operationInfo": {
+						"ko": "많이들 놀러오세요",
+						"en": "Please come visit!",
+						"zh": "欢迎光临！",
+						"ja": "ぜひお越しください！",
+						"th": "ขอเชิญมาเยี่ยมชมกันนะคะ!",
+						"vi": "Mời bạn đến thăm!"
+					},
+					"updatedAt": "2026-07-14T15:38:35.861Z",
+					"createdAt": "2026-07-10T11:14:51.606Z",
+					"colorCode": "#d7b7d7",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 141, "dayOfWeek": 4, "openingTime": "10:00", "closingTime": "20:00" },
+						{ "id": 142, "dayOfWeek": 5, "openingTime": "10:00", "closingTime": "20:00" },
+						{ "id": 143, "dayOfWeek": 1, "openingTime": "08:50", "closingTime": "11:00" }
+					],
+					"tourDestinationHolidaySchedules": [],
+					"operationStatus": "operating",
+					"lastUpdatedAt": "2026-07-14T15:38:35.861Z"
+				},
+				{
+					"id": 23,
+					"name": {
+						"ko": "남문시장",
+						"en": "Nammun Market",
+						"zh": "纳姆市场",
+						"ja": "南門市場",
+						"th": "ตลาดน้ำมุน",
+						"vi": "Chợ Nammun"
+					},
+					"startAt": null,
+					"endAt": null,
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": true,
+					"isAiRecommendYn": false,
+					"isFacilityCongestionYn": false,
+					"isSectionCongestionYn": false,
+					"isFacilityAddressYn": false,
+					"isCustomSortingYn": false,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"operationInfo": {
+						"ko": "시간 테스트 (월화수 8-14 / 목금 9-15)",
+						"en": "Time Test (Mon-Wed 8-14 / Thu-Fri 9-15)",
+						"zh": "限时测试（周一至周三 8-14 / 周四至周五 9-15）",
+						"ja": "時間制テスト（月～水 8時～14時 / 木～金 9時～15時）",
+						"th": "การทดสอบเวลา (จันทร์-พุธ 8-14 น. / พฤหัสบดี-ศุกร์ 9-15 น.)",
+						"vi": "Thời gian thử việc (Thứ Hai - Thứ Tư, 8:00 - 14:00 / Thứ Năm - Thứ Sáu, 9:00 - 15:00)"
+					},
+					"updatedAt": "2026-07-10T17:55:53.165Z",
+					"createdAt": "2026-07-10T11:38:49.326Z",
+					"colorCode": "#692230",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 121, "dayOfWeek": 1, "openingTime": "08:00", "closingTime": "14:00" },
+						{ "id": 122, "dayOfWeek": 2, "openingTime": "08:00", "closingTime": "14:00" },
+						{ "id": 123, "dayOfWeek": 3, "openingTime": "08:00", "closingTime": "14:00" },
+						{ "id": 124, "dayOfWeek": 4, "openingTime": "09:00", "closingTime": "15:00" },
+						{ "id": 125, "dayOfWeek": 5, "openingTime": "09:00", "closingTime": "15:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 48, "weekOfMonth": 1, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 49, "weekOfMonth": 1, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 50, "weekOfMonth": 2, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 51, "weekOfMonth": 2, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 52, "weekOfMonth": 3, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 53, "weekOfMonth": 3, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 54, "weekOfMonth": 4, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 55, "weekOfMonth": 4, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 56, "weekOfMonth": 5, "dayOfWeek": 6, "fixedHoliday": null, "holidayType": 0 },
+						{ "id": 57, "weekOfMonth": 5, "dayOfWeek": 0, "fixedHoliday": null, "holidayType": 0 }
+					],
+					"operationStatus": "operating",
+					"lastUpdatedAt": "2026-07-10T17:55:53.165Z"
+				},
+				{
+					"id": 21,
+					"name": {
+						"ko": "팔레트 수정이 필요함",
+						"en": "Palette needs modification",
+						"zh": "调色板需要修改",
+						"ja": "パレットの変更が必要",
+						"th": "จำเป็นต้องปรับแต่งจานสี",
+						"vi": "Bảng màu cần được chỉnh sửa"
+					},
+					"startAt": null,
+					"endAt": null,
+					"homepageUrl": "https://console.cloud.google.com/apis/api/translate.googleapis.com/overview",
+					"mapUrl": "",
+					"isAlways": true,
+					"isAiRecommendYn": false,
+					"isFacilityCongestionYn": false,
+					"isSectionCongestionYn": false,
+					"isFacilityAddressYn": false,
+					"isCustomSortingYn": false,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": true, "ko": true, "th": false, "vi": false, "zh": false },
+					"operationInfo": {
+						"ko": "팔레트가 색상이 안 바뀝니다.",
+						"en": "The palette colors won't change.",
+						"zh": "调色板颜色不会改变。",
+						"ja": "パレットの色は変わりません。",
+						"th": "สีในจานสีจะไม่เปลี่ยนแปลง",
+						"vi": "Màu sắc trong bảng màu sẽ không thay đổi."
+					},
+					"updatedAt": "2026-07-09T17:39:51.095Z",
+					"createdAt": "2026-07-09T17:36:55.476Z",
+					"colorCode": "#14b871",
+					"tourDestinationOperatingSchedules": [],
+					"tourDestinationHolidaySchedules": [],
+					"operationStatus": "operating",
+					"lastUpdatedAt": "2026-07-09T17:39:51.095Z"
+				},
+				{
+					"id": 20,
+					"name": {
+						"ko": "경주 신라 문화 축제",
+						"en": "Gyeongju Silla Culture Festival",
+						"zh": "庆州新罗文化节",
+						"ja": "慶州新羅文化祭り",
+						"th": "เทศกาลวัฒนธรรมคยองจูชิลลา",
+						"vi": "Lễ hội văn hóa Silla Gyju"
+					},
+					"startAt": "2026-07-01T00:00:00.000Z",
+					"endAt": "2026-07-25T00:00:00.000Z",
+					"homepageUrl": "https://online.visual-paradigm.com/ko/diagrams/templates/aws-architecture-diagram/",
+					"mapUrl": "",
+					"isAlways": false,
+					"isAiRecommendYn": false,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": false,
+					"isFacilityAddressYn": false,
+					"isCustomSortingYn": false,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": true },
+					"operationInfo": {
+						"ko": "운영안내 30자 이내 ",
+						"en": "Operation Guide (within 30 characters)",
+						"zh": "操作指南（30字以内）",
+						"ja": "操作ガイド（30文字以内）",
+						"th": "คู่มือการใช้งาน (ไม่เกิน 30 ตัวอักษร)",
+						"vi": "Hướng dẫn vận hành (trong vòng 30 ký tự)"
+					},
+					"updatedAt": "2026-07-09T17:32:35.781Z",
+					"createdAt": "2026-07-08T16:53:17.137Z",
+					"colorCode": "#14b871",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 51, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "20:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 37, "weekOfMonth": null, "dayOfWeek": null, "fixedHoliday": 6, "holidayType": 1 }
+					],
+					"operationStatus": "closed",
+					"lastUpdatedAt": "2026-07-09T17:32:35.781Z"
+				},
+				{
+					"id": 2,
+					"name": { "ko": "대상지명1", "en": "tour_destination_1", "ja": "", "zh": "", "vi": "", "th": "" },
+					"startAt": null,
+					"endAt": null,
+					"homepageUrl": "",
+					"mapUrl": "",
+					"isAlways": true,
+					"isAiRecommendYn": true,
+					"isFacilityCongestionYn": true,
+					"isSectionCongestionYn": true,
+					"isFacilityAddressYn": true,
+					"isCustomSortingYn": true,
+					"isVpsContentsYn": false,
+					"supportedLanguages": { "en": true, "ja": false, "ko": true, "th": false, "vi": false, "zh": false },
+					"operationInfo": null,
+					"updatedAt": "2026-06-22T14:00:00.460Z",
+					"createdAt": "2026-05-21T11:34:09.013Z",
+					"colorCode": "",
+					"tourDestinationOperatingSchedules": [
+						{ "id": 1, "dayOfWeek": 0, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 2, "dayOfWeek": 1, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 3, "dayOfWeek": 2, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 4, "dayOfWeek": 3, "openingTime": "09:00", "closingTime": "06:00" },
+						{ "id": 5, "dayOfWeek": 6, "openingTime": "09:00", "closingTime": "06:00" }
+					],
+					"tourDestinationHolidaySchedules": [
+						{ "id": 1, "weekOfMonth": 1, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 3, "weekOfMonth": 2, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 4, "weekOfMonth": 3, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 5, "weekOfMonth": 4, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 6, "weekOfMonth": 5, "dayOfWeek": 5, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 8, "weekOfMonth": 1, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 9, "weekOfMonth": 2, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 10, "weekOfMonth": 3, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 11, "weekOfMonth": 4, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 },
+						{ "id": 12, "weekOfMonth": 5, "dayOfWeek": 4, "fixedHoliday": 1, "holidayType": 0 }
+					],
+					"operationStatus": "operating",
+					"lastUpdatedAt": "2026-06-22T14:00:00.460Z"
+				}
+			],
+			"totalCount": 15,
+			"page": 1,
+			"pageSize": 10,
+			"totalPages": 2
+		}
+	},
+	"categories": {
+		"success": true,
+		"data": [
+			{
+				"id": 29,
+				"name": {
+					"ko": "행사부스",
+					"en": "Event booth",
+					"zh": "活动展位",
+					"ja": "イベントブース",
+					"th": "บูธกิจกรรม",
+					"vi": "Gian hàng sự kiện"
+				},
+				"iconKey": "popper",
+				"sortingNumber": 1,
+				"isEventCategory": true,
+				"isAiRecommendationEnabled": false,
+				"categoryColorCodes": {
+					"id": 5,
+					"paletteNumber": 5,
+					"sortingNumber": 5,
+					"colorCode": "#23B63C"
+				},
+				"_count": {
+					"facilities": 29
+				}
+			},
+			{
+				"id": 21,
+				"name": {
+					"ko": "무장애",
+					"en": "Barrier-free",
+					"zh": "无障碍",
+					"ja": "バリアフリー",
+					"th": "ไร้สิ่งกีดขวาง",
+					"vi": "Không có rào cản"
+				},
+				"iconKey": "wheelchair",
+				"sortingNumber": 2,
+				"isEventCategory": true,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 9,
+					"paletteNumber": 9,
+					"sortingNumber": 9,
+					"colorCode": "#BA66EF"
+				},
+				"_count": {
+					"facilities": 0
+				}
+			},
+			{
+				"id": 19,
+				"name": {
+					"ko": "포토존",
+					"en": "Photo zone",
+					"zh": "摄影区",
+					"ja": "フォトゾーン",
+					"th": "โซนภาพถ่าย",
+					"vi": "Khu vực chụp ảnh"
+				},
+				"iconKey": "camera",
+				"sortingNumber": 3,
+				"isEventCategory": true,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 10,
+					"paletteNumber": 10,
+					"sortingNumber": 10,
+					"colorCode": "#F29AD5"
+				},
+				"_count": {
+					"facilities": 3
+				}
+			},
+			{
+				"id": 4,
+				"name": {
+					"ko": "정원",
+					"en": "garden",
+					"zh": "",
+					"ja": "",
+					"th": "",
+					"vi": ""
+				},
+				"iconKey": "location",
+				"sortingNumber": 4,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 4,
+					"paletteNumber": 4,
+					"sortingNumber": 4,
+					"colorCode": "#5DE251"
+				},
+				"_count": {
+					"facilities": 15
+				}
+			},
+			{
+				"id": 3,
+				"name": {
+					"ko": "화장실",
+					"en": "restroom",
+					"zh": "",
+					"ja": "",
+					"th": "",
+					"vi": ""
+				},
+				"iconKey": "toilet",
+				"sortingNumber": 5,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 6,
+					"paletteNumber": 6,
+					"sortingNumber": 6,
+					"colorCode": "#72D4EA"
+				},
+				"_count": {
+					"facilities": 3
+				}
+			},
+			{
+				"id": 9,
+				"name": {
+					"ko": "주차장",
+					"en": "Parking lot",
+					"zh": "",
+					"ja": "ㅈㄱㄹㅇ",
+					"th": "",
+					"vi": ""
+				},
+				"iconKey": "parking",
+				"sortingNumber": 6,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": false,
+				"categoryColorCodes": {
+					"id": 11,
+					"paletteNumber": 11,
+					"sortingNumber": 11,
+					"colorCode": "#965829"
+				},
+				"_count": {
+					"facilities": 0
+				}
+			},
+			{
+				"id": 2,
+				"name": {
+					"ko": "음식점",
+					"en": "eating house",
+					"zh": "餐馆",
+					"ja": "飲食店",
+					"th": "ภัตตาคาร",
+					"vi": "quán ăn"
+				},
+				"iconKey": "meat",
+				"sortingNumber": 7,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 1,
+					"paletteNumber": 1,
+					"sortingNumber": 1,
+					"colorCode": "#FF5151"
+				},
+				"_count": {
+					"facilities": 6
+				}
+			},
+			{
+				"id": 1,
+				"name": {
+					"ko": "카페",
+					"en": "cafe",
+					"zh": "",
+					"ja": "",
+					"th": "",
+					"vi": ""
+				},
+				"iconKey": "location",
+				"sortingNumber": 8,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 2,
+					"paletteNumber": 2,
+					"sortingNumber": 2,
+					"colorCode": "#FF983D"
+				},
+				"_count": {
+					"facilities": 5
+				}
+			},
+			{
+				"id": 23,
+				"name": {
+					"ko": "쉼터",
+					"en": "Shelter",
+					"zh": "庇护所",
+					"ja": "シェルター",
+					"th": "ที่หลบภัย",
+					"vi": "Nơi trú ẩn"
+				},
+				"iconKey": "three",
+				"sortingNumber": 9,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": false,
+				"categoryColorCodes": {
+					"id": 5,
+					"paletteNumber": 5,
+					"sortingNumber": 5,
+					"colorCode": "#23B63C"
+				},
+				"_count": {
+					"facilities": 45
+				}
+			},
+			{
+				"id": 30,
+				"name": {
+					"ko": "관광명소",
+					"en": "Tourist attractions",
+					"zh": "旅游景点",
+					"ja": "観光名所",
+					"th": "สถานที่ท่องเที่ยว",
+					"vi": "Điểm tham quan du lịch"
+				},
+				"iconKey": "binoculars",
+				"sortingNumber": 10,
+				"isEventCategory": false,
+				"isAiRecommendationEnabled": true,
+				"categoryColorCodes": {
+					"id": 3,
+					"paletteNumber": 3,
+					"sortingNumber": 3,
+					"colorCode": "#F1C71F"
+				},
+				"_count": {
+					"facilities": 8
+				}
+			}
+		]
+	},
+	"facility-sensor-devices": {
+		"success": true,
+		"data": [
+			{ "sensorDeviceId": 2, "memo": "비빔밥 구역", "isMapped": false, "mappedTargetId": null },
+			{ "sensorDeviceId": 3, "memo": "제육볶음 구역", "isMapped": true, "mappedTargetId": 30 },
+			{ "sensorDeviceId": 4, "memo": "행사1 구역", "isMapped": true, "mappedTargetId": 32 }
+		]
+	}
+}

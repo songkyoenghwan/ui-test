@@ -1,0 +1,29 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Recommended from '@/src/components/svelte/map/SearchList.svelte';
+import Map from '@/src/pages/map/MapCanvas.astro';
+import Directions from '@/svelte/directions/Directions.svelte';
+import ViewEx from '@/svelte/ex/ViewEx.svelte';
+import BackView from '@/svelte/map/BackView.svelte';
+import SearchArea from '@/svelte/map/SearchArea.svelte';
+import SearchBar from '@/svelte/map/SearchBar.svelte';
+import Sheet from '@/svelte/map/Sheet.svelte';
+---
+
+<Layout>
+	<Map />
+
+	<SearchBar client:only="svelte" name="대상지명" />
+
+	<SearchArea client:only="svelte" />
+
+	<Recommended client:only="svelte" />
+
+	<Directions client:only="svelte" />
+
+	<BackView client:only="svelte" />
+
+	<Sheet client:only="svelte" />
+
+	<ViewEx client:load />
+</Layout>
