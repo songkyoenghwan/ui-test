@@ -1,22 +1,67 @@
-## Development
+# AGENTS.md
 
-When starting the dev server, use background mode:
+This file provides guidance to AI coding agents (Claude Code, Codex, and others) when working with code in this repository.
 
+## Project
+
+NestJS 11 API (Node.js 22, Prisma ORM 7, PostgreSQL) for a tourism solution's user-facing front. Private, unlicensed. Korean is the primary language for docs, error messages, and comments.
+
+## Commands
+
+```bash
+npm ci                  # install (activates Husky via `prepare`)
+cp .env.example .env    # then set DATABASE_URL to a real PostgreSQL instance
+npm run db:generate     # generate Prisma Client (also runs as `prebuild`)
+npm run start:dev       # dev server, port 3011, prefix /api/v1
 ```
-astro dev --background
-```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+| Command                           | Purpose                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `npm run lint` / `lint:fix`       | ESLint over `src`, `apps`, `libs`, `test`                                                         |
+| `npm run format:check`            | Prettier check                                                                                    |
+| `npm test`                        | Jest unit tests (single file: `npm test -- path/to/file.spec.ts`)                                 |
+| `npm run test:watch` / `test:cov` | Watch mode / coverage                                                                             |
+| `npm run test:e2e`                | Jest E2E suite (`test/jest-e2e.json`)                                                             |
+| `npm run check`                   | Full gate: lint, format:check, unit (`--runInBand`), build, e2e — run before finishing any change |
+| `npm run db:validate`             | Validate `prisma/schema.prisma`                                                                   |
+| `npm run db:generate`             | Regenerate Prisma Client into `src/generated/prisma`                                              |
+| `npm run db:pull`                 | Pull live DB schema into Prisma schema (see below)                                                |
+| `npm run db:studio`               | Prisma Studio                                                                                     |
 
-## Documentation
+This is a **database-first** project: schema changes flow from the real database via `npm run db:pull`, never from `prisma migrate` or `prisma db push`. Do not add files under `prisma/migrations/` — a Husky pre-commit hook blocks it.
 
-Full documentation: https://docs.astro.build
+## Architecture
 
-Consult these guides before working on related tasks:
+### Request lifecycle
 
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+`RequestContextMiddleware` (applied to all routes in `AppModule.configure`) runs first, then the global provider chain in `app.module.ts`: `ThrottlerGuard` → `RequestLoggingInterceptor` → `ResponseEnvelopeInterceptor` → `ClassSerializerInterceptor` → controller → `GlobalExceptionFilter` on any thrown error. Cross-cutting HTTP behavior (CORS, Helmet, global prefix, URI versioning, the global `ValidationPipe`, Swagger/Scalar setup) is centralized in `src/config/application.ts`, invoked once from `src/main.ts`. Don't scatter this bootstrap logic into feature modules.
+
+### Response contract
+
+Controllers return plain domain data — never `{ success, data }` by hand. `ResponseEnvelopeInterceptor` wraps every success response; `GlobalExceptionFilter` normalizes every error into `{ success: false, statusCode, code, message, details }` using `AppException` + the codes in `src/common/constants/error-code.constant.ts`. Every response carries `x-request-id` (client-supplied if valid, else server-generated). List endpoints reuse `PaginationQueryDto` / `createPaginatedResponse` / `PaginatedResponse<T>` from `src/common/pagination` — default `page=1`, `pageSize=10`, max `pageSize=100`.
+
+`/health/live` and `/health/ready` (Terminus, in `src/health`) are the only routes excluded from the API prefix, versioning, the response envelope, and rate limiting — keep them that way.
+
+### Data access
+
+`PrismaService` (`src/database/prisma.service.ts`) is the sole Prisma entry point, wired through Nest's lifecycle with the Prisma 7 PostgreSQL driver adapter (`@prisma/adapter-pg`). Never construct a second client/adapter. Generated Prisma Client output lives in `src/generated/prisma` — treat it as read-only, git-ignored, regenerated by `db:generate`.
+
+### Config and validation
+
+`src/config/app.config.ts` + `src/config/env.validation.ts` (Joi) define and validate all runtime env vars (`DATABASE_URL`, `PORT`, `API_PREFIX`, `CORS_ALLOWED_ORIGINS`, `TRUST_PROXY_HOPS`, `RATE_LIMIT_*`, `DB_POOL_MAX`, `DB_CONNECTION_TIMEOUT_MS`, `DB_IDLE_TIMEOUT_MS`). Unknown env vars are allowed; known ones are validated at boot. Request DTOs use `class-validator`/`class-transformer`, not hand-written interfaces.
+
+### API docs
+
+Swagger/Scalar are generated in dev/test only (`src/config/swagger.ts`), never in production. Use `ApiOkEnvelope(Model)` / `ApiPaginatedEnvelope(Model)` decorators (`src/common/decorators/api-response.decorator.ts`) so documented shapes match the actual envelope; add `ApiCommonErrorResponses()` where relevant. Docs: Scalar UI at `/docs`, OpenAPI JSON at `/docs/json`.
+
+## Git hooks (Husky, active after `npm ci`)
+
+- `pre-commit`: lint-staged on staged files, blocks `prisma/migrations/` commits
+- `commit-msg`: enforces Conventional Commits
+- `pre-push`: checks allowed branch names, blocks direct pushes to `develop` and `release/*`
+- PR targets: general work → `develop`; production releases and emergency fixes → `main`
+- Working branches: `feature/*`, `fix/*`, `hotfix/*`, `chore/*`, `refactor/*`
+
+## Further reference
+
+`.agents/skills/visit-servant-backend/SKILL.md` (git-tracked, shared) has the detailed backend implementation workflow — contract-first endpoint design, controller/service boundaries, Prisma query discipline, and the completion checklist. Read it before implementing controllers, services, DTOs, or Prisma queries. Its `references/code-conventions.md` covers formatting, TypeScript, file naming, and module structure rules.

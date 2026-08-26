@@ -1,0 +1,41 @@
+{
+	"arrowParens": "always",
+	"bracketSpacing": true,
+	"endOfLine": "auto",
+	"htmlWhitespaceSensitivity": "ignore",
+	"printWidth": 130,
+	"singleQuote": true,
+	"tabWidth": 4,
+	"useTabs": true,
+	"trailingComma": "all",
+	"embeddedLanguageFormatting": "auto",
+	"singleAttributePerLine": false,
+	"plugins": [
+		"@prettier/plugin-oxc",
+		"prettier-plugin-astro",
+		"prettier-plugin-svelte",
+		"@ianvs/prettier-plugin-sort-imports",
+		"prettier-plugin-organize-attributes",
+		"prettier-plugin-css-order",
+		"prettier-plugin-tailwindcss"
+	],
+	"cssDeclarationSorterOrder": "smacss",
+	"tailwindPreserveDuplicates": false,
+	"importOrder": ["<BUILTIN_MODULES>", "<THIRD_PARTY_MODULES>", "^@/(.*)$", "^[./]"],
+	"overrides": [
+		{
+			"files": "*.svelte",
+			"options": {
+				"parser": "svelte"
+			}
+		},
+		{
+			"files": "*.ts",
+			"options": {
+				"parser": "typescript",
+				"plugins": ["@ianvs/prettier-plugin-sort-imports"],
+				"importOrderParserPlugins": ["typescript", "decorators-legacy"]
+			}
+		}
+	]
+}

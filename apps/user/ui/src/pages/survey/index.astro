@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import SurveySkeletonFallback from '@/pages/survey/SurveySkeletonFallback.astro';
+import SurveyHeader from '@/svelte/survey/SurveyHeader.svelte';
+import SurveyList from '@/svelte/survey/SurveyList.svelte';
+---
+
+<Layout>
+	<section class="flex h-dvh flex-col bg-slate-50">
+		<SurveyHeader client:only="svelte">
+			<div slot="fallback" class="flex h-20 shrink-0 animate-pulse items-center bg-white p-5">
+				<div class="h-4 w-1/7 animate-pulse rounded bg-slate-100"></div>
+				<div class="h-4 w-1/7 animate-pulse rounded bg-slate-100"></div>
+			</div>
+		</SurveyHeader>
+
+		<SurveyList client:only="svelte">
+			<div class="flex h-[calc(100%-80px)] flex-1 flex-col justify-between" slot="fallback">
+				<SurveySkeletonFallback />
+			</div>
+		</SurveyList>
+	</section>
+</Layout>

@@ -1,0 +1,155 @@
+---
+import '@/svelte/pois/PoiPin.svelte';
+---
+
+<div class="relative h-dvh w-dvw overflow-clip">
+	<section id="MapCanvas" class="grid h-dvh w-dvw"></section>
+</div>
+
+<script>
+	import '@/svelte/pois/PoiPin.svelte';
+	import MapController from '@/events/mapEvent';
+	import { sheetMidRatioValue } from '@/src/stores/sheetUiStore';
+	import { getDistance, langState, resolveMapDestinationId } from '@/stores/globalStore';
+	import {
+		assignRoutePlace,
+		current,
+		loadPoiDetail,
+		facilityList,
+		loadDestination,
+		poiList,
+		recommendList,
+		searchList,
+		walkingRoutePath,
+	} from '@/stores/pageDataStore';
+	import { routeSelecting } from '@/stores/locationStore';
+	import { detailViewState, searchViewState, sheetInstance, updateViewState } from '@/stores/uxStore';
+	import { facilityDisplayName, placeDisplayName } from '@/utils/route-place';
+
+	function waitForTmap(timeout = 10000) {
+		return new Promise((resolve, reject) => {
+			if (window.Tmapv3) {
+				resolve(window.Tmapv3);
+				return;
+			}
+
+			const started = Date.now();
+			const timer = setInterval(() => {
+				if (window.Tmapv3) {
+					clearInterval(timer);
+					resolve(window.Tmapv3);
+					return;
+				}
+
+				if (Date.now() - started > timeout) {
+					clearInterval(timer);
+					reject(new Error('Tmapv3 load timeout'));
+				}
+			}, 50);
+		});
+	}
+
+	async function initMapPage() {
+		const container = document.getElementById('MapCanvas');
+		if (!container) return;
+
+		await waitForTmap();
+
+		const mapController = new MapController();
+		mapController.containerId = 'MapCanvas';
+		mapController.init();
+
+		mapController.map.on('ConfigLoad', async function () {
+			const center = mapController.getCenterCoordinates();
+
+			if (center) {
+				getDistance.set({ lat: String(center.lat), lng: String(center.lng) });
+			}
+
+			mapController.groundOverlayInit('/images/overlay/img-overlay-bg.png');
+
+			const detail = await loadDestination(resolveMapDestinationId());
+
+			if (detail && Number.isFinite(detail.latitude) && Number.isFinite(detail.longitude)) {
+				mapController.setCenter(detail.latitude, detail.longitude);
+			}
+
+			updateViewState({
+				layout: 'default',
+				detail: detail?.isAiRecommendYn ? 'ai' : 'default',
+				search: 'default',
+			});
+
+			searchList.set(facilityList.get() ?? []);
+			recommendList.set(facilityList.get() ?? []);
+
+			const toPinItems = (list) =>
+				(Array.isArray(list) ? list : poiList.get()).flatMap((poi) =>
+					(poi.facilityPoiMappings ?? []).map((mapping) => ({
+						poiId: poi.id,
+						poiName: poi.name,
+						facilityName: mapping.facility?.name,
+						latitude: poi.latitude,
+						longitude: poi.longitude,
+						facilityId: mapping.facilityId,
+						category: mapping.facility?.category,
+						congestionStatus: mapping.congestionStatus ?? 'none',
+					})),
+				);
+
+			const onPinClick = (item) => {
+				if (['departure', 'path', 'finding'].includes(searchViewState.get())) {
+					if (searchViewState.get() === 'departure' && routeSelecting.get() !== 'idle') {
+						assignRoutePlace({
+							latitude: item.latitude,
+							longitude: item.longitude,
+							poiId: Number(item.poiId) || null,
+							name:
+								facilityDisplayName(item.facilityName, langState.get()) ||
+								placeDisplayName(item.poiName, '선택한 장소'),
+						});
+					}
+					return;
+				}
+
+				current.setKey('facility', Number(item.facilityId));
+				current.setKey('poi', item.poiId);
+				updateViewState({
+					layout: 'facilities',
+					detail: 'facilities',
+					search: 'idle',
+				});
+				mapController.setCenter(item.latitude - 0.0005, item.longitude);
+				sheetInstance.get()?.setSnapPoint(sheetMidRatioValue.get());
+				void loadPoiDetail(item.poiId, Number(item.facilityId));
+			};
+
+			const renderPoiPins = (nextList) => {
+				const selected = current.get();
+				const isFacilityDetail = detailViewState.get() === 'facilities';
+				mapController.replaceFacilityPins(toPinItems(nextList), onPinClick, {
+					poiId: isFacilityDetail ? selected.poi : 0,
+					facilityId: isFacilityDetail ? selected.facility : 0,
+				});
+			};
+
+			poiList.subscribe((list) => renderPoiPins(list));
+			current.subscribe(() => renderPoiPins(poiList.get()));
+			detailViewState.subscribe(() => renderPoiPins(poiList.get()));
+			walkingRoutePath.subscribe((path) => {
+				if (!Array.isArray(path) || path.length < 2) {
+					mapController.clearWalkingRoute();
+					return;
+				}
+				mapController.drawWalkingRoute(path);
+			});
+			window.addEventListener('visit:poi-list', (event) => {
+				renderPoiPins(event.detail);
+			});
+		});
+	}
+
+	initMapPage().catch((error) => {
+		console.error('[MapCanvas] init failed:', error);
+	});
+</script>

@@ -1,0 +1,3 @@
+export const SEARCH_MAX_ITEMS = 500;
+export const POPULARITY_MAX_ITEMS = 10;
+export const AI_RECOMMENDATION_MAX_ITEMS = 5;

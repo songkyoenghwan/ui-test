@@ -1,0 +1,15 @@
+.git
+.github
+.agents
+.env
+.env.*
+coverage
+dist
+docs
+node_modules
+test
+*.log
+ui/.astro
+ui/dist
+ui/node_modules
+src/generated

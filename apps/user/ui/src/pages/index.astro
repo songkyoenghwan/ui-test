@@ -1,0 +1,28 @@
+---
+import Logo from '@/components/img/Logo.astro';
+import Layout from '@/layouts/Layout.astro';
+import Language from '@/svelte/btn/Language.svelte';
+import Gate from '@/svelte/gate/Gate.svelte';
+---
+
+<Layout>
+	<section class="flex h-dvh flex-col gap-3.5 overflow-x-clip overflow-y-auto p-5 **:tracking-tight">
+		<Language client:only="svelte">
+			<div class="flex justify-end" slot="fallback">
+				<div class="flex h-9 w-27.5 animate-pulse justify-end rounded-lg bg-slate-100"></div>
+			</div>
+		</Language>
+
+		<Logo />
+
+		<Gate client:only="svelte">
+			<div class="flex flex-1 flex-col gap-2" slot="fallback">
+				<div class="min-h-15 bg-white px-5 py-5">
+					<div class="h-7 w-full animate-pulse rounded bg-slate-100"></div>
+					<div class="mt-2 h-4 w-full animate-pulse rounded bg-slate-100"></div>
+				</div>
+				<div class="min-h-20 animate-pulse rounded bg-slate-100"></div>
+			</div>
+		</Gate>
+	</section>
+</Layout>

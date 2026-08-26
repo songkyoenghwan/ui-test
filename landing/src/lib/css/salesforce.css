@@ -320,3 +320,35 @@
 .field-label {
     @apply relative text-sm font-bold text-black;
 }
+
+.form {
+    padding: 20px !important;
+
+    span.value {
+        display: flex !important;
+        margin: 0 !important;
+
+        span {
+            display: flex !important;
+            margin: 0 !important;
+        }
+
+        .inline {
+            margin: 0;
+        }
+    }
+}
+
+main {
+    &:has(input[type='submit']) {
+        .comp {
+            display: none;
+        }
+    }
+
+    &:not(:has(input[type='submit'])) {
+        .comp {
+            display: flex;
+        }
+    }
+}

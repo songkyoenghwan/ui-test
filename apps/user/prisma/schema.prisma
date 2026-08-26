@@ -1,0 +1,1254 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model AdminChangeLog {
+  id         Int       @id(map: "pk_admin_change_logs") @default(autoincrement())
+  createdAt  DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy  Int       @map("created_by")
+  updatedAt  DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy  Int?      @map("updated_by")
+  deletedAt  DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy  Int?      @map("deleted_by")
+  isVisible  Boolean?  @default(true) @map("is_visible")
+  isDeleted  Boolean?  @default(false) @map("is_deleted")
+  entityType String    @map("entity_type") @db.VarChar(50)
+  entityId   BigInt    @map("entity_id")
+  beforeData Json?     @map("before_data")
+  afterData  Json?     @map("after_data")
+
+  @@map("admin_change_logs")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model AnalyticsEvent {
+  id                BigInt           @id(map: "pk_analytics_events") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @default(0) @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  eventId           String           @unique(map: "uq_analytics_events_event_id") @map("event_id") @db.VarChar(64)
+  visitorId         String           @map("visitor_id") @db.VarChar(64)
+  sessionId         String           @map("session_id") @db.VarChar(64)
+  eventName         String           @map("event_name") @db.VarChar(80)
+  occurredAt        DateTime         @map("occurred_at") @db.Timestamp(6)
+  receivedAt        DateTime         @default(now()) @map("received_at") @db.Timestamp(6)
+  pagePath          String?          @map("page_path") @db.VarChar(500)
+  screenName        String?          @map("screen_name") @db.VarChar(100)
+  sourceArea        String?          @map("source_area") @db.VarChar(100)
+  targetType        String?          @map("target_type") @db.VarChar(50)
+  targetId          String?          @map("target_id") @db.VarChar(64)
+  targetName        String?          @map("target_name") @db.VarChar(255)
+  facilityId        String?          @map("facility_id") @db.VarChar(64)
+  categoryId        String?          @map("category_id") @db.VarChar(64)
+  surveyId          String?          @map("survey_id") @db.VarChar(64)
+  questionId        String?          @map("question_id") @db.VarChar(64)
+  answerId          String?          @map("answer_id") @db.VarChar(64)
+  metadata          Json?
+  analyticsSessions AnalyticsSession @relation(fields: [sessionId], references: [sessionId], onDelete: NoAction, onUpdate: NoAction, map: "fk_analytics_events_session")
+  analyticsVisitors AnalyticsVisitor @relation(fields: [visitorId], references: [visitorId], onDelete: NoAction, onUpdate: NoAction, map: "fk_analytics_events_visitor")
+
+  @@index([occurredAt, eventName], map: "idx_analytics_events_date_name")
+  @@index([sessionId], map: "idx_analytics_events_session_id")
+  @@index([eventName, targetType, targetId], map: "idx_analytics_events_target")
+  @@index([visitorId, occurredAt], map: "idx_analytics_events_visitor_date")
+  @@map("analytics_events")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model AnalyticsSession {
+  id                BigInt           @id(map: "pk_analytics_sessions") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @default(0) @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  sessionId         String           @unique(map: "uq_analytics_sessions_session_id") @map("session_id") @db.VarChar(64)
+  visitorId         String           @map("visitor_id") @db.VarChar(64)
+  startedAt         DateTime         @map("started_at") @db.Timestamp(6)
+  endedAt           DateTime?        @map("ended_at") @db.Timestamp(6)
+  lastSeenAt        DateTime         @map("last_seen_at") @db.Timestamp(6)
+  landingPath       String?          @map("landing_path") @db.VarChar(500)
+  exitPath          String?          @map("exit_path") @db.VarChar(500)
+  referrer          String?
+  utmSource         String?          @map("utm_source") @db.VarChar(100)
+  utmMedium         String?          @map("utm_medium") @db.VarChar(100)
+  utmCampaign       String?          @map("utm_campaign") @db.VarChar(150)
+  deviceType        String?          @map("device_type") @db.VarChar(30)
+  browser           String?          @db.VarChar(50)
+  os                String?          @db.VarChar(50)
+  pageViewCount     Int              @default(0) @map("page_view_count")
+  eventCount        Int              @default(0) @map("event_count")
+  analyticsEvents   AnalyticsEvent[]
+  analyticsVisitors AnalyticsVisitor @relation(fields: [visitorId], references: [visitorId], onDelete: NoAction, onUpdate: NoAction, map: "fk_analytics_sessions_visitor")
+
+  @@index([startedAt], map: "idx_analytics_sessions_started")
+  @@index([visitorId, startedAt], map: "idx_analytics_sessions_visitor_started")
+  @@map("analytics_sessions")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model AnalyticsVisitorSurveyStatus {
+  id                         Int                              @id(map: "pk_analytics_visitor_survey_status") @default(autoincrement())
+  createdAt                  DateTime?                        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                  Int?                             @map("created_by")
+  updatedAt                  DateTime?                        @map("updated_at") @db.Timestamp(6)
+  updatedBy                  Int?                             @map("updated_by")
+  deletedAt                  DateTime?                        @map("deleted_at") @db.Timestamp(6)
+  deletedBy                  Int?                             @map("deleted_by")
+  isVisible                  Boolean?                         @default(true) @map("is_visible")
+  isDeleted                  Boolean?                         @default(false) @map("is_deleted")
+  visitorId                  String                           @map("visitor_id") @db.VarChar(64)
+  status                     AnalyticsVisitorSurveyStatusType @default(NOT_SUBMITTED)
+  firstSeenAt                DateTime                         @map("first_seen_at") @db.Timestamp(6)
+  submittedAt                DateTime?                        @map("submitted_at") @db.Timestamp(6)
+  tourDestinationId          Int?                             @map("tour_destination_id")
+  submissionId               String?                          @map("submission_id") @db.VarChar(64)
+  skippedAt                  DateTime?                        @map("skipped_at") @db.Timestamp(6)
+  tourDestination            TourDestination?                 @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_analytics_survey_status_destination_id")
+  onboardingSurveySubmission OnboardingSurveySubmission?      @relation(fields: [submissionId], references: [submissionId], onDelete: NoAction, onUpdate: NoAction, map: "fk_analytics_survey_status_submission_id")
+  analyticsVisitors          AnalyticsVisitor                 @relation(fields: [visitorId], references: [visitorId], onDelete: NoAction, onUpdate: NoAction, map: "fk_analytics_visitor_survey_status_visitor_id")
+
+  @@unique([visitorId, tourDestinationId], map: "uq_analytics_survey_status_visitor_destination")
+  @@index([tourDestinationId, status], map: "idx_analytics_survey_status_destination_status")
+  @@index([submissionId], map: "idx_analytics_survey_status_submission_id")
+  @@map("analytics_visitor_survey_status")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model AnalyticsVisitor {
+  id                           BigInt                         @id(map: "pk_analytics_visitors") @default(autoincrement())
+  createdAt                    DateTime?                      @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                    Int                            @default(0) @map("created_by")
+  updatedAt                    DateTime?                      @map("updated_at") @db.Timestamp(6)
+  updatedBy                    Int?                           @map("updated_by")
+  deletedAt                    DateTime?                      @map("deleted_at") @db.Timestamp(6)
+  deletedBy                    Int?                           @map("deleted_by")
+  isVisible                    Boolean?                       @default(true) @map("is_visible")
+  isDeleted                    Boolean?                       @default(false) @map("is_deleted")
+  visitorId                    String                         @unique(map: "uq_analytics_visitors_visitor_id") @map("visitor_id") @db.VarChar(64)
+  firstSeenAt                  DateTime                       @map("first_seen_at") @db.Timestamp(6)
+  lastSeenAt                   DateTime                       @map("last_seen_at") @db.Timestamp(6)
+  firstReferrer                String?                        @map("first_referrer")
+  firstUtmSource               String?                        @map("first_utm_source") @db.VarChar(100)
+  firstUtmMedium               String?                        @map("first_utm_medium") @db.VarChar(100)
+  firstUtmCampaign             String?                        @map("first_utm_campaign") @db.VarChar(150)
+  userAgentHash                String?                        @map("user_agent_hash") @db.VarChar(128)
+  ipHash                       String?                        @map("ip_hash") @db.VarChar(128)
+  analyticsEvents              AnalyticsEvent[]
+  analyticsSessions            AnalyticsSession[]
+  analyticsVisitorSurveyStatus AnalyticsVisitorSurveyStatus[]
+  onboardingSurveySubmissions  OnboardingSurveySubmission[]
+
+  @@map("analytics_visitors")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Category {
+  id                        Int                @id(map: "pk_categories") @default(autoincrement())
+  createdAt                 DateTime?          @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                 Int                @map("created_by")
+  updatedAt                 DateTime?          @map("updated_at") @db.Timestamp(6)
+  updatedBy                 Int?               @map("updated_by")
+  deletedAt                 DateTime?          @map("deleted_at") @db.Timestamp(6)
+  deletedBy                 Int?               @map("deleted_by")
+  isVisible                 Boolean?           @default(true) @map("is_visible")
+  isDeleted                 Boolean?           @default(false) @map("is_deleted")
+  parentId                  Int?               @map("parent_id")
+  sortingNumber             Int?               @map("sorting_number")
+  isAiRecommendationEnabled Boolean?           @map("is_ai_recommendation_enabled")
+  name                      Json?              @db.Json
+  isEventCategory           Boolean?           @default(false) @map("is_event_category")
+  categoryColorCodeId       Int?               @map("category_color_code_id")
+  tourDestinationId         Int?               @map("tour_destination_id")
+  iconKey                   String?            @map("icon_key") @db.VarChar
+  isNavigationProvided      Boolean?           @default(false) @map("is_navigation_provided")
+  categories                Category?          @relation("categoriesTocategories", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_categories_categories_id")
+  otherCategories           Category[]         @relation("categoriesTocategories")
+  categoryColorCodes        CategoryColorCode? @relation(fields: [categoryColorCodeId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_categories_category_color_codes_id")
+  tourDestinations          TourDestination?   @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_categories_tour_destinations_id")
+  categoryFile              CategoryFile[]
+  facilities                Facility[]
+
+  @@map("categories")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CategoryColorCode {
+  id                Int              @id(map: "pk_category_color_codes") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  colorCode         String?          @map("color_code") @db.VarChar
+  sortingNumber     Int?             @map("sorting_number")
+  tourDestinationId Int?             @map("tour_destination_id")
+  paletteNumber     Int?             @map("palette_number")
+  categories        Category[]
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_category_color_codes_tour_destinations_id")
+
+  @@map("category_color_codes")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CategoryFile {
+  id               Int       @id(map: "pk_category_file") @default(autoincrement())
+  createdAt        DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy        Int       @map("created_by")
+  updatedAt        DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy        Int?      @map("updated_by")
+  deletedAt        DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy        Int?      @map("deleted_by")
+  isVisible        Boolean?  @default(true) @map("is_visible")
+  isDeleted        Boolean?  @default(false) @map("is_deleted")
+  fileOriginalName String    @map("file_original_name") @db.VarChar(255)
+  fileUploadName   String    @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath   String    @map("file_upload_path") @db.VarChar(255)
+  fileSize         Int       @map("file_size")
+  fileMimeType     String    @map("file_mime_type") @db.VarChar(255)
+  fileUrl          String    @map("file_url") @db.VarChar(255)
+  categoryId       Int?      @map("category_id")
+  categories       Category? @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_category_file_categories_id")
+
+  @@map("category_file")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CongestionData {
+  id                       Int                     @id(map: "pk_congestion_data") @default(autoincrement())
+  createdAt                DateTime?               @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                Int                     @map("created_by")
+  updatedAt                DateTime?               @map("updated_at") @db.Timestamp(6)
+  updatedBy                Int?                    @map("updated_by")
+  deletedAt                DateTime?               @map("deleted_at") @db.Timestamp(6)
+  deletedBy                Int?                    @map("deleted_by")
+  isVisible                Boolean?                @default(true) @map("is_visible")
+  isDeleted                Boolean?                @default(false) @map("is_deleted")
+  countedPeople            Int?                    @map("counted_people")
+  congestionSensorDeviceId Int?                    @map("congestion_sensor_device_id")
+  congestionAnalysisLog    CongestionAnalysisLog?
+  congestionSensorDevice   CongestionSensorDevice? @relation(fields: [congestionSensorDeviceId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_data_congestion_sensor_device_id")
+
+  @@map("congestion_data")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CongestionSection {
+  id                                                         Int                       @id(map: "pk_congestion_section") @default(autoincrement())
+  createdAt                                                  DateTime?                 @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                                                  Int                       @map("created_by")
+  updatedAt                                                  DateTime?                 @map("updated_at") @db.Timestamp(6)
+  updatedBy                                                  Int?                      @map("updated_by")
+  deletedAt                                                  DateTime?                 @map("deleted_at") @db.Timestamp(6)
+  deletedBy                                                  Int?                      @map("deleted_by")
+  isVisible                                                  Boolean?                  @default(true) @map("is_visible")
+  isDeleted                                                  Boolean?                  @default(false) @map("is_deleted")
+  tourDestinationId                                          Int?                      @map("tour_destination_id")
+  memo                                                       String?                   @db.VarChar
+  sensorDeviceId                                             Int?                      @map("sensor_device_id")
+  threshold                                                  Int?
+  coordinate                                                 Unsupported("geometry")?
+  facilityId                                                 Int?                      @map("facility_id")
+  overwriteCongestionStatus                                  CongestionStatus?         @map("overwrite_congestion_status")
+  congestionSensorDevice                                     CongestionSensorDevice?   @relation(fields: [sensorDeviceId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_section_congestion_sensor_device_id")
+  facilitiesCongestionSectionFacilityIdTofacilities          Facility?                 @relation("congestion_section_facility_idTofacilities", fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_section_facilities_id")
+  tourDestinations                                           TourDestination?          @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_section_tour_destinations_id")
+  congestionSectionStatus                                    CongestionSectionStatus[]
+  facilitiesFacilitiesCongestionSectionIdTocongestionSection Facility[]                @relation("facilities_congestion_section_idTocongestion_section")
+
+  @@map("congestion_section")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CongestionSectionStatus {
+  id                  Int                @id(map: "pk_congestion_section_status") @default(autoincrement())
+  createdAt           DateTime?          @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy           Int                @map("created_by")
+  updatedAt           DateTime?          @map("updated_at") @db.Timestamp(6)
+  updatedBy           Int?               @map("updated_by")
+  deletedAt           DateTime?          @map("deleted_at") @db.Timestamp(6)
+  deletedBy           Int?               @map("deleted_by")
+  isVisible           Boolean?           @default(true) @map("is_visible")
+  isDeleted           Boolean?           @default(false) @map("is_deleted")
+  congestionSectionId Int?               @map("congestion_section_id")
+  status              Int?
+  cacheNextRefreshAt  DateTime?          @map("cache_next_refresh_at") @db.Timestamp(6)
+  congestionSection   CongestionSection? @relation(fields: [congestionSectionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_section_status_congestion_section_id")
+
+  @@map("congestion_section_status")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CongestionSensorDevice {
+  id                     Int                     @id(map: "pk_sensor_device") @default(autoincrement())
+  createdAt              DateTime?               @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy              Int                     @map("created_by")
+  updatedAt              DateTime?               @map("updated_at") @db.Timestamp(6)
+  updatedBy              Int?                    @map("updated_by")
+  deletedAt              DateTime?               @map("deleted_at") @db.Timestamp(6)
+  deletedBy              Int?                    @map("deleted_by")
+  isVisible              Boolean?                @default(true) @map("is_visible")
+  isDeleted              Boolean?                @default(false) @map("is_deleted")
+  deviceUrl              String?                 @map("device_url") @db.VarChar
+  tourDestinationId      Int?                    @map("tour_destination_id")
+  memo                   String?                 @db.VarChar
+  targetType             String?                 @map("target_type") @db.VarChar
+  congestionAnalysisLogs CongestionAnalysisLog[]
+  congestionData         CongestionData[]
+  congestionSection      CongestionSection[]
+  tourDestinations       TourDestination?        @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_sensor_device")
+
+  @@map("congestion_sensor_device")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Facility {
+  id                                                                Int                         @id(map: "pk_facilities") @default(autoincrement())
+  createdAt                                                         DateTime?                   @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                                                         Int                         @map("created_by")
+  updatedAt                                                         DateTime?                   @map("updated_at") @db.Timestamp(6)
+  updatedBy                                                         Int?                        @map("updated_by")
+  deletedAt                                                         DateTime?                   @map("deleted_at") @db.Timestamp(6)
+  deletedBy                                                         Int?                        @map("deleted_by")
+  isVisible                                                         Boolean?                    @default(true) @map("is_visible")
+  isDeleted                                                         Boolean?                    @default(false) @map("is_deleted")
+  startAt                                                           DateTime?                   @map("start_at") @db.Date
+  endAt                                                             DateTime?                   @map("end_at") @db.Date
+  name                                                              Json?                       @db.Json
+  categoryId                                                        Int?                        @map("category_id")
+  description                                                       Json?                       @db.Json
+  linkButton                                                        Json?                       @map("link_button") @db.Json
+  congestionSectionId                                               Int?                        @map("congestion_section_id")
+  tourDestinationId                                                 Int?                        @map("tour_destination_id")
+  isOperationInfoSynced                                             Boolean?                    @default(false) @map("is_operation_info_synced")
+  contact                                                           String?                     @db.VarChar(50)
+  isBulkUpload                                                      Boolean?                    @default(false) @map("is_bulk_upload")
+  translationStatus                                                 String?                     @default("NOT_REQUIRED") @map("translation_status") @db.VarChar(20)
+  translatedAt                                                      DateTime?                   @map("translated_at") @db.Timestamp(6)
+  congestionSectionCongestionSectionFacilityIdTofacilities          CongestionSection[]         @relation("congestion_section_facility_idTofacilities")
+  categories                                                        Category?                   @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facilities_categories_id")
+  congestionSectionFacilitiesCongestionSectionIdTocongestionSection CongestionSection?          @relation("facilities_congestion_section_idTocongestion_section", fields: [congestionSectionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facilities_congestion_section_id")
+  tourDestinations                                                  TourDestination?            @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facilities_tour_destinations_id")
+  facilityButtons                                                   FacilityButton[]
+  facilityFile                                                      FacilityFile[]
+  facilityHolidaySchedule                                           FacilityHolidaySchedule[]
+  facilityKeywordTags                                               FacilityKeywordTags[]
+  facilityOperatingSchedule                                         FacilityOperatingSchedule[]
+  facilityOperatingStatus                                           FacilityOperatingStatus[]
+  facilityPoiMapping                                                FacilityPoiMapping[]
+  facilityProductGuideFiles                                         FacilityProductGuideFile[]
+  facilityProducts                                                  FacilityProduct[]
+  facilityVpsPopup                                                  FacilityVpsPopup[]
+
+  @@map("facilities")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityBreakSchedule {
+  id                          Int                        @id(map: "pk_facility_break_schedule") @default(autoincrement())
+  createdAt                   DateTime?                  @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                   Int                        @map("created_by")
+  updatedAt                   DateTime?                  @map("updated_at") @db.Timestamp(6)
+  updatedBy                   Int?                       @map("updated_by")
+  deletedAt                   DateTime?                  @map("deleted_at") @db.Timestamp(6)
+  deletedBy                   Int?                       @map("deleted_by")
+  isVisible                   Boolean?                   @default(true) @map("is_visible")
+  isDeleted                   Boolean?                   @default(false) @map("is_deleted")
+  breakStartTime              String?                    @map("break_start_time") @db.VarChar
+  breakEndTime                String?                    @map("break_end_time") @db.VarChar
+  facilityOperatingScheduleId Int?                       @map("facility_operating_schedule_id")
+  facilityOperatingSchedule   FacilityOperatingSchedule? @relation(fields: [facilityOperatingScheduleId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_break_schedule_facility_operating_schedule_id")
+
+  @@map("facility_break_schedule")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityButton {
+  id                            Int                          @id(map: "pk_facility_buttons") @default(autoincrement())
+  createdAt                     DateTime?                    @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                     Int                          @map("created_by")
+  updatedBy                     Int?                         @map("updated_by")
+  deletedAt                     DateTime?                    @map("deleted_at") @db.Timestamp(6)
+  deletedBy                     Int?                         @map("deleted_by")
+  isVisible                     Boolean?                     @default(true) @map("is_visible")
+  isDeleted                     Boolean?                     @default(false) @map("is_deleted")
+  facilityId                    Int                          @map("facility_id")
+  buttonName                    Json?                        @map("button_name") @db.Json
+  buttonUrl                     String?                      @map("button_url") @db.VarChar
+  tourDestinationCommonButtonId Int?                         @map("tour_destination_common_button_id")
+  updatedAt                     DateTime?                    @map("updated_at") @db.Timestamp(6)
+  sortingNumber                 Int?                         @map("sorting_number")
+  facilities                    Facility                     @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_buttons_facilities_id")
+  tourDestinationCommonButtons  TourDestinationCommonButton? @relation(fields: [tourDestinationCommonButtonId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_buttons_tour_destination_common_buttons_id")
+
+  @@map("facility_buttons")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityFile {
+  id               Int       @id(map: "pk_facility_file") @default(autoincrement())
+  createdAt        DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy        Int       @map("created_by")
+  updatedAt        DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy        Int?      @map("updated_by")
+  deletedAt        DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy        Int?      @map("deleted_by")
+  isVisible        Boolean?  @default(true) @map("is_visible")
+  isDeleted        Boolean?  @default(false) @map("is_deleted")
+  fileOriginalName String    @map("file_original_name") @db.VarChar(255)
+  fileUploadName   String    @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath   String    @map("file_upload_path") @db.VarChar(255)
+  fileSize         Int       @map("file_size")
+  fileMimeType     String    @map("file_mime_type") @db.VarChar(255)
+  fileUrl          String    @map("file_url") @db.VarChar(255)
+  facilityId       Int?      @map("facility_id")
+  fileType         String?   @map("file_type") @db.VarChar
+  facilities       Facility? @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_file_facilities_id")
+
+  @@map("facility_file")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityHolidaySchedule {
+  id           Int       @id(map: "pk_facility_holiday_schedule") @default(autoincrement())
+  createdAt    DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy    Int       @map("created_by")
+  updatedAt    DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy    Int?      @map("updated_by")
+  deletedAt    DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy    Int?      @map("deleted_by")
+  isVisible    Boolean?  @default(true) @map("is_visible")
+  isDeleted    Boolean?  @default(false) @map("is_deleted")
+  weekOfMonth  Int?      @map("week_of_month")
+  dayOfWeek    Int?      @map("day_of_week")
+  facilityId   Int?      @map("facility_id")
+  fixedHoliday Int?      @map("fixed_holiday")
+  holidayType  Int?      @map("holiday_type")
+  facilities   Facility? @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_holiday_schedule_id")
+
+  @@map("facility_holiday_schedule")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityKeywordTags {
+  id                  Int                 @id(map: "pk_facility_keyword_tags") @default(autoincrement())
+  createdAt           DateTime?           @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy           Int                 @map("created_by")
+  updatedAt           DateTime?           @map("updated_at") @db.Timestamp(6)
+  updatedBy           Int?                @map("updated_by")
+  deletedAt           DateTime?           @map("deleted_at") @db.Timestamp(6)
+  deletedBy           Int?                @map("deleted_by")
+  isVisible           Boolean?            @default(true) @map("is_visible")
+  isDeleted           Boolean?            @default(false) @map("is_deleted")
+  facilityId          Int?                @map("facility_id")
+  tagId               Int?                @map("tag_id")
+  facilities          Facility?           @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_keyword_tags_facilities_id")
+  tourDestinationTags TourDestinationTag? @relation(fields: [tagId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_keyword_tags_tour_destination_tags_id")
+
+  @@map("facility_keyword_tags")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityOperatingSchedule {
+  id                    Int                     @id(map: "pk_facility_operating_schedule") @default(autoincrement())
+  createdAt             DateTime?               @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy             Int                     @map("created_by")
+  updatedAt             DateTime?               @map("updated_at") @db.Timestamp(6)
+  updatedBy             Int?                    @map("updated_by")
+  deletedAt             DateTime?               @map("deleted_at") @db.Timestamp(6)
+  deletedBy             Int?                    @map("deleted_by")
+  isVisible             Boolean?                @default(true) @map("is_visible")
+  isDeleted             Boolean?                @default(false) @map("is_deleted")
+  dayOfWeek             Int?                    @map("day_of_week")
+  openingTime           String?                 @map("opening_time") @db.VarChar
+  closingTime           String?                 @map("closing_time") @db.VarChar
+  facilityId            Int?                    @map("facility_id")
+  facilityBreakSchedule FacilityBreakSchedule[]
+  facilities            Facility?               @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_operating_schedule_facilities_id")
+
+  @@map("facility_operating_schedule")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityOperatingStatus {
+  id                 Int       @id(map: "pk_facility_operating_status") @default(autoincrement())
+  createdAt          DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy          Int       @map("created_by")
+  updatedAt          DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy          Int?      @map("updated_by")
+  deletedAt          DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy          Int?      @map("deleted_by")
+  isVisible          Boolean?  @default(true) @map("is_visible")
+  isDeleted          Boolean?  @default(false) @map("is_deleted")
+  facilityId         Int?      @map("facility_id")
+  status             String?   @db.VarChar
+  cacheNextRefreshAt DateTime? @map("cache_next_refresh_at") @db.Timestamp(6)
+  facilities         Facility? @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_operating_status_facilities")
+
+  @@map("facility_operating_status")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityPoiMapping {
+  id            Int       @id(map: "pk_facility_pois_mapping") @default(autoincrement())
+  createdAt     DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy     Int       @map("created_by")
+  updatedAt     DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy     Int?      @map("updated_by")
+  deletedAt     DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy     Int?      @map("deleted_by")
+  isVisible     Boolean?  @default(true) @map("is_visible")
+  isDeleted     Boolean?  @default(false) @map("is_deleted")
+  poiId         Int?      @map("poi_id")
+  facilityId    Int?      @map("facility_id")
+  sortingNumber Int?      @map("sorting_number")
+  facilities    Facility? @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_pois_mapping_facilities_id")
+  pois          Poi?      @relation(fields: [poiId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_pois_mapping_pois_id")
+
+  @@map("facility_poi_mapping")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityProductFile {
+  id               Int             @id(map: "pk_facility_product_files") @default(autoincrement())
+  createdAt        DateTime?       @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy        Int             @map("created_by")
+  updatedAt        DateTime?       @map("updated_at") @db.Timestamp(6)
+  updatedBy        Int?            @map("updated_by")
+  deletedAt        DateTime?       @map("deleted_at") @db.Timestamp(6)
+  deletedBy        Int?            @map("deleted_by")
+  isVisible        Boolean?        @default(true) @map("is_visible")
+  isDeleted        Boolean?        @default(false) @map("is_deleted")
+  productId        Int             @map("product_id")
+  fileOriginalName String          @map("file_original_name") @db.VarChar(255)
+  fileUploadName   String          @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath   String          @map("file_upload_path") @db.VarChar(255)
+  fileSize         Int             @map("file_size")
+  fileMimeType     String          @map("file_mime_type") @db.VarChar(255)
+  fileUrl          String          @map("file_url") @db.VarChar(255)
+  facilityProducts FacilityProduct @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_product_files_product_id")
+
+  @@map("facility_product_files")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityProductGuideFile {
+  id               Int       @id @default(autoincrement())
+  createdAt        DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy        Int       @map("created_by")
+  updatedAt        DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy        Int?      @map("updated_by")
+  deletedAt        DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy        Int?      @map("deleted_by")
+  isVisible        Boolean?  @default(true) @map("is_visible")
+  isDeleted        Boolean?  @default(false) @map("is_deleted")
+  facilityId       Int       @map("facility_id")
+  displayOrder     Int       @map("display_order")
+  fileOriginalName String    @map("file_original_name") @db.VarChar(255)
+  fileUploadName   String    @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath   String    @map("file_upload_path") @db.VarChar(255)
+  fileSize         Int       @map("file_size")
+  fileMimeType     String    @map("file_mime_type") @db.VarChar(255)
+  fileUrl          String    @map("file_url") @db.VarChar(255)
+  facilities       Facility  @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_product_guide_files_facility_id")
+
+  @@map("facility_product_guide_files")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityProduct {
+  id                   Int                   @id @default(autoincrement())
+  createdAt            DateTime?             @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy            Int                   @map("created_by")
+  updatedAt            DateTime?             @map("updated_at") @db.Timestamp(6)
+  updatedBy            Int?                  @map("updated_by")
+  deletedAt            DateTime?             @map("deleted_at") @db.Timestamp(6)
+  deletedBy            Int?                  @map("deleted_by")
+  isVisible            Boolean?              @default(true) @map("is_visible")
+  isDeleted            Boolean?              @default(false) @map("is_deleted")
+  facilityId           Int                   @map("facility_id")
+  displayOrder         Int                   @map("display_order")
+  name                 Json                  @db.Json
+  description          Json?                 @db.Json
+  price                Int?
+  currency             String?               @default("KRW") @db.VarChar(10)
+  facilityProductFiles FacilityProductFile[]
+  facilities           Facility              @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_products_facility_id")
+
+  @@map("facility_products")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model FacilityVpsPopup {
+  id               Int       @id(map: "pk_facility_vps_popup") @default(autoincrement())
+  createdAt        DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy        Int       @map("created_by")
+  updatedAt        DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy        Int?      @map("updated_by")
+  deletedAt        DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy        Int?      @map("deleted_by")
+  isVisible        Boolean?  @default(true) @map("is_visible")
+  isDeleted        Boolean?  @default(false) @map("is_deleted")
+  facilityId       Int       @map("facility_id")
+  name             Json      @db.Json
+  description      Json?     @db.Json
+  url              String    @db.VarChar
+  fileOriginalName String?   @map("file_original_name") @db.VarChar(255)
+  fileUploadName   String?   @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath   String?   @map("file_upload_path") @db.VarChar(255)
+  fileSize         Int?      @map("file_size")
+  fileMimeType     String?   @map("file_mime_type") @db.VarChar(255)
+  fileUrl          String?   @map("file_url") @db.VarChar(255)
+  poiId            Int?      @map("poi_id")
+  facilities       Facility  @relation(fields: [facilityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_vps_popup_facilities")
+  pois             Poi?      @relation(fields: [poiId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_facility_vps_popup_pois_id")
+
+  @@map("facility_vps_popup")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Menu {
+  id              Int               @id(map: "pk_menu") @default(autoincrement())
+  createdAt       DateTime?         @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy       Int               @map("created_by")
+  updatedAt       DateTime?         @map("updated_at") @db.Timestamp(6)
+  updatedBy       Int?              @map("updated_by")
+  deletedAt       DateTime?         @map("deleted_at") @db.Timestamp(6)
+  deletedBy       Int?              @map("deleted_by")
+  isVisible       Boolean?          @default(true) @map("is_visible")
+  isDeleted       Boolean?          @default(false) @map("is_deleted")
+  name            String?           @db.VarChar
+  sortingNumber   Int?              @map("sorting_number")
+  url             String?           @db.VarChar
+  iconUrl         String?           @map("icon_url") @db.VarChar
+  parentId        Int?              @map("parent_id")
+  menu            Menu?             @relation("menuTomenu", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_menu_menu_id")
+  otherMenu       Menu[]            @relation("menuTomenu")
+  menuRoleMapping MenuRoleMapping[]
+
+  @@map("menu")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model MenuRoleMapping {
+  id        Int       @id(map: "pk_menu_role_mapping") @default(autoincrement())
+  createdAt DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy Int       @map("created_by")
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy Int?      @map("updated_by")
+  deletedAt DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy Int?      @map("deleted_by")
+  isVisible Boolean?  @default(true) @map("is_visible")
+  isDeleted Boolean?  @default(false) @map("is_deleted")
+  menuId    Int?      @map("menu_id")
+  roleId    Int?      @map("role_id")
+  canRead   Boolean?  @map("can_read")
+  canCreate Boolean?  @map("can_create")
+  canUpdate Boolean?  @map("can_update")
+  canDelete Boolean?  @map("can_delete")
+  menu      Menu?     @relation(fields: [menuId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_menu_role_mapping_menu_id")
+  roles     Role?     @relation(fields: [roleId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_menu_role_mapping_roles_id")
+
+  @@map("menu_role_mapping")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model OnboardingBasicSurveyOption {
+  id                                  Int                                  @id(map: "pk_onboarding_basic_survey_options") @default(autoincrement())
+  createdAt                           DateTime?                            @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                           Int                                  @map("created_by")
+  updatedAt                           DateTime?                            @map("updated_at") @db.Timestamp(6)
+  updatedBy                           Int?                                 @map("updated_by")
+  deletedAt                           DateTime?                            @map("deleted_at") @db.Timestamp(6)
+  deletedBy                           Int?                                 @map("deleted_by")
+  isVisible                           Boolean?                             @default(true) @map("is_visible")
+  isDeleted                           Boolean?                             @default(false) @map("is_deleted")
+  onboardingBasicSurveyQuestionId     Int?                                 @map("onboarding_basic_survey_question_id")
+  optionItem                          Json?                                @map("option_item") @db.Json
+  sortingNumber                       Int?                                 @map("sorting_number")
+  isActive                            Boolean?                             @default(false) @map("is_active")
+  onboardingBasicSurveyQuestions      OnboardingBasicSurveyQuestion?       @relation(fields: [onboardingBasicSurveyQuestionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_onboarding_basic_survey_options_onboarding_basic_survey_ques")
+  userOnboardingBasicSurveyAnswers    UserOnboardingBasicSurveyAnswer[]
+  visitorOnboardingBasicSurveyAnswers VisitorOnboardingBasicSurveyAnswer[]
+
+  @@map("onboarding_basic_survey_options")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model OnboardingBasicSurveyQuestion {
+  id                                  Int                                  @id(map: "pk_onboarding_surveys") @default(autoincrement())
+  createdAt                           DateTime?                            @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                           Int                                  @map("created_by")
+  updatedAt                           DateTime?                            @map("updated_at") @db.Timestamp(6)
+  updatedBy                           Int?                                 @map("updated_by")
+  deletedAt                           DateTime?                            @map("deleted_at") @db.Timestamp(6)
+  deletedBy                           Int?                                 @map("deleted_by")
+  isVisible                           Boolean?                             @default(true) @map("is_visible")
+  isDeleted                           Boolean?                             @default(false) @map("is_deleted")
+  title                               Json?                                @db.Json
+  questionType                        String?                              @map("question_type") @db.VarChar
+  isAiRecommendationEnabled           Boolean?                             @default(false) @map("is_ai_recommendation_enabled")
+  deploymentStatus                    String?                              @map("deployment_status") @db.VarChar
+  tourDestinationId                   Int?                                 @map("tour_destination_id")
+  deployedAt                          DateTime?                            @map("deployed_at") @db.Timestamp(6)
+  deploymentEndedAt                   DateTime?                            @map("deployment_ended_at") @db.Timestamp(6)
+  sortingNumber                       Int?                                 @map("sorting_number")
+  onboardingBasicSurveyOptions        OnboardingBasicSurveyOption[]
+  tourDestinations                    TourDestination?                     @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_onboarding_basic_survey_questions_tour_destinations_id")
+  userOnboardingBasicSurveyAnswers    UserOnboardingBasicSurveyAnswer[]
+  visitorOnboardingBasicSurveyAnswers VisitorOnboardingBasicSurveyAnswer[]
+
+  @@map("onboarding_basic_survey_questions")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model OnboardingFile {
+  id               Int                @id(map: "pk_onboarding_files") @default(autoincrement())
+  createdAt        DateTime?          @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy        Int                @map("created_by")
+  updatedAt        DateTime?          @map("updated_at") @db.Timestamp(6)
+  updatedBy        Int?               @map("updated_by")
+  deletedAt        DateTime?          @map("deleted_at") @db.Timestamp(6)
+  deletedBy        Int?               @map("deleted_by")
+  isVisible        Boolean?           @default(true) @map("is_visible")
+  isDeleted        Boolean?           @default(false) @map("is_deleted")
+  fileOriginalName String             @map("file_original_name") @db.VarChar(255)
+  fileUploadName   String             @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath   String             @map("file_upload_path") @db.VarChar(255)
+  fileSize         Int                @map("file_size")
+  fileMimeType     String             @map("file_mime_type") @db.VarChar(255)
+  fileUrl          String             @map("file_url") @db.VarChar(255)
+  onboardingId     Int?               @map("onboarding_id")
+  fileType         OnboardingFileType @map("file_type")
+  onboardings      Onboarding?        @relation(fields: [onboardingId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_onboarding_files_onboardings_id")
+
+  @@map("onboarding_files")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Onboarding {
+  id                Int              @id(map: "pk_onboardings") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  title             Json?            @db.Json
+  description       Json?            @db.Json
+  sortingNumber     Int?             @map("sorting_number")
+  deploymentStatus  String?          @default("DRAFT") @map("deployment_status") @db.VarChar
+  tourDestinationId Int?             @map("tour_destination_id")
+  onboardingFiles   OnboardingFile[]
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_onboardings_tour_destinations_id")
+
+  @@map("onboardings")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Poi {
+  id                 Int                  @id(map: "pk_pois") @default(autoincrement())
+  createdAt          DateTime?            @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy          Int                  @map("created_by")
+  updatedAt          DateTime?            @map("updated_at") @db.Timestamp(6)
+  updatedBy          Int?                 @map("updated_by")
+  deletedAt          DateTime?            @map("deleted_at") @db.Timestamp(6)
+  deletedBy          Int?                 @map("deleted_by")
+  isVisible          Boolean?             @default(true) @map("is_visible")
+  isDeleted          Boolean?             @default(false) @map("is_deleted")
+  latitude           Float
+  longitude          Float
+  name               Json?                @db.Json
+  managementCode     String?              @map("management_code") @db.VarChar
+  tourDestinationId  Int?                 @map("tour_destination_id")
+  address            Json?                @db.Json
+  addressDetail      Json?                @map("address_detail") @db.Json
+  facilityPoiMapping FacilityPoiMapping[]
+  facilityVpsPopup   FacilityVpsPopup[]
+  tourDestinations   TourDestination?     @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pois_tour_destinations_id")
+
+  @@map("pois")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model RoleUserMapping {
+  id        Int       @id(map: "pk_user_role_mapping") @default(autoincrement())
+  createdAt DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy Int       @map("created_by")
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy Int?      @map("updated_by")
+  deletedAt DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy Int?      @map("deleted_by")
+  isVisible Boolean?  @default(true) @map("is_visible")
+  isDeleted Boolean?  @default(false) @map("is_deleted")
+  roleId    Int?      @map("role_id")
+  userId    Int?      @map("user_id")
+  roles     Role?     @relation(fields: [roleId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_role_user_mapping_roles_id")
+  users     User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_role_user_mapping_users_id")
+
+  @@map("role_user_mapping")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Role {
+  id              Int               @id(map: "pk_roles") @default(autoincrement())
+  createdAt       DateTime?         @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy       Int               @map("created_by")
+  updatedAt       DateTime?         @map("updated_at") @db.Timestamp(6)
+  updatedBy       Int?              @map("updated_by")
+  deletedAt       DateTime?         @map("deleted_at") @db.Timestamp(6)
+  deletedBy       Int?              @map("deleted_by")
+  isVisible       Boolean?          @default(true) @map("is_visible")
+  isDeleted       Boolean?          @default(false) @map("is_deleted")
+  name            String?           @db.VarChar
+  code            String?           @db.VarChar
+  menuRoleMapping MenuRoleMapping[]
+  roleUserMapping RoleUserMapping[]
+
+  @@map("roles")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model SpatialRefSys {
+  srid      Int     @id
+  authName  String? @map("auth_name") @db.VarChar(256)
+  authSrid  Int?    @map("auth_srid")
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
+
+  @@map("spatial_ref_sys")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationCategoryColorCodeMapping {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy Int       @map("created_by")
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy Int?      @map("updated_by")
+  deletedAt DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy Int?      @map("deleted_by")
+  isVisible Boolean?  @default(true) @map("is_visible")
+  isDeleted Boolean?  @default(false) @map("is_deleted")
+
+  @@map("tour_destination_category_color_code_mapping")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationCommonButton {
+  id                Int              @id(map: "pk_tour_destination_common_buttons") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  tourDestinationId Int?             @map("tour_destination_id")
+  iconUrl           String?          @map("icon_url") @db.VarChar
+  buttonName        Json?            @map("button_name") @db.Json
+  buttonUrl         Json?            @map("button_url") @db.Json
+  sortingNumber     Int?             @map("sorting_number")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  facilityButtons   FacilityButton[]
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_common_buttons_tour_destinations_id")
+
+  @@map("tour_destination_common_buttons")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationHolidaySchedule {
+  id                Int              @id(map: "pk_tour_destination_holiday_schedule") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  weekOfMonth       Int?             @map("week_of_month")
+  dayOfWeek         Int?             @map("day_of_week")
+  tourDestinationId Int?             @map("tour_destination_id")
+  fixedHoliday      Int?             @map("fixed_holiday")
+  holidayType       Int?             @map("holiday_type")
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_holiday_schedule_tour_destinations_id")
+
+  @@map("tour_destination_holiday_schedule")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationOperatingSchedule {
+  id                Int              @id(map: "pk_tour_destination_operating_schedule") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  dayOfWeek         Int?             @map("day_of_week")
+  openingTime       String?          @map("opening_time") @db.VarChar
+  closingTime       String?          @map("closing_time") @db.VarChar
+  tourDestinationId Int?             @map("tour_destination_id")
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_operating_schedule_tour_destinations")
+
+  @@map("tour_destination_operating_schedule")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationOverlayFile {
+  id                Int              @id(map: "pk_tour_destination_overlay_files") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  fileOriginalName  String           @map("file_original_name") @db.VarChar(255)
+  fileUploadName    String           @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath    String           @map("file_upload_path") @db.VarChar(255)
+  fileSize          Int              @map("file_size")
+  fileMimeType      String           @map("file_mime_type") @db.VarChar(255)
+  fileUrl           String           @map("file_url") @db.VarChar(255)
+  coordinateData    Json?            @map("coordinate_data") @db.Json
+  overlayType       Int?             @map("overlay_type")
+  sortingNumber     Int?             @map("sorting_number")
+  tourDestinationId Int?             @map("tour_destination_id")
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_overlay_files_tour_destinations_id")
+
+  @@map("tour_destination_overlay_files")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationTag {
+  id                       Int                   @id(map: "pk_tour_destination_tags") @default(autoincrement())
+  createdAt                DateTime?             @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                Int                   @map("created_by")
+  updatedAt                DateTime?             @map("updated_at") @db.Timestamp(6)
+  updatedBy                Int?                  @map("updated_by")
+  deletedAt                DateTime?             @map("deleted_at") @db.Timestamp(6)
+  deletedBy                Int?                  @map("deleted_by")
+  isVisible                Boolean?              @default(true) @map("is_visible")
+  isDeleted                Boolean?              @default(false) @map("is_deleted")
+  tourDestinationId        Int?                  @map("tour_destination_id")
+  parentTagId              Int?                  @map("parent_tag_id")
+  name                     Json?                 @db.Json
+  sortingNumber            Int?                  @map("sorting_number")
+  facilityKeywordTags      FacilityKeywordTags[]
+  tourDestinations         TourDestination?      @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_tags_tour_destinations_id")
+  tourDestinationTags      TourDestinationTag?   @relation("tour_destination_tagsTotour_destination_tags", fields: [parentTagId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "tour_destination_tags_tour_destination_tags_id_fk")
+  otherTourDestinationTags TourDestinationTag[]  @relation("tour_destination_tagsTotour_destination_tags")
+
+  @@map("tour_destination_tags")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestinationUserMapping {
+  id                Int              @id(map: "pk_tour_destination_users") @default(autoincrement())
+  createdAt         DateTime?        @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy         Int              @map("created_by")
+  updatedAt         DateTime?        @map("updated_at") @db.Timestamp(6)
+  updatedBy         Int?             @map("updated_by")
+  deletedAt         DateTime?        @map("deleted_at") @db.Timestamp(6)
+  deletedBy         Int?             @map("deleted_by")
+  isVisible         Boolean?         @default(true) @map("is_visible")
+  isDeleted         Boolean?         @default(false) @map("is_deleted")
+  userId            Int?             @map("user_id")
+  tourDestinationId Int?             @map("tour_destination_id")
+  sortingNumber     Int?             @map("sorting_number")
+  lastAccessedAt    DateTime?        @map("last_accessed_at") @db.Timestamp(6)
+  tourDestinations  TourDestination? @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_users_tour_destinations_id")
+  users             User?            @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_tour_destination_users_users_id")
+
+  @@map("tour_destination_user_mapping")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model TourDestination {
+  id                               Int                                @id(map: "pk_tour_destinations") @default(autoincrement())
+  createdAt                        DateTime?                          @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                        Int                                @map("created_by")
+  updatedAt                        DateTime?                          @map("updated_at") @db.Timestamp(6)
+  updatedBy                        Int?                               @map("updated_by")
+  deletedAt                        DateTime?                          @map("deleted_at") @db.Timestamp(6)
+  deletedBy                        Int?                               @map("deleted_by")
+  isVisible                        Boolean?                           @default(true) @map("is_visible")
+  isDeleted                        Boolean?                           @default(false) @map("is_deleted")
+  latitude                         Float
+  longitude                        Float
+  name                             Json?                              @db.Json
+  startAt                          DateTime?                          @map("start_at") @db.Timestamp(6)
+  endAt                            DateTime?                          @map("end_at") @db.Timestamp(6)
+  colorCode                        String?                            @map("color_code") @db.VarChar
+  homepageUrl                      String?                            @map("homepage_url") @db.VarChar
+  mapUrl                           String?                            @map("map_url") @db.VarChar
+  isAlways                         Boolean?                           @map("is_always")
+  isAiRecommendYn                  Boolean?                           @default(false) @map("is_ai_recommend_yn")
+  isFacilityCongestionYn           Boolean?                           @default(false) @map("is_facility_congestion_yn")
+  isSectionCongestionYn            Boolean?                           @default(false) @map("is_section_congestion_yn")
+  isFacilityAddressYn              Boolean?                           @default(false) @map("is_facility_address_yn")
+  isCustomSortingYn                Boolean?                           @map("is_custom_sorting_yn")
+  supportedLanguages               Json?                              @default("{\"en\": false, \"ja\": false, \"ko\": false, \"th\": false, \"vi\": false, \"zh\": false}") @map("supported_languages")
+  isVpsContentsYn                  Boolean?                           @default(false) @map("is_vps_contents_yn")
+  operationInfo                    Json?                              @map("operation_info") @db.Json
+  fileOriginalName                 String?                            @map("file_original_name") @db.VarChar(255)
+  fileUploadName                   String?                            @map("file_upload_name") @db.VarChar(255)
+  fileUploadPath                   String?                            @map("file_upload_path") @db.VarChar(255)
+  fileSize                         Int?                               @map("file_size")
+  fileMimeType                     String?                            @map("file_mime_type") @db.VarChar(255)
+  fileUrl                          String?                            @map("file_url") @db.VarChar(255)
+  sortingNumber                    Int?                               @map("sorting_number")
+  analyticsVisitorSurveyStatuses   AnalyticsVisitorSurveyStatus[]
+  categories                       Category[]
+  categoryColorCodes               CategoryColorCode[]
+  congestionAnalysisLogs           CongestionAnalysisLog[]
+  congestionSection                CongestionSection[]
+  congestionSensorDevice           CongestionSensorDevice[]
+  facilities                       Facility[]
+  onboardingBasicSurveyQuestions   OnboardingBasicSurveyQuestion[]
+  onboardingSurveySubmissions      OnboardingSurveySubmission[]
+  onboardings                      Onboarding[]
+  pois                             Poi[]
+  tourDestinationCommonButtons     TourDestinationCommonButton[]
+  tourDestinationHolidaySchedule   TourDestinationHolidaySchedule[]
+  tourDestinationOperatingSchedule TourDestinationOperatingSchedule[]
+  tourDestinationOverlayFiles      TourDestinationOverlayFile[]
+  tourDestinationTags              TourDestinationTag[]
+  tourDestinationUserMapping       TourDestinationUserMapping[]
+  userOnboardingBasicSurveyAnswers UserOnboardingBasicSurveyAnswer[]
+
+  @@map("tour_destinations")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model UserOnboardingBasicSurveyAnswer {
+  id                              Int                            @id(map: "pk_user_onboarding_basic_survey_answers") @default(autoincrement())
+  createdAt                       DateTime?                      @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                       Int                            @map("created_by")
+  updatedAt                       DateTime?                      @map("updated_at") @db.Timestamp(6)
+  updatedBy                       Int?                           @map("updated_by")
+  deletedAt                       DateTime?                      @map("deleted_at") @db.Timestamp(6)
+  deletedBy                       Int?                           @map("deleted_by")
+  isVisible                       Boolean?                       @default(true) @map("is_visible")
+  isDeleted                       Boolean?                       @default(false) @map("is_deleted")
+  userId                          Int?                           @map("user_id")
+  tourDestinationId               Int?                           @map("tour_destination_id")
+  onboardingBasicSurveyQuestionId Int?                           @map("onboarding_basic_survey_question_id")
+  onboardingBasicSurveyOptionId   Int?                           @map("onboarding_basic_survey_option_id")
+  questionSnapshot                Json?                          @map("question_snapshot") @db.Json
+  optionSnapshot                  Json?                          @map("option_snapshot") @db.Json
+  onboardingBasicSurveyOptions    OnboardingBasicSurveyOption?   @relation(fields: [onboardingBasicSurveyOptionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_onboarding_basic_survey_answers_option_id")
+  onboardingBasicSurveyQuestions  OnboardingBasicSurveyQuestion? @relation(fields: [onboardingBasicSurveyQuestionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_onboarding_basic_survey_answers_question_id")
+  tourDestinations                TourDestination?               @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_onboarding_basic_survey_answers_tour_destinations_id")
+
+  @@map("user_onboarding_basic_survey_answers")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model UserRefreshToken {
+  id                 Int       @id(map: "pk_user_refresh_tokens") @default(autoincrement())
+  createdAt          DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy          Int       @map("created_by")
+  updatedAt          DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedBy          Int?      @map("updated_by")
+  deletedAt          DateTime? @map("deleted_at") @db.Timestamp(6)
+  deletedBy          Int?      @map("deleted_by")
+  isVisible          Boolean?  @default(true) @map("is_visible")
+  isDeleted          Boolean?  @default(false) @map("is_deleted")
+  userId             Int?      @map("user_id")
+  tokenHash          String    @unique(map: "uq_user_refresh_tokens_token_hash") @map("token_hash") @db.VarChar(255)
+  tokenJti           String    @unique(map: "uq_user_refresh_tokens_token_jti") @map("token_jti") @db.VarChar(64)
+  expiresAt          DateTime  @map("expires_at") @db.Timestamp(6)
+  replacedByTokenJti String?   @map("replaced_by_token_jti") @db.VarChar(64)
+  userAgent          String?   @map("user_agent") @db.VarChar(512)
+  ipAddress          String?   @map("ip_address") @db.VarChar(64)
+  revokedAt          DateTime? @map("revoked_at") @db.Timestamp(6)
+  revokedBy          Int?      @map("revoked_by")
+  users              User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_refresh_tokens_users_id")
+
+  @@map("user_refresh_tokens")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model User {
+  id                         Int                          @id @default(autoincrement())
+  createdAt                  DateTime?                    @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                  Int                          @map("created_by")
+  updatedAt                  DateTime?                    @map("updated_at") @db.Timestamp(6)
+  updatedBy                  Int?                         @map("updated_by")
+  deletedAt                  DateTime?                    @map("deleted_at") @db.Timestamp(6)
+  deletedBy                  Int?                         @map("deleted_by")
+  isVisible                  Boolean?                     @default(true) @map("is_visible")
+  isDeleted                  Boolean?                     @default(false) @map("is_deleted")
+  name                       String?                      @db.VarChar
+  email                      String?                      @db.VarChar
+  loginAccount               String?                      @map("login_account") @db.VarChar
+  password                   String?                      @db.VarChar
+  roleUserMapping            RoleUserMapping[]
+  tourDestinationUserMapping TourDestinationUserMapping[]
+  userRefreshTokens          UserRefreshToken[]
+
+  @@map("users")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model CongestionAnalysisLog {
+  id                       Int                    @id(map: "pk_congestion_analysis_log") @default(autoincrement())
+  createdAt                DateTime?              @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                Int                    @map("created_by")
+  updatedAt                DateTime?              @map("updated_at") @db.Timestamp(6)
+  updatedBy                Int?                   @map("updated_by")
+  deletedAt                DateTime?              @map("deleted_at") @db.Timestamp(6)
+  deletedBy                Int?                   @map("deleted_by")
+  isVisible                Boolean?               @default(true) @map("is_visible")
+  isDeleted                Boolean?               @default(false) @map("is_deleted")
+  congestionSensorDeviceId Int                    @map("congestion_sensor_device_id")
+  tourDestinationId        Int                    @map("tour_destination_id")
+  congestionDataId         Int?                   @unique(map: "uq_congestion_analysis_log_congestion_data_id") @map("congestion_data_id")
+  status                   String                 @default("PENDING") @db.VarChar(20)
+  analyzedFileName         String                 @map("analyzed_file_name") @db.VarChar(255)
+  analyzedRelativePath     String                 @map("analyzed_relative_path") @db.VarChar(255)
+  capturedAt               DateTime?              @map("captured_at") @db.Timestamp(6)
+  completedAt              DateTime?              @map("completed_at") @db.Timestamp(6)
+  raw                      Json?                  @db.Json
+  errorMessage             String?                @map("error_message") @db.VarChar
+  congestionData           CongestionData?        @relation(fields: [congestionDataId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_analysis_log_congestion_data_id")
+  congestionSensorDevice   CongestionSensorDevice @relation(fields: [congestionSensorDeviceId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_analysis_log_congestion_sensor_device_id")
+  tourDestination          TourDestination        @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_congestion_analysis_log_tour_destinations_id")
+
+  @@index([congestionSensorDeviceId, createdAt(sort: Desc)], map: "idx_congestion_analysis_log_device_created")
+  @@index([status, createdAt], map: "idx_congestion_analysis_log_status_created")
+  @@map("congestion_analysis_log")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model OnboardingSurveySubmission {
+  id                                  Int                                  @id(map: "pk_onboarding_survey_submissions") @default(autoincrement())
+  createdAt                           DateTime?                            @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                           Int                                  @default(0) @map("created_by")
+  updatedAt                           DateTime?                            @map("updated_at") @db.Timestamp(6)
+  updatedBy                           Int?                                 @map("updated_by")
+  deletedAt                           DateTime?                            @map("deleted_at") @db.Timestamp(6)
+  deletedBy                           Int?                                 @map("deleted_by")
+  isVisible                           Boolean?                             @default(true) @map("is_visible")
+  isDeleted                           Boolean?                             @default(false) @map("is_deleted")
+  submissionId                        String                               @unique(map: "uq_onboarding_survey_submissions_submission_id") @map("submission_id") @db.VarChar(64)
+  visitorId                           String                               @map("visitor_id") @db.VarChar(64)
+  tourDestinationId                   Int                                  @map("tour_destination_id")
+  languageCode                        String                               @map("language_code") @db.VarChar(10)
+  status                              OnboardingSurveySubmissionStatus
+  submittedAt                         DateTime?                            @map("submitted_at") @db.Timestamp(6)
+  skippedAt                           DateTime?                            @map("skipped_at") @db.Timestamp(6)
+  analyticsVisitorSurveyStatuses      AnalyticsVisitorSurveyStatus[]
+  tourDestination                     TourDestination                      @relation(fields: [tourDestinationId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_onboarding_survey_submissions_destination_id")
+  analyticsVisitor                    AnalyticsVisitor                     @relation(fields: [visitorId], references: [visitorId], onDelete: NoAction, onUpdate: NoAction, map: "fk_onboarding_survey_submissions_visitor_id")
+  visitorOnboardingBasicSurveyAnswers VisitorOnboardingBasicSurveyAnswer[]
+
+  @@index([tourDestinationId, status, createdAt(sort: Desc)], map: "idx_survey_submissions_destination_status")
+  @@index([visitorId, tourDestinationId, createdAt(sort: Desc)], map: "idx_survey_submissions_visitor_destination")
+  @@map("onboarding_survey_submissions")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model VisitorOnboardingBasicSurveyAnswer {
+  id                              Int                           @id(map: "pk_visitor_onboarding_basic_survey_answers") @default(autoincrement())
+  createdAt                       DateTime?                     @default(now()) @map("created_at") @db.Timestamp(6)
+  createdBy                       Int                           @default(0) @map("created_by")
+  updatedAt                       DateTime?                     @map("updated_at") @db.Timestamp(6)
+  updatedBy                       Int?                          @map("updated_by")
+  deletedAt                       DateTime?                     @map("deleted_at") @db.Timestamp(6)
+  deletedBy                       Int?                          @map("deleted_by")
+  isVisible                       Boolean?                      @default(true) @map("is_visible")
+  isDeleted                       Boolean?                      @default(false) @map("is_deleted")
+  submissionId                    String                        @map("submission_id") @db.VarChar(64)
+  onboardingBasicSurveyQuestionId Int                           @map("onboarding_basic_survey_question_id")
+  onboardingBasicSurveyOptionId   Int                           @map("onboarding_basic_survey_option_id")
+  questionSnapshot                Json                          @map("question_snapshot") @db.Json
+  optionSnapshot                  Json                          @map("option_snapshot") @db.Json
+  onboardingBasicSurveyOption     OnboardingBasicSurveyOption   @relation(fields: [onboardingBasicSurveyOptionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_visitor_survey_answers_option_id")
+  onboardingBasicSurveyQuestion   OnboardingBasicSurveyQuestion @relation(fields: [onboardingBasicSurveyQuestionId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_visitor_survey_answers_question_id")
+  onboardingSurveySubmission      OnboardingSurveySubmission    @relation(fields: [submissionId], references: [submissionId], onDelete: NoAction, onUpdate: NoAction, map: "fk_visitor_survey_answers_submission_id")
+
+  @@unique([submissionId, onboardingBasicSurveyQuestionId, onboardingBasicSurveyOptionId], map: "uq_visitor_survey_answer_submission_question_option")
+  @@index([onboardingBasicSurveyOptionId], map: "idx_visitor_survey_answers_option_id")
+  @@index([onboardingBasicSurveyQuestionId], map: "idx_visitor_survey_answers_question_id")
+  @@index([submissionId], map: "idx_visitor_survey_answers_submission_id")
+  @@map("visitor_onboarding_basic_survey_answers")
+}
+
+/// We could not retrieve columns for the underlying table. Either it has none or you are missing rights to see them. Please check your privileges.
+// model table_name {
+// }
+
+enum CongestionStatus {
+  VERY_CROWDED
+  CROWDED
+  NORMAL
+  RELAXED
+
+  @@map("congestion_status")
+}
+
+enum OnboardingDeploymentStatus {
+  DRAFT
+  DEPLOYING
+  ENDED
+
+  @@map("onboarding_deployment_status")
+}
+
+enum OnboardingFileType {
+  MAIN
+  MAIN_GLOBAL
+  THUMBNAIL
+  THUMBNAIL_GLOBAL
+
+  @@map("onboarding_file_type")
+}
+
+/// This enum is commented in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+enum AnalyticsVisitorSurveyStatusType {
+  NOT_SUBMITTED
+  SUBMITTED
+  SKIPPED
+
+  @@map("analytics_visitor_survey_status_type")
+}
+
+/// This enum is commented in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+enum OnboardingSurveySubmissionStatus {
+  SUBMITTED
+  SKIPPED
+
+  @@map("onboarding_survey_submission_status")
+}
