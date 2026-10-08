@@ -1,0 +1,479 @@
+@import 'tailwindcss';
+
+@import './pretendard-subset.css';
+
+@plugin 'flowbite/plugin';
+
+@source '../../../node_modules/flowbite-svelte/dist';
+/* @source '../../../node_modules/flowbite-svelte-icons/dist'; */
+
+.lc-root-container {
+	/* Default marks color when not using explicit color or color scale */
+	--color-primary: var(--color-blue-500);
+
+	/* Progressively darker shades representing surfaces (backgrounds). */
+	--color-surface-100: var(--color-white);
+	--color-surface-200: var(--color-gray-100);
+	--color-surface-300: var(--color-gray-300);
+
+	/* Content (text) color */
+	--color-surface-content: var(--color-gray-900);
+}
+
+@theme {
+	--color-primary-50: #fff5f5;
+	--color-primary-100: #fff1ee;
+	--color-primary-200: #ffe4de;
+	--color-primary-300: #ffd5cc;
+	--color-primary-400: #ffbcad;
+	--color-primary-500: #fe795d;
+	--color-primary-600: #ef562f;
+	--color-primary-700: #eb4f27;
+	--color-primary-800: #cc4522;
+	--color-primary-900: #a5371b;
+
+	--color-secondary-50: #f0f9ff;
+	--color-secondary-100: #e0f2fe;
+	--color-secondary-200: #bae6fd;
+	--color-secondary-300: #7dd3fc;
+	--color-secondary-400: #38bdf8;
+	--color-secondary-500: #0ea5e9;
+	--color-secondary-600: #0284c7;
+	--color-secondary-700: #0369a1;
+	--color-secondary-800: #075985;
+	--color-secondary-900: #0c4a6e;
+
+	--color-brand-softer: var(--color-primary-50);
+	--color-brand-soft: var(--color-primary-100);
+	--color-brand: var(--color-primary-700);
+	--color-brand-medium: var(--color-primary-200);
+	--color-brand-strong: var(--color-primary-800);
+
+	--color-fg-brand-subtle: var(--color-primary-200);
+	--color-fg-brand: var(--color-primary-700);
+	--color-fg-brand-strong: var(--color-primary-900);
+
+	--color-brand-subtle: var(--color-primary-200);
+	--color-brand-light: var(--color-primary-600);
+}
+
+:root {
+	color-scheme: light;
+
+	/* 무채색 (Grayscale) */
+	--fff: #ffffff;
+	--f5f5f5: #f5f5f5;
+	--eeeeee: #eeeeee;
+	--e6e6e6: #e6e6e6;
+	--cccccc: #cccccc;
+	--999999: #999999;
+	--736762: #736762;
+	--464646: #464646;
+	--222: #222;
+	--444444: #444444;
+	--666: #666666;
+	--292d32: #292d32;
+	--0f172a: #0f172a;
+	--000: #000000;
+
+	/* 블루 & 시안 (Info / 브랜드 서브) */
+	--006ecc: #006ecc;
+	--eaf7ff: #eaf7ff;
+	--e4e8ee: #e4e8ee;
+
+	/* 그린 (Success) */
+	--0b8700: #0b8700;
+	--e9fae7: #e9fae7;
+
+	/* 레드  */
+	--a72b2a: #a72b2a;
+	--93292d: #93292d;
+	--c44342: #c44342;
+	--c62424: #c62424;
+	--ffc7c2: #ffc7c2;
+	--ffe2e2: #ffe2e2;
+	--fff5f5: #fff5f5;
+	--f9ecec: #f9ecec;
+	--93292d: #93292d;
+
+	/* 오렌지 (Warning) */
+	--ff6f00: #ff6f00;
+	--aeff00: #aeff00;
+
+	/* 보더 전용 (기존 제안값) */
+	--e2e8f0: #e2e8f0;
+	--f1f5f9: #f1f5f9;
+	--574e57: #574e57;
+
+	--text-xs: 12px;
+	--text-sm: 14px;
+	--text-base: 16px;
+	--text-lg: 18px;
+	--text-xl: 20px;
+	--text-2xl: 24px;
+	--text-3xl: 30px;
+	--text-4xl: 36px;
+	--text-5xl: 48px;
+
+	--sp-heading: 40px;
+	--sp-section: 30px;
+	--sp-section-gap: 30px;
+	--sp-container: 20px;
+	--sp-card: 12px;
+
+	--input-height: 52px;
+	--input-height-m: 36px;
+
+	--font-sans:
+		'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+		'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+@theme inline {
+	--color-bkg: var(--fff);
+	--color-bkg-th: var(--f5f5f5);
+	--color-frg: var(--000);
+
+	--color-fff: #ffffff;
+	--color-f5f5f5: #f5f5f5;
+	--color-eee: #eeeeee;
+	--color-e6e6e6: #e6e6e6;
+	--color-ccc: #cccccc;
+	--color-999: #999999;
+	--color-736762: #736762;
+	--color-464646: #464646;
+	--color-191919: #191919;
+	--color-222: #222;
+	--color-444: #444444;
+	--color-666: #666666;
+	--color-292d32: #292d32;
+	--color-0f172a: #0f172a;
+	--color-000: #000000;
+	--color-f56464: #f56464;
+
+	/* primary */
+	--color-primary: var(--a72b2a);
+
+	--color-primary-50: var(--fff5f5);
+	--color-primary-100: var(--fff1ee);
+	--color-primary-200: var(--ffe4de);
+	--color-primary-300: var(--ffd5cc);
+	--color-primary-400: var(--ffbcad);
+	--color-primary-500: var(--fe795d);
+	--color-primary-600: var(--ef562f);
+	--color-primary-700: var(--eb4f27);
+	--color-primary-800: var(--cc4522);
+	--color-primary-900: var(--a5371b);
+
+	--color-primary-frg: var(--fff);
+	--color-secondary: var(--ffe2e2);
+	--color-secondary-frg: var(--c62424);
+	--color-info: var(--93292d);
+	--color-info-frg: var(--93292d);
+	--color-detail: var(--574e57);
+	--color-detail-frg: var(--574e57);
+	--color-neutral: var(--444444);
+	--color-neutral-frg: var(--444444);
+
+	--color-brand-softer: var(--color-primary-50);
+	--color-brand-soft: var(--color-primary-100);
+	--color-brand: var(--color-primary-700);
+	--color-brand-medium: var(--color-primary-200);
+	--color-brand-strong: var(--color-primary-800);
+
+	--color-fg-brand-subtle: var(--color-primary-200);
+	--color-fg-brand: var(--color-primary-700);
+	--color-fg-brand-strong: var(--color-primary-900);
+
+	--color-brand-subtle: var(--color-primary-200);
+	--color-brand-light: var(--color-primary-600);
+
+	/* state */
+
+	--color-default: var(--c44342);
+	--color-default-frg: var(--fff);
+
+	--color-succes: var(--e9fae7);
+	--color-succes-frg: var(--0b8700);
+
+	--color-pending: var(--eaf7ff);
+	--color-pending-frg: var(--006ecc);
+
+	--color-warning: var(--eeeeee);
+	--color-warning-frg: var(--999999);
+
+	--color-destructive: var(--ffe2e2);
+	--color-destructive-frg: var(--c62424);
+
+	--color-accent: var(--ff6f00);
+
+	--color-neon: var(--aeff00);
+
+	--color-muted: var(--eeeeee);
+	--color-muted-frg: var(--999999);
+
+	--color-option: var(--f9ecec);
+	--color-svg: var(--292d32);
+	--color-out: var(--736762);
+
+	/* border */
+	--color-outline: var(--cccccc);
+	--color-table-outline: var(--e4e8ee);
+	--color-col-outline: var(--cccccc);
+	--color-row-outline: var(--cccccc);
+	--color-detail-outline: var(--ffc7c2);
+	/* input */
+	--color-input: var(--cccccc);
+	--color-placeholder: var(--999999);
+
+	--text-xs: var(--text-xs);
+	--text-sm: var(--text-sm);
+	--text-base: var(--text-base);
+	--text-lg: var(--text-lg);
+	--text-xl: var(--text-xl);
+	--text-2xl: var(--text-2xl);
+	--text-3xl: var(--text-3xl);
+	--text-4xl: var(--text-4xl);
+	--text-5xl: var(--text-5xl);
+
+	--spacing-heading: var(--sp-heading);
+	--spacing-section: var(--sp-section);
+	--spacing-section-gap: var(--sp-section-gap);
+	--spacing-container: var(--sp-container);
+	--spacing-card: var(--sp-card);
+
+	--spacing-input: var(--input-height);
+	--spacing-input-m: var(--input-height-m);
+
+	--font-sans: var(--font-sans);
+
+	--animate-dash-icon: dash-icon 3.5s ease-in-out infinite;
+	@keyframes dash-icon {
+		0%,
+		100% {
+			transform: translateY(-10px);
+		}
+		50% {
+			transform: translateY(10px);
+		}
+	}
+}
+
+@layer base {
+	html,
+	body,
+	div,
+	span,
+	applet,
+	object,
+	iframe,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	blockquote,
+	pre,
+	a,
+	abbr,
+	acronym,
+	address,
+	big,
+	cite,
+	code,
+	del,
+	dfn,
+	em,
+	img,
+	ins,
+	kbd,
+	q,
+	s,
+	samp,
+	small,
+	strike,
+	strong,
+	sub,
+	sup,
+	tt,
+	var,
+	b,
+	u,
+	i,
+	center,
+	dl,
+	dt,
+	dd,
+	ol,
+	ul,
+	li,
+	fieldset,
+	form,
+	label,
+	legend,
+	table,
+	caption,
+	tbody,
+	tfoot,
+	thead,
+	tr,
+	th,
+	td,
+	article,
+	aside,
+	canvas,
+	details,
+	embed,
+	figure,
+	figcaption,
+	footer,
+	header,
+	hgroup,
+	menu,
+	nav,
+	output,
+	ruby,
+	section,
+	summary,
+	time,
+	mark,
+	audio,
+	video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font-family: var(--font-sans);
+		vertical-align: baseline;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article,
+	aside,
+	details,
+	figcaption,
+	figure,
+	footer,
+	header,
+	hgroup,
+	menu,
+	nav,
+	section {
+		display: block;
+	}
+	body {
+		line-height: 1;
+	}
+	ol,
+	ul {
+		list-style: none;
+	}
+	blockquote,
+	q {
+		quotes: none;
+	}
+	blockquote:before,
+	blockquote:after,
+	q:before,
+	q:after {
+		content: '';
+		content: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	a,
+	label,
+	button,
+	seelct {
+		cursor: pointer;
+
+		&:disabled {
+			cursor: no-drop;
+		}
+	}
+
+	body {
+		min-width: 1080px;
+		min-height: 100svh;
+		margin: 0;
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		overflow: clip;
+		overscroll-behavior: none;
+		background-color: #f5f5f5;
+		color: var(--222);
+		color-scheme: light;
+		font-style: normal;
+		font-weight: 400;
+		font-family:
+			'Noto Sans KR',
+			'Inter',
+			system-ui,
+			-apple-system,
+			Apple SD Gothic Neo,
+			BlinkMacSystemFont,
+			'Segoe UI',
+			Roboto,
+			Helvetica,
+			Arial,
+			sans-serif,
+			'Apple Color Emoji',
+			'Segoe UI Emoji',
+			'Segoe UI Symbol',
+			'Noto Color Emoji';
+		font-optical-sizing: auto;
+
+		@media (max-width: 600px) {
+			grid-template-rows: 50px 1fr;
+		}
+	}
+
+	:root {
+		--select-border: #777;
+		--select-arrow: var(--select-border);
+	}
+
+	select,
+	::picker(select) {
+		appearance: base-select;
+	}
+
+	/* Select button */
+	select {
+		--radius: 100px;
+		--option-size: 50px;
+		display: grid;
+		anchor-name: --anchor-el;
+		place-items: center;
+		height: var(--option-size);
+		padding: 0;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+
+		background: white;
+		cursor: pointer;
+	}
+
+	input[type='text'],
+	input[type='tel'],
+	input[type='number'],
+	input[type='date'],
+	input[type='password'],
+	input[type='email'],
+	input[type='search'],
+	input[type='url'] {
+		font-size: 1.125rem;
+	}
+
+	[role='tabpanel'] {
+		margin-top: 0 !important;
+		padding: 0 !important;
+		background-color: transparent !important;
+	}
+}
