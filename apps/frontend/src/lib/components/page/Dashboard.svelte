@@ -263,6 +263,7 @@
 			{ id: 'GLASS-04', name: '', line: '', current_state: '', supply_bin: '', route: [] },
 		],
 	};
+	let demoSimulation = $state(demoData.simulation.map((worker) => ({ ...worker })));
 
 	const picking = $derived(demoEnabled ? demoData.picking : localPicking);
 	const inspection = $derived(demoEnabled ? demoData.inspection : localInspection);
@@ -272,7 +273,7 @@
 	const uphData = $derived(demoEnabled ? demoData.chartLine : localChartLine);
 	const barRows = $derived(pickingData.map((row) => ({ label: row.time, picking: row.picking, inspection: row.inspection })));
 	const lineRows = $derived(uphData.map((row) => ({ label: row.date, picking: row.picking, inspection: row.inspection })));
-	const simulation = $derived(demoEnabled ? demoData.simulation : localSimulation);
+	const simulation = $derived(demoEnabled ? demoSimulation : localSimulation);
 
 	type DashboardView = {
 		tit: string;
@@ -402,6 +403,21 @@
 		} else {
 			closingRiskPrediction = 82;
 		}
+	});
+
+	$effect(() => {
+		if (selectedKey !== 'location-control' || !demoEnabled) return;
+
+		demoSimulation = demoData.simulation.map((worker) => ({ ...worker }));
+		const timeout = setTimeout(() => {
+			demoSimulation = demoSimulation.map((worker) =>
+				worker.id === 'GLASS-01'
+					? { ...worker, line: 'line-b', current_state: 'TDL01-02', supply_bin: 'TDL01-02-01', route: ['TDL01-03', 'TDL01-02'] }
+					: worker,
+			);
+		}, 3000);
+
+		return () => clearTimeout(timeout);
 	});
 </script>
 
@@ -533,7 +549,7 @@
 	{@const activeSimulation = getActiveSimulation(id)}
 	<li
 		class={[
-			'relative inline-flex min-h-12.5 items-center justify-between gap-1 rounded-sm border px-3 py-1 opacity-100 transition-colors xl:px-5 starting:opacity-0',
+			'relative inline-flex min-h-12.5 flex-wrap items-center justify-between gap-1 rounded-sm border px-3 py-1 opacity-100 transition-colors xl:px-5 starting:opacity-0',
 			activeSimulation ? 'border-white bg-linear-90 from-[#240102] to-[#a11f26]' : 'border-white/30',
 		]}
 	>
